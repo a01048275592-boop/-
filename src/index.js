@@ -697,65 +697,496 @@ function generateSitemapPart(part) {
   return xml;
 }
 
+// --- 공통 레이아웃 ---
+function commonHead(title, description, canonical) {
+  return `<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${title}</title>
+  <meta name="description" content="${description}">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${description}">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:site_name" content="안하니">
+  <meta property="og:locale" content="ko_KR">
+  <link rel="canonical" href="${canonical}">`;
+}
+
+function commonStyles() {
+  return `
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: #f8fafc; color: #334155; line-height: 1.7; }
+    
+    /* 네비게이션 */
+    .nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { font-size: 22px; font-weight: 900; color: #0f172a; text-decoration: none; letter-spacing: -1px; }
+    .nav-logo span { color: #6366f1; }
+    .nav-links { display: flex; gap: 0; align-items: center; height: 100%; }
+    .nav-item { position: relative; height: 100%; display: flex; align-items: center; }
+    .nav-item > a { color: #475569; text-decoration: none; font-size: 15px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; display: flex; align-items: center; gap: 4px; }
+    .nav-item > a:hover { background: #f1f5f9; color: #6366f1; }
+    .nav-item > a.active { color: #6366f1; background: #eef2ff; }
+    .nav-item > a .arrow-down { font-size: 10px; opacity: 0.5; }
+    .dropdown { display: none; position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 8px 0; min-width: 180px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .nav-item:hover .dropdown { display: block; }
+    .dropdown a { display: block; padding: 8px 20px; color: #475569; text-decoration: none; font-size: 14px; transition: all 0.15s; }
+    .dropdown a:hover { background: #f1f5f9; color: #6366f1; }
+    .dropdown .divider { height: 1px; background: #e2e8f0; margin: 4px 0; }
+    .nav-cta { background: #6366f1; color: #fff !important; border-radius: 8px !important; padding: 8px 20px !important; margin-left: 8px; }
+    .nav-cta:hover { background: #4f46e5 !important; }
+    .mobile-menu { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
+    
+    /* 푸터 */
+    .footer { background: #0f172a; color: #94a3b8; padding: 60px 24px 40px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; }
+    .footer-brand h3 { color: #fff; font-size: 20px; margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; line-height: 1.8; }
+    .footer-col h4 { color: #e2e8f0; font-size: 14px; margin-bottom: 16px; font-weight: 600; }
+    .footer-col a { display: block; color: #94a3b8; text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid #1e293b; text-align: center; font-size: 12px; color: #64748b; }
+    
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu { display: block; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+  `;
+}
+
+function navHTML(activePage) {
+  return `<nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">안<span>하니</span></a>
+      <div class="nav-links">
+        
+        <div class="nav-item">
+          <a href="/지역별" class="${activePage === 'region' ? 'active' : ''}">전국과외 <span class="arrow-down">▼</span></a>
+          <div class="dropdown">
+            <a href="/지역별">지역별 과외</a>
+            <a href="/학교급별">학년별 과외</a>
+            <a href="/학교급별">학교별 과외</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/과목별" class="${activePage === 'subject' ? 'active' : ''}">과목별 <span class="arrow-down">▼</span></a>
+          <div class="dropdown">
+            <a href="/과목별/국어">국어</a>
+            <a href="/과목별/영어">영어</a>
+            <a href="/과목별/수학">수학</a>
+            <a href="/과목별/사회">사회</a>
+            <a href="/과목별/과학">과학</a>
+            <a href="/과목별/코딩">코딩</a>
+            <a href="/과목별/검정고시">검정고시</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/학원" class="${activePage === 'academy' ? 'active' : ''}">학원 <span class="arrow-down">▼</span></a>
+          <div class="dropdown">
+            <a href="/학원/전국지점">전국 지점 찾기</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/학습가이드" class="${activePage === 'guide' ? 'active' : ''}">학습가이드</a>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/유학" class="${activePage === 'abroad' ? 'active' : ''}">유학</a>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/외국어" class="${activePage === 'foreign' ? 'active' : ''}">외국어 <span class="arrow-down">▼</span></a>
+          <div class="dropdown">
+            <a href="/외국어/영어">영어</a>
+            <a href="/외국어/중국어">중국어</a>
+            <a href="/외국어/일본어">일본어</a>
+          </div>
+        </div>
+        
+        <a href="/상담" class="nav-cta">무료 상담</a>
+      </div>
+      <button class="mobile-menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">☰</button>
+    </div>
+  </nav>`;
+}
+
+function footerHTML() {
+  const regionCols = Object.keys(REGIONS).slice(0, 8);
+  return `<footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>안하니</h3>
+        <p>전국 시/군/구/읍/면 과외 정보를<br>한 곳에서 확인하세요.<br>초등·중등·고등 맞춤 과외 매칭</p>
+      </div>
+      <div class="footer-col">
+        <h4>과목별 학습</h4>
+        ${SUBJECTS.map(s => `<a href="/과목별/${encodeURIComponent(s)}">${s} 과외</a>`).join('')}
+      </div>
+      <div class="footer-col">
+        <h4>지역별 과외</h4>
+        ${regionCols.map(r => `<a href="/지역별/${encodeURIComponent(r)}">${r}</a>`).join('')}
+      </div>
+      <div class="footer-col">
+        <h4>학교급별</h4>
+        ${LEVELS.map(l => `<a href="/학교급별/${encodeURIComponent(l)}">${l} 과외</a>`).join('')}
+        <a href="/과목별/${encodeURIComponent('검정고시')}">검정고시</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 안하니 | 대한민국 과외 정보 플랫폼. All rights reserved.</p>
+    </div>
+  </footer>`;
+}
+
 // --- 홈페이지 ---
 function renderHomepage() {
-  const regionLinks = Object.entries(REGIONS).map(([parent, districts]) => {
-    const districtLinks = districts.slice(0, 5).map(d => 
-      `<a href="/${encodeURIComponent(`${d}-초등-수학-과외`)}" class="district-link">${d}</a>`
-    ).join('');
-    const more = districts.length > 5 ? `<span class="more">외 ${districts.length - 5}곳</span>` : '';
-    return `<div class="region-card"><h3>${parent}</h3><div class="districts">${districtLinks}${more}</div></div>`;
+  // 총 페이지 수 계산
+  let totalLocations = 0;
+  for (const districts of Object.values(REGIONS)) totalLocations += districts.length;
+  for (const areas of Object.values(EUP_MYEON)) totalLocations += areas.length;
+  const totalPages = totalLocations * LEVELS.length * SUBJECTS.length;
+
+  const regionCards = Object.entries(REGIONS).map(([parent, districts]) => {
+    return `<a href="/지역별/${encodeURIComponent(parent)}" class="region-card">
+      <div class="region-icon">${parent.charAt(0)}</div>
+      <div class="region-info">
+        <h3>${parent}</h3>
+        <p>${districts.length}개 시/군/구</p>
+      </div>
+      <span class="arrow">→</span>
+    </a>`;
+  }).join('');
+
+  const subjectColors = {
+    "국어": "#ef4444", "영어": "#3b82f6", "수학": "#22c55e", "사회": "#f59e0b",
+    "과학": "#a855f7", "코딩": "#06b6d4", "검정고시": "#f97316", "논술": "#64748b"
+  };
+  const subjectIcons = {
+    "국어": "📖", "영어": "🌍", "수학": "📐", "사회": "🏛️",
+    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "논술": "✍️"
+  };
+  const subjectCards = SUBJECTS.map(s => {
+    return `<a href="/과목별/${encodeURIComponent(s)}" class="subject-card" style="--accent:${subjectColors[s]}">
+      <span class="subject-icon">${subjectIcons[s]}</span>
+      <h3>${s}</h3>
+      <p>${s} 과외 정보 보기</p>
+    </a>`;
   }).join('');
 
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>안하니 - 전국 과외 정보 플랫폼</title>
-  <meta name="description" content="전국 시/군/구/읍/면 초등, 중등, 고등 과외 정보를 한 곳에서! 국어, 영어, 수학, 사회, 과학, 코딩, 검정고시, 논술 과외를 찾아보세요.">
-  <meta property="og:title" content="안하니 - 전국 과외 정보 플랫폼">
-  <meta property="og:description" content="전국 시/군/구/읍/면 과외 정보를 한 곳에서 확인하세요.">
-  <meta property="og:url" content="https://anhani.com">
-  <meta property="og:site_name" content="안하니">
-  <link rel="canonical" href="https://anhani.com/">
+  ${commonHead('안하니 - 전국 과외 정보 플랫폼', '전국 시/군/구/읍/면 초등, 중등, 고등 과외 정보! 국어, 영어, 수학, 사회, 과학, 코딩, 검정고시, 논술 과외를 찾아보세요.', 'https://anhani.com/')}
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Pretendard', -apple-system, sans-serif; background: #f9fafb; color: #333; }
-    .hero { background: linear-gradient(135deg, #3b82f6, #1e40af); color: white; padding: 80px 20px; text-align: center; }
-    .hero h1 { font-size: 40px; margin-bottom: 16px; }
-    .hero p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto; }
-    .container { max-width: 1024px; margin: 0 auto; padding: 40px 20px; }
-    .section-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; }
-    .regions { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-    .region-card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-    .region-card h3 { font-size: 18px; margin-bottom: 12px; color: #111; }
-    .districts { display: flex; flex-wrap: wrap; gap: 8px; }
-    .district-link { color: #3b82f6; text-decoration: none; font-size: 14px; padding: 4px 10px; background: #eff6ff; border-radius: 6px; }
-    .district-link:hover { background: #dbeafe; }
-    .more { font-size: 13px; color: #999; padding: 4px 10px; }
-    .subjects { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0; justify-content: center; }
-    .subject-badge { padding: 10px 24px; background: white; border-radius: 24px; font-size: 15px; font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-    .footer { background: #111; color: #999; padding: 40px 20px; text-align: center; font-size: 13px; }
+    ${commonStyles()}
+    
+    .hero { background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #6366f1 100%); color: #fff; padding: 80px 24px 100px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%); }
+    .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); padding: 6px 20px; border-radius: 20px; font-size: 14px; font-weight: 500; margin-bottom: 24px; }
+    .hero h1 { font-size: 44px; font-weight: 900; line-height: 1.3; margin-bottom: 16px; letter-spacing: -1px; }
+    .hero h1 em { font-style: normal; color: #c7d2fe; }
+    .hero p { font-size: 18px; opacity: 0.85; margin-bottom: 36px; line-height: 1.7; }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-btn { padding: 14px 32px; border-radius: 12px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .hero-btn-primary { background: #fff; color: #4f46e5; }
+    .hero-btn-primary:hover { background: #eef2ff; transform: translateY(-2px); }
+    .hero-btn-secondary { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .hero-btn-secondary:hover { background: rgba(255,255,255,0.25); }
+    
+    .stats { max-width: 1200px; margin: -50px auto 0; padding: 0 24px; position: relative; z-index: 10; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .stat-item { background: #fff; padding: 32px 20px; text-align: center; }
+    .stat-number { font-size: 36px; font-weight: 900; color: #6366f1; margin-bottom: 4px; }
+    .stat-label { font-size: 14px; color: #64748b; }
+    
+    .section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-label { font-size: 13px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .section-title { font-size: 32px; font-weight: 800; color: #0f172a; line-height: 1.4; }
+    .section-title em { font-style: normal; color: #6366f1; }
+    
+    .regions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+    .region-card { display: flex; align-items: center; gap: 14px; background: #fff; padding: 16px 20px; border-radius: 12px; text-decoration: none; color: inherit; border: 1px solid #e2e8f0; transition: all 0.2s; }
+    .region-card:hover { border-color: #6366f1; box-shadow: 0 4px 16px rgba(99,102,241,0.12); transform: translateY(-2px); }
+    .region-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #eef2ff, #e0e7ff); color: #6366f1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
+    .region-info h3 { font-size: 16px; font-weight: 700; color: #0f172a; }
+    .region-info p { font-size: 12px; color: #94a3b8; }
+    .arrow { margin-left: auto; color: #cbd5e1; font-size: 18px; }
+    .region-card:hover .arrow { color: #6366f1; }
+    
+    .subjects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+    .subject-card { background: #fff; border-radius: 16px; padding: 28px 24px; text-decoration: none; color: inherit; border: 1px solid #e2e8f0; transition: all 0.2s; text-align: center; }
+    .subject-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.06); transform: translateY(-4px); }
+    .subject-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+    .subject-card h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .subject-card p { font-size: 14px; color: #94a3b8; }
+    .subject-card:hover h3 { color: var(--accent); }
+    
+    .levels-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .level-card { flex: 1; min-width: 280px; max-width: 380px; background: #fff; border-radius: 16px; padding: 36px 28px; text-align: center; border: 1px solid #e2e8f0; transition: all 0.2s; text-decoration: none; color: inherit; }
+    .level-card:hover { border-color: #6366f1; box-shadow: 0 8px 24px rgba(99,102,241,0.1); transform: translateY(-4px); }
+    .level-emoji { font-size: 48px; margin-bottom: 16px; display: block; }
+    .level-card h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+    .level-card p { font-size: 14px; color: #64748b; line-height: 1.6; }
+    
+    .cta-section { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 24px; padding: 60px 40px; text-align: center; color: #fff; margin: 0 auto; max-width: 900px; }
+    .cta-section h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+    .cta-section p { font-size: 16px; opacity: 0.8; margin-bottom: 28px; }
+    .cta-btn { display: inline-block; background: #fff; color: #4f46e5; padding: 14px 36px; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 28px; }
+      .hero { padding: 60px 20px 80px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-number { font-size: 28px; }
+      .section-title { font-size: 24px; }
+      .section { padding: 60px 20px; }
+    }
   </style>
 </head>
 <body>
-  <div class="hero">
-    <h1>안하니</h1>
-    <p>전국 시/군/구/읍/면 과외 정보를 한 곳에서 확인하세요</p>
-    <div class="subjects">
-      ${SUBJECTS.map(s => `<span class="subject-badge">${s}</span>`).join('')}
+  ${navHTML('')}
+  
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🎓 전국 ${totalLocations.toLocaleString()}개 지역 과외 정보</div>
+      <h1>우리 아이에게 딱 맞는<br><em>과외 선생님</em>을 찾아보세요</h1>
+      <p>전국 시/군/구/읍/면 초등·중등·고등<br>국어, 영어, 수학 등 8개 과목 과외 정보를 한 곳에서</p>
+      <div class="hero-buttons">
+        <a href="/지역별" class="hero-btn hero-btn-primary">지역별 과외 찾기</a>
+        <a href="/과목별" class="hero-btn hero-btn-secondary">과목별 보기</a>
+      </div>
+    </div>
+  </section>
+  
+  <div class="stats">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number">${totalLocations.toLocaleString()}+</div><div class="stat-label">전국 과외 지역</div></div>
+      <div class="stat-item"><div class="stat-number">${totalPages.toLocaleString()}+</div><div class="stat-label">맞춤 과외 정보</div></div>
+      <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">전문 과목</div></div>
+      <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">무료 정보 제공</div></div>
     </div>
   </div>
-  <div class="container">
-    <h2 class="section-title">지역별 과외 정보</h2>
-    <div class="regions">${regionLinks}</div>
-  </div>
-  <footer class="footer">
-    <p>&copy; 2026 안하니 | 대한민국 교육 정보 플랫폼</p>
-  </footer>
+  
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">지역별 과외</div>
+      <h2 class="section-title">우리 동네 <em>과외 정보</em> 바로 확인</h2>
+    </div>
+    <div class="regions-grid">${regionCards}</div>
+  </section>
+  
+  <section class="section" style="padding-top:0">
+    <div class="section-header">
+      <div class="section-label">과목별</div>
+      <h2 class="section-title">과목에 맞는 <em>맞춤 과외</em>를 선택하세요</h2>
+    </div>
+    <div class="subjects-grid">${subjectCards}</div>
+  </section>
+  
+  <section class="section" style="padding-top:0">
+    <div class="section-header">
+      <div class="section-label">학교급별</div>
+      <h2 class="section-title">학교급에 맞는 <em>전문 과외</em></h2>
+    </div>
+    <div class="levels-row">
+      <a href="/학교급별/초등" class="level-card">
+        <span class="level-emoji">🌱</span>
+        <h3>초등 과외</h3>
+        <p>학습 습관 형성과 기초 실력을<br>탄탄하게 다지는 시기</p>
+      </a>
+      <a href="/학교급별/중등" class="level-card">
+        <span class="level-emoji">📚</span>
+        <h3>중등 과외</h3>
+        <p>내신 대비와 고등 진학을 위한<br>체계적 학습 전략</p>
+      </a>
+      <a href="/학교급별/고등" class="level-card">
+        <span class="level-emoji">🎯</span>
+        <h3>고등 과외</h3>
+        <p>수능과 내신을 동시에 잡는<br>입시 맞춤 전략</p>
+      </a>
+    </div>
+  </section>
+  
+  <section class="section" style="padding-top:0">
+    <div class="cta-section">
+      <h2>지금 바로 우리 동네 과외를 찾아보세요</h2>
+      <p>전국 ${totalLocations.toLocaleString()}개 지역, ${totalPages.toLocaleString()}개 맞춤 과외 정보가 준비되어 있습니다</p>
+      <a href="/지역별" class="cta-btn">과외 찾기 시작 →</a>
+    </div>
+  </section>
+  
+  ${footerHTML()}
 </body>
 </html>`;
+}
+
+// --- 카테고리: 지역별 ---
+function renderRegionList() {
+  const cards = Object.entries(REGIONS).map(([parent, districts]) => {
+    const distLinks = districts.map(d => 
+      `<a href="/지역별/${encodeURIComponent(parent)}/${encodeURIComponent(d)}" class="dist-chip">${d}</a>`
+    ).join('');
+    return `<div class="cat-card"><h3><a href="/지역별/${encodeURIComponent(parent)}">${parent}</a></h3><div class="chips">${distLinks}</div></div>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('지역별 과외 - 안하니', '전국 시/군/구/읍/면 과외 정보를 지역별로 확인하세요.', 'https://anhani.com/지역별')}
+  <style>${commonStyles()}
+    .page-hero { background: linear-gradient(135deg, #312e81, #4f46e5); color: #fff; padding: 48px 24px; text-align: center; }
+    .page-hero h1 { font-size: 32px; font-weight: 800; }
+    .page-hero p { opacity: 0.8; margin-top: 8px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+    .cat-card { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 16px; border: 1px solid #e2e8f0; }
+    .cat-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .cat-card h3 a { color: #0f172a; text-decoration: none; }
+    .cat-card h3 a:hover { color: #6366f1; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .dist-chip { padding: 6px 14px; background: #f1f5f9; border-radius: 8px; color: #475569; text-decoration: none; font-size: 14px; transition: all 0.2s; }
+    .dist-chip:hover { background: #eef2ff; color: #6366f1; }
+  </style></head><body>
+  ${navHTML('region')}
+  <div class="page-hero"><h1>지역별 과외</h1><p>전국 시/군/구/읍/면 과외 정보를 한눈에</p></div>
+  <div class="container">${cards}</div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 카테고리: 특정 지역 ---
+function renderRegionDetail(region) {
+  const districts = REGIONS[region];
+  if (!districts) return null;
+  
+  const cards = districts.map(d => {
+    const links = SUBJECTS.map(s => 
+      `<a href="/${encodeURIComponent(`${d}-초등-${s}-과외`)}" class="subj-link">${s}</a>`
+    ).join('');
+    return `<div class="cat-card"><h3>${d}</h3>
+      <div class="level-tabs">
+        ${LEVELS.map(l => `<span class="level-tab" onclick="this.parentElement.parentElement.querySelectorAll('.subj-link').forEach(a=>{const h=a.href;a.href=h.replace(/초등|중등|고등/,'${l}')})">${l}</span>`).join('')}
+      </div>
+      <div class="chips">${links}</div>
+    </div>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('${region} 과외 - 안하니', '${region} 지역 초등·중등·고등 과외 정보를 확인하세요.', 'https://anhani.com/지역별/${encodeURIComponent(region)}')}
+  <style>${commonStyles()}
+    .page-hero { background: linear-gradient(135deg, #312e81, #4f46e5); color: #fff; padding: 48px 24px; text-align: center; }
+    .page-hero h1 { font-size: 32px; font-weight: 800; }
+    .page-hero p { opacity: 0.8; margin-top: 8px; }
+    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 16px 24px; font-size: 14px; color: #94a3b8; }
+    .breadcrumb a { color: #6366f1; text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px 24px 60px; }
+    .cat-card { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 16px; border: 1px solid #e2e8f0; }
+    .cat-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; color: #0f172a; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .subj-link { padding: 6px 14px; background: #f1f5f9; border-radius: 8px; color: #475569; text-decoration: none; font-size: 14px; transition: all 0.2s; }
+    .subj-link:hover { background: #eef2ff; color: #6366f1; }
+    .level-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    .level-tab { padding: 4px 12px; background: #e2e8f0; border-radius: 6px; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+    .level-tab:hover { background: #6366f1; color: #fff; }
+  </style></head><body>
+  ${navHTML('region')}
+  <div class="page-hero"><h1>${region} 과외</h1><p>${region} 지역 ${districts.length}개 시/군/구 과외 정보</p></div>
+  <div class="breadcrumb"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; ${region}</div>
+  <div class="container">${cards}</div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 카테고리: 과목별 ---
+function renderSubjectList() {
+  const subjectColors = {
+    "국어": "#ef4444", "영어": "#3b82f6", "수학": "#22c55e", "사회": "#f59e0b",
+    "과학": "#a855f7", "코딩": "#06b6d4", "검정고시": "#f97316", "논술": "#64748b"
+  };
+  const subjectIcons = {
+    "국어": "📖", "영어": "🌍", "수학": "📐", "사회": "🏛️",
+    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "논술": "✍️"
+  };
+  
+  const cards = SUBJECTS.map(s => {
+    const regionLinks = Object.keys(REGIONS).map(r => 
+      `<a href="/지역별/${encodeURIComponent(r)}" class="region-chip">${r}</a>`
+    ).join('');
+    return `<div class="subj-card" style="--accent:${subjectColors[s]}">
+      <div class="subj-header"><span class="subj-icon">${subjectIcons[s]}</span><h3>${s} 과외</h3></div>
+      <p>${SUBJECT_CONTENT[s].why[0].substring(0, 80)}...</p>
+      <div class="chips">${regionLinks}</div>
+    </div>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('과목별 과외 - 안하니', '국어, 영어, 수학, 사회, 과학, 코딩, 검정고시, 논술 과외 정보를 확인하세요.', 'https://anhani.com/과목별')}
+  <style>${commonStyles()}
+    .page-hero { background: linear-gradient(135deg, #312e81, #4f46e5); color: #fff; padding: 48px 24px; text-align: center; }
+    .page-hero h1 { font-size: 32px; font-weight: 800; }
+    .page-hero p { opacity: 0.8; margin-top: 8px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+    .subj-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 20px; border: 1px solid #e2e8f0; border-top: 4px solid var(--accent); }
+    .subj-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .subj-icon { font-size: 32px; }
+    .subj-card h3 { font-size: 22px; font-weight: 700; }
+    .subj-card > p { color: #64748b; font-size: 14px; margin-bottom: 16px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .region-chip { padding: 6px 14px; background: #f1f5f9; border-radius: 8px; color: #475569; text-decoration: none; font-size: 13px; transition: all 0.2s; }
+    .region-chip:hover { background: #eef2ff; color: #6366f1; }
+  </style></head><body>
+  ${navHTML('subject')}
+  <div class="page-hero"><h1>과목별 과외</h1><p>8개 전문 과목별 과외 정보</p></div>
+  <div class="container">${cards}</div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 카테고리: 학교급별 ---
+function renderLevelList() {
+  const levelData = {
+    "초등": { emoji: "🌱", desc: "학습 습관 형성과 기초 실력을 탄탄하게 다지는 시기입니다. 재미있게 배우면서 자신감을 키워주세요." },
+    "중등": { emoji: "📚", desc: "내신 대비와 고등 진학을 위한 체계적 학습 전략이 필요한 시기입니다." },
+    "고등": { emoji: "🎯", desc: "수능과 내신을 동시에 잡는 입시 맞춤 전략으로 목표 대학에 한 걸음 더 다가가세요." }
+  };
+
+  const cards = LEVELS.map(l => {
+    const d = levelData[l];
+    const subjLinks = SUBJECTS.map(s => 
+      `<a href="/학교급별/${encodeURIComponent(l)}/${encodeURIComponent(s)}" class="subj-link">${s}</a>`
+    ).join('');
+    return `<div class="level-card-lg">
+      <span class="lv-emoji">${d.emoji}</span>
+      <h3>${l} 과외</h3>
+      <p>${d.desc}</p>
+      <div class="chips">${subjLinks}</div>
+    </div>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('학교급별 과외 - 안하니', '초등, 중등, 고등 학교급에 맞는 과외 정보를 확인하세요.', 'https://anhani.com/학교급별')}
+  <style>${commonStyles()}
+    .page-hero { background: linear-gradient(135deg, #312e81, #4f46e5); color: #fff; padding: 48px 24px; text-align: center; }
+    .page-hero h1 { font-size: 32px; font-weight: 800; }
+    .page-hero p { opacity: 0.8; margin-top: 8px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+    .level-card-lg { background: #fff; border-radius: 16px; padding: 36px; margin-bottom: 20px; border: 1px solid #e2e8f0; text-align: center; }
+    .lv-emoji { font-size: 48px; display: block; margin-bottom: 12px; }
+    .level-card-lg h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+    .level-card-lg > p { color: #64748b; font-size: 15px; margin-bottom: 20px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .subj-link { padding: 8px 18px; background: #f1f5f9; border-radius: 8px; color: #475569; text-decoration: none; font-size: 14px; transition: all 0.2s; }
+    .subj-link:hover { background: #eef2ff; color: #6366f1; }
+  </style></head><body>
+  ${navHTML('level')}
+  <div class="page-hero"><h1>학교급별 과외</h1><p>초등·중등·고등 맞춤 과외 정보</p></div>
+  <div class="container">${cards}</div>
+  ${footerHTML()}
+  </body></html>`;
 }
 
 // --- robots.txt ---
@@ -802,6 +1233,37 @@ export default {
     // 홈페이지
     if (pathname === '/' || pathname === '') {
       return new Response(renderHomepage(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    
+    // 카테고리: 지역별
+    if (pathname === '/%EC%A7%80%EC%97%AD%EB%B3%84' || pathname === '/지역별') {
+      return new Response(renderRegionList(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    
+    // 카테고리: 특정 지역
+    const regionMatch = decodeURIComponent(pathname).match(/^\/지역별\/(.+?)(?:\/(.+))?$/);
+    if (regionMatch) {
+      const region = regionMatch[1];
+      if (REGIONS[region]) {
+        const html = renderRegionDetail(region);
+        if (html) return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+      }
+    }
+    
+    // 카테고리: 과목별
+    if (pathname === '/%EA%B3%BC%EB%AA%A9%EB%B3%84' || pathname === '/과목별') {
+      return new Response(renderSubjectList(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    
+    // 카테고리: 학교급별
+    if (pathname === '/%ED%95%99%EA%B5%90%EA%B8%89%EB%B3%84' || pathname === '/학교급별') {
+      return new Response(renderLevelList(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
