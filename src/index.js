@@ -719,9 +719,9 @@ function commonStyles() {
     
     /* 네비게이션 */
     .nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
-    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 96px; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .nav-logo { text-decoration: none; display: flex; align-items: center; }
-    .nav-logo-img { height: 80px; width: auto; }
+    .nav-logo-img { height: 52px; width: auto; }
     .nav-links { display: flex; gap: 0; align-items: center; height: 100%; }
     .nav-item { position: relative; height: 100%; display: flex; align-items: center; }
     .nav-item > a { color: #475569; text-decoration: none; font-size: 15px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; display: flex; align-items: center; gap: 4px; }
