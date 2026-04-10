@@ -953,11 +953,90 @@ function renderHomepage() {
       .slide-deco { display: none; }
     }
     
-    .stats { max-width: 1200px; margin: -40px auto 0; padding: 0 24px; position: relative; z-index: 10; }
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
-    .stat-item { background: #fff; padding: 32px 20px; text-align: center; }
-    .stat-number { font-size: 36px; font-weight: 900; color: #6366f1; margin-bottom: 4px; }
-    .stat-label { font-size: 14px; color: #64748b; }
+    /* OUR STRENGTH */
+    .strength-section { background: #fff; padding: 80px 24px; }
+    .strength-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .section-label-center { font-size: 13px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .strength-title { font-size: 28px; font-weight: 800; color: #0f172a; line-height: 1.5; margin-bottom: 12px; }
+    .strength-title em { font-style: normal; color: #6366f1; }
+    .strength-subtitle { font-size: 15px; color: #64748b; line-height: 1.8; margin-bottom: 48px; }
+    .strength-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .strength-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px 16px; text-align: center; transition: all 0.3s; }
+    .strength-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .strength-icon { font-size: 36px; margin-bottom: 16px; }
+    .strength-sub { font-size: 12px; color: #94a3b8; margin-bottom: 8px; }
+    .strength-num { font-size: 40px; font-weight: 900; color: #6366f1; margin-bottom: 8px; }
+    .strength-unit { font-size: 20px; font-weight: 700; }
+    .strength-desc { font-size: 13px; color: #64748b; line-height: 1.6; }
+
+    /* 퍼스널 진단검사 */
+    .diagnosis-section { background: #0f172a; padding: 80px 24px; color: #fff; }
+    .diagnosis-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .diagnosis-title { font-size: 28px; font-weight: 800; line-height: 1.5; margin-bottom: 12px; }
+    .diagnosis-title em { font-style: normal; color: #818cf8; }
+    .diagnosis-subtitle { font-size: 15px; color: #94a3b8; margin-bottom: 48px; }
+    .diagnosis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .diagnosis-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px 20px; text-align: left; transition: all 0.3s; }
+    .diagnosis-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+    .diag-num { width: 32px; height: 32px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; margin-bottom: 14px; }
+    .diagnosis-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .diagnosis-card p { font-size: 13px; color: #94a3b8; line-height: 1.5; }
+
+    /* 선생님 역량 */
+    .teacher-section { background: #fff; padding: 80px 24px; }
+    .teacher-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .teacher-title { font-size: 28px; font-weight: 800; color: #0f172a; line-height: 1.5; margin-bottom: 12px; }
+    .teacher-title em { font-style: normal; color: #6366f1; }
+    .teacher-subtitle { font-size: 15px; color: #64748b; line-height: 1.8; margin-bottom: 48px; }
+    .teacher-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .teacher-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 36px 24px; text-align: left; transition: all 0.3s; }
+    .teacher-card:hover { border-color: #6366f1; box-shadow: 0 8px 24px rgba(99,102,241,0.1); transform: translateY(-4px); }
+    .teacher-card-num { font-size: 24px; font-weight: 900; color: #6366f1; margin-bottom: 16px; }
+    .teacher-card h4 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+    .teacher-card p { font-size: 14px; color: #64748b; line-height: 1.7; }
+
+    /* AI 학습시스템 */
+    .system-section { background: linear-gradient(135deg, #f0f4ff, #e8ecff); padding: 80px 24px; }
+    .system-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .system-title { font-size: 28px; font-weight: 800; color: #0f172a; line-height: 1.5; margin-bottom: 12px; }
+    .system-title em { font-style: normal; color: #6366f1; }
+    .system-subtitle { font-size: 15px; color: #64748b; line-height: 1.8; margin-bottom: 36px; }
+    .system-sub-heading { font-size: 18px; font-weight: 700; color: #4f46e5; margin-bottom: 32px; }
+    .system-steps { display: flex; align-items: stretch; gap: 0; justify-content: center; }
+    .system-step { flex: 1; max-width: 280px; background: #fff; border-radius: 16px; padding: 32px 24px; border: 1px solid #e2e8f0; text-align: center; }
+    .system-step:hover { border-color: #6366f1; box-shadow: 0 8px 24px rgba(99,102,241,0.1); }
+    .step-badge { display: inline-block; background: #6366f1; color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 16px; }
+    .system-step h4 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+    .system-step p { font-size: 13px; color: #64748b; line-height: 1.7; }
+    .system-arrow { display: flex; align-items: center; font-size: 24px; color: #6366f1; font-weight: 700; padding: 0 12px; }
+
+    /* 상담 폼 */
+    .consult-section { background: #0f172a; padding: 80px 24px; }
+    .consult-inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
+    .consult-left { flex: 1; color: #fff; }
+    .consult-left h2 { font-size: 32px; font-weight: 800; line-height: 1.4; margin-bottom: 16px; }
+    .consult-left h2 em { font-style: normal; color: #818cf8; }
+    .consult-left > p { font-size: 15px; color: #94a3b8; line-height: 1.8; margin-bottom: 24px; }
+    .consult-features { display: flex; flex-direction: column; gap: 8px; }
+    .consult-feat { font-size: 15px; color: #e2e8f0; }
+    .consult-form { flex: 0 0 380px; background: #fff; border-radius: 20px; padding: 36px 28px; }
+    .consult-form h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 20px; text-align: center; }
+    .form-input { display: block; width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 14px; margin-bottom: 12px; outline: none; transition: border-color 0.2s; background: #f8fafc; }
+    .form-input:focus { border-color: #6366f1; }
+    .form-submit { display: block; width: 100%; padding: 14px; background: #6366f1; color: #fff; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .form-submit:hover { background: #4f46e5; }
+    .form-note { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 12px; }
+
+    /* 플로팅 버튼 */
+    .floating-btns { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 200; display: flex; flex-direction: column; gap: 8px; }
+    .float-btn { display: flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 600; text-decoration: none; color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.15); transition: all 0.2s; white-space: nowrap; }
+    .float-btn:hover { transform: translateX(-4px); }
+    .float-call { background: #22c55e; }
+    .float-kakao { background: #fbbf24; color: #1a1a1a; }
+    .float-free { background: #6366f1; }
+
+    .stats { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
+    .stats-grid { display: none; }
     
     .section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
     .section-header { text-align: center; margin-bottom: 48px; }
@@ -982,12 +1061,6 @@ function renderHomepage() {
     .subject-card p { font-size: 14px; color: #94a3b8; }
     .subject-card:hover h3 { color: var(--accent); }
     
-    .levels-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-    .level-card { flex: 1; min-width: 280px; max-width: 380px; background: #fff; border-radius: 16px; padding: 36px 28px; text-align: center; border: 1px solid #e2e8f0; transition: all 0.2s; text-decoration: none; color: inherit; }
-    .level-card:hover { border-color: #6366f1; box-shadow: 0 8px 24px rgba(99,102,241,0.1); transform: translateY(-4px); }
-    .level-emoji { font-size: 48px; margin-bottom: 16px; display: block; }
-    .level-card h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
-    .level-card p { font-size: 14px; color: #64748b; line-height: 1.6; }
     
     .cta-section { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 24px; padding: 60px 40px; text-align: center; color: #fff; margin: 0 auto; max-width: 900px; }
     .cta-section h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
@@ -996,10 +1069,21 @@ function renderHomepage() {
     .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
     
     @media (max-width: 768px) {
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat-number { font-size: 28px; }
+      .stats-grid { display: none; }
       .section-title { font-size: 24px; }
       .section { padding: 60px 20px; }
+      .strength-cards { grid-template-columns: repeat(2, 1fr); }
+      .strength-num { font-size: 32px; }
+      .strength-title, .diagnosis-title, .teacher-title, .system-title { font-size: 22px; }
+      .diagnosis-grid { grid-template-columns: 1fr 1fr; }
+      .teacher-cards { grid-template-columns: 1fr; }
+      .system-steps { flex-direction: column; align-items: center; gap: 12px; }
+      .system-arrow { transform: rotate(90deg); padding: 0; }
+      .consult-inner { flex-direction: column; gap: 32px; }
+      .consult-form { flex: auto; width: 100%; }
+      .consult-left h2 { font-size: 24px; }
+      .floating-btns { right: 10px; }
+      .float-btn { padding: 8px 12px; font-size: 12px; }
     }
   </style>
 </head>
@@ -1092,15 +1176,138 @@ function renderHomepage() {
     }
   </script>
   
-  <div class="stats">
-    <div class="stats-grid">
-      <div class="stat-item"><div class="stat-number">${totalLocations.toLocaleString()}+</div><div class="stat-label">전국 과외 지역</div></div>
-      <div class="stat-item"><div class="stat-number">${totalPages.toLocaleString()}+</div><div class="stat-label">맞춤 과외 정보</div></div>
-      <div class="stat-item"><div class="stat-number">8</div><div class="stat-label">전문 과목</div></div>
-      <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">무료 정보 제공</div></div>
+  <!-- 검증된 교육회사 섹션 -->
+  <section class="strength-section">
+    <div class="strength-inner">
+      <div class="section-label-center">OUR STRENGTH</div>
+      <h2 class="strength-title">자녀 교육, '<em>검증된 교육회사</em>'에 맡기고 계신가요?</h2>
+      <p class="strength-subtitle">입시제도가 불안정한 지금, 급변하는 교육 정보를 정확히 분석하고<br>아이 성향에 맞게 교육할 수 있는 전문 회사만이 자녀의 미래를 끝까지 책임집니다.</p>
+      <div class="strength-cards">
+        <div class="strength-card">
+          <div class="strength-icon">🏆</div>
+          <div class="strength-sub">오랜 시간 쌓아온 노하우</div>
+          <div class="strength-num">31<span class="strength-unit">년</span></div>
+          <div class="strength-desc">오랜 시간 쌓아온 노하우로<br>신뢰할 수 있는 회사</div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">💻</div>
+          <div class="strength-sub">최적의 수업 방식</div>
+          <div class="strength-num" style="font-size:28px;">Best</div>
+          <div class="strength-desc">방문 수업, 화상 수업<br>모두 가능한 유연한 시스템</div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">👥</div>
+          <div class="strength-sub">진행 회원 월평균 3만명</div>
+          <div class="strength-num">100<span class="strength-unit">만</span></div>
+          <div class="strength-desc">진행 회원 월평균 3만명,<br>누적 회원 100만명 돌파</div>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">📈</div>
+          <div class="strength-sub">검증된 만족도</div>
+          <div class="strength-num">96.7<span class="strength-unit">%</span></div>
+          <div class="strength-desc">96.7%가 만족하는<br>남다른 수업 퀄리티</div>
+        </div>
+      </div>
     </div>
-  </div>
-  
+  </section>
+
+  <!-- 퍼스널 진단검사 섹션 -->
+  <section class="diagnosis-section">
+    <div class="diagnosis-inner">
+      <div class="section-label-center">PERSONAL DIAGNOSIS</div>
+      <h2 class="diagnosis-title">아이의 <em>성향과 학습 상태,</em><br>과학적으로 검증되고 있나요?</h2>
+      <p class="diagnosis-subtitle">표면적인 성적이나 태도만으로는 아이의 진짜 학습 문제를 파악할 수 없습니다.</p>
+      <div class="diagnosis-grid">
+        <div class="diagnosis-card"><div class="diag-num">1</div><h4>학습진단검사</h4><p>학습성격유형 및 학습동기/요인 분석</p></div>
+        <div class="diagnosis-card"><div class="diag-num">2</div><h4>자기주도검사</h4><p>자기주도성 및 계획수립/실천능력 평가</p></div>
+        <div class="diagnosis-card"><div class="diag-num">3</div><h4>진로적성검사</h4><p>직업성격유형 및 진로준비수준 진단</p></div>
+        <div class="diagnosis-card"><div class="diag-num">4</div><h4>학습유형검사</h4><p>학습성향 및 의지, 학습행동 분석</p></div>
+        <div class="diagnosis-card"><div class="diag-num">5</div><h4>입시예측검사</h4><p>목표 고교/대학합격 및 수시/정시 진단</p></div>
+        <div class="diagnosis-card"><div class="diag-num">6</div><h4>부모코칭검사</h4><p>자녀 양육 스타일/행동 분석</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 선생님 역량 섹션 -->
+  <section class="teacher-section">
+    <div class="teacher-inner">
+      <div class="section-label-center">PROFESSIONAL TEACHER</div>
+      <h2 class="teacher-title">선생님의 <em>자질과 역량,</em> 충분히 확인하셨나요?</h2>
+      <p class="teacher-subtitle">수업을 누가 하느냐는 아이의 인생을 결정합니다.<br>성적을 넘어, 아이의 인성까지 키우는 선생님이 절대적으로 필요합니다.</p>
+      <div class="teacher-cards">
+        <div class="teacher-card">
+          <div class="teacher-card-num">01</div>
+          <h4>전문 자격 보유 선생님</h4>
+          <p>청소년 학습코칭 전문 자격을 취득한 전문 선생님만이 수업을 진행합니다</p>
+        </div>
+        <div class="teacher-card">
+          <div class="teacher-card-num">02</div>
+          <h4>검증된 선생님</h4>
+          <p>최상위 대학 출신부터 진로·입시 전문가까지 검증된 인재를 선발해 2만명 이상의 선생님 풀을 구축했습니다</p>
+        </div>
+        <div class="teacher-card">
+          <div class="teacher-card-num">03</div>
+          <h4>아이 맞춤 선생님</h4>
+          <p>학습 뿐 아니라, 정서적 유대와 인성 코칭으로 아이 마음을 이해하는 선생님이 함께합니다</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI 학습시스템 섹션 -->
+  <section class="system-section">
+    <div class="system-inner">
+      <div class="section-label-center">LEARNING SYSTEM</div>
+      <h2 class="system-title"><em>학습의 빈틈</em> 제대로 채워지고 있나요?</h2>
+      <p class="system-subtitle">놓치고 있는 공부, 반복만으로는 채워지지 않습니다.<br>데이터 기반 분석과 맞춤 훈련이 필요합니다.</p>
+      <h3 class="system-sub-heading">AI와 전문 코칭이 결합된 1:1 학습 시스템</h3>
+      <div class="system-steps">
+        <div class="system-step">
+          <div class="step-badge">STEP 1</div>
+          <h4>전문 선생님의 수업 진행</h4>
+          <p>학습 상황에 맞춘 전략적 학습 플랜 설계, 개별 맞춤형 수업 진행</p>
+        </div>
+        <div class="system-arrow">→</div>
+        <div class="system-step">
+          <div class="step-badge">STEP 2</div>
+          <h4>AI 문제풀이 훈련 &amp; 오답 분석</h4>
+          <p>학습 데이터를 분석하여 오답 유형을 진단하고 맞춤형 문제를 무제한 제공</p>
+        </div>
+        <div class="system-arrow">→</div>
+        <div class="system-step">
+          <div class="step-badge">STEP 3</div>
+          <h4>개별 맞춤 약점 보완</h4>
+          <p>선생님이 AI 분석 데이터를 기반으로 정밀 보완 수업 진행</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 무료 상담 신청 폼 섹션 -->
+  <section class="consult-section">
+    <div class="consult-inner">
+      <div class="consult-left">
+        <h2>지금 바로<br><em>무료 상담</em>을 신청하세요</h2>
+        <p>전국 ${totalLocations.toLocaleString()}개 지역,<br>${totalPages.toLocaleString()}개 맞춤 과외 정보가 준비되어 있습니다.</p>
+        <div class="consult-features">
+          <div class="consult-feat">✅ 무료 학습 진단 테스트</div>
+          <div class="consult-feat">✅ 1:1 맞춤 커리큘럼 설계</div>
+          <div class="consult-feat">✅ 전문 선생님 매칭</div>
+        </div>
+      </div>
+      <div class="consult-form">
+        <h3>빠른 무료 상담 신청</h3>
+        <input type="text" class="form-input" placeholder="학부모 성함">
+        <select class="form-input"><option>자녀 학년 선택</option><option>초등학교</option><option>중학교</option><option>고등학교</option></select>
+        <select class="form-input"><option>상담 영역 선택</option><option>교과관리</option><option>학습습관</option><option>진로입시</option><option>검정고시</option><option>코딩</option></select>
+        <input type="tel" class="form-input" placeholder="연락처 (010-0000-0000)">
+        <button class="form-submit">무료 상담 신청하기</button>
+        <p class="form-note">* 상담 신청 후 24시간 이내 연락드립니다</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 지역별 과외 섹션 -->
   <section class="section">
     <div class="section-header">
       <div class="section-label">지역별 과외</div>
@@ -1108,7 +1315,8 @@ function renderHomepage() {
     </div>
     <div class="regions-grid">${regionCards}</div>
   </section>
-  
+
+  <!-- 과목별 섹션 -->
   <section class="section" style="padding-top:0">
     <div class="section-header">
       <div class="section-label">과목별</div>
@@ -1116,39 +1324,14 @@ function renderHomepage() {
     </div>
     <div class="subjects-grid">${subjectCards}</div>
   </section>
-  
-  <section class="section" style="padding-top:0">
-    <div class="section-header">
-      <div class="section-label">학교급별</div>
-      <h2 class="section-title">학교급에 맞는 <em>전문 과외</em></h2>
-    </div>
-    <div class="levels-row">
-      <a href="/학교급별/초등" class="level-card">
-        <span class="level-emoji">🌱</span>
-        <h3>초등 과외</h3>
-        <p>학습 습관 형성과 기초 실력을<br>탄탄하게 다지는 시기</p>
-      </a>
-      <a href="/학교급별/중등" class="level-card">
-        <span class="level-emoji">📚</span>
-        <h3>중등 과외</h3>
-        <p>내신 대비와 고등 진학을 위한<br>체계적 학습 전략</p>
-      </a>
-      <a href="/학교급별/고등" class="level-card">
-        <span class="level-emoji">🎯</span>
-        <h3>고등 과외</h3>
-        <p>수능과 내신을 동시에 잡는<br>입시 맞춤 전략</p>
-      </a>
-    </div>
-  </section>
-  
-  <section class="section" style="padding-top:0">
-    <div class="cta-section">
-      <h2>지금 바로 우리 동네 과외를 찾아보세요</h2>
-      <p>전국 ${totalLocations.toLocaleString()}개 지역, ${totalPages.toLocaleString()}개 맞춤 과외 정보가 준비되어 있습니다</p>
-      <a href="/지역별" class="cta-btn">과외 찾기 시작 →</a>
-    </div>
-  </section>
-  
+
+  <!-- 우측 플로팅 버튼 -->
+  <div class="floating-btns">
+    <a href="tel:010-0000-0000" class="float-btn float-call">📞 전화상담</a>
+    <a href="#" class="float-btn float-kakao">💬 카카오톡 상담</a>
+    <a href="/상담" class="float-btn float-free">⭐ 무료체험 신청</a>
+  </div>
+
   ${footerHTML()}
 </body>
 </html>`;
