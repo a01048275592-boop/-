@@ -458,6 +458,7 @@ function renderPage(location, level, subject, parentRegion, url) {
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
+  <meta name="naver-site-verification" content="2d31a5395d70375a6b80e71c055be5e739383013" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} | 안하니</title>
@@ -1469,174 +1470,88 @@ function renderHomepage() {
 
 // --- 카테고리: 지역별 ---
 function renderRegionList() {
-  const seoul = REGIONS["서울"];
-  const gyeonggi = REGIONS["경기"];
-  const metros = ["부산","대구","인천","광주","대전","울산","세종"];
-  const others = ["강원","충북","충남","전북","전남","경북","경남","제주"];
+  const allRegions = Object.keys(REGIONS);
+  
+  // 각 구별 대표 동네 데이터
+  const subAreas = {
+    "강남구":"역삼·개포·청담","강동구":"명일·고덕·상일","강북구":"미아·번·수유","강서구":"염창·등촌·화곡","관악구":"봉천·신림·남현",
+    "광진구":"중곡·능·구의","구로구":"신도림·구로·가리봉","금천구":"가산·독산·시흥","노원구":"월계·공릉·하계","도봉구":"쌍문·방학·창",
+    "동대문구":"신설·용두·제기","동작구":"노량진·상도·본","마포구":"아현·공덕·신공덕","서대문구":"합·미근·냉천","서초구":"방배·양재·우면",
+    "성동구":"상왕십리·하왕십리·홍익","성북구":"성북·돈암·소문","송파구":"잠실·신천·풍납","양천구":"신정·목·신월","영등포구":"영등포·여의도·당산",
+    "용산구":"후암·갈월·남영","은평구":"수색·녹번·불광","종로구":"청운·신교·궁정","중구":"소공·명동·회현","중랑구":"면목·상봉·중화",
+  };
 
-  function btnGrid(arr, parent) {
-    return arr.map(d => 
-      `<a href="/${encodeURIComponent(d + '-초등-수학-과외')}" class="rg-btn">${d}</a>`
-    ).join('');
+  // 지역별 카드 데이터 생성 (JSON)
+  const regionData = {};
+  for (const [parent, districts] of Object.entries(REGIONS)) {
+    regionData[parent] = districts.map(d => ({
+      name: d,
+      sub: subAreas[d] || ''
+    }));
   }
 
-  const metroSections = metros.map(m => {
-    const ds = REGIONS[m];
-    if (!ds) return '';
-    return `<div class="rg-sub"><h4>${m === "세종" ? "세종특별자치시" : m + "광역시"}</h4><div class="rg-grid">${btnGrid(ds, m)}</div></div>`;
-  }).join('');
-
-  const otherSections = others.map(r => {
-    const ds = REGIONS[r];
-    if (!ds) return '';
-    return `<a href="/지역별/${encodeURIComponent(r)}" class="rg-other-btn">${r}</a>`;
-  }).join('');
-
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead('지역별 과외 안내 | 전국 맞춤 수학·영어 과외 - 안하니', '전국 시/군/구/읍/면 과외 정보를 지역별로 확인하세요. 서울, 경기, 부산, 대구, 인천 등 전국 과외 매칭.', 'https://anhani.com/지역별')}
+  ${commonHead('지역별 과외 안내 | 전국 맞춤 과외 - 안하니', '전국 시/군/구 과외 정보를 지역별로 확인하세요.', 'https://anhani.com/지역별')}
   <style>${commonStyles()}
-    .article-wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 60px; }
-    .breadcrumb { font-size: 13px; color: #94a3b8; margin-bottom: 24px; }
-    .breadcrumb a { color: #6366f1; text-decoration: none; }
-    .article-tag { display: inline-block; background: #6366f1; color: #fff; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 4px; margin-bottom: 12px; }
-    .article-title { font-size: 26px; font-weight: 800; color: #0f172a; line-height: 1.4; margin-bottom: 16px; }
-    .article-meta { display: flex; gap: 16px; font-size: 13px; color: #94a3b8; margin-bottom: 28px; align-items: center; }
-    .article-hero { width: 100%; height: 200px; background: linear-gradient(135deg, #818cf8, #6366f1, #4f46e5, #f59e0b, #ef4444, #22c55e); border-radius: 12px; margin-bottom: 36px; }
-    .article-intro { font-size: 15px; color: #64748b; text-align: center; margin-bottom: 8px; }
-    .article-intro-sub { font-size: 13px; color: #94a3b8; text-align: center; margin-bottom: 36px; }
+    .rg-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; }
+    .rg-label { display: inline-block; background: #22c55e; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .rg-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; line-height: 1.3; }
+    .rg-title em { font-style: normal; color: #22c55e; }
+    .rg-subtitle { font-size: 15px; color: #64748b; margin-bottom: 36px; }
     
-    .rg-section { margin-bottom: 40px; }
-    .rg-section-title { font-size: 20px; font-weight: 800; color: #0f172a; padding-bottom: 12px; border-bottom: 2px solid #0f172a; margin-bottom: 20px; }
-    .rg-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-    .rg-btn { display: inline-block; padding: 8px 18px; background: #22c55e; color: #fff; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .rg-btn:hover { background: #16a34a; transform: translateY(-2px); }
-    .rg-sub { margin-bottom: 20px; }
-    .rg-sub h4 { font-size: 16px; font-weight: 700; color: #334155; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; }
-    .rg-sub h5 { font-size: 13px; font-weight: 600; color: #64748b; margin: 12px 0 8px; }
+    .rg-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+    .rg-tab { padding: 10px 22px; border-radius: 24px; border: 1.5px solid #d1d5db; background: #fff; font-size: 15px; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.2s; }
+    .rg-tab:hover { border-color: #22c55e; color: #22c55e; }
+    .rg-tab.active { background: #22c55e; color: #fff; border-color: #22c55e; }
     
-    .rg-metro-wrap { background: #f8fafc; border-radius: 16px; padding: 28px 24px; margin-bottom: 40px; }
-    .rg-metro-title { font-size: 20px; font-weight: 800; color: #0f172a; padding-bottom: 12px; border-bottom: 2px solid #0f172a; margin-bottom: 20px; }
-    
-    .rg-other-section { margin-bottom: 40px; }
-    .rg-other-title { font-size: 20px; font-weight: 800; color: #0f172a; padding-bottom: 12px; border-bottom: 2px solid #0f172a; margin-bottom: 20px; }
-    .rg-other-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-    .rg-other-btn { display: inline-block; padding: 10px 24px; background: #7c3aed; color: #fff; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .rg-other-btn:hover { background: #6d28d9; transform: translateY(-2px); }
-    
-    .rg-cta { background: #f1f5f9; border-radius: 12px; padding: 28px 24px; text-align: center; margin-bottom: 40px; border: 1px solid #e2e8f0; }
-    .rg-cta h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
-    .rg-cta p { font-size: 14px; color: #64748b; line-height: 1.7; margin-bottom: 16px; }
-    .rg-cta-btn { display: inline-block; padding: 10px 28px; background: #6366f1; color: #fff; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .rg-cta-btn:hover { background: #4f46e5; }
-    
-    .rg-bottom-section { text-align: center; margin-bottom: 40px; }
-    .rg-bottom-label { font-size: 12px; color: #6366f1; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
-    .rg-bottom-title { font-size: 24px; font-weight: 800; color: #0f172a; line-height: 1.4; margin-bottom: 8px; }
-    .rg-bottom-title em { font-style: normal; color: #6366f1; }
-    
-    .rg-diag { background: #6366f1; border-radius: 16px; padding: 36px 24px; text-align: center; color: #fff; margin-bottom: 40px; }
-    .rg-diag-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; opacity: 0.7; }
-    .rg-diag h3 { font-size: 22px; font-weight: 800; margin-bottom: 20px; }
-    .rg-diag h3 em { font-style: normal; color: #c7d2fe; }
-    .rg-diag-tabs { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .rg-diag-tab { padding: 10px 20px; background: rgba(255,255,255,0.15); border-radius: 8px; font-size: 14px; font-weight: 600; }
-    
-    .rg-tags { margin-top: 32px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
-    .rg-tags span { font-size: 14px; font-weight: 700; color: #334155; margin-right: 8px; }
-    .rg-tags a { display: inline-block; font-size: 13px; color: #6366f1; text-decoration: none; margin-right: 6px; }
+    .rg-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    .rg-card { background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 12px; padding: 20px 16px; text-align: center; text-decoration: none; color: inherit; transition: all 0.2s; }
+    .rg-card:hover { border-color: #22c55e; box-shadow: 0 4px 16px rgba(34,197,94,0.12); transform: translateY(-3px); }
+    .rg-card-name { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+    .rg-card-sub { font-size: 12px; color: #94a3b8; }
     
     @media (max-width: 640px) {
-      .article-title { font-size: 20px; }
-      .rg-section-title, .rg-metro-title, .rg-other-title { font-size: 18px; }
-      .rg-btn, .rg-other-btn { padding: 7px 14px; font-size: 13px; }
+      .rg-title { font-size: 24px; }
+      .rg-tab { padding: 8px 16px; font-size: 13px; }
+      .rg-cards { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+      .rg-card { padding: 14px 10px; }
+      .rg-card-name { font-size: 15px; }
     }
   </style></head><body>
   ${navHTML('region')}
   
-  <div class="article-wrap">
-    <div class="breadcrumb"><a href="/">홈</a> &gt; <a href="/지역별">전국과외</a> &gt; 지역별 과외</div>
+  <div class="rg-wrap">
+    <div class="rg-label">지역 선택</div>
+    <h1 class="rg-title">원하는 <em>지역을 선택</em>하세요</h1>
+    <p class="rg-subtitle">지역 버튼을 클릭하면 해당 지역 시·구가 나타납니다.</p>
     
-    <div class="article-tag">지역별 과외</div>
-    <h1 class="article-title">지역별 과외 안내 | 전국 맞춤 수학·영어 과외</h1>
-    <div class="article-meta">
-      <span>👤 과외안하니 편집팀</span>
-      <span>📅 2026년 4월 업데이트</span>
+    <div class="rg-tabs" id="rgTabs">
+      ${allRegions.map((r, i) => `<div class="rg-tab${i === 0 ? ' active' : ''}" onclick="showRegion('${r}', this)">${r}</div>`).join('')}
     </div>
     
-    <div class="article-hero"></div>
-    
-    <p class="article-intro"><b>지역을 선택하세요</b></p>
-    <p class="article-intro-sub">원하는 지역을 클릭하면 해당 지역의 과외 정보를 확인할 수 있습니다.</p>
-    
-    <!-- 서울특별시 -->
-    <div class="rg-section">
-      <h2 class="rg-section-title">서울특별시</h2>
-      <div class="rg-grid">${btnGrid(seoul, '서울')}</div>
-    </div>
-    
-    <!-- 경기도 -->
-    <div class="rg-section">
-      <h2 class="rg-section-title">경기도</h2>
-      ${(() => {
-        const groups = {
-          "수원시": ["수원시"], "성남시": ["성남시"], "고양시": ["고양시"], "용인시": ["용인시"], "부천시": ["부천시"],
-          "안산시": ["안산시"], "안양시": ["안양시"], "남양주시": ["남양주시"], "화성시": ["화성시"], "평택시": ["평택시"]
-        };
-        const major = Object.values(groups).flat();
-        const rest = gyeonggi.filter(d => !major.includes(d));
-        let html = '<div class="rg-grid">' + gyeonggi.map(d => `<a href="/${encodeURIComponent(d + '-초등-수학-과외')}" class="rg-btn">${d}</a>`).join('') + '</div>';
-        return html;
-      })()}
-    </div>
-    
-    <!-- 광역시 -->
-    <div class="rg-metro-wrap">
-      <h2 class="rg-metro-title">광역시</h2>
-      ${metroSections}
-    </div>
-    
-    <!-- 기타 지역 -->
-    <div class="rg-other-section">
-      <h2 class="rg-other-title">기타 지역</h2>
-      <div class="rg-other-grid">${otherSections}</div>
-    </div>
-    
-    <!-- CTA -->
-    <div class="rg-cta">
-      <h3>원하는 지역이 없으신가요?</h3>
-      <p>현재 준비 중인 지역이거나 상세 페이지가 없을 수 있습니다. 지금 상담을 통해 해당 지역의 과외 정보를 안내받으세요.</p>
-      <a href="/상담" class="rg-cta-btn">무료 상담 신청하기</a>
-    </div>
-    
-    <!-- 하단 섹션들 -->
-    <div class="rg-bottom-section">
-      <div class="rg-bottom-label">ANHANI</div>
-      <h3 class="rg-bottom-title">31년간의 <em>수상실적으로</em><br>증명하는 교육품질</h3>
-    </div>
-    
-    <div class="rg-diag">
-      <div class="rg-diag-label">COACHING PROGRAM</div>
-      <h3>5가지 맞춤 <em>진단검사</em>로<br>학생의 학습 상태를 정밀 분석합니다</h3>
-      <div class="rg-diag-tabs">
-        <div class="rg-diag-tab">학습성향검사</div>
-        <div class="rg-diag-tab">학습유형검사</div>
-        <div class="rg-diag-tab">학습진단검사</div>
-        <div class="rg-diag-tab">입시예측검사</div>
-        <div class="rg-diag-tab">부모교육검사</div>
-      </div>
-    </div>
-    
-    <div class="rg-tags">
-      <span>태그:</span>
-      <a href="/지역별">#지역별과외</a>
-      <a href="/과목별/수학">#수학과외</a>
-      <a href="/과목별/영어">#영어과외</a>
-      <a href="/과목별/국어">#국어과외</a>
-      <a href="/학교급별/초등">#초등과외</a>
-      <a href="/학교급별/중등">#중등과외</a>
-      <a href="/학교급별/고등">#고등과외</a>
-    </div>
+    <div class="rg-cards" id="rgCards"></div>
   </div>
+  
+  <script>
+    var regionData = ${JSON.stringify(regionData)};
+    
+    function showRegion(name, el) {
+      document.querySelectorAll('.rg-tab').forEach(function(t) { t.classList.remove('active'); });
+      if (el) el.classList.add('active');
+      
+      var cards = document.getElementById('rgCards');
+      var data = regionData[name] || [];
+      cards.innerHTML = data.map(function(d) {
+        var url = '/' + encodeURIComponent(d.name + '-초등-수학-과외');
+        return '<a href="' + url + '" class="rg-card">' +
+          '<div class="rg-card-name">' + d.name + '</div>' +
+          (d.sub ? '<div class="rg-card-sub">' + d.sub + '</div>' : '') +
+          '</a>';
+      }).join('');
+    }
+    
+    showRegion('${allRegions[0]}', null);
+  </script>
   
   ${footerHTML()}
   </body></html>`;
