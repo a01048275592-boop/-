@@ -884,21 +884,76 @@ function renderHomepage() {
   <style>
     ${commonStyles()}
     
-    .hero { background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #6366f1 100%); color: #fff; padding: 80px 24px 100px; text-align: center; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%); }
-    .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
-    .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); padding: 6px 20px; border-radius: 20px; font-size: 14px; font-weight: 500; margin-bottom: 24px; }
-    .hero h1 { font-size: 44px; font-weight: 900; line-height: 1.3; margin-bottom: 16px; letter-spacing: -1px; }
-    .hero h1 em { font-style: normal; color: #c7d2fe; }
-    .hero p { font-size: 18px; opacity: 0.85; margin-bottom: 36px; line-height: 1.7; }
-    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .hero-btn { padding: 14px 32px; border-radius: 12px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .hero-btn-primary { background: #fff; color: #4f46e5; }
-    .hero-btn-primary:hover { background: #eef2ff; transform: translateY(-2px); }
-    .hero-btn-secondary { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-    .hero-btn-secondary:hover { background: rgba(255,255,255,0.25); }
+    /* 슬라이더 */
+    .slider { position: relative; width: 100%; height: 420px; overflow: hidden; }
+    .slider-track { display: flex; width: 400%; height: 100%; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .slide { width: 25%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .slide-inner { position: relative; z-index: 2; max-width: 800px; padding: 0 40px; text-align: center; color: #fff; }
+    .slide-badge { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 500; margin-bottom: 20px; }
+    .slide h2 { font-size: 42px; font-weight: 900; line-height: 1.3; margin-bottom: 14px; letter-spacing: -1px; text-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+    .slide h2 em { font-style: normal; }
+    .slide p { font-size: 17px; opacity: 0.9; margin-bottom: 28px; text-shadow: 0 1px 8px rgba(0,0,0,0.3); }
+    .slide-btn { display: inline-block; padding: 13px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .slide1 { background: linear-gradient(135deg, #1e2a4a 0%, #2a3f6f 40%, #1a2744 100%); }
+    .slide1 h2 em { color: #60a5fa; }
+    .slide1 .slide-btn { background: #fff; color: #1e3a8a; }
+    .slide1 .slide-btn:hover { background: #dbeafe; transform: translateY(-2px); }
+    .slide2 { background: linear-gradient(135deg, #4a1942 0%, #2d1035 50%, #1a0a20 100%); }
+    .slide2 h2 em { color: #f0abfc; }
+    .slide2 .slide-btn { background: #d946ef; color: #fff; }
+    .slide2 .slide-btn:hover { background: #c026d3; transform: translateY(-2px); }
+    .slide3 { background: linear-gradient(135deg, #3b1a00 0%, #6b3a1f 40%, #2a1200 100%); }
+    .slide3 h2 em { color: #fbbf24; }
+    .slide3 .slide-btn { background: #f59e0b; color: #1a0a00; }
+    .slide3 .slide-btn:hover { background: #d97706; transform: translateY(-2px); }
+    .slide4 { background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%); }
+    .slide4 h2 em { color: #34d399; }
+    .slide4 .slide-btn { background: #10b981; color: #fff; }
+    .slide4 .slide-btn:hover { background: #059669; transform: translateY(-2px); }
+    .slide::before { content: ''; position: absolute; inset: 0; z-index: 1; }
+    .slide1::before { background: radial-gradient(ellipse at 70% 50%, rgba(96,165,250,0.15) 0%, transparent 60%); }
+    .slide2::before { background: radial-gradient(ellipse at 50% 50%, rgba(217,70,239,0.15) 0%, transparent 60%); }
+    .slide3::before { background: radial-gradient(ellipse at 50% 60%, rgba(251,191,36,0.12) 0%, transparent 60%); }
+    .slide4::before { background: radial-gradient(ellipse at 30% 50%, rgba(52,211,153,0.12) 0%, transparent 60%); }
     
-    .stats { max-width: 1200px; margin: -50px auto 0; padding: 0 24px; position: relative; z-index: 10; }
+    /* 슬라이더 좌우 화살표 */
+    .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: all 0.2s; }
+    .slider-arrow:hover { background: rgba(255,255,255,0.3); }
+    .slider-prev { left: 20px; }
+    .slider-next { right: 20px; }
+    
+    /* 슬라이더 인디케이터 */
+    .slider-dots { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 10px; }
+    .slider-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.3s; border: none; }
+    .slider-dot.active { background: #fff; width: 28px; border-radius: 5px; }
+    
+    /* 슬라이드 장식 요소 */
+    .slide-deco { position: absolute; z-index: 1; opacity: 0.15; }
+    .slide1 .deco1 { top: 20%; right: 10%; width: 180px; height: 180px; border: 3px solid #60a5fa; border-radius: 50%; }
+    .slide1 .deco2 { bottom: 15%; left: 8%; width: 100px; height: 100px; background: #60a5fa; border-radius: 16px; transform: rotate(45deg); }
+    .slide2 .deco1 { top: 10%; left: 15%; width: 200px; height: 200px; border: 3px solid #f0abfc; border-radius: 50%; }
+    .slide3 .deco1 { bottom: 10%; right: 12%; width: 150px; height: 150px; border: 3px solid #fbbf24; border-radius: 50%; }
+    .slide4 .deco1 { top: 15%; right: 15%; width: 120px; height: 120px; border: 3px solid #34d399; border-radius: 50%; }
+    .slide4 .deco2 { bottom: 20%; left: 10%; width: 80px; height: 80px; background: #34d399; border-radius: 12px; transform: rotate(30deg); }
+    
+    /* 슬라이드 통계 박스 */
+    .slide-stats { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); z-index: 2; display: flex; flex-direction: column; gap: 10px; }
+    .slide-stat-box { background: rgba(255,255,255,0.95); border-radius: 12px; padding: 14px 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 180px; }
+    .slide-stat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+    .slide-stat-text { font-size: 11px; color: #64748b; line-height: 1.3; }
+    .slide-stat-text strong { display: block; font-size: 15px; color: #0f172a; }
+
+    @media (max-width: 768px) {
+      .slider { height: 360px; }
+      .slide h2 { font-size: 26px; }
+      .slide p { font-size: 14px; }
+      .slide-inner { padding: 0 20px; }
+      .slider-arrow { width: 36px; height: 36px; font-size: 16px; }
+      .slide-stats { display: none; }
+      .slide-deco { display: none; }
+    }
+    
+    .stats { max-width: 1200px; margin: -40px auto 0; padding: 0 24px; position: relative; z-index: 10; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
     .stat-item { background: #fff; padding: 32px 20px; text-align: center; }
     .stat-number { font-size: 36px; font-weight: 900; color: #6366f1; margin-bottom: 4px; }
@@ -941,8 +996,6 @@ function renderHomepage() {
     .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
     
     @media (max-width: 768px) {
-      .hero h1 { font-size: 28px; }
-      .hero { padding: 60px 20px 80px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .stat-number { font-size: 28px; }
       .section-title { font-size: 24px; }
@@ -953,17 +1006,91 @@ function renderHomepage() {
 <body>
   ${navHTML('')}
   
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">🎓 전국 ${totalLocations.toLocaleString()}개 지역 과외 정보</div>
-      <h1>우리 아이에게 딱 맞는<br><em>과외 선생님</em>을 찾아보세요</h1>
-      <p>전국 시/군/구/읍/면 초등·중등·고등<br>국어, 영어, 수학 등 8개 과목 과외 정보를 한 곳에서</p>
-      <div class="hero-buttons">
-        <a href="/지역별" class="hero-btn hero-btn-primary">지역별 과외 찾기</a>
-        <a href="/과목별" class="hero-btn hero-btn-secondary">과목별 보기</a>
+  <section class="slider" id="slider">
+    <div class="slider-track" id="sliderTrack">
+      
+      <div class="slide slide1">
+        <div class="slide-deco deco1"></div>
+        <div class="slide-deco deco2"></div>
+        <div class="slide-inner" style="text-align:left;max-width:600px;margin-left:8%;">
+          <div class="slide-badge">과외안하니</div>
+          <h2>2026 대학 합격<br><em>지금부터 다시 시작</em></h2>
+          <p>선착순 30명 무료 모의테스트 제공</p>
+          <a href="/지역별" class="slide-btn">무료 상담 신청 →</a>
+        </div>
+        <div class="slide-stats">
+          <div class="slide-stat-box"><div class="slide-stat-icon" style="background:#dbeafe;">👨‍🏫</div><div class="slide-stat-text">활동 선생님수<strong>3,000명</strong></div></div>
+          <div class="slide-stat-box"><div class="slide-stat-icon" style="background:#fef3c7;">📚</div><div class="slide-stat-text">교육 노하우<strong>30년</strong></div></div>
+          <div class="slide-stat-box"><div class="slide-stat-icon" style="background:#d1fae5;">👥</div><div class="slide-stat-text">누적 회원수<strong>100만</strong></div></div>
+        </div>
       </div>
+      
+      <div class="slide slide2">
+        <div class="slide-deco deco1"></div>
+        <div class="slide-inner">
+          <div class="slide-badge">🏆 합격을 축하합니다</div>
+          <h2>서울대, 연세대, 고려대<br><em>합격생 배출</em></h2>
+          <p>1등급 달성 · 목표 대학 합격 · 성적 향상의 기적</p>
+          <a href="/지역별" class="slide-btn">합격 후기 보기 →</a>
+        </div>
+      </div>
+      
+      <div class="slide slide3">
+        <div class="slide-deco deco1"></div>
+        <div class="slide-inner">
+          <div class="slide-badge">🎓 전국 ${totalLocations.toLocaleString()}개 지역</div>
+          <h2>우리 아이에게 딱 맞는<br><em>과외 선생님</em>을 찾아보세요</h2>
+          <p>전국 시/군/구/읍/면 초등·중등·고등 8개 과목 과외 정보</p>
+          <a href="/지역별" class="slide-btn">지역별 과외 찾기 →</a>
+        </div>
+      </div>
+      
+      <div class="slide slide4">
+        <div class="slide-deco deco1"></div>
+        <div class="slide-deco deco2"></div>
+        <div class="slide-inner">
+          <div class="slide-badge">✨ 맞춤 교육</div>
+          <h2>내신부터 수능까지<br><em>성적 향상</em>을 위한 맞춤 전략</h2>
+          <p>1:1 맞춤 커리큘럼 · AI 학습 분석 · 체계적 관리</p>
+          <a href="/과목별" class="slide-btn">과목별 보기 →</a>
+        </div>
+      </div>
+      
+    </div>
+    <button class="slider-arrow slider-prev" onclick="moveSlide(-1)">‹</button>
+    <button class="slider-arrow slider-next" onclick="moveSlide(1)">›</button>
+    <div class="slider-dots">
+      <button class="slider-dot active" onclick="goSlide(0)"></button>
+      <button class="slider-dot" onclick="goSlide(1)"></button>
+      <button class="slider-dot" onclick="goSlide(2)"></button>
+      <button class="slider-dot" onclick="goSlide(3)"></button>
     </div>
   </section>
+  
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 4;
+    let slideInterval = setInterval(() => moveSlide(1), 5000);
+    
+    function moveSlide(dir) {
+      currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+      updateSlider();
+      resetInterval();
+    }
+    function goSlide(n) {
+      currentSlide = n;
+      updateSlider();
+      resetInterval();
+    }
+    function updateSlider() {
+      document.getElementById('sliderTrack').style.transform = 'translateX(-' + (currentSlide * 25) + '%)';
+      document.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    }
+    function resetInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(() => moveSlide(1), 5000);
+    }
+  </script>
   
   <div class="stats">
     <div class="stats-grid">
