@@ -953,6 +953,40 @@ function renderHomepage() {
       .slide-deco { display: none; }
     }
     
+    /* 회원 합격후기 */
+    .review-section { background: #fff; padding: 60px 24px 70px; }
+    .review-inner { max-width: 1200px; margin: 0 auto; }
+    .review-main-title { font-size: 28px; font-weight: 800; color: #0f172a; text-align: center; margin-bottom: 36px; }
+    .review-track-wrap { position: relative; }
+    .review-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 10px 4px 20px; }
+    .review-track::-webkit-scrollbar { display: none; }
+    .review-item { min-width: 230px; max-width: 230px; flex-shrink: 0; scroll-snap-align: start; background: #f0f5fa; border-radius: 16px; padding: 20px 18px 0; position: relative; overflow: hidden; transition: all 0.3s; }
+    .review-item:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+    .review-badge-wrap { margin-bottom: 14px; }
+    .rv-badge { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 11px; font-weight: 800; color: #fff; line-height: 1.3; text-align: center; }
+    .rv-red { background: #dc2626; }
+    .rv-crimson { background: #be123c; }
+    .rv-orange { background: #ea580c; }
+    .rv-blue { background: #2563eb; }
+    .rv-green { background: #16a34a; }
+    .review-item h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
+    .review-item > p { font-size: 13px; color: #475569; line-height: 1.6; margin-bottom: 8px; min-height: 42px; }
+    .rv-name { font-size: 12px; color: #94a3b8; margin-bottom: 16px; }
+    .rv-thumb { position: relative; height: 160px; background: linear-gradient(180deg, #d1d9e6 0%, #b8c4d4 100%); border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: center; overflow: hidden; margin: 0 -18px; }
+    .rv-play { width: 44px; height: 44px; background: rgba(0,0,0,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; position: absolute; z-index: 2; cursor: pointer; transition: all 0.2s; }
+    .rv-play:hover { background: rgba(0,0,0,0.7); transform: scale(1.1); }
+    .rv-avatar { font-size: 64px; opacity: 0.6; }
+    .review-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: #fff; border: 1px solid #e2e8f0; color: #475569; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .review-arrow:hover { background: #f1f5f9; color: #6366f1; border-color: #6366f1; }
+    .review-prev { left: -16px; }
+    .review-next { right: -16px; }
+    
+    @media (max-width: 768px) {
+      .review-arrow { display: none; }
+      .review-item { min-width: 200px; max-width: 200px; }
+      .review-main-title { font-size: 22px; }
+    }
+
     /* OUR STRENGTH */
     .strength-section { background: #fff; padding: 80px 24px; }
     .strength-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
@@ -1176,6 +1210,68 @@ function renderHomepage() {
     }
   </script>
   
+  <!-- 회원 합격후기 섹션 -->
+  <section class="review-section">
+    <div class="review-inner">
+      <h2 class="review-main-title">과외안하니 회원 합격후기</h2>
+      <div class="review-track-wrap">
+        <button class="review-arrow review-prev" onclick="scrollReviews(-1)">‹</button>
+        <div class="review-track" id="reviewTrack">
+          <div class="review-item">
+            <div class="review-badge-wrap"><span class="rv-badge rv-red">경희대<br>합격</span></div>
+            <h4>경희대학교 합격</h4>
+            <p>학원, 과외 선택이 어려웠던 농어촌에서 화상 수업으로 1등급 달성!</p>
+            <div class="rv-name">김*윤 회원</div>
+            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👩‍🎓</div></div>
+          </div>
+          <div class="review-item">
+            <div class="review-badge-wrap"><span class="rv-badge rv-crimson">고려대<br>합격</span></div>
+            <h4>고려대학교 합격</h4>
+            <p>상상코칭 덕분에 수학을 포기하지 않고 성적을 올릴 수 있었어요</p>
+            <div class="rv-name">구*아 회원</div>
+            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👩‍🎓</div></div>
+          </div>
+          <div class="review-item">
+            <div class="review-badge-wrap"><span class="rv-badge rv-orange">동국대 의대<br>합격</span></div>
+            <h4>동국대학교 의대 합격</h4>
+            <p>필요한 부분만 집중적으로 배우며 공부의 밀도를 높였습니다!</p>
+            <div class="rv-name">임*규 회원</div>
+            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👨‍🎓</div></div>
+          </div>
+          <div class="review-item">
+            <div class="review-badge-wrap"><span class="rv-badge rv-red">경희대<br>합격</span></div>
+            <h4>경희대학교 합격</h4>
+            <p>내게 맞는 공부 방법으로 수학 5등급에서 1등급으로!</p>
+            <div class="rv-name">전*빈 회원</div>
+            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👨‍🎓</div></div>
+          </div>
+          <div class="review-item">
+            <div class="review-badge-wrap"><span class="rv-badge rv-blue">연세대<br>합격</span></div>
+            <h4>연세대학교 합격</h4>
+            <p>코치님 관리로 한번 더 도전해서 목표 대학 합격!</p>
+            <div class="rv-name">배*준 회원</div>
+            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👨‍🎓</div></div>
+          </div>
+          <div class="review-item">
+            <div class="review-badge-wrap"><span class="rv-badge rv-green">건국대<br>합격</span></div>
+            <h4>건국대학교 합격</h4>
+            <p>학교에선 떨어진다고 말린 대학 당당히 합격!</p>
+            <div class="rv-name">엄*원 회원</div>
+            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👨‍🎓</div></div>
+          </div>
+        </div>
+        <button class="review-arrow review-next" onclick="scrollReviews(1)">›</button>
+      </div>
+      <div class="review-dots" id="reviewDots"></div>
+    </div>
+  </section>
+  <script>
+    function scrollReviews(dir) {
+      var track = document.getElementById('reviewTrack');
+      track.scrollBy({ left: dir * 260, behavior: 'smooth' });
+    }
+  </script>
+
   <!-- 검증된 교육회사 섹션 -->
   <section class="strength-section">
     <div class="strength-inner">
