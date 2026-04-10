@@ -957,28 +957,28 @@ function renderHomepage() {
     .review-section { background: #f8fafb; padding: 70px 24px 50px; }
     .review-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
     .review-main-title { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 36px; }
-    .review-main-title em { font-style: normal; color: #22c55e; }
+    .review-main-title em { font-style: normal; color: #312e81; }
     .review-track-wrap { position: relative; }
     .review-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 4px; }
     .review-track::-webkit-scrollbar { display: none; }
     .rv-card { min-width: 340px; max-width: 340px; flex-shrink: 0; scroll-snap-align: start; background: #fff; border-radius: 16px; padding: 28px 24px; text-align: left; border: 1px solid #e8ebe8; transition: all 0.3s; display: flex; flex-direction: column; }
     .rv-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-4px); }
     .rv-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .rv-tag { display: inline-block; background: #dcfce7; color: #15803d; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 700; }
+    .rv-tag { display: inline-block; background: #e0e7ff; color: #3730a3; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 700; }
     .rv-stars { color: #facc15; font-size: 14px; letter-spacing: 1px; }
     .rv-text { font-size: 15px; color: #334155; line-height: 1.75; flex: 1; margin-bottom: 20px; }
     .rv-text b { color: #0f172a; font-weight: 700; }
-    .rv-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #f1f5f1; }
-    .rv-avatar-icon { width: 40px; height: 40px; background: #f0fdf4; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .rv-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #eef2ff; }
+    .rv-avatar-icon { width: 40px; height: 40px; background: #eef2ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
     .rv-info { text-align: left; }
     .rv-info b { display: block; font-size: 14px; color: #0f172a; margin-bottom: 2px; }
     .rv-info span { font-size: 12px; color: #94a3b8; }
     .rv-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 28px; }
     .rv-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #d1d5db; background: #fff; color: #475569; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-    .rv-arrow:hover { border-color: #22c55e; color: #22c55e; }
+    .rv-arrow:hover { border-color: #312e81; color: #312e81; }
     .rv-dots { display: flex; gap: 8px; align-items: center; }
-    .rv-dot { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; }
-    .rv-dot.active { width: 10px; height: 10px; background: #22c55e; }
+    .rv-dot { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; transition: all 0.3s; }
+    .rv-dot.active { width: 10px; height: 10px; background: #312e81; }
 
     @media (max-width: 768px) {
       .rv-card { min-width: 280px; max-width: 280px; padding: 20px 18px; }
@@ -1256,7 +1256,7 @@ function renderHomepage() {
       <div class="rv-nav">
         <button class="rv-arrow" onclick="scrollReviews(-1)">‹</button>
         <div class="rv-dots" id="rvDots">
-          <span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot active"></span><span class="rv-dot active"></span>
+          <span class="rv-dot active"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span>
           <span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span>
         </div>
         <button class="rv-arrow" onclick="scrollReviews(1)">›</button>
@@ -1264,10 +1264,24 @@ function renderHomepage() {
     </div>
   </section>
   <script>
+    var rvPos = 0;
+    var rvTotal = 7;
     function scrollReviews(dir) {
       var track = document.getElementById('reviewTrack');
-      track.scrollBy({ left: dir * 380, behavior: 'smooth' });
+      rvPos = Math.max(0, Math.min(rvTotal - 1, rvPos + dir));
+      track.scrollTo({ left: rvPos * 360, behavior: 'smooth' });
+      updateDots();
     }
+    function updateDots() {
+      var dots = document.querySelectorAll('.rv-dot');
+      dots.forEach(function(d, i) {
+        if (i === rvPos) { d.classList.add('active'); } else { d.classList.remove('active'); }
+      });
+    }
+    document.getElementById('reviewTrack').addEventListener('scroll', function() {
+      var pos = Math.round(this.scrollLeft / 360);
+      if (pos !== rvPos) { rvPos = pos; updateDots(); }
+    });
   </script>
 
   <!-- 검증된 교육회사 섹션 -->
