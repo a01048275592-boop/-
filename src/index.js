@@ -954,36 +954,35 @@ function renderHomepage() {
     }
     
     /* 회원 합격후기 */
-    .review-section { background: #fff; padding: 60px 24px 70px; }
-    .review-inner { max-width: 1200px; margin: 0 auto; }
-    .review-main-title { font-size: 28px; font-weight: 800; color: #0f172a; text-align: center; margin-bottom: 36px; }
+    .review-section { background: #f8fafb; padding: 70px 24px 50px; }
+    .review-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .review-main-title { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 36px; }
+    .review-main-title em { font-style: normal; color: #22c55e; }
     .review-track-wrap { position: relative; }
-    .review-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 10px 4px 20px; }
+    .review-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 4px; }
     .review-track::-webkit-scrollbar { display: none; }
-    .review-item { min-width: 230px; max-width: 230px; flex-shrink: 0; scroll-snap-align: start; background: #f0f5fa; border-radius: 16px; padding: 20px 18px 0; position: relative; overflow: hidden; transition: all 0.3s; }
-    .review-item:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
-    .review-badge-wrap { margin-bottom: 14px; }
-    .rv-badge { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 11px; font-weight: 800; color: #fff; line-height: 1.3; text-align: center; }
-    .rv-red { background: #dc2626; }
-    .rv-crimson { background: #be123c; }
-    .rv-orange { background: #ea580c; }
-    .rv-blue { background: #2563eb; }
-    .rv-green { background: #16a34a; }
-    .review-item h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
-    .review-item > p { font-size: 13px; color: #475569; line-height: 1.6; margin-bottom: 8px; min-height: 42px; }
-    .rv-name { font-size: 12px; color: #94a3b8; margin-bottom: 16px; }
-    .rv-thumb { position: relative; height: 160px; background: linear-gradient(180deg, #d1d9e6 0%, #b8c4d4 100%); border-radius: 12px 12px 0 0; display: flex; align-items: center; justify-content: center; overflow: hidden; margin: 0 -18px; }
-    .rv-play { width: 44px; height: 44px; background: rgba(0,0,0,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; position: absolute; z-index: 2; cursor: pointer; transition: all 0.2s; }
-    .rv-play:hover { background: rgba(0,0,0,0.7); transform: scale(1.1); }
-    .rv-avatar { font-size: 64px; opacity: 0.6; }
-    .review-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: #fff; border: 1px solid #e2e8f0; color: #475569; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-    .review-arrow:hover { background: #f1f5f9; color: #6366f1; border-color: #6366f1; }
-    .review-prev { left: -16px; }
-    .review-next { right: -16px; }
-    
+    .rv-card { min-width: 340px; max-width: 340px; flex-shrink: 0; scroll-snap-align: start; background: #fff; border-radius: 16px; padding: 28px 24px; text-align: left; border: 1px solid #e8ebe8; transition: all 0.3s; display: flex; flex-direction: column; }
+    .rv-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-4px); }
+    .rv-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .rv-tag { display: inline-block; background: #dcfce7; color: #15803d; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 700; }
+    .rv-stars { color: #facc15; font-size: 14px; letter-spacing: 1px; }
+    .rv-text { font-size: 15px; color: #334155; line-height: 1.75; flex: 1; margin-bottom: 20px; }
+    .rv-text b { color: #0f172a; font-weight: 700; }
+    .rv-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #f1f5f1; }
+    .rv-avatar-icon { width: 40px; height: 40px; background: #f0fdf4; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .rv-info { text-align: left; }
+    .rv-info b { display: block; font-size: 14px; color: #0f172a; margin-bottom: 2px; }
+    .rv-info span { font-size: 12px; color: #94a3b8; }
+    .rv-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 28px; }
+    .rv-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #d1d5db; background: #fff; color: #475569; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .rv-arrow:hover { border-color: #22c55e; color: #22c55e; }
+    .rv-dots { display: flex; gap: 8px; align-items: center; }
+    .rv-dot { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; }
+    .rv-dot.active { width: 10px; height: 10px; background: #22c55e; }
+
     @media (max-width: 768px) {
-      .review-arrow { display: none; }
-      .review-item { min-width: 200px; max-width: 200px; }
+      .rv-card { min-width: 280px; max-width: 280px; padding: 20px 18px; }
+      .rv-text { font-size: 14px; }
       .review-main-title { font-size: 22px; }
     }
 
@@ -1213,62 +1212,61 @@ function renderHomepage() {
   <!-- 회원 합격후기 섹션 -->
   <section class="review-section">
     <div class="review-inner">
-      <h2 class="review-main-title">과외안하니 회원 합격후기</h2>
+      <div class="section-label-center">REAL REVIEWS</div>
+      <h2 class="review-main-title">회원들의 <em>100% 리얼</em> 합격후기</h2>
       <div class="review-track-wrap">
-        <button class="review-arrow review-prev" onclick="scrollReviews(-1)">‹</button>
         <div class="review-track" id="reviewTrack">
-          <div class="review-item">
-            <div class="review-badge-wrap"><span class="rv-badge rv-red">경희대<br>합격</span></div>
-            <h4>경희대학교 합격</h4>
-            <p>학원, 과외 선택이 어려웠던 농어촌에서 화상 수업으로 1등급 달성!</p>
-            <div class="rv-name">김*윤 회원</div>
-            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👩‍🎓</div></div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">중2 · 과학</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">중2 과학 내신이 4등급에서 2등급으로 올랐어요. 실험 원리를 그림으로 설명해 주셔서 <b>외우지 않아도 이해가 됐어요. 서술형도 이제 자신 있어요.</b></p>
+            <div class="rv-author"><div class="rv-avatar-icon">🏆</div><div class="rv-info"><b>정○○ 학생</b><span>중2 · 과학 수강 · 4등급→2등급</span></div></div>
           </div>
-          <div class="review-item">
-            <div class="review-badge-wrap"><span class="rv-badge rv-crimson">고려대<br>합격</span></div>
-            <h4>고려대학교 합격</h4>
-            <p>상상코칭 덕분에 수학을 포기하지 않고 성적을 올릴 수 있었어요</p>
-            <div class="rv-name">구*아 회원</div>
-            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👩‍🎓</div></div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">고3 · 수학 수능</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">수학 수능 1등급을 목표로 시작했어요. 담당 선생님이 수능 기출을 완벽하게 분석해 주셔고 <b>실제로 1등급을 받았습니다.</b> 정말 믿고 맡길 수 있는 서비스에요.</p>
+            <div class="rv-author"><div class="rv-avatar-icon">🏆</div><div class="rv-info"><b>강○○ 학부모님</b><span>고3 · 수학 수강 · 수능 1등급 · 연세대 합격</span></div></div>
           </div>
-          <div class="review-item">
-            <div class="review-badge-wrap"><span class="rv-badge rv-orange">동국대 의대<br>합격</span></div>
-            <h4>동국대학교 의대 합격</h4>
-            <p>필요한 부분만 집중적으로 배우며 공부의 밀도를 높였습니다!</p>
-            <div class="rv-name">임*규 회원</div>
-            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👨‍🎓</div></div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">초5 · 영어</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">영어 알파벳도 헷갈리던 아이인데 선생님이 파닉스부터 재미있게 가르쳐 주셨어요. <b>이제 영어 책을 스스로 읽으려고 해요.</b> 어렵지 않다는 걸 알게 됐대요!</p>
+            <div class="rv-author"><div class="rv-avatar-icon">😊</div><div class="rv-info"><b>윤○○ 학부모님</b><span>초5 자녀 · 영어 수강</span></div></div>
           </div>
-          <div class="review-item">
-            <div class="review-badge-wrap"><span class="rv-badge rv-red">경희대<br>합격</span></div>
-            <h4>경희대학교 합격</h4>
-            <p>내게 맞는 공부 방법으로 수학 5등급에서 1등급으로!</p>
-            <div class="rv-name">전*빈 회원</div>
-            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👨‍🎓</div></div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">고2 · 국어</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">비문학 지문이 너무 어려웠는데, 선생님이 구조 분석하는 법을 알려주셔서 <b>독해 속도가 2배로 빨라졌어요.</b> 모의고사 성적도 확 올랐습니다.</p>
+            <div class="rv-author"><div class="rv-avatar-icon">📚</div><div class="rv-info"><b>이○○ 학생</b><span>고2 · 국어 수강 · 3등급→1등급</span></div></div>
           </div>
-          <div class="review-item">
-            <div class="review-badge-wrap"><span class="rv-badge rv-blue">연세대<br>합격</span></div>
-            <h4>연세대학교 합격</h4>
-            <p>코치님 관리로 한번 더 도전해서 목표 대학 합격!</p>
-            <div class="rv-name">배*준 회원</div>
-            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👨‍🎓</div></div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">중1 · 수학</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">수학을 정말 싫어했는데, 선생님이 개념부터 차근차근 설명해 주셔서 <b>처음으로 수학이 재미있다고 했어요.</b> 시험 점수도 30점이나 올랐습니다!</p>
+            <div class="rv-author"><div class="rv-avatar-icon">🎯</div><div class="rv-info"><b>박○○ 학부모님</b><span>중1 자녀 · 수학 수강 · 60점→90점</span></div></div>
           </div>
-          <div class="review-item">
-            <div class="review-badge-wrap"><span class="rv-badge rv-green">건국대<br>합격</span></div>
-            <h4>건국대학교 합격</h4>
-            <p>학교에선 떨어진다고 말린 대학 당당히 합격!</p>
-            <div class="rv-name">엄*원 회원</div>
-            <div class="rv-thumb"><div class="rv-play">▶</div><div class="rv-avatar">👨‍🎓</div></div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">고3 · 논술</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">논술 준비를 혼자 하다가 한계를 느꼈는데, 선생님의 첨삭이 정말 꼼꼼했어요. <b>3개월 만에 논술 전형으로 경희대 합격했습니다!</b></p>
+            <div class="rv-author"><div class="rv-avatar-icon">🏆</div><div class="rv-info"><b>최○○ 학생</b><span>고3 · 논술 수강 · 경희대 합격</span></div></div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">중3 · 코딩</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">코딩에 관심은 있었는데 어디서 시작해야 할지 몰랐어요. 선생님이 파이썬 기초부터 프로젝트까지 <b>직접 게임을 만들면서 배우니까 너무 재밌었어요!</b></p>
+            <div class="rv-author"><div class="rv-avatar-icon">💻</div><div class="rv-info"><b>김○○ 학생</b><span>중3 · 코딩 수강 · 정보올림피아드 입상</span></div></div>
           </div>
         </div>
-        <button class="review-arrow review-next" onclick="scrollReviews(1)">›</button>
       </div>
-      <div class="review-dots" id="reviewDots"></div>
+      <div class="rv-nav">
+        <button class="rv-arrow" onclick="scrollReviews(-1)">‹</button>
+        <div class="rv-dots" id="rvDots">
+          <span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot active"></span><span class="rv-dot active"></span>
+          <span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span>
+        </div>
+        <button class="rv-arrow" onclick="scrollReviews(1)">›</button>
+      </div>
     </div>
   </section>
   <script>
     function scrollReviews(dir) {
       var track = document.getElementById('reviewTrack');
-      track.scrollBy({ left: dir * 260, behavior: 'smooth' });
+      track.scrollBy({ left: dir * 380, behavior: 'smooth' });
     }
   </script>
 
