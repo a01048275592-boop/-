@@ -701,6 +701,7 @@ function generateSitemapPart(part) {
 // --- 공통 레이아웃 ---
 function commonHead(title, description, canonical) {
   return `<meta charset="UTF-8">
+  <meta name="naver-site-verification" content="2d31a5395d70375a6b80e71c055be5e739383013" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
   <meta name="description" content="${description}">
