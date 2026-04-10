@@ -1061,12 +1061,17 @@ function renderHomepage() {
     .form-note { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 12px; }
 
     /* 플로팅 버튼 */
-    .floating-btns { position: fixed; right: 20px; top: 50%; transform: translateY(-50%); z-index: 200; display: flex; flex-direction: column; gap: 8px; }
-    .float-btn { display: flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 600; text-decoration: none; color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.15); transition: all 0.2s; white-space: nowrap; }
-    .float-btn:hover { transform: translateX(-4px); }
+    .floating-btns { position: fixed; right: 24px; bottom: 32px; z-index: 200; display: flex; flex-direction: column; gap: 10px; }
+    .float-btn { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 28px; font-size: 14px; font-weight: 700; text-decoration: none; color: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: all 0.2s; white-space: nowrap; }
+    .float-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
     .float-call { background: #22c55e; }
     .float-kakao { background: #fbbf24; color: #1a1a1a; }
     .float-free { background: #6366f1; }
+
+    @media (max-width: 768px) {
+      .floating-btns { right: 12px; bottom: 16px; gap: 8px; }
+      .float-btn { padding: 10px 16px; font-size: 13px; }
+    }
 
     .stats { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
     .stats-grid { display: none; }
@@ -1115,8 +1120,6 @@ function renderHomepage() {
       .consult-inner { flex-direction: column; gap: 32px; }
       .consult-form { flex: auto; width: 100%; }
       .consult-left h2 { font-size: 24px; }
-      .floating-btns { right: 10px; }
-      .float-btn { padding: 8px 12px; font-size: 12px; }
     }
   </style>
 </head>
@@ -1251,13 +1254,32 @@ function renderHomepage() {
             <p class="rv-text">코딩에 관심은 있었는데 어디서 시작해야 할지 몰랐어요. 선생님이 파이썬 기초부터 프로젝트까지 <b>직접 게임을 만들면서 배우니까 너무 재밌었어요!</b></p>
             <div class="rv-author"><div class="rv-avatar-icon">💻</div><div class="rv-info"><b>김○○ 학생</b><span>중3 · 코딩 수강 · 정보올림피아드 입상</span></div></div>
           </div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">고1 · 영어</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">영어 듣기가 항상 발목을 잡았는데, 선생님이 매일 10분 듣기 훈련법을 알려주셨어요. <b>두 달 만에 듣기 만점 받았습니다!</b> 꾸준함의 힘을 느꼈어요.</p>
+            <div class="rv-author"><div class="rv-avatar-icon">🎧</div><div class="rv-info"><b>한○○ 학생</b><span>고1 · 영어 수강 · 듣기 만점 달성</span></div></div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">중2 · 수학</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">아이가 수학 문제만 보면 울던 때가 있었어요. 선생님이 정말 인내심 있게 기초부터 잡아주셨고, <b>지금은 수학이 제일 좋은 과목이 됐어요.</b> 감사합니다.</p>
+            <div class="rv-author"><div class="rv-avatar-icon">💪</div><div class="rv-info"><b>조○○ 학부모님</b><span>중2 자녀 · 수학 수강 · 40점→88점</span></div></div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">고3 · 사회</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">사회탐구 선택과목 때문에 고민이 많았는데, 선생님이 생활과윤리 핵심 정리를 해주셨어요. <b>수능에서 1등급 받고 서울대 합격했습니다!</b></p>
+            <div class="rv-author"><div class="rv-avatar-icon">🏆</div><div class="rv-info"><b>서○○ 학생</b><span>고3 · 사회 수강 · 서울대 합격</span></div></div>
+          </div>
+          <div class="rv-card">
+            <div class="rv-top"><span class="rv-tag">초6 · 국어</span><span class="rv-stars">★★★★★</span></div>
+            <p class="rv-text">독서를 싫어하던 아이가 선생님과 독서토론 수업을 하면서 <b>스스로 책을 찾아 읽기 시작했어요.</b> 글쓰기 실력도 놀랍게 좋아졌습니다. 정말 추천해요!</p>
+            <div class="rv-author"><div class="rv-avatar-icon">📖</div><div class="rv-info"><b>송○○ 학부모님</b><span>초6 자녀 · 국어 수강</span></div></div>
+          </div>
         </div>
       </div>
       <div class="rv-nav">
         <button class="rv-arrow" onclick="scrollReviews(-1)">‹</button>
         <div class="rv-dots" id="rvDots">
-          <span class="rv-dot active"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span>
-          <span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span>
+          <span class="rv-dot active"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span><span class="rv-dot"></span>
         </div>
         <button class="rv-arrow" onclick="scrollReviews(1)">›</button>
       </div>
@@ -1265,7 +1287,7 @@ function renderHomepage() {
   </section>
   <script>
     var rvPos = 0;
-    var rvTotal = 7;
+    var rvTotal = 11;
     function scrollReviews(dir) {
       var track = document.getElementById('reviewTrack');
       rvPos = Math.max(0, Math.min(rvTotal - 1, rvPos + dir));
