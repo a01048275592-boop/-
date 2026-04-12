@@ -929,10 +929,28 @@ function renderHomepage() {
     .slide h2 em { font-style: normal; }
     .slide p { font-size: 17px; opacity: 0.9; margin-bottom: 28px; text-shadow: 0 1px 8px rgba(0,0,0,0.3); }
     .slide-btn { display: inline-block; padding: 13px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .slide1 { background: linear-gradient(135deg, #1e2a4a 0%, #2a3f6f 40%, #1a2744 100%); }
+    .slide1 { background: linear-gradient(160deg, #070a12 0%, #0c1225 40%, #0a0f1e 100%); }
+    .slide1 h2 { font-size: 48px; letter-spacing: -1.5px; }
     .slide1 h2 em { color: #60a5fa; }
-    .slide1 .slide-btn { background: #fff; color: #1e3a8a; }
-    .slide1 .slide-btn:hover { background: #dbeafe; transform: translateY(-2px); }
+    .slide1 .slide-btn { background: #3b82f6; color: #fff; }
+    .slide1 .slide-btn:hover { background: #2563eb; transform: translateY(-2px); }
+    .slide1 .slide-btn-outline { display: inline-block; padding: 13px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; background: transparent; color: #94a3b8; border: 1.5px solid #334155; }
+    .slide1 .slide-btn-outline:hover { border-color: #60a5fa; color: #fff; transform: translateY(-2px); }
+    .slide1-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 36px; }
+    .slide1-subtext { font-size: 16px; color: #64748b; margin-bottom: 6px; text-shadow: none; opacity: 1; }
+    .slide1-subtext strong { color: #e2e8f0; font-weight: 700; }
+    .slide1-stats-row { display: flex; gap: 48px; justify-content: center; margin-top: 8px; }
+    .slide1-stat { text-align: center; }
+    .slide1-stat-num { font-size: 32px; font-weight: 900; color: #60a5fa; letter-spacing: -0.5px; }
+    .slide1-stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
+    .slide1-illustration { margin: 0 auto 28px; width: 140px; height: 120px; position: relative; }
+    @media (max-width: 768px) {
+      .slide1 h2 { font-size: 30px; }
+      .slide1-stats-row { gap: 24px; }
+      .slide1-stat-num { font-size: 24px; }
+      .slide1-btns { flex-direction: column; align-items: center; gap: 10px; }
+      .slide1-illustration { width: 110px; height: 95px; }
+    }
     .slide2 { background: linear-gradient(135deg, #4a1942 0%, #2d1035 50%, #1a0a20 100%); }
     .slide2 h2 em { color: #f0abfc; }
     .slide2 .slide-btn { background: #d946ef; color: #fff; }
@@ -946,7 +964,7 @@ function renderHomepage() {
     .slide4 .slide-btn { background: #10b981; color: #fff; }
     .slide4 .slide-btn:hover { background: #059669; transform: translateY(-2px); }
     .slide::before { content: ''; position: absolute; inset: 0; z-index: 1; }
-    .slide1::before { background: radial-gradient(ellipse at 70% 50%, rgba(96,165,250,0.15) 0%, transparent 60%); }
+    .slide1::before { background: radial-gradient(ellipse at 50% 30%, rgba(59,130,246,0.08) 0%, transparent 60%); }
     .slide2::before { background: radial-gradient(ellipse at 50% 50%, rgba(217,70,239,0.15) 0%, transparent 60%); }
     .slide3::before { background: radial-gradient(ellipse at 50% 60%, rgba(251,191,36,0.12) 0%, transparent 60%); }
     .slide4::before { background: radial-gradient(ellipse at 30% 50%, rgba(52,211,153,0.12) 0%, transparent 60%); }
@@ -964,8 +982,8 @@ function renderHomepage() {
     
     /* 슬라이드 장식 요소 */
     .slide-deco { position: absolute; z-index: 1; opacity: 0.15; }
-    .slide1 .deco1 { top: 20%; right: 10%; width: 180px; height: 180px; border: 3px solid #60a5fa; border-radius: 50%; }
-    .slide1 .deco2 { bottom: 15%; left: 8%; width: 100px; height: 100px; background: #60a5fa; border-radius: 16px; transform: rotate(45deg); }
+    .slide1 .deco1 { display: none; }
+    .slide1 .deco2 { display: none; }
     .slide2 .deco1 { top: 10%; left: 15%; width: 200px; height: 200px; border: 3px solid #f0abfc; border-radius: 50%; }
     .slide3 .deco1 { bottom: 10%; right: 12%; width: 150px; height: 150px; border: 3px solid #fbbf24; border-radius: 50%; }
     .slide4 .deco1 { top: 15%; right: 15%; width: 120px; height: 120px; border: 3px solid #34d399; border-radius: 50%; }
@@ -1218,16 +1236,32 @@ function renderHomepage() {
       <div class="slide slide1">
         <div class="slide-deco deco1"></div>
         <div class="slide-deco deco2"></div>
-        <div class="slide-inner" style="text-align:left;max-width:600px;margin-left:8%;">
-          <div class="slide-badge">과외안하니</div>
-          <h2>2026 대학 합격<br><em>지금부터 다시 시작</em></h2>
-          <p>선착순 30명 무료 모의테스트 제공</p>
-          <a href="/지역별" class="slide-btn">무료 상담 신청 →</a>
-        </div>
-        <div class="slide-stats">
-          <div class="slide-stat-box"><div class="slide-stat-icon" style="background:#dbeafe;">👨‍🏫</div><div class="slide-stat-text">활동 선생님수<strong>3,000명</strong></div></div>
-          <div class="slide-stat-box"><div class="slide-stat-icon" style="background:#fef3c7;">📚</div><div class="slide-stat-text">교육 노하우<strong>30년</strong></div></div>
-          <div class="slide-stat-box"><div class="slide-stat-icon" style="background:#d1fae5;">👥</div><div class="slide-stat-text">누적 회원수<strong>100만</strong></div></div>
+        <div class="slide-inner" style="text-align:center;max-width:700px;margin:0 auto;">
+          <div class="slide-badge">✦ 새 학기, 성적반전의 시작!</div>
+          <div class="slide1-illustration">
+            <svg viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+              <rect x="10" y="70" width="22" height="40" rx="4" fill="#1e3a5f"/>
+              <rect x="38" y="50" width="22" height="60" rx="4" fill="#1e4d8c"/>
+              <rect x="66" y="28" width="22" height="82" rx="4" fill="#3b82f6"/>
+              <circle cx="105" cy="38" r="28" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+              <circle cx="105" cy="38" r="22" fill="#1e3a5f"/>
+              <text x="105" y="35" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="800">1</text>
+              <path d="M97 48 L105 56 L113 48" stroke="#60a5fa" stroke-width="2" fill="none"/>
+              <rect x="95" y="56" width="20" height="4" rx="2" fill="#60a5fa" opacity="0.5"/>
+            </svg>
+          </div>
+          <h2>1:1 올인원 <em>전문과외</em></h2>
+          <p class="slide1-subtext">학습 루틴부터 환경까지 설계하는</p>
+          <p class="slide1-subtext"><strong>빈틈 없는 맞춤 관리</strong>로 확실한 성적 반전을 만듭니다.</p>
+          <div class="slide1-btns">
+            <a href="https://naver.me/GYD2Ki40" target="_blank" class="slide-btn">무료 상담 신청 →</a>
+            <a href="/과목별" class="slide-btn-outline">서비스 더 알아보기</a>
+          </div>
+          <div class="slide1-stats-row">
+            <div class="slide1-stat"><div class="slide1-stat-num">4,200+</div><div class="slide1-stat-label">누적 합격생</div></div>
+            <div class="slide1-stat"><div class="slide1-stat-num">1:1 전담</div><div class="slide1-stat-label">맞춤 관리</div></div>
+            <div class="slide1-stat"><div class="slide1-stat-num">98%</div><div class="slide1-stat-label">학생 만족도</div></div>
+          </div>
         </div>
       </div>
       
