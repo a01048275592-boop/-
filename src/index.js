@@ -740,19 +740,30 @@ function commonStyles() {
     .mobile-menu { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
     
     /* 푸터 */
-    .footer { background: #0f172a; color: #94a3b8; padding: 60px 24px 40px; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; }
-    .footer-brand h3 { color: #fff; font-size: 20px; margin-bottom: 12px; }
-    .footer-brand p { font-size: 13px; line-height: 1.8; }
-    .footer-col h4 { color: #e2e8f0; font-size: 14px; margin-bottom: 16px; font-weight: 600; }
-    .footer-col a { display: block; color: #94a3b8; text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
-    .footer-col a:hover { color: #fff; }
-    .footer-bottom { max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid #1e293b; text-align: center; font-size: 12px; color: #64748b; }
+    .footer { background: #0f172a; color: #94a3b8; }
+    .footer-notice { background: #1a2332; padding: 14px 24px; font-size: 13px; color: #64748b; text-align: center; border-bottom: 1px solid #1e293b; }
+    .footer-notice-icon { color: #f59e0b; margin-right: 6px; }
+    .footer-main { max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-left { }
+    .footer-logo { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+    .footer-desc { font-size: 14px; color: #64748b; line-height: 1.7; }
+    .footer-right { text-align: right; }
+    .footer-phone-label { font-size: 13px; color: #94a3b8; margin-bottom: 4px; }
+    .footer-phone { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .footer-call-btn { display: inline-block; background: #6366f1; color: #fff; padding: 10px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .footer-call-btn:hover { background: #4f46e5; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px 24px; border-top: 1px solid #1e293b; font-size: 12px; color: #475569; }
+    
+    @media (max-width: 768px) {
+      .footer-main { flex-direction: column; text-align: center; gap: 24px; }
+      .footer-right { text-align: center; }
+      .footer-phone { font-size: 26px; }
+      .footer-bottom { text-align: center; }
+    }
     
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .mobile-menu { display: block; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
     }
   `;
 }
@@ -817,29 +828,23 @@ function navHTML(activePage) {
 }
 
 function footerHTML() {
-  const regionCols = Object.keys(REGIONS).slice(0, 8);
   return `<footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <h3>안하니</h3>
-        <p>전국 시/군/구/읍/면 과외 정보를<br>한 곳에서 확인하세요.<br>초등·중등·고등 맞춤 과외 매칭</p>
+    <div class="footer-notice">
+      <span class="footer-notice-icon">⚠</span> 안내사항 · 본 사이트의 모든 콘텐츠는 정보 제공 목적이며, 학습 효과를 보장하지 않습니다.
+    </div>
+    <div class="footer-main">
+      <div class="footer-left">
+        <div class="footer-logo">📘 과외안하니</div>
+        <p class="footer-desc">초등학생부터 고등학생까지<br>학습에 필요한 모든 정보를 한곳에서</p>
       </div>
-      <div class="footer-col">
-        <h4>과목별 학습</h4>
-        ${SUBJECTS.map(s => `<a href="/과목별/${encodeURIComponent(s)}">${s} 과외</a>`).join('')}
-      </div>
-      <div class="footer-col">
-        <h4>지역별 과외</h4>
-        ${regionCols.map(r => `<a href="/지역별/${encodeURIComponent(r)}">${r}</a>`).join('')}
-      </div>
-      <div class="footer-col">
-        <h4>학교급별</h4>
-        ${LEVELS.map(l => `<a href="/학교급별/${encodeURIComponent(l)}">${l} 과외</a>`).join('')}
-        <a href="/과목별/${encodeURIComponent('검정고시')}">검정고시</a>
+      <div class="footer-right">
+        <div class="footer-phone-label">무료 상담 전화</div>
+        <div class="footer-phone">010-0000-0000</div>
+        <a href="tel:010-0000-0000" class="footer-call-btn">전화 상담</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 안하니 | 대한민국 과외 정보 플랫폼. All rights reserved.</p>
+      <p>&copy; 2026 과외안하니. All rights reserved.</p>
     </div>
   </footer>`;
 }
