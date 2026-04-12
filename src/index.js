@@ -902,7 +902,7 @@ function renderHomepage() {
   };
   const subjectIcons = {
     "국어": "📖", "영어": "🌍", "수학": "📐", "사회": "🏛️",
-    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "외국어": "🗣️"
+    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "외국어": "📚"
   };
   const subjectCards = SUBJECTS.map(s => {
     return `<a href="/과목별/${encodeURIComponent(s)}" class="subject-card" style="--accent:${subjectColors[s]}">
@@ -1600,7 +1600,7 @@ function renderSubjectList() {
   };
   const subjectIcons = {
     "국어": "📖", "영어": "🌍", "수학": "📐", "사회": "🏛️",
-    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "외국어": "🗣️"
+    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "외국어": "📚"
   };
   
   const cards = SUBJECTS.map(s => {
