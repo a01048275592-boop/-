@@ -1914,11 +1914,11 @@ function renderContactPage() {
   
   <div class="ct-main">
     <div class="ct-cards-row">
-      <div class="ct-info-card">
+      <a href="tel:010-6850-1420" class="ct-info-card" style="text-decoration:none;color:inherit;">
         <div class="ct-info-icon" style="background:#fee2e2;">📞</div>
         <h3>전화 상담</h3>
         <div class="ct-info-val">010-6850-1420</div>
-      </div>
+      </a>
       <div class="ct-info-card">
         <div class="ct-info-icon" style="background:#dbeafe;">⏱</div>
         <h3>평균 응답 시간</h3>
