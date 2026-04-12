@@ -1327,10 +1327,10 @@ function renderHomepage() {
           <div class="strength-desc">오랜 시간 쌓아온 노하우로<br>신뢰할 수 있는 회사</div>
         </div>
         <div class="strength-card">
-          <div class="strength-icon">💻</div>
-          <div class="strength-sub">최적의 수업 방식</div>
-          <div class="strength-num" style="font-size:28px;">Best</div>
-          <div class="strength-desc">방문 수업, 화상 수업<br>모두 가능한 유연한 시스템</div>
+          <div class="strength-icon">👨‍🏫</div>
+          <div class="strength-sub">최정예 전문 학습코치</div>
+          <div class="strength-num">3,000<span class="strength-unit">명</span></div>
+          <div class="strength-desc">검증된 1:1 밀착 관리</div>
         </div>
         <div class="strength-card">
           <div class="strength-icon">👥</div>
