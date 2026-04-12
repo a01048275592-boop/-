@@ -837,7 +837,7 @@ function footerHTML() {
   return `
   <div class="floating-btns">
     <a href="tel:010-6850-1420" class="float-btn float-call">📞 전화상담</a>
-    <a href="#" class="float-btn float-kakao">💬 카카오톡 상담</a>
+    <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="float-btn float-kakao">💬 카카오톡 상담</a>
     <a href="https://naver.me/GYD2Ki40" target="_blank" class="float-btn float-free">⭐ 무료체험 신청</a>
   </div>
   <footer class="footer">
