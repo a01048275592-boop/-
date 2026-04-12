@@ -1495,19 +1495,19 @@ function renderRegionList() {
   ${commonHead('지역별 과외 안내 | 전국 맞춤 과외 - 안하니', '전국 시/군/구 과외 정보를 지역별로 확인하세요.', 'https://anhani.com/지역별')}
   <style>${commonStyles()}
     .rg-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; }
-    .rg-label { display: inline-block; background: #22c55e; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .rg-label { display: inline-block; background: #312e81; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
     .rg-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; line-height: 1.3; }
-    .rg-title em { font-style: normal; color: #22c55e; }
+    .rg-title em { font-style: normal; color: #312e81; }
     .rg-subtitle { font-size: 15px; color: #64748b; margin-bottom: 36px; }
     
     .rg-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
     .rg-tab { padding: 10px 22px; border-radius: 24px; border: 1.5px solid #d1d5db; background: #fff; font-size: 15px; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.2s; }
-    .rg-tab:hover { border-color: #22c55e; color: #22c55e; }
-    .rg-tab.active { background: #22c55e; color: #fff; border-color: #22c55e; }
+    .rg-tab:hover { border-color: #312e81; color: #312e81; }
+    .rg-tab.active { background: #312e81; color: #fff; border-color: #312e81; }
     
     .rg-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-    .rg-card { background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 12px; padding: 20px 16px; text-align: center; text-decoration: none; color: inherit; transition: all 0.2s; }
-    .rg-card:hover { border-color: #22c55e; box-shadow: 0 4px 16px rgba(34,197,94,0.12); transform: translateY(-3px); }
+    .rg-card { background: #eef2ff; border: 1px solid #e0e7ff; border-radius: 12px; padding: 20px 16px; text-align: center; text-decoration: none; color: inherit; transition: all 0.2s; }
+    .rg-card:hover { border-color: #312e81; box-shadow: 0 4px 16px rgba(49,46,129,0.12); transform: translateY(-3px); }
     .rg-card-name { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
     .rg-card-sub { font-size: 12px; color: #94a3b8; }
     
@@ -1523,7 +1523,7 @@ function renderRegionList() {
   
   <div class="rg-wrap">
     <div class="rg-label">지역 선택</div>
-    <h1 class="rg-title">원하는 <em>지역을 선택</em>하세요</h1>
+    <h1 class="rg-title">전국 <em>지역별 과외</em> 안내</h1>
     <p class="rg-subtitle">지역 버튼을 클릭하면 해당 지역 시·구가 나타납니다.</p>
     
     <div class="rg-tabs" id="rgTabs">
@@ -1546,7 +1546,6 @@ function renderRegionList() {
         var url = '/' + encodeURIComponent(d.name + '-초등-수학-과외');
         return '<a href="' + url + '" class="rg-card">' +
           '<div class="rg-card-name">' + d.name + '</div>' +
-          (d.sub ? '<div class="rg-card-sub">' + d.sub + '</div>' : '') +
           '</a>';
       }).join('');
     }
