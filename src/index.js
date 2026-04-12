@@ -1859,6 +1859,380 @@ function renderAcademyList() {
   </body></html>`;
 }
 
+// --- 학년별 과외 페이지 ---
+function renderGradePage(school, grade) {
+  const schoolNames = {"elementary":"초등학교","middle":"중학교","high":"고등학교"};
+  const schoolShort = {"elementary":"초등","middle":"중등","high":"고등"};
+  const schoolName = schoolNames[school] || school;
+  const shortName = schoolShort[school] || school;
+  const maxGrade = school === "elementary" ? 6 : 3;
+  const gradeNum = parseInt(grade) || 1;
+  
+  const subjectTips = {
+    "elementary": {
+      "수학": "초등 수학은 연산 정확도와 문제 해결력이 핵심입니다. 기초 개념을 탄탄히 잡아야 중학교에서 흔들리지 않아요.",
+      "영어": "파닉스부터 기본 회화까지, 영어에 대한 흥미를 키우는 것이 가장 중요합니다.",
+      "국어": "독서 습관과 글쓰기 능력을 키우는 시기입니다. 어휘력 확장이 모든 과목의 기초가 됩니다.",
+      "과학": "실험과 관찰을 통해 과학적 사고력을 키우는 시기입니다. 호기심을 자극하는 수업이 효과적이에요.",
+      "코딩": "스크래치, 엔트리 등 블록 코딩으로 논리적 사고력을 키울 수 있습니다."
+    },
+    "middle": {
+      "수학": "중학 수학은 대수, 기하, 함수 등 추상적 개념이 등장합니다. 개념 이해 없이 문제만 풀면 고등학교에서 큰 벽에 부딪혀요.",
+      "영어": "문법 체계를 잡고 독해력을 키우는 시기입니다. 내신 대비와 실력 향상을 동시에 해야 합니다.",
+      "국어": "비문학 독해와 문학 분석 능력이 중요해지는 시기입니다. 서술형 문제 대비도 필수예요.",
+      "과학": "물리, 화학, 생물, 지구과학의 기초 개념을 확실히 잡아야 합니다. 실험 보고서 작성 능력도 키워야 해요.",
+      "코딩": "파이썬 기초를 배우며 알고리즘적 사고를 발전시키는 시기입니다."
+    },
+    "high": {
+      "수학": "수능과 내신을 동시에 대비해야 합니다. 킬러 문항 대비를 위한 심화 학습이 필요한 시기예요.",
+      "영어": "수능 영어 1등급을 위한 전략적 학습이 필요합니다. 독해 속도와 정확도를 동시에 높여야 해요.",
+      "국어": "수능 국어는 독서, 문학, 언매, 화작으로 나뉩니다. 각 영역별 전략이 다르므로 맞춤 학습이 중요해요.",
+      "과학": "선택과목 전략이 중요합니다. 물리, 화학, 생물, 지구과학 중 유리한 과목을 선택하고 집중해야 해요.",
+      "코딩": "정보 교과 내신 대비와 함께 대학 입시에 활용할 수 있는 포트폴리오를 만들어야 합니다."
+    }
+  };
+  
+  const tips = subjectTips[school] || subjectTips["middle"];
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(schoolName + ' ' + gradeNum + '학년 과외 - 과외안하니', schoolName + ' ' + gradeNum + '학년 맞춤 과외 정보. 과목별 학습 전략과 선생님 매칭.', 'https://anhani.com/grade/' + school + '/' + grade)}
+  <style>${commonStyles()}
+    .gd-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+    .gd-label { display: inline-block; background: #6366f1; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .gd-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; }
+    .gd-title em { font-style: normal; color: #6366f1; }
+    .gd-subtitle { font-size: 15px; color: #64748b; margin-bottom: 32px; line-height: 1.7; }
+    .gd-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .gd-tab { padding: 10px 20px; border-radius: 10px; border: 1.5px solid #e2e8f0; background: #fff; font-size: 14px; font-weight: 600; color: #475569; text-decoration: none; transition: all 0.2s; }
+    .gd-tab:hover { border-color: #6366f1; color: #6366f1; }
+    .gd-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+    .gd-section { margin-bottom: 32px; }
+    .gd-section h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #6366f1; }
+    .gd-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+    .gd-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 20px; transition: all 0.2s; }
+    .gd-card:hover { border-color: #6366f1; transform: translateY(-3px); box-shadow: 0 4px 16px rgba(99,102,241,0.1); }
+    .gd-card h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+    .gd-card p { font-size: 14px; color: #64748b; line-height: 1.7; }
+    .gd-card-link { display: inline-block; margin-top: 12px; color: #6366f1; font-size: 14px; font-weight: 600; text-decoration: none; }
+    .gd-cta { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 16px; padding: 40px 28px; text-align: center; color: #fff; margin-top: 40px; }
+    .gd-cta h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+    .gd-cta p { font-size: 14px; opacity: 0.8; margin-bottom: 20px; }
+    .gd-cta-btn { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
+  </style></head><body>
+  ${navHTML('region')}
+  <div class="gd-wrap">
+    <div class="gd-label">${schoolName}</div>
+    <h1 class="gd-title">${schoolName} <em>${gradeNum}학년</em> 맞춤 과외</h1>
+    <p class="gd-subtitle">${shortName} ${gradeNum}학년에 꼭 필요한 과목별 학습 전략과 검증된 선생님을 매칭해 드립니다.</p>
+    
+    <div class="gd-tabs">
+      ${Array.from({length: maxGrade}, (_, i) => 
+        `<a href="/grade/${school}/${i+1}" class="gd-tab${i+1 === gradeNum ? ' active' : ''}">${shortName} ${i+1}학년</a>`
+      ).join('')}
+    </div>
+    
+    <div class="gd-section">
+      <h2>과목별 학습 가이드</h2>
+      <div class="gd-cards">
+        ${Object.entries(tips).map(([subj, tip]) => `
+          <div class="gd-card">
+            <h3>${subj}</h3>
+            <p>${tip}</p>
+            <a href="/${encodeURIComponent('강남구-' + shortName + '-' + subj + '-과외')}" class="gd-card-link">${subj} 과외 찾기 →</a>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    
+    <div class="gd-section">
+      <h2>지역별 ${shortName} ${gradeNum}학년 과외</h2>
+      <div class="gd-cards">
+        ${Object.keys(REGIONS).map(r => `
+          <div class="gd-card">
+            <h3>${r}</h3>
+            <p>${r} 지역 ${shortName} ${gradeNum}학년 과외 정보 ${REGIONS[r].length}개 지역</p>
+            <a href="/지역별/${encodeURIComponent(r)}" class="gd-card-link">${r} 과외 보기 →</a>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    
+    <div class="gd-cta">
+      <h3>${shortName} ${gradeNum}학년 맞춤 과외 상담</h3>
+      <p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p>
+      <a href="/상담" class="gd-cta-btn">무료 상담 신청 →</a>
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 학교별 과외 페이지 ---
+function renderSchoolPage(region) {
+  const regionEN = {"서울":"seoul","경기":"gyeonggi","인천":"incheon","부산":"busan","대구":"daegu","대전":"daejeon","광주":"gwangju","울산":"ulsan","세종":"sejong","강원":"gangwon","충북":"chungbuk","충남":"chungnam","전북":"jeonbuk","전남":"jeonnam","경북":"gyeongbuk","경남":"gyeongnam","제주":"jeju"};
+  const allRegions = Object.keys(REGIONS);
+  const targetRegion = region || "서울";
+  const districts = REGIONS[targetRegion] || [];
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(targetRegion + ' 학교별 과외 - 과외안하니', targetRegion + ' 지역 학교별 맞춤 과외 정보. 초·중·고 학교에 맞는 선생님 매칭.', 'https://anhani.com/school/' + (regionEN[targetRegion]||'seoul'))}
+  <style>${commonStyles()}
+    .sc-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; }
+    .sc-label { display: inline-block; background: #f59e0b; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .sc-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; }
+    .sc-title em { font-style: normal; color: #f59e0b; }
+    .sc-subtitle { font-size: 15px; color: #64748b; margin-bottom: 32px; }
+    .sc-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .sc-tab { padding: 8px 16px; border-radius: 20px; border: 1.5px solid #d1d5db; background: #fff; font-size: 14px; font-weight: 600; color: #475569; text-decoration: none; transition: all 0.2s; }
+    .sc-tab:hover { border-color: #f59e0b; color: #f59e0b; }
+    .sc-tab.active { background: #f59e0b; color: #fff; border-color: #f59e0b; }
+    .sc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .sc-card { background: #fffbeb; border: 1px solid #fef3c7; border-radius: 12px; padding: 20px 16px; text-align: center; text-decoration: none; color: inherit; transition: all 0.2s; }
+    .sc-card:hover { border-color: #f59e0b; transform: translateY(-3px); box-shadow: 0 4px 16px rgba(245,158,11,0.1); }
+    .sc-card h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+    .sc-card p { font-size: 12px; color: #94a3b8; }
+  </style></head><body>
+  ${navHTML('region')}
+  <div class="sc-wrap">
+    <div class="sc-label">학교별 과외</div>
+    <h1 class="sc-title"><em>${targetRegion}</em> 학교별 과외</h1>
+    <p class="sc-subtitle">${targetRegion} 지역 학교에 맞는 맞춤 과외 선생님을 찾아보세요.</p>
+    <div class="sc-tabs">
+      ${allRegions.map(r => `<a href="/school/${regionEN[r]||r}" class="sc-tab${r === targetRegion ? ' active' : ''}">${r}</a>`).join('')}
+    </div>
+    <div class="sc-grid">
+      ${districts.map(d => `<a href="/${encodeURIComponent(d+'-초등-수학-과외')}" class="sc-card"><h3>${d}</h3><p>학교별 과외 정보</p></a>`).join('')}
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 회화 수업 페이지 ---
+function renderConversationPage(lang) {
+  const langData = {
+    "english": { name: "영어", flag: "🇺🇸", color: "#3b82f6", bgColor: "#eff6ff", 
+      desc: "원어민 수준의 영어 회화 실력을 키우세요. 일상 회화부터 비즈니스 영어까지 1:1 맞춤 수업을 제공합니다.",
+      features: ["원어민 발음 교정","비즈니스 영어 회화","토익/토플 스피킹 대비","여행 영어 회화","면접 영어 준비","영어 프레젠테이션"],
+      levels: ["왕초보 (알파벳부터)","초급 (간단한 인사/자기소개)","중급 (일상 대화 가능)","중상급 (토론/의견 표현)","고급 (원어민 수준 회화)"]
+    },
+    "chinese": { name: "중국어", flag: "🇨🇳", color: "#dc2626", bgColor: "#fef2f2",
+      desc: "중국어 회화의 기초부터 고급까지, 체계적인 1:1 수업으로 실력을 키우세요. HSK 대비도 함께 진행합니다.",
+      features: ["성조/발음 교정","일상 중국어 회화","비즈니스 중국어","HSK 시험 대비","중국 유학 준비","중국어 면접 대비"],
+      levels: ["왕초보 (핀인부터)","초급 (간단한 인사)","중급 (일상 대화)","중상급 (HSK 4급)","고급 (HSK 5~6급)"]
+    },
+    "japanese": { name: "일본어", flag: "🇯🇵", color: "#dc2626", bgColor: "#fef2f2",
+      desc: "일본어 회화를 즐겁게 배우세요. 히라가나부터 비즈니스 일본어까지 1:1 맞춤 수업을 진행합니다.",
+      features: ["히라가나/가타카나","일상 일본어 회화","비즈니스 일본어","JLPT 시험 대비","일본 유학/취업 준비","애니메이션/드라마 회화"],
+      levels: ["왕초보 (문자부터)","초급 (간단한 인사)","중급 (일상 대화)","중상급 (JLPT N2)","고급 (JLPT N1)"]
+    }
+  };
+  const d = langData[lang] || langData["english"];
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(d.name + ' 회화 수업 - 과외안하니', d.name + ' 회화 1:1 맞춤 수업. 왕초보부터 고급까지 레벨별 수업 진행.', 'https://anhani.com/conversation/' + lang)}
+  <style>${commonStyles()}
+    .cv-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+    .cv-hero { background: ${d.bgColor}; border-radius: 20px; padding: 48px 32px; margin-bottom: 40px; text-align: center; }
+    .cv-flag { font-size: 48px; margin-bottom: 12px; }
+    .cv-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; }
+    .cv-title em { font-style: normal; color: ${d.color}; }
+    .cv-desc { font-size: 15px; color: #64748b; line-height: 1.7; margin-bottom: 24px; }
+    .cv-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .cv-btn { padding: 10px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; }
+    .cv-btn-primary { background: ${d.color}; color: #fff; }
+    .cv-btn-secondary { background: #fff; color: ${d.color}; border: 1.5px solid ${d.color}; }
+    .cv-section { margin-bottom: 36px; }
+    .cv-section h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid ${d.color}; }
+    .cv-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .cv-feat { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 16px; text-align: center; font-size: 15px; font-weight: 600; color: #334155; transition: all 0.2s; }
+    .cv-feat:hover { border-color: ${d.color}; transform: translateY(-2px); }
+    .cv-levels { display: flex; flex-direction: column; gap: 10px; }
+    .cv-level { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
+    .cv-level-num { width: 36px; height: 36px; background: ${d.color}; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+    .cv-level-text { font-size: 15px; font-weight: 600; color: #334155; }
+    .cv-lang-tabs { display: flex; gap: 10px; margin-bottom: 28px; justify-content: center; }
+    .cv-lang-tab { padding: 10px 24px; border-radius: 10px; border: 1.5px solid #e2e8f0; font-size: 15px; font-weight: 600; text-decoration: none; color: #475569; transition: all 0.2s; }
+    .cv-lang-tab:hover { border-color: ${d.color}; }
+    .cv-lang-tab.active { background: ${d.color}; color: #fff; border-color: ${d.color}; }
+    @media (max-width: 640px) { .cv-features { grid-template-columns: 1fr 1fr; } .cv-title { font-size: 24px; } }
+  </style></head><body>
+  ${navHTML('foreign')}
+  <div class="cv-wrap">
+    <div class="cv-lang-tabs">
+      <a href="/conversation/english" class="cv-lang-tab${lang==='english'?' active':''}">🇺🇸 영어</a>
+      <a href="/conversation/chinese" class="cv-lang-tab${lang==='chinese'?' active':''}">🇨🇳 중국어</a>
+      <a href="/conversation/japanese" class="cv-lang-tab${lang==='japanese'?' active':''}">🇯🇵 일본어</a>
+    </div>
+    <div class="cv-hero">
+      <div class="cv-flag">${d.flag}</div>
+      <h1 class="cv-title"><em>${d.name} 회화</em> 수업</h1>
+      <p class="cv-desc">${d.desc}</p>
+      <div class="cv-btns">
+        <a href="/상담" class="cv-btn cv-btn-primary">무료 체험 신청 →</a>
+        <a href="tel:010-0000-0000" class="cv-btn cv-btn-secondary">전화 상담</a>
+      </div>
+    </div>
+    <div class="cv-section">
+      <h2>수업 프로그램</h2>
+      <div class="cv-features">${d.features.map(f => `<div class="cv-feat">${f}</div>`).join('')}</div>
+    </div>
+    <div class="cv-section">
+      <h2>레벨별 수업</h2>
+      <div class="cv-levels">${d.levels.map((l, i) => `<div class="cv-level"><div class="cv-level-num">${i+1}</div><div class="cv-level-text">${l}</div></div>`).join('')}</div>
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 학습정보 페이지 ---
+function renderStudyGuide() {
+  const guides = [
+    {cat:"학습법",title:"효과적인 자기주도 학습법 5가지",desc:"스스로 공부하는 습관을 만드는 검증된 학습 방법을 소개합니다.",tag:"인기"},
+    {cat:"시험대비",title:"내신 시험 2주 전 완벽 대비 전략",desc:"시험 2주 전부터 시작하는 과목별 효율적인 공부 계획을 알려드립니다.",tag:"추천"},
+    {cat:"입시정보",title:"2027 대입 전형 변경 사항 총정리",desc:"수시, 정시 전형의 주요 변경 사항과 대비 전략을 정리했습니다.",tag:"최신"},
+    {cat:"학부모",title:"자녀 학습 동기부여하는 대화법",desc:"공부하기 싫어하는 아이에게 효과적으로 동기를 부여하는 방법입니다.",tag:""},
+    {cat:"과목별",title:"수학 등급 올리는 단계별 로드맵",desc:"현재 등급별 맞춤 수학 학습 전략과 추천 교재를 안내합니다.",tag:"인기"},
+    {cat:"과목별",title:"영어 독해 속도 2배 올리는 방법",desc:"영어 지문을 빠르고 정확하게 읽는 스킬을 단계별로 알려드립니다.",tag:""},
+    {cat:"진로",title:"고교학점제 시대, 과목 선택 가이드",desc:"2025년 전면 시행 고교학점제에 맞는 과목 선택 전략입니다.",tag:"최신"},
+    {cat:"학습법",title:"오답노트 제대로 만드는 법",desc:"성적 상위 1%가 실천하는 오답노트 작성 방법을 공개합니다.",tag:"추천"},
+    {cat:"입시정보",title:"학생부 종합전형 합격 비결",desc:"학생부 종합전형에서 좋은 평가를 받는 활동과 기록 방법입니다.",tag:""}
+  ];
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('학습정보 - 과외안하니', '학습법, 시험 대비, 입시 정보 등 학생과 학부모를 위한 교육 정보를 제공합니다.', 'https://anhani.com/study-guide')}
+  <style>${commonStyles()}
+    .sg-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; }
+    .sg-label { display: inline-block; background: #22c55e; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .sg-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; }
+    .sg-title em { font-style: normal; color: #22c55e; }
+    .sg-subtitle { font-size: 15px; color: #64748b; margin-bottom: 32px; }
+    .sg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .sg-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 20px; transition: all 0.2s; cursor: pointer; }
+    .sg-card:hover { border-color: #22c55e; box-shadow: 0 4px 20px rgba(34,197,94,0.1); transform: translateY(-3px); }
+    .sg-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .sg-cat { font-size: 12px; color: #22c55e; font-weight: 700; }
+    .sg-tag { font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+    .sg-tag-hot { background: #fef2f2; color: #dc2626; }
+    .sg-tag-rec { background: #eef2ff; color: #6366f1; }
+    .sg-tag-new { background: #f0fdf4; color: #22c55e; }
+    .sg-card h3 { font-size: 17px; font-weight: 700; color: #0f172a; margin-bottom: 8px; line-height: 1.4; }
+    .sg-card p { font-size: 14px; color: #64748b; line-height: 1.6; }
+  </style></head><body>
+  ${navHTML('guide')}
+  <div class="sg-wrap">
+    <div class="sg-label">학습정보</div>
+    <h1 class="sg-title">학생·학부모를 위한 <em>학습 가이드</em></h1>
+    <p class="sg-subtitle">학습법, 시험 대비 전략, 입시 정보 등 교육에 필요한 모든 정보를 제공합니다.</p>
+    <div class="sg-grid">
+      ${guides.map(g => `<div class="sg-card">
+        <div class="sg-card-top">
+          <span class="sg-cat">${g.cat}</span>
+          ${g.tag === '인기' ? '<span class="sg-tag sg-tag-hot">인기</span>' : g.tag === '추천' ? '<span class="sg-tag sg-tag-rec">추천</span>' : g.tag === '최신' ? '<span class="sg-tag sg-tag-new">최신</span>' : ''}
+        </div>
+        <h3>${g.title}</h3>
+        <p>${g.desc}</p>
+      </div>`).join('')}
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 화상수업 페이지 ---
+function renderVideoLesson() {
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('화상수업 - 과외안하니', '전국 어디서나 1:1 화상 과외. 실시간 화상 수업으로 집에서도 최고의 수업을 받으세요.', 'https://anhani.com/video-lesson')}
+  <style>${commonStyles()}
+    .vl-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+    .vl-hero { background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 20px; padding: 48px 32px; text-align: center; color: #fff; margin-bottom: 40px; }
+    .vl-title { font-size: 32px; font-weight: 900; margin-bottom: 10px; }
+    .vl-title em { font-style: normal; color: #818cf8; }
+    .vl-desc { font-size: 15px; opacity: 0.8; margin-bottom: 24px; line-height: 1.7; }
+    .vl-btn { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
+    .vl-section { margin-bottom: 36px; }
+    .vl-section h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 16px; text-align: center; }
+    .vl-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .vl-step { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px 20px; text-align: center; }
+    .vl-step-num { width: 40px; height: 40px; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin: 0 auto 12px; }
+    .vl-step h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .vl-step p { font-size: 13px; color: #64748b; line-height: 1.6; }
+    .vl-features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .vl-feat { background: #f8fafc; border-radius: 12px; padding: 20px; display: flex; align-items: flex-start; gap: 12px; }
+    .vl-feat-icon { font-size: 24px; flex-shrink: 0; }
+    .vl-feat h4 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+    .vl-feat p { font-size: 13px; color: #64748b; }
+    @media (max-width: 640px) { .vl-steps { grid-template-columns: 1fr; } .vl-features { grid-template-columns: 1fr; } .vl-title { font-size: 24px; } }
+  </style></head><body>
+  ${navHTML('')}
+  <div class="vl-wrap">
+    <div class="vl-hero">
+      <h1 class="vl-title">전국 어디서나<br><em>1:1 화상 과외</em></h1>
+      <p class="vl-desc">거리 제한 없이 전국 최고의 선생님과<br>실시간으로 수업받을 수 있습니다.</p>
+      <a href="/상담" class="vl-btn">무료 체험 신청 →</a>
+    </div>
+    <div class="vl-section">
+      <h2>화상수업 진행 과정</h2>
+      <div class="vl-steps">
+        <div class="vl-step"><div class="vl-step-num">1</div><h3>상담 신청</h3><p>과목, 학년, 목표를 알려주세요</p></div>
+        <div class="vl-step"><div class="vl-step-num">2</div><h3>선생님 매칭</h3><p>AI가 최적의 선생님을 추천합니다</p></div>
+        <div class="vl-step"><div class="vl-step-num">3</div><h3>화상 수업 시작</h3><p>PC나 태블릿으로 바로 수업!</p></div>
+      </div>
+    </div>
+    <div class="vl-section">
+      <h2>화상수업의 장점</h2>
+      <div class="vl-features">
+        <div class="vl-feat"><div class="vl-feat-icon">🏠</div><div><h4>집에서 편하게</h4><p>이동 시간 없이 집에서 수업</p></div></div>
+        <div class="vl-feat"><div class="vl-feat-icon">👨‍🏫</div><div><h4>전국 선생님</h4><p>지역 제한 없이 최고의 선생님 매칭</p></div></div>
+        <div class="vl-feat"><div class="vl-feat-icon">📱</div><div><h4>녹화 복습</h4><p>수업 녹화로 언제든 복습 가능</p></div></div>
+        <div class="vl-feat"><div class="vl-feat-icon">💰</div><div><h4>합리적 비용</h4><p>방문 과외 대비 20~30% 저렴</p></div></div>
+      </div>
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 유학 페이지 ---
+function renderStudyAbroad() {
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('유학 정보 - 과외안하니', '미국, 영국, 캐나다, 호주 등 해외 유학 정보와 준비 가이드.', 'https://anhani.com/유학')}
+  <style>${commonStyles()}
+    .ab-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+    .ab-hero { background: linear-gradient(135deg, #0c4a6e, #0369a1); border-radius: 20px; padding: 48px 32px; text-align: center; color: #fff; margin-bottom: 40px; }
+    .ab-title { font-size: 32px; font-weight: 900; margin-bottom: 10px; }
+    .ab-title em { font-style: normal; color: #7dd3fc; }
+    .ab-desc { font-size: 15px; opacity: 0.8; margin-bottom: 24px; }
+    .ab-btn { display: inline-block; background: #fff; color: #0369a1; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
+    .ab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .ab-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 16px; text-align: center; transition: all 0.2s; }
+    .ab-card:hover { border-color: #0369a1; transform: translateY(-3px); }
+    .ab-card-flag { font-size: 36px; margin-bottom: 8px; }
+    .ab-card h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+    .ab-card p { font-size: 13px; color: #64748b; }
+  </style></head><body>
+  ${navHTML('abroad')}
+  <div class="ab-wrap">
+    <div class="ab-hero">
+      <h1 class="ab-title">꿈을 향한 <em>해외 유학</em></h1>
+      <p class="ab-desc">미국, 영국, 캐나다, 호주 등 해외 유학 준비를 도와드립니다</p>
+      <a href="/상담" class="ab-btn">유학 상담 신청 →</a>
+    </div>
+    <div class="ab-grid">
+      <div class="ab-card"><div class="ab-card-flag">🇺🇸</div><h3>미국 유학</h3><p>아이비리그, 주립대</p></div>
+      <div class="ab-card"><div class="ab-card-flag">🇬🇧</div><h3>영국 유학</h3><p>옥스브리지, 러셀그룹</p></div>
+      <div class="ab-card"><div class="ab-card-flag">🇨🇦</div><h3>캐나다 유학</h3><p>토론토, UBC</p></div>
+      <div class="ab-card"><div class="ab-card-flag">🇦🇺</div><h3>호주 유학</h3><p>시드니, 멜버른</p></div>
+      <div class="ab-card"><div class="ab-card-flag">🇯🇵</div><h3>일본 유학</h3><p>도쿄, 오사카</p></div>
+      <div class="ab-card"><div class="ab-card-flag">🇨🇳</div><h3>중국 유학</h3><p>베이징, 상하이</p></div>
+      <div class="ab-card"><div class="ab-card-flag">🇩🇪</div><h3>독일 유학</h3><p>무료 학비, 공학</p></div>
+      <div class="ab-card"><div class="ab-card-flag">🇫🇷</div><h3>프랑스 유학</h3><p>파리, 그랑제콜</p></div>
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
 // --- Worker 메인 ---
 export default {
   async fetch(request) {
@@ -1943,6 +2317,67 @@ export default {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
+    
+    // 학년별 과외
+    const gradeMatch = pathname.match(/^\/grade\/(elementary|middle|high)\/(\d+)$/);
+    if (gradeMatch) {
+      return new Response(renderGradePage(gradeMatch[1], gradeMatch[2]), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    
+    // 학교별 과외
+    const regionEN = {"seoul":"서울","gyeonggi":"경기","incheon":"인천","busan":"부산","daegu":"대구","daejeon":"대전","gwangju":"광주","ulsan":"울산","sejong":"세종","gangwon":"강원","chungbuk":"충북","chungnam":"충남","jeonbuk":"전북","jeonnam":"전남","gyeongbuk":"경북","gyeongnam":"경남","jeju":"제주"};
+    const schoolMatch = pathname.match(/^\/school\/([a-z]+)$/);
+    if (schoolMatch && regionEN[schoolMatch[1]]) {
+      return new Response(renderSchoolPage(regionEN[schoolMatch[1]]), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    if (pathname === '/school') {
+      return new Response(renderSchoolPage('서울'), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    
+    // 회화 수업
+    const convMatch = pathname.match(/^\/conversation\/(english|chinese|japanese)$/);
+    if (convMatch) {
+      return new Response(renderConversationPage(convMatch[1]), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    if (decodedPath === '/외국어' || decodedPath === '/외국어/영어') {
+      return new Response(renderConversationPage('english'), { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+    }
+    if (decodedPath === '/외국어/중국어') {
+      return new Response(renderConversationPage('chinese'), { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+    }
+    if (decodedPath === '/외국어/일본어') {
+      return new Response(renderConversationPage('japanese'), { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+    }
+    
+    // 학습정보
+    if (decodedPath === '/학습가이드' || pathname === '/study-guide') {
+      return new Response(renderStudyGuide(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    
+    // 화상수업
+    if (pathname === '/video-lesson' || decodedPath === '/화상수업') {
+      return new Response(renderVideoLesson(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    
+    // 유학
+    if (decodedPath === '/유학') {
+      return new Response(renderStudyAbroad(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+
     // 콘텐츠 페이지
     const parsed = parseUrl(pathname);
     if (parsed) {
