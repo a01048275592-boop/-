@@ -1067,6 +1067,57 @@ function renderHomepage() {
     .form-submit:hover { background: #4f46e5; }
     .form-note { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 12px; }
 
+    /* 코칭 프로그램 */
+    .cp-section { background: #f8fafc; padding: 80px 24px; }
+    .cp-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .cp-label { font-size: 13px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .cp-title { font-size: 28px; font-weight: 900; color: #0f172a; line-height: 1.5; margin-bottom: 48px; }
+    .cp-title em { font-style: normal; color: #6366f1; }
+    .cp-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .cp-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.06); transition: all 0.3s; }
+    .cp-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+    .cp-card-header { padding: 20px 16px; color: #fff; text-align: center; }
+    .cp-card-header h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+    .cp-card-header p { font-size: 12px; opacity: 0.85; }
+    .cp-purple { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+    .cp-green { background: linear-gradient(135deg, #22c55e, #16a34a); }
+    .cp-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .cp-mint { background: linear-gradient(135deg, #a3e635, #65a30d); }
+    .cp-card-body { padding: 16px; min-height: 260px; }
+    .cp-mock { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; text-align: left; }
+    .cp-mock-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #f1f5f9; }
+    .cp-mock-bars { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .cp-bar-row { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #64748b; }
+    .cp-bar-row span:first-child { width: 50px; flex-shrink: 0; }
+    .cp-bar-row span:last-child { width: 24px; text-align: right; font-weight: 700; color: #334155; }
+    .cp-bar { flex: 1; height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
+    .cp-bar-fill { height: 100%; border-radius: 4px; }
+    .cp-mock-score { text-align: center; margin-top: 12px; }
+    .cp-score-circle { width: 52px; height: 52px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: #fff; }
+    .cp-score-circle span { font-size: 10px; font-weight: 400; }
+    .cp-purple-bg { background: #7c3aed; }
+    .cp-mock-radar { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+    .cp-radar-item { padding: 8px; border-radius: 8px; font-size: 12px; color: #334155; text-align: center; }
+    .cp-radar-item b { display: block; font-size: 18px; color: #0f172a; margin-top: 2px; }
+    .cp-mock-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .cp-mock-tags span { padding: 3px 10px; background: #f1f5f9; border-radius: 4px; font-size: 11px; color: #64748b; }
+    .cp-mock-type { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .cp-type-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #334155; }
+    .cp-type-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .cp-type-row b { margin-left: auto; font-size: 14px; }
+    .cp-mock-result { text-align: center; padding: 8px; background: #f1f5f9; border-radius: 8px; font-size: 12px; color: #64748b; }
+    .cp-mock-result b { color: #0f172a; }
+    .cp-card-name { padding: 14px; font-size: 15px; font-weight: 700; color: #334155; text-align: center; }
+    
+    @media (max-width: 768px) {
+      .cp-cards { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .cp-title { font-size: 22px; }
+      .cp-card-body { min-height: 200px; }
+    }
+    @media (max-width: 480px) {
+      .cp-cards { grid-template-columns: 1fr; }
+    }
+
     /* 플로팅 버튼 */
     .floating-btns { position: fixed; right: 24px; bottom: 32px; z-index: 200; display: flex; flex-direction: column; gap: 10px; }
     .float-btn { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 28px; font-size: 14px; font-weight: 700; text-decoration: none; color: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: all 0.2s; white-space: nowrap; }
@@ -1343,6 +1394,89 @@ function renderHomepage() {
           <div class="strength-sub">검증된 만족도</div>
           <div class="strength-num">96.7<span class="strength-unit">%</span></div>
           <div class="strength-desc">96.7%가 만족하는<br>남다른 수업 퀄리티</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 코칭 프로그램 섹션 -->
+  <section class="cp-section">
+    <div class="cp-inner">
+      <div class="cp-label">COACHING PROGRAM</div>
+      <h2 class="cp-title"><em>5가지 맞춤 진단검사</em>로<br>학생의 학습 상태를 정밀 분석합니다</h2>
+      <div class="cp-cards">
+        <div class="cp-card">
+          <div class="cp-card-header cp-purple">
+            <h3>자기주도검사</h3>
+            <p>계획수립·실천능력 | 자기주도성 평가</p>
+          </div>
+          <div class="cp-card-body">
+            <div class="cp-mock">
+              <div class="cp-mock-title">자기주도 학습 분석</div>
+              <div class="cp-mock-bars">
+                <div class="cp-bar-row"><span>계획수립</span><div class="cp-bar"><div class="cp-bar-fill" style="width:72%;background:#8b5cf6;"></div></div><span>72</span></div>
+                <div class="cp-bar-row"><span>실천능력</span><div class="cp-bar"><div class="cp-bar-fill" style="width:58%;background:#a78bfa;"></div></div><span>58</span></div>
+                <div class="cp-bar-row"><span>자기조절</span><div class="cp-bar"><div class="cp-bar-fill" style="width:65%;background:#c4b5fd;"></div></div><span>65</span></div>
+              </div>
+              <div class="cp-mock-score"><div class="cp-score-circle cp-purple-bg">43<span>점</span></div></div>
+            </div>
+          </div>
+          <div class="cp-card-name">자기주도검사</div>
+        </div>
+        <div class="cp-card">
+          <div class="cp-card-header cp-green">
+            <h3>부모코칭검사</h3>
+            <p>자녀양육스타일 | 자녀와의 관계 점검</p>
+          </div>
+          <div class="cp-card-body">
+            <div class="cp-mock">
+              <div class="cp-mock-title">양육 스타일 분석</div>
+              <div class="cp-mock-radar">
+                <div class="cp-radar-item" style="background:#dcfce7;">공감형 <b>53</b></div>
+                <div class="cp-radar-item" style="background:#fef3c7;">훈육형 <b>47</b></div>
+                <div class="cp-radar-item" style="background:#dbeafe;">소통형 <b>61</b></div>
+                <div class="cp-radar-item" style="background:#fce7f3;">격려형 <b>55</b></div>
+              </div>
+              <div class="cp-mock-tags"><span>민주적</span><span>소통중심</span><span>격려형</span></div>
+            </div>
+          </div>
+          <div class="cp-card-name">부모코칭검사</div>
+        </div>
+        <div class="cp-card">
+          <div class="cp-card-header cp-blue">
+            <h3>학습유형검사</h3>
+            <p>학습성향 및 의지 | 학습스타일 분석</p>
+          </div>
+          <div class="cp-card-body">
+            <div class="cp-mock">
+              <div class="cp-mock-title">학습유형검사</div>
+              <div class="cp-mock-type">
+                <div class="cp-type-row"><div class="cp-type-dot" style="background:#3b82f6;"></div>시각형 <b>40</b></div>
+                <div class="cp-type-row"><div class="cp-type-dot" style="background:#22c55e;"></div>청각형 <b>35</b></div>
+                <div class="cp-type-row"><div class="cp-type-dot" style="background:#f59e0b;"></div>실천형 <b>70</b></div>
+                <div class="cp-type-row"><div class="cp-type-dot" style="background:#ef4444;"></div>분석형 <b>55</b></div>
+              </div>
+              <div class="cp-mock-result">주요 유형: <b>실천형 학습자</b></div>
+            </div>
+          </div>
+          <div class="cp-card-name">학습유형검사</div>
+        </div>
+        <div class="cp-card">
+          <div class="cp-card-header cp-mint">
+            <h3>학습진단검사</h3>
+            <p>학습 성격 유형 | 학습 동기 분석</p>
+          </div>
+          <div class="cp-card-body">
+            <div class="cp-mock">
+              <div class="cp-mock-title">학습동기 분석</div>
+              <div class="cp-mock-bars">
+                <div class="cp-bar-row"><span>자기효능</span><div class="cp-bar"><div class="cp-bar-fill" style="width:54%;background:#f59e0b;"></div></div><span>34</span></div>
+                <div class="cp-bar-row"><span>성취동기</span><div class="cp-bar"><div class="cp-bar-fill" style="width:75%;background:#22c55e;"></div></div><span>47</span></div>
+                <div class="cp-bar-row"><span>학습전략</span><div class="cp-bar"><div class="cp-bar-fill" style="width:62%;background:#3b82f6;"></div></div><span>39</span></div>
+              </div>
+              <div class="cp-mock-tags"><span>성취지향</span><span>전략부족</span><span>동기보통</span></div>
+            </div>
+          </div>
+          <div class="cp-card-name">학습진단검사</div>
         </div>
       </div>
     </div>
@@ -1792,166 +1926,174 @@ function renderContactPage() {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('문의하기 - 과외안하니', '궁금한 점을 편하게 남겨주세요. 전문 상담사가 빠른 시일 내에 연락드리겠습니다.', 'https://anhani.com/상담')}
   <style>${commonStyles()}
-    .ct-wrap { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
-    .ct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: flex-start; }
-    .ct-left {}
-    .ct-label { display: inline-block; background: #6366f1; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 20px; }
-    .ct-title { font-size: 32px; font-weight: 900; color: #0f172a; line-height: 1.3; margin-bottom: 16px; }
-    .ct-title em { font-style: normal; color: #6366f1; }
-    .ct-desc { font-size: 15px; color: #64748b; line-height: 1.7; margin-bottom: 32px; }
-    .ct-info-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; }
-    .ct-info-icon { width: 48px; height: 48px; background: #fee2e2; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-    .ct-info-icon.time { background: #f0f9ff; }
-    .ct-info-label { font-size: 13px; color: #94a3b8; }
-    .ct-info-value { font-size: 20px; font-weight: 800; color: #0f172a; }
-    .ct-process { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin-top: 24px; }
-    .ct-process h3 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 20px; }
-    .ct-step { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
-    .ct-step:last-child { margin-bottom: 0; }
-    .ct-step-num { width: 28px; height: 28px; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
-    .ct-step-title { font-size: 15px; font-weight: 700; color: #0f172a; }
-    .ct-step-desc { font-size: 13px; color: #94a3b8; margin-top: 2px; }
+    .ct-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #312e81 100%); padding: 60px 24px 200px; text-align: center; color: #fff; position: relative; overflow: hidden; }
+    .ct-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 70% 30%, rgba(99,102,241,0.2) 0%, transparent 50%); }
+    .ct-hero-inner { position: relative; max-width: 600px; margin: 0 auto; }
+    .ct-hero-badge { display: inline-block; background: rgba(99,102,241,0.3); backdrop-filter: blur(4px); padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(99,102,241,0.3); }
+    .ct-hero h1 { font-size: 36px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
+    .ct-hero h1 em { font-style: normal; color: #818cf8; }
+    .ct-hero p { font-size: 16px; color: #94a3b8; line-height: 1.7; }
     
-    .ct-form-wrap { background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
-    .ct-form-tabs { display: flex; margin-bottom: 24px; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; }
-    .ct-form-tab { flex: 1; padding: 14px; text-align: center; font-size: 15px; font-weight: 600; color: #64748b; background: #f8fafc; cursor: pointer; border: none; transition: all 0.2s; }
-    .ct-form-tab.active { background: #0f172a; color: #fff; }
-    .ct-form-title { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-    .ct-form-sub { font-size: 13px; color: #94a3b8; margin-bottom: 24px; }
-    .ct-field { margin-bottom: 18px; }
-    .ct-field label { display: block; font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 6px; }
-    .ct-field label span { color: #dc2626; }
-    .ct-field input, .ct-field select, .ct-field textarea { display: block; width: 100%; padding: 12px 14px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 14px; outline: none; background: #fff; transition: border-color 0.2s; font-family: inherit; }
-    .ct-field input:focus, .ct-field select:focus, .ct-field textarea:focus { border-color: #6366f1; }
+    .ct-main { max-width: 1000px; margin: -160px auto 0; padding: 0 24px 80px; position: relative; }
+    .ct-cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .ct-info-card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); text-align: center; transition: all 0.3s; border: 1px solid transparent; }
+    .ct-info-card:hover { transform: translateY(-4px); border-color: #6366f1; box-shadow: 0 8px 32px rgba(99,102,241,0.15); }
+    .ct-info-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 14px; }
+    .ct-info-card h3 { font-size: 13px; color: #94a3b8; margin-bottom: 6px; }
+    .ct-info-card .ct-info-val { font-size: 24px; font-weight: 900; color: #0f172a; }
+    
+    .ct-body { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; }
+    .ct-left-card { background: #fff; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .ct-left-card h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 24px; }
+    .ct-timeline { position: relative; padding-left: 32px; }
+    .ct-timeline::before { content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, #6366f1, #a5b4fc); }
+    .ct-tl-item { position: relative; margin-bottom: 28px; }
+    .ct-tl-item:last-child { margin-bottom: 0; }
+    .ct-tl-dot { position: absolute; left: -32px; top: 2px; width: 24px; height: 24px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; box-shadow: 0 0 0 4px rgba(99,102,241,0.15); }
+    .ct-tl-title { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+    .ct-tl-desc { font-size: 13px; color: #94a3b8; line-height: 1.5; }
+    
+    .ct-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
+    .ct-benefit { background: #f8fafc; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 10px; }
+    .ct-benefit-icon { font-size: 20px; flex-shrink: 0; }
+    .ct-benefit-text { font-size: 13px; font-weight: 600; color: #334155; }
+    
+    .ct-form-card { background: #fff; border-radius: 20px; padding: 36px 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border-top: 4px solid #6366f1; }
+    .ct-form-header { text-align: center; margin-bottom: 28px; }
+    .ct-form-header h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+    .ct-form-header p { font-size: 13px; color: #94a3b8; }
+    .ct-form-tabs { display: flex; margin-bottom: 24px; background: #f1f5f9; border-radius: 12px; padding: 4px; }
+    .ct-ftab { flex: 1; padding: 12px; text-align: center; border-radius: 10px; font-size: 14px; font-weight: 600; color: #64748b; cursor: pointer; border: none; background: none; transition: all 0.2s; }
+    .ct-ftab.active { background: #6366f1; color: #fff; box-shadow: 0 2px 8px rgba(99,102,241,0.3); }
+    .ct-field { margin-bottom: 16px; }
+    .ct-field label { display: block; font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 6px; }
+    .ct-field label .req { color: #ef4444; }
+    .ct-field input, .ct-field select, .ct-field textarea { display: block; width: 100%; padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 14px; outline: none; background: #fafbfc; transition: all 0.2s; font-family: inherit; }
+    .ct-field input:focus, .ct-field select:focus, .ct-field textarea:focus { border-color: #6366f1; background: #fff; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
     .ct-field textarea { min-height: 100px; resize: vertical; }
-    .ct-addr-row { display: flex; gap: 8px; margin-bottom: 8px; }
-    .ct-addr-row input { flex: 1; }
-    .ct-addr-btn { padding: 12px 20px; background: #0f172a; color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
-    .ct-privacy { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin-bottom: 18px; }
-    .ct-privacy h4 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
-    .ct-privacy p { font-size: 12px; color: #94a3b8; line-height: 1.6; }
-    .ct-privacy-check { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; color: #334155; }
-    .ct-privacy-check span { color: #dc2626; }
-    .ct-submit { display: block; width: 100%; padding: 16px; background: #0f172a; color: #fff; border: none; border-radius: 12px; font-size: 17px; font-weight: 800; cursor: pointer; transition: all 0.2s; }
-    .ct-submit:hover { background: #1e293b; }
-    .ct-success { display: none; text-align: center; padding: 40px 20px; }
+    .ct-privacy { background: #f8fafc; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+    .ct-privacy h4 { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .ct-privacy p { font-size: 11px; color: #94a3b8; line-height: 1.6; }
+    .ct-check { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; color: #334155; cursor: pointer; }
+    .ct-check .req { color: #ef4444; }
+    .ct-submit { display: block; width: 100%; padding: 16px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; border: none; border-radius: 14px; font-size: 17px; font-weight: 800; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 16px rgba(99,102,241,0.3); }
+    .ct-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(99,102,241,0.4); }
+    .ct-success { display: none; text-align: center; padding: 48px 20px; }
+    .ct-success-icon { font-size: 48px; margin-bottom: 16px; }
     .ct-success h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
-    .ct-success p { font-size: 14px; color: #64748b; }
+    .ct-success p { font-size: 14px; color: #64748b; line-height: 1.7; }
+    .ct-success a { display: inline-block; margin-top: 16px; color: #6366f1; font-weight: 600; text-decoration: none; }
     
     @media (max-width: 768px) {
-      .ct-grid { grid-template-columns: 1fr; gap: 32px; }
-      .ct-title { font-size: 26px; }
+      .ct-hero h1 { font-size: 26px; }
+      .ct-cards-row { grid-template-columns: 1fr; }
+      .ct-body { grid-template-columns: 1fr; }
+      .ct-benefits { grid-template-columns: 1fr; }
+      .ct-hero { padding-bottom: 140px; }
+      .ct-main { margin-top: -100px; }
     }
   </style></head><body>
   ${navHTML('')}
-  <div class="ct-wrap">
-    <div class="ct-grid">
-      <div class="ct-left">
-        <div class="ct-label">문의하기</div>
-        <h1 class="ct-title">궁금한 점을<br><em>편하게 남겨주세요</em></h1>
-        <p class="ct-desc">과외안하니 전문 상담사가<br>빠른 시일 내에 연락드리겠습니다.</p>
-        
-        <div class="ct-info-card">
-          <div class="ct-info-icon">📞</div>
-          <div>
-            <div class="ct-info-label">전화 상담</div>
-            <div class="ct-info-value">010-6850-1420</div>
+  
+  <div class="ct-hero">
+    <div class="ct-hero-inner">
+      <div class="ct-hero-badge">✨ 무료 상담 신청</div>
+      <h1>궁금한 점을<br><em>편하게 남겨주세요</em></h1>
+      <p>과외안하니 전문 상담사가<br>빠른 시일 내에 연락드리겠습니다</p>
+    </div>
+  </div>
+  
+  <div class="ct-main">
+    <div class="ct-cards-row">
+      <div class="ct-info-card">
+        <div class="ct-info-icon" style="background:#fee2e2;">📞</div>
+        <h3>전화 상담</h3>
+        <div class="ct-info-val">010-6850-1420</div>
+      </div>
+      <div class="ct-info-card">
+        <div class="ct-info-icon" style="background:#dbeafe;">⏱</div>
+        <h3>평균 응답 시간</h3>
+        <div class="ct-info-val">30분 이내</div>
+      </div>
+      <div class="ct-info-card">
+        <div class="ct-info-icon" style="background:#dcfce7;">💬</div>
+        <h3>상담 만족도</h3>
+        <div class="ct-info-val">98.2%</div>
+      </div>
+    </div>
+    
+    <div class="ct-body">
+      <div>
+        <div class="ct-left-card">
+          <h2>상담 진행 순서</h2>
+          <div class="ct-timeline">
+            <div class="ct-tl-item">
+              <div class="ct-tl-dot">1</div>
+              <div class="ct-tl-title">온라인 접수</div>
+              <div class="ct-tl-desc">양식 작성 후 제출하시면 즉시 접수됩니다</div>
+            </div>
+            <div class="ct-tl-item">
+              <div class="ct-tl-dot">2</div>
+              <div class="ct-tl-title">담당자 배정</div>
+              <div class="ct-tl-desc">교육컨설턴트가 배정됩니다</div>
+            </div>
+            <div class="ct-tl-item">
+              <div class="ct-tl-dot">3</div>
+              <div class="ct-tl-title">1:1 맞춤 상담</div>
+              <div class="ct-tl-desc">학생 상황에 맞는 학습 방향을 안내드립니다</div>
+            </div>
+            <div class="ct-tl-item">
+              <div class="ct-tl-dot">4</div>
+              <div class="ct-tl-title">교사 배정</div>
+              <div class="ct-tl-desc">적합한 선생님을 매칭하여 수업을 연결해드립니다</div>
+            </div>
           </div>
         </div>
-        <div class="ct-info-card">
-          <div class="ct-info-icon time">⏱</div>
-          <div>
-            <div class="ct-info-label">평균 응답 시간</div>
-            <div class="ct-info-value">30분 이내</div>
-          </div>
-        </div>
-        
-        <div class="ct-process">
-          <h3>상담 진행 순서</h3>
-          <div class="ct-step">
-            <div class="ct-step-num">1</div>
-            <div><div class="ct-step-title">온라인 접수</div><div class="ct-step-desc">양식 작성 후 제출하시면 즉시 접수됩니다</div></div>
-          </div>
-          <div class="ct-step">
-            <div class="ct-step-num">2</div>
-            <div><div class="ct-step-title">담당자 배정</div><div class="ct-step-desc">교육컨설턴트가 배정됩니다</div></div>
-          </div>
-          <div class="ct-step">
-            <div class="ct-step-num">3</div>
-            <div><div class="ct-step-title">1:1 맞춤 상담</div><div class="ct-step-desc">학생 상황에 맞는 학습 방향을 안내드립니다</div></div>
-          </div>
-          <div class="ct-step">
-            <div class="ct-step-num">4</div>
-            <div><div class="ct-step-title">교사 배정</div><div class="ct-step-desc">적합한 선생님을 매칭하여 수업을 연결해드립니다</div></div>
-          </div>
+        <div class="ct-benefits">
+          <div class="ct-benefit"><div class="ct-benefit-icon">🎯</div><div class="ct-benefit-text">무료 학습 진단</div></div>
+          <div class="ct-benefit"><div class="ct-benefit-icon">👨‍🏫</div><div class="ct-benefit-text">전문 선생님 매칭</div></div>
+          <div class="ct-benefit"><div class="ct-benefit-icon">📋</div><div class="ct-benefit-text">맞춤 커리큘럼</div></div>
+          <div class="ct-benefit"><div class="ct-benefit-icon">💰</div><div class="ct-benefit-text">합리적 수업료</div></div>
         </div>
       </div>
       
-      <div class="ct-form-wrap" id="ctFormWrap">
-        <div class="ct-form-tabs">
-          <button class="ct-form-tab" onclick="this.classList.add('active');this.nextElementSibling.classList.remove('active')">학원 상담</button>
-          <button class="ct-form-tab active" onclick="this.classList.add('active');this.previousElementSibling.classList.remove('active')">과외 상담</button>
+      <div class="ct-form-card" id="ctFormCard">
+        <div class="ct-form-header">
+          <h2>상담 신청서</h2>
+          <p>* 표시 항목은 필수입니다</p>
         </div>
-        
-        <div class="ct-form-title">상담 신청서</div>
-        <div class="ct-form-sub">* 표시 항목은 필수입니다</div>
-        
+        <div class="ct-form-tabs">
+          <button class="ct-ftab" onclick="this.classList.add('active');this.nextElementSibling.classList.remove('active')">학원 상담</button>
+          <button class="ct-ftab active" onclick="this.classList.add('active');this.previousElementSibling.classList.remove('active')">과외 상담</button>
+        </div>
         <form id="ctForm" onsubmit="return submitContact(event)">
-          <div class="ct-field">
-            <label>이름 <span>*</span></label>
-            <input type="text" name="name" placeholder="홍길동" required>
+          <div class="ct-field"><label>이름 <span class="req">*</span></label><input type="text" name="name" placeholder="홍길동" required></div>
+          <div class="ct-field"><label>연락처 <span class="req">*</span></label><input type="tel" name="phone" placeholder="010-0000-0000" required></div>
+          <div class="ct-field"><label>학년 / 나이 <span class="req">*</span></label>
+            <select name="grade" required><option value="">선택해주세요</option>
+            <option>초등 1학년</option><option>초등 2학년</option><option>초등 3학년</option><option>초등 4학년</option><option>초등 5학년</option><option>초등 6학년</option>
+            <option>중학교 1학년</option><option>중학교 2학년</option><option>중학교 3학년</option>
+            <option>고등 1학년</option><option>고등 2학년</option><option>고등 3학년</option><option>성인</option></select>
           </div>
-          <div class="ct-field">
-            <label>연락처 <span>*</span></label>
-            <input type="tel" name="phone" placeholder="010-0000-0000" required>
+          <div class="ct-field"><label>거주 주소</label><input type="text" name="address" placeholder="예: 서울 강남구 대치동"></div>
+          <div class="ct-field"><label>희망 과목</label>
+            <select name="subject"><option value="">선택해주세요</option>
+            <option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option>
+            <option>코딩</option><option>논술</option><option>검정고시</option><option>영어회화</option><option>중국어회화</option><option>일본어회화</option></select>
           </div>
-          <div class="ct-field">
-            <label>학년 / 나이 <span>*</span></label>
-            <select name="grade" required>
-              <option value="">선택해주세요</option>
-              <option>초등 1학년</option><option>초등 2학년</option><option>초등 3학년</option>
-              <option>초등 4학년</option><option>초등 5학년</option><option>초등 6학년</option>
-              <option>중학교 1학년</option><option>중학교 2학년</option><option>중학교 3학년</option>
-              <option>고등 1학년</option><option>고등 2학년</option><option>고등 3학년</option>
-              <option>성인</option>
-            </select>
-          </div>
-          <div class="ct-field">
-            <label>거주 주소</label>
-            <div class="ct-addr-row">
-              <input type="text" name="address" placeholder="예: 서울 강남구 대치동">
-            </div>
-          </div>
-          <div class="ct-field">
-            <label>희망 과목</label>
-            <select name="subject">
-              <option value="">선택해주세요</option>
-              <option>국어</option><option>영어</option><option>수학</option>
-              <option>과학</option><option>사회</option><option>코딩</option>
-              <option>논술</option><option>검정고시</option>
-              <option>영어회화</option><option>중국어회화</option><option>일본어회화</option>
-            </select>
-          </div>
-          <div class="ct-field">
-            <label>문의 내용</label>
-            <textarea name="message" placeholder="현재 성적, 목표 성적, 원하는 수업 방향 등 자유롭게 남겨주세요."></textarea>
-          </div>
-          
+          <div class="ct-field"><label>문의 내용</label><textarea name="message" placeholder="현재 성적, 목표 성적, 원하는 수업 방향 등 자유롭게 남겨주세요."></textarea></div>
           <div class="ct-privacy">
             <h4>개인정보 수집 및 이용 동의</h4>
             <p>수집 항목: 이름, 연락처, 학년, 주소 / 수집 목적: 상담 및 교사 매칭 / 보유 기간: 상담 완료 후 1년</p>
-            <label class="ct-privacy-check">
-              <input type="checkbox" name="agree" required>
-              개인정보 수집 및 이용에 동의합니다 <span>*</span>
-            </label>
+            <label class="ct-check"><input type="checkbox" name="agree" required> 개인정보 수집 및 이용에 동의합니다 <span class="req">*</span></label>
           </div>
-          
           <button type="submit" class="ct-submit">문의하기</button>
         </form>
-        
         <div class="ct-success" id="ctSuccess">
+          <div class="ct-success-icon">✅</div>
           <h3>문의가 접수되었습니다!</h3>
-          <p>빠른 시일 내에 연락드리겠습니다.</p>
+          <p>빠른 시일 내에 연락드리겠습니다.<br>평균 30분 이내 응답해 드립니다.</p>
+          <a href="/">홈으로 돌아가기 →</a>
         </div>
       </div>
     </div>
@@ -1960,30 +2102,7 @@ function renderContactPage() {
   <script>
     function submitContact(e) {
       e.preventDefault();
-      var f = document.getElementById('ctForm');
-      var d = new FormData(f);
-      var name = d.get('name') || '';
-      var phone = d.get('phone') || '';
-      var grade = d.get('grade') || '';
-      var address = d.get('address') || '';
-      var subject = d.get('subject') || '';
-      var message = d.get('message') || '';
-      
-      var body = '이름: ' + name + '\\n' +
-        '연락처: ' + phone + '\\n' +
-        '학년: ' + grade + '\\n' +
-        '주소: ' + address + '\\n' +
-        '희망과목: ' + subject + '\\n' +
-        '문의내용: ' + message;
-      
-      var mailto = 'mailto:nande5059@naver.com' +
-        '?subject=' + encodeURIComponent('[과외안하니] ' + name + '님 상담 신청') +
-        '&body=' + encodeURIComponent(body);
-      
-      window.location.href = mailto;
-      
-      f.style.display = 'none';
-      document.getElementById('ctSuccess').style.display = 'block';
+      window.open('https://naver.me/GYD2Ki40', '_blank');
       return false;
     }
   </script>
