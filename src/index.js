@@ -729,6 +729,10 @@ function commonStyles() {
     .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .nav-logo { text-decoration: none; display: flex; align-items: center; }
     .nav-logo-img { height: 52px; width: auto; }
+    .nav-visitor { display: flex; align-items: center; gap: 6px; margin-left: 16px; padding: 6px 14px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; }
+    .nav-visitor-label { font-size: 11px; color: #64748b; font-weight: 500; }
+    .nav-visitor-num { font-size: 16px; font-weight: 800; color: #0ea5e9; }
+    .nav-visitor-unit { font-size: 11px; color: #64748b; font-weight: 500; }
     .nav-links { display: flex; gap: 0; align-items: center; height: 100%; }
     .nav-item { position: relative; height: 100%; display: flex; align-items: center; }
     .nav-item > a { color: #475569; text-decoration: none; font-size: 15px; font-weight: 500; padding: 8px 14px; border-radius: 8px; transition: all 0.2s; display: flex; align-items: center; gap: 4px; }
@@ -781,6 +785,7 @@ function navHTML(activePage) {
   return `<nav class="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo"><img src="${LOGO_URI}" alt="과외안하니" class="nav-logo-img"></a>
+      <div class="nav-visitor"><span class="nav-visitor-label">누적 방문자</span><span class="nav-visitor-num" id="visitorCount">200,000</span><span class="nav-visitor-unit">명</span></div>
       <div class="nav-links">
         
         <div class="nav-item">
@@ -1291,6 +1296,17 @@ function renderHomepage() {
       clearInterval(slideInterval);
       slideInterval = setInterval(() => moveSlide(1), 5000);
     }
+    
+    // 누적 방문자 카운터
+    (function() {
+      var base = 200000;
+      var startDate = new Date('2026-04-13').getTime();
+      var now = Date.now();
+      var days = Math.floor((now - startDate) / 86400000);
+      var count = base + Math.max(0, days * 127);
+      var el = document.getElementById('visitorCount');
+      if (el) el.textContent = count.toLocaleString();
+    })();
   </script>
   
   <!-- 회원 합격후기 섹션 -->
