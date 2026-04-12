@@ -785,7 +785,7 @@ function navHTML(activePage) {
   return `<nav class="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo"><img src="${LOGO_URI}" alt="과외안하니" class="nav-logo-img"></a>
-      <div class="nav-visitor"><span class="nav-visitor-label">누적 방문자</span><span class="nav-visitor-num" id="visitorCount">200,000</span><span class="nav-visitor-unit">명</span></div>
+      <div class="nav-visitor"><span class="nav-visitor-label">누적 방문자</span><span class="nav-visitor-num" id="visitorCount">304,953</span><span class="nav-visitor-unit">명</span></div>
       <div class="nav-links">
         
         <div class="nav-item">
@@ -898,11 +898,11 @@ function renderHomepage() {
 
   const subjectColors = {
     "국어": "#ef4444", "영어": "#3b82f6", "수학": "#22c55e", "사회": "#f59e0b",
-    "과학": "#a855f7", "코딩": "#06b6d4", "검정고시": "#f97316", "논술": "#64748b"
+    "과학": "#a855f7", "코딩": "#06b6d4", "검정고시": "#f97316", "외국어": "#ec4899"
   };
   const subjectIcons = {
     "국어": "📖", "영어": "🌍", "수학": "📐", "사회": "🏛️",
-    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "논술": "✍️"
+    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "외국어": "🗣️"
   };
   const subjectCards = SUBJECTS.map(s => {
     return `<a href="/과목별/${encodeURIComponent(s)}" class="subject-card" style="--accent:${subjectColors[s]}">
@@ -1299,7 +1299,7 @@ function renderHomepage() {
     
     // 누적 방문자 카운터
     (function() {
-      var base = 200000;
+      var base = 304953;
       var startDate = new Date('2026-04-13').getTime();
       var now = Date.now();
       var days = Math.floor((now - startDate) / 86400000);
@@ -1596,11 +1596,11 @@ function renderRegionDetail(region) {
 function renderSubjectList() {
   const subjectColors = {
     "국어": "#ef4444", "영어": "#3b82f6", "수학": "#22c55e", "사회": "#f59e0b",
-    "과학": "#a855f7", "코딩": "#06b6d4", "검정고시": "#f97316", "논술": "#64748b"
+    "과학": "#a855f7", "코딩": "#06b6d4", "검정고시": "#f97316", "외국어": "#ec4899"
   };
   const subjectIcons = {
     "국어": "📖", "영어": "🌍", "수학": "📐", "사회": "🏛️",
-    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "논술": "✍️"
+    "과학": "🔬", "코딩": "💻", "검정고시": "📝", "외국어": "🗣️"
   };
   
   const cards = SUBJECTS.map(s => {
