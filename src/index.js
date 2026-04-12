@@ -820,7 +820,7 @@ function navHTML(activePage) {
           </div>
         </div>
         
-        <a href="/상담" class="nav-cta">무료 상담</a>
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="nav-cta">무료 상담</a>
       </div>
       <button class="mobile-menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">☰</button>
     </div>
@@ -1528,7 +1528,7 @@ function renderHomepage() {
   <div class="floating-btns">
     <a href="tel:010-6850-1420" class="float-btn float-call">📞 전화상담</a>
     <a href="#" class="float-btn float-kakao">💬 카카오톡 상담</a>
-    <a href="/상담" class="float-btn float-free">⭐ 무료체험 신청</a>
+    <a href="https://naver.me/GYD2Ki40" target="_blank" class="float-btn float-free">⭐ 무료체험 신청</a>
   </div>
 
   ${footerHTML()}
@@ -2212,7 +2212,7 @@ function renderGradePage(school, grade) {
     <div class="gd-cta">
       <h3>${shortName} ${gradeNum}학년 맞춤 과외 상담</h3>
       <p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p>
-      <a href="/상담" class="gd-cta-btn">무료 상담 신청 →</a>
+      <a href="https://naver.me/GYD2Ki40" target="_blank" class="gd-cta-btn">무료 상담 신청 →</a>
     </div>
   </div>
   ${footerHTML()}
@@ -2321,7 +2321,7 @@ function renderConversationPage(lang) {
       <h1 class="cv-title"><em>${d.name} 회화</em> 수업</h1>
       <p class="cv-desc">${d.desc}</p>
       <div class="cv-btns">
-        <a href="/상담" class="cv-btn cv-btn-primary">무료 체험 신청 →</a>
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="cv-btn cv-btn-primary">무료 체험 신청 →</a>
         <a href="tel:010-6850-1420" class="cv-btn cv-btn-secondary">전화 상담</a>
       </div>
     </div>
@@ -2421,7 +2421,7 @@ function renderVideoLesson() {
     <div class="vl-hero">
       <h1 class="vl-title">전국 어디서나<br><em>1:1 화상 과외</em></h1>
       <p class="vl-desc">거리 제한 없이 전국 최고의 선생님과<br>실시간으로 수업받을 수 있습니다.</p>
-      <a href="/상담" class="vl-btn">무료 체험 신청 →</a>
+      <a href="https://naver.me/GYD2Ki40" target="_blank" class="vl-btn">무료 체험 신청 →</a>
     </div>
     <div class="vl-section">
       <h2>화상수업 진행 과정</h2>
@@ -2468,7 +2468,7 @@ function renderStudyAbroad() {
     <div class="ab-hero">
       <h1 class="ab-title">꿈을 향한 <em>해외 유학</em></h1>
       <p class="ab-desc">미국, 영국, 캐나다, 호주 등 해외 유학 준비를 도와드립니다</p>
-      <a href="/상담" class="ab-btn">유학 상담 신청 →</a>
+      <a href="https://naver.me/GYD2Ki40" target="_blank" class="ab-btn">유학 상담 신청 →</a>
     </div>
     <div class="ab-grid">
       <div class="ab-card"><div class="ab-card-flag">🇺🇸</div><h3>미국 유학</h3><p>아이비리그, 주립대</p></div>
