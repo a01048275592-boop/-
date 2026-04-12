@@ -839,8 +839,8 @@ function footerHTML() {
       </div>
       <div class="footer-right">
         <div class="footer-phone-label">무료 상담 전화</div>
-        <div class="footer-phone">010-0000-0000</div>
-        <a href="tel:010-0000-0000" class="footer-call-btn">전화 상담</a>
+        <div class="footer-phone">010-6850-1420</div>
+        <a href="tel:010-6850-1420" class="footer-call-btn">전화 상담</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1365,7 +1365,7 @@ function renderHomepage() {
         <input type="text" class="form-input" placeholder="학부모 성함">
         <select class="form-input"><option>자녀 학년 선택</option><option>초등학교</option><option>중학교</option><option>고등학교</option></select>
         <select class="form-input"><option>상담 영역 선택</option><option>교과관리</option><option>학습습관</option><option>진로입시</option><option>검정고시</option><option>코딩</option></select>
-        <input type="tel" class="form-input" placeholder="연락처 (010-0000-0000)">
+        <input type="tel" class="form-input" placeholder="연락처 (010-6850-1420)">
         <button class="form-submit">무료 상담 신청하기</button>
         <p class="form-note">* 상담 신청 후 24시간 이내 연락드립니다</p>
       </div>
@@ -1392,7 +1392,7 @@ function renderHomepage() {
 
   <!-- 우측 플로팅 버튼 -->
   <div class="floating-btns">
-    <a href="tel:010-0000-0000" class="float-btn float-call">📞 전화상담</a>
+    <a href="tel:010-6850-1420" class="float-btn float-call">📞 전화상담</a>
     <a href="#" class="float-btn float-kakao">💬 카카오톡 상담</a>
     <a href="/상담" class="float-btn float-free">⭐ 무료체험 신청</a>
   </div>
@@ -1787,6 +1787,211 @@ function renderAcademyList() {
   </body></html>`;
 }
 
+// --- 문의하기 페이지 ---
+function renderContactPage() {
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('문의하기 - 과외안하니', '궁금한 점을 편하게 남겨주세요. 전문 상담사가 빠른 시일 내에 연락드리겠습니다.', 'https://anhani.com/상담')}
+  <style>${commonStyles()}
+    .ct-wrap { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+    .ct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: flex-start; }
+    .ct-left {}
+    .ct-label { display: inline-block; background: #6366f1; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 20px; }
+    .ct-title { font-size: 32px; font-weight: 900; color: #0f172a; line-height: 1.3; margin-bottom: 16px; }
+    .ct-title em { font-style: normal; color: #6366f1; }
+    .ct-desc { font-size: 15px; color: #64748b; line-height: 1.7; margin-bottom: 32px; }
+    .ct-info-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; }
+    .ct-info-icon { width: 48px; height: 48px; background: #fee2e2; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .ct-info-icon.time { background: #f0f9ff; }
+    .ct-info-label { font-size: 13px; color: #94a3b8; }
+    .ct-info-value { font-size: 20px; font-weight: 800; color: #0f172a; }
+    .ct-process { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; margin-top: 24px; }
+    .ct-process h3 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 20px; }
+    .ct-step { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+    .ct-step:last-child { margin-bottom: 0; }
+    .ct-step-num { width: 28px; height: 28px; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+    .ct-step-title { font-size: 15px; font-weight: 700; color: #0f172a; }
+    .ct-step-desc { font-size: 13px; color: #94a3b8; margin-top: 2px; }
+    
+    .ct-form-wrap { background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 32px 28px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .ct-form-tabs { display: flex; margin-bottom: 24px; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; }
+    .ct-form-tab { flex: 1; padding: 14px; text-align: center; font-size: 15px; font-weight: 600; color: #64748b; background: #f8fafc; cursor: pointer; border: none; transition: all 0.2s; }
+    .ct-form-tab.active { background: #0f172a; color: #fff; }
+    .ct-form-title { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+    .ct-form-sub { font-size: 13px; color: #94a3b8; margin-bottom: 24px; }
+    .ct-field { margin-bottom: 18px; }
+    .ct-field label { display: block; font-size: 14px; font-weight: 700; color: #334155; margin-bottom: 6px; }
+    .ct-field label span { color: #dc2626; }
+    .ct-field input, .ct-field select, .ct-field textarea { display: block; width: 100%; padding: 12px 14px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 14px; outline: none; background: #fff; transition: border-color 0.2s; font-family: inherit; }
+    .ct-field input:focus, .ct-field select:focus, .ct-field textarea:focus { border-color: #6366f1; }
+    .ct-field textarea { min-height: 100px; resize: vertical; }
+    .ct-addr-row { display: flex; gap: 8px; margin-bottom: 8px; }
+    .ct-addr-row input { flex: 1; }
+    .ct-addr-btn { padding: 12px 20px; background: #0f172a; color: #fff; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; flex-shrink: 0; }
+    .ct-privacy { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin-bottom: 18px; }
+    .ct-privacy h4 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .ct-privacy p { font-size: 12px; color: #94a3b8; line-height: 1.6; }
+    .ct-privacy-check { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; color: #334155; }
+    .ct-privacy-check span { color: #dc2626; }
+    .ct-submit { display: block; width: 100%; padding: 16px; background: #0f172a; color: #fff; border: none; border-radius: 12px; font-size: 17px; font-weight: 800; cursor: pointer; transition: all 0.2s; }
+    .ct-submit:hover { background: #1e293b; }
+    .ct-success { display: none; text-align: center; padding: 40px 20px; }
+    .ct-success h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+    .ct-success p { font-size: 14px; color: #64748b; }
+    
+    @media (max-width: 768px) {
+      .ct-grid { grid-template-columns: 1fr; gap: 32px; }
+      .ct-title { font-size: 26px; }
+    }
+  </style></head><body>
+  ${navHTML('')}
+  <div class="ct-wrap">
+    <div class="ct-grid">
+      <div class="ct-left">
+        <div class="ct-label">문의하기</div>
+        <h1 class="ct-title">궁금한 점을<br><em>편하게 남겨주세요</em></h1>
+        <p class="ct-desc">과외안하니 전문 상담사가<br>빠른 시일 내에 연락드리겠습니다.</p>
+        
+        <div class="ct-info-card">
+          <div class="ct-info-icon">📞</div>
+          <div>
+            <div class="ct-info-label">전화 상담</div>
+            <div class="ct-info-value">010-6850-1420</div>
+          </div>
+        </div>
+        <div class="ct-info-card">
+          <div class="ct-info-icon time">⏱</div>
+          <div>
+            <div class="ct-info-label">평균 응답 시간</div>
+            <div class="ct-info-value">30분 이내</div>
+          </div>
+        </div>
+        
+        <div class="ct-process">
+          <h3>상담 진행 순서</h3>
+          <div class="ct-step">
+            <div class="ct-step-num">1</div>
+            <div><div class="ct-step-title">온라인 접수</div><div class="ct-step-desc">양식 작성 후 제출하시면 즉시 접수됩니다</div></div>
+          </div>
+          <div class="ct-step">
+            <div class="ct-step-num">2</div>
+            <div><div class="ct-step-title">담당자 배정</div><div class="ct-step-desc">교육컨설턴트가 배정됩니다</div></div>
+          </div>
+          <div class="ct-step">
+            <div class="ct-step-num">3</div>
+            <div><div class="ct-step-title">1:1 맞춤 상담</div><div class="ct-step-desc">학생 상황에 맞는 학습 방향을 안내드립니다</div></div>
+          </div>
+          <div class="ct-step">
+            <div class="ct-step-num">4</div>
+            <div><div class="ct-step-title">교사 배정</div><div class="ct-step-desc">적합한 선생님을 매칭하여 수업을 연결해드립니다</div></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="ct-form-wrap" id="ctFormWrap">
+        <div class="ct-form-tabs">
+          <button class="ct-form-tab" onclick="this.classList.add('active');this.nextElementSibling.classList.remove('active')">학원 상담</button>
+          <button class="ct-form-tab active" onclick="this.classList.add('active');this.previousElementSibling.classList.remove('active')">과외 상담</button>
+        </div>
+        
+        <div class="ct-form-title">상담 신청서</div>
+        <div class="ct-form-sub">* 표시 항목은 필수입니다</div>
+        
+        <form id="ctForm" onsubmit="return submitContact(event)">
+          <div class="ct-field">
+            <label>이름 <span>*</span></label>
+            <input type="text" name="name" placeholder="홍길동" required>
+          </div>
+          <div class="ct-field">
+            <label>연락처 <span>*</span></label>
+            <input type="tel" name="phone" placeholder="010-0000-0000" required>
+          </div>
+          <div class="ct-field">
+            <label>학년 / 나이 <span>*</span></label>
+            <select name="grade" required>
+              <option value="">선택해주세요</option>
+              <option>초등 1학년</option><option>초등 2학년</option><option>초등 3학년</option>
+              <option>초등 4학년</option><option>초등 5학년</option><option>초등 6학년</option>
+              <option>중학교 1학년</option><option>중학교 2학년</option><option>중학교 3학년</option>
+              <option>고등 1학년</option><option>고등 2학년</option><option>고등 3학년</option>
+              <option>성인</option>
+            </select>
+          </div>
+          <div class="ct-field">
+            <label>거주 주소</label>
+            <div class="ct-addr-row">
+              <input type="text" name="address" placeholder="예: 서울 강남구 대치동">
+            </div>
+          </div>
+          <div class="ct-field">
+            <label>희망 과목</label>
+            <select name="subject">
+              <option value="">선택해주세요</option>
+              <option>국어</option><option>영어</option><option>수학</option>
+              <option>과학</option><option>사회</option><option>코딩</option>
+              <option>논술</option><option>검정고시</option>
+              <option>영어회화</option><option>중국어회화</option><option>일본어회화</option>
+            </select>
+          </div>
+          <div class="ct-field">
+            <label>문의 내용</label>
+            <textarea name="message" placeholder="현재 성적, 목표 성적, 원하는 수업 방향 등 자유롭게 남겨주세요."></textarea>
+          </div>
+          
+          <div class="ct-privacy">
+            <h4>개인정보 수집 및 이용 동의</h4>
+            <p>수집 항목: 이름, 연락처, 학년, 주소 / 수집 목적: 상담 및 교사 매칭 / 보유 기간: 상담 완료 후 1년</p>
+            <label class="ct-privacy-check">
+              <input type="checkbox" name="agree" required>
+              개인정보 수집 및 이용에 동의합니다 <span>*</span>
+            </label>
+          </div>
+          
+          <button type="submit" class="ct-submit">문의하기</button>
+        </form>
+        
+        <div class="ct-success" id="ctSuccess">
+          <h3>문의가 접수되었습니다!</h3>
+          <p>빠른 시일 내에 연락드리겠습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function submitContact(e) {
+      e.preventDefault();
+      var f = document.getElementById('ctForm');
+      var d = new FormData(f);
+      var name = d.get('name') || '';
+      var phone = d.get('phone') || '';
+      var grade = d.get('grade') || '';
+      var address = d.get('address') || '';
+      var subject = d.get('subject') || '';
+      var message = d.get('message') || '';
+      
+      var body = '이름: ' + name + '\\n' +
+        '연락처: ' + phone + '\\n' +
+        '학년: ' + grade + '\\n' +
+        '주소: ' + address + '\\n' +
+        '희망과목: ' + subject + '\\n' +
+        '문의내용: ' + message;
+      
+      var mailto = 'mailto:nande5059@naver.com' +
+        '?subject=' + encodeURIComponent('[과외안하니] ' + name + '님 상담 신청') +
+        '&body=' + encodeURIComponent(body);
+      
+      window.location.href = mailto;
+      
+      f.style.display = 'none';
+      document.getElementById('ctSuccess').style.display = 'block';
+      return false;
+    }
+  </script>
+  
+  ${footerHTML()}
+  </body></html>`;
+}
+
 // --- 학년별 과외 페이지 ---
 function renderGradePage(school, grade) {
   const schoolNames = {"elementary":"초등학교","middle":"중학교","high":"고등학교"};
@@ -1998,7 +2203,7 @@ function renderConversationPage(lang) {
       <p class="cv-desc">${d.desc}</p>
       <div class="cv-btns">
         <a href="/상담" class="cv-btn cv-btn-primary">무료 체험 신청 →</a>
-        <a href="tel:010-0000-0000" class="cv-btn cv-btn-secondary">전화 상담</a>
+        <a href="tel:010-6850-1420" class="cv-btn cv-btn-secondary">전화 상담</a>
       </div>
     </div>
     <div class="cv-section">
@@ -2295,6 +2500,13 @@ export default {
     // 화상수업
     if (pathname === '/video-lesson' || decodedPath === '/화상수업') {
       return new Response(renderVideoLesson(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    
+    // 문의하기/상담
+    if (decodedPath === '/상담' || decodedPath === '/contact' || decodedPath === '/문의') {
+      return new Response(renderContactPage(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
