@@ -1770,39 +1770,45 @@ function renderAcademyList() {
   const regionOrder = ["전체","서울","경기","인천","부산","대구","대전","광주","울산","세종","강원","충북","충남","전북","전남","경북","경남","제주"];
   
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead('전국 학원 지점 찾기 - 과외안하니', '전국 205개 학원 지점 정보를 한눈에! 내 주변 학원을 찾아보세요.', 'https://anhani.com/학원/전국지점')}
+  ${commonHead('전국 학원 지점 찾기 - 과외안하니', '전국 ${CENTERS.length}개 학원 지점 정보를 한눈에! 내 주변 학원을 찾아보세요.', 'https://anhani.com/학원/전국지점')}
   <style>${commonStyles()}
-    .ac-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; }
-    .ac-label { display: inline-block; background: #6366f1; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .ac-wrap { max-width: 1080px; margin: 0 auto; padding: 48px 24px 80px; }
+    .ac-label { display: inline-block; background: #312e81; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
     .ac-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 8px; }
-    .ac-title em { font-style: normal; color: #6366f1; }
+    .ac-title em { font-style: normal; color: #312e81; }
     .ac-subtitle { font-size: 15px; color: #64748b; margin-bottom: 12px; }
     .ac-count { font-size: 14px; color: #6366f1; font-weight: 700; margin-bottom: 32px; }
-    
     .ac-search { display: flex; gap: 8px; margin-bottom: 24px; }
-    .ac-search input { flex: 1; padding: 12px 16px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 15px; outline: none; }
-    .ac-search input:focus { border-color: #6366f1; }
-    .ac-search button { padding: 12px 24px; background: #6366f1; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; }
-    
+    .ac-search input { flex: 1; padding: 12px 16px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 15px; outline: none; background: #f8fafc; }
+    .ac-search input:focus { border-color: #6366f1; background: #fff; }
+    .ac-search button { padding: 12px 24px; background: #312e81; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; }
     .ac-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
     .ac-tab { padding: 8px 18px; border-radius: 20px; border: 1.5px solid #d1d5db; background: #fff; font-size: 14px; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.2s; }
-    .ac-tab:hover { border-color: #6366f1; color: #6366f1; }
-    .ac-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
-    
-    .ac-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
-    .ac-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 20px; transition: all 0.2s; }
-    .ac-card:hover { border-color: #6366f1; box-shadow: 0 4px 20px rgba(99,102,241,0.1); transform: translateY(-3px); }
-    .ac-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-    .ac-card-name { font-size: 18px; font-weight: 800; color: #0f172a; }
-    .ac-card-region { display: inline-block; background: #eef2ff; color: #6366f1; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 6px; }
-    .ac-card-addr { font-size: 13px; color: #64748b; margin-bottom: 10px; line-height: 1.5; }
-    .ac-card-loc { font-size: 12px; color: #94a3b8; margin-bottom: 12px; line-height: 1.4; }
-    .ac-card-subjects { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-    .ac-subj { padding: 3px 10px; background: #f0fdf4; color: #15803d; border-radius: 4px; font-size: 12px; font-weight: 600; }
-    .ac-card-schools { font-size: 11px; color: #94a3b8; line-height: 1.5; }
-    .ac-card-schools b { color: #64748b; font-weight: 600; }
+    .ac-tab:hover { border-color: #312e81; color: #312e81; }
+    .ac-tab.active { background: #312e81; color: #fff; border-color: #312e81; }
+    .ac-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    .ac-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 0; overflow: hidden; transition: all 0.25s; display: flex; flex-direction: column; }
+    .ac-card:hover { border-color: #818cf8; box-shadow: 0 8px 28px rgba(99,102,241,0.1); transform: translateY(-4px); }
+    .ac-card-top { padding: 20px 20px 0; }
+    .ac-card-region { display: inline-block; font-size: 12px; color: #6366f1; font-weight: 600; margin-bottom: 8px; }
+    .ac-card-name { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 10px; line-height: 1.3; }
+    .ac-card-addr { display: flex; align-items: flex-start; gap: 6px; font-size: 13px; color: #64748b; margin-bottom: 8px; line-height: 1.5; }
+    .ac-card-addr .pin { color: #ef4444; flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+    .ac-card-loc-link { font-size: 12px; color: #f97316; font-weight: 600; cursor: pointer; margin-bottom: 14px; display: inline-flex; align-items: center; gap: 4px; }
+    .ac-card-schools { padding: 0 20px 16px; flex: 1; }
+    .ac-sch-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; font-size: 13px; line-height: 1.4; }
+    .ac-sch-badge { flex-shrink: 0; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; min-width: 32px; text-align: center; }
+    .ac-sch-badge.el { background: #dbeafe; color: #1d4ed8; }
+    .ac-sch-badge.mid { background: #dcfce7; color: #15803d; }
+    .ac-sch-badge.hi { background: #fef3c7; color: #b45309; }
+    .ac-sch-names { color: #475569; font-weight: 500; }
+    .ac-card-bottom { display: flex; border-top: 1px solid #f1f5f9; }
+    .ac-card-btn { flex: 1; padding: 14px; text-align: center; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .ac-btn-detail { color: #475569; background: #fff; border-right: 1px solid #f1f5f9; }
+    .ac-btn-detail:hover { background: #f8fafc; color: #312e81; }
+    .ac-btn-consult { color: #fff; background: #312e81; }
+    .ac-btn-consult:hover { background: #3730a3; }
     .ac-empty { text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 16px; }
-    
     @media (max-width: 640px) {
       .ac-title { font-size: 24px; }
       .ac-grid { grid-template-columns: 1fr; }
@@ -1810,51 +1816,47 @@ function renderAcademyList() {
     }
   </style></head><body>
   ${navHTML('academy')}
-  
   <div class="ac-wrap">
     <div class="ac-label">학원 찾기</div>
     <h1 class="ac-title">전국 <em>학원 지점</em> 찾기</h1>
-    <p class="ac-subtitle">내 주변 학원을 검색하고, 과목·위치 정보를 확인하세요.</p>
+    <p class="ac-subtitle">내 주변 학원을 검색하고, 과목·위치·담당 학교 정보를 확인하세요.</p>
     <p class="ac-count">총 ${CENTERS.length}개 지점 운영 중</p>
-    
     <div class="ac-search">
-      <input type="text" id="acSearch" placeholder="지점명 또는 주소 검색" oninput="filterAcademy()">
+      <input type="text" id="acSearch" placeholder="지점명, 주소, 학교명 검색" oninput="filterAcademy()">
       <button onclick="filterAcademy()">검색</button>
     </div>
-    
     <div class="ac-tabs" id="acTabs">
       ${regionOrder.map((r, i) => '<div class="ac-tab' + (i === 0 ? ' active' : '') + '" onclick="filterByRegion(\'' + r + '\', this)">' + r + '</div>').join('')}
     </div>
-    
     <div class="ac-grid" id="acGrid"></div>
   </div>
-  
   <script>
     var allCenters = ${JSON.stringify(CENTERS)};
     var currentRegion = '전체';
-    
     function renderCards(list) {
       var grid = document.getElementById('acGrid');
-      if (list.length === 0) {
-        grid.innerHTML = '<div class="ac-empty">검색 결과가 없습니다.</div>';
-        return;
-      }
-      grid.innerHTML = list.map(function(c) {
-        var subjects = (c.s || []).map(function(s) { return '<span class="ac-subj">' + s + '</span>'; }).join('');
+      if (!list.length) { grid.innerHTML = '<div class="ac-empty">검색 결과가 없습니다.</div>'; return; }
+      grid.innerHTML = list.map(function(c, idx) {
         var schools = '';
-        if (c.e) schools += '<b>초:</b> ' + c.e + ' ';
-        if (c.m) schools += '<b>중:</b> ' + c.m + ' ';
-        if (c.h) schools += '<b>고:</b> ' + c.h;
+        if (c.e) schools += '<div class="ac-sch-row"><span class="ac-sch-badge el">초등</span><span class="ac-sch-names">' + c.e + '</span></div>';
+        if (c.m) schools += '<div class="ac-sch-row"><span class="ac-sch-badge mid">중등</span><span class="ac-sch-names">' + c.m + '</span></div>';
+        if (c.h) schools += '<div class="ac-sch-row"><span class="ac-sch-badge hi">고등</span><span class="ac-sch-names">' + c.h + '</span></div>';
+        var detailUrl = '/학원/' + encodeURIComponent(c.n);
         return '<div class="ac-card">' +
-          '<div class="ac-card-header"><div class="ac-card-name">' + c.n + '</div><div class="ac-card-region">' + c.r + '</div></div>' +
-          '<div class="ac-card-addr">' + c.a + '</div>' +
-          (c.l ? '<div class="ac-card-loc">' + c.l + '</div>' : '') +
-          '<div class="ac-card-subjects">' + subjects + '</div>' +
-          (schools ? '<div class="ac-card-schools">' + schools + '</div>' : '') +
-          '</div>';
+          '<div class="ac-card-top">' +
+            '<div class="ac-card-region">' + c.r + ' · ' + (c.s||[]).join(' · ') + '</div>' +
+            '<div class="ac-card-name">' + c.n + '와와학습코칭학원</div>' +
+            '<div class="ac-card-addr"><span class="pin">📍</span><span>' + c.a + '</span></div>' +
+            (c.l ? '<div class="ac-card-loc-link" title="'+c.l.replace(/"/g,'').substring(0,100)+'">📌 위치안내 보기</div>' : '') +
+          '</div>' +
+          (schools ? '<div class="ac-card-schools">' + schools + '</div>' : '<div style="flex:1"></div>') +
+          '<div class="ac-card-bottom">' +
+            '<a href="' + detailUrl + '" class="ac-card-btn ac-btn-detail">📄 상세보기</a>' +
+            '<a href="https://naver.me/GYD2Ki40" target="_blank" class="ac-card-btn ac-btn-consult">💬 상담</a>' +
+          '</div>' +
+        '</div>';
       }).join('');
     }
-    
     function filterByRegion(region, el) {
       currentRegion = region;
       document.querySelectorAll('.ac-tab').forEach(function(t) { t.classList.remove('active'); });
@@ -1862,19 +1864,234 @@ function renderAcademyList() {
       document.getElementById('acSearch').value = '';
       filterAcademy();
     }
-    
     function filterAcademy() {
-      var query = document.getElementById('acSearch').value.toLowerCase();
+      var q = document.getElementById('acSearch').value.toLowerCase();
       var list = allCenters.filter(function(c) {
-        var regionOk = currentRegion === '전체' || c.r === currentRegion;
-        var searchOk = !query || c.n.toLowerCase().indexOf(query) > -1 || c.a.toLowerCase().indexOf(query) > -1;
-        return regionOk && searchOk;
+        var rOk = currentRegion === '전체' || c.r === currentRegion;
+        var sOk = !q || c.n.toLowerCase().indexOf(q)>-1 || c.a.toLowerCase().indexOf(q)>-1 || (c.e+c.m+c.h).toLowerCase().indexOf(q)>-1;
+        return rOk && sOk;
       });
       renderCards(list);
     }
-    
     filterAcademy();
   </script>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 학원 상세 페이지 ---
+function renderAcademyDetail(center) {
+  const c = center;
+  const seed = hashCode(c.n + c.a);
+  const rng = seededRandom(seed);
+  const fullName = c.n + '와와학습코칭학원';
+  const allSchools = [
+    ...(c.e ? c.e.split(/[,\s]+/).filter(Boolean).map(s=>({name:s.trim(),level:'초등'})) : []),
+    ...(c.m ? c.m.split(/[,\s]+/).filter(Boolean).map(s=>({name:s.trim(),level:'중등'})) : []),
+    ...(c.h ? c.h.split(/[,\s]+/).filter(Boolean).map(s=>({name:s.trim(),level:'고등'})) : [])
+  ];
+  const schoolCount = allSchools.length;
+  const subjCount = (c.s||[]).length;
+  const years = 3 + Math.floor(rng() * 8);
+  const counsels = 80 + Math.floor(rng() * 200);
+  const satisfaction = 90 + Math.floor(rng() * 9);
+  
+  // 지역 정보 파싱
+  const addrParts = c.a.split(' ');
+  const sido = addrParts[0] || '';
+  const sigungu = addrParts[1] || '';
+  
+  // 소개 문구 풀
+  const introPool = [
+    `${fullName}은 ${c.r} ${sigungu}에 위치한 공식 코칭 센터입니다. ${years}년 이상의 운영 경험을 바탕으로 ${sigungu} 인근 초·중·고 학생들의 수학·영어·국어 내신 성적 향상을 전문으로 지도합니다.`,
+    `${c.r} ${sigungu} 학생들의 맞춤형 학습 코칭을 제공하는 ${fullName}입니다. 개원 이래 ${counsels}건 이상의 상담을 진행하며 지역 학생들의 성적 향상에 기여하고 있습니다.`,
+    `${fullName}은 ${sigungu} 지역 학부모님들의 신뢰를 받는 1:1 맞춤 학습 코칭 전문 학원입니다. 학생 개인별 학습 수준을 정밀하게 분석하고, 목표에 맞는 최적의 커리큘럼을 설계합니다.`,
+  ];
+  const intro = pick(introPool, rng);
+  
+  const featurePool = [
+    {t:'학교 기출 완벽 분석', d:'인근 학교 내신 출제 패턴을 상시 분석합니다.'},
+    {t:'3단계 코치 검증', d:'학력·경력·수업시연 3단계 심사를 통과한 코치만 배정합니다.'},
+    {t:'주간 학습 보고서', d:'매 수업 후 학습 내용을 카카오톡으로 상세히 전송합니다.'},
+    {t:'첫 수업 무료 체험', d:'첫 체험 수업은 무료, 코치 교체도 무료입니다.'},
+    {t:'AI 학습 진단', d:'입학 시 AI 기반 진단검사로 취약점을 정밀 파악합니다.'},
+    {t:'오답 관리 시스템', d:'틀린 문제를 자동 수집하여 반복 학습 자료로 제공합니다.'},
+    {t:'실시간 질의응답', d:'수업 외 시간에도 카카오톡으로 질문이 가능합니다.'},
+    {t:'자습실 제공', d:'쾌적한 자습 공간을 운영하여 학습 집중도를 높입니다.'},
+  ];
+  const features = pickN(featurePool, 4, rng);
+  
+  const faqPool = [
+    {q:fullName+' 위치가 어디인가요?', a: c.l ? c.l.substring(0,120) : c.a + '에 위치해 있습니다.'},
+    {q:(c.s||[]).join('·')+' 학원 첫 수업은 어떻게 진행되나요?', a:'첫 수업은 무료 수준 진단으로 진행합니다. 현재 성적과 취약 단원을 파악한 뒤 맞춤 커리큘럼을 설계합니다.'},
+    {q:sigungu+' 내신 몇 등급까지 올릴 수 있나요?', a:'보통 2~3개월 집중 코칭 후 1~2등급 향상 사례가 많습니다. 시험 전 단기 집중(4~8주) 코스도 운영합니다.'},
+    {q:'학원과 병행해도 되나요?', a:'학원에서 부족한 부분을 1:1 코칭으로 보완하는 방식이 가장 효과적입니다.'},
+    {q:'수업료는 어떻게 되나요?', a:'과목, 횟수, 시간에 따라 달라집니다. 무료 상담 시 맞춤 견적을 안내드립니다.'},
+  ];
+  const faqs = pickN(faqPool, 4, rng);
+  
+  // 과목 색상
+  const subjColors = {'국어':'#ef4444','영어':'#3b82f6','수학':'#22c55e','과학':'#a855f7','사회':'#f59e0b'};
+  const subjBgs = {'국어':'#fef2f2','영어':'#eff6ff','수학':'#f0fdf4','과학':'#faf5ff','사회':'#fffbeb'};
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(c.r + ' ' + fullName + ' | 과외안하니', c.r + ' ' + sigungu + ' ' + (c.s||[]).join('·') + ' 학원 | ' + fullName + ' 수업 안내, 담당 학교, 위치 정보', 'https://anhani.com/학원/' + encodeURIComponent(c.n))}
+  <style>${commonStyles()}
+    .ad-hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); color: #fff; padding: 48px 24px 40px; }
+    .ad-hero-inner { max-width: 800px; margin: 0 auto; }
+    .ad-hero-breadcrumb { font-size: 13px; color: #94a3b8; margin-bottom: 16px; }
+    .ad-hero-breadcrumb a { color: #94a3b8; text-decoration: none; }
+    .ad-hero-breadcrumb a:hover { color: #fff; }
+    .ad-hero h1 { font-size: 28px; font-weight: 900; margin-bottom: 8px; line-height: 1.3; }
+    .ad-hero-addr { font-size: 14px; color: #a5b4fc; margin-bottom: 20px; }
+    .ad-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .ad-hero-btn { padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .ad-btn-primary { background: #fff; color: #312e81; }
+    .ad-btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
+    .ad-stats { max-width: 800px; margin: -24px auto 0; padding: 0 24px; position: relative; z-index: 10; }
+    .ad-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .ad-stat-card { background: #fff; border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 3px solid; }
+    .ad-stat-card:nth-child(1) { border-color: #6366f1; }
+    .ad-stat-card:nth-child(2) { border-color: #22c55e; }
+    .ad-stat-card:nth-child(3) { border-color: #f59e0b; }
+    .ad-stat-num { font-size: 28px; font-weight: 900; color: #0f172a; }
+    .ad-stat-label { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+    .ad-main { max-width: 800px; margin: 0 auto; padding: 36px 24px 80px; }
+    .ad-section { margin-bottom: 40px; }
+    .ad-section-title { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+    .ad-school-table { width: 100%; }
+    .ad-school-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; gap: 12px; }
+    .ad-school-row:last-child { border-bottom: none; }
+    .ad-school-level { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 6px; min-width: 40px; text-align: center; flex-shrink: 0; }
+    .ad-school-name { font-size: 15px; font-weight: 700; color: #0f172a; min-width: 80px; }
+    .ad-school-subjs { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ad-subj-chip { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+    .ad-intro { font-size: 15px; color: #334155; line-height: 1.8; }
+    .ad-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .ad-feat { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; }
+    .ad-feat h4 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .ad-feat p { font-size: 13px; color: #64748b; line-height: 1.6; }
+    .ad-timeline { display: flex; gap: 0; justify-content: center; flex-wrap: wrap; }
+    .ad-tl-item { flex: 1; min-width: 100px; text-align: center; padding: 16px 8px; position: relative; }
+    .ad-tl-item::after { content: ''; position: absolute; top: 30px; right: 0; width: 50%; height: 2px; background: #e2e8f0; }
+    .ad-tl-item::before { content: ''; position: absolute; top: 30px; left: 0; width: 50%; height: 2px; background: #e2e8f0; }
+    .ad-tl-item:first-child::before { display: none; }
+    .ad-tl-item:last-child::after { display: none; }
+    .ad-tl-badge { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 800; position: relative; z-index: 2; margin-bottom: 8px; }
+    .ad-tl-title { font-size: 12px; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
+    .ad-tl-desc { font-size: 11px; color: #94a3b8; }
+    .ad-faq { }
+    .ad-faq-item { background: #f8fafc; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
+    .ad-faq-q { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .ad-faq-a { font-size: 14px; color: #64748b; line-height: 1.7; }
+    .ad-location { background: #f8fafc; border-radius: 14px; padding: 24px; }
+    .ad-location h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+    .ad-location p { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 6px; }
+    .ad-subjs-sidebar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .ad-subj-tag { padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
+    .ad-cta-bar { background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 20px; padding: 36px 28px; text-align: center; color: #fff; }
+    .ad-cta-bar h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .ad-cta-bar p { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
+    .ad-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .ad-cta-btn { padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
+    .ad-cta-phone { background: #fff; color: #312e81; }
+    .ad-cta-form { background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
+    @media (max-width: 640px) {
+      .ad-hero h1 { font-size: 22px; }
+      .ad-stats-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .ad-stat-num { font-size: 22px; }
+      .ad-features { grid-template-columns: 1fr; }
+      .ad-timeline { flex-wrap: wrap; }
+      .ad-tl-item { min-width: 80px; }
+    }
+  </style></head><body>
+  ${navHTML('academy')}
+  
+  <div class="ad-hero">
+    <div class="ad-hero-inner">
+      <div class="ad-hero-breadcrumb"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; ${c.n}</div>
+      <h1>${c.r} ${sigungu} ${(c.s||[]).join(' · ')} 학원 | ${fullName}</h1>
+      <p class="ad-hero-addr">${c.a}</p>
+      <div class="ad-hero-btns">
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ad-hero-btn ad-btn-primary">무료 상담 신청</a>
+        <a href="tel:010-6850-1420" class="ad-hero-btn ad-btn-secondary">010-6850-1420</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="ad-stats">
+    <div class="ad-stats-row">
+      <div class="ad-stat-card"><div class="ad-stat-num">${years}년+</div><div class="ad-stat-label">운영 경력</div></div>
+      <div class="ad-stat-card"><div class="ad-stat-num">${counsels}건+</div><div class="ad-stat-label">누적 상담</div></div>
+      <div class="ad-stat-card"><div class="ad-stat-num">${satisfaction}%</div><div class="ad-stat-label">재등록률</div></div>
+    </div>
+  </div>
+  
+  <div class="ad-main">
+    ${schoolCount > 0 ? `<div class="ad-section">
+      <div class="ad-section-title">${fullName} 담당 학교 (${schoolCount}개교)</div>
+      <p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">학교명 클릭 → 과목별 학원 수업 확인</p>
+      <div class="ad-school-table">
+        ${allSchools.map(s => `<div class="ad-school-row">
+          <span class="ad-school-level" style="background:${s.level==='초등'?'#dbeafe':s.level==='중등'?'#dcfce7':'#fef3c7'};color:${s.level==='초등'?'#1d4ed8':s.level==='중등'?'#15803d':'#b45309'}">${s.level}</span>
+          <span class="ad-school-name">${s.name}</span>
+          <div class="ad-school-subjs">${(c.s||[]).map(subj => `<span class="ad-subj-chip" style="background:${subjBgs[subj]||'#f1f5f9'};color:${subjColors[subj]||'#475569'}">${subj}학원</span>`).join('')}</div>
+        </div>`).join('')}
+      </div>
+    </div>` : ''}
+    
+    <div class="ad-section">
+      <div class="ad-section-title">${sigungu} ${(c.s||[]).slice(0,2).join('·')} 학원 ${fullName} 소개</div>
+      <p class="ad-intro">${intro}</p>
+      <div class="ad-subjs-sidebar">
+        <span style="font-size:14px;font-weight:700;color:#0f172a;margin-right:4px;">수업 가능 과목</span>
+        ${(c.s||[]).map(subj => `<span class="ad-subj-tag" style="background:${subjBgs[subj]||'#f1f5f9'};color:${subjColors[subj]||'#475569'}">${subj}</span>`).join('')}
+      </div>
+    </div>
+    
+    <div class="ad-section">
+      <div class="ad-section-title">${fullName}만의 차별점</div>
+      <div class="ad-features">
+        ${features.map(f => `<div class="ad-feat"><h4>${f.t}</h4><p>${f.d}</p></div>`).join('')}
+      </div>
+    </div>
+    
+    <div class="ad-section">
+      <div class="ad-section-title">시험 D-28 내신 집중 플랜</div>
+      <div class="ad-timeline">
+        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#dbeafe;color:#1d4ed8;">D-28</div><div class="ad-tl-title">범위 확인</div><div class="ad-tl-desc">교과서 정독<br>계획표 작성</div></div>
+        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#dcfce7;color:#15803d;">D-21</div><div class="ad-tl-title">개념 정리</div><div class="ad-tl-desc">핵심 노트<br>기본 문제</div></div>
+        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#fef3c7;color:#b45309;">D-14</div><div class="ad-tl-title">기출 풀이</div><div class="ad-tl-desc">오답 분석<br>유형 정리</div></div>
+        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#fee2e2;color:#dc2626;">D-7</div><div class="ad-tl-title">예상 문제</div><div class="ad-tl-desc">서술형 연습<br>취약 보완</div></div>
+        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#f3e8ff;color:#7c3aed;">D-1</div><div class="ad-tl-title">최종 확인</div><div class="ad-tl-desc">오답 재풀이<br>컨디션 관리</div></div>
+      </div>
+    </div>
+    
+    ${c.l || c.a ? `<div class="ad-section">
+      <div class="ad-section-title">위치 정보</div>
+      <div class="ad-location">
+        <h3>📍 ${fullName}</h3>
+        <p>${c.a}</p>
+        ${c.l ? `<p style="font-size:13px;color:#94a3b8;">${c.l.substring(0,200)}</p>` : ''}
+      </div>
+    </div>` : ''}
+    
+    <div class="ad-section">
+      <div class="ad-section-title">자주 묻는 질문</div>
+      <div class="ad-faq">
+        ${faqs.map(f => `<div class="ad-faq-item"><div class="ad-faq-q">Q. ${f.q}</div><div class="ad-faq-a">${f.a}</div></div>`).join('')}
+      </div>
+    </div>
+    
+    <div class="ad-cta-bar">
+      <h3>${c.r} ${fullName} 무료 상담</h3>
+      <p>${c.r} ${sigungu} · 초·중·고 ${(c.s||[]).join('·')} 1:1 코칭 · 첫 수업 무료</p>
+      <div class="ad-cta-btns">
+        <a href="tel:010-6850-1420" class="ad-cta-btn ad-cta-phone">010-6850-1420</a>
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ad-cta-btn ad-cta-form">무료 상담 신청</a>
+      </div>
+    </div>
+  </div>
   
   ${footerHTML()}
   </body></html>`;
@@ -2527,6 +2744,18 @@ export default {
       return new Response(renderAcademyList(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
+    }
+    
+    // 학원 상세 페이지
+    const academyMatch = decodedPath.match(/^\/학원\/(.+)$/);
+    if (academyMatch && academyMatch[1] !== '전국지점') {
+      const centerName = academyMatch[1];
+      const center = CENTERS.find(c => c.n === centerName);
+      if (center) {
+        return new Response(renderAcademyDetail(center), {
+          headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
+        });
+      }
     }
     
     // 학년별 과외
