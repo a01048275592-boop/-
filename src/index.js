@@ -3577,6 +3577,134 @@ function renderConversationPage(lang) {
       <h2>레벨별 수업</h2>
       <div class="cv-levels">${d.levels.map((l, i) => `<div class="cv-level"><div class="cv-level-num">${i+1}</div><div class="cv-level-text">${l}</div></div>`).join('')}</div>
     </div>
+    ${lang === 'chinese' ? `
+    <div class="cv-section">
+      <h2 style="border-left-color:${d.color}">CN 중국어 수업 상세 보기</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        ${CN_KEYWORDS.map((kw,i) => `<a href="/외국어/중국어/article/${i}" style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all 0.2s"
+          onmouseover="this.style.borderColor='#dc2626';this.style.color='#dc2626'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'">
+          <span>${kw.icon}</span><span>${kw.title}</span></a>`).join('')}
+      </div>
+    </div>` : ''}
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 중국어 키워드 아티클 시스템 ---
+const CN_KEYWORDS = [
+  {icon:"🔰",title:"중국어 왕초보 독학 시작 가이드"},
+  {icon:"🗣️",title:"중국어 성조 발음 교정 완벽 정리"},
+  {icon:"📝",title:"HSK 3급 한 달 합격 전략"},
+  {icon:"📝",title:"HSK 4급 독학 공부법 총정리"},
+  {icon:"📝",title:"HSK 5급 단기 합격 로드맵"},
+  {icon:"📝",title:"HSK 6급 고득점 실전 전략"},
+  {icon:"💬",title:"중국어 일상 회화 필수 표현 100"},
+  {icon:"💼",title:"비즈니스 중국어 이메일 작성법"},
+  {icon:"💼",title:"중국 출장 실전 비즈니스 회화"},
+  {icon:"🧒",title:"초등학생 중국어 첫 시작 가이드"},
+  {icon:"📖",title:"중국어 기초 문법 핵심 정리"},
+  {icon:"🔤",title:"중국어 핀인 빠르게 마스터하기"},
+  {icon:"✈️",title:"중국 여행 필수 회화 50문장"},
+  {icon:"🎓",title:"중국 유학 준비 A to Z"},
+  {icon:"📺",title:"중국 드라마로 중국어 공부하기"},
+  {icon:"🏫",title:"제2외국어 중국어 내신 만점 전략"},
+  {icon:"🏫",title:"외고 중국어 입시 준비 가이드"},
+  {icon:"🎤",title:"HSKK 말하기 시험 완벽 대비"},
+  {icon:"📄",title:"TSC 중국어 말하기 자격증 가이드"},
+  {icon:"🤝",title:"중국어 면접 준비 핵심 표현"},
+  {icon:"📱",title:"중국어 온라인 화상 수업 장단점"},
+  {icon:"🔁",title:"중국어 단어 암기 효율적인 방법"},
+  {icon:"漢",title:"중국어 한자 빠르게 외우는 법"},
+  {icon:"📊",title:"중국어 듣기 실력 향상 훈련법"},
+  {icon:"✍️",title:"중국어 작문 실력 키우는 방법"},
+  {icon:"🏅",title:"중국어 어학특기자 전형 준비법"},
+  {icon:"🔄",title:"중국어 통번역 실력 키우는 루틴"},
+  {icon:"👨‍🏫",title:"중국어 과외 vs 학원 비교 분석"},
+  {icon:"📅",title:"중국어 3개월 마스터 플랜"},
+  {icon:"🎯",title:"중국어 공부 목표별 학습 로드맵"},
+];
+
+const CN_ARTICLE_INTROS = [
+  (t)=>`${t}, 어디서부터 시작해야 할지 고민이시죠? 과외안하니에서는 학생 개개인의 목표와 수준에 맞춘 1:1 맞춤 수업으로, 가장 빠르고 확실한 학습 효과를 보장합니다. 이 글에서는 수업의 핵심 내용, 커리큘럼, 그리고 기대할 수 있는 학습 효과까지 상세히 안내해 드릴게요.`,
+  (t)=>`"${t}" 수업을 찾고 계신가요? 중국어 학습은 목표에 따라 접근법이 완전히 달라져요. 과외안하니의 전문 강사진이 여러분의 목표를 정확히 분석하고, 그에 맞는 커리큘럼을 설계해 드립니다. 지금부터 수업의 모든 것을 알려드릴게요.`,
+  (t)=>`중국어를 배우고 싶은 이유는 다양합니다. 특히 "${t}"에 관심을 가지신 분들이 점점 늘고 있어요. 효율적인 학습을 위해 어떤 수업이 필요한지, 어떤 효과를 기대할 수 있는지 지금부터 자세히 설명해 드리겠습니다.`,
+  (t)=>`${t}에 대해 알아보고 계시군요! 중국어는 전 세계에서 가장 많이 사용되는 언어 중 하나로, 체계적으로 배우면 생각보다 빠르게 실력이 늘어요. 과외안하니만의 검증된 수업 방식과 커리큘럼을 소개합니다.`,
+];
+
+const CN_SECTIONS = [
+  (t)=>({h:"핵심 수업 내용",p:`"${t}" 수업에서는 학생의 현재 수준을 먼저 진단하고, 목표 달성에 필요한 핵심 영역을 집중적으로 학습합니다. 발음·성조 교정, 문법 구조 이해, 실전 회화 연습을 균형 있게 다루며, 매 수업마다 실력 향상을 체감할 수 있도록 구성되어 있어요.`}),
+  (t)=>({h:"맞춤 커리큘럼 안내",p:`과외안하니의 "${t}" 커리큘럼은 4단계로 구성됩니다. 1단계: 레벨 테스트와 목표 설정, 2단계: 기초 다지기(발음·핵심 문법), 3단계: 실전 적용(듣기·말하기·읽기), 4단계: 심화 훈련과 실력 점검. 각 단계는 학생의 진도에 맞춰 유연하게 조정됩니다.`}),
+  (t)=>({h:"수업 방식 & 일정",p:`수업은 1:1 대면 또는 온라인(화상) 중 선택할 수 있어요. 주 2~3회, 회당 50분~90분이 가장 효과적이며, 바쁜 직장인이나 학생은 주 1회 집중 수업도 가능합니다. 매 수업 후 복습 자료와 숙제를 제공하고, 다음 수업에서 확인하는 사이클로 진행됩니다.`}),
+  (t)=>({h:"기대되는 학습 효과",p:`"${t}" 수업을 꾸준히 수강하면, 3개월 내에 기초 회화가 가능해지고 6개월이면 실전 대화에 자신감이 생깁니다. 시험 대비 수업의 경우, 목표 등급 달성률이 92%에 달해요. 특히 1:1 수업은 학원 대비 학습 속도가 2~3배 빠릅니다.`}),
+  (t)=>({h:"이런 분께 추천합니다",p:`"${t}" 수업은 다음과 같은 분들에게 특히 효과적이에요. 중국어를 처음 시작하지만 빠르게 실력을 쌓고 싶은 분, 학원에서 효과를 못 보고 1:1 맞춤이 필요한 분, 특정 목표(시험/유학/비즈니스)가 명확한 분, 시간이 불규칙해서 유연한 스케줄이 필요한 분께 추천드립니다.`}),
+  (t)=>({h:"과외안하니 중국어 수업의 차별점",p:`일반 학원과 달리, 과외안하니는 학생 1명에게 최적화된 수업을 제공합니다. 발음·성조 교정은 반복 연습이 핵심인데, 1:1이기 때문에 즉각적인 피드백이 가능해요. 또한 교재도 학생의 관심사와 목표에 맞춰 선정하며, 진도를 학생 페이스에 맞춥니다.`}),
+  (t)=>({h:"수강생 실제 후기",p:`"처음에는 성조가 너무 어려웠는데, 선생님이 하나씩 교정해주시니까 2개월 만에 중국인 친구와 간단한 대화를 할 수 있게 됐어요!" - 수강생 K님. "HSK 4급을 3개월 만에 합격했습니다. 기출 패턴 분석이 정말 정확했어요." - 수강생 P님.`}),
+  (t)=>({h:"무료 체험 수업 안내",p:`아직 결정이 어려우시다면, 먼저 무료 체험 수업을 받아보세요. 25분 체험 수업에서 현재 레벨을 진단하고, 학습 로드맵까지 제안해 드립니다. 부담 없이 경험해 보시고 결정하셔도 됩니다. 카카오톡(kdy5592) 또는 전화(010-6850-1420)로 신청 가능합니다.`}),
+];
+
+function renderChineseArticle(articleIdx) {
+  const idx = parseInt(articleIdx);
+  if (idx < 0 || idx >= CN_KEYWORDS.length) return null;
+  const kw = CN_KEYWORDS[idx];
+  
+  const seed = hashCode('chinese-article-' + idx);
+  const rng = seededRandom(seed);
+  
+  const intro = pick(CN_ARTICLE_INTROS, rng)(kw.title);
+  const secs = pickN(CN_SECTIONS, 5, rng).map(fn => fn(kw.title));
+  const canonical = `https://anhani.com/외국어/중국어/article/${idx}`;
+  
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(kw.title + ' | 과외안하니 중국어', kw.title + ' - 1:1 맞춤 중국어 수업. 핵심 내용, 커리큘럼, 학습 효과까지 상세 안내.', canonical)}
+  <meta name="robots" content="index, follow">
+  <style>${commonStyles()}
+    .ca-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
+    .ca-badge { display: inline-block; background: #fef2f2; color: #dc2626; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
+    .ca-wrap h1 { font-size: 26px; font-weight: 900; color: #0f172a; line-height: 1.4; margin-bottom: 12px; }
+    .ca-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
+    .ca-article h2 { font-size: 20px; font-weight: 700; color: #0f172a; margin: 28px 0 12px; padding-left: 12px; border-left: 4px solid #dc2626; }
+    .ca-article p { font-size: 16px; color: #334155; line-height: 1.85; margin-bottom: 14px; word-break: keep-all; }
+    .ca-cta { background: linear-gradient(135deg, #991b1b, #dc2626); border-radius: 14px; padding: 28px; text-align: center; color: #fff; margin: 36px 0; }
+    .ca-cta h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+    .ca-cta p { font-size: 13px; opacity: 0.8; margin-bottom: 14px; }
+    .ca-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .ca-cta-btn { padding: 10px 22px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .ca-cta-w { background: #fff; color: #dc2626; }
+    .ca-cta-o { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .ca-related { margin-top: 36px; padding-top: 24px; border-top: 2px solid #e2e8f0; }
+    .ca-related h3 { font-size: 17px; font-weight: 800; margin-bottom: 14px; }
+    .ca-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .ca-related-item { padding: 12px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #475569; font-size: 13px; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center; }
+    .ca-related-item:hover { border-color: #dc2626; color: #dc2626; }
+    @media (max-width: 640px) { .ca-wrap h1 { font-size: 22px; } .ca-related-grid { grid-template-columns: 1fr; } }
+  </style></head><body>
+  ${navHTML('foreign')}
+  <div class="ca-wrap">
+    <div class="ca-badge">🇨🇳 중국어 수업</div>
+    <h1>${kw.icon} ${kw.title}</h1>
+    <div class="ca-meta">✏️ 과외안하니 중국어팀 · 📅 2026년 4월</div>
+    <div class="ca-article">
+      <p>${intro}</p>
+      ${secs.map(s => `<h2>${s.h}</h2><p>${s.p}</p>`).join('')}
+    </div>
+    <div class="ca-cta">
+      <h3>🇨🇳 중국어 무료 체험 수업</h3>
+      <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
+      <div class="ca-cta-btns">
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
+        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
+      </div>
+    </div>
+    <div class="ca-related">
+      <h3>CN 중국어 수업 상세 보기</h3>
+      <div class="ca-related-grid">
+        ${CN_KEYWORDS.filter((_,i)=>i!==idx).slice(0,8).map((k,i)=>{
+          const ri = i >= idx ? i+1 : i;
+          return `<a href="/외국어/중국어/article/${ri}" class="ca-related-item"><span>${k.icon} ${k.title}</span><span>→</span></a>`;
+        }).join('')}
+      </div>
+    </div>
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -4178,6 +4306,13 @@ export default {
     }
     if (decodedPath === '/외국어/중국어') {
       return new Response(renderConversationPage('chinese'), { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+    }
+    const cnArticleMatch = decodedPath.match(/^\/외국어\/중국어\/article\/(\d+)$/);
+    if (cnArticleMatch) {
+      const html = renderChineseArticle(cnArticleMatch[1]);
+      if (html) return new Response(html, {
+        headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
+      });
     }
     if (decodedPath === '/외국어/일본어') {
       return new Response(renderConversationPage('japanese'), { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
