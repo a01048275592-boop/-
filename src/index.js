@@ -3659,34 +3659,51 @@ function renderChineseArticle(articleIdx) {
   ${commonHead(kw.title + ' | 과외안하니 중국어', kw.title + ' - 1:1 맞춤 중국어 수업. 핵심 내용, 커리큘럼, 학습 효과까지 상세 안내.', canonical)}
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}
-    .ca-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
-    .ca-badge { display: inline-block; background: #fef2f2; color: #dc2626; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
-    .ca-wrap h1 { font-size: 26px; font-weight: 900; color: #0f172a; line-height: 1.4; margin-bottom: 12px; }
-    .ca-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
-    .ca-article h2 { font-size: 20px; font-weight: 700; color: #0f172a; margin: 28px 0 12px; padding-left: 12px; border-left: 4px solid #dc2626; }
-    .ca-article p { font-size: 16px; color: #334155; line-height: 1.85; margin-bottom: 14px; word-break: keep-all; }
-    .ca-cta { background: linear-gradient(135deg, #991b1b, #dc2626); border-radius: 14px; padding: 28px; text-align: center; color: #fff; margin: 36px 0; }
-    .ca-cta h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
-    .ca-cta p { font-size: 13px; opacity: 0.8; margin-bottom: 14px; }
+    .ca-hero { background: linear-gradient(135deg, #450a0a 0%, #991b1b 50%, #dc2626 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+    .ca-hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+    .ca-hero h1 { font-size: 28px; font-weight: 900; line-height: 1.4; margin-bottom: 8px; }
+    .ca-hero-meta { font-size: 13px; color: rgba(255,255,255,0.6); }
+    .ca-wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 0; }
+    .ca-intro { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin-bottom: 28px; position: relative; }
+    .ca-intro::before { content: '💡'; position: absolute; top: -14px; left: 20px; background: #fff; padding: 0 8px; font-size: 20px; }
+    .ca-intro p { font-size: 15px; color: #334155; line-height: 1.8; margin: 0; word-break: keep-all; }
+    .ca-sections { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+    .ca-sec { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 0; overflow: hidden; transition: all 0.2s; }
+    .ca-sec:hover { border-color: #fca5a5; box-shadow: 0 4px 16px rgba(220,38,38,0.06); }
+    .ca-sec-head { display: flex; align-items: center; gap: 14px; padding: 18px 20px; background: #fef2f2; border-bottom: 1px solid #fecaca; }
+    .ca-sec-num { width: 32px; height: 32px; background: #dc2626; color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
+    .ca-sec-title { font-size: 17px; font-weight: 700; color: #0f172a; }
+    .ca-sec-body { padding: 18px 20px; }
+    .ca-sec-body p { font-size: 15px; color: #475569; line-height: 1.8; margin: 0; word-break: keep-all; }
+    .ca-cta { background: linear-gradient(135deg, #450a0a, #dc2626); border-radius: 16px; padding: 32px 24px; text-align: center; color: #fff; margin: 32px 0; }
+    .ca-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .ca-cta p { font-size: 13px; opacity: 0.7; margin-bottom: 16px; }
     .ca-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .ca-cta-btn { padding: 10px 22px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .ca-cta-btn { padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
     .ca-cta-w { background: #fff; color: #dc2626; }
     .ca-cta-o { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-    .ca-related { margin-top: 36px; padding-top: 24px; border-top: 2px solid #e2e8f0; }
-    .ca-related h3 { font-size: 17px; font-weight: 800; margin-bottom: 14px; }
-    .ca-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .ca-related-item { padding: 12px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #475569; font-size: 13px; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center; }
-    .ca-related-item:hover { border-color: #dc2626; color: #dc2626; }
-    @media (max-width: 640px) { .ca-wrap h1 { font-size: 22px; } .ca-related-grid { grid-template-columns: 1fr; } }
+    .ca-related { margin-top: 36px; padding-top: 28px; border-top: 2px solid #f1f5f9; }
+    .ca-related h3 { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #dc2626; }
+    .ca-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .ca-related-item { padding: 14px 16px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; text-decoration: none; color: #334155; font-size: 14px; font-weight: 500; transition: all 0.2s; display: flex; align-items: center; gap: 10px; }
+    .ca-related-item:hover { border-color: #dc2626; color: #dc2626; transform: translateX(4px); }
+    .ca-related-arrow { color: #d1d5db; margin-left: auto; flex-shrink: 0; }
+    .ca-related-item:hover .ca-related-arrow { color: #dc2626; }
+    @media (max-width: 640px) { .ca-hero h1 { font-size: 22px; } .ca-related-grid { grid-template-columns: 1fr; } .ca-sec-head { padding: 14px 16px; } .ca-sec-body { padding: 14px 16px; } }
   </style></head><body>
   ${navHTML('foreign')}
-  <div class="ca-wrap">
-    <div class="ca-badge">🇨🇳 중국어 수업</div>
+  <div class="ca-hero">
+    <div class="ca-hero-badge">🇨🇳 CN 중국어 수업</div>
     <h1>${kw.icon} ${kw.title}</h1>
-    <div class="ca-meta">✏️ 과외안하니 중국어팀 · 📅 2026년 4월</div>
-    <div class="ca-article">
-      <p>${intro}</p>
-      ${secs.map(s => `<h2>${s.h}</h2><p>${s.p}</p>`).join('')}
+    <div class="ca-hero-meta">과외안하니 중국어팀 · 2026년 4월</div>
+  </div>
+  <div class="ca-wrap">
+    <div class="ca-intro"><p>${intro}</p></div>
+    <div class="ca-sections">
+      ${secs.map((s,i) => `<div class="ca-sec">
+        <div class="ca-sec-head"><div class="ca-sec-num">${i+1}</div><div class="ca-sec-title">${s.h}</div></div>
+        <div class="ca-sec-body"><p>${s.p}</p></div>
+      </div>`).join('')}
     </div>
     <div class="ca-cta">
       <h3>🇨🇳 중국어 무료 체험 수업</h3>
@@ -3697,11 +3714,11 @@ function renderChineseArticle(articleIdx) {
       </div>
     </div>
     <div class="ca-related">
-      <h3>CN 중국어 수업 상세 보기</h3>
+      <h3>중국어 수업 더보기</h3>
       <div class="ca-related-grid">
         ${CN_KEYWORDS.filter((_,i)=>i!==idx).slice(0,8).map((k,i)=>{
           const ri = i >= idx ? i+1 : i;
-          return `<a href="/외국어/중국어/article/${ri}" class="ca-related-item"><span>${k.icon} ${k.title}</span><span>→</span></a>`;
+          return `<a href="/외국어/중국어/article/${ri}" class="ca-related-item"><span>${k.icon}</span><span>${k.title}</span><span class="ca-related-arrow">→</span></a>`;
         }).join('')}
       </div>
     </div>
