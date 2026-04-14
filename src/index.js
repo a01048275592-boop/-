@@ -3735,144 +3735,6 @@ function renderEnglishArticle(articleIdx) {
 }
 
 // --- 학습정보 페이지 ---
-// --- 학습가이드 ---
-const STUDY_GUIDES = [
-  {cat:"학습법",title:"시험기간 공부 전략 총정리",desc:"시험 기간에 효율적으로 공부하는 과목별 전략과 시간 관리법.",tag:"인기"},
-  {cat:"학습법",title:"자기주도학습 실천 방법 가이드",desc:"스스로 계획하고 실행하는 학습 습관을 만드는 검증된 방법.",tag:"추천"},
-  {cat:"시험대비",title:"수능 준비 방법 총정리",desc:"수능을 체계적으로 준비하는 방법. 과목별 전략과 시간표 작성법.",tag:"인기"},
-  {cat:"시험대비",title:"내신 성적 올리는 전략 정리",desc:"학교 내신 시험에서 확실하게 등급을 올리는 핵심 전략.",tag:"추천"},
-  {cat:"학습법",title:"오답노트 제대로 만드는 법",desc:"성적 상위 1%가 실천하는 오답노트 작성과 활용 방법.",tag:"인기"},
-  {cat:"입시정보",title:"수시 vs 정시 유리한 전형 분석",desc:"자신의 강점에 맞는 입시 전형을 선택하는 방법.",tag:"최신"},
-  {cat:"학부모",title:"자녀 학습 동기부여 대화법",desc:"공부 의욕이 없는 아이에게 효과적으로 동기를 부여하는 방법.",tag:""},
-  {cat:"과목별",title:"수학 등급 올리는 단계별 방법",desc:"현재 등급별 맞춤 수학 학습 전략과 추천 교재 안내.",tag:"인기"},
-  {cat:"과목별",title:"영어 독해 속도 올리는 방법",desc:"영어 지문을 빠르고 정확하게 읽는 스킬을 단계별로 안내.",tag:""},
-  {cat:"입시정보",title:"학생부 종합전형 합격 비결",desc:"학생부 종합전형에서 좋은 평가를 받는 활동과 기록 방법.",tag:"추천"},
-  {cat:"학습법",title:"집중력 높이는 공부 환경 세팅",desc:"공부할 때 집중력을 최대로 끌어올리는 환경과 루틴.",tag:""},
-  {cat:"진로",title:"문과 이과 선택 가이드",desc:"적성과 진로에 맞는 문이과 선택 기준과 체크리스트.",tag:"최신"},
-  {cat:"학부모",title:"과외 선생님 선택 체크리스트",desc:"좋은 과외 선생님을 찾기 위한 핵심 확인 사항과 질문.",tag:"추천"},
-  {cat:"시험대비",title:"수능 D-100 학습 플래너",desc:"수능 100일 전부터 시작하는 과목별 전략적 학습 계획.",tag:""},
-  {cat:"학부모",title:"사춘기 자녀 공부 갈등 해결법",desc:"사춘기 자녀의 학습 의욕을 되살리는 소통법과 전략.",tag:""},
-  {cat:"과목별",title:"국어 비문학 독해 핵심 전략",desc:"수능 국어 비문학 지문을 빠르고 정확하게 읽는 방법.",tag:"인기"},
-  {cat:"학습법",title:"시간 관리 플래너 활용법",desc:"하루 24시간을 효율적으로 쓰는 학생들의 시간 관리 비법.",tag:""},
-  {cat:"진로",title:"고교학점제 과목 선택 가이드",desc:"고교학점제에서 대학 입시에 유리한 과목 선택 전략.",tag:"최신"},
-];
-
-const GUIDE_BODY_POOL = [
-  (t)=>`"${t}" 전략에서 가장 중요한 것은 현재 위치를 정확히 아는 것입니다. 자신의 강점과 약점을 객관적으로 분석하지 않으면, 아무리 많은 시간을 투자해도 효과가 떨어져요. 먼저 최근 시험 성적을 과목별로 정리하고, 틀린 문제의 유형을 분석해 보세요. 이 과정만으로도 어디에 시간을 집중해야 하는지 명확해집니다. 과외안하니에서는 이 진단 과정을 전문 코치가 함께 진행해 드립니다.`,
-  (t)=>`"${t}" 핵심 전략 중 많은 학생이 놓치는 것이 수면 관리입니다. 수면 중에 기억이 정리되고 장기 기억으로 전환됩니다. 시험 기간에 밤을 새우는 것은 오히려 역효과입니다. 최소 6시간 수면을 권장합니다. 과외안하니에서는 학생의 컨디션 관리까지 챙깁니다. 시험 기간 수면과 휴식 패턴에 대한 조언도 함께 제공합니다.`,
-  (t)=>`"${t}" 실천 방법의 핵심은 꾸준함입니다. 하루에 10시간 공부하고 3일 쉬는 것보다, 매일 3시간씩 꾸준히 하는 것이 훨씬 효과적이에요. 과외안하니 수강생 중 3개월 만에 내신 2등급 향상, 수능 모의고사 20점 상승 등 다양한 성공 사례가 있습니다. 핵심은 올바른 전략 + 꾸준한 실천 + 전문가의 관리입니다.`,
-  (t)=>`과외안하니에서는 "${t}" 전략의 실천을 전문 코치가 옆에서 도와드립니다. 모든 학생이 자신의 잠재력을 발휘할 수 있도록 체계적인 학습 지원을 제공합니다. 무료 체험 수업으로 직접 경험해보세요. 전화: 010-6850-1420, 카카오톡: kdy5592.`,
-  (t)=>`"${t}" 전략을 실천할 때 가장 흔한 실수는 너무 많은 것을 한꺼번에 바꾸려는 것이에요. 한 번에 하나씩, 작은 습관부터 시작하세요. 첫 주에는 매일 10분 복습만 추가하고, 그게 자리 잡으면 다음 단계로 넘어가세요. 작은 성공이 쌓여 큰 변화를 만듭니다. 과외안하니 코치가 이 과정을 단계별로 관리해 드립니다.`,
-  (t)=>`"${t}" 전략의 효과를 극대화하려면 환경 세팅이 중요합니다. 공부 공간에서 스마트폰을 분리하고, 책상 위에는 현재 과목 교재만 두세요. 25분 집중 + 5분 휴식의 포모도로 기법을 활용하면 같은 시간에 30% 더 효율적으로 공부할 수 있어요. 과외안하니 수업에서도 이 기법을 적극 활용합니다.`,
-];
-
-const GUIDE_FAQ_POOL = [
-  (t)=>({q:`"${t}" 전략을 혼자서도 실천할 수 있나요?`,a:`네, 이 글의 내용을 따라하면 혼자서도 충분히 실천 가능합니다. 다만 전문 코치의 도움을 받으면 더 빠르고 효과적으로 "${t}"을 실천할 수 있습니다. 과외안하니 코치는 학생의 현재 수준을 진단하고 맞춤 전략을 설계해드립니다. 무료 상담으로 시작하세요.`}),
-  (t)=>({q:`"${t}"으로 성적이 정말 오르나요?`,a:`네, 올바른 방법으로 꾸준히 실천하면 반드시 성적이 향상됩니다. 과외안하니 수강생의 대부분이 "${t}" 전략 실천 3개월 내에 눈에 띄는 성적 변화를 경험합니다. 핵심은 올바른 방향 + 꾸준한 실천입니다.`}),
-  (t)=>({q:"과외안하니의 1:1 코칭은 어떻게 진행되나요?",a:`전문 코치가 학생의 현재 수준을 진단하고 "${t}" 전략을 맞춤 설계합니다. 주 2~3회 화상수업으로 진행되며, 매 수업 후 학습 보고서를 학부모님께 제공합니다. 시험 기간에는 집중 대비 모드로 전환합니다. 첫 수업은 무료입니다.`}),
-  (t)=>({q:`"${t}" 시작 전에 준비할 것이 있나요?`,a:`특별한 준비물은 없습니다. 다만 자신의 현재 성적과 목표 성적을 정리해두면 "${t}" 전략을 더 효과적으로 실천할 수 있습니다. 최근 시험지와 오답 목록을 준비하면 과외안하니 코치가 정확한 약점 분석을 해드립니다.`}),
-];
-
-function renderStudyGuide() {
-  const tagMap = {'인기':'sg-tag-hot','추천':'sg-tag-rec','최신':'sg-tag-new'};
-  return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead('학습 가이드 - 과외안하니', '학습법, 시험 대비, 입시 정보 등 학생과 학부모를 위한 교육 정보.', 'https://anhani.com/학습가이드')}
-  <style>${commonStyles()}
-    .sg-wrap{max-width:1000px;margin:0 auto;padding:48px 24px 80px}.sg-label{display:inline-block;background:#22c55e;color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px}.sg-title{font-size:32px;font-weight:900;color:#0f172a;margin-bottom:10px}.sg-title em{font-style:normal;color:#22c55e}.sg-subtitle{font-size:15px;color:#64748b;margin-bottom:32px}.sg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}.sg-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px 20px;transition:all .2s;text-decoration:none;display:block}.sg-card:hover{border-color:#22c55e;box-shadow:0 4px 20px rgba(34,197,94,.1);transform:translateY(-3px)}.sg-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.sg-cat{font-size:12px;color:#22c55e;font-weight:700}.sg-tag{font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600}.sg-tag-hot{background:#fef2f2;color:#dc2626}.sg-tag-rec{background:#eef2ff;color:#6366f1}.sg-tag-new{background:#f0fdf4;color:#22c55e}.sg-card h3{font-size:17px;font-weight:700;color:#0f172a;margin-bottom:8px;line-height:1.4}.sg-card p{font-size:14px;color:#64748b;line-height:1.6}
-  </style></head><body>
-  ${navHTML('guide')}
-  <div class="sg-wrap">
-    <div class="sg-label">학습정보</div>
-    <h1 class="sg-title">학생·학부모를 위한 <em>학습 가이드</em></h1>
-    <p class="sg-subtitle">학습법, 시험 대비 전략, 입시 정보 등 교육에 필요한 모든 정보를 제공합니다.</p>
-    <div class="sg-grid">
-      ${STUDY_GUIDES.map((g,i) => `<a href="/학습가이드/${i}" class="sg-card">
-        <div class="sg-card-top"><span class="sg-cat">${g.cat}</span>${g.tag?`<span class="sg-tag ${tagMap[g.tag]||''}">${g.tag}</span>`:''}</div>
-        <h3>${g.title}</h3><p>${g.desc}</p>
-      </a>`).join('')}
-    </div>
-  </div>
-  ${footerHTML()}
-  </body></html>`;
-}
-
-function renderStudyGuideArticle(idx) {
-  if (idx < 0 || idx >= STUDY_GUIDES.length) return null;
-  const g = STUDY_GUIDES[idx];
-  const seed = hashCode('sg-' + idx);
-  const rng = seededRandom(seed);
-  const bodies = pickN(GUIDE_BODY_POOL, 4, rng).map(fn => fn(g.title));
-  const faqs = pickN(GUIDE_FAQ_POOL, 3, rng).map(fn => fn(g.title));
-  const checkItems = pickN([
-    `나의 현재 성적과 목표 성적을 구체적으로 적어보았는가?`,
-    `과목별 강점과 약점을 파악했는가?`,
-    `매일 실천 가능한 학습 시간을 확보했는가?`,
-    `오답노트를 작성하고 활용하고 있는가?`,
-    `규칙적인 수면과 휴식을 취하고 있는가?`,
-    `주간 학습 계획을 세우고 실행 점검하는가?`,
-    `시험 범위와 출제 경향을 파악했는가?`,
-  ], 5, rng);
-  const thumb = generateThumbnail(g.title.substring(0,6), g.cat, '국어');
-  const thumbUri = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(thumb)))}`;
-  const canonical = `https://anhani.com/학습가이드/${idx}`;
-
-  return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(g.title + ' | 과외안하니', g.title + ' - ' + g.desc, canonical)}
-  <meta property="og:image" content="${thumbUri}">
-  <style>${commonStyles()}
-    .ga-wrap{max-width:720px;margin:0 auto;padding:32px 20px 0}
-    .ga-thumb{width:100%;border-radius:12px;margin-bottom:24px}
-    .ga-wrap h1{font-size:26px;font-weight:900;color:#0f172a;line-height:1.4;margin-bottom:24px}
-    .ga-section{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px}
-    .ga-section h2{font-size:17px;font-weight:700;margin-bottom:12px;padding-left:12px;border-left:4px solid #dc2626;color:#dc2626}
-    .ga-section p{font-size:15px;color:#334155;line-height:1.85;margin:0;word-break:keep-all}
-    .ga-check{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px}
-    .ga-check h2{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:12px}
-    .ga-check p{font-size:14px;color:#475569;line-height:1.8;margin:0;word-break:keep-all}
-    .ga-faq{margin-bottom:16px}
-    .ga-faq h2{font-size:17px;font-weight:700;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #dc2626}
-    .ga-faq-item{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:12px}
-    .ga-faq-q{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}
-    .ga-faq-a{font-size:14px;color:#475569;line-height:1.7;margin:0}
-    .ga-cta{background:linear-gradient(135deg,#052e16,#16a34a);border-radius:14px;padding:28px;text-align:center;color:#fff;margin:28px 0}
-    .ga-cta h3{font-size:18px;font-weight:800;margin-bottom:6px}.ga-cta p{font-size:13px;opacity:.7;margin-bottom:14px}
-    .ga-cta a{display:inline-block;background:#fff;color:#16a34a;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}
-    .ga-related{margin-top:32px;padding-top:24px;border-top:2px solid #f1f5f9}
-    .ga-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:14px}
-    .ga-related-item{display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;margin-bottom:8px;transition:all .2s}
-    .ga-related-item:hover{border-color:#16a34a;color:#16a34a;transform:translateX(4px)}
-    @media(max-width:640px){.ga-wrap h1{font-size:22px}}
-  </style></head><body>
-  ${navHTML('guide')}
-  <div class="ga-wrap">
-    <img src="${thumbUri}" alt="${g.title}" class="ga-thumb" width="1200" height="630">
-    <h1>${g.title}</h1>
-    ${bodies.map((b,i) => {
-      const headers = [g.title + ' 핵심 전략', g.title + ' 실천 방법', '과외안하니와 함께하는 ' + g.title, g.title + ' 효과 극대화 비법'];
-      return `<div class="ga-section"><h2>${headers[i] || g.title}</h2><p>${b}</p></div>`;
-    }).join('')}
-    <div class="ga-check">
-      <h2>📋 ${g.title} 실전 체크리스트</h2>
-      <p>"${g.title}"을 실천하기 전에 다음 항목을 점검해보세요. ${checkItems.map((c,i) => (i+1)+'. '+c).join(' ')} 이 5가지를 모두 체크할 수 있다면 "${g.title}" 성공의 기반이 갖춰진 것입니다. 하나라도 빠져있다면 그것부터 보완하세요.</p>
-    </div>
-    <div class="ga-faq">
-      <h2>❓ ${g.title} 자주 묻는 질문</h2>
-      ${faqs.map(f => `<div class="ga-faq-item"><div class="ga-faq-q">Q. ${f.q}</div><p class="ga-faq-a">A. ${f.a}</p></div>`).join('')}
-    </div>
-    <div class="ga-cta">
-      <h3>맞춤 과외 무료 상담</h3>
-      <p>전문 선생님과 함께 확실한 성적 향상</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담 신청 →</a>
-    </div>
-    <div class="ga-related">
-      <h3>다른 학습 가이드</h3>
-      ${STUDY_GUIDES.filter((_,i)=>i!==idx).slice(0,6).map((gg,i)=>{const ri=i>=idx?i+1:i;return `<a href="/학습가이드/${ri}" class="ga-related-item">☐ ${gg.title}</a>`;}).join('')}
-    </div>
-  </div>
-  ${footerHTML()}
-  </body></html>`;
-}
-
 // --- 서비스 상세 페이지 ---
 function renderServicePage() {
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -4222,7 +4084,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v14-guide-clean', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v15-no-guide', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // robots.txt
@@ -4447,18 +4309,7 @@ export default {
     }
     
     // 학습정보
-    if (decodedPath === '/학습가이드' || pathname === '/study-guide') {
-      return new Response(renderStudyGuide(), {
-        headers: { 'Content-Type': 'text/html; charset=utf-8' }
-      });
-    }
-    const guideMatch = decodedPath.match(/^\/학습가이드\/(\d+)$/);
-    if (guideMatch) {
-      const html = renderStudyGuideArticle(parseInt(guideMatch[1]));
-      if (html) return new Response(html, {
-        headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
-      });
-    }
+
     
     // 화상수업
     if (pathname === '/video-lesson' || decodedPath === '/화상수업') {
