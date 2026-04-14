@@ -1746,45 +1746,213 @@ function renderSubjectList() {
   </body></html>`;
 }
 
-// --- 카테고리: 학교급별 ---
+// --- 카테고리: 학년별 ---
 function renderLevelList() {
-  const levelData = {
-    "초등": { emoji: "🌱", desc: "학습 습관 형성과 기초 실력을 탄탄하게 다지는 시기입니다. 재미있게 배우면서 자신감을 키워주세요." },
-    "중등": { emoji: "📚", desc: "내신 대비와 고등 진학을 위한 체계적 학습 전략이 필요한 시기입니다." },
-    "고등": { emoji: "🎯", desc: "수능과 내신을 동시에 잡는 입시 맞춤 전략으로 목표 대학에 한 걸음 더 다가가세요." }
-  };
-
-  const cards = LEVELS.map(l => {
-    const d = levelData[l];
-    const subjLinks = SUBJECTS.map(s => 
-      `<a href="/학교급별/${encodeURIComponent(l)}/${encodeURIComponent(s)}" class="subj-link">${s}</a>`
+  const gradeData = [
+    {school:"elementary",short:"초등",name:"초등학교",max:6,color:"#3b82f6",bg:"#eff6ff",icon:"🌱",desc:"학습 습관 형성기. 기초 실력과 자신감을 키우는 가장 중요한 시기입니다."},
+    {school:"middle",short:"중등",name:"중학교",max:3,color:"#8b5cf6",bg:"#f5f3ff",icon:"📚",desc:"내신 대비 시작. 고등 진학을 위한 체계적 학습 전략이 필요합니다."},
+    {school:"high",short:"고등",name:"고등학교",max:3,color:"#ef4444",bg:"#fef2f2",icon:"🎯",desc:"입시 결전. 수능과 내신을 동시에 잡는 맞춤 전략이 승패를 가릅니다."}
+  ];
+  const gradeCards = gradeData.map(g => {
+    const grades = Array.from({length:g.max},(_,i)=>
+      `<a href="/grade/${g.school}/${i+1}" class="lv-grade-btn" style="--gc:${g.color};--gbg:${g.bg}">${g.short}${i+1}</a>`
     ).join('');
-    return `<div class="level-card-lg">
-      <span class="lv-emoji">${d.emoji}</span>
-      <h3>${l} 과외</h3>
-      <p>${d.desc}</p>
-      <div class="chips">${subjLinks}</div>
+    return `<div class="lv-school-card" style="border-top:4px solid ${g.color}">
+      <div class="lv-sc-header"><span class="lv-sc-icon">${g.icon}</span><div><h3>${g.name} 과외</h3><p>${g.desc}</p></div></div>
+      <div class="lv-grade-grid">${grades}</div>
+      <div class="lv-sc-subjects">${SUBJECTS.map(s=>`<span class="lv-sc-subj">${s}</span>`).join('')}</div>
     </div>`;
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead('학교급별 과외 - 안하니', '초등, 중등, 고등 학교급에 맞는 과외 정보를 확인하세요.', 'https://anhani.com/학교급별')}
+  ${commonHead('학년별 과외 - 초1~고3 맞춤 과외 | 과외안하니', '초등 1학년부터 고등 3학년까지, 학년에 맞는 과목별 과외 정보를 한 곳에서 확인하세요.', 'https://anhani.com/학교급별')}
   <style>${commonStyles()}
-    .page-hero { background: linear-gradient(135deg, #312e81, #4f46e5); color: #fff; padding: 48px 24px; text-align: center; }
-    .page-hero h1 { font-size: 32px; font-weight: 800; }
-    .page-hero p { opacity: 0.8; margin-top: 8px; }
-    .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
-    .level-card-lg { background: #fff; border-radius: 16px; padding: 36px; margin-bottom: 20px; border: 1px solid #e2e8f0; text-align: center; }
-    .lv-emoji { font-size: 48px; display: block; margin-bottom: 12px; }
-    .level-card-lg h3 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
-    .level-card-lg > p { color: #64748b; font-size: 15px; margin-bottom: 20px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-    .subj-link { padding: 8px 18px; background: #f1f5f9; border-radius: 8px; color: #475569; text-decoration: none; font-size: 14px; transition: all 0.2s; }
-    .subj-link:hover { background: #eef2ff; color: #6366f1; }
+    .lv-hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); color: #fff; padding: 56px 24px 48px; text-align: center; }
+    .lv-hero h1 { font-size: 34px; font-weight: 900; margin-bottom: 10px; }
+    .lv-hero h1 em { font-style: normal; color: #818cf8; }
+    .lv-hero p { font-size: 16px; color: #94a3b8; }
+    .lv-wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+    .lv-school-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .lv-sc-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+    .lv-sc-icon { font-size: 36px; flex-shrink: 0; }
+    .lv-sc-header h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+    .lv-sc-header p { font-size: 14px; color: #64748b; line-height: 1.5; }
+    .lv-grade-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .lv-grade-btn { padding: 12px 24px; border-radius: 10px; background: var(--gbg); color: var(--gc); font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; border: 1.5px solid transparent; }
+    .lv-grade-btn:hover { border-color: var(--gc); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .lv-sc-subjects { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 16px; border-top: 1px solid #f1f5f9; }
+    .lv-sc-subj { font-size: 12px; color: #94a3b8; padding: 4px 10px; background: #f8fafc; border-radius: 6px; }
+    @media (max-width: 640px) { .lv-hero h1 { font-size: 26px; } .lv-grade-btn { padding: 10px 18px; font-size: 14px; } }
   </style></head><body>
-  ${navHTML('level')}
-  <div class="page-hero"><h1>학교급별 과외</h1><p>초등·중등·고등 맞춤 과외 정보</p></div>
-  <div class="container">${cards}</div>
+  ${navHTML('region')}
+  <div class="lv-hero"><h1>학년별 <em>맞춤 과외</em></h1><p>초1부터 고3까지, 학년에 딱 맞는 과외를 찾아보세요</p></div>
+  <div class="lv-wrap">${gradeCards}</div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 학년×과목 상세 페이지 콘텐츠 풀 ---
+const GRADE_SUBJECT_CONTENT = {
+  elementary: {
+    charPool: [
+      (g,s)=>`초등학교 ${g}학년은 ${s} 학습의 기초를 다지는 결정적 시기예요. 이 시기에 형성된 학습 습관은 중학교, 고등학교까지 이어지기 때문에 올바른 방향 설정이 무엇보다 중요합니다. 아이마다 이해 속도가 다르기 때문에, 1:1 과외를 통해 아이의 수준에 맞는 맞춤 학습을 진행하는 것이 가장 효과적이에요.`,
+      (g,s)=>`초${g} 학생에게 ${s} 과외가 필요한 이유는 명확합니다. 학교 수업만으로는 개인별 이해도 차이를 채우기 어렵고, 특히 ${s}은 누적형 과목이라 한 번 빈틈이 생기면 다음 단원으로 넘어가기가 점점 힘들어져요. 과외를 통해 아이의 약점을 조기에 발견하고 보완하면, 학년이 올라갈수록 자신감이 커집니다.`,
+      (g,s)=>`초등 ${g}학년 시기의 ${s} 학습은 단순한 성적 향상을 넘어 학습에 대한 태도를 형성하는 과정이에요. 이 시기에 "나는 ${s}을 잘할 수 있다"는 자신감을 심어주면, 이후 학습 효율이 크게 달라집니다. 좋은 과외 선생님은 아이의 작은 성공 경험을 만들어주면서 학습 동기를 자연스럽게 끌어올려 줍니다.`,
+    ],
+    priceRange: "시간당 2만 5천원~4만원",
+    schedule: "주 2~3회, 회당 60~90분",
+  },
+  middle: {
+    charPool: [
+      (g,s)=>`중학교 ${g}학년은 내신 성적이 본격적으로 중요해지는 시기입니다. ${s} 과목은 특히 내신에서 변별력이 높은 과목이기 때문에, 학교별 출제 경향을 파악한 맞춤 대비가 필수적이에요. 과외를 통해 학교 진도에 맞춘 선행과 복습을 병행하면, 시험에서 안정적인 성적을 유지할 수 있습니다.`,
+      (g,s)=>`중${g} 시기는 사춘기와 맞물려 학습 의욕이 크게 흔들릴 수 있어요. 이때 ${s} 과외 선생님이 단순한 지식 전달자가 아닌 멘토 역할까지 해준다면, 아이의 학습 태도가 완전히 달라질 수 있습니다. 좋은 과외 관계는 성적뿐 아니라 아이의 자존감까지 끌어올려 줍니다.`,
+      (g,s)=>`중학교 ${g}학년 ${s}는 고등학교 학습의 직접적인 기반이 됩니다. 이 시기에 배우는 개념들이 고등학교에서 심화되어 다시 나오기 때문에, 지금 확실히 이해하지 않으면 나중에 두 배, 세 배의 시간이 필요해요. 과외를 통한 정확한 개념 정리가 고등학교 상위권 진입의 발판이 됩니다.`,
+    ],
+    priceRange: "시간당 3만원~5만원",
+    schedule: "주 2~3회, 회당 90~120분",
+  },
+  high: {
+    charPool: [
+      (g,s)=>`고등학교 ${g}학년은 입시의 성패를 결정하는 가장 중요한 시기입니다. ${s} 과목의 내신 등급은 수시 전형에서 직접적인 당락 요인이 되고, 수능에서도 핵심 영역으로 작용합니다. 이 시기에는 효율적인 시간 관리와 전략적 학습이 필수적이며, 경험 많은 과외 선생님의 가이드가 큰 차이를 만듭니다.`,
+      (g,s)=>`고${g}이라면 ${s} 학습에서 더 이상 시행착오를 반복할 여유가 없어요. 수능과 내신을 동시에 준비해야 하는 상황에서, 과외 선생님은 학생의 현재 수준을 정확히 진단하고 목표 대학에 맞는 최적의 학습 로드맵을 설계해 줍니다. 혼자 공부하는 것과 전략적으로 코칭받는 것의 차이는 상상 이상으로 큽니다.`,
+      (g,s)=>`고등학교 ${g}학년에서 ${s} 성적은 대학 진학의 핵심 변수입니다. 내신 1등급과 2등급의 차이가 지원 가능한 대학의 범위를 완전히 바꾸어 놓기 때문에, 전략적인 과외 학습으로 등급을 끌어올리는 것이 매우 중요합니다. 기출 분석, 오답 관리, 시간 배분 연습까지 체계적으로 관리받으세요.`,
+    ],
+    priceRange: "시간당 4만원~7만원",
+    schedule: "주 2~4회, 회당 120분 이상",
+  }
+};
+
+const GRADE_SUBJ_TIPS = {
+  "국어": [(g)=>`${g}학년 국어 과외에서는 교과서 작품 분석과 비문학 독해를 균형 있게 다루는지 확인하세요. 좋은 선생님은 지문의 구조를 파악하는 방법부터 가르쳐 줍니다. 단순히 답을 맞히는 것이 아니라, 왜 그 답이 되는지 논리적으로 설명할 수 있어야 진정한 실력이에요.`,(g)=>`국어는 모든 과목의 기초가 되는 언어 능력을 키우는 과목이에요. ${g}학년 시기에 어휘력과 독해력을 탄탄히 잡아놓으면, 다른 과목의 지문 이해도 훨씬 수월해집니다. 과외에서는 다양한 장르의 글을 접하면서 읽기 능력을 체계적으로 향상시킬 수 있어요.`],
+  "영어": [(g)=>`${g}학년 영어 과외의 핵심은 문법 체계 잡기와 실전 독해 연습의 균형이에요. 문법만 공부하면 실제 시험에서 독해가 막히고, 독해만 하면 문법 문제에서 점수를 잃게 됩니다. 좋은 선생님은 학생의 약점에 따라 이 균형을 최적으로 조절해 줍니다.`,(g)=>`영어는 매일 꾸준히 노출되는 것이 중요한 과목이에요. ${g}학년에게 맞는 수준의 영어 지문을 매일 읽고, 단어를 암기하고, 듣기 연습을 병행하면 실력이 눈에 띄게 성장합니다. 과외 선생님이 이런 일일 루틴까지 관리해주면 훨씬 효과적이에요.`],
+  "수학": [(g)=>`${g}학년 수학에서 가장 중요한 것은 개념 이해입니다. 공식을 외우는 것이 아니라, 왜 그런 공식이 나오는지 원리를 이해해야 응용 문제도 풀 수 있어요. 좋은 수학 과외 선생님은 여러 가지 방법으로 같은 개념을 설명할 수 있는 분이에요.`,(g)=>`수학은 누적형 과목이라 ${g}학년에서 빈틈이 생기면 다음 학년에서 반드시 벽에 부딪힙니다. 과외를 통해 현재 단원뿐 아니라 이전 단원의 부족한 부분까지 찾아서 채워주는 것이 핵심이에요. 오답 노트를 체계적으로 관리하면 같은 실수를 반복하지 않게 됩니다.`],
+  "사회": [(g)=>`${g}학년 사회 과외에서는 단순 암기가 아닌 개념 이해와 자료 분석 능력을 키우는 것이 핵심이에요. 그래프, 도표, 지도 해석 능력을 갖추면 고난도 문제도 거뜬히 풀 수 있습니다. 시사 이슈와 연결해서 공부하면 기억에 오래 남아요.`,(g)=>`사회는 넓은 범위를 효율적으로 공부해야 하는 과목이에요. ${g}학년 사회 과외에서는 마인드맵이나 개념 정리표를 활용해서 방대한 내용을 체계적으로 정리하는 방법을 배울 수 있습니다. 스토리텔링 방식으로 배우면 재미도 있고 기억도 잘 돼요.`],
+  "과학": [(g)=>`${g}학년 과학에서는 실험 원리를 정확히 이해하는 것이 가장 중요해요. 단순히 결과만 외우는 것이 아니라, 왜 그런 결과가 나오는지 과학적 사고로 접근해야 합니다. 과외 선생님과 함께 실험을 그림으로 정리하면 복잡한 과정도 한눈에 파악할 수 있어요.`,(g)=>`과학은 물리, 화학, 생물, 지구과학 각 영역마다 접근법이 다릅니다. ${g}학년에서 약한 영역을 과외로 집중 보완하면 전체 과학 성적이 크게 오를 수 있어요. 좋은 선생님은 아이가 어려워하는 영역의 기초 개념부터 차근차근 다시 잡아줍니다.`],
+  "코딩": [(g)=>`${g}학년 코딩 과외에서는 학생의 수준에 맞는 언어 선택이 가장 중요해요. 처음 배우는 학생이라면 블록 코딩이나 파이썬 기초부터, 경험이 있다면 알고리즘이나 프로젝트 기반 학습으로 진행하는 게 효과적입니다. 직접 무언가를 만들어보는 경험이 코딩 실력 향상의 핵심이에요.`,(g)=>`코딩은 논리적 사고력과 문제 해결 능력을 동시에 키울 수 있는 과목이에요. ${g}학년에게 맞는 난이도의 프로젝트를 과외에서 진행하면, 코딩뿐 아니라 수학이나 과학 실력까지 간접적으로 향상됩니다. AI 시대에 코딩은 선택이 아닌 필수 역량이에요.`],
+  "검정고시": [(g)=>`검정고시를 준비하는 분들에게 과외는 가장 효율적인 학습 방법이에요. 범위가 넓고 과목이 많아서 혼자 준비하기 벅차지만, 과외 선생님과 함께 전략적으로 접근하면 단기간에 합격이 가능합니다. 기출문제 분석을 통해 자주 나오는 유형을 집중 공략하는 것이 핵심이에요.`,(g)=>`검정고시 과외에서 가장 중요한 것은 과목별 우선순위를 정하는 거예요. 모든 과목을 동일한 시간 투자하는 것보다, 점수를 가장 빨리 올릴 수 있는 과목부터 집중하는 전략이 합격률을 크게 높입니다. 선생님과 함께 맞춤 학습 계획을 세우세요.`],
+  "논술": [(g)=>`${g}학년 논술 과외에서는 제시문 분석 능력과 논리적 글쓰기 구조를 체계적으로 훈련해야 합니다. 매주 최소 1편의 실전 논술문을 작성하고 전문가의 첨삭을 받는 것이 실력 향상의 가장 빠른 길이에요. 쓰지 않으면 논술 실력은 절대 늘지 않습니다.`,(g)=>`논술은 단순한 글쓰기가 아니라 비판적 사고력의 표현이에요. ${g}학년부터 논술을 준비하면 대학 입시에서 큰 무기가 됩니다. 과외 선생님은 학생의 글에서 논리적 허점을 짚어주고, 더 설득력 있는 논증 방법을 지도해 줍니다.`],
+};
+
+const GRADE_EXTRA_POOL = [
+  (g,s,sch)=>`${sch} ${g}학년 시기에 과외를 시작하기 전, 아이와 충분히 대화를 나눠보세요. 아이가 ${s}에서 어떤 부분이 어렵고, 어떤 방식으로 배우고 싶은지 의견을 듣는 것이 좋습니다. 아이의 의견이 반영된 과외일수록 학습 효과가 높아집니다.`,
+  (g,s,sch)=>`과외 선생님을 선택할 때 반드시 체험 수업을 먼저 받아보세요. ${g}학년 아이와 선생님의 케미가 맞는지, 수업 방식이 아이에게 적합한지 확인하는 과정이 필수적입니다. 보통 1~2회 체험 수업이면 충분히 판단할 수 있어요.`,
+  (g,s,sch)=>`${s} 과외의 효과를 극대화하려면 수업 외 시간의 자기 학습도 중요해요. 과외에서 배운 내용을 당일 30분만 복습해도 기억 유지율이 70% 이상 올라갑니다. 선생님이 숙제를 내주고 다음 수업에서 확인하는 시스템이 가장 효과적이에요.`,
+  (g,s,sch)=>`${sch} ${g}학년 과외비가 부담된다면, 주 1회 과외 + 자기 학습 조합도 좋은 방법이에요. 선생님이 학습 계획과 방향을 잡아주고, 나머지 날에는 혼자 실행하는 방식으로도 충분한 효과를 볼 수 있습니다. 핵심은 꾸준함이에요.`,
+  (g,s,sch)=>`요즘은 온라인 과외도 효과적인 선택지예요. ${g}학년 학생이 집에서 편하게 수업받을 수 있고, 전국의 실력 있는 선생님과 연결될 수 있다는 장점이 있습니다. 태블릿과 전자펜을 활용하면 대면 수업 못지않은 효과를 얻을 수 있어요.`,
+  (g,s,sch)=>`과외를 시작한 후 성적 변화가 바로 나타나지 않을 수 있어요. 보통 2~3개월은 기초를 다지는 시간이 필요하고, 그 이후부터 성적 상승이 눈에 보이기 시작합니다. 조급하게 선생님을 바꾸기보다 최소 한 학기는 꾸준히 다녀보시길 권합니다.`,
+  (g,s,sch)=>`${s} 과외에서 오답 관리는 성적 향상의 핵심이에요. 틀린 문제를 모아서 왜 틀렸는지 분석하고, 일주일 후에 다시 풀어보는 과정을 반복하면 같은 유형의 실수가 확실히 줄어듭니다. 좋은 선생님은 이런 오답 관리 시스템을 함께 만들어 줍니다.`,
+  (g,s,sch)=>`${sch} ${g}학년 아이의 학습 스타일을 파악하는 것도 중요해요. 시각적으로 배우는 게 좋은 아이, 청각적으로 듣는 게 좋은 아이, 직접 써보며 익히는 아이 등 학습 유형에 따라 과외 방식도 달라져야 합니다. 경험 많은 선생님은 아이의 유형을 빠르게 파악해요.`,
+];
+
+function renderGradeSubjectPage(school, grade, subject) {
+  const schoolNames = {elementary:"초등학교",middle:"중학교",high:"고등학교"};
+  const schoolShort = {elementary:"초등",middle:"중등",high:"고등"};
+  const schoolName = schoolNames[school];
+  const shortName = schoolShort[school];
+  const gradeNum = parseInt(grade);
+  const maxGrade = school === "elementary" ? 6 : 3;
+  const gradeLabel = `${shortName} ${gradeNum}학년`;
+  
+  const seed = hashCode(school + grade + subject);
+  const rng = seededRandom(seed);
+  
+  const gc = GRADE_SUBJECT_CONTENT[school];
+  const charText = pick(gc.charPool, rng)(gradeNum, subject);
+  const subjTips = GRADE_SUBJ_TIPS[subject] || GRADE_SUBJ_TIPS["국어"];
+  const tip1 = pick(subjTips, rng)(gradeNum);
+  const extra1 = pick(GRADE_EXTRA_POOL, rng)(gradeNum, subject, schoolName);
+  const usedE = Math.floor(rng() * GRADE_EXTRA_POOL.length);
+  const extra2 = pick(GRADE_EXTRA_POOL.filter((_,i)=>i!==usedE), rng)(gradeNum, subject, schoolName);
+  const usedE2 = Math.floor(rng() * GRADE_EXTRA_POOL.length);
+  const extra3 = pick(GRADE_EXTRA_POOL.filter((_,i)=>i!==usedE&&i!==usedE2), rng)(gradeNum, subject, schoolName);
+  const review = pick(REVIEW_TEMPLATES, rng)('지역', shortName, subject);
+  const closing = pick(CLOSING_TEMPLATES, rng)('지역', shortName, subject);
+  
+  const checkPool = [
+    `${gradeLabel} ${subject} 지도 경험이 풍부한 선생님인지 확인하세요.`,
+    `첫 수업 전 레벨 테스트로 현재 수준을 정확히 진단하는지 확인하세요.`,
+    `수업 후 학습 보고서를 제공하는 선생님을 우선 고려하세요.`,
+    `숙제량이 적정한지, 다음 수업에서 꼼꼼히 확인하는지 살펴보세요.`,
+    `시험 기간에 추가 수업이나 질의응답이 가능한지 미리 확인하세요.`,
+    `아이와의 성격적 궁합을 체험 수업에서 반드시 관찰하세요.`,
+    `교재 선정 기준과 커리큘럼 계획을 구체적으로 물어보세요.`,
+  ];
+  const checks = pickN(checkPool, 4, rng);
+
+  const canonical = 'https://anhani.com/grade/' + school + '/' + grade + '/' + encodeURIComponent(subject);
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(gradeLabel + ' ' + subject + ' 과외 추천 가이드 | 과외안하니', gradeLabel + ' ' + subject + ' 과외 정보! 과외비, 학습 전략, 선생님 선택법까지 한 번에 정리했습니다.', canonical)}
+  <meta name="robots" content="index, follow">
+  <style>${commonStyles()}
+    .gs-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
+    .gs-breadcrumb { font-size: 13px; color: #888; margin-bottom: 20px; }
+    .gs-breadcrumb a { color: #6366f1; text-decoration: none; }
+    .gs-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+    .gs-tab { padding: 8px 16px; border-radius: 8px; border: 1.5px solid #e2e8f0; font-size: 13px; font-weight: 600; color: #64748b; text-decoration: none; transition: all 0.2s; }
+    .gs-tab:hover { border-color: #6366f1; color: #6366f1; }
+    .gs-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+    .gs-wrap h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 12px; line-height: 1.4; }
+    .gs-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
+    .gs-article h2 { font-size: 21px; font-weight: 700; color: #0f172a; margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid #6366f1; }
+    .gs-article p { font-size: 16px; color: #334155; line-height: 1.85; margin-bottom: 16px; word-break: keep-all; }
+    .gs-article ul { margin: 0 0 16px 20px; }
+    .gs-article li { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 8px; }
+    .gs-info-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .gs-info-box h3 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+    .gs-info-box p { font-size: 14px; color: #64748b; margin-bottom: 4px; }
+    .gs-cta { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 14px; padding: 32px 24px; text-align: center; color: #fff; margin: 40px 0; }
+    .gs-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .gs-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 16px; }
+    .gs-cta a { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
+    @media (max-width: 640px) { .gs-wrap h1 { font-size: 22px; } .gs-article h2 { font-size: 18px; } }
+  </style></head><body>
+  ${navHTML('region')}
+  <div class="gs-wrap">
+    <div class="gs-breadcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학년별</a> &gt; <a href="/grade/${school}/${gradeNum}">${gradeLabel}</a> &gt; ${subject}</div>
+    
+    <div class="gs-tabs">
+      ${SUBJECTS.map(s => `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gs-tab${s===subject?' active':''}">${s}</a>`).join('')}
+    </div>
+    
+    <h1>${gradeLabel} ${subject} 과외 추천 가이드</h1>
+    <div class="gs-meta">최종 업데이트: 2026년 4월 | ${gradeLabel} ${subject} 전문</div>
+    
+    <div class="gs-article">
+      <h2>${gradeLabel}에서 ${subject} 과외가 필요한 이유</h2>
+      <p>${charText}</p>
+      
+      <h2>${gradeLabel} ${subject} 과외 핵심 학습법</h2>
+      <p>${tip1}</p>
+      <p>${extra1}</p>
+      
+      <h2>${gradeLabel} ${subject} 과외비 및 수업 안내</h2>
+      <div class="gs-info-box">
+        <h3>💰 과외비 시세</h3>
+        <p>${schoolName} ${subject} 과외: ${gc.priceRange} (선생님 경력에 따라 차이)</p>
+        <h3 style="margin-top:12px">📅 추천 수업 일정</h3>
+        <p>${gc.schedule} 수업이 가장 효과적입니다.</p>
+      </div>
+      
+      <h2>좋은 ${subject} 과외 선생님 고르는 체크리스트</h2>
+      <ul>${checks.map(c => `<li>${c}</li>`).join('')}</ul>
+      
+      <h2>${gradeLabel} ${subject} 과외 시작 전 알아두세요</h2>
+      <p>${extra2}</p>
+      <p>${extra3}</p>
+      
+      <h2>실제 ${subject} 과외 후기</h2>
+      <p>${review}</p>
+      
+      <p>${closing}</p>
+    </div>
+    
+    <div class="gs-cta">
+      <h3>${gradeLabel} ${subject} 맞춤 과외 상담</h3>
+      <p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p>
+      <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담 신청 →</a>
+    </div>
+  </div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -2366,104 +2534,67 @@ function renderContactPage() {
 function renderGradePage(school, grade) {
   const schoolNames = {"elementary":"초등학교","middle":"중학교","high":"고등학교"};
   const schoolShort = {"elementary":"초등","middle":"중등","high":"고등"};
+  const schoolColors = {"elementary":"#3b82f6","middle":"#8b5cf6","high":"#ef4444"};
   const schoolName = schoolNames[school] || school;
   const shortName = schoolShort[school] || school;
+  const accentColor = schoolColors[school] || "#6366f1";
   const maxGrade = school === "elementary" ? 6 : 3;
   const gradeNum = parseInt(grade) || 1;
-  
-  const subjectTips = {
-    "elementary": {
-      "수학": "초등 수학은 연산 정확도와 문제 해결력이 핵심입니다. 기초 개념을 탄탄히 잡아야 중학교에서 흔들리지 않아요.",
-      "영어": "파닉스부터 기본 회화까지, 영어에 대한 흥미를 키우는 것이 가장 중요합니다.",
-      "국어": "독서 습관과 글쓰기 능력을 키우는 시기입니다. 어휘력 확장이 모든 과목의 기초가 됩니다.",
-      "과학": "실험과 관찰을 통해 과학적 사고력을 키우는 시기입니다. 호기심을 자극하는 수업이 효과적이에요.",
-      "코딩": "스크래치, 엔트리 등 블록 코딩으로 논리적 사고력을 키울 수 있습니다."
-    },
-    "middle": {
-      "수학": "중학 수학은 대수, 기하, 함수 등 추상적 개념이 등장합니다. 개념 이해 없이 문제만 풀면 고등학교에서 큰 벽에 부딪혀요.",
-      "영어": "문법 체계를 잡고 독해력을 키우는 시기입니다. 내신 대비와 실력 향상을 동시에 해야 합니다.",
-      "국어": "비문학 독해와 문학 분석 능력이 중요해지는 시기입니다. 서술형 문제 대비도 필수예요.",
-      "과학": "물리, 화학, 생물, 지구과학의 기초 개념을 확실히 잡아야 합니다. 실험 보고서 작성 능력도 키워야 해요.",
-      "코딩": "파이썬 기초를 배우며 알고리즘적 사고를 발전시키는 시기입니다."
-    },
-    "high": {
-      "수학": "수능과 내신을 동시에 대비해야 합니다. 킬러 문항 대비를 위한 심화 학습이 필요한 시기예요.",
-      "영어": "수능 영어 1등급을 위한 전략적 학습이 필요합니다. 독해 속도와 정확도를 동시에 높여야 해요.",
-      "국어": "수능 국어는 독서, 문학, 언매, 화작으로 나뉩니다. 각 영역별 전략이 다르므로 맞춤 학습이 중요해요.",
-      "과학": "선택과목 전략이 중요합니다. 물리, 화학, 생물, 지구과학 중 유리한 과목을 선택하고 집중해야 해요.",
-      "코딩": "정보 교과 내신 대비와 함께 대학 입시에 활용할 수 있는 포트폴리오를 만들어야 합니다."
-    }
-  };
-  
-  const tips = subjectTips[school] || subjectTips["middle"];
+  const gradeLabel = `${shortName} ${gradeNum}학년`;
+
+  const subjectCards = SUBJECTS.map(s => {
+    const subjIcons = {"국어":"📖","영어":"🌍","수학":"📐","사회":"🏛️","과학":"🔬","코딩":"💻","검정고시":"📝","논술":"✍️"};
+    return `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gd-subj-card">
+      <span class="gd-subj-icon">${subjIcons[s]||'📚'}</span>
+      <h3>${s}</h3>
+      <p>${gradeLabel} ${s} 과외 가이드</p>
+      <span class="gd-subj-arrow">→</span>
+    </a>`;
+  }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(schoolName + ' ' + gradeNum + '학년 과외 - 과외안하니', schoolName + ' ' + gradeNum + '학년 맞춤 과외 정보. 과목별 학습 전략과 선생님 매칭.', 'https://anhani.com/grade/' + school + '/' + grade)}
+  ${commonHead(gradeLabel + ' 과외 - 과목별 맞춤 가이드 | 과외안하니', gradeLabel + ' 맞춤 과외 정보. 국어, 영어, 수학 등 8개 과목별 학습 전략과 선생님 매칭.', 'https://anhani.com/grade/' + school + '/' + grade)}
   <style>${commonStyles()}
-    .gd-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
-    .gd-label { display: inline-block; background: #6366f1; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
-    .gd-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; }
-    .gd-title em { font-style: normal; color: #6366f1; }
-    .gd-subtitle { font-size: 15px; color: #64748b; margin-bottom: 32px; line-height: 1.7; }
-    .gd-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
-    .gd-tab { padding: 10px 20px; border-radius: 10px; border: 1.5px solid #e2e8f0; background: #fff; font-size: 14px; font-weight: 600; color: #475569; text-decoration: none; transition: all 0.2s; }
-    .gd-tab:hover { border-color: #6366f1; color: #6366f1; }
-    .gd-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
-    .gd-section { margin-bottom: 32px; }
-    .gd-section h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #6366f1; }
-    .gd-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
-    .gd-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 20px; transition: all 0.2s; }
-    .gd-card:hover { border-color: #6366f1; transform: translateY(-3px); box-shadow: 0 4px 16px rgba(99,102,241,0.1); }
-    .gd-card h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
-    .gd-card p { font-size: 14px; color: #64748b; line-height: 1.7; }
-    .gd-card-link { display: inline-block; margin-top: 12px; color: #6366f1; font-size: 14px; font-weight: 600; text-decoration: none; }
-    .gd-cta { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 16px; padding: 40px 28px; text-align: center; color: #fff; margin-top: 40px; }
+    .gd-hero { background: linear-gradient(135deg, #0f172a, #1e1b4b); color: #fff; padding: 48px 24px; text-align: center; }
+    .gd-hero h1 { font-size: 32px; font-weight: 900; margin-bottom: 8px; }
+    .gd-hero h1 em { font-style: normal; color: ${accentColor}; }
+    .gd-hero p { font-size: 15px; color: #94a3b8; }
+    .gd-wrap { max-width: 900px; margin: 0 auto; padding: 32px 24px 80px; }
+    .gd-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; justify-content: center; }
+    .gd-tab { padding: 10px 22px; border-radius: 10px; border: 1.5px solid #e2e8f0; background: #fff; font-size: 14px; font-weight: 600; color: #475569; text-decoration: none; transition: all 0.2s; }
+    .gd-tab:hover { border-color: ${accentColor}; color: ${accentColor}; }
+    .gd-tab.active { background: ${accentColor}; color: #fff; border-color: ${accentColor}; }
+    .gd-section-title { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; text-align: center; }
+    .gd-subj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 40px; }
+    .gd-subj-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 20px; text-decoration: none; color: inherit; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
+    .gd-subj-card:hover { border-color: ${accentColor}; transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .gd-subj-icon { font-size: 32px; margin-bottom: 10px; }
+    .gd-subj-card h3 { font-size: 17px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+    .gd-subj-card p { font-size: 12px; color: #94a3b8; }
+    .gd-subj-arrow { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #d1d5db; font-size: 16px; }
+    .gd-subj-card:hover .gd-subj-arrow { color: ${accentColor}; }
+    .gd-cta { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 16px; padding: 40px 28px; text-align: center; color: #fff; }
     .gd-cta h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
-    .gd-cta p { font-size: 14px; opacity: 0.8; margin-bottom: 20px; }
-    .gd-cta-btn { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
+    .gd-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
+    .gd-cta a { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
   </style></head><body>
   ${navHTML('region')}
+  <div class="gd-hero">
+    <h1><em>${gradeLabel}</em> 과목별 과외</h1>
+    <p>과목을 선택하면 ${gradeLabel}에 맞는 상세 과외 가이드를 확인할 수 있어요</p>
+  </div>
   <div class="gd-wrap">
-    <div class="gd-label">${schoolName}</div>
-    <h1 class="gd-title">${schoolName} <em>${gradeNum}학년</em> 맞춤 과외</h1>
-    <p class="gd-subtitle">${shortName} ${gradeNum}학년에 꼭 필요한 과목별 학습 전략과 검증된 선생님을 매칭해 드립니다.</p>
-    
     <div class="gd-tabs">
       ${Array.from({length: maxGrade}, (_, i) => 
         `<a href="/grade/${school}/${i+1}" class="gd-tab${i+1 === gradeNum ? ' active' : ''}">${shortName} ${i+1}학년</a>`
       ).join('')}
     </div>
-    
-    <div class="gd-section">
-      <h2>과목별 학습 가이드</h2>
-      <div class="gd-cards">
-        ${Object.entries(tips).map(([subj, tip]) => `
-          <div class="gd-card">
-            <h3>${subj}</h3>
-            <p>${tip}</p>
-            <a href="/${encodeURIComponent('강남구-' + shortName + '-' + subj + '-과외')}" class="gd-card-link">${subj} 과외 찾기 →</a>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-    
-    <div class="gd-section">
-      <h2>지역별 ${shortName} ${gradeNum}학년 과외</h2>
-      <div class="gd-cards">
-        ${Object.keys(REGIONS).map(r => `
-          <div class="gd-card">
-            <h3>${r}</h3>
-            <p>${r} 지역 ${shortName} ${gradeNum}학년 과외 정보 ${REGIONS[r].length}개 지역</p>
-            <a href="/지역별/${encodeURIComponent(r)}" class="gd-card-link">${r} 과외 보기 →</a>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-    
+    <h2 class="gd-section-title">${gradeLabel} 과목별 과외 가이드</h2>
+    <div class="gd-subj-grid">${subjectCards}</div>
     <div class="gd-cta">
-      <h3>${shortName} ${gradeNum}학년 맞춤 과외 상담</h3>
-      <p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank" class="gd-cta-btn">무료 상담 신청 →</a>
+      <h3>${gradeLabel} 맞춤 과외 상담</h3>
+      <p>우리 아이에게 딱 맞는 선생님을 무료로 매칭해 드립니다</p>
+      <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담 신청 →</a>
     </div>
   </div>
   ${footerHTML()}
@@ -2834,6 +2965,15 @@ export default {
     }
     
     // 학년별 과외
+    const gradeSubjMatch = pathname.match(/^\/grade\/(elementary|middle|high)\/(\d+)\/(.+)$/);
+    if (gradeSubjMatch) {
+      const subj = decodeURIComponent(gradeSubjMatch[3]);
+      if (SUBJECTS.includes(subj)) {
+        return new Response(renderGradeSubjectPage(gradeSubjMatch[1], gradeSubjMatch[2], subj), {
+          headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
+        });
+      }
+    }
     const gradeMatch = pathname.match(/^\/grade\/(elementary|middle|high)\/(\d+)$/);
     if (gradeMatch) {
       return new Response(renderGradePage(gradeMatch[1], gradeMatch[2]), {
