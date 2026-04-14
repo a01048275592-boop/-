@@ -1799,14 +1799,10 @@ function renderSubjectList() {
   };
   
   const cards = SUBJECTS.map(s => {
-    const regionLinks = Object.keys(REGIONS).map(r => 
-      `<a href="/지역별/${encodeURIComponent(r)}" class="region-chip">${r}</a>`
-    ).join('');
     return `<div class="subj-card" style="--accent:${subjectColors[s]}">
       <div class="subj-header"><span class="subj-icon">${subjectIcons[s]}</span><h3><a href="/과목별/${encodeURIComponent(s)}" style="color:inherit;text-decoration:none">${s} 과외</a></h3></div>
       <p>${SUBJECT_CONTENT[s].why[0].substring(0, 80)}...</p>
-      <a href="/과목별/${encodeURIComponent(s)}" style="display:inline-block;margin-bottom:12px;color:${subjectColors[s]};font-size:14px;font-weight:600;text-decoration:none">${s} 공부법 & 학습 가이드 →</a>
-      <div class="chips">${regionLinks}</div>
+      <a href="/과목별/${encodeURIComponent(s)}" style="display:inline-block;color:${subjectColors[s]};font-size:14px;font-weight:600;text-decoration:none">${s} 공부법 & 학습 가이드 →</a>
     </div>`;
   }).join('');
 
@@ -4243,7 +4239,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v12-guide-expanded', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v13-no-region-chips', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // robots.txt
