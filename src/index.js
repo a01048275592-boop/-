@@ -194,6 +194,10 @@ const EUP_MYEON = {
 
 const LEVELS = ["초등", "중등", "고등"];
 const SUBJECTS = ["국어", "영어", "수학", "사회", "과학", "코딩", "검정고시", "논술"];
+function getSubjectsForSchool(school) {
+  if (school === 'elementary') return SUBJECTS.filter(s => s !== '검정고시' && s !== '논술');
+  return SUBJECTS;
+}
 
 // --- 콘텐츠 템플릿 풀 ---
 
@@ -1330,7 +1334,7 @@ function renderHomepage() {
           <p class="slide1-subtext"><strong>빈틈 없는 맞춤 관리</strong>로 확실한 성적 반전을 만듭니다.</p>
           <div class="slide1-btns">
             <a href="https://naver.me/GYD2Ki40" target="_blank" class="slide-btn">무료 상담 신청 →</a>
-            <a href="/과목별" class="slide-btn-outline">서비스 더 알아보기</a>
+            <a href="/서비스" class="slide-btn-outline">서비스 더 알아보기</a>
           </div>
           <div class="slide1-stats-row">
             <div class="slide1-stat"><div class="slide1-stat-num">4,200+</div><div class="slide1-stat-label">누적 합격생</div></div>
@@ -1760,7 +1764,7 @@ function renderLevelList() {
     return `<div class="lv-school-card" style="border-top:4px solid ${g.color}">
       <div class="lv-sc-header"><span class="lv-sc-icon">${g.icon}</span><div><h3>${g.name} 과외</h3><p>${g.desc}</p></div></div>
       <div class="lv-grade-grid">${grades}</div>
-      <div class="lv-sc-subjects">${SUBJECTS.map(s=>`<span class="lv-sc-subj">${s}</span>`).join('')}</div>
+      <div class="lv-sc-subjects">${getSubjectsForSchool(g.school).map(s=>`<span class="lv-sc-subj">${s}</span>`).join('')}</div>
     </div>`;
   }).join('');
 
@@ -1906,13 +1910,21 @@ function renderGradeSubjectPage(school, grade, subject) {
     .gs-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 16px; }
     .gs-cta a { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
     @media (max-width: 640px) { .gs-wrap h1 { font-size: 22px; } .gs-article h2 { font-size: 18px; } }
+    .gs-keywords { margin-top: 48px; padding-top: 32px; border-top: 2px solid #e2e8f0; }
+    .gs-kw-title { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 20px; text-align: center; }
+    .gs-kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .gs-kw-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; text-decoration: none; color: #334155; font-size: 14px; font-weight: 500; transition: all 0.2s; line-height: 1.4; }
+    .gs-kw-item:hover { border-color: #6366f1; color: #6366f1; transform: translateX(4px); }
+    .gs-kw-arrow { color: #d1d5db; flex-shrink: 0; margin-left: 8px; }
+    .gs-kw-item:hover .gs-kw-arrow { color: #6366f1; }
+    @media (max-width: 640px) { .gs-kw-grid { grid-template-columns: 1fr; } }
   </style></head><body>
   ${navHTML('region')}
   <div class="gs-wrap">
     <div class="gs-breadcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학년별</a> &gt; <a href="/grade/${school}/${gradeNum}">${gradeLabel}</a> &gt; ${subject}</div>
     
     <div class="gs-tabs">
-      ${SUBJECTS.map(s => `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gs-tab${s===subject?' active':''}">${s}</a>`).join('')}
+      ${getSubjectsForSchool(school).map(s => `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gs-tab${s===subject?' active':''}">${s}</a>`).join('')}
     </div>
     
     <h1>${gradeLabel} ${subject} 과외 추천 가이드</h1>
@@ -1947,10 +1959,277 @@ function renderGradeSubjectPage(school, grade, subject) {
       <p>${closing}</p>
     </div>
     
+    <div class="gs-keywords">
+      <h2 class="gs-kw-title">${gradeLabel} ${subject} 학습 가이드 목록</h2>
+      <div class="gs-kw-grid">
+        ${generateKeywords(school, gradeNum, subject).map((kw, idx) => 
+          `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(subject)}/article/${idx}" class="gs-kw-item"><span>${kw}</span><span class="gs-kw-arrow">→</span></a>`
+        ).join('')}
+      </div>
+    </div>
+    
     <div class="gs-cta">
       <h3>${gradeLabel} ${subject} 맞춤 과외 상담</h3>
       <p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p>
       <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담 신청 →</a>
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 학년별 키워드 아티클 시스템 ---
+const KEYWORD_TEMPLATES = {
+  "국어": [
+    (g,n)=>`${n} 국어 독해력 향상 완벽 전략`,
+    (g,n)=>`${n} 문학 작품 분석 핵심 가이드`,
+    (g,n)=>`${n} 비문학 지문 빠르게 읽는 법`,
+    (g,n)=>`${n} 서술형 문제 고득점 비법`,
+    (g,n)=>`${n} 어휘력 확장 단계별 로드맵`,
+    (g,n)=>`${n} 국어 내신 만점 전략`,
+    (g,n)=>`${n} 글쓰기 실력 향상 가이드`,
+    (g,n)=>`${n} 국어 과외 선생님 선택법`,
+    (g,n)=>`${n} 독서 습관 만드는 방법`,
+    (g,n)=>`${n} 국어 시험 2주 전 집중 대비`,
+    (g,n)=>`${n} 맞춤법과 문법 완벽 정리`,
+    (g,n)=>`${n} 국어 성적 올리는 공부 루틴`,
+    (g,n)=>`${n} 요약 정리 노트 작성법`,
+    (g,n)=>`${n} 국어 과외 효과 극대화하는 법`,
+    (g,n)=>`${n} 시 감상문 작성 요령`,
+    (g,n)=>`${n} 국어 자기주도학습 전략`,
+  ],
+  "영어": [
+    (g,n)=>`${n} 영어 문법 완벽 설계도`,
+    (g,n)=>`${n} 영어 단어 암기 효율적인 방법`,
+    (g,n)=>`${n} 영어 독해 속도 2배 올리기`,
+    (g,n)=>`${n} 영어 듣기 만점 전략`,
+    (g,n)=>`${n} 영어 내신 1등급 로드맵`,
+    (g,n)=>`${n} 영어 과외 vs 학원 비교 분석`,
+    (g,n)=>`${n} 영어 서술형 답안 작성법`,
+    (g,n)=>`${n} 영어 시험 대비 핵심 정리`,
+    (g,n)=>`${n} 파닉스부터 독해까지 완벽 가이드`,
+    (g,n)=>`${n} 영어 회화와 내신 동시 잡기`,
+    (g,n)=>`${n} 영어 과외 시작 전 체크리스트`,
+    (g,n)=>`${n} 영어 성적 급상승 비결`,
+    (g,n)=>`${n} 영어 오답노트 활용법`,
+    (g,n)=>`${n} 영어 기초 문법 총정리`,
+    (g,n)=>`${n} 방학 영어 집중 학습 플랜`,
+    (g,n)=>`${n} 영어 자신감 키우는 공부법`,
+  ],
+  "수학": [
+    (g,n)=>`${n} 수학 개념 완벽 정리 전략`,
+    (g,n)=>`${n} 수학 연산 실수 줄이는 방법`,
+    (g,n)=>`${n} 수학 응용문제 풀이 비법`,
+    (g,n)=>`${n} 수학 내신 만점 가이드`,
+    (g,n)=>`${n} 수학 오답노트 제대로 만들기`,
+    (g,n)=>`${n} 수학 과외 효과 극대화 전략`,
+    (g,n)=>`${n} 수학 공식 암기법 총정리`,
+    (g,n)=>`${n} 수학 시험 시간 관리 전략`,
+    (g,n)=>`${n} 수학 기초부터 다시 잡는 방법`,
+    (g,n)=>`${n} 수학 서술형 고득점 비법`,
+    (g,n)=>`${n} 수학 과외 선생님 고르는 기준`,
+    (g,n)=>`${n} 수학 자신감 회복 프로젝트`,
+    (g,n)=>`${n} 수학 선행학습 적정 범위`,
+    (g,n)=>`${n} 수학 문제집 선택 가이드`,
+    (g,n)=>`${n} 방학 수학 집중 보완 플랜`,
+    (g,n)=>`${n} 수학 등급 올리는 단계별 전략`,
+  ],
+  "사회": [
+    (g,n)=>`${n} 사회 핵심 개념 정리법`,
+    (g,n)=>`${n} 사회 자료 분석 능력 키우기`,
+    (g,n)=>`${n} 사회 시험 대비 암기 전략`,
+    (g,n)=>`${n} 사회 내신 고득점 비법`,
+    (g,n)=>`${n} 사회 과외 효과적으로 활용하기`,
+    (g,n)=>`${n} 사회 마인드맵 정리 가이드`,
+    (g,n)=>`${n} 사회 서술형 답안 작성 요령`,
+    (g,n)=>`${n} 사회 시사 이슈 연결 학습법`,
+    (g,n)=>`${n} 사회 과목 흥미 붙이는 방법`,
+    (g,n)=>`${n} 사회 시험 2주 전 벼락치기 전략`,
+    (g,n)=>`${n} 사회 교과서 완벽 분석법`,
+    (g,n)=>`${n} 사회 과외 성적 향상 로드맵`,
+  ],
+  "과학": [
+    (g,n)=>`${n} 과학 실험 원리 완벽 이해법`,
+    (g,n)=>`${n} 과학 개념 정리 노트 만들기`,
+    (g,n)=>`${n} 과학 내신 고득점 전략`,
+    (g,n)=>`${n} 과학 과외 효과 극대화 방법`,
+    (g,n)=>`${n} 과학 탐구 보고서 작성 가이드`,
+    (g,n)=>`${n} 과학 공식 암기 요령`,
+    (g,n)=>`${n} 과학 그래프 해석 능력 키우기`,
+    (g,n)=>`${n} 과학 서술형 문제 대비법`,
+    (g,n)=>`${n} 과학 시험 실수 줄이는 방법`,
+    (g,n)=>`${n} 과학 흥미 유발 학습 전략`,
+    (g,n)=>`${n} 과학 영역별 취약점 보완법`,
+    (g,n)=>`${n} 방학 과학 집중 학습 플랜`,
+  ],
+  "코딩": [
+    (g,n)=>`${n} 코딩 입문 완벽 가이드`,
+    (g,n)=>`${n} 코딩 논리적 사고력 키우기`,
+    (g,n)=>`${n} 코딩 프로젝트 기반 학습법`,
+    (g,n)=>`${n} 코딩 과외 선생님 선택 기준`,
+    (g,n)=>`${n} 코딩 언어 선택 가이드`,
+    (g,n)=>`${n} 코딩 대회 준비 전략`,
+    (g,n)=>`${n} 코딩으로 수학 실력 올리기`,
+    (g,n)=>`${n} 코딩 자기주도학습 방법`,
+    (g,n)=>`${n} 코딩 포트폴리오 만들기`,
+    (g,n)=>`${n} 코딩 과외 효과 극대화 전략`,
+    (g,n)=>`${n} 알고리즘 기초 다지기`,
+    (g,n)=>`${n} 코딩 교육 트렌드 총정리`,
+  ],
+  "검정고시": [
+    (g,n)=>`검정고시 합격 전략 완벽 가이드`,
+    (g,n)=>`검정고시 과목별 공부 우선순위`,
+    (g,n)=>`검정고시 기출문제 분석 전략`,
+    (g,n)=>`검정고시 단기 합격 로드맵`,
+    (g,n)=>`검정고시 과외 효과적으로 활용하기`,
+    (g,n)=>`검정고시 시험일 전 최종 점검 리스트`,
+    (g,n)=>`검정고시 합격 후 진로 가이드`,
+    (g,n)=>`검정고시 온라인 학습 활용법`,
+    (g,n)=>`검정고시 과목별 핵심 정리`,
+    (g,n)=>`검정고시 시간 관리 전략`,
+    (g,n)=>`검정고시 합격 수기 모음`,
+    (g,n)=>`검정고시 준비 시작 가이드`,
+  ],
+  "논술": [
+    (g,n)=>`${n} 논술 첨삭 받는 효과적인 방법`,
+    (g,n)=>`${n} 논술 제시문 분석 전략`,
+    (g,n)=>`${n} 논술 논리 구조 잡는 법`,
+    (g,n)=>`${n} 대학별 논술 출제 경향 분석`,
+    (g,n)=>`${n} 논술 과외 시작 전 준비사항`,
+    (g,n)=>`${n} 논술 실전 연습 가이드`,
+    (g,n)=>`${n} 논술 시간 배분 전략`,
+    (g,n)=>`${n} 논술 어휘력 향상 방법`,
+    (g,n)=>`${n} 논술 모범 답안 분석법`,
+    (g,n)=>`${n} 논술 배경지식 쌓는 독서 리스트`,
+    (g,n)=>`${n} 논술 과외 효과 극대화 전략`,
+    (g,n)=>`${n} 논술 합격을 위한 D-30 플랜`,
+  ],
+};
+
+function generateKeywords(school, gradeNum, subject) {
+  const schoolShort = {elementary:"초등",middle:"중등",high:"고등"};
+  const n = `${schoolShort[school]}${gradeNum}`;
+  const templates = KEYWORD_TEMPLATES[subject] || KEYWORD_TEMPLATES["국어"];
+  return templates.map(t => t(gradeNum, n));
+}
+
+// --- 키워드 아티클 콘텐츠 ---
+const ARTICLE_OPENINGS = [
+  (title,n,s)=>`${s}을 열심히 공부하는데 성적이 안 오르시나요? 많은 ${n} 학생들이 같은 고민을 하고 있어요. 오늘은 "${title}"에 대해 실제로 효과가 검증된 방법들을 상세히 알려드리겠습니다.`,
+  (title,n,s)=>`${n} 학부모님들이 가장 많이 검색하는 주제 중 하나가 바로 이것이에요. ${s} 실력을 확실하게 끌어올리는 핵심 전략을 지금부터 하나하나 풀어드릴게요.`,
+  (title,n,s)=>`"우리 아이 ${s} 성적이 왜 안 오를까?" 이런 고민을 하고 계신다면, 이 글이 명쾌한 답을 드릴 수 있을 거예요. ${n} 시기에 꼭 알아야 할 학습 전략을 정리했습니다.`,
+];
+
+const ARTICLE_SECTIONS = [
+  (n,s)=>({h:`왜 ${n} 시기에 ${s}이 중요한가요?`,p:`${n} 시기는 ${s} 학습의 결정적 시기입니다. 이때 형성된 학습 패턴과 기초 실력은 이후 학년에서 직접적인 영향을 미칩니다. 특히 ${s}은 누적형 과목이기 때문에, 지금 빈틈이 생기면 나중에 두 배, 세 배의 노력이 필요해요. 전문 과외를 통해 지금 확실히 잡아두는 것이 장기적으로 가장 효율적인 투자입니다.`}),
+  (n,s)=>({h:`${s} 성적이 안 오르는 진짜 이유`,p:`많은 학생들이 ${s} 공부에 시간을 투자하지만 성적이 정체되는 경험을 합니다. 가장 흔한 원인은 세 가지예요. 첫째, 기초 개념의 빈틈을 모른 채 어려운 문제만 풀려는 것. 둘째, 자기 수준에 맞지 않는 교재를 사용하는 것. 셋째, 오답 분석 없이 문제만 반복적으로 푸는 것. 이 세 가지만 해결해도 성적은 확실히 올라갑니다.`}),
+  (n,s)=>({h:`효과적인 ${s} 학습 루틴 만들기`,p:`${s} 실력 향상의 핵심은 꾸준한 루틴이에요. 매일 정해진 시간에 30~40분씩 ${s} 학습을 하되, 주 2~3회는 새로운 개념을 배우고 나머지 날에는 복습과 문제 풀이에 집중하는 패턴이 가장 효과적입니다. 과외 선생님과 함께 이런 루틴을 잡으면 혼자 할 때보다 실행력이 크게 높아져요.`}),
+  (n,s)=>({h:`1:1 과외가 학원보다 효과적인 이유`,p:`${n} ${s} 학습에서 1:1 과외가 강점을 보이는 이유는 명확합니다. 학원은 평균 수준에 맞춰 수업하기 때문에, 잘하는 학생은 지루하고 못하는 학생은 따라가기 힘들어요. 과외는 학생의 정확한 수준을 파악하고 약점만 집중 공략할 수 있어서, 같은 시간 대비 학습 효율이 2~3배 높습니다.`}),
+  (n,s)=>({h:`시험 전 ${s} 집중 대비 전략`,p:`시험 4주 전부터는 체계적인 대비가 필요해요. 1주차에는 교과서 개념 총정리, 2주차에는 기출문제와 유형별 문제 풀이, 3주차에는 오답 분석과 취약 유형 보완, 마지막 주에는 실전 모의고사와 시간 관리 연습을 합니다. 과외 선생님이 이 플랜을 함께 관리해주면 시험 불안감도 크게 줄어들어요.`}),
+  (n,s)=>({h:`${s} 자기주도학습 능력 키우기`,p:`과외에만 의존하면 혼자 공부하는 힘이 약해질 수 있어요. 좋은 과외 선생님은 ${s} 지식뿐 아니라 스스로 학습 계획을 세우고 실행하는 방법까지 가르쳐 줍니다. 수업 시간에 문제 풀이법을 배우고, 숙제를 통해 혼자 적용해보고, 다음 수업에서 피드백 받는 사이클이 자기주도학습의 기본이에요.`}),
+];
+
+const ARTICLE_CALLOUTS = [
+  `수업 내용을 녹화할 수 있습니다. 복습할 때 다시 보면 효과적입니다.`,
+  `매주 학습 진행 상황을 체크합니다. 꾸준한 관리가 성적을 올립니다.`,
+  `첫 수업은 무료 진단으로 시작합니다. 현재 수준을 정확히 파악해요.`,
+  `오답 노트를 체계적으로 관리합니다. 같은 실수를 반복하지 않게 됩니다.`,
+  `진도보다 이해가 우선입니다. 확실히 이해한 후 다음으로 넘어갑니다.`,
+  `학부모님께 주간 리포트를 전달합니다. 아이의 학습 상태를 투명하게 공유해요.`,
+];
+
+function renderKeywordArticle(school, grade, subject, articleIdx) {
+  const schoolNames = {elementary:"초등학교",middle:"중학교",high:"고등학교"};
+  const schoolShort = {elementary:"초등",middle:"중등",high:"고등"};
+  const schoolBadge = {elementary:"초등교육",middle:"중등교육",high:"고등교육"};
+  const schoolName = schoolNames[school];
+  const shortName = schoolShort[school];
+  const gradeNum = parseInt(grade);
+  const gradeLabel = `${shortName} ${gradeNum}학년`;
+  const n = `${shortName}${gradeNum}`;
+  const idx = parseInt(articleIdx);
+  
+  const keywords = generateKeywords(school, gradeNum, subject);
+  if (idx < 0 || idx >= keywords.length) return null;
+  const title = keywords[idx];
+  
+  const seed = hashCode(school + grade + subject + articleIdx);
+  const rng = seededRandom(seed);
+  
+  const opening = pick(ARTICLE_OPENINGS, rng)(title, gradeLabel, subject);
+  const sections = pickN(ARTICLE_SECTIONS, 4, rng).map(fn => fn(gradeLabel, subject));
+  const callouts = pickN(ARTICLE_CALLOUTS, 3, rng);
+  const review = pick(REVIEW_TEMPLATES, rng)('지역', shortName, subject);
+  const closing = pick(CLOSING_TEMPLATES, rng)('지역', shortName, subject);
+  
+  const canonical = `https://anhani.com/grade/${school}/${grade}/${encodeURIComponent(subject)}/article/${idx}`;
+  
+  const sectionsHTML = sections.map((sec, i) => {
+    let html = `<h2>${sec.h}</h2><p>${sec.p}</p>`;
+    if (i < callouts.length) {
+      html += `<div class="ka-callout"><strong>💡 이렇게 수업합니다!</strong><p>${callouts[i]}</p></div>`;
+    }
+    return html;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(title + ' | 과외안하니', gradeLabel + ' ' + subject + ' 학습 전략 - ' + title, canonical)}
+  <meta name="robots" content="index, follow">
+  <style>${commonStyles()}
+    .ka-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
+    .ka-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
+    .ka-wrap h1 { font-size: 28px; font-weight: 900; color: #0f172a; line-height: 1.4; margin-bottom: 12px; }
+    .ka-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
+    .ka-article h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin: 36px 0 14px; line-height: 1.4; }
+    .ka-article p { font-size: 16px; color: #334155; line-height: 1.85; margin-bottom: 16px; word-break: keep-all; }
+    .ka-callout { background: #f0f9ff; border-left: 4px solid #3b82f6; border-radius: 0 10px 10px 0; padding: 18px 20px; margin: 20px 0; }
+    .ka-callout strong { font-size: 14px; color: #1d4ed8; display: block; margin-bottom: 6px; }
+    .ka-callout p { font-size: 14px; color: #475569; margin: 0; }
+    .ka-related { margin-top: 48px; padding-top: 28px; border-top: 2px solid #e2e8f0; }
+    .ka-related h3 { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
+    .ka-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .ka-related-item { padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #475569; font-size: 13px; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center; }
+    .ka-related-item:hover { border-color: #6366f1; color: #6366f1; }
+    .ka-cta { background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 14px; padding: 32px; text-align: center; color: #fff; margin: 40px 0; }
+    .ka-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .ka-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 16px; }
+    .ka-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .ka-cta-btn { padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .ka-cta-primary { background: #fff; color: #312e81; }
+    .ka-cta-secondary { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    @media (max-width: 640px) { .ka-wrap h1 { font-size: 22px; } .ka-related-grid { grid-template-columns: 1fr; } }
+  </style></head><body>
+  ${navHTML('region')}
+  <div class="ka-wrap">
+    <div class="ka-badge">${schoolBadge[school]}</div>
+    <h1>${title} | 1:1 맞춤 전략</h1>
+    <div class="ka-meta"><span>✏️ 과외안하니 편집팀</span><span>📅 2026년 4월</span></div>
+    
+    <div class="ka-article">
+      <p>${opening}</p>
+      ${sectionsHTML}
+      <h2>실제 수강 후기</h2>
+      <p>${review}</p>
+      <p>${closing}</p>
+    </div>
+    
+    <div class="ka-cta">
+      <h3>${gradeLabel} ${subject} 무료 상담</h3>
+      <p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p>
+      <div class="ka-cta-btns">
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ka-cta-btn ka-cta-primary">무료 상담 신청</a>
+        <a href="tel:010-6850-1420" class="ka-cta-btn ka-cta-secondary">010-6850-1420</a>
+      </div>
+    </div>
+    
+    <div class="ka-related">
+      <h3>${gradeLabel} ${subject} 학습 가이드 더보기</h3>
+      <div class="ka-related-grid">
+        ${keywords.filter((_,i)=>i!==idx).slice(0,8).map((kw,i)=>{
+          const ri = i >= idx ? i+1 : i;
+          return `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(subject)}/article/${ri}" class="ka-related-item"><span>${kw}</span><span>→</span></a>`;
+        }).join('')}
+      </div>
     </div>
   </div>
   ${footerHTML()}
@@ -2542,7 +2821,7 @@ function renderGradePage(school, grade) {
   const gradeNum = parseInt(grade) || 1;
   const gradeLabel = `${shortName} ${gradeNum}학년`;
 
-  const subjectCards = SUBJECTS.map(s => {
+  const subjectCards = getSubjectsForSchool(school).map(s => {
     const subjIcons = {"국어":"📖","영어":"🌍","수학":"📐","사회":"🏛️","과학":"🔬","코딩":"💻","검정고시":"📝","논술":"✍️"};
     return `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gd-subj-card">
       <span class="gd-subj-icon">${subjIcons[s]||'📚'}</span>
@@ -2773,6 +3052,253 @@ function renderStudyGuide() {
   </body></html>`;
 }
 
+// --- 서비스 상세 페이지 ---
+function renderServicePage() {
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('1:1 맞춤 과외 서비스 안내 | 과외안하니', '초·중·고 전과목 1:1 맞춤 과외. 수준별 맞춤 수업, 내신·수능 완벽 대비, 올바른 학습습관 형성까지.', 'https://anhani.com/서비스')}
+  <style>${commonStyles()}
+    .sv-hero { background: linear-gradient(160deg, #0c1425 0%, #162044 40%, #1e1b4b 100%); color: #fff; padding: 80px 24px 60px; text-align: center; position: relative; overflow: hidden; }
+    .sv-hero::before { content:''; position:absolute; top:-50%; left:-20%; width:140%; height:200%; background: radial-gradient(circle at 30% 40%, rgba(99,102,241,0.12) 0%, transparent 50%); }
+    .sv-hero-inner { position: relative; max-width: 700px; margin: 0 auto; }
+    .sv-hero-badge { display: inline-block; background: rgba(99,102,241,0.2); border: 1px solid rgba(99,102,241,0.3); padding: 6px 20px; border-radius: 24px; font-size: 13px; font-weight: 600; color: #a5b4fc; margin-bottom: 24px; }
+    .sv-hero h1 { font-size: 42px; font-weight: 900; line-height: 1.3; margin-bottom: 16px; letter-spacing: -1px; }
+    .sv-hero h1 em { font-style: normal; color: #818cf8; }
+    .sv-hero-desc { font-size: 17px; color: #94a3b8; line-height: 1.7; margin-bottom: 32px; }
+    .sv-hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .sv-hero-btn { padding: 14px 32px; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .sv-btn-primary { background: #6366f1; color: #fff; }
+    .sv-btn-primary:hover { background: #4f46e5; transform: translateY(-2px); }
+    .sv-btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1.5px solid rgba(255,255,255,0.2); }
+    .sv-hero-stats { display: flex; gap: 40px; justify-content: center; }
+    .sv-hero-stat { text-align: center; }
+    .sv-hero-stat-num { font-size: 28px; font-weight: 900; color: #fff; }
+    .sv-hero-stat-label { font-size: 12px; color: #64748b; margin-top: 4px; }
+    
+    .sv-section { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
+    .sv-section-label { font-size: 13px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 12px; }
+    .sv-section-title { font-size: 30px; font-weight: 900; color: #0f172a; text-align: center; line-height: 1.4; margin-bottom: 12px; }
+    .sv-section-title em { font-style: normal; color: #6366f1; }
+    .sv-section-desc { font-size: 15px; color: #64748b; text-align: center; line-height: 1.7; margin-bottom: 48px; }
+
+    .sv-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .sv-pillar { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px 20px; text-align: center; transition: all 0.3s; }
+    .sv-pillar:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: #6366f1; }
+    .sv-pillar-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 16px; }
+    .sv-pillar h3 { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+    .sv-pillar p { font-size: 13px; color: #64748b; line-height: 1.6; }
+
+    .sv-process-bg { background: #f8fafc; }
+    .sv-process { display: flex; gap: 0; justify-content: center; align-items: stretch; position: relative; }
+    .sv-step { flex: 1; max-width: 200px; text-align: center; padding: 24px 16px; position: relative; }
+    .sv-step-num { width: 40px; height: 40px; background: #6366f1; color: #fff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; margin-bottom: 14px; position: relative; z-index: 2; }
+    .sv-step h4 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
+    .sv-step p { font-size: 12px; color: #94a3b8; line-height: 1.5; }
+    .sv-step::after { content: ''; position: absolute; top: 44px; left: 50%; width: 100%; height: 2px; background: #e2e8f0; z-index: 1; }
+    .sv-step:last-child::after { display: none; }
+
+    .sv-diff { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .sv-diff-card { background: #fff; border-radius: 14px; padding: 28px 24px; border: 1px solid #e2e8f0; }
+    .sv-diff-card h4 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .sv-diff-card p { font-size: 14px; color: #64748b; line-height: 1.7; }
+
+    .sv-system-bg { background: #0f172a; color: #fff; }
+    .sv-system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .sv-sys-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 28px 20px; text-align: center; }
+    .sv-sys-card:hover { background: rgba(255,255,255,0.1); }
+    .sv-sys-icon { font-size: 32px; margin-bottom: 12px; }
+    .sv-sys-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .sv-sys-card p { font-size: 13px; color: #94a3b8; line-height: 1.6; }
+
+    .sv-price-bg { background: #f0f4ff; }
+    .sv-price-table { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .sv-price-card { background: #fff; border-radius: 16px; padding: 32px 24px; text-align: center; border: 1.5px solid #e2e8f0; transition: all 0.3s; }
+    .sv-price-card.featured { border-color: #6366f1; box-shadow: 0 8px 32px rgba(99,102,241,0.15); transform: scale(1.03); }
+    .sv-price-badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 12px; }
+    .sv-price-card h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+    .sv-price-range { font-size: 14px; color: #64748b; margin-bottom: 16px; }
+    .sv-price-features { list-style: none; padding: 0; margin: 0 0 20px; text-align: left; }
+    .sv-price-features li { font-size: 13px; color: #475569; padding: 6px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
+    .sv-price-btn { display: block; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; text-align: center; transition: all 0.2s; }
+    
+    .sv-contact-bg { background: linear-gradient(135deg, #1e1b4b, #312e81); color: #fff; }
+    .sv-contact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    .sv-contact-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 28px 20px; text-align: center; }
+    .sv-contact-card:hover { background: rgba(255,255,255,0.12); }
+    .sv-contact-icon { font-size: 32px; margin-bottom: 10px; }
+    .sv-contact-card h4 { font-size: 14px; color: #a5b4fc; margin-bottom: 8px; }
+    .sv-contact-card .sv-contact-val { font-size: 20px; font-weight: 800; color: #fff; }
+    .sv-contact-card a { color: #fff; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .sv-hero h1 { font-size: 28px; }
+      .sv-hero-stats { gap: 20px; }
+      .sv-hero-stat-num { font-size: 22px; }
+      .sv-pillars { grid-template-columns: 1fr 1fr; }
+      .sv-process { flex-direction: column; align-items: center; }
+      .sv-step::after { display: none; }
+      .sv-diff { grid-template-columns: 1fr; }
+      .sv-system-grid { grid-template-columns: 1fr; }
+      .sv-price-table { grid-template-columns: 1fr; }
+      .sv-price-card.featured { transform: none; }
+      .sv-contact-grid { grid-template-columns: 1fr; }
+      .sv-section-title { font-size: 24px; }
+    }
+  </style></head><body>
+  ${navHTML('')}
+
+  <section class="sv-hero">
+    <div class="sv-hero-inner">
+      <div class="sv-hero-badge">✦ 초·중·고 전과목 1:1 맞춤 과외</div>
+      <h1>아이의 성적을<br><em>확실하게</em> 바꾸는 방법</h1>
+      <p class="sv-hero-desc">수준별 맞춤 수업부터 내신·수능 완벽 대비,<br>올바른 학습습관 형성까지. 과외안하니가 책임집니다.</p>
+      <div class="sv-hero-btns">
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-hero-btn sv-btn-primary">무료 상담 신청 →</a>
+        <a href="tel:010-6850-1420" class="sv-hero-btn sv-btn-secondary">📞 010-6850-1420</a>
+      </div>
+      <div class="sv-hero-stats">
+        <div class="sv-hero-stat"><div class="sv-hero-stat-num">4,200+</div><div class="sv-hero-stat-label">누적 합격생</div></div>
+        <div class="sv-hero-stat"><div class="sv-hero-stat-num">3,000명</div><div class="sv-hero-stat-label">전문 선생님</div></div>
+        <div class="sv-hero-stat"><div class="sv-hero-stat-num">98%</div><div class="sv-hero-stat-label">학생 만족도</div></div>
+        <div class="sv-hero-stat"><div class="sv-hero-stat-num">31년</div><div class="sv-hero-stat-label">교육 노하우</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-section">
+    <div class="sv-section-label">CORE VALUES</div>
+    <h2 class="sv-section-title">과외안하니의 <em>4가지 약속</em></h2>
+    <p class="sv-section-desc">모든 수업은 이 네 가지 원칙 위에서 설계됩니다.</p>
+    <div class="sv-pillars">
+      <div class="sv-pillar"><div class="sv-pillar-icon" style="background:#eef2ff">🎯</div><h3>수준별 맞춤 수업</h3><p>학생의 현재 실력을 정밀 진단하고, 약점에 맞춘 개인별 커리큘럼을 설계합니다.</p></div>
+      <div class="sv-pillar"><div class="sv-pillar-icon" style="background:#f0fdf4">📈</div><h3>기초부터 심화까지</h3><p>기초가 부족해도 걱정 마세요. 단계별로 차근차근, 탄탄하게 실력을 쌓아갑니다.</p></div>
+      <div class="sv-pillar"><div class="sv-pillar-icon" style="background:#fef3c7">🏆</div><h3>내신 · 수능 완벽 대비</h3><p>학교별 기출 분석, 수능 유형별 전략까지. 시험에 최적화된 학습을 제공합니다.</p></div>
+      <div class="sv-pillar"><div class="sv-pillar-icon" style="background:#fce7f3">🧠</div><h3>올바른 학습습관</h3><p>단순 주입식이 아닌, 스스로 계획하고 실행하는 자기주도학습 능력을 키웁니다.</p></div>
+    </div>
+  </section>
+
+  <section class="sv-process-bg">
+    <div class="sv-section" style="padding-bottom:60px">
+      <div class="sv-section-label">PROCESS</div>
+      <h2 class="sv-section-title">수업은 이렇게 <em>진행됩니다</em></h2>
+      <p class="sv-section-desc">상담부터 성적 향상까지, 체계적인 5단계 프로세스</p>
+      <div class="sv-process">
+        <div class="sv-step"><div class="sv-step-num">1</div><h4>무료 상담</h4><p>학생 상황 파악<br>목표 설정</p></div>
+        <div class="sv-step"><div class="sv-step-num">2</div><h4>수준 진단</h4><p>AI 기반 진단<br>취약점 분석</p></div>
+        <div class="sv-step"><div class="sv-step-num">3</div><h4>선생님 매칭</h4><p>최적 코치 배정<br>체험 수업</p></div>
+        <div class="sv-step"><div class="sv-step-num">4</div><h4>맞춤 수업</h4><p>개인별 커리큘럼<br>주간 리포트</p></div>
+        <div class="sv-step"><div class="sv-step-num">5</div><h4>성적 향상</h4><p>정기 평가<br>목표 달성</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-section">
+    <div class="sv-section-label">DIFFERENCE</div>
+    <h2 class="sv-section-title">과외안하니만의 <em>차별점</em></h2>
+    <p class="sv-section-desc">단순 과외가 아닙니다. 학습 환경 전체를 설계합니다.</p>
+    <div class="sv-diff">
+      <div class="sv-diff-card"><h4>📊 학교 기출 완벽 분석</h4><p>인근 학교 내신 시험의 출제 패턴을 매 학기 분석합니다. 학교별 맞춤 대비로 내신 성적을 확실하게 끌어올립니다.</p></div>
+      <div class="sv-diff-card"><h4>👨‍🏫 3단계 코치 검증</h4><p>학력 검증, 모의 수업 평가, 인성 면접을 통과한 상위 5% 선생님만 배정합니다. 코치 교체도 무료입니다.</p></div>
+      <div class="sv-diff-card"><h4>📱 주간 학습 리포트</h4><p>매 수업 후 학습 내용과 아이의 상태를 카카오톡으로 상세히 전달합니다. 부모님도 함께 성장을 확인하세요.</p></div>
+      <div class="sv-diff-card"><h4>🎁 첫 수업 무료 체험</h4><p>첫 체험 수업은 완전 무료입니다. 부담 없이 수업 방식과 선생님과의 궁합을 확인해 보세요.</p></div>
+      <div class="sv-diff-card"><h4>📝 자기주도학습 코칭</h4><p>수업 시간 외에도 혼자 공부할 수 있는 계획표와 방법을 알려줍니다. 과외 없이도 공부하는 힘을 키워줍니다.</p></div>
+      <div class="sv-diff-card"><h4>🔄 오답 관리 시스템</h4><p>틀린 문제를 자동으로 모아서 반복 학습 자료로 제공합니다. 같은 실수를 두 번 하지 않게 됩니다.</p></div>
+    </div>
+  </section>
+
+  <section class="sv-system-bg">
+    <div class="sv-section">
+      <div class="sv-section-label" style="color:#a5b4fc">SYSTEM</div>
+      <h2 class="sv-section-title" style="color:#fff">과외안하니 <em>학습 관리 시스템</em></h2>
+      <p class="sv-section-desc" style="color:#94a3b8">AI 기술과 전문 코치의 결합으로 최적의 학습 환경을 만듭니다.</p>
+      <div class="sv-system-grid">
+        <div class="sv-sys-card"><div class="sv-sys-icon">🤖</div><h4>AI 학습 진단</h4><p>입학 시 AI 기반 진단검사로 취약 단원을 정밀하게 파악합니다.</p></div>
+        <div class="sv-sys-card"><div class="sv-sys-icon">📋</div><h4>맞춤 커리큘럼</h4><p>진단 결과를 기반으로 학생별 최적의 학습 경로를 설계합니다.</p></div>
+        <div class="sv-sys-card"><div class="sv-sys-icon">📊</div><h4>성과 추적</h4><p>매달 학습 성과를 데이터로 분석하고 계획을 유연하게 수정합니다.</p></div>
+        <div class="sv-sys-card"><div class="sv-sys-icon">💬</div><h4>실시간 질의응답</h4><p>수업 외 시간에도 카카오톡으로 궁금한 점을 바로 해결합니다.</p></div>
+        <div class="sv-sys-card"><div class="sv-sys-icon">📖</div><h4>학습 자료 제공</h4><p>교과서, 기출, 모의고사 등 필요한 모든 학습 자료를 준비합니다.</p></div>
+        <div class="sv-sys-card"><div class="sv-sys-icon">🏅</div><h4>동기부여 프로그램</h4><p>단계별 목표 달성 시 리워드를 통해 학습 의욕을 유지합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-price-bg">
+    <div class="sv-section">
+      <div class="sv-section-label">PRICING</div>
+      <h2 class="sv-section-title">과외비 <em>안내</em></h2>
+      <p class="sv-section-desc">학교급별 적정 과외비를 안내드립니다. 정확한 비용은 무료 상담에서 확인하세요.</p>
+      <div class="sv-price-table">
+        <div class="sv-price-card">
+          <div class="sv-price-badge" style="background:#dbeafe;color:#1d4ed8">초등</div>
+          <h3>초등학교 과외</h3>
+          <div class="sv-price-range">시간당 2.5만~4만원</div>
+          <ul class="sv-price-features">
+            <li>✅ 주 2~3회 / 60~90분</li>
+            <li>✅ 학습 습관 형성 중심</li>
+            <li>✅ 재미있는 활동 수업</li>
+            <li>✅ 학부모 주간 리포트</li>
+            <li>✅ 첫 수업 무료 체험</li>
+          </ul>
+          <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-price-btn" style="background:#dbeafe;color:#1d4ed8">무료 상담 신청</a>
+        </div>
+        <div class="sv-price-card featured">
+          <div class="sv-price-badge" style="background:#6366f1;color:#fff">인기</div>
+          <h3>중학교 과외</h3>
+          <div class="sv-price-range">시간당 3만~5만원</div>
+          <ul class="sv-price-features">
+            <li>✅ 주 2~3회 / 90~120분</li>
+            <li>✅ 내신 완벽 대비</li>
+            <li>✅ 학교별 기출 분석</li>
+            <li>✅ 서술형 집중 훈련</li>
+            <li>✅ 시험 전 추가 수업</li>
+          </ul>
+          <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-price-btn" style="background:#6366f1;color:#fff">무료 상담 신청</a>
+        </div>
+        <div class="sv-price-card">
+          <div class="sv-price-badge" style="background:#fef3c7;color:#b45309">고등</div>
+          <h3>고등학교 과외</h3>
+          <div class="sv-price-range">시간당 4만~7만원</div>
+          <ul class="sv-price-features">
+            <li>✅ 주 2~4회 / 120분+</li>
+            <li>✅ 수능 + 내신 동시 대비</li>
+            <li>✅ 킬러 문항 집중 훈련</li>
+            <li>✅ 입시 전략 컨설팅</li>
+            <li>✅ 모의고사 분석 리포트</li>
+          </ul>
+          <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-price-btn" style="background:#fef3c7;color:#b45309">무료 상담 신청</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sv-contact-bg">
+    <div class="sv-section">
+      <div class="sv-section-label" style="color:#a5b4fc">CONTACT</div>
+      <h2 class="sv-section-title" style="color:#fff">지금 바로 <em>무료 상담</em> 받으세요</h2>
+      <p class="sv-section-desc" style="color:#94a3b8">첫 수업 무료 · 선생님 교체 무료 · 부담 없이 시작하세요</p>
+      <div class="sv-contact-grid">
+        <a href="tel:010-6850-1420" class="sv-contact-card" style="text-decoration:none">
+          <div class="sv-contact-icon">📞</div>
+          <h4>전화 상담</h4>
+          <div class="sv-contact-val">010-6850-1420</div>
+        </a>
+        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="sv-contact-card" style="text-decoration:none">
+          <div class="sv-contact-icon">💬</div>
+          <h4>카카오톡 상담 (ID: kdy5592)</h4>
+          <div class="sv-contact-val">카카오톡 채팅</div>
+        </a>
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-contact-card" style="text-decoration:none">
+          <div class="sv-contact-icon">📝</div>
+          <h4>무료 상담 신청</h4>
+          <div class="sv-contact-val">온라인 신청서</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  ${footerHTML()}
+  </body></html>`;
+}
+
 // --- 화상수업 페이지 ---
 function renderVideoLesson() {
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -2964,11 +3490,25 @@ export default {
       }
     }
     
+    // 학년별 키워드 아티클
+    const articleMatch = pathname.match(/^\/grade\/(elementary|middle|high)\/(\d+)\/(.+)\/article\/(\d+)$/);
+    if (articleMatch) {
+      const subj = decodeURIComponent(articleMatch[3]);
+      const validSubjs = getSubjectsForSchool(articleMatch[1]);
+      if (validSubjs.includes(subj)) {
+        const html = renderKeywordArticle(articleMatch[1], articleMatch[2], subj, articleMatch[4]);
+        if (html) return new Response(html, {
+          headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
+        });
+      }
+    }
+    
     // 학년별 과외
     const gradeSubjMatch = pathname.match(/^\/grade\/(elementary|middle|high)\/(\d+)\/(.+)$/);
     if (gradeSubjMatch) {
       const subj = decodeURIComponent(gradeSubjMatch[3]);
-      if (SUBJECTS.includes(subj)) {
+      const validSubjs = getSubjectsForSchool(gradeSubjMatch[1]);
+      if (validSubjs.includes(subj)) {
         return new Response(renderGradeSubjectPage(gradeSubjMatch[1], gradeSubjMatch[2], subj), {
           headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
         });
@@ -3022,6 +3562,13 @@ export default {
     // 화상수업
     if (pathname === '/video-lesson' || decodedPath === '/화상수업') {
       return new Response(renderVideoLesson(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    
+    // 서비스 소개
+    if (decodedPath === '/서비스' || decodedPath === '/소개' || pathname === '/service') {
+      return new Response(renderServicePage(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
