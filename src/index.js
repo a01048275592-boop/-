@@ -436,50 +436,83 @@ function generateTags(location, level, subject, rng) {
 // --- 썸네일 SVG 생성 ---
 function generateThumbnail(location, level, subject) {
   const colors = {
-    "국어": "#E74C3C", "영어": "#3498DB", "수학": "#2ECC71", "사회": "#F39C12",
-    "과학": "#9B59B6", "코딩": "#1ABC9C", "검정고시": "#E67E22", "논술": "#34495E"
+    "국어": "#dc2626", "영어": "#2563eb", "수학": "#16a34a", "사회": "#d97706",
+    "과학": "#7c3aed", "코딩": "#0891b2", "검정고시": "#ea580c", "논술": "#4f46e5"
   };
-  const color = colors[subject] || "#3498DB";
-  
-  // 과목별 아이콘 SVG 요소
-  const icons = {
-    "국어": `<rect x="920" y="120" width="60" height="80" rx="4" fill="rgba(255,255,255,0.15)" transform="rotate(-8 950 160)"/><rect x="940" y="110" width="60" height="80" rx="4" fill="rgba(255,255,255,0.2)" transform="rotate(5 970 150)"/><line x1="950" y1="130" x2="990" y2="130" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><line x1="950" y1="142" x2="985" y2="142" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><line x1="950" y1="154" x2="980" y2="154" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>`,
-    "영어": `<circle cx="960" cy="150" r="40" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><text x="960" y="145" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.3)" text-anchor="middle">ABC</text><text x="960" y="168" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,0.2)" text-anchor="middle">abc</text>`,
-    "수학": `<text x="960" y="140" font-family="sans-serif" font-size="36" fill="rgba(255,255,255,0.2)" text-anchor="middle">∑</text><text x="930" y="175" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.15)" text-anchor="middle">π</text><text x="990" y="175" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.15)" text-anchor="middle">√</text>`,
-    "사회": `<circle cx="960" cy="148" r="35" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><ellipse cx="960" cy="148" rx="35" ry="14" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/><line x1="960" y1="113" x2="960" y2="183" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>`,
-    "과학": `<circle cx="950" cy="140" r="12" fill="rgba(255,255,255,0.15)"/><circle cx="980" cy="155" r="8" fill="rgba(255,255,255,0.12)"/><line x1="958" y1="148" x2="974" y2="150" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><circle cx="940" cy="168" r="10" fill="rgba(255,255,255,0.1)"/><line x1="946" y1="163" x2="952" y2="146" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>`,
-    "코딩": `<text x="960" y="138" font-family="monospace" font-size="16" fill="rgba(255,255,255,0.25)" text-anchor="middle">&lt;/&gt;</text><rect x="930" y="148" width="60" height="30" rx="4" fill="rgba(255,255,255,0.1)"/><line x1="938" y1="158" x2="965" y2="158" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><line x1="938" y1="168" x2="955" y2="168" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>`,
-    "검정고시": `<rect x="935" y="115" width="50" height="65" rx="3" fill="rgba(255,255,255,0.15)"/><line x1="945" y1="130" x2="975" y2="130" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><line x1="945" y1="142" x2="975" y2="142" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line x1="945" y1="154" x2="970" y2="154" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><polyline points="942,165 948,171 958,160" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>`,
-    "논술": `<path d="M935 170 Q935 120 960 120 Q985 120 985 145 L985 175 Q975 175 975 165 L975 140 Q975 130 965 130 L955 130 Q945 130 945 140 L945 170 Z" fill="rgba(255,255,255,0.15)"/><line x1="953" y1="142" x2="977" y2="142" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><line x1="953" y1="152" x2="973" y2="152" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>`
+  const darkColors = {
+    "국어": "#7f1d1d", "영어": "#1e3a5f", "수학": "#14532d", "사회": "#78350f",
+    "과학": "#3b0764", "코딩": "#164e63", "검정고시": "#7c2d12", "논술": "#1e1b4b"
   };
-  const icon = icons[subject] || icons["국어"];
+  const color = colors[subject] || "#2563eb";
+  const dark = darkColors[subject] || "#1e3a5f";
   
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
     <defs>
       <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:${color};stop-opacity:1"/>
-        <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1"/>
+        <stop offset="0%" style="stop-color:${dark};stop-opacity:1"/>
+        <stop offset="50%" style="stop-color:#0f172a;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:${dark};stop-opacity:1"/>
       </linearGradient>
     </defs>
     <rect width="1200" height="630" fill="url(#bg)"/>
-    <!-- 책/공부 배경 일러스트 -->
-    <rect x="100" y="420" width="180" height="12" rx="2" fill="rgba(255,255,255,0.06)" transform="rotate(-3 190 426)"/>
-    <rect x="100" y="405" width="170" height="12" rx="2" fill="rgba(255,255,255,0.05)" transform="rotate(2 185 411)"/>
-    <rect x="105" y="390" width="160" height="12" rx="2" fill="rgba(255,255,255,0.04)"/>
-    <rect x="920" y="400" width="160" height="10" rx="2" fill="rgba(255,255,255,0.04)" transform="rotate(5 1000 405)"/>
-    <rect x="925" y="385" width="150" height="10" rx="2" fill="rgba(255,255,255,0.03)" transform="rotate(-2 1000 390)"/>
-    <!-- 연필 -->
-    <line x1="180" y1="180" x2="220" y2="280" stroke="rgba(255,255,255,0.06)" stroke-width="6" stroke-linecap="round"/>
-    <polygon points="220,280 215,295 225,295" fill="rgba(255,255,255,0.08)"/>
-    <!-- 과목 아이콘 -->
-    ${icon}
-    <!-- 메인 콘텐츠 영역 -->
-    <rect x="80" y="80" width="1040" height="470" rx="20" fill="rgba(255,255,255,0.08)"/>
-    <text x="600" y="235" font-family="sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">${location}</text>
-    <text x="600" y="330" font-family="sans-serif" font-size="52" fill="rgba(255,255,255,0.9)" text-anchor="middle">${level} ${subject} 과외</text>
-    <line x1="440" y1="370" x2="760" y2="370" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-    <text x="600" y="420" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,0.6)" text-anchor="middle">1:1 맞춤 수업 · 성적 향상 · 전문 코칭</text>
-    <text x="600" y="490" font-family="sans-serif" font-size="24" fill="rgba(255,255,255,0.35)" text-anchor="middle">anhani.com</text>
+    
+    <!-- 칠판 배경 -->
+    <rect x="40" y="30" width="1120" height="570" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
+    
+    <!-- 책꽂이 좌측 -->
+    <rect x="60" y="380" width="120" height="180" rx="4" fill="rgba(255,255,255,0.04)"/>
+    <rect x="70" y="390" width="20" height="90" rx="2" fill="${color}" opacity="0.2"/>
+    <rect x="95" y="400" width="18" height="80" rx="2" fill="rgba(255,255,255,0.12)"/>
+    <rect x="118" y="385" width="22" height="95" rx="2" fill="${color}" opacity="0.15"/>
+    <rect x="145" y="395" width="16" height="75" rx="2" fill="rgba(255,255,255,0.08)"/>
+    <line x1="65" y1="485" x2="175" y2="485" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+    <rect x="72" y="495" width="24" height="55" rx="2" fill="rgba(255,255,255,0.06)"/>
+    <rect x="100" y="500" width="20" height="50" rx="2" fill="${color}" opacity="0.12"/>
+    <rect x="125" y="492" width="22" height="58" rx="2" fill="rgba(255,255,255,0.1)"/>
+    
+    <!-- 책꽂이 우측 -->
+    <rect x="1020" y="360" width="120" height="200" rx="4" fill="rgba(255,255,255,0.04)"/>
+    <rect x="1030" y="370" width="22" height="85" rx="2" fill="rgba(255,255,255,0.1)"/>
+    <rect x="1056" y="380" width="18" height="75" rx="2" fill="${color}" opacity="0.18"/>
+    <rect x="1078" y="365" width="20" height="90" rx="2" fill="rgba(255,255,255,0.07)"/>
+    <rect x="1102" y="375" width="24" height="80" rx="2" fill="${color}" opacity="0.12"/>
+    <line x1="1025" y1="460" x2="1135" y2="460" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+    <rect x="1035" y="470" width="20" height="65" rx="2" fill="${color}" opacity="0.1"/>
+    <rect x="1060" y="475" width="22" height="60" rx="2" fill="rgba(255,255,255,0.08)"/>
+    <rect x="1088" y="468" width="18" height="67" rx="2" fill="rgba(255,255,255,0.12)"/>
+    
+    <!-- 노트/공책 좌상단 -->
+    <rect x="80" y="60" width="100" height="130" rx="4" fill="rgba(255,255,255,0.06)" transform="rotate(-12 130 125)"/>
+    <line x1="95" y1="85" x2="165" y2="75" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+    <line x1="97" y1="100" x2="167" y2="90" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+    <line x1="99" y1="115" x2="163" y2="105" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+    
+    <!-- 연필 우상단 -->
+    <line x1="1060" y1="60" x2="1100" y2="200" stroke="${color}" opacity="0.2" stroke-width="8" stroke-linecap="round"/>
+    <polygon points="1100,200 1094,218 1106,218" fill="${color}" opacity="0.25"/>
+    
+    <!-- 졸업모자 -->
+    <polygon points="1080,80 1120,95 1080,110 1040,95" fill="rgba(255,255,255,0.1)"/>
+    <rect x="1072" y="95" width="16" height="4" fill="rgba(255,255,255,0.08)"/>
+    <line x1="1120" y1="95" x2="1125" y2="115" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+    <circle cx="1125" cy="118" r="3" fill="rgba(255,255,255,0.1)"/>
+    
+    <!-- 수식/기호 배경 장식 -->
+    <text x="200" y="320" font-family="serif" font-size="28" fill="rgba(255,255,255,0.06)" transform="rotate(-15 200 320)">E=mc²</text>
+    <text x="950" y="300" font-family="serif" font-size="22" fill="rgba(255,255,255,0.05)" transform="rotate(10 950 300)">∫f(x)dx</text>
+    <text x="120" y="250" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.04)">ABC</text>
+    <text x="1000" y="260" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.04)">가나다</text>
+    
+    <!-- 메인 글래스모피즘 카드 -->
+    <rect x="200" y="100" width="800" height="430" rx="24" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+    <rect x="200" y="100" width="800" height="430" rx="24" fill="url(#bg)" opacity="0.3"/>
+    
+    <!-- 텍스트 -->
+    <text x="600" y="240" font-family="sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">${location}</text>
+    <text x="600" y="330" font-family="sans-serif" font-size="48" fill="rgba(255,255,255,0.92)" text-anchor="middle">${level} ${subject} 과외</text>
+    <line x1="430" y1="365" x2="770" y2="365" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+    <text x="600" y="410" font-family="sans-serif" font-size="24" fill="rgba(255,255,255,0.5)" text-anchor="middle">1:1 맞춤 수업 · 성적 향상 · 전문 코칭</text>
+    <text x="600" y="470" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.3)" text-anchor="middle">anhani.com</text>
   </svg>`;
 }
 
@@ -3388,236 +3421,6 @@ function renderStudyAbroad() {
       <div class="ab-card"><div class="ab-card-flag">🇩🇪</div><h3>독일 유학</h3><p>무료 학비, 공학</p></div>
       <div class="ab-card"><div class="ab-card-flag">🇫🇷</div><h3>프랑스 유학</h3><p>파리, 그랑제콜</p></div>
     </div>
-  </div>
-  ${footerHTML()}
-  </body></html>`;
-}
-
-// --- 상세 랜딩페이지 ---
-function renderLandingPage() {
-  return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead('초등·중학·고등·성인 과외 1:1 맞춤수업 | 과외안하니', '과외안하니 - 수준별 1:1 맞춤수업으로 기초부터 심화까지. 통합 학습 코칭과 내신·수능 완벽 대비.', 'https://anhani.com/상세')}
-  <style>${commonStyles()}
-    .lp { max-width: 640px; margin: 0 auto; }
-    .lp-hero { background: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
-    .lp-hero-badge { display: inline-block; background: rgba(99,102,241,0.3); border: 1px solid rgba(99,102,241,0.5); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
-    .lp-hero h1 { font-size: 32px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.5px; }
-    .lp-hero h1 em { font-style: normal; color: #818cf8; }
-    .lp-hero p { font-size: 15px; color: #94a3b8; line-height: 1.7; margin-bottom: 24px; }
-    .lp-hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
-    .lp-hero-tag { background: rgba(255,255,255,0.1); padding: 6px 14px; border-radius: 8px; font-size: 13px; color: #c7d2fe; }
-    .lp-hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .lp-btn { padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-    .lp-btn-w { background: #fff; color: #312e81; }
-    .lp-btn-o { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-    
-    .lp-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; background: #fff; border-bottom: 1px solid #e2e8f0; }
-    .lp-stat { padding: 20px 12px; text-align: center; border-right: 1px solid #f1f5f9; }
-    .lp-stat:last-child { border: none; }
-    .lp-stat-num { font-size: 22px; font-weight: 900; color: #312e81; }
-    .lp-stat-label { font-size: 11px; color: #94a3b8; margin-top: 2px; }
-    
-    .lp-section { padding: 48px 24px; }
-    .lp-section-dark { background: #0f172a; color: #fff; }
-    .lp-section-gray { background: #f8fafc; }
-    .lp-section-purple { background: linear-gradient(135deg, #312e81, #4338ca); color: #fff; }
-    .lp-section-mint { background: linear-gradient(135deg, #ecfdf5, #d1fae5); }
-    
-    .lp-sh { text-align: center; margin-bottom: 32px; }
-    .lp-sh-badge { display: inline-block; font-size: 12px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
-    .lp-sh h2 { font-size: 26px; font-weight: 900; line-height: 1.4; }
-    .lp-sh h2 em { font-style: normal; color: #6366f1; }
-    .lp-sh p { font-size: 14px; color: #64748b; margin-top: 8px; }
-    
-    .lp-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .lp-feat { background: #fff; border-radius: 14px; padding: 24px 18px; text-align: center; border: 1px solid #e2e8f0; }
-    .lp-feat-icon { font-size: 32px; margin-bottom: 10px; }
-    .lp-feat h3 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
-    .lp-feat p { font-size: 13px; color: #64748b; line-height: 1.5; }
-    
-    .lp-steps { display: flex; flex-direction: column; gap: 0; }
-    .lp-step { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .lp-step-num { width: 36px; height: 36px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
-    .lp-step h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-    .lp-step p { font-size: 13px; color: #94a3b8; line-height: 1.5; }
-    
-    .lp-subjects { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
-    .lp-subj { text-align: center; padding: 16px 8px; background: rgba(255,255,255,0.08); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
-    .lp-subj-icon { font-size: 24px; margin-bottom: 6px; display: block; }
-    .lp-subj-name { font-size: 14px; font-weight: 700; }
-    
-    .lp-diff { display: flex; flex-direction: column; gap: 12px; }
-    .lp-diff-item { background: #fff; border-radius: 12px; padding: 20px; display: flex; align-items: flex-start; gap: 14px; border: 1px solid #e2e8f0; }
-    .lp-diff-icon { width: 44px; height: 44px; background: #eef2ff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-    .lp-diff-item h4 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-    .lp-diff-item p { font-size: 13px; color: #64748b; line-height: 1.5; }
-    
-    .lp-reviews { display: flex; flex-direction: column; gap: 12px; }
-    .lp-rv { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 20px; }
-    .lp-rv-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
-    .lp-rv-name { font-size: 14px; font-weight: 700; }
-    .lp-rv-stars { color: #fbbf24; font-size: 12px; }
-    .lp-rv p { font-size: 14px; color: #cbd5e1; line-height: 1.6; }
-    
-    .lp-contact { text-align: center; }
-    .lp-phone { font-size: 36px; font-weight: 900; margin-bottom: 8px; }
-    .lp-phone a { color: #fff; text-decoration: none; }
-    .lp-kakao { display: inline-flex; align-items: center; gap: 8px; background: #fbbf24; color: #1a1a1a; padding: 12px 24px; border-radius: 10px; font-size: 15px; font-weight: 700; margin-top: 16px; text-decoration: none; }
-    
-    .lp-process-visual { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; text-align: center; margin-top: 24px; }
-    .lp-pv { background: #fff; border-radius: 10px; padding: 14px 6px; }
-    .lp-pv-badge { font-size: 11px; font-weight: 700; color: #6366f1; margin-bottom: 4px; }
-    .lp-pv-title { font-size: 12px; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
-    .lp-pv-desc { font-size: 10px; color: #94a3b8; }
-    
-    .lp-guarantee { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 24px; }
-    .lp-gu { text-align: center; }
-    .lp-gu-circle { width: 56px; height: 56px; border-radius: 50%; background: #10b981; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; margin: 0 auto 8px; }
-    .lp-gu-text { font-size: 13px; font-weight: 700; color: #065f46; }
-    
-    @media (max-width: 480px) {
-      .lp-hero h1 { font-size: 24px; }
-      .lp-stats { grid-template-columns: repeat(2,1fr); }
-      .lp-features { grid-template-columns: 1fr; }
-      .lp-subjects { grid-template-columns: repeat(3,1fr); }
-      .lp-process-visual { grid-template-columns: repeat(3,1fr); }
-      .lp-guarantee { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-      .lp-phone { font-size: 28px; }
-    }
-  </style></head><body>
-  ${navHTML('')}
-  <div class="lp">
-    
-    <div class="lp-hero">
-      <div class="lp-hero-badge">초등 · 중학 · 고등 · 성인</div>
-      <h1>1:1 맞춤 과외<br><em>확실한 성적 향상</em></h1>
-      <p>수준별 1:1 맞춤수업으로<br>기초부터 심화까지 완벽하게 설계합니다</p>
-      <div class="lp-hero-tags">
-        <span class="lp-hero-tag">📊 수준별 맞춤 수업</span>
-        <span class="lp-hero-tag">📋 내신/수능 완벽 대비</span>
-        <span class="lp-hero-tag">✅ 학습 습관 정착</span>
-      </div>
-      <div class="lp-hero-cta">
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="lp-btn lp-btn-w">무료 상담 신청 →</a>
-        <a href="tel:010-6850-1420" class="lp-btn lp-btn-o">📞 010-6850-1420</a>
-      </div>
-    </div>
-    
-    <div class="lp-stats">
-      <div class="lp-stat"><div class="lp-stat-num">4,200+</div><div class="lp-stat-label">누적 합격생</div></div>
-      <div class="lp-stat"><div class="lp-stat-num">98%</div><div class="lp-stat-label">학생 만족도</div></div>
-      <div class="lp-stat"><div class="lp-stat-num">3,000+</div><div class="lp-stat-label">전문 코치</div></div>
-      <div class="lp-stat"><div class="lp-stat-num">31년</div><div class="lp-stat-label">교육 노하우</div></div>
-    </div>
-    
-    <div class="lp-section">
-      <div class="lp-sh">
-        <div class="lp-sh-badge">WHY 과외안하니</div>
-        <h2>과외안하니가 <em>선택받는 이유</em></h2>
-        <p>단순 과외가 아닌, 통합 학습 코칭 시스템</p>
-      </div>
-      <div class="lp-features">
-        <div class="lp-feat"><div class="lp-feat-icon">🎯</div><h3>수준별 1:1 맞춤수업</h3><p>학생 개인의 학습 수준을 정밀 진단하고 맞춤 커리큘럼을 설계합니다</p></div>
-        <div class="lp-feat"><div class="lp-feat-icon">📊</div><h3>체계적 학습 관리</h3><p>주간 학습 보고서와 월간 성적 분석으로 학습 상태를 투명하게 공유합니다</p></div>
-        <div class="lp-feat"><div class="lp-feat-icon">📝</div><h3>내신/수능 전략 수립</h3><p>학교별 출제 패턴 분석과 수능 유형별 맞춤 전략을 수립합니다</p></div>
-        <div class="lp-feat"><div class="lp-feat-icon">🔄</div><h3>학습 습관 코칭</h3><p>공부 루틴 설계부터 자기주도학습 능력까지 종합적으로 코칭합니다</p></div>
-      </div>
-    </div>
-    
-    <div class="lp-section lp-section-dark">
-      <div class="lp-sh">
-        <div class="lp-sh-badge" style="color:#818cf8">PROCESS</div>
-        <h2 style="color:#fff">학습 코칭 <em>5단계 프로세스</em></h2>
-      </div>
-      <div class="lp-steps">
-        <div class="lp-step"><div class="lp-step-num">1</div><div><h4>무료 학습 진단</h4><p>현재 학력 수준과 학습 습관을 정밀 분석합니다. AI 진단 시스템으로 취약 영역을 정확히 파악해요.</p></div></div>
-        <div class="lp-step"><div class="lp-step-num">2</div><div><h4>맞춤 코치 배정</h4><p>학생의 성향, 목표, 과목에 맞는 최적의 코치를 매칭합니다. 3단계 검증을 통과한 전문 코치만 배정돼요.</p></div></div>
-        <div class="lp-step"><div class="lp-step-num">3</div><div><h4>커리큘럼 설계</h4><p>진단 결과를 바탕으로 개인별 맞춤 커리큘럼을 설계합니다. 단기 목표와 장기 로드맵을 함께 잡아요.</p></div></div>
-        <div class="lp-step"><div class="lp-step-num">4</div><div><h4>1:1 집중 수업</h4><p>매 수업 후 학습 보고서를 전달하고, 숙제와 복습 계획까지 관리합니다.</p></div></div>
-        <div class="lp-step"><div class="lp-step-num">5</div><div><h4>성과 분석 & 피드백</h4><p>월간 성적 변화를 분석하고, 필요시 커리큘럼을 즉시 조정합니다. 목표 달성까지 끝까지 관리해요.</p></div></div>
-      </div>
-    </div>
-    
-    <div class="lp-section lp-section-purple">
-      <div class="lp-sh">
-        <div class="lp-sh-badge" style="color:#c7d2fe">SUBJECTS</div>
-        <h2 style="color:#fff">전 과목 <em style="color:#c7d2fe">맞춤 수업</em> 가능</h2>
-      </div>
-      <div class="lp-subjects">
-        <div class="lp-subj"><span class="lp-subj-icon">📖</span><span class="lp-subj-name">국어</span></div>
-        <div class="lp-subj"><span class="lp-subj-icon">🌍</span><span class="lp-subj-name">영어</span></div>
-        <div class="lp-subj"><span class="lp-subj-icon">📐</span><span class="lp-subj-name">수학</span></div>
-        <div class="lp-subj"><span class="lp-subj-icon">🏛️</span><span class="lp-subj-name">사회</span></div>
-        <div class="lp-subj"><span class="lp-subj-icon">🔬</span><span class="lp-subj-name">과학</span></div>
-        <div class="lp-subj"><span class="lp-subj-icon">💻</span><span class="lp-subj-name">코딩</span></div>
-        <div class="lp-subj"><span class="lp-subj-icon">📝</span><span class="lp-subj-name">검정고시</span></div>
-        <div class="lp-subj"><span class="lp-subj-icon">✍️</span><span class="lp-subj-name">논술</span></div>
-      </div>
-    </div>
-    
-    <div class="lp-section lp-section-gray">
-      <div class="lp-sh">
-        <div class="lp-sh-badge">DIFFERENCE</div>
-        <h2>과외안하니만의 <em>차별점</em></h2>
-      </div>
-      <div class="lp-diff">
-        <div class="lp-diff-item"><div class="lp-diff-icon">📋</div><div><h4>학교별 기출 완벽 분석</h4><p>인근 학교의 내신 출제 패턴을 상시 분석하고, 적중률 높은 예상 문제를 제공합니다.</p></div></div>
-        <div class="lp-diff-item"><div class="lp-diff-icon">👨‍🏫</div><div><h4>3단계 코치 검증 시스템</h4><p>학력·경력·수업시연 3단계 심사를 통과한 코치만 배정합니다. 불만족 시 무료 교체 가능해요.</p></div></div>
-        <div class="lp-diff-item"><div class="lp-diff-icon">📱</div><div><h4>실시간 학습 리포트</h4><p>매 수업 후 학습 내용과 아이 상태를 카카오톡으로 즉시 공유합니다.</p></div></div>
-        <div class="lp-diff-item"><div class="lp-diff-icon">🎁</div><div><h4>첫 수업 완전 무료</h4><p>첫 체험 수업은 100% 무료! 부담 없이 경험해 보시고 결정하세요.</p></div></div>
-      </div>
-    </div>
-    
-    <div class="lp-section">
-      <div class="lp-sh">
-        <div class="lp-sh-badge">EXAM PLAN</div>
-        <h2>시험 D-28 <em>집중 대비 플랜</em></h2>
-      </div>
-      <div class="lp-process-visual">
-        <div class="lp-pv"><div class="lp-pv-badge">D-28</div><div class="lp-pv-title">범위 확인</div><div class="lp-pv-desc">교과서 정독<br>계획표 작성</div></div>
-        <div class="lp-pv"><div class="lp-pv-badge">D-21</div><div class="lp-pv-title">개념 완성</div><div class="lp-pv-desc">핵심 정리<br>기본 문제</div></div>
-        <div class="lp-pv"><div class="lp-pv-badge">D-14</div><div class="lp-pv-title">기출 분석</div><div class="lp-pv-desc">오답 정리<br>유형 파악</div></div>
-        <div class="lp-pv"><div class="lp-pv-badge" style="color:#ef4444">D-7</div><div class="lp-pv-title">실전 연습</div><div class="lp-pv-desc">서술형 대비<br>취약 보완</div></div>
-        <div class="lp-pv"><div class="lp-pv-badge" style="color:#dc2626">D-1</div><div class="lp-pv-title">최종 점검</div><div class="lp-pv-desc">오답 재풀이<br>컨디션 관리</div></div>
-      </div>
-    </div>
-    
-    <div class="lp-section lp-section-mint">
-      <div class="lp-sh">
-        <div class="lp-sh-badge" style="color:#059669">GUARANTEE</div>
-        <h2 style="color:#065f46">과외안하니의 <em style="color:#059669">3대 약속</em></h2>
-      </div>
-      <div class="lp-guarantee">
-        <div class="lp-gu"><div class="lp-gu-circle">✓</div><div class="lp-gu-text">첫 수업<br>무료 체험</div></div>
-        <div class="lp-gu"><div class="lp-gu-circle">✓</div><div class="lp-gu-text">코치 교체<br>무료 보장</div></div>
-        <div class="lp-gu"><div class="lp-gu-circle">✓</div><div class="lp-gu-text">불만족 시<br>전액 환불</div></div>
-      </div>
-    </div>
-    
-    <div class="lp-section lp-section-dark">
-      <div class="lp-sh">
-        <div class="lp-sh-badge" style="color:#818cf8">REVIEWS</div>
-        <h2 style="color:#fff">학부모님들의 <em>실제 후기</em></h2>
-      </div>
-      <div class="lp-reviews">
-        <div class="lp-rv"><div class="lp-rv-top"><span class="lp-rv-name">김○○ 학부모님 (중2 수학)</span><span class="lp-rv-stars">★★★★★</span></div><p>수학 4등급에서 2등급으로 올랐어요. 선생님이 아이 눈높이에 맞춰 설명해주시고, 매주 보고서를 보내주셔서 진행 상황을 한눈에 파악할 수 있었습니다.</p></div>
-        <div class="lp-rv"><div class="lp-rv-top"><span class="lp-rv-name">이○○ 학생 (고1 영어)</span><span class="lp-rv-stars">★★★★★</span></div><p>영어 독해가 정말 어려웠는데, 선생님이 지문 분석하는 방법을 알려주시니까 이제 혼자서도 풀 수 있게 됐어요. 내신 1등급 받았습니다!</p></div>
-        <div class="lp-rv"><div class="lp-rv-top"><span class="lp-rv-name">박○○ 학부모님 (초5 국어)</span><span class="lp-rv-stars">★★★★★</span></div><p>독서를 싫어하던 아이가 선생님과 독서토론을 하면서 스스로 책을 찾아 읽기 시작했어요. 글쓰기 실력도 놀랍게 좋아졌습니다.</p></div>
-      </div>
-    </div>
-    
-    <div class="lp-section lp-section-purple" style="padding-bottom:60px">
-      <div class="lp-contact">
-        <p style="font-size:14px;color:#c7d2fe;margin-bottom:4px">지금 바로 상담하세요</p>
-        <div class="lp-phone"><a href="tel:010-6850-1420">010-6850-1420</a></div>
-        <p style="font-size:14px;color:#a5b4fc;margin-bottom:20px">평일 09:00 ~ 21:00 · 토요일 10:00 ~ 18:00</p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <a href="https://naver.me/GYD2Ki40" target="_blank" class="lp-btn lp-btn-w">무료 상담 신청 →</a>
-          <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="lp-kakao">💬 카카오톡 상담 (kdy5592)</a>
-        </div>
-      </div>
-    </div>
-    
   </div>
   ${footerHTML()}
   </body></html>`;
