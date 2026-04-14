@@ -1917,9 +1917,12 @@ function renderGradeSubjectPage(school, grade, subject) {
   const checks = pickN(checkPool, 4, rng);
 
   const canonical = 'https://anhani.com/grade/' + school + '/' + grade + '/' + encodeURIComponent(subject);
+  const thumbnail = generateThumbnail(gradeLabel, shortName, subject);
+  const thumbUri = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(thumbnail)))}`;
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(gradeLabel + ' ' + subject + ' 과외 추천 가이드 | 과외안하니', gradeLabel + ' ' + subject + ' 과외 정보! 과외비, 학습 전략, 선생님 선택법까지 한 번에 정리했습니다.', canonical)}
+  <meta property="og:image" content="${thumbUri}">
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}
     .gs-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
@@ -1929,6 +1932,7 @@ function renderGradeSubjectPage(school, grade, subject) {
     .gs-tab { padding: 8px 16px; border-radius: 8px; border: 1.5px solid #e2e8f0; font-size: 13px; font-weight: 600; color: #64748b; text-decoration: none; transition: all 0.2s; }
     .gs-tab:hover { border-color: #6366f1; color: #6366f1; }
     .gs-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
+    .gs-thumb { width: 100%; border-radius: 12px; margin-bottom: 24px; }
     .gs-wrap h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 12px; line-height: 1.4; }
     .gs-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
     .gs-article h2 { font-size: 21px; font-weight: 700; color: #0f172a; margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid #6366f1; }
@@ -1959,6 +1963,8 @@ function renderGradeSubjectPage(school, grade, subject) {
     <div class="gs-tabs">
       ${getSubjectsForSchool(school).map(s => `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gs-tab${s===subject?' active':''}">${s}</a>`).join('')}
     </div>
+    
+    <img src="${thumbUri}" alt="${gradeLabel} ${subject} 과외" class="gs-thumb" width="1200" height="630">
     
     <h1>${gradeLabel} ${subject} 과외 추천 가이드</h1>
     <div class="gs-meta">최종 업데이트: 2026년 4월 | ${gradeLabel} ${subject} 전문</div>
@@ -2196,6 +2202,8 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   const closing = pick(CLOSING_TEMPLATES, rng)('지역', shortName, subject);
   
   const canonical = `https://anhani.com/grade/${school}/${grade}/${encodeURIComponent(subject)}/article/${idx}`;
+  const thumbnail = generateThumbnail(gradeLabel, shortName, subject);
+  const thumbUri = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(thumbnail)))}`;
   
   const sectionsHTML = sections.map((sec, i) => {
     let html = `<h2>${sec.h}</h2><p>${sec.p}</p>`;
@@ -2207,9 +2215,11 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(title + ' | 과외안하니', gradeLabel + ' ' + subject + ' 학습 전략 - ' + title, canonical)}
+  <meta property="og:image" content="${thumbUri}">
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}
     .ka-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
+    .ka-thumb { width: 100%; border-radius: 12px; margin-bottom: 24px; }
     .ka-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
     .ka-wrap h1 { font-size: 28px; font-weight: 900; color: #0f172a; line-height: 1.4; margin-bottom: 12px; }
     .ka-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
@@ -2234,6 +2244,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   </style></head><body>
   ${navHTML('region')}
   <div class="ka-wrap">
+    <img src="${thumbUri}" alt="${title}" class="ka-thumb" width="1200" height="630">
     <div class="ka-badge">${schoolBadge[school]}</div>
     <h1>${title} | 1:1 맞춤 전략</h1>
     <div class="ka-meta"><span>✏️ 과외안하니 편집팀</span><span>📅 2026년 4월</span></div>
