@@ -437,22 +437,45 @@ function generateThumbnail(location, level, subject) {
   };
   const color = colors[subject] || "#3498DB";
   
+  // 과목별 아이콘 SVG 요소
+  const icons = {
+    "국어": `<rect x="920" y="120" width="60" height="80" rx="4" fill="rgba(255,255,255,0.15)" transform="rotate(-8 950 160)"/><rect x="940" y="110" width="60" height="80" rx="4" fill="rgba(255,255,255,0.2)" transform="rotate(5 970 150)"/><line x1="950" y1="130" x2="990" y2="130" stroke="rgba(255,255,255,0.3)" stroke-width="2"/><line x1="950" y1="142" x2="985" y2="142" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><line x1="950" y1="154" x2="980" y2="154" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>`,
+    "영어": `<circle cx="960" cy="150" r="40" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3"/><text x="960" y="145" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.3)" text-anchor="middle">ABC</text><text x="960" y="168" font-family="sans-serif" font-size="14" fill="rgba(255,255,255,0.2)" text-anchor="middle">abc</text>`,
+    "수학": `<text x="960" y="140" font-family="sans-serif" font-size="36" fill="rgba(255,255,255,0.2)" text-anchor="middle">∑</text><text x="930" y="175" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.15)" text-anchor="middle">π</text><text x="990" y="175" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.15)" text-anchor="middle">√</text>`,
+    "사회": `<circle cx="960" cy="148" r="35" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><ellipse cx="960" cy="148" rx="35" ry="14" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/><line x1="960" y1="113" x2="960" y2="183" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>`,
+    "과학": `<circle cx="950" cy="140" r="12" fill="rgba(255,255,255,0.15)"/><circle cx="980" cy="155" r="8" fill="rgba(255,255,255,0.12)"/><line x1="958" y1="148" x2="974" y2="150" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><circle cx="940" cy="168" r="10" fill="rgba(255,255,255,0.1)"/><line x1="946" y1="163" x2="952" y2="146" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>`,
+    "코딩": `<text x="960" y="138" font-family="monospace" font-size="16" fill="rgba(255,255,255,0.25)" text-anchor="middle">&lt;/&gt;</text><rect x="930" y="148" width="60" height="30" rx="4" fill="rgba(255,255,255,0.1)"/><line x1="938" y1="158" x2="965" y2="158" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><line x1="938" y1="168" x2="955" y2="168" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>`,
+    "검정고시": `<rect x="935" y="115" width="50" height="65" rx="3" fill="rgba(255,255,255,0.15)"/><line x1="945" y1="130" x2="975" y2="130" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><line x1="945" y1="142" x2="975" y2="142" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><line x1="945" y1="154" x2="970" y2="154" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><polyline points="942,165 948,171 958,160" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>`,
+    "논술": `<path d="M935 170 Q935 120 960 120 Q985 120 985 145 L985 175 Q975 175 975 165 L975 140 Q975 130 965 130 L955 130 Q945 130 945 140 L945 170 Z" fill="rgba(255,255,255,0.15)"/><line x1="953" y1="142" x2="977" y2="142" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/><line x1="953" y1="152" x2="973" y2="152" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>`
+  };
+  const icon = icons[subject] || icons["국어"];
+  
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
     <defs>
       <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" style="stop-color:${color};stop-opacity:1"/>
-        <stop offset="100%" style="stop-color:#2C3E50;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1"/>
       </linearGradient>
     </defs>
     <rect width="1200" height="630" fill="url(#bg)"/>
-    <circle cx="1050" cy="120" r="80" fill="rgba(255,255,255,0.1)"/>
-    <circle cx="150" cy="500" r="120" fill="rgba(255,255,255,0.05)"/>
-    <rect x="80" y="80" width="1040" height="470" rx="20" fill="rgba(255,255,255,0.1)"/>
-    <text x="600" y="240" font-family="sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">${location}</text>
-    <text x="600" y="340" font-family="sans-serif" font-size="56" fill="rgba(255,255,255,0.9)" text-anchor="middle">${level} ${subject} 과외</text>
-    <line x1="450" y1="380" x2="750" y2="380" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
-    <text x="600" y="440" font-family="sans-serif" font-size="32" fill="rgba(255,255,255,0.7)" text-anchor="middle">맞춤 교육 · 성적 향상 · 1:1 수업</text>
-    <text x="600" y="510" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,0.5)" text-anchor="middle">anhani.com</text>
+    <!-- 책/공부 배경 일러스트 -->
+    <rect x="100" y="420" width="180" height="12" rx="2" fill="rgba(255,255,255,0.06)" transform="rotate(-3 190 426)"/>
+    <rect x="100" y="405" width="170" height="12" rx="2" fill="rgba(255,255,255,0.05)" transform="rotate(2 185 411)"/>
+    <rect x="105" y="390" width="160" height="12" rx="2" fill="rgba(255,255,255,0.04)"/>
+    <rect x="920" y="400" width="160" height="10" rx="2" fill="rgba(255,255,255,0.04)" transform="rotate(5 1000 405)"/>
+    <rect x="925" y="385" width="150" height="10" rx="2" fill="rgba(255,255,255,0.03)" transform="rotate(-2 1000 390)"/>
+    <!-- 연필 -->
+    <line x1="180" y1="180" x2="220" y2="280" stroke="rgba(255,255,255,0.06)" stroke-width="6" stroke-linecap="round"/>
+    <polygon points="220,280 215,295 225,295" fill="rgba(255,255,255,0.08)"/>
+    <!-- 과목 아이콘 -->
+    ${icon}
+    <!-- 메인 콘텐츠 영역 -->
+    <rect x="80" y="80" width="1040" height="470" rx="20" fill="rgba(255,255,255,0.08)"/>
+    <text x="600" y="235" font-family="sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">${location}</text>
+    <text x="600" y="330" font-family="sans-serif" font-size="52" fill="rgba(255,255,255,0.9)" text-anchor="middle">${level} ${subject} 과외</text>
+    <line x1="440" y1="370" x2="760" y2="370" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+    <text x="600" y="420" font-family="sans-serif" font-size="28" fill="rgba(255,255,255,0.6)" text-anchor="middle">1:1 맞춤 수업 · 성적 향상 · 전문 코칭</text>
+    <text x="600" y="490" font-family="sans-serif" font-size="24" fill="rgba(255,255,255,0.35)" text-anchor="middle">anhani.com</text>
   </svg>`;
 }
 
@@ -546,27 +569,11 @@ function renderPage(location, level, subject, parentRegion, url) {
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta name="naver-site-verification" content="2d31a5395d70375a6b80e71c055be5e739383013" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} | 안하니</title>
-  <meta name="description" content="${description}">
+  ${commonHead(title + ' | 안하니', description, canonical)}
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="${canonical}">
-  
-  <!-- 네이버 SEO -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="${title}">
-  <meta property="og:description" content="${description}">
   <meta property="og:image" content="${thumbnailDataUri}">
-  <meta property="og:url" content="${canonical}">
-  <meta property="og:site_name" content="안하니">
-  <meta property="og:locale" content="ko_KR">
-  
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${title}">
-  <meta name="twitter:description" content="${description}">
-  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -578,45 +585,32 @@ function renderPage(location, level, subject, parentRegion, url) {
     "mainEntityOfPage": "${canonical}"
   }
   </script>
-  
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.8; color: #333; background: #f9fafb; }
-    .header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 16px 0; }
-    .header-inner { max-width: 768px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-size: 24px; font-weight: 800; color: #111; text-decoration: none; }
-    .nav a { color: #666; text-decoration: none; margin-left: 20px; font-size: 14px; }
-    .container { max-width: 768px; margin: 0 auto; padding: 32px 20px; }
+    ${commonStyles()}
+    .page-container { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
     .breadcrumb { font-size: 13px; color: #888; margin-bottom: 16px; }
-    .breadcrumb a { color: #888; text-decoration: none; }
-    .breadcrumb a:hover { color: #333; }
+    .breadcrumb a { color: #6366f1; text-decoration: none; }
+    .breadcrumb a:hover { color: #312e81; }
     .thumbnail { width: 100%; border-radius: 12px; margin-bottom: 24px; }
-    h1 { font-size: 28px; font-weight: 800; color: #111; margin-bottom: 12px; line-height: 1.4; }
+    .page-container h1 { font-size: 28px; font-weight: 800; color: #111; margin-bottom: 12px; line-height: 1.4; }
     .meta { font-size: 13px; color: #999; margin-bottom: 32px; }
-    article h2 { font-size: 22px; font-weight: 700; color: #111; margin: 36px 0 16px; padding-left: 12px; border-left: 4px solid #3b82f6; }
-    article p { font-size: 16px; margin-bottom: 16px; word-break: keep-all; }
+    article h2 { font-size: 22px; font-weight: 700; color: #111; margin: 36px 0 16px; padding-left: 12px; border-left: 4px solid #6366f1; }
+    article p { font-size: 16px; margin-bottom: 16px; word-break: keep-all; line-height: 1.8; color: #334155; }
+    article ul { margin: 0 0 16px 20px; }
+    article li { font-size: 15px; margin-bottom: 8px; color: #475569; line-height: 1.7; }
     .tags { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e7eb; }
     .tags h3 { font-size: 14px; color: #666; margin-bottom: 12px; }
     .tag { display: inline-block; background: #f3f4f6; color: #555; padding: 6px 14px; border-radius: 20px; font-size: 13px; margin: 0 6px 8px 0; text-decoration: none; }
-    .tag:hover { background: #e5e7eb; }
-    .footer { background: #111; color: #999; padding: 40px 20px; margin-top: 60px; text-align: center; font-size: 13px; }
-    .footer a { color: #ccc; text-decoration: none; }
-    @media (max-width: 640px) { h1 { font-size: 22px; } article h2 { font-size: 18px; } }
+    .tag:hover { background: #eef2ff; color: #6366f1; }
+    @media (max-width: 640px) { .page-container h1 { font-size: 22px; } article h2 { font-size: 18px; } }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-inner">
-      <a href="/" class="logo">안하니</a>
-      <nav class="nav">
-        <a href="/">홈</a>
-      </nav>
-    </div>
-  </header>
+  ${navHTML('region')}
   
-  <main class="container">
+  <main class="page-container">
     <div class="breadcrumb">
-      <a href="/">홈</a> &gt; <a href="/#${encodeURIComponent(parentRegion || location)}">${parentRegion || location}</a> &gt; ${regionDisplay} ${level} ${subject} 과외
+      <a href="/">홈</a> &gt; <a href="/지역별">${parentRegion || location}</a> &gt; ${regionDisplay} ${level} ${subject} 과외
     </div>
     
     <img src="${thumbnailDataUri}" alt="${regionDisplay} ${level} ${subject} 과외" class="thumbnail" width="1200" height="630">
@@ -632,9 +626,7 @@ function renderPage(location, level, subject, parentRegion, url) {
     </div>
   </main>
   
-  <footer class="footer">
-    <p>&copy; 2026 <a href="https://anhani.com">안하니</a> | 대한민국 교육 정보 플랫폼</p>
-  </footer>
+  ${footerHTML()}
 </body>
 </html>`;
 }
