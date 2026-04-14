@@ -3804,6 +3804,24 @@ function renderStudyGuideArticle(idx) {
   const seed = hashCode('study-guide-' + idx);
   const rng = seededRandom(seed);
   const allSecs = pickN(GUIDE_SEC_POOL, 7, rng).map(fn => fn(g.title));
+  const faqPool = [
+    {q:`"${g.title}" 전략을 혼자서도 실천할 수 있나요?`,a:`네, 이 글의 내용을 따라하면 혼자서도 충분히 실천 가능합니다. 다만 전문 코치의 도움을 받으면 더 빠르고 효과적으로 실천할 수 있어요. 과외안하니 코치가 현재 수준을 진단하고 맞춤 전략을 설계해 드립니다.`},
+    {q:`"${g.title}"으로 성적이 정말 오르나요?`,a:`올바른 방법으로 꾸준히 실천하면 반드시 성적이 향상됩니다. 과외안하니 수강생의 대부분이 3개월 내에 눈에 띄는 성적 변화를 경험합니다. 핵심은 올바른 방향 + 꾸준한 실천이에요.`},
+    {q:"과외안하니의 1:1 코칭은 어떻게 진행되나요?",a:`전문 코치가 학생의 현재 수준을 진단하고 맞춤 전략을 설계합니다. 주 2~3회 화상수업으로 진행되며, 매 수업 후 학습 보고서를 학부모님께 제공합니다. 시험 기간에는 집중 대비 모드로 전환합니다.`},
+    {q:`"${g.title}" 시작 전에 준비할 것이 있나요?`,a:`특별한 준비물은 없습니다. 다만 자신의 현재 성적과 목표 성적을 정리해두면 더 효과적으로 실천할 수 있어요. 최근 시험지와 오답 목록을 준비하면 코치가 정확한 약점 분석을 해드립니다.`},
+    {q:"첫 수업은 무료인가요?",a:"네, 과외안하니는 첫 체험 수업을 완전 무료로 제공합니다. 25분 체험 수업에서 레벨 진단과 학습 로드맵까지 제안해 드려요. 부담 없이 경험해 보시고 결정하세요."},
+  ];
+  const faqs = pickN(faqPool, 3, rng);
+  const checkPool = [
+    `나의 현재 성적과 목표 성적을 구체적으로 적어보았는가?`,
+    `과목별 강점과 약점을 파악했는가?`,
+    `매일 실천 가능한 학습 시간을 확보했는가?`,
+    `오답노트를 작성하고 활용하고 있는가?`,
+    `규칙적인 수면과 휴식을 취하고 있는가?`,
+    `주간 학습 계획을 세우고 실행 여부를 점검하는가?`,
+    `시험 범위와 출제 경향을 파악했는가?`,
+  ];
+  const checks = pickN(checkPool, 5, rng);
   const thumb = generateThumbnail(g.title.substring(0,6), g.cat, '국어');
   const thumbUri = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(thumb)))}`;
   const canonical = `https://anhani.com/학습가이드/${idx}`;
@@ -3846,6 +3864,19 @@ function renderStudyGuideArticle(idx) {
     <img src="${thumbUri}" alt="${g.title}" class="ga-thumb" width="1200" height="630">
     <div class="ga-sections">
       ${allSecs.map((s,i) => `<div class="ga-sec"><div class="ga-sec-head"><div class="ga-sec-num">${i+1}</div><div class="ga-sec-title">${s.h}</div></div><div class="ga-sec-body"><p>${s.p}</p></div></div>`).join('')}
+    </div>
+    <div class="ga-check" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:24px;margin-bottom:24px">
+      <h3 style="font-size:17px;font-weight:700;color:#0f172a;margin-bottom:14px">📋 ${g.title} 실전 체크리스트</h3>
+      <p style="font-size:14px;color:#475569;line-height:1.8;margin-bottom:12px">"${g.title}"을 실천하기 전에 다음 항목을 점검해보세요.</p>
+      ${checks.map(c => `<div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f1f5f9"><span style="color:#16a34a;flex-shrink:0">☐</span><span style="font-size:14px;color:#334155;line-height:1.6">${c}</span></div>`).join('')}
+      <p style="font-size:13px;color:#64748b;margin-top:12px">이 5가지를 모두 체크할 수 있다면 "${g.title}" 성공의 기반이 갖춰진 것입니다.</p>
+    </div>
+    <div class="ga-faq" style="margin-bottom:24px">
+      <h3 style="font-size:17px;font-weight:700;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #16a34a">❓ ${g.title} 자주 묻는 질문</h3>
+      ${faqs.map(f => `<div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:12px">
+        <p style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px">Q. ${f.q}</p>
+        <p style="font-size:14px;color:#475569;line-height:1.7">A. ${f.a}</p>
+      </div>`).join('')}
     </div>
     <div class="ga-cta">
       <h3>맞춤 과외 무료 상담</h3>
@@ -4212,7 +4243,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v11-full-dynamic', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v12-guide-expanded', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // robots.txt
