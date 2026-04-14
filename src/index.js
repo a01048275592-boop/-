@@ -3595,6 +3595,15 @@ function renderConversationPage(lang) {
           <span>${kw.icon}</span><span>${kw.title}</span></a>`).join('')}
       </div>
     </div>` : ''}
+    ${lang === 'english' ? `
+    <div class="cv-section">
+      <h2 style="border-left-color:${d.color}">EN 영어 회화 수업 상세 보기</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        ${EN_CV_KEYWORDS.map((kw,i) => `<a href="/외국어/영어/article/${i}" style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all 0.2s"
+          onmouseover="this.style.borderColor='#3b82f6';this.style.color='#3b82f6'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'">
+          <span>${kw.icon}</span><span>${kw.title}</span></a>`).join('')}
+      </div>
+    </div>` : ''}
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -3865,6 +3874,134 @@ function renderJapaneseArticle(articleIdx) {
           const ri = i >= idx ? i+1 : i;
           return `<a href="/외국어/일본어/article/${ri}" class="ca-related-item"><span>${k.icon}</span><span>${k.title}</span><span class="ca-related-arrow">→</span></a>`;
         }).join('')}
+      </div>
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 영어회화 키워드 아티클 시스템 ---
+const EN_CV_KEYWORDS = [
+  {icon:"🔰",title:"영어 왕초보 회화 시작 가이드"},
+  {icon:"🗣️",title:"영어 발음 교정 완벽 훈련법"},
+  {icon:"💬",title:"영어 일상 회화 필수 표현 100"},
+  {icon:"📝",title:"토익 스피킹 레벨7 달성 전략"},
+  {icon:"📝",title:"오픽 IH·AL 등급 공략법"},
+  {icon:"📝",title:"토플 스피킹 고득점 비법"},
+  {icon:"📝",title:"아이엘츠 스피킹 밴드7 전략"},
+  {icon:"💼",title:"비즈니스 영어 이메일 작성법"},
+  {icon:"💼",title:"영어 프레젠테이션 핵심 표현"},
+  {icon:"💼",title:"영어 회의·컨퍼런스콜 실전 회화"},
+  {icon:"🤝",title:"영어 면접 준비 핵심 표현 30"},
+  {icon:"✈️",title:"해외여행 영어 필수 회화 50문장"},
+  {icon:"🧒",title:"초등학생 영어 회화 첫 시작"},
+  {icon:"📺",title:"미드·영드로 영어 공부하기"},
+  {icon:"🎵",title:"팝송 가사로 영어 배우기"},
+  {icon:"📱",title:"영어 온라인 화상 수업 장단점"},
+  {icon:"🔁",title:"영어 단어 암기 효율적인 방법"},
+  {icon:"👂",title:"영어 리스닝 실력 향상 훈련법"},
+  {icon:"📖",title:"영어 리딩 속도 2배 올리기"},
+  {icon:"✍️",title:"영어 라이팅 실력 키우는 방법"},
+  {icon:"🏫",title:"원어민 vs 한국인 강사 비교"},
+  {icon:"🎓",title:"영어 유학 준비 회화 가이드"},
+  {icon:"📅",title:"영어 회화 3개월 마스터 플랜"},
+  {icon:"👨‍🏫",title:"영어 과외 vs 학원 vs 인강 비교"},
+  {icon:"🎯",title:"영어 회화 목표별 학습 로드맵"},
+  {icon:"🌍",title:"해외 출장 서바이벌 영어"},
+  {icon:"📞",title:"전화 영어 공포 극복하기"},
+  {icon:"🗣️",title:"영어 스피킹 자신감 키우는 법"},
+  {icon:"📊",title:"영어 회화 레벨 테스트 가이드"},
+  {icon:"🔄",title:"영어 통번역 실력 키우는 루틴"},
+];
+
+const EN_CV_INTROS = [
+  (t)=>`${t}, 어디서부터 시작할지 고민이시죠? 과외안하니는 1:1 맞춤 영어 회화 수업으로 가장 빠른 실력 향상을 보장합니다. 핵심 내용부터 커리큘럼, 학습 효과까지 상세히 안내드릴게요.`,
+  (t)=>`"${t}" 수업을 찾고 계신가요? 영어 회화는 목표에 따라 접근법이 완전히 달라요. 과외안하니 전문 강사진이 목표를 분석하고 최적의 커리큘럼을 설계해 드립니다.`,
+  (t)=>`영어 회화, 학원만 다녀서는 실력이 안 느는 이유가 있어요. "${t}"에 관심을 가지셨다면 이미 절반은 성공입니다. 1:1 맞춤 수업이 왜 효과적인지 알려드릴게요.`,
+  (t)=>`${t}에 대해 알아보고 계시군요! 영어 회화는 꾸준한 말하기 연습이 핵심인데, 1:1 과외만큼 말할 기회가 많은 수업은 없어요. 과외안하니의 검증된 수업 방식을 소개합니다.`,
+];
+
+const EN_CV_SECTIONS = [
+  (t)=>({h:"핵심 수업 내용",p:`"${t}" 수업에서는 학생의 현재 수준을 진단하고 목표에 맞는 핵심 영역을 집중 학습합니다. 발음 교정, 문법 활용, 실전 스피킹을 균형 있게 다루며 매 수업마다 실력 향상을 체감할 수 있도록 설계했어요.`}),
+  (t)=>({h:"맞춤 커리큘럼 안내",p:`커리큘럼은 4단계로 진행됩니다. 1단계: 레벨 테스트와 목표 설정, 2단계: 기초 다지기(발음·핵심 패턴·기본 표현), 3단계: 실전 적용(프리토킹·롤플레이·시사 토론), 4단계: 심화 훈련과 실력 점검. 학생 진도에 맞춰 유연하게 조정합니다.`}),
+  (t)=>({h:"수업 방식 & 일정",p:`1:1 대면 또는 온라인 화상 수업 중 선택 가능합니다. 주 2~3회, 회당 50분이 가장 효과적이며 바쁜 직장인은 주 1회 집중 수업도 가능해요. 매 수업 후 복습 표현 리스트와 과제를 제공합니다.`}),
+  (t)=>({h:"기대되는 학습 효과",p:`"${t}" 수업을 꾸준히 수강하면 3개월 내 기초 프리토킹이 가능해지고, 6개월이면 원어민과 자연스러운 대화가 됩니다. 시험 대비 수업은 목표 점수 달성률 93%를 기록하고 있어요.`}),
+  (t)=>({h:"이런 분께 추천합니다",p:`"${t}" 수업은 영어로 말하는 게 두려운 분, 학원에서 말할 기회가 부족했던 분, 비즈니스 영어가 급하게 필요한 직장인, 토익스피킹·오픽 점수가 필요한 분, 해외 여행·유학·취업을 준비하는 분께 특히 효과적입니다.`}),
+  (t)=>({h:"과외안하니 영어 수업의 차별점",p:`학원은 여러 명이 함께 수업하기 때문에 실제 말하기 시간이 1인당 5분도 안 돼요. 과외안하니의 1:1 수업에서는 50분 내내 영어로 대화합니다. 실수를 즉각 교정받고, 수준에 맞는 표현을 바로 배울 수 있어요.`}),
+  (t)=>({h:"수강생 실제 후기",p:`"회사에서 영어 회의가 있을 때마다 식은땀이 났는데, 3개월 수업 후 의견 발표까지 할 수 있게 됐어요!" - 수강생 K님. "토익스피킹 110점에서 160점으로 올랐습니다. 실전 연습이 정말 큰 도움이 됐어요." - 수강생 J님.`}),
+  (t)=>({h:"무료 체험 수업 안내",p:`결정이 어려우시면 먼저 25분 무료 체험 수업을 받아보세요. 현재 레벨을 진단하고 맞춤 학습 로드맵까지 제안해 드립니다. 카카오톡(kdy5592) 또는 전화(010-6850-1420)로 신청하세요.`}),
+];
+
+function renderEnglishArticle(articleIdx) {
+  const idx = parseInt(articleIdx);
+  if (idx < 0 || idx >= EN_CV_KEYWORDS.length) return null;
+  const kw = EN_CV_KEYWORDS[idx];
+  const seed = hashCode('english-cv-article-' + idx);
+  const rng = seededRandom(seed);
+  const intro = pick(EN_CV_INTROS, rng)(kw.title);
+  const secs = pickN(EN_CV_SECTIONS, 5, rng).map(fn => fn(kw.title));
+  const canonical = `https://anhani.com/외국어/영어/article/${idx}`;
+  
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(kw.title + ' | 과외안하니 영어', kw.title + ' - 1:1 맞춤 영어 회화 수업. 핵심 내용, 커리큘럼, 학습 효과까지 상세 안내.', canonical)}
+  <meta name="robots" content="index, follow">
+  <style>${commonStyles()}
+    .ca-hero{background:linear-gradient(135deg,#0c2340 0%,#1e3a5f 50%,#3b82f6 100%);color:#fff;padding:48px 24px 40px;text-align:center}
+    .ca-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px}
+    .ca-hero h1{font-size:28px;font-weight:900;line-height:1.4;margin-bottom:8px}
+    .ca-hero-meta{font-size:13px;color:rgba(255,255,255,.6)}
+    .ca-wrap{max-width:720px;margin:0 auto;padding:32px 20px 0}
+    .ca-intro{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:28px;position:relative}
+    .ca-intro::before{content:'💡';position:absolute;top:-14px;left:20px;background:#fff;padding:0 8px;font-size:20px}
+    .ca-intro p{font-size:15px;color:#334155;line-height:1.8;margin:0;word-break:keep-all}
+    .ca-sections{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
+    .ca-sec{background:#fff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;transition:all .2s}
+    .ca-sec:hover{border-color:#93c5fd;box-shadow:0 4px 16px rgba(59,130,246,.06)}
+    .ca-sec-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:#eff6ff;border-bottom:1px solid #bfdbfe}
+    .ca-sec-num{width:32px;height:32px;background:#3b82f6;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+    .ca-sec-title{font-size:17px;font-weight:700;color:#0f172a}
+    .ca-sec-body{padding:18px 20px}
+    .ca-sec-body p{font-size:15px;color:#475569;line-height:1.8;margin:0;word-break:keep-all}
+    .ca-cta{background:linear-gradient(135deg,#0c2340,#3b82f6);border-radius:16px;padding:32px 24px;text-align:center;color:#fff;margin:32px 0}
+    .ca-cta h3{font-size:20px;font-weight:800;margin-bottom:6px}
+    .ca-cta p{font-size:13px;opacity:.7;margin-bottom:16px}
+    .ca-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .ca-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}
+    .ca-cta-w{background:#fff;color:#3b82f6}
+    .ca-cta-o{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
+    .ca-related{margin-top:36px;padding-top:28px;border-top:2px solid #f1f5f9}
+    .ca-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #3b82f6}
+    .ca-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .ca-related-item{padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all .2s;display:flex;align-items:center;gap:10px}
+    .ca-related-item:hover{border-color:#3b82f6;color:#3b82f6;transform:translateX(4px)}
+    .ca-related-arrow{color:#d1d5db;margin-left:auto;flex-shrink:0}
+    .ca-related-item:hover .ca-related-arrow{color:#3b82f6}
+    @media(max-width:640px){.ca-hero h1{font-size:22px}.ca-related-grid{grid-template-columns:1fr}}
+  </style></head><body>
+  ${navHTML('foreign')}
+  <div class="ca-hero">
+    <div class="ca-hero-badge">🇺🇸 EN 영어 회화 수업</div>
+    <h1>${kw.icon} ${kw.title}</h1>
+    <div class="ca-hero-meta">과외안하니 영어팀 · 2026년 4월</div>
+  </div>
+  <div class="ca-wrap">
+    <div class="ca-intro"><p>${intro}</p></div>
+    <div class="ca-sections">
+      ${secs.map((s,i) => `<div class="ca-sec"><div class="ca-sec-head"><div class="ca-sec-num">${i+1}</div><div class="ca-sec-title">${s.h}</div></div><div class="ca-sec-body"><p>${s.p}</p></div></div>`).join('')}
+    </div>
+    <div class="ca-cta">
+      <h3>🇺🇸 영어 회화 무료 체험 수업</h3>
+      <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
+      <div class="ca-cta-btns">
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
+        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
+      </div>
+    </div>
+    <div class="ca-related">
+      <h3>영어 회화 수업 더보기</h3>
+      <div class="ca-related-grid">
+        ${EN_CV_KEYWORDS.filter((_,i)=>i!==idx).slice(0,8).map((k,i)=>{const ri=i>=idx?i+1:i;return `<a href="/외국어/영어/article/${ri}" class="ca-related-item"><span>${k.icon}</span><span>${k.title}</span><span class="ca-related-arrow">→</span></a>`;}).join('')}
       </div>
     </div>
   </div>
@@ -4465,6 +4602,13 @@ export default {
     }
     if (decodedPath === '/외국어' || decodedPath === '/외국어/영어') {
       return new Response(renderConversationPage('english'), { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+    }
+    const enArticleMatch = decodedPath.match(/^\/외국어\/영어\/article\/(\d+)$/);
+    if (enArticleMatch) {
+      const html = renderEnglishArticle(enArticleMatch[1]);
+      if (html) return new Response(html, {
+        headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
+      });
     }
     if (decodedPath === '/외국어/중국어') {
       return new Response(renderConversationPage('chinese'), { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
