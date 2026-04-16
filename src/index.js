@@ -787,10 +787,6 @@ function navHTML(activePage) {
         </div>
         
         <div class="nav-item">
-          <a href="/유학" class="${activePage === 'abroad' ? 'active' : ''}">유학</a>
-        </div>
-        
-        <div class="nav-item">
           <a href="/외국어" class="${activePage === 'foreign' ? 'active' : ''}">외국어 <span class="arrow-down">▼</span></a>
           <div class="dropdown">
             <a href="/외국어/영어">영어</a>
@@ -4646,7 +4642,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v26', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v26-no-abroad-nav', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
