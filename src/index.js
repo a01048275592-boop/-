@@ -766,8 +766,6 @@ function navHTML(activePage) {
             <a href="/지역별">지역별 과외</a>
             <a href="/학년별">학년별 과외</a>
             <a href="/학교급별">학교별 과외</a>
-            <a href="/학교급별/middle">└ 중학교</a>
-            <a href="/학교급별/high">└ 고등학교</a>
           </div>
         </div>
         
@@ -4624,7 +4622,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v18-grade-restored', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v19-nav-clean', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // robots.txt
