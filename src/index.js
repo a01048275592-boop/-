@@ -282,86 +282,48 @@ function generateTags(location, level, subject, rng) {
 }
 
 // --- 썸네일 SVG 생성 ---
+// 교육/책 실사 이미지 풀 (Unsplash CDN, 무료 사용 가능)
+const EDU_IMAGE_POOL = [
+  "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1568667256549-094345857637?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=1200&q=80&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1518733057094-95b53143d2a7?w=1200&q=80&auto=format&fit=crop"
+];
+function strHash(s) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) - h) + s.charCodeAt(i);
+  return Math.abs(h);
+}
+function getEduImage(seed) {
+  return EDU_IMAGE_POOL[strHash(String(seed)) % EDU_IMAGE_POOL.length];
+}
+
 function generateThumbnail(location, level, subject) {
-  const colors = {
-    "국어": "#dc2626", "영어": "#2563eb", "수학": "#16a34a", "사회": "#d97706",
-    "과학": "#7c3aed", "코딩": "#0891b2", "검정고시": "#ea580c", "논술": "#4f46e5"
+  const overlayColors = {
+    "국어": "rgba(220,38,38,0.55)", "영어": "rgba(37,99,235,0.55)", "수학": "rgba(22,163,74,0.55)",
+    "사회": "rgba(217,119,6,0.55)", "과학": "rgba(124,58,237,0.55)", "코딩": "rgba(8,145,178,0.55)",
+    "검정고시": "rgba(234,88,12,0.55)", "논술": "rgba(79,70,229,0.55)"
   };
-  const darkColors = {
-    "국어": "#7f1d1d", "영어": "#1e3a5f", "수학": "#14532d", "사회": "#78350f",
-    "과학": "#3b0764", "코딩": "#164e63", "검정고시": "#7c2d12", "논술": "#1e1b4b"
-  };
-  const color = colors[subject] || "#2563eb";
-  const dark = darkColors[subject] || "#1e3a5f";
-  
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-    <defs>
-      <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:${dark};stop-opacity:1"/>
-        <stop offset="50%" style="stop-color:#0f172a;stop-opacity:1"/>
-        <stop offset="100%" style="stop-color:${dark};stop-opacity:1"/>
-      </linearGradient>
-    </defs>
-    <rect width="1200" height="630" fill="url(#bg)"/>
-    
-    <!-- 칠판 배경 -->
-    <rect x="40" y="30" width="1120" height="570" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)" stroke-width="2"/>
-    
-    <!-- 책꽂이 좌측 -->
-    <rect x="60" y="380" width="120" height="180" rx="4" fill="rgba(255,255,255,0.04)"/>
-    <rect x="70" y="390" width="20" height="90" rx="2" fill="${color}" opacity="0.2"/>
-    <rect x="95" y="400" width="18" height="80" rx="2" fill="rgba(255,255,255,0.12)"/>
-    <rect x="118" y="385" width="22" height="95" rx="2" fill="${color}" opacity="0.15"/>
-    <rect x="145" y="395" width="16" height="75" rx="2" fill="rgba(255,255,255,0.08)"/>
-    <line x1="65" y1="485" x2="175" y2="485" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
-    <rect x="72" y="495" width="24" height="55" rx="2" fill="rgba(255,255,255,0.06)"/>
-    <rect x="100" y="500" width="20" height="50" rx="2" fill="${color}" opacity="0.12"/>
-    <rect x="125" y="492" width="22" height="58" rx="2" fill="rgba(255,255,255,0.1)"/>
-    
-    <!-- 책꽂이 우측 -->
-    <rect x="1020" y="360" width="120" height="200" rx="4" fill="rgba(255,255,255,0.04)"/>
-    <rect x="1030" y="370" width="22" height="85" rx="2" fill="rgba(255,255,255,0.1)"/>
-    <rect x="1056" y="380" width="18" height="75" rx="2" fill="${color}" opacity="0.18"/>
-    <rect x="1078" y="365" width="20" height="90" rx="2" fill="rgba(255,255,255,0.07)"/>
-    <rect x="1102" y="375" width="24" height="80" rx="2" fill="${color}" opacity="0.12"/>
-    <line x1="1025" y1="460" x2="1135" y2="460" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
-    <rect x="1035" y="470" width="20" height="65" rx="2" fill="${color}" opacity="0.1"/>
-    <rect x="1060" y="475" width="22" height="60" rx="2" fill="rgba(255,255,255,0.08)"/>
-    <rect x="1088" y="468" width="18" height="67" rx="2" fill="rgba(255,255,255,0.12)"/>
-    
-    <!-- 노트/공책 좌상단 -->
-    <rect x="80" y="60" width="100" height="130" rx="4" fill="rgba(255,255,255,0.06)" transform="rotate(-12 130 125)"/>
-    <line x1="95" y1="85" x2="165" y2="75" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
-    <line x1="97" y1="100" x2="167" y2="90" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-    <line x1="99" y1="115" x2="163" y2="105" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
-    
-    <!-- 연필 우상단 -->
-    <line x1="1060" y1="60" x2="1100" y2="200" stroke="${color}" opacity="0.2" stroke-width="8" stroke-linecap="round"/>
-    <polygon points="1100,200 1094,218 1106,218" fill="${color}" opacity="0.25"/>
-    
-    <!-- 졸업모자 -->
-    <polygon points="1080,80 1120,95 1080,110 1040,95" fill="rgba(255,255,255,0.1)"/>
-    <rect x="1072" y="95" width="16" height="4" fill="rgba(255,255,255,0.08)"/>
-    <line x1="1120" y1="95" x2="1125" y2="115" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
-    <circle cx="1125" cy="118" r="3" fill="rgba(255,255,255,0.1)"/>
-    
-    <!-- 수식/기호 배경 장식 -->
-    <text x="200" y="320" font-family="serif" font-size="28" fill="rgba(255,255,255,0.06)" transform="rotate(-15 200 320)">E=mc²</text>
-    <text x="950" y="300" font-family="serif" font-size="22" fill="rgba(255,255,255,0.05)" transform="rotate(10 950 300)">∫f(x)dx</text>
-    <text x="120" y="250" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.04)">ABC</text>
-    <text x="1000" y="260" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.04)">가나다</text>
-    
-    <!-- 메인 글래스모피즘 카드 -->
-    <rect x="200" y="100" width="800" height="430" rx="24" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
-    <rect x="200" y="100" width="800" height="430" rx="24" fill="url(#bg)" opacity="0.3"/>
-    
-    <!-- 텍스트 -->
-    <text x="600" y="240" font-family="sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">${location}</text>
-    <text x="600" y="330" font-family="sans-serif" font-size="48" fill="rgba(255,255,255,0.92)" text-anchor="middle">${level} ${subject} 과외</text>
-    <line x1="430" y1="365" x2="770" y2="365" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-    <text x="600" y="410" font-family="sans-serif" font-size="24" fill="rgba(255,255,255,0.5)" text-anchor="middle">1:1 맞춤 수업 · 성적 향상 · 전문 코칭</text>
-    <text x="600" y="470" font-family="sans-serif" font-size="20" fill="rgba(255,255,255,0.3)" text-anchor="middle">anhani.com</text>
-  </svg>`;
+  const overlay = overlayColors[subject] || "rgba(37,99,235,0.55)";
+  const imgUrl = getEduImage(location + level + subject);
+  const altText = `${location} ${level} ${subject} 과외`;
+  return `<div style="position:relative;width:100%;aspect-ratio:1200/630;border-radius:14px;overflow:hidden;background:#0f172a;box-shadow:0 6px 24px rgba(0,0,0,0.12);">
+    <img src="${imgUrl}" alt="${altText}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(15,23,42,0.85) 0%, ${overlay} 100%);"></div>
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:32px 36px;color:#fff;">
+      <div style="font-size:clamp(28px, 5vw, 56px);font-weight:900;margin-bottom:8px;text-shadow:0 2px 12px rgba(0,0,0,0.4);line-height:1.15;">${location}</div>
+      <div style="font-size:clamp(18px, 3vw, 32px);font-weight:700;opacity:0.96;text-shadow:0 2px 8px rgba(0,0,0,0.35);">${level} ${subject} 과외</div>
+      <div style="margin-top:12px;font-size:clamp(11px, 1.4vw, 14px);opacity:0.82;letter-spacing:1px;">1:1 맞춤 수업 · 성적 향상 · 전문 코칭</div>
+    </div>
+  </div>`;
 }
 
 // --- 콘텐츠 생성 ---
@@ -4240,24 +4202,21 @@ function schoolThumbSVG(school, level, idx) {
   const name = school[0];
   const sidoShort = getSidoShort(getSidoFromIdx(school[1]));
   const gugun = school[2];
-  const palettes = level === 'middle'
-    ? [['#ddd6fe','#7c3aed','#5b21b6'], ['#c7d2fe','#4f46e5','#3730a3'], ['#bae6fd','#0284c7','#075985'], ['#bbf7d0','#16a34a','#14532d']]
-    : [['#fecaca','#dc2626','#7f1d1d'], ['#fed7aa','#ea580c','#7c2d12'], ['#fde68a','#d97706','#78350f'], ['#fbcfe8','#db2777','#831843']];
-  const p = palettes[idx % palettes.length];
-  const bgPattern = idx % 3;
-  const decor = bgPattern === 0
-    ? `<g opacity="0.18"><rect x="50" y="280" width="80" height="60" rx="3" fill="${p[2]}"/><rect x="55" y="285" width="70" height="50" rx="2" fill="${p[0]}"/><line x1="65" y1="298" x2="115" y2="298" stroke="${p[2]}" stroke-width="1.2"/><line x1="65" y1="306" x2="115" y2="306" stroke="${p[2]}" stroke-width="1.2"/><line x1="65" y1="314" x2="105" y2="314" stroke="${p[2]}" stroke-width="1.2"/><line x1="65" y1="322" x2="110" y2="322" stroke="${p[2]}" stroke-width="1.2"/></g><g opacity="0.22"><circle cx="540" cy="80" r="40" fill="${p[0]}"/><path d="M520 80 L560 80 M540 60 L540 100" stroke="${p[2]}" stroke-width="3"/></g>`
-    : bgPattern === 1
-    ? `<g opacity="0.2"><rect x="480" y="270" width="100" height="14" rx="2" fill="${p[2]}"/><rect x="485" y="255" width="90" height="14" rx="2" fill="${p[2]}" opacity="0.7"/><rect x="475" y="285" width="110" height="14" rx="2" fill="${p[2]}" opacity="0.85"/><rect x="490" y="300" width="80" height="14" rx="2" fill="${p[2]}" opacity="0.6"/></g><g opacity="0.22"><polygon points="80,60 110,80 80,100 50,80" fill="${p[2]}"/><line x1="80" y1="100" x2="80" y2="125" stroke="${p[2]}" stroke-width="2"/><circle cx="80" cy="80" r="3" fill="${p[0]}"/></g>`
-    : `<g opacity="0.18"><circle cx="80" cy="320" r="14" fill="${p[2]}"/><circle cx="120" cy="305" r="20" fill="${p[2]}"/><circle cx="160" cy="320" r="14" fill="${p[2]}"/><line x1="80" y1="320" x2="160" y2="320" stroke="${p[2]}" stroke-width="2"/></g><g opacity="0.2"><rect x="490" y="50" width="80" height="100" rx="3" fill="${p[2]}"/><rect x="495" y="55" width="70" height="90" rx="2" fill="${p[0]}"/><line x1="505" y1="75" x2="555" y2="75" stroke="${p[2]}" stroke-width="1.2"/><line x1="505" y1="85" x2="555" y2="85" stroke="${p[2]}" stroke-width="1.2"/><line x1="505" y1="95" x2="540" y2="95" stroke="${p[2]}" stroke-width="1.2"/></g>`;
-  return `<svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:12px;display:block">
-    <defs><linearGradient id="g${idx}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="${p[0]}"/><stop offset="100%" stop-color="${p[1]}" stop-opacity="0.6"/></linearGradient></defs>
-    <rect width="640" height="360" fill="url(#g${idx})"/>
-    ${decor}
-    <text x="40" y="180" font-family="'Noto Sans KR',sans-serif" font-size="34" font-weight="900" fill="#fff">${name}</text>
-    <text x="40" y="218" font-family="'Noto Sans KR',sans-serif" font-size="22" font-weight="700" fill="#fff" opacity="0.95">맞춤 과외</text>
-    <text x="40" y="248" font-family="'Noto Sans KR',sans-serif" font-size="14" font-weight="500" fill="#fff" opacity="0.85">${sidoShort} ${gugun}</text>
-  </svg>`;
+  // 중학교는 보라/파랑 톤, 고등학교는 빨강/주황 톤 오버레이
+  const overlays = level === 'middle'
+    ? ['rgba(124,58,237,0.62)', 'rgba(79,70,229,0.62)', 'rgba(2,132,199,0.62)', 'rgba(22,163,74,0.55)']
+    : ['rgba(220,38,38,0.62)', 'rgba(234,88,12,0.62)', 'rgba(217,119,6,0.62)', 'rgba(219,39,119,0.55)'];
+  const overlay = overlays[idx % overlays.length];
+  const imgUrl = getEduImage(name + idx);
+  return `<div style="position:relative;width:100%;aspect-ratio:640/360;border-radius:14px;overflow:hidden;background:#0f172a;box-shadow:0 6px 24px rgba(0,0,0,0.12);">
+    <img src="${imgUrl}" alt="${name} 맞춤 과외" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(15,23,42,0.78) 0%, ${overlay} 100%);"></div>
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff;">
+      <div style="font-size:clamp(22px, 4.5vw, 38px);font-weight:900;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,0.4);margin-bottom:8px;">${name}</div>
+      <div style="font-size:clamp(16px, 3vw, 24px);font-weight:700;opacity:0.96;text-shadow:0 2px 8px rgba(0,0,0,0.35);margin-bottom:6px;">맞춤 과외</div>
+      <div style="font-size:clamp(11px, 1.6vw, 14px);opacity:0.82;font-weight:500;">${sidoShort} ${gugun}</div>
+    </div>
+  </div>`;
 }
 
 // 1) 학교급 메인 (시도 그리드)
@@ -4658,7 +4617,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v23-indexnow-auto', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v24-real-thumbnails', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
