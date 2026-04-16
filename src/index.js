@@ -1891,13 +1891,258 @@ const SUBJECT_STUDY_GUIDE = {
   }
 };
 
+
+// ========== 과목별 동적 콘텐츠 풀 ==========
+// 8과목 × 4섹션: 핵심5가지 / 효과적인 공부법 / 로드맵 / 과목별 안내
+
+const SUBJ_ESSENTIALS = {
+  "국어": [
+    [
+      {t:"문해력이 성적을 결정한다", d:"국어는 물론 전 과목의 기반이 문해력이에요. 지문을 정확히 읽고 핵심을 파악하는 능력이 없으면 아무리 지식을 쌓아도 시험 점수로 연결되지 않습니다. 문해력 훈련이 국어 학습의 시작입니다."},
+      {t:"어휘력이 곧 이해력", d:"모르는 단어가 많은 지문은 아무리 천천히 읽어도 이해하기 어려워요. 매일 5~10개 어휘를 꾸준히 축적하면, 1년 뒤 이해할 수 있는 지문의 범위가 크게 넓어집니다."},
+      {t:"비문학·문학 균형 잡기", d:"많은 학생이 비문학은 잘하면서 문학에 약하거나, 그 반대입니다. 두 영역은 전혀 다른 사고 방식을 요구하기 때문에, 어느 한 쪽만 파고들면 반드시 점수가 막혀요. 균형 잡힌 학습이 필수입니다."},
+      {t:"정답 찾기 → 근거 찾기", d:"문제를 풀 때 '이게 답일 것 같다'가 아니라 '지문의 이 부분 때문에 이게 답이다'라고 말할 수 있어야 합니다. 근거 중심 사고가 국어 실력의 핵심이에요."},
+      {t:"문법은 단기 집중", d:"국어 문법은 범위가 한정적이에요. 6개월 집중해서 정리하면 이후에는 복습만으로도 유지됩니다. 장기간 늘여 배우기보다 단기 집중 학습이 효율적입니다."},
+    ],
+  ],
+  "영어": [
+    [
+      {t:"어휘가 곧 영어 실력", d:"영어는 단어를 모르면 해석이 불가능합니다. 하루 20개씩 꾸준히 암기하면 1년 뒤 고등 수준 어휘를 완성할 수 있어요. 어휘 없이는 문법·독해 공부가 모두 헛수고가 됩니다."},
+      {t:"문법은 뼈대, 독해는 근육", d:"문법만 공부하면 실전 독해에서 막히고, 독해만 하면 문법 문제에서 점수를 잃어요. 두 영역을 균형 있게 병행하는 것이 안정적인 영어 성적의 비결입니다."},
+      {t:"매일 영어 노출", d:"영어는 언어이기 때문에 매일 노출되는 것이 중요해요. 하루 10분이라도 영어 지문을 읽거나 듣는 루틴을 만들면, 주 1회 몰아서 공부하는 것보다 훨씬 효과적입니다."},
+      {t:"듣기와 말하기의 시너지", d:"많이 듣는 학생이 말하기도 잘합니다. 청해력이 회화와 독해의 기반이 되기 때문에, 중고등 시기부터 듣기를 꾸준히 하는 학생이 장기적으로 영어를 잘하게 됩니다."},
+      {t:"오답 노트 작성 습관", d:"같은 실수를 반복하지 않는 것이 점수 향상의 핵심이에요. 틀린 문제를 모아 왜 틀렸는지 분석하고, 일주일 후 다시 풀어보는 사이클이 실력을 결정적으로 끌어올립니다."},
+    ],
+  ],
+  "수학": [
+    [
+      {t:"개념 이해가 공식 암기보다 우선", d:"공식을 외우는 것은 빠르지만 쉽게 잊혀요. '왜 이 공식이 이렇게 나오는가'를 이해하면 공식을 잊어도 다시 유도할 수 있고, 응용 문제도 자신 있게 풀 수 있습니다."},
+      {t:"기초 빈틈 메우기가 1순위", d:"수학은 누적형 과목이라 이전 단원의 빈틈을 그대로 두면 다음 단원에서 반드시 막힙니다. 현재 학년 진도보다 기초 점검과 보완이 우선되어야 해요."},
+      {t:"문제 풀이량보다 이해 깊이", d:"같은 문제를 10번 푸는 것보다, 1문제를 깊이 이해하는 것이 장기적으로 실력을 키웁니다. 풀이 과정을 설명할 수 있으면 그 유형은 완전히 정복된 거예요."},
+      {t:"오답 노트가 핵심 자산", d:"틀린 문제를 그냥 넘기지 않고 오답 노트로 관리하는 학생이 결국 상위권이 됩니다. 같은 실수를 반복하지 않는 것만으로도 점수가 10~20점 오를 수 있어요."},
+      {t:"시간 관리 훈련 필수", d:"수학 시험은 풀 수 있어도 시간이 부족한 경우가 많습니다. 평소 연습할 때 시간을 재고 푸는 습관을 들이면, 실전에서 흔들리지 않는 안정적 성적이 나와요."},
+    ],
+  ],
+  "사회": [
+    [
+      {t:"암기 + 이해의 결합", d:"사회는 단순 암기 과목이 아니에요. 개념들 사이의 관계를 이해해야 응용 문제를 풀 수 있고, 시험 직전 방대한 내용을 효율적으로 복습할 수 있습니다."},
+      {t:"자료 해석력 키우기", d:"최근 시험은 그래프·도표·지도·사진 등 자료를 해석하는 문제가 많이 출제돼요. 자료에서 핵심 정보를 빠르게 파악하는 훈련이 고득점의 열쇠입니다."},
+      {t:"시사 이슈와 연결하기", d:"교과 개념을 뉴스·시사 이슈와 연결해서 공부하면 기억에 오래 남고, 서술형 문제에도 유리해요. 일상 속 사회 현상을 교과 내용으로 설명하는 훈련을 해보세요."},
+      {t:"마인드맵으로 구조화", d:"사회는 범위가 넓어서 큰 그림을 잃기 쉬워요. 단원별 마인드맵이나 개념 정리표를 만들면 방대한 내용이 한눈에 정리되고 기억력도 극대화됩니다."},
+      {t:"기출 3년치 분석", d:"사회 과목은 기출 유형이 반복되는 경향이 강해요. 최근 3년 기출을 분석하면 어떤 단원이 자주 나오는지, 어떤 형태로 출제되는지 패턴이 보입니다."},
+    ],
+  ],
+  "과학": [
+    [
+      {t:"원리 이해가 기억보다 강하다", d:"실험 결과만 암기하면 유형이 조금만 바뀌어도 틀려요. 왜 그런 결과가 나오는지 과학적 원리로 접근하면, 어떤 변형 문제도 해결할 수 있습니다."},
+      {t:"영역별 특성 파악", d:"물리·화학·생물·지구과학은 각기 다른 사고 방식이 필요해요. 물리는 논리, 화학은 규칙, 생물은 암기+체계, 지구과학은 개념 이해가 각각 핵심입니다."},
+      {t:"그림과 도식 활용", d:"과학 개념은 글로만 외우면 금방 잊혀요. 복잡한 실험이나 구조를 직접 그려보거나, 플로우차트로 정리하면 이해와 기억 둘 다 극대화됩니다."},
+      {t:"관찰과 실험 경험", d:"교과서만 보면 과학이 지루한 암기 과목처럼 느껴집니다. 실제 실험 영상이나 자연 관찰을 통해 '왜 그런지' 체험하는 순간 과학이 재미있어집니다."},
+      {t:"수학 기초 필수", d:"특히 물리·화학은 수학 실력이 뒷받침되지 않으면 문제 풀이가 어려워요. 수학과 과학을 함께 공부하는 학생이 결국 이공계 상위권으로 나아갑니다."},
+    ],
+  ],
+  "코딩": [
+    [
+      {t:"만들면서 배운다", d:"코딩은 책으로 배우는 것이 아니라 직접 만들어보며 배우는 거예요. 매일 1개라도 작은 프로그램을 직접 만들어보면 6개월 뒤 실력이 완전히 달라집니다."},
+      {t:"언어 선택이 첫 관문", d:"파이썬은 입문용으로 최적이고, C++/자바는 정보올림피아드와 대학 진학에 유리해요. 목표에 따라 첫 언어를 선택하는 것이 장기 방향을 결정합니다."},
+      {t:"알고리즘 훈련", d:"단순히 코드를 짜는 것과 효율적인 코드를 짜는 것은 다릅니다. 알고리즘 문제를 꾸준히 풀면서 논리적 사고와 문제 해결 능력을 기르세요. 이것이 진짜 실력이에요."},
+      {t:"에러 메시지 친구 삼기", d:"초보자는 에러가 뜨면 좌절하지만, 실력자는 에러를 힌트로 읽습니다. 에러 메시지를 정확히 읽고 해석하는 능력이 코딩 실력의 분기점이에요."},
+      {t:"협업과 공유", d:"깃허브에 코드를 공유하고, 다른 사람의 코드를 읽는 경험이 실력을 몇 배로 키워줍니다. 혼자 하는 코딩에는 한계가 있어요."},
+    ],
+  ],
+  "검정고시": [
+    [
+      {t:"과목별 우선순위 설정", d:"모든 과목을 똑같이 공부하면 시간이 부족해요. 점수가 빨리 오르는 과목부터 집중하는 전략이 합격률을 크게 높입니다. 선생님과 함께 우선순위를 정해보세요."},
+      {t:"기출문제 분석이 전부", d:"검정고시는 기출 유형이 반복되는 경향이 매우 강해요. 최근 5년 기출을 철저히 분석하고 반복 학습하면, 합격선은 충분히 넘을 수 있습니다."},
+      {t:"단기 집중 학습", d:"검정고시는 범위가 정해져 있어 단기간 집중하면 충분히 돌파 가능해요. 3~6개월 집중 학습이 수년간 미루는 것보다 훨씬 효율적입니다."},
+      {t:"과목 선택 전략", d:"검정고시는 일부 과목을 선택하는 방식이에요. 본인이 잘하거나 점수를 빨리 올릴 수 있는 과목을 선택하는 전략적 판단이 합격을 결정합니다."},
+      {t:"건강 관리 병행", d:"장기간 혼자 공부하면 체력과 멘탈이 무너지기 쉬워요. 규칙적인 생활, 적절한 휴식, 건강한 식사가 학습 지속의 필수 요소입니다."},
+    ],
+  ],
+  "논술": [
+    [
+      {t:"쓰지 않으면 늘지 않는다", d:"논술은 읽기만으로는 실력이 늘지 않아요. 매주 1편 이상 실전 논술문을 직접 쓰고 첨삭받는 훈련이 유일한 실력 향상 방법입니다."},
+      {t:"제시문 정확히 읽기", d:"좋은 글을 쓰려면 먼저 제시문을 정확히 이해해야 해요. 핵심 논지·근거·함의를 파악하는 독해력이 논술의 출발점입니다."},
+      {t:"논리 구조 훈련", d:"논술은 창의력보다 논리력이에요. 주장 → 근거 → 예시의 기본 구조를 체득하면, 어떤 주제든 일관된 글을 쓸 수 있습니다."},
+      {t:"시사·고전 균형", d:"대학 논술은 시사 이슈와 고전 사상을 동시에 요구하는 경우가 많아요. 신문 사설과 철학 고전을 병행해 읽으면 깊이 있는 논술이 가능해집니다."},
+      {t:"시간 내 완성 연습", d:"시험장에서 시간 안에 완성하는 것이 실력이에요. 평소 연습도 반드시 시간을 재고 쓰면, 실전에서 당황하지 않습니다."},
+    ],
+  ],
+};
+
+const SUBJ_METHODS = {
+  "국어": [
+    {h:"매일 지문 1개 분석", p:"하루 1개 비문학 또는 문학 지문을 정독하고 핵심 문장에 밑줄을 긋는 훈련이 문해력을 가장 빠르게 올려줘요. 꾸준히 3개월만 해도 실력이 눈에 띄게 달라집니다."},
+    {h:"어휘 노트 관리", p:"모르는 단어를 만날 때마다 노트에 기록하고 주 1회 복습하세요. 어휘력이 늘면 독해 속도와 이해도가 동시에 올라갑니다."},
+    {h:"기출 3회독 전략", p:"평가원·수능 기출을 3회 반복 풀이하면서 문제 출제 의도를 분석하는 습관이 고득점의 지름길이에요."},
+    {h:"논술·서술형 훈련", p:"국어 실력은 결국 쓰기로 완성돼요. 주 1회 300자 요약·논술 연습으로 생각을 글로 표현하는 근력을 키우세요."},
+    {h:"문법 체계 정리", p:"문법은 단기 집중으로 6개월에 끝내고, 이후에는 기출 문제로만 복습하는 것이 효율적입니다."}
+  ],
+  "영어": [
+    {h:"단어 하루 20개 루틴", p:"스펠링·뜻·예문을 함께 외우고, 주 1회 복습하는 사이클이 어휘를 장기 기억으로 만들어줘요. 1년이면 고등 수준 완성."},
+    {h:"구문 분석 훈련", p:"긴 영어 문장을 주어·동사·수식어로 나누어 분석하는 훈련을 반복하면, 어떤 지문도 자신 있게 읽을 수 있게 됩니다."},
+    {h:"독해 속도 훈련", p:"시간을 재고 지문을 읽는 연습을 꾸준히 하면 수능·내신에서 시간 부족으로 놓치는 문제가 크게 줄어들어요."},
+    {h:"듣기 매일 20분", p:"영어 팟캐스트·뉴스·유튜브를 매일 20분씩 들으면 청해력과 발음이 자연스럽게 올라갑니다."},
+    {h:"쉐도잉과 회화", p:"원어민 음성을 따라 말하는 쉐도잉은 발음·문법·표현을 동시에 체화시키는 강력한 훈련법이에요."}
+  ],
+  "수학": [
+    {h:"개념서 3독 원칙", p:"새 단원을 배울 때 개념서를 3번 읽으면 이해도가 비약적으로 올라갑니다. 1독 훑기, 2독 꼼꼼히, 3독 설명 가능할 정도로 읽으세요."},
+    {h:"오답노트 시스템", p:"틀린 문제를 단순히 다시 풀지 말고, 왜 틀렸는지 분석하고 유사 문제를 더 풀어 확실히 정복하는 습관을 들이세요."},
+    {h:"킬러 문제 집중", p:"4점 고난도 문제를 반복적으로 분석하면 사고력이 단계적으로 성장해요. 실수 줄이기보다 사고력 키우기가 상위권의 길입니다."},
+    {h:"손으로 풀기 원칙", p:"눈으로만 풀면 실전에서 시간과 정확도가 떨어집니다. 모든 문제를 손으로 끝까지 풀어보는 습관이 필요해요."},
+    {h:"시간 재고 모의고사", p:"평소 공부할 때도 시간을 재는 훈련을 하면, 실전 시험에서 당황하지 않고 안정된 점수를 받을 수 있어요."}
+  ],
+  "사회": [
+    {h:"마인드맵 정리법", p:"단원별 마인드맵을 직접 그려보면 방대한 내용이 한눈에 정리되고 기억력도 크게 올라갑니다. 시험 직전 복습에 특히 유용해요."},
+    {h:"자료 해석 훈련", p:"그래프·도표·지도를 빠르게 해석하는 연습을 꾸준히 하면 최근 출제 트렌드인 자료 기반 문제에서 강해집니다."},
+    {h:"시사 연결 학습", p:"뉴스와 교과 개념을 연결해서 공부하면 기억에 오래 남고 서술형 문제 대응력도 키워집니다."},
+    {h:"개념 비교표 작성", p:"비슷한 개념들을 표로 비교 정리하면 헷갈림이 사라지고, 고난도 문제에서 정확한 판단이 가능해져요."},
+    {h:"기출 5년치 분석", p:"사회는 기출 유형이 반복되는 경향이 강해서, 5년치 기출을 분석하면 출제 패턴이 보이고 대비가 쉬워집니다."}
+  ],
+  "과학": [
+    {h:"개념 + 실험 병행", p:"교과서 개념만 보지 말고 실험 영상을 함께 보면 원리가 훨씬 생생하게 이해됩니다. 유튜브 과학 채널을 활용해보세요."},
+    {h:"그림으로 정리하기", p:"복잡한 구조나 과정을 직접 그리면 이해와 기억이 동시에 강화돼요. 손으로 그리는 공부가 과학에서 특히 효과적입니다."},
+    {h:"수학과 함께 공부", p:"물리·화학 문제는 결국 수학 실력이 바탕이에요. 수학과 과학을 병행 학습하는 학생이 이공계 상위권으로 가는 길이 열립니다."},
+    {h:"오답 유형 분석", p:"과학 오답을 유형별로 정리하면 자신이 약한 영역이 명확해집니다. 약점 영역을 집중 공략하면 효율적으로 점수가 오릅니다."},
+    {h:"시사 과학 관심", p:"최신 과학 뉴스(기후·AI·생명공학)에 관심을 두면, 교과 개념을 실생활과 연결해서 깊이 있게 이해할 수 있어요."}
+  ],
+  "코딩": [
+    {h:"매일 코드 1시간", p:"매일 1시간씩 코드를 작성하는 루틴이 6개월 뒤 엄청난 차이를 만듭니다. 양보다 꾸준함이 코딩 실력의 진짜 비결이에요."},
+    {h:"알고리즘 문제 풀이", p:"백준·프로그래머스에서 매일 1~2문제 꾸준히 풀면 사고력과 문제 해결 능력이 체계적으로 성장합니다."},
+    {h:"작은 프로젝트 완성", p:"작더라도 스스로 완성한 프로젝트 1개가 강의 10개보다 실력을 많이 키워줍니다. 결과물이 포트폴리오로 쌓입니다."},
+    {h:"다른 사람 코드 읽기", p:"깃허브에서 오픈소스나 선배들의 코드를 읽는 경험이 혼자 짜는 것보다 훨씬 빠르게 실력을 향상시켜요."},
+    {h:"에러 스스로 해결", p:"에러가 나면 선생님께 묻기 전에 검색하고 혼자 해결하려는 습관이 진짜 개발자로 성장하는 길입니다."}
+  ],
+  "검정고시": [
+    {h:"기출 3년치 반복", p:"검정고시 기출은 유형이 매우 일정해요. 최근 3년치를 3회 이상 반복 풀이하면 합격선은 충분히 넘을 수 있습니다."},
+    {h:"요약 노트 작성", p:"두꺼운 교재보다 자신만의 요약 노트가 훨씬 효과적입니다. 시험 직전 요약 노트만으로도 전범위를 빠르게 복습할 수 있어요."},
+    {h:"약점 과목 집중", p:"잘하는 과목보다 못하는 과목에 시간을 더 투자하는 것이 전체 점수를 효율적으로 올리는 방법입니다."},
+    {h:"주별 학습 계획", p:"막연한 계획이 아닌 주 단위로 진도 목표를 정하고 실행 여부를 체크하면, 6개월이면 합격권 진입이 가능해요."},
+    {h:"멘탈 관리 중요", p:"혼자 공부하는 만큼 멘탈 관리가 중요합니다. 주 1회 과외 선생님과의 대화가 학습 지속의 큰 힘이 됩니다."}
+  ],
+  "논술": [
+    {h:"매주 1편 실전 작성", p:"논술 실력은 쓰는 양에 비례합니다. 매주 1편 이상 실전 주제로 글을 쓰고 첨삭받는 것이 가장 확실한 성장 방법이에요."},
+    {h:"제시문 구조 분석", p:"제시문의 논지·근거·함의를 분석하는 훈련을 반복하면, 어떤 난이도의 지문도 정확히 읽을 수 있게 됩니다."},
+    {h:"신문 사설 매일 1편", p:"조선·중앙·한겨레 등 관점이 다른 신문의 사설을 비교하며 읽는 습관이 다각적 사고력을 길러줘요."},
+    {h:"고전 요약 훈련", p:"대학 논술은 동서양 고전 사상을 자주 다뤄요. 주요 고전을 3~5페이지로 요약하는 훈련이 논술의 깊이를 만듭니다."},
+    {h:"피드백 내면화", p:"첨삭받은 내용을 단순히 고치지 말고, 왜 그런 지적이 나왔는지 이해하고 다음 글에 반영하는 것이 실력 성장의 핵심이에요."}
+  ]
+};
+
+const SUBJ_ROADMAP = {
+  "국어": [
+    {t:"입문 - 1~3개월", p:"문해력 진단 후 기초 독해 훈련 시작. 어휘 노트 작성 습관 들이기, 매일 짧은 지문 1개 정독. 이 시기에는 양보다 정확한 읽기가 목표예요."},
+    {t:"발전 - 3~6개월", p:"비문학·문학 영역별 체계적 학습 돌입. 기출문제 반복 풀이 시작, 문법 단기 집중 학습. 독해 속도가 빨라지는 시기입니다."},
+    {t:"심화 - 6~12개월", p:"고난도 지문 독해와 서술형·논술 훈련. 기출 3회독 완성, 자신만의 풀이 방식 정립. 실전 시험 대비 마무리 단계예요."},
+    {t:"완성 - 12개월+", p:"실전 모의고사 반복과 약점 보완. 시간 관리 훈련, 실수 제거 시스템 구축. 안정적인 고득점 실력 완성 단계입니다."}
+  ],
+  "영어": [
+    {t:"기초 - 1~3개월", p:"기본 어휘 500~1000개 암기, 기초 문법 체계 잡기. 짧은 지문 해석 연습과 매일 10분 듣기 루틴 시작 단계예요."},
+    {t:"발전 - 3~6개월", p:"중급 어휘 2000개 도달, 구문 분석 본격 훈련. 모의고사 풀이 시작, 영어 팟캐스트 듣기 습관화. 실력이 가시적으로 성장하는 시기입니다."},
+    {t:"심화 - 6~12개월", p:"고급 어휘와 복잡한 구문 해석 능력 갖추기. 수능 기출 반복, 시간 내 해결 훈련. 상위권 진입이 가능한 수준이에요."},
+    {t:"완성 - 12개월+", p:"킬러 문항 돌파와 듣기 만점 도전. 영어 원서 읽기에도 도전하며 실전 영어 감각 완성. 1등급 안정권 실력입니다."}
+  ],
+  "수학": [
+    {t:"기초 - 1~3개월", p:"이전 학년 빈틈 점검 및 기초 개념 완벽 이해. 기본 문제 풀이 습관 들이기와 오답노트 시작. 탄탄한 토대를 만드는 시기예요."},
+    {t:"발전 - 3~6개월", p:"현재 학년 개념 심화 학습과 유형별 문제 풀이. 중간 난이도 집중 공략, 풀이 과정 설명 훈련. 실력이 질적으로 성장합니다."},
+    {t:"심화 - 6~12개월", p:"고난도 4점 문제와 킬러 문항 분석. 시간 재고 모의고사 풀이, 실전 감각 강화. 상위권으로 도약하는 단계예요."},
+    {t:"완성 - 12개월+", p:"취약 유형 완벽 정복과 실수 제거. 실전 시뮬레이션 반복, 멘탈 관리까지 완성. 1등급 안정 확보 단계입니다."}
+  ],
+  "사회": [
+    {t:"기초 - 1~3개월", p:"교과서 통독 + 주요 개념 마인드맵 작성. 단원별 핵심 키워드 정리 시작. 전체 그림을 먼저 그리는 시기예요."},
+    {t:"발전 - 3~6개월", p:"개념 심화와 자료 해석 훈련 본격화. 기출 유형 분석 시작, 단원별 연결 고리 파악. 사회적 사고력이 커지는 단계입니다."},
+    {t:"심화 - 6~12개월", p:"고난도 자료 해석과 서술형 대비. 기출 3회독 완성, 시사 이슈 연결 학습. 응용 능력이 완성되는 시기예요."},
+    {t:"완성 - 12개월+", p:"실전 모의고사 반복과 취약 단원 보완. 실수 관리, 시간 내 완성 훈련. 고득점 안정 단계입니다."}
+  ],
+  "과학": [
+    {t:"기초 - 1~3개월", p:"영역별(물리·화학·생물·지구) 기본 개념 정리. 실험 원리 이해에 집중하며 기초 수식 활용 훈련. 탄탄한 개념 기반을 만드는 시기예요."},
+    {t:"발전 - 3~6개월", p:"단원별 문제 풀이와 약점 영역 집중 보완. 그림·도식 정리 습관화, 기출 분석 시작. 실력이 가시화되는 단계입니다."},
+    {t:"심화 - 6~12개월", p:"고난도 개념과 통합형 문제 돌파. 수능 기출 반복, 실전 모의고사 풀이. 상위권 실력 완성 시기예요."},
+    {t:"완성 - 12개월+", p:"취약 유형 완벽 정복과 실수 제거. 시간 관리와 멘탈 컨트롤 훈련. 고득점 안정 단계입니다."}
+  ],
+  "코딩": [
+    {t:"입문 - 1~3개월", p:"언어 선택(파이썬 추천) 후 기본 문법 익히기. 간단한 계산기·게임 등 작은 프로그램 직접 만들어보기. 흥미를 유지하는 것이 핵심이에요."},
+    {t:"발전 - 3~6개월", p:"자료구조·알고리즘 기초 학습. 백준·프로그래머스 문제 풀이 시작, 개인 프로젝트 1~2개 완성. 실력이 본격 성장하는 단계입니다."},
+    {t:"심화 - 6~12개월", p:"중급 알고리즘 돌파와 깃허브 활용. 팀 프로젝트 참여나 공모전 도전, 자신만의 포트폴리오 구축. 실전 감각이 완성됩니다."},
+    {t:"완성 - 12개월+", p:"고급 알고리즘과 대회 참여(정보올림피아드 등). 본격 개발 프로젝트나 스타트업 경험, AI·웹·앱 중 전문 분야 선택. 실력자로 성장하는 시기예요."}
+  ],
+  "검정고시": [
+    {t:"준비 - 1개월", p:"현재 수준 진단과 과목별 우선순위 설정. 학습 계획 수립과 교재 선택. 합격까지의 로드맵을 구체화하는 시기예요."},
+    {t:"기초 - 1~3개월", p:"핵심 교재 1회독 완료와 주요 개념 암기. 기출 유형 파악 시작, 약점 영역 분석. 기본기를 다지는 중요한 시기입니다."},
+    {t:"반복 - 3~5개월", p:"기출문제 반복 풀이와 오답 관리. 요약 노트 완성, 모의고사 형태 연습 시작. 합격 가능선을 체감하는 단계예요."},
+    {t:"완성 - 5~6개월", p:"실전 모의고사 반복과 시간 관리 훈련. 컨디션 조절과 멘탈 관리 병행. 자신 있게 시험을 맞이하는 마무리 단계입니다."}
+  ],
+  "논술": [
+    {t:"기초 - 1~3개월", p:"독해력 진단과 제시문 분석 기초 훈련. 주 1편 짧은 글쓰기로 기본 습관 형성. 논리적 사고의 기초를 다지는 시기예요."},
+    {t:"발전 - 3~6개월", p:"본격 논술문 작성과 첨삭 받기. 신문 사설 읽기 습관화, 고전 요약 훈련 시작. 실력이 가시화되는 단계입니다."},
+    {t:"심화 - 6~12개월", p:"실전 대학별 기출 풀이와 시간 내 완성 훈련. 시사 이슈와 고전을 연결한 글쓰기. 대학 지망에 맞는 맞춤 훈련 시기예요."},
+    {t:"완성 - 12개월+", p:"최종 모의 논술과 첨삭 피드백 내면화. 다양한 주제 유형 커버, 실전 감각 완성. 입시 대비 마무리 단계입니다."}
+  ]
+};
+
+const SUBJ_GUIDE_POOL = {
+  "국어": {
+    초등: "초등 시기에는 독서 습관 형성과 기초 어휘력 확장이 핵심이에요. 하루 30분 독서와 매일 3개 어휘 암기 루틴만으로도 중학교 국어의 기반이 만들어집니다.",
+    중등: "중학교 국어는 문학·비문학·문법의 삼각 균형이 중요해요. 내신 대비와 함께 고등 국어의 기초가 되는 독해력을 체계적으로 키워가는 시기입니다.",
+    고등: "고등 국어는 수능 국어와 직결돼요. 비문학 독해 속도, 문학 분석력, 문법 정확성이 동시에 요구되며, 고1부터 체계적 대비가 필요합니다.",
+  },
+  "영어": {
+    초등: "초등 영어는 흥미와 기초 어휘 축적이 핵심이에요. 영어 동화·노래·애니로 자연스러운 노출을 늘리면서, 알파벳과 기초 단어를 차근차근 익혀갑니다.",
+    중등: "중학 영어는 문법 체계 잡기와 독해 시작 단계예요. 어휘량을 2000개 이상 확보하고, 짧은 지문 해석 능력을 키우는 것이 고등 대비의 시작입니다.",
+    고등: "고등 영어는 수능형 장문 독해와 정확한 문법 활용이 중요해요. 시간 내 해결 능력과 킬러 문항 대비가 1등급의 분수령이 됩니다.",
+  },
+  "수학": {
+    초등: "초등 수학은 개념 이해와 연산 정확성이 기본이에요. 공식 암기보다 '왜'를 이해하는 습관이 중등·고등 수학의 성공을 결정합니다.",
+    중등: "중학 수학은 이전 빈틈 보완과 현재 단원 개념 숙달의 병행이 중요해요. 누적형 학습의 특성을 잘 이해하고 약점을 방치하지 않는 것이 핵심입니다.",
+    고등: "고등 수학은 수능·내신 동시 대비가 필요해요. 개념 심화, 유형 정복, 킬러 문항 돌파의 3단계를 체계적으로 거치면 상위권 진입이 가능합니다.",
+  },
+  "사회": {
+    초등: "초등 사회는 호기심 유발과 기초 상식 쌓기가 목표예요. 교과서 외에도 뉴스·여행·체험을 통해 세상을 보는 눈을 키우는 시기입니다.",
+    중등: "중학 사회는 지리·역사·일반사회의 기초를 다지는 시기예요. 단편 암기가 아닌 개념 연결 학습 습관을 들이면 고등까지 안정적으로 이어집니다.",
+    고등: "고등 사회(통합사회·정치와법·경제 등)는 자료 해석과 논리적 사고가 핵심이에요. 탐구 영역에서 선택 과목별 맞춤 전략이 필요합니다.",
+  },
+  "과학": {
+    초등: "초등 과학은 호기심과 관찰력을 키우는 시기예요. 실험·관찰·자연 체험을 많이 해두면, 중학교 과학 개념을 훨씬 쉽게 이해할 수 있습니다.",
+    중등: "중학 과학은 물리·화학·생물·지구의 통합적 접근이 필요해요. 실험 원리 이해와 수학적 사고의 병행이 고등 과학 성공의 열쇠입니다.",
+    고등: "고등 과학은 영역별 심화 선택 과목으로 나뉘어요. 본인의 진로에 맞춰 2~3과목을 선택하고, 수능형 사고력을 키우는 체계적 전략이 필요합니다.",
+  },
+  "코딩": {
+    초등: "초등 코딩은 블록 코딩(스크래치·엔트리)으로 시작해 논리적 사고와 문제 해결 능력을 키웁니다. 재미있는 프로젝트 중심 학습이 흥미를 유지시켜요.",
+    중등: "중학 코딩은 파이썬 기초와 간단한 알고리즘 학습 단계예요. 자신만의 프로젝트를 만들어보면서 프로그래밍의 재미를 체감하는 시기입니다.",
+    고등: "고등 코딩은 심화 알고리즘과 포트폴리오 구축이 중요해요. 정보올림피아드 도전이나 대학 진학 대비 맞춤 전략이 필요한 단계입니다.",
+  },
+  "검정고시": {
+    중졸: "중졸 검정고시는 국·수·영·사·과 5과목으로, 60점 이상 평균이면 합격입니다. 기출 집중 학습으로 3~6개월이면 충분히 돌파할 수 있어요.",
+    고졸: "고졸 검정고시는 6과목(국·수·영·사·과+선택)으로 대입 자격과 동등한 학력을 인정받아요. 체계적인 계획이 합격을 결정합니다.",
+    대입: "검정고시 후 대학 진학까지 고려한다면 수능 대비와 병행 학습이 필요해요. 과외를 통한 맞춤 커리큘럼이 가장 효율적입니다.",
+  },
+  "논술": {
+    초중등: "초중등 논술은 글쓰기 습관 형성과 기초 독해력 기르기가 목표예요. 일기·독후감·짧은 의견문을 꾸준히 쓰면 고등 논술의 기반이 됩니다.",
+    고등: "고등 논술은 대학별 맞춤 대비가 핵심이에요. 자연계·인문계 구분과 대학별 출제 경향에 따라 전략이 완전히 달라집니다.",
+    대입: "수시 논술 전형은 내신과 논술 실력을 동시에 요구해요. 고1부터 꾸준한 논술 훈련이 입시 당일의 승부를 결정합니다.",
+  },
+};
+
+
 function renderSubjectDetail(subject) {
   const guide = SUBJECT_STUDY_GUIDE[subject];
   if (!guide) return null;
   const subjectColors = {"국어":"#ef4444","영어":"#3b82f6","수학":"#22c55e","사회":"#f59e0b","과학":"#a855f7","코딩":"#06b6d4","검정고시":"#f97316","논술":"#6366f1"};
+  const subjectRgb = {"국어":"239,68,68","영어":"59,130,246","수학":"34,197,94","사회":"245,158,11","과학":"168,85,247","코딩":"6,182,212","검정고시":"249,115,22","논술":"99,102,241"};
+  const subjectImgIdx = {"국어":0,"영어":1,"수학":2,"사회":3,"과학":4,"코딩":5,"검정고시":6,"논술":7};
   const subjectIcons = {"국어":"📖","영어":"🌍","수학":"📐","사회":"🏛️","과학":"🔬","코딩":"💻","검정고시":"📝","논술":"✍️"};
   const color = subjectColors[subject] || "#6366f1";
+  const rgb = subjectRgb[subject] || "99,102,241";
   const icon = subjectIcons[subject] || "📚";
+  const heroImg = EDU_IMAGE_POOL[subjectImgIdx[subject] ?? 0];
+
+  // 동적 콘텐츠 (과목명 기반 hash)
+  const seed = strHash(subject);
+  const essentialsPool = SUBJ_ESSENTIALS[subject] || SUBJ_ESSENTIALS["국어"];
+  const essentials = essentialsPool[seed % essentialsPool.length];
+  const methods = SUBJ_METHODS[subject] || SUBJ_METHODS["국어"];
+  const roadmap = SUBJ_ROADMAP[subject] || SUBJ_ROADMAP["국어"];
+  const subjGuide = SUBJ_GUIDE_POOL[subject] || SUBJ_GUIDE_POOL["국어"];
 
   const sectionsHTML = guide.sections.map(sec => `
     <div class="sd-section">
@@ -1910,44 +2155,113 @@ function renderSubjectDetail(subject) {
     `<a href="/과목별/${encodeURIComponent(subject)}/article/${idx}" class="sd-kw-item"><span>${kw}</span><span class="sd-kw-arrow">→</span></a>`
   ).join('');
 
+  const essentialsHTML = essentials.map((e,i) => `
+    <div class="sd-ess-card">
+      <div class="sd-ess-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="sd-ess-body">
+        <h4>${e.t}</h4>
+        <p>${e.d}</p>
+      </div>
+    </div>`).join('');
+
+  const methodsHTML = methods.map(m => `
+    <div class="sd-method-card">
+      <h4>${m.h}</h4>
+      <p>${m.p}</p>
+    </div>`).join('');
+
+  const roadmapHTML = roadmap.map(r => `
+    <div class="sd-road-item">
+      <div class="sd-road-dot"></div>
+      <div class="sd-road-body">
+        <h4>${r.t}</h4>
+        <p>${r.p}</p>
+      </div>
+    </div>`).join('');
+
+  const guideHTML = Object.entries(subjGuide).map(([lv, desc]) => `
+    <div class="sd-guide-card">
+      <div class="sd-guide-label">${lv}</div>
+      <p>${desc}</p>
+    </div>`).join('');
+
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(subject + ' 공부법 & 학습 전략 가이드 | 과외안하니', subject + ' 과목 공부법, 학습 전략, 키워드별 완벽 가이드를 한 곳에서 확인하세요.', 'https://anhani.com/과목별/' + encodeURIComponent(subject))}
+  ${commonHead(subject + ' 공부법 & 학습 전략 가이드 | 과외안하니', subject + ' 과목 공부법, 핵심 5가지, 효과적인 공부법, 로드맵, 과목별 안내까지 완벽 정리.', 'https://anhani.com/과목별/' + encodeURIComponent(subject))}
+  <meta property="og:image" content="${heroImg}">
   <style>${commonStyles()}
-    .sd-hero { background: linear-gradient(135deg, #0f172a, ${color}40); padding: 48px 24px; text-align: center; color: #fff; }
-    .sd-hero-icon { font-size: 48px; margin-bottom: 12px; }
-    .sd-hero h1 { font-size: 30px; font-weight: 900; margin-bottom: 8px; }
-    .sd-hero p { font-size: 15px; color: #94a3b8; }
+    .sd-hero-wrap { position: relative; overflow: hidden; }
+    .sd-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+    .sd-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${rgb}, 0.6) 100%); z-index: 1; }
+    .sd-hero { position: relative; z-index: 2; padding: 72px 24px 60px; text-align: center; color: #fff; }
+    .sd-hero-icon { font-size: 52px; margin-bottom: 14px; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4)); }
+    .sd-hero h1 { font-size: 34px; font-weight: 900; margin-bottom: 10px; text-shadow: 0 2px 12px rgba(0,0,0,0.35); }
+    .sd-hero p { font-size: 15px; color: rgba(255,255,255,0.95); text-shadow: 0 2px 8px rgba(0,0,0,0.25); }
     .sd-wrap { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
-    .sd-study { margin-bottom: 48px; }
-    .sd-study > h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; padding-left: 12px; border-left: 4px solid ${color}; }
+    .sd-study { margin-bottom: 44px; }
+    .sd-study > h2, .sd-section-title { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; padding-left: 12px; border-left: 4px solid ${color}; }
     .sd-sections { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
     .sd-section { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; }
     .sd-section h3 { font-size: 17px; font-weight: 700; color: ${color}; margin-bottom: 12px; }
     .sd-section ul { list-style: none; padding: 0; margin: 0; }
     .sd-section li { font-size: 14px; color: #475569; line-height: 1.7; margin-bottom: 6px; }
+    .sd-ess-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 44px; }
+    .sd-ess-card { display: flex; gap: 16px; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px 22px; transition: all 0.2s; }
+    .sd-ess-card:hover { border-color: ${color}; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+    .sd-ess-num { flex-shrink: 0; width: 42px; height: 42px; background: rgba(${rgb},0.1); color: ${color}; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; }
+    .sd-ess-body h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 5px; }
+    .sd-ess-body p { font-size: 14px; color: #475569; line-height: 1.7; }
+    .sd-method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 44px; }
+    .sd-method-card { background: rgba(${rgb},0.06); border-radius: 14px; padding: 20px 22px; transition: all 0.2s; }
+    .sd-method-card:hover { transform: translateY(-3px); }
+    .sd-method-card h4 { font-size: 16px; font-weight: 800; color: ${color}; margin-bottom: 6px; }
+    .sd-method-card p { font-size: 14px; color: #334155; line-height: 1.7; }
+    .sd-road-timeline { position: relative; padding-left: 24px; margin-bottom: 44px; }
+    .sd-road-timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: rgba(${rgb},0.2); }
+    .sd-road-item { position: relative; margin-bottom: 18px; }
+    .sd-road-dot { position: absolute; left: -24px; top: 6px; width: 14px; height: 14px; background: ${color}; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 2px ${color}; }
+    .sd-road-body { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; }
+    .sd-road-body h4 { font-size: 15px; font-weight: 800; color: ${color}; margin-bottom: 6px; }
+    .sd-road-body p { font-size: 14px; color: #475569; line-height: 1.7; }
+    .sd-guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 44px; }
+    .sd-guide-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 22px; transition: all 0.2s; }
+    .sd-guide-card:hover { border-color: ${color}; }
+    .sd-guide-label { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 10px; background: ${color}; color: #fff; margin-bottom: 10px; }
+    .sd-guide-card p { font-size: 14px; color: #334155; line-height: 1.7; }
     .sd-kw-title { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; text-align: center; }
     .sd-kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .sd-kw-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; text-decoration: none; color: #334155; font-size: 14px; transition: all 0.2s; line-height: 1.4; }
     .sd-kw-item:hover { border-color: ${color}; color: ${color}; transform: translateX(4px); }
     .sd-kw-arrow { color: #d1d5db; flex-shrink: 0; margin-left: 8px; }
     .sd-kw-item:hover .sd-kw-arrow { color: ${color}; }
-    .sd-cta { background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 14px; padding: 32px; text-align: center; color: #fff; margin-top: 40px; }
+    .sd-cta { background: linear-gradient(135deg, ${color}, ${color}dd); border-radius: 14px; padding: 32px; text-align: center; color: #fff; margin-top: 40px; }
     .sd-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .sd-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 16px; }
-    .sd-cta a { display: inline-block; background: #fff; color: #312e81; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
-    @media (max-width: 640px) { .sd-kw-grid { grid-template-columns: 1fr; } .sd-sections { grid-template-columns: 1fr; } }
+    .sd-cta p { font-size: 14px; opacity: 0.92; margin-bottom: 16px; }
+    .sd-cta a { display: inline-block; background: #fff; color: ${color}; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
+    @media (max-width: 640px) { .sd-hero h1 { font-size: 26px; } .sd-hero-icon { font-size: 42px; } .sd-kw-grid { grid-template-columns: 1fr; } .sd-sections { grid-template-columns: 1fr; } .sd-ess-card { flex-direction: column; gap: 10px; } }
   </style></head><body>
   ${navHTML('subject')}
-  <div class="sd-hero">
-    <div class="sd-hero-icon">${icon}</div>
-    <h1>${subject} 공부법 & 학습 전략</h1>
-    <p>${subject} 과목의 영역별 학습법과 키워드별 완벽 가이드</p>
+  <div class="sd-hero-wrap">
+    <img src="${heroImg}" alt="${subject} 공부법" loading="eager" class="sd-hero-img"/>
+    <div class="sd-hero-overlay"></div>
+    <div class="sd-hero">
+      <div class="sd-hero-icon">${icon}</div>
+      <h1>${subject} 공부법 & 학습 전략</h1>
+      <p>${subject} 과목의 영역별 학습법과 키워드별 완벽 가이드</p>
+    </div>
   </div>
   <div class="sd-wrap">
     <div class="sd-study">
       <h2>${subject} 영역별 공부 전략</h2>
       <div class="sd-sections">${sectionsHTML}</div>
     </div>
+    <h2 class="sd-section-title">🎯 ${subject} 핵심 5가지</h2>
+    <div class="sd-ess-grid">${essentialsHTML}</div>
+    <h2 class="sd-section-title">📘 효과적인 ${subject} 공부 방법</h2>
+    <div class="sd-method-grid">${methodsHTML}</div>
+    <h2 class="sd-section-title">🗺️ ${subject} 학습 로드맵</h2>
+    <div class="sd-road-timeline">${roadmapHTML}</div>
+    <h2 class="sd-section-title">🎓 ${subject} 과목별 안내</h2>
+    <div class="sd-guide-grid">${guideHTML}</div>
     <h2 class="sd-kw-title">${subject} 학습 가이드 목록</h2>
     <div class="sd-kw-grid">${keywordsHTML}</div>
     <div class="sd-cta">
@@ -4812,7 +5126,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v26-foreign-rich', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v26-subject-rich', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
