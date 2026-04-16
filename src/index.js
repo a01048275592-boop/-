@@ -591,6 +591,37 @@ function getAllUrls() {
     }
   }
   
+  // 학교별 인덱스 페이지
+  urls.push('/학교급별');
+  urls.push('/학년별');
+  for (const lv of ['middle', 'high']) {
+    urls.push(`/학교급별/${lv}`);
+    // 시도별 인덱스
+    const seen = new Set();
+    for (const s of getSchools(lv)) {
+      if (!seen.has(s[1])) {
+        seen.add(s[1]);
+        urls.push(`/학교급별/${lv}/${encodeURIComponent(getSidoFromIdx(s[1]))}`);
+      }
+    }
+    // 시군구별 인덱스
+    const seenGugun = new Set();
+    for (const s of getSchools(lv)) {
+      const key = s[1] + '|' + s[2];
+      if (!seenGugun.has(key)) {
+        seenGugun.add(key);
+        urls.push(`/학교급별/${lv}/${encodeURIComponent(getSidoFromIdx(s[1]))}/${encodeURIComponent(s[2])}`);
+      }
+    }
+    // 학교 상세 + 키워드 아티클
+    for (const s of getSchools(lv)) {
+      urls.push(`/${encodeURIComponent(s[0])}-과외`);
+      for (let i = 0; i < 5; i++) {
+        urls.push(`/${encodeURIComponent(s[0])}-과외/article/${i}`);
+      }
+    }
+  }
+  
   return urls;
 }
 
@@ -4615,6 +4646,11 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
 }
 
 
+// === IndexNow 설정 ===
+// 네이버 IndexNow 키 (직접 생성. 별도 발급 불필요)
+const INDEXNOW_KEY = 'bc7021aaa2ada0c01d58334f8753cb9e';
+const SITE_HOST = 'anhani.com';
+
 export default {
   async fetch(request) {
     const url = new URL(request.url);
@@ -4622,7 +4658,167 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v19-nav-clean', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v23-indexnow-auto', { headers: { 'Content-Type': 'text/plain' } });
+    }
+    
+    // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
+    // 사용법: https://anhani.com/indexnow-auto
+    if (pathname === '/indexnow-auto') {
+      if (INDEXNOW_KEY === 'PUT_YOUR_INDEXNOW_KEY_HERE') {
+        return new Response('IndexNow 키 미설정', { status: 400 });
+      }
+      const offset = parseInt(url.searchParams.get('offset') || '0');
+      const chunkSize = 10000;
+      const allUrls = getAllUrls();
+      const total = allUrls.length;
+      
+      // 모두 끝났으면 완료 페이지
+      if (offset >= total) {
+        return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>IndexNow 완료</title><style>
+          body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px;}
+          .box{background:#fff;border-radius:16px;padding:48px;box-shadow:0 4px 24px rgba(0,0,0,0.06);text-align:center;max-width:480px;}
+          h1{color:#16a34a;font-size:32px;margin-bottom:16px;}
+          p{color:#64748b;font-size:16px;line-height:1.7;margin-bottom:8px;}
+          .stat{font-size:48px;font-weight:900;color:#16a34a;margin:24px 0;}
+          a{display:inline-block;margin-top:24px;padding:12px 28px;background:#6366f1;color:#fff;text-decoration:none;border-radius:8px;font-weight:700;}
+        </style></head><body>
+          <div class="box">
+            <h1>🎉 IndexNow 제출 완료!</h1>
+            <div class="stat">${total.toLocaleString()}</div>
+            <p>모든 URL이 네이버 IndexNow에 성공적으로 제출되었습니다.</p>
+            <p>네이버 검색에 반영되기까지 보통 1~7일 정도 걸립니다.</p>
+            <a href="/">홈으로</a>
+          </div>
+        </body></html>`, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+      }
+      
+      // 현재 청크 제출
+      const chunk = allUrls.slice(offset, offset + chunkSize)
+        .map(u => `https://${SITE_HOST}${u}`);
+      let naverStatus = 0;
+      let errMsg = '';
+      try {
+        const res = await fetch('https://api.searchadvisor.naver.com/indexnow', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
+          body: JSON.stringify({
+            host: SITE_HOST,
+            key: INDEXNOW_KEY,
+            keyLocation: `https://${SITE_HOST}/${INDEXNOW_KEY}.txt`,
+            urlList: chunk
+          })
+        });
+        naverStatus = res.status;
+      } catch (e) {
+        errMsg = String(e);
+      }
+      
+      const nextOffset = offset + chunkSize;
+      const completed = Math.min(nextOffset, total);
+      const percent = Math.round((completed / total) * 100);
+      const statusOk = (naverStatus === 200 || naverStatus === 202);
+      
+      // 자동으로 다음 청크 진행 (3초 후)
+      return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
+        <title>IndexNow 진행 중... ${percent}%</title>
+        <meta http-equiv="refresh" content="3;url=/indexnow-auto?offset=${nextOffset}">
+        <style>
+          body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px;}
+          .box{background:#fff;border-radius:16px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.06);text-align:center;max-width:520px;width:100%;}
+          h1{color:#0f172a;font-size:24px;margin-bottom:24px;}
+          .progress{background:#e2e8f0;border-radius:999px;height:14px;overflow:hidden;margin:20px 0;}
+          .bar{background:linear-gradient(90deg,#6366f1,#8b5cf6);height:100%;border-radius:999px;transition:width 0.3s;}
+          .stat{font-size:32px;font-weight:900;color:#6366f1;margin:8px 0;}
+          .meta{color:#64748b;font-size:14px;margin:6px 0;}
+          .ok{color:#16a34a;font-weight:700;}
+          .err{color:#dc2626;font-weight:700;}
+          .spin{display:inline-block;width:18px;height:18px;border:3px solid #e2e8f0;border-top-color:#6366f1;border-radius:50%;animation:s 0.8s linear infinite;vertical-align:middle;margin-right:6px;}
+          @keyframes s{to{transform:rotate(360deg);}}
+        </style></head><body>
+          <div class="box">
+            <h1><span class="spin"></span> IndexNow 자동 제출 중...</h1>
+            <div class="stat">${percent}%</div>
+            <div class="progress"><div class="bar" style="width:${percent}%"></div></div>
+            <p class="meta">${completed.toLocaleString()} / ${total.toLocaleString()} URL 처리</p>
+            <p class="meta">현재 청크: ${chunk.length.toLocaleString()}개 제출 → 
+              ${statusOk ? `<span class="ok">✓ 네이버 응답 ${naverStatus}</span>` : `<span class="err">⚠ 응답 ${naverStatus} ${errMsg}</span>`}</p>
+            <p class="meta" style="margin-top:20px;color:#94a3b8;font-size:12px;">3초 후 다음 청크 자동 진행 (이 창을 닫지 마세요)</p>
+          </div>
+        </body></html>`, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+    }
+    
+    // === IndexNow 키 파일 자동 호스팅 ===
+    // 네이버가 https://anhani.com/{KEY}.txt 를 요청하면 자동 응답
+    if (INDEXNOW_KEY !== 'PUT_YOUR_INDEXNOW_KEY_HERE' && 
+        pathname === `/${INDEXNOW_KEY}.txt`) {
+      return new Response(INDEXNOW_KEY, { 
+        headers: { 'Content-Type': 'text/plain; charset=utf-8' } 
+      });
+    }
+    
+    // === IndexNow 자동 제출 endpoint ===
+    // 사용법: https://anhani.com/indexnow-submit?offset=0
+    // 응답에 next_url 있으면 그 URL을 다시 호출 (총 8번 정도)
+    if (pathname === '/indexnow-submit') {
+      if (INDEXNOW_KEY === 'PUT_YOUR_INDEXNOW_KEY_HERE') {
+        return new Response(JSON.stringify({
+          error: 'INDEXNOW_KEY가 설정되지 않았습니다. index.js 상단의 INDEXNOW_KEY를 수정하세요.'
+        }, null, 2), { 
+          status: 400,
+          headers: { 'Content-Type': 'application/json; charset=utf-8' } 
+        });
+      }
+      const offset = parseInt(url.searchParams.get('offset') || '0');
+      const chunkSize = 10000;
+      const allUrls = getAllUrls();
+      const chunk = allUrls.slice(offset, offset + chunkSize)
+        .map(u => `https://${SITE_HOST}${u}`);
+      
+      if (chunk.length === 0) {
+        return new Response(JSON.stringify({
+          done: true,
+          message: '모든 URL 제출 완료',
+          total: allUrls.length
+        }, null, 2), { 
+          headers: { 'Content-Type': 'application/json; charset=utf-8' } 
+        });
+      }
+      
+      let naverStatus = 0;
+      let naverResponse = '';
+      try {
+        const res = await fetch('https://api.searchadvisor.naver.com/indexnow', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json; charset=utf-8' },
+          body: JSON.stringify({
+            host: SITE_HOST,
+            key: INDEXNOW_KEY,
+            keyLocation: `https://${SITE_HOST}/${INDEXNOW_KEY}.txt`,
+            urlList: chunk
+          })
+        });
+        naverStatus = res.status;
+        naverResponse = await res.text();
+      } catch (e) {
+        naverResponse = String(e);
+      }
+      
+      const nextOffset = offset + chunkSize;
+      const nextUrl = nextOffset < allUrls.length 
+        ? `https://${SITE_HOST}/indexnow-submit?offset=${nextOffset}` 
+        : null;
+      
+      return new Response(JSON.stringify({
+        submitted: chunk.length,
+        offset: offset,
+        progress: `${Math.min(nextOffset, allUrls.length).toLocaleString()} / ${allUrls.length.toLocaleString()}`,
+        naver_status: naverStatus,
+        naver_response: naverResponse.substring(0, 500),
+        next_url: nextUrl,
+        next_action: nextUrl ? '👉 위 next_url을 브라우저에서 다시 열어주세요' : '🎉 모든 제출 완료!'
+      }, null, 2), { 
+        headers: { 'Content-Type': 'application/json; charset=utf-8' } 
+      });
     }
     
     // robots.txt
