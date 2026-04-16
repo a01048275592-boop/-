@@ -764,6 +764,7 @@ function navHTML(activePage) {
           <a href="/지역별" class="${activePage === 'region' ? 'active' : ''}">전국과외 <span class="arrow-down">▼</span></a>
           <div class="dropdown">
             <a href="/지역별">지역별 과외</a>
+            <a href="/학년별">학년별 과외</a>
             <a href="/학교급별">학교별 과외</a>
             <a href="/학교급별/middle">└ 중학교</a>
             <a href="/학교급별/high">└ 고등학교</a>
@@ -2089,6 +2090,51 @@ function getGugunsBySido(level, sidoIdx) {
     if (s[1] === sidoIdx) map[s[2]] = (map[s[2]] || 0) + 1;
   }
   return Object.entries(map).map(([g, c]) => ({gugun: g, count: c})).sort((a,b)=>a.gugun.localeCompare(b.gugun, 'ko'));
+}
+
+// --- 카테고리: 학년별 (이전 버전 복원) ---
+function renderGradeMain() {
+  const gradeData = [
+    {school:"elementary",short:"초등",name:"초등학교",max:6,color:"#3b82f6",bg:"#eff6ff",icon:"🌱",desc:"학습 습관 형성기. 기초 실력과 자신감을 키우는 가장 중요한 시기입니다."},
+    {school:"middle",short:"중등",name:"중학교",max:3,color:"#8b5cf6",bg:"#f5f3ff",icon:"📚",desc:"내신 대비 시작. 고등 진학을 위한 체계적 학습 전략이 필요합니다."},
+    {school:"high",short:"고등",name:"고등학교",max:3,color:"#ef4444",bg:"#fef2f2",icon:"🎯",desc:"입시 결전. 수능과 내신을 동시에 잡는 맞춤 전략이 승패를 가릅니다."}
+  ];
+  const gradeCards = gradeData.map(g => {
+    const grades = Array.from({length:g.max},(_,i)=>
+      `<a href="/grade/${g.school}/${i+1}" class="lv-grade-btn" style="--gc:${g.color};--gbg:${g.bg}">${g.short}${i+1}</a>`
+    ).join('');
+    return `<div class="lv-school-card" style="border-top:4px solid ${g.color}">
+      <div class="lv-sc-header"><span class="lv-sc-icon">${g.icon}</span><div><h3>${g.name} 과외</h3><p>${g.desc}</p></div></div>
+      <div class="lv-grade-grid">${grades}</div>
+      <div class="lv-sc-subjects">${getSubjectsForSchool(g.school).map(s=>`<span class="lv-sc-subj">${s}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('학년별 과외 - 초1~고3 맞춤 과외 | 과외안하니', '초등 1학년부터 고등 3학년까지, 학년에 맞는 과목별 과외 정보를 한 곳에서 확인하세요.', 'https://anhani.com/학년별')}
+  <style>${commonStyles()}
+    .lv-hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); color: #fff; padding: 56px 24px 48px; text-align: center; }
+    .lv-hero h1 { font-size: 34px; font-weight: 900; margin-bottom: 10px; }
+    .lv-hero h1 em { font-style: normal; color: #818cf8; }
+    .lv-hero p { font-size: 16px; color: #94a3b8; }
+    .lv-wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+    .lv-school-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+    .lv-sc-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+    .lv-sc-icon { font-size: 36px; flex-shrink: 0; }
+    .lv-sc-header h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+    .lv-sc-header p { font-size: 14px; color: #64748b; line-height: 1.5; }
+    .lv-grade-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .lv-grade-btn { padding: 12px 24px; border-radius: 10px; background: var(--gbg); color: var(--gc); font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; border: 1.5px solid transparent; }
+    .lv-grade-btn:hover { border-color: var(--gc); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .lv-sc-subjects { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 16px; border-top: 1px solid #f1f5f9; }
+    .lv-sc-subj { font-size: 12px; color: #94a3b8; padding: 4px 10px; background: #f8fafc; border-radius: 6px; }
+    @media (max-width: 640px) { .lv-hero h1 { font-size: 26px; } .lv-grade-btn { padding: 10px 18px; font-size: 14px; } }
+  </style></head><body>
+  ${navHTML('region')}
+  <div class="lv-hero"><h1>학년별 <em>맞춤 과외</em></h1><p>초1부터 고3까지, 학년에 딱 맞는 과외를 찾아보세요</p></div>
+  <div class="lv-wrap">${gradeCards}</div>
+  ${footerHTML()}
+  </body></html>`;
 }
 
 // --- 카테고리: 학교별 ---
@@ -4578,7 +4624,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v17-school-pages', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v18-grade-restored', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // robots.txt
@@ -4692,6 +4738,13 @@ export default {
       }
     }
     
+    // 카테고리: 학년별 (이전 버전 복원)
+    if (pathname === '/%ED%95%99%EB%85%84%EB%B3%84' || pathname === '/학년별') {
+      return new Response(renderGradeMain(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+
     // 카테고리: 학교급별
     if (pathname === '/%ED%95%99%EA%B5%90%EA%B8%89%EB%B3%84' || pathname === '/학교급별') {
       return new Response(renderLevelList(), {
