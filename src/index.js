@@ -578,7 +578,7 @@ function getAllUrls() {
     // 학교 상세 + 키워드 아티클
     for (const s of getSchools(lv)) {
       urls.push(`/${encodeURIComponent(s[0])}-과외`);
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 10; i++) {
         urls.push(`/${encodeURIComponent(s[0])}-과외/article/${i}`);
       }
     }
@@ -4915,9 +4915,11 @@ function renderSchoolDetail(level, idx) {
 
   // 키워드 아티클 5개 (학교명 + 키워드 조합)
   const articleKeywords = level === 'middle'
-    ? [`${sn} 1학년 과외`, `${sn} 수학 과외`, `${sn} 영어 내신`, `${sn} 시험 대비`, `${sn} 선생님 추천`]
-    : [`${sn} 수능 대비`, `${sn} 내신 1등급`, `${sn} 수학 과외`, `${sn} 영어 1등급`, `${sn} 모의고사`];
-  const articleLinks = articleKeywords.map((kw, i) => `<a href="/${encodeURIComponent(sn)}-과외/article/${i}" class="sd-article-card"><span class="sd-article-num">0${i+1}</span><div class="sd-article-text"><div class="sd-article-title">${kw}</div><div class="sd-article-desc">${sn} 학생을 위한 ${kw.replace(sn+' ','')} 정보</div></div></a>`).join('');
+    ? [`${sn} 1학년 과외`, `${sn} 수학 과외`, `${sn} 영어 내신`, `${sn} 시험 대비`, `${sn} 선생님 추천`,
+       `${sn} 국어 과외`, `${sn} 영어 과외`, `${sn} 수학 내신`, `${sn} 사회 과외`, `${sn} 과학 과외`]
+    : [`${sn} 수능 대비`, `${sn} 내신 1등급`, `${sn} 수학 과외`, `${sn} 영어 1등급`, `${sn} 모의고사`,
+       `${sn} 국어 과외`, `${sn} 영어 과외`, `${sn} 수학 1등급`, `${sn} 사회 과외`, `${sn} 과학 과외`];
+  const articleLinks = articleKeywords.map((kw, i) => `<a href="/${encodeURIComponent(sn)}-과외/article/${i}" class="sd-article-card"><span class="sd-article-num">${String(i+1).padStart(2,'0')}</span><div class="sd-article-text"><div class="sd-article-title">${kw}</div><div class="sd-article-desc">${sn} 학생을 위한 ${kw.replace(sn+' ','')} 정보</div></div></a>`).join('');
 
   // 인근 동일 시군구 학교 (최대 6개)
   const nearby = getSchoolsBySidoGugun(level, school[1], gugun)
@@ -5035,7 +5037,7 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
   const schools = getSchools(level);
   if (idx < 0 || idx >= schools.length) return null;
   const aIdx = parseInt(articleIdx);
-  if (isNaN(aIdx) || aIdx < 0 || aIdx > 4) return null;
+  if (isNaN(aIdx) || aIdx < 0 || aIdx > 9) return null;
   const school = schools[idx];
   const sn = school[0];
   const sido = getSidoFromIdx(school[1]);
@@ -5046,8 +5048,10 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
   const lvBg = levelBg(level);
 
   const articleKeywords = level === 'middle'
-    ? [`${sn} 1학년 과외`, `${sn} 수학 과외`, `${sn} 영어 내신`, `${sn} 시험 대비`, `${sn} 선생님 추천`]
-    : [`${sn} 수능 대비`, `${sn} 내신 1등급`, `${sn} 수학 과외`, `${sn} 영어 1등급`, `${sn} 모의고사`];
+    ? [`${sn} 1학년 과외`, `${sn} 수학 과외`, `${sn} 영어 내신`, `${sn} 시험 대비`, `${sn} 선생님 추천`,
+       `${sn} 국어 과외`, `${sn} 영어 과외`, `${sn} 수학 내신`, `${sn} 사회 과외`, `${sn} 과학 과외`]
+    : [`${sn} 수능 대비`, `${sn} 내신 1등급`, `${sn} 수학 과외`, `${sn} 영어 1등급`, `${sn} 모의고사`,
+       `${sn} 국어 과외`, `${sn} 영어 과외`, `${sn} 수학 1등급`, `${sn} 사회 과외`, `${sn} 과학 과외`];
   const kw = articleKeywords[aIdx];
   const kwShort = kw.replace(sn + ' ', '');
 
@@ -5126,7 +5130,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v26-subject-rich', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v26-school-10articles', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
