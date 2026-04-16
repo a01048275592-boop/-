@@ -3365,53 +3365,207 @@ function renderSchoolPage(region) {
 }
 
 // --- 회화 수업 페이지 ---
+// 외국어 동적 콘텐츠 풀 (유사도 분산용)
+const LANG_ESSENTIALS = {
+  english: [
+    [
+      {t:"발음보다 의미 전달이 먼저", d:"원어민처럼 완벽한 발음을 만들려다 입이 막히는 경우가 많습니다. 실전 영어는 의미가 통하는 순간부터 시작돼요. 발음 교정은 중급 단계에서 집중해도 충분합니다."},
+      {t:"문법 완벽주의를 버리기", d:"모든 문장을 문법적으로 완벽하게 만들려 하면 대화가 끊깁니다. 현지인도 자주 틀리고 고쳐가며 말해요. 일단 말하고 나중에 다듬는 습관이 실력을 빠르게 올려줍니다."},
+      {t:"청해력 = 회화력의 80%", d:"상대방 말을 알아듣지 못하면 어떤 문장도 쓸 수 없어요. 하루 30분 영어 듣기만 꾸준히 해도 말문이 트이는 속도가 2배 빨라집니다."},
+      {t:"핵심 구문 200개 집중", d:"영어는 200개 표현만 자유자재로 쓸 수 있어도 일상 90%를 커버합니다. 방대한 단어를 외우기보다 활용도 높은 구문을 반복하는 게 훨씬 효율적입니다."},
+      {t:"매일 5분이 주 1회 2시간보다 낫다", d:"언어는 뇌의 근육과 비슷해서 꾸준함이 생명입니다. 5분이라도 매일 노출되는 학생이 몰아서 공부하는 학생보다 6개월 뒤 실력 차이가 분명히 납니다."},
+    ],
+    [
+      {t:"쉐도잉(Shadowing)의 힘", d:"들리는 대로 0.5초 간격으로 따라 말하는 쉐도잉은 발음·리듬·문장 구조를 동시에 체화시키는 최강의 훈련법이에요. 하루 15분만 꾸준히 해도 2개월 내 변화가 보입니다."},
+    {t:"영어 뇌로 전환하기", d:"한국어로 문장을 만든 후 번역하는 습관이 회화 속도를 늦춥니다. 간단한 문장부터 영어로 직접 떠올리는 연습을 반복하면, 어느 순간 영어가 먼저 떠오르는 단계에 도달해요."},
+      {t:"원어민과 직접 부딪히기", d:"교재와 수업만으로는 실전 감각이 길러지지 않습니다. 부담 없이 영어로 대화할 수 있는 환경을 일주일에 2~3번 만드는 것이 진짜 실력 성장의 핵심입니다."},
+      {t:"콘텐츠 활용 학습", d:"미드·팟캐스트·유튜브로 흥미 있는 주제를 영어로 접하면 '공부' 부담이 사라져요. 좋아하는 분야의 영어 콘텐츠 1개를 꾸준히 소비하는 것이 가장 지속 가능한 학습법입니다."},
+      {t:"자기만의 회화 노트 만들기", d:"배운 표현을 바로 써먹지 않으면 사라집니다. 오늘 배운 구문을 3일 내에 내 문장으로 만들어 사용해 보세요. 이 과정이 수동적 학습을 능동적 실력으로 바꿔줍니다."},
+    ]
+  ],
+  chinese: [
+    [
+      {t:"성조가 의미를 결정한다", d:"같은 'ma' 발음이라도 성조에 따라 '엄마(妈)·마(麻)·말(马)·욕(骂)'으로 달라져요. 중국어는 성조 없이는 소통이 어렵기 때문에 학습 초반에 반드시 잡아야 합니다."},
+      {t:"한자 부담을 낮추기", d:"한국인은 한자에 익숙해서 유리하지만, 중국어 간체자는 한국 한자와 다른 형태가 많아요. 1000개 핵심 간체자만 익히면 일상 대화 90%를 읽을 수 있습니다."},
+      {t:"HSK 4급이 회화의 분기점", d:"HSK 4급 수준(1200단어)에 도달하면 일상 회화가 눈에 띄게 자유로워집니다. 이 레벨을 목표로 3~6개월 집중하면 체감 실력이 확실히 바뀌어요."},
+      {t:"구어체와 문어체 구분", d:"중국어는 글로 쓰는 표현과 말로 쓰는 표현이 상당히 달라요. 드라마·유튜브 회화 콘텐츠로 실제 쓰는 말투를 익히는 것이 교과서 학습보다 훨씬 실용적입니다."},
+      {t:"중국인과 실전 대화 기회", d:"중국어는 한국에서도 현지인과 만날 기회가 많은 언어예요. 유학생·교환 모임·화상 튜터 등 꾸준히 사용할 환경을 만드는 것이 학습 지속의 핵심입니다."},
+    ],
+    [
+      {t:"핀인 먼저, 한자는 나중에", d:"중국어를 배울 때 핀인(발음 표기)과 성조를 먼저 완벽히 익히세요. 한자는 그 다음이에요. 순서가 거꾸로 되면 발음이 엉망이 되고 교정도 힘들어집니다."},
+      {t:"리피팅 + 성조 드릴", d:"원어민 음성을 1문장씩 듣고 그대로 따라 하되, 성조만 의식해서 반복해 보세요. 성조가 틀린 것을 계속 교정받으면 발음 정확도가 한 달 내 크게 좋아집니다."},
+      {t:"중국 드라마·쇼 활용", d:"중국 드라마는 자막이 친절하게 간체+핀인으로 제공되는 경우가 많아요. 좋아하는 장르 한 편을 반복해서 보면 실생활 표현과 리듬이 자연스럽게 몸에 붙습니다."},
+      {t:"짧은 문장 100개 암기", d:"긴 문장을 외우기보다 일상에서 자주 쓰는 짧은 100개 문장을 완벽히 체화하세요. 실전에서 바로 나오는 속도가 생깁니다. 이게 HSK 고득점보다 회화에 실질적 도움이 돼요."},
+      {t:"주 1회 1:1 회화", d:"아무리 공부해도 말하지 않으면 실력이 늘지 않아요. 주 1회라도 실력 있는 선생님과 중국어로만 대화하는 시간을 만들면, 전혀 공부 안 하는 것보다 3배 빠르게 성장합니다."},
+    ]
+  ],
+  japanese: [
+    [
+      {t:"한국어와 어순이 같다", d:"일본어는 한국어와 어순이 같아 어떤 외국어보다 배우기 쉬운 언어예요. 조사와 활용만 익히면 문장 구조 자체는 그대로 가져다 쓸 수 있습니다."},
+      {t:"히라가나·가타카나 2주 완성", d:"문자만 완벽히 외우면 일본어 학습의 80%가 쉬워져요. 하루 20분씩 2주만 투자하면 문자는 완전 정복이 가능하고, 이후 학습 속도가 극적으로 빨라집니다."},
+      {t:"존댓말·반말 구분의 중요성", d:"일본어는 상대방에 따라 말투가 완전히 바뀌는 언어입니다. 비즈니스용 존댓말과 친구 간 반말을 상황에 맞게 쓰는 감각이 매우 중요해요."},
+      {t:"한자는 공통 자산", d:"한국인에게 일본 한자(독음은 다름)는 이미 익숙한 자산이에요. 1000자만 익히면 일본 신문도 30% 이상 읽을 수 있고, JLPT N2 합격도 빨라집니다."},
+      {t:"콘텐츠 천국 활용", d:"애니메이션·드라마·영화·만화 등 일본어 학습 콘텐츠는 넘쳐납니다. 좋아하는 장르 하나를 꾸준히 보는 것이 교재 10권보다 효과적인 경우가 많아요."},
+    ],
+    [
+      {t:"쉽게 시작하는 3개월", d:"문자(2주) → 기초 문형(4주) → 간단한 회화(6주)로 나누면 3개월에 기본 일본어 대화가 가능해요. 처음부터 복잡한 문법을 쥐어짜지 않는 것이 지속의 비결입니다."},
+      {t:"실전 일상 표현 100개", d:"일본 여행·카페·식당·교통 상황에서 쓰는 100개 표현만 완벽히 익혀도 현지에서 막힘없이 소통 가능해요. JLPT 단어장보다 실용 표현집을 먼저 보세요."},
+      {t:"애니·드라마 반복 시청", d:"일본어는 콘텐츠로 배우기 가장 좋은 언어예요. 좋아하는 작품을 자막 있이 먼저 보고, 자막 없이 다시 보는 2회 반복법이 듣기 실력 향상에 최고입니다."},
+      {t:"한자 읽기 훈련", d:"일본어 한자는 음독·훈독 2가지 읽기가 있어서 까다로워요. 매일 10개씩 꾸준히 익히면 6개월 후 JLPT N3~N2 한자를 자유자재로 읽을 수 있게 됩니다."},
+      {t:"실제 일본인과 대화", d:"온라인 튜터·펜팔·여행 등 일본어로 직접 소통하는 경험이 가장 강력한 학습법입니다. 주 1회 30분 원어민 회화만으로도 3개월 뒤 자신감이 크게 달라져요."},
+    ]
+  ]
+};
+
+const LANG_METHODS = {
+  english: [
+    {h:"쉐도잉 훈련", p:"원어민 음성을 들으면서 0.5초 간격을 두고 그대로 따라 말하는 훈련이에요. 발음·억양·리듬을 동시에 체화시킬 수 있어 회화 실력을 빠르게 올려줍니다. 하루 15분, 주 5회만 꾸준히 해도 3개월 후 확연한 차이를 느낍니다."},
+    {h:"1:1 회화 루틴", p:"교재와 독학만으로는 실전 감각이 길러지지 않아요. 매주 2~3회 원어민 또는 전문 강사와 1:1로 대화하는 시간을 꾸준히 확보하세요. 입을 자주 열수록 말문이 빨리 트입니다."},
+    {h:"콘텐츠 활용 몰입", p:"관심 있는 미드·팟캐스트·유튜브를 영어로 꾸준히 보면 학습이 일상이 됩니다. 단순 감상이 아니라 모르는 표현을 메모하고 따라 말해보는 능동적 시청이 핵심이에요."},
+    {h:"표현 암기 → 변형 연습", p:"하루 5개 표현을 외우고, 각각을 내 상황에 맞게 변형해서 직접 써보세요. 수동적 암기가 아닌 능동적 활용이 실력의 기둥이 됩니다."},
+    {h:"자기 점검 사이클", p:"주 1회 자신의 영어 발화를 녹음해서 들어보세요. 부족한 부분이 명확히 드러나고, 다음 주 학습 방향을 스스로 조절할 수 있어요. 자기 성찰이 정체기를 뚫는 열쇠입니다."}
+  ],
+  chinese: [
+    {h:"성조 집중 드릴", p:"중국어 학습의 80%는 성조에 달려 있어요. 1성·2성·3성·4성 + 경성을 구별해서 정확히 발음하는 훈련을 매일 10분씩 반복하면, 2개월 내 원어민이 알아듣는 발음이 완성됩니다."},
+    {h:"핀인과 한자 분리 학습", p:"처음에는 한자 없이 핀인만으로 1000개 단어를 외우세요. 발음이 안정된 후 한자를 붙이면 학습 효율이 3배 올라갑니다. 둘을 동시에 잡으려다 둘 다 놓치는 경우가 많아요."},
+    {h:"HSK 순차 정복", p:"HSK 1급부터 6급까지 순서대로 공부하면 체계적인 실력 향상이 가능해요. 특히 HSK 4급은 회화의 분기점으로, 이 레벨에 도달하면 일상 대화가 눈에 띄게 자유로워집니다."},
+    {h:"중국 콘텐츠 몰입", p:"중국 드라마·유튜브·웨이보를 활용해 실제 쓰이는 살아있는 중국어를 익히세요. 교과서의 표현과 현실 사용이 꽤 다르기 때문에, 콘텐츠 몰입이 실전 감각을 키워줍니다."},
+    {h:"원어민 파트너 확보", p:"중국인 친구·튜터·화상 수업 등 주 1회 이상 중국어로만 대화하는 환경을 만들면 실력이 급속히 늡니다. 혼자 공부하는 것과의 차이가 6개월 뒤 극명하게 드러나요."}
+  ],
+  japanese: [
+    {h:"문자 단기 완성", p:"히라가나·가타카나는 하루 20분씩 2주면 완전 정복이 가능해요. 처음에 이걸 확실히 해두지 않으면 나중에 학습 속도가 크게 떨어지기 때문에, 첫 2주를 집중 투자하는 게 중요합니다."},
+    {h:"J-POP·애니 반복", p:"일본어는 관심 있는 콘텐츠로 배우는 게 가장 효과적이에요. 좋아하는 애니 한 편을 자막과 함께 3회 이상 반복해서 보면, 자연스러운 표현과 리듬이 몸에 붙습니다."},
+    {h:"JLPT 단계별 도전", p:"N5 → N4 → N3 순으로 시험을 목표로 공부하면 학습 동기가 유지됩니다. 시험 합격이 목표는 아니지만, 체계적 마일스톤으로 활용하면 학습이 지치지 않아요."},
+    {h:"단문 암기 → 실전 대화", p:"여행·쇼핑·카페 등 상황별 짧은 문장 100개를 완벽히 외우면 현지에서 바로 통합니다. 복잡한 문법보다 실전 표현 반복이 회화 자신감을 먼저 키워줍니다."},
+    {h:"한자 하루 10개", p:"일본어 한자는 음독·훈독이 있어 까다롭지만, 매일 10개씩 꾸준히 익히면 6개월 후 JLPT N2 한자가 친숙해져요. 한국인의 한자 지식이 큰 자산이 됩니다."}
+  ]
+};
+
+const LANG_ROADMAP = {
+  english: [
+    {t:"1개월차 - 기초 다지기",  p:"왕초보라면 알파벳·발음·기초 문형을 점검하고, 기초자라면 하루 20분 듣기 + 기본 회화 표현 50개 암기를 목표로 하세요. 이 시기에는 완벽함보다 노출량이 중요해요."},
+    {t:"2~3개월차 - 말문 트기", p:"쉐도잉을 본격적으로 시작하고, 1:1 튜터나 스터디 그룹에서 매주 2~3회 영어로 말하는 환경을 만드세요. 이 시기가 왕초보에서 초급으로 넘어가는 결정적 단계입니다."},
+    {t:"4~6개월차 - 실전 적응", p:"일상 회화가 자연스러워지고, 영어 콘텐츠를 50% 이상 이해할 수 있게 됩니다. 업무·취미·일상 등 분야별 전문 표현을 늘려가면서 자신만의 영어 세계를 확장하세요."},
+    {t:"7~12개월차 - 고도화", p:"토론·발표·비즈니스 상황에서도 영어로 의견을 표현할 수 있는 단계입니다. 원어민 콘텐츠 80% 이상 이해가 가능하고, 특정 분야에서는 영어로 사고하는 수준에 도달해요."}
+  ],
+  chinese: [
+    {t:"1개월차 - 핀인 완성", p:"중국어 발음의 핵심인 핀인과 4가지 성조를 완벽히 익히세요. 이 시기에 기초를 제대로 잡지 않으면 이후 모든 학습이 어려워집니다. 매일 30분 성조 훈련이 필수예요."},
+    {t:"2~3개월차 - HSK 2급 도전", p:"기초 문법과 150개 단어를 익혀 HSK 2급 수준에 도달하세요. 간단한 인사·소개·쇼핑 회화가 가능해지는 시기입니다. 자기 소개를 5분간 중국어로 할 수 있으면 성공."},
+    {t:"4~6개월차 - HSK 3~4급", p:"일상 회화가 가능한 수준입니다. 중국 드라마 일부를 자막 도움으로 이해하고, 여행·식당·쇼핑 상황에서 실전 대화가 가능해져요. 이 시기에 실력이 확연히 붙는 것을 체감합니다."},
+    {t:"7~12개월차 - HSK 5급 이상", p:"다양한 주제로 심도 있는 대화가 가능하며, 중국 뉴스와 드라마를 자막 없이 절반 이상 이해할 수 있어요. 비즈니스·학술 중국어에 도전할 수 있는 본격 중급 단계입니다."}
+  ],
+  japanese: [
+    {t:"1개월차 - 문자 정복", p:"히라가나·가타카나를 2주 안에 완전히 외우고, 기초 문형 10개를 익히세요. 이 시기가 일본어 학습에서 가장 중요한 전환점이에요. 문자가 편해지면 이후 진도가 폭발적으로 빨라집니다."},
+    {t:"2~3개월차 - JLPT N5", p:"기초 조사와 동사 활용, 기본 한자 100자를 익혀 JLPT N5 수준에 도달하세요. 간단한 인사·자기소개·여행 회화가 가능해지는 단계입니다."},
+    {t:"4~6개월차 - JLPT N4~N3", p:"일상 회화가 가능하고 애니메이션의 60~70%를 이해할 수 있어요. 기초 비즈니스 표현도 배우면서 실전 일본어로 넘어가는 시기입니다."},
+    {t:"7~12개월차 - JLPT N2", p:"드라마·뉴스·일반 대화를 자유롭게 이해하고, 일상적 주제로 자신의 의견을 표현할 수 있어요. 일본 여행·유학·취업에 필요한 실력이 완성되는 단계입니다."}
+  ]
+};
+
 function renderConversationPage(lang) {
   const langData = {
-    "english": { name: "영어", flag: "🇺🇸", color: "#3b82f6", bgColor: "#eff6ff", 
+    "english": { name: "영어", flag: "🇺🇸", color: "#3b82f6", rgb: "59,130,246", bgColor: "#eff6ff", imgIdx: 1,
       desc: "원어민 수준의 영어 회화 실력을 키우세요. 일상 회화부터 비즈니스 영어까지 1:1 맞춤 수업을 제공합니다.",
       features: ["원어민 발음 교정","비즈니스 영어 회화","토익/토플 스피킹 대비","여행 영어 회화","면접 영어 준비","영어 프레젠테이션"],
       levels: ["왕초보 (알파벳부터)","초급 (간단한 인사/자기소개)","중급 (일상 대화 가능)","중상급 (토론/의견 표현)","고급 (원어민 수준 회화)"]
     },
-    "chinese": { name: "중국어", flag: "🇨🇳", color: "#dc2626", bgColor: "#fef2f2",
+    "chinese": { name: "중국어", flag: "🇨🇳", color: "#dc2626", rgb: "220,38,38", bgColor: "#fef2f2", imgIdx: 4,
       desc: "중국어 회화의 기초부터 고급까지, 체계적인 1:1 수업으로 실력을 키우세요. HSK 대비도 함께 진행합니다.",
       features: ["성조/발음 교정","일상 중국어 회화","비즈니스 중국어","HSK 시험 대비","중국 유학 준비","중국어 면접 대비"],
       levels: ["왕초보 (핀인부터)","초급 (간단한 인사)","중급 (일상 대화)","중상급 (HSK 4급)","고급 (HSK 5~6급)"]
     },
-    "japanese": { name: "일본어", flag: "🇯🇵", color: "#dc2626", bgColor: "#fef2f2",
+    "japanese": { name: "일본어", flag: "🇯🇵", color: "#dc2626", rgb: "219,39,119", bgColor: "#fef2f2", imgIdx: 7,
       desc: "일본어 회화를 즐겁게 배우세요. 히라가나부터 비즈니스 일본어까지 1:1 맞춤 수업을 진행합니다.",
       features: ["히라가나/가타카나","일상 일본어 회화","비즈니스 일본어","JLPT 시험 대비","일본 유학/취업 준비","애니메이션/드라마 회화"],
       levels: ["왕초보 (문자부터)","초급 (간단한 인사)","중급 (일상 대화)","중상급 (JLPT N2)","고급 (JLPT N1)"]
     }
   };
   const d = langData[lang] || langData["english"];
+  const heroImg = EDU_IMAGE_POOL[d.imgIdx] || EDU_IMAGE_POOL[0];
+
+  // 동적 콘텐츠 (언어별 hash로 풀 선택)
+  const seed = strHash(lang);
+  const essentialsPool = LANG_ESSENTIALS[lang] || LANG_ESSENTIALS.english;
+  const essentials = essentialsPool[seed % essentialsPool.length];
+  const methods = LANG_METHODS[lang] || LANG_METHODS.english;
+  const roadmap = LANG_ROADMAP[lang] || LANG_ROADMAP.english;
+
+  const essentialsHTML = essentials.map((e,i) => `
+    <div class="cv-ess-card">
+      <div class="cv-ess-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="cv-ess-body">
+        <h4>${e.t}</h4>
+        <p>${e.d}</p>
+      </div>
+    </div>`).join('');
+
+  const methodsHTML = methods.map(m => `
+    <div class="cv-method-card">
+      <h4>${m.h}</h4>
+      <p>${m.p}</p>
+    </div>`).join('');
+
+  const roadmapHTML = roadmap.map((r,i) => `
+    <div class="cv-road-item">
+      <div class="cv-road-dot"></div>
+      <div class="cv-road-body">
+        <h4>${r.t}</h4>
+        <p>${r.p}</p>
+      </div>
+    </div>`).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(d.name + ' 회화 수업 - 과외안하니', d.name + ' 회화 1:1 맞춤 수업. 왕초보부터 고급까지 레벨별 수업 진행.', 'https://anhani.com/conversation/' + lang)}
+  ${commonHead(d.name + ' 회화 수업 - 과외안하니', d.name + ' 회화 1:1 맞춤 수업. 핵심 포인트, 공부법, 로드맵까지 완벽 가이드.', 'https://anhani.com/conversation/' + lang)}
+  <meta property="og:image" content="${heroImg}">
   <style>${commonStyles()}
-    .cv-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
-    .cv-hero { background: ${d.bgColor}; border-radius: 20px; padding: 48px 32px; margin-bottom: 40px; text-align: center; }
-    .cv-flag { font-size: 48px; margin-bottom: 12px; }
-    .cv-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; }
-    .cv-title em { font-style: normal; color: ${d.color}; }
-    .cv-desc { font-size: 15px; color: #64748b; line-height: 1.7; margin-bottom: 24px; }
+    .cv-wrap { max-width: 900px; margin: 0 auto; padding: 24px 24px 80px; }
+    .cv-hero-wrap { position: relative; border-radius: 20px; overflow: hidden; margin-bottom: 40px; aspect-ratio: 1200/500; background: #0f172a; }
+    .cv-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .cv-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${d.rgb}, 0.55) 100%); }
+    .cv-hero-content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 32px 24px; text-align: center; color: #fff; }
+    .cv-flag { font-size: 52px; margin-bottom: 12px; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4)); }
+    .cv-title { font-size: clamp(26px, 4.5vw, 38px); font-weight: 900; margin-bottom: 12px; text-shadow: 0 2px 12px rgba(0,0,0,0.35); }
+    .cv-title em { font-style: normal; background: rgba(255,255,255,0.2); padding: 2px 16px; border-radius: 10px; backdrop-filter: blur(4px); }
+    .cv-desc { font-size: clamp(13px, 1.7vw, 15px); color: rgba(255,255,255,0.92); line-height: 1.7; margin-bottom: 20px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); max-width: 600px; }
     .cv-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .cv-btn { padding: 10px 24px; border-radius: 10px; font-size: 14px; font-weight: 600; text-decoration: none; }
-    .cv-btn-primary { background: ${d.color}; color: #fff; }
-    .cv-btn-secondary { background: #fff; color: ${d.color}; border: 1.5px solid ${d.color}; }
-    .cv-section { margin-bottom: 36px; }
-    .cv-section h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid ${d.color}; }
+    .cv-btn { padding: 11px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .cv-btn-primary { background: #fff; color: ${d.color}; }
+    .cv-btn-primary:hover { transform: translateY(-2px); }
+    .cv-btn-secondary { background: rgba(255,255,255,0.18); color: #fff; border: 1.5px solid rgba(255,255,255,0.5); backdrop-filter: blur(6px); }
+    .cv-btn-secondary:hover { background: rgba(255,255,255,0.28); }
+    .cv-section { margin-bottom: 44px; }
+    .cv-section h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 18px; padding-left: 12px; border-left: 4px solid ${d.color}; }
     .cv-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .cv-feat { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 16px; text-align: center; font-size: 15px; font-weight: 600; color: #334155; transition: all 0.2s; }
     .cv-feat:hover { border-color: ${d.color}; transform: translateY(-2px); }
+    .cv-ess-grid { display: flex; flex-direction: column; gap: 14px; }
+    .cv-ess-card { display: flex; gap: 18px; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 24px; transition: all 0.2s; }
+    .cv-ess-card:hover { border-color: ${d.color}; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+    .cv-ess-num { flex-shrink: 0; width: 44px; height: 44px; background: ${d.bgColor}; color: ${d.color}; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; }
+    .cv-ess-body { flex: 1; }
+    .cv-ess-body h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+    .cv-ess-body p { font-size: 14px; color: #475569; line-height: 1.7; }
+    .cv-method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .cv-method-card { background: ${d.bgColor}; border-radius: 14px; padding: 22px 24px; transition: all 0.2s; }
+    .cv-method-card:hover { transform: translateY(-3px); }
+    .cv-method-card h4 { font-size: 16px; font-weight: 800; color: ${d.color}; margin-bottom: 8px; }
+    .cv-method-card p { font-size: 14px; color: #334155; line-height: 1.7; }
+    .cv-road-timeline { position: relative; padding-left: 24px; }
+    .cv-road-timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: ${d.bgColor}; }
+    .cv-road-item { position: relative; margin-bottom: 20px; }
+    .cv-road-dot { position: absolute; left: -24px; top: 6px; width: 14px; height: 14px; background: ${d.color}; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 2px ${d.color}; }
+    .cv-road-body { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 22px; }
+    .cv-road-body h4 { font-size: 15px; font-weight: 800; color: ${d.color}; margin-bottom: 6px; }
+    .cv-road-body p { font-size: 14px; color: #475569; line-height: 1.7; }
     .cv-levels { display: flex; flex-direction: column; gap: 10px; }
     .cv-level { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
     .cv-level-num { width: 36px; height: 36px; background: ${d.color}; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
     .cv-level-text { font-size: 15px; font-weight: 600; color: #334155; }
-    .cv-lang-tabs { display: flex; gap: 10px; margin-bottom: 28px; justify-content: center; }
-    .cv-lang-tab { padding: 10px 24px; border-radius: 10px; border: 1.5px solid #e2e8f0; font-size: 15px; font-weight: 600; text-decoration: none; color: #475569; transition: all 0.2s; }
+    .cv-lang-tabs { display: flex; gap: 10px; margin-bottom: 24px; justify-content: center; flex-wrap: wrap; }
+    .cv-lang-tab { padding: 10px 24px; border-radius: 10px; border: 1.5px solid #e2e8f0; font-size: 15px; font-weight: 600; text-decoration: none; color: #475569; transition: all 0.2s; background: #fff; }
     .cv-lang-tab:hover { border-color: ${d.color}; }
     .cv-lang-tab.active { background: ${d.color}; color: #fff; border-color: ${d.color}; }
-    @media (max-width: 640px) { .cv-features { grid-template-columns: 1fr 1fr; } .cv-title { font-size: 24px; } }
+    @media (max-width: 640px) { .cv-features { grid-template-columns: 1fr 1fr; } .cv-hero-wrap { aspect-ratio: 3/2; } .cv-ess-card { flex-direction: column; gap: 10px; } }
   </style></head><body>
   ${navHTML('foreign')}
   <div class="cv-wrap">
@@ -3420,18 +3574,34 @@ function renderConversationPage(lang) {
       <a href="/conversation/chinese" class="cv-lang-tab${lang==='chinese'?' active':''}">🇨🇳 중국어</a>
       <a href="/conversation/japanese" class="cv-lang-tab${lang==='japanese'?' active':''}">🇯🇵 일본어</a>
     </div>
-    <div class="cv-hero">
-      <div class="cv-flag">${d.flag}</div>
-      <h1 class="cv-title"><em>${d.name} 회화</em> 수업</h1>
-      <p class="cv-desc">${d.desc}</p>
-      <div class="cv-btns">
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="cv-btn cv-btn-primary">무료 체험 신청 →</a>
-        <a href="tel:010-6850-1420" class="cv-btn cv-btn-secondary">전화 상담</a>
+    <div class="cv-hero-wrap">
+      <img src="${heroImg}" alt="${d.name} 회화 수업" loading="eager" class="cv-hero-img"/>
+      <div class="cv-hero-overlay"></div>
+      <div class="cv-hero-content">
+        <div class="cv-flag">${d.flag}</div>
+        <h1 class="cv-title"><em>${d.name} 회화</em> 수업</h1>
+        <p class="cv-desc">${d.desc}</p>
+        <div class="cv-btns">
+          <a href="https://naver.me/GYD2Ki40" target="_blank" class="cv-btn cv-btn-primary">⭐ 무료 체험</a>
+          <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="cv-btn cv-btn-secondary">💬 카톡 상담</a>
+        </div>
       </div>
     </div>
     <div class="cv-section">
       <h2>수업 프로그램</h2>
       <div class="cv-features">${d.features.map(f => `<div class="cv-feat">${f}</div>`).join('')}</div>
+    </div>
+    <div class="cv-section">
+      <h2>🎯 ${d.name} 회화 핵심 5가지</h2>
+      <div class="cv-ess-grid">${essentialsHTML}</div>
+    </div>
+    <div class="cv-section">
+      <h2>📘 효과적인 ${d.name} 공부 방법</h2>
+      <div class="cv-method-grid">${methodsHTML}</div>
+    </div>
+    <div class="cv-section">
+      <h2>🗺️ ${d.name} 학습 로드맵</h2>
+      <div class="cv-road-timeline">${roadmapHTML}</div>
     </div>
     <div class="cv-section">
       <h2>레벨별 수업</h2>
@@ -4642,7 +4812,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v26-no-abroad-nav', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v26-foreign-rich', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
