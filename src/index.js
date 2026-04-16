@@ -738,6 +738,18 @@ function commonStyles() {
       .nav-links { display: none; }
       .mobile-menu { display: block; }
     }
+
+    /* 플로팅 CTA 버튼 (모든 페이지 공통) */
+    .floating-btns { position: fixed; right: 24px; bottom: 32px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+    .float-btn { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 28px; font-size: 14px; font-weight: 700; text-decoration: none; color: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: all 0.2s; white-space: nowrap; }
+    .float-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
+    .float-call { background: #22c55e; }
+    .float-kakao { background: #fbbf24; color: #1a1a1a; }
+    .float-free { background: #6366f1; }
+    @media (max-width: 768px) {
+      .floating-btns { right: 12px; bottom: 16px; gap: 8px; }
+      .float-btn { padding: 10px 16px; font-size: 13px; }
+    }
   `;
 }
 
@@ -1124,18 +1136,7 @@ function renderHomepage() {
       .cp-cards { grid-template-columns: 1fr; }
     }
 
-    /* 플로팅 버튼 */
-    .floating-btns { position: fixed; right: 24px; bottom: 32px; z-index: 200; display: flex; flex-direction: column; gap: 10px; }
-    .float-btn { display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 28px; font-size: 14px; font-weight: 700; text-decoration: none; color: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transition: all 0.2s; white-space: nowrap; }
-    .float-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.25); }
-    .float-call { background: #22c55e; }
-    .float-kakao { background: #fbbf24; color: #1a1a1a; }
-    .float-free { background: #6366f1; }
-
-    @media (max-width: 768px) {
-      .floating-btns { right: 12px; bottom: 16px; gap: 8px; }
-      .float-btn { padding: 10px 16px; font-size: 13px; }
-    }
+    /* 플로팅 버튼 스타일은 commonStyles()에 통합됨 */
 
     .stats { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
     .stats-grid { display: none; }
@@ -4084,7 +4085,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v15-no-guide', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v16-floating-cta-fix', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // robots.txt
