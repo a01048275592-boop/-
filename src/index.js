@@ -409,7 +409,7 @@ function generateContent(location, level, subject, parentRegion) {
 function renderPage(location, level, subject, parentRegion, url) {
   const { title, description, bodyHTML, tags } = generateContent(location, level, subject, parentRegion);
   const thumbnail = generateThumbnail(location, level, subject);
-  const thumbnailDataUri = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(thumbnail)))}`;
+  const thumbnailOgImg = getEduImage(location + level + subject);
   const regionDisplay = parentRegion ? `${parentRegion} ${location}` : location;
   const canonical = `https://anhani.com${url}`;
 
@@ -418,8 +418,8 @@ function renderPage(location, level, subject, parentRegion, url) {
 <head>
   ${commonHead(title + ' | 안하니', description, canonical)}
   <meta name="robots" content="index, follow">
+  <meta property="og:image" content="${thumbnailOgImg}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="${thumbnailDataUri}">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
@@ -460,7 +460,7 @@ function renderPage(location, level, subject, parentRegion, url) {
       <a href="/">홈</a> &gt; <a href="/지역별">${parentRegion || location}</a> &gt; ${regionDisplay} ${level} ${subject} 과외
     </div>
     
-    <img src="${thumbnailDataUri}" alt="${regionDisplay} ${level} ${subject} 과외" class="thumbnail" width="1200" height="630">
+    <div class="thumbnail">${thumbnail}</div>
     
     <h1>${regionDisplay} ${level} ${subject} 과외 추천 가이드</h1>
     <div class="meta">최종 업데이트: 2026년 4월 | 작성자: 안하니 교육팀</div>
@@ -1711,7 +1711,7 @@ function renderDongPage(sido, sigungu, dong) {
   const canonical = `https://anhani.com/지역별/${encodeURIComponent(sido)}/${encodeURIComponent(sigungu)}/${encodeURIComponent(dong)}`;
   
   const thumbnail = generateThumbnail(dong, sigungu, '수학');
-  const thumbUri = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(thumbnail)))}`;
+  const thumbOgImg = getEduImage(sido + sigungu + dong);
   
   const tagPool = [
     `${dong}과외`, `${sigungu}과외`, `${sido}과외`, `${dong}수학과외`,
@@ -1723,13 +1723,13 @@ function renderDongPage(sido, sigungu, dong) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(title + ' | 과외안하니', desc, canonical)}
-  <meta property="og:image" content="${thumbUri}">
+  <meta property="og:image" content="${thumbOgImg}">
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}
     .dp-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
     .dp-bc { font-size: 13px; color: #94a3b8; margin-bottom: 16px; }
     .dp-bc a { color: #6366f1; text-decoration: none; }
-    .dp-thumb { width: 100%; border-radius: 12px; margin-bottom: 24px; }
+    .dp-thumb { width: 100%; margin-bottom: 24px; }
     .dp-wrap h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 12px; line-height: 1.4; }
     .dp-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
     .dp-article h2 { font-size: 21px; font-weight: 700; color: #0f172a; margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid #6366f1; }
@@ -1749,7 +1749,7 @@ function renderDongPage(sido, sigungu, dong) {
   ${navHTML('region')}
   <div class="dp-wrap">
     <div class="dp-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; <a href="/지역별/${encodeURIComponent(sido)}">${sido}</a> &gt; <a href="/지역별/${encodeURIComponent(sido)}/${encodeURIComponent(sigungu)}">${sigungu}</a> &gt; ${dong}</div>
-    <img src="${thumbUri}" alt="${sigungu} ${dong} 과외" class="dp-thumb" width="1200" height="630">
+    <div class="dp-thumb">${thumbnail}</div>
     <h1>${sigungu} ${dong} 과외 추천 완벽 가이드</h1>
     <div class="dp-meta">최종 업데이트: 2026년 4월 | ${sido} ${sigungu} ${dong} 과외 전문</div>
     <div class="dp-article">
@@ -2625,11 +2625,11 @@ function renderGradeSubjectPage(school, grade, subject) {
 
   const canonical = 'https://anhani.com/grade/' + school + '/' + grade + '/' + encodeURIComponent(subject);
   const thumbnail = generateThumbnail(gradeLabel, shortName, subject);
-  const thumbUri = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(thumbnail)))}`;
+  const thumbOgImg = getEduImage(school + grade + subject);
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(gradeLabel + ' ' + subject + ' 과외 추천 가이드 | 과외안하니', gradeLabel + ' ' + subject + ' 과외 정보! 과외비, 학습 전략, 선생님 선택법까지 한 번에 정리했습니다.', canonical)}
-  <meta property="og:image" content="${thumbUri}">
+  <meta property="og:image" content="${thumbOgImg}">
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}
     .gs-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
@@ -2639,7 +2639,7 @@ function renderGradeSubjectPage(school, grade, subject) {
     .gs-tab { padding: 8px 16px; border-radius: 8px; border: 1.5px solid #e2e8f0; font-size: 13px; font-weight: 600; color: #64748b; text-decoration: none; transition: all 0.2s; }
     .gs-tab:hover { border-color: #6366f1; color: #6366f1; }
     .gs-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
-    .gs-thumb { width: 100%; border-radius: 12px; margin-bottom: 24px; }
+    .gs-thumb { width: 100%; margin-bottom: 24px; }
     .gs-wrap h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 12px; line-height: 1.4; }
     .gs-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
     .gs-article h2 { font-size: 21px; font-weight: 700; color: #0f172a; margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid #6366f1; }
@@ -2671,7 +2671,7 @@ function renderGradeSubjectPage(school, grade, subject) {
       ${getSubjectsForSchool(school).map(s => `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gs-tab${s===subject?' active':''}">${s}</a>`).join('')}
     </div>
     
-    <img src="${thumbUri}" alt="${gradeLabel} ${subject} 과외" class="gs-thumb" width="1200" height="630">
+    <div class="gs-thumb">${thumbnail}</div>
     
     <h1>${gradeLabel} ${subject} 과외 추천 가이드</h1>
     <div class="gs-meta">최종 업데이트: 2026년 4월 | ${gradeLabel} ${subject} 전문</div>
@@ -2910,7 +2910,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   
   const canonical = `https://anhani.com/grade/${school}/${grade}/${encodeURIComponent(subject)}/article/${idx}`;
   const thumbnail = generateThumbnail(gradeLabel, shortName, subject);
-  const thumbUri = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(thumbnail)))}`;
+  const thumbOgImg = getEduImage(school + grade + subject + 'art' + idx);
   
   const sectionsHTML = sections.map((sec, i) => {
     let html = `<h2>${sec.h}</h2><p>${sec.p}</p>`;
@@ -2922,11 +2922,11 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(title + ' | 과외안하니', gradeLabel + ' ' + subject + ' 학습 전략 - ' + title, canonical)}
-  <meta property="og:image" content="${thumbUri}">
+  <meta property="og:image" content="${thumbOgImg}">
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}
     .ka-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
-    .ka-thumb { width: 100%; border-radius: 12px; margin-bottom: 24px; }
+    .ka-thumb { width: 100%; margin-bottom: 24px; }
     .ka-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
     .ka-wrap h1 { font-size: 28px; font-weight: 900; color: #0f172a; line-height: 1.4; margin-bottom: 12px; }
     .ka-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
@@ -2951,7 +2951,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   </style></head><body>
   ${navHTML('region')}
   <div class="ka-wrap">
-    <img src="${thumbUri}" alt="${title}" class="ka-thumb" width="1200" height="630">
+    <div class="ka-thumb">${thumbnail}</div>
     <div class="ka-badge">${schoolBadge[school]}</div>
     <h1>${title} | 1:1 맞춤 전략</h1>
     <div class="ka-meta"><span>✏️ 과외안하니 편집팀</span><span>📅 2026년 4월</span></div>
@@ -5187,7 +5187,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v26-school-3sections', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v26-thumbnail-fix', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
