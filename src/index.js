@@ -408,8 +408,9 @@ function generateContent(location, level, subject, parentRegion) {
 // --- HTML 페이지 렌더링 ---
 function renderPage(location, level, subject, parentRegion, url) {
   const { title, description, bodyHTML, tags } = generateContent(location, level, subject, parentRegion);
-  const thumbnail = generateThumbnail(location, level, subject);
-  const thumbnailOgImg = getEduImage(location + level + subject);
+  const heroImg = getEduImage(location + level + subject);
+  const subjectRgb = {"국어":"239,68,68","영어":"59,130,246","수학":"34,197,94","사회":"245,158,11","과학":"168,85,247","코딩":"6,182,212","검정고시":"249,115,22","논술":"99,102,241"};
+  const rpRgb = subjectRgb[subject] || "99,102,241";
   const regionDisplay = parentRegion ? `${parentRegion} ${location}` : location;
   const canonical = `https://anhani.com${url}`;
 
@@ -418,7 +419,7 @@ function renderPage(location, level, subject, parentRegion, url) {
 <head>
   ${commonHead(title + ' | 안하니', description, canonical)}
   <meta name="robots" content="index, follow">
-  <meta property="og:image" content="${thumbnailOgImg}">
+  <meta property="og:image" content="${heroImg}">
   <meta property="og:type" content="article">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
@@ -438,7 +439,12 @@ function renderPage(location, level, subject, parentRegion, url) {
     .breadcrumb { font-size: 13px; color: #888; margin-bottom: 16px; }
     .breadcrumb a { color: #6366f1; text-decoration: none; }
     .breadcrumb a:hover { color: #312e81; }
-    .thumbnail { width: 100%; border-radius: 12px; margin-bottom: 24px; }
+    .rp-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; border-radius: 14px; overflow: hidden; background: #0f172a; margin-bottom: 24px; }
+    .rp-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .rp-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${rpRgb},0.55) 100%); }
+    .rp-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; color: #fff; }
+    .rp-hero-text h2 { font-size: clamp(20px, 4vw, 34px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+    .rp-hero-text p { font-size: clamp(12px, 1.6vw, 15px); opacity: 0.88; margin-top: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
     .page-container h1 { font-size: 28px; font-weight: 800; color: #111; margin-bottom: 12px; line-height: 1.4; }
     .meta { font-size: 13px; color: #999; margin-bottom: 32px; }
     article h2 { font-size: 22px; font-weight: 700; color: #111; margin: 36px 0 16px; padding-left: 12px; border-left: 4px solid #6366f1; }
@@ -460,7 +466,14 @@ function renderPage(location, level, subject, parentRegion, url) {
       <a href="/">홈</a> &gt; <a href="/지역별">${parentRegion || location}</a> &gt; ${regionDisplay} ${level} ${subject} 과외
     </div>
     
-    <div class="thumbnail">${thumbnail}</div>
+    <div class="rp-hero-wrap">
+      <img src="${heroImg}" alt="${regionDisplay} ${level} ${subject} 과외" loading="eager"/>
+      <div class="rp-hero-overlay"></div>
+      <div class="rp-hero-text">
+        <h2>${regionDisplay}</h2>
+        <p>${level} ${subject} 과외 · 1:1 맞춤 수업</p>
+      </div>
+    </div>
     
     <h1>${regionDisplay} ${level} ${subject} 과외 추천 가이드</h1>
     <div class="meta">최종 업데이트: 2026년 4월 | 작성자: 안하니 교육팀</div>
@@ -1710,8 +1723,7 @@ function renderDongPage(sido, sigungu, dong) {
   const desc = `${sido} ${sigungu} ${dong} 과외 정보 완벽 정리! 과외비 시세, 좋은 선생님 찾는 법, 실제 후기까지.`;
   const canonical = `https://anhani.com/지역별/${encodeURIComponent(sido)}/${encodeURIComponent(sigungu)}/${encodeURIComponent(dong)}`;
   
-  const thumbnail = generateThumbnail(dong, sigungu, '수학');
-  const thumbOgImg = getEduImage(sido + sigungu + dong);
+  const heroImg = getEduImage(sido + sigungu + dong);
   
   const tagPool = [
     `${dong}과외`, `${sigungu}과외`, `${sido}과외`, `${dong}수학과외`,
@@ -1723,13 +1735,18 @@ function renderDongPage(sido, sigungu, dong) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(title + ' | 과외안하니', desc, canonical)}
-  <meta property="og:image" content="${thumbOgImg}">
+  <meta property="og:image" content="${heroImg}">
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}
     .dp-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
     .dp-bc { font-size: 13px; color: #94a3b8; margin-bottom: 16px; }
     .dp-bc a { color: #6366f1; text-decoration: none; }
-    .dp-thumb { width: 100%; margin-bottom: 24px; }
+    .dp-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; border-radius: 14px; overflow: hidden; background: #0f172a; margin-bottom: 24px; }
+    .dp-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .dp-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(99,102,241,0.55) 100%); }
+    .dp-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; color: #fff; }
+    .dp-hero-text h2 { font-size: clamp(20px, 4vw, 34px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+    .dp-hero-text p { font-size: clamp(12px, 1.6vw, 15px); opacity: 0.88; margin-top: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
     .dp-wrap h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 12px; line-height: 1.4; }
     .dp-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
     .dp-article h2 { font-size: 21px; font-weight: 700; color: #0f172a; margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid #6366f1; }
@@ -1749,7 +1766,14 @@ function renderDongPage(sido, sigungu, dong) {
   ${navHTML('region')}
   <div class="dp-wrap">
     <div class="dp-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; <a href="/지역별/${encodeURIComponent(sido)}">${sido}</a> &gt; <a href="/지역별/${encodeURIComponent(sido)}/${encodeURIComponent(sigungu)}">${sigungu}</a> &gt; ${dong}</div>
-    <div class="dp-thumb">${thumbnail}</div>
+    <div class="dp-hero-wrap">
+      <img src="${heroImg}" alt="${sigungu} ${dong} 과외" loading="eager"/>
+      <div class="dp-hero-overlay"></div>
+      <div class="dp-hero-text">
+        <h2>${sigungu} ${dong}</h2>
+        <p>과외 추천 · 비용 · 선생님 · 학습 가이드</p>
+      </div>
+    </div>
     <h1>${sigungu} ${dong} 과외 추천 완벽 가이드</h1>
     <div class="dp-meta">최종 업데이트: 2026년 4월 | ${sido} ${sigungu} ${dong} 과외 전문</div>
     <div class="dp-article">
@@ -2624,12 +2648,13 @@ function renderGradeSubjectPage(school, grade, subject) {
   const checks = pickN(checkPool, 4, rng);
 
   const canonical = 'https://anhani.com/grade/' + school + '/' + grade + '/' + encodeURIComponent(subject);
-  const thumbnail = generateThumbnail(gradeLabel, shortName, subject);
-  const thumbOgImg = getEduImage(school + grade + subject);
+  const heroImg = getEduImage(school + grade + subject);
+  const subjectColors = {"국어":"239,68,68","영어":"59,130,246","수학":"34,197,94","사회":"245,158,11","과학":"168,85,247","코딩":"6,182,212","검정고시":"249,115,22","논술":"99,102,241"};
+  const rgb = subjectColors[subject] || "99,102,241";
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(gradeLabel + ' ' + subject + ' 과외 추천 가이드 | 과외안하니', gradeLabel + ' ' + subject + ' 과외 정보! 과외비, 학습 전략, 선생님 선택법까지 한 번에 정리했습니다.', canonical)}
-  <meta property="og:image" content="${thumbOgImg}">
+  <meta property="og:image" content="${heroImg}">
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}
     .gs-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
@@ -2639,7 +2664,12 @@ function renderGradeSubjectPage(school, grade, subject) {
     .gs-tab { padding: 8px 16px; border-radius: 8px; border: 1.5px solid #e2e8f0; font-size: 13px; font-weight: 600; color: #64748b; text-decoration: none; transition: all 0.2s; }
     .gs-tab:hover { border-color: #6366f1; color: #6366f1; }
     .gs-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
-    .gs-thumb { width: 100%; margin-bottom: 24px; }
+    .gs-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; border-radius: 14px; overflow: hidden; background: #0f172a; margin-bottom: 24px; }
+    .gs-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .gs-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${rgb},0.55) 100%); }
+    .gs-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; color: #fff; }
+    .gs-hero-text h2 { font-size: clamp(22px, 4vw, 36px); font-weight: 900; margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+    .gs-hero-text p { font-size: clamp(13px, 1.8vw, 16px); opacity: 0.92; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
     .gs-wrap h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 12px; line-height: 1.4; }
     .gs-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
     .gs-article h2 { font-size: 21px; font-weight: 700; color: #0f172a; margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid #6366f1; }
@@ -2671,7 +2701,14 @@ function renderGradeSubjectPage(school, grade, subject) {
       ${getSubjectsForSchool(school).map(s => `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gs-tab${s===subject?' active':''}">${s}</a>`).join('')}
     </div>
     
-    <div class="gs-thumb">${thumbnail}</div>
+    <div class="gs-hero-wrap">
+      <img src="${heroImg}" alt="${gradeLabel} ${subject} 과외" loading="eager"/>
+      <div class="gs-hero-overlay"></div>
+      <div class="gs-hero-text">
+        <h2>${gradeLabel}</h2>
+        <p>${subject} 과외 · 1:1 맞춤 수업 · 전문 코칭</p>
+      </div>
+    </div>
     
     <h1>${gradeLabel} ${subject} 과외 추천 가이드</h1>
     <div class="gs-meta">최종 업데이트: 2026년 4월 | ${gradeLabel} ${subject} 전문</div>
@@ -2909,8 +2946,9 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   const closing = pick(CLOSING_TEMPLATES, rng)('지역', shortName, subject);
   
   const canonical = `https://anhani.com/grade/${school}/${grade}/${encodeURIComponent(subject)}/article/${idx}`;
-  const thumbnail = generateThumbnail(gradeLabel, shortName, subject);
-  const thumbOgImg = getEduImage(school + grade + subject + 'art' + idx);
+  const heroImg = getEduImage(school + grade + subject + 'art' + idx);
+  const subjectRgb = {"국어":"239,68,68","영어":"59,130,246","수학":"34,197,94","사회":"245,158,11","과학":"168,85,247","코딩":"6,182,212","검정고시":"249,115,22","논술":"99,102,241"};
+  const kaRgb = subjectRgb[subject] || "99,102,241";
   
   const sectionsHTML = sections.map((sec, i) => {
     let html = `<h2>${sec.h}</h2><p>${sec.p}</p>`;
@@ -2922,11 +2960,16 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(title + ' | 과외안하니', gradeLabel + ' ' + subject + ' 학습 전략 - ' + title, canonical)}
-  <meta property="og:image" content="${thumbOgImg}">
+  <meta property="og:image" content="${heroImg}">
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}
     .ka-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
-    .ka-thumb { width: 100%; margin-bottom: 24px; }
+    .ka-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; border-radius: 14px; overflow: hidden; background: #0f172a; margin-bottom: 24px; }
+    .ka-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ka-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${kaRgb},0.55) 100%); }
+    .ka-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; color: #fff; }
+    .ka-hero-text h2 { font-size: clamp(18px, 3.5vw, 28px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+    .ka-hero-text p { font-size: clamp(12px, 1.6vw, 14px); opacity: 0.88; margin-top: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
     .ka-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
     .ka-wrap h1 { font-size: 28px; font-weight: 900; color: #0f172a; line-height: 1.4; margin-bottom: 12px; }
     .ka-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
@@ -2951,7 +2994,14 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   </style></head><body>
   ${navHTML('region')}
   <div class="ka-wrap">
-    <div class="ka-thumb">${thumbnail}</div>
+    <div class="ka-hero-wrap">
+      <img src="${heroImg}" alt="${title}" loading="eager"/>
+      <div class="ka-hero-overlay"></div>
+      <div class="ka-hero-text">
+        <h2>${title}</h2>
+        <p>${gradeLabel} ${subject} · 1:1 맞춤 과외</p>
+      </div>
+    </div>
     <div class="ka-badge">${schoolBadge[school]}</div>
     <h1>${title} | 1:1 맞춤 전략</h1>
     <div class="ka-meta"><span>✏️ 과외안하니 편집팀</span><span>📅 2026년 4월</span></div>
@@ -5187,7 +5237,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v26-thumbnail-fix', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v26-hero-css-fix', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
