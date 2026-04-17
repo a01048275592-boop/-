@@ -4542,9 +4542,9 @@ function renderGuideArticle(idx) {
     .ga-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; overflow: hidden; background: #0f172a; margin-bottom: 28px; }
     .ga-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .ga-hero-ov { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(99,102,241,0.55) 100%); }
-    .ga-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 36px; color: #fff; }
-    .ga-hero-text h1 { font-size: clamp(20px, 4vw, 32px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); line-height: 1.3; }
-    .ga-hero-text p { font-size: clamp(12px, 1.6vw, 14px); opacity: 0.88; margin-top: 6px; }
+    .ga-hero-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; color: #fff; }
+    .ga-hero-text h1 { font-size: clamp(22px, 4.5vw, 36px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); line-height: 1.3; }
+    .ga-hero-text p { font-size: clamp(13px, 1.8vw, 16px); opacity: 0.9; margin-top: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
     .ga-bc { font-size: 13px; color: #94a3b8; margin-bottom: 20px; padding-top: 20px; }
     .ga-bc a { color: #6366f1; text-decoration: none; }
     .ga-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 12px; }
@@ -5434,7 +5434,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v26-study-guide', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v26-guide-center', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
