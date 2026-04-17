@@ -597,6 +597,12 @@ function getAllUrls() {
     }
   }
   
+  // 학습가이드 아티클
+  urls.push('/학습가이드');
+  for (let i = 0; i < GUIDE_ARTICLES.length; i++) {
+    urls.push(`/학습가이드/article/${i}`);
+  }
+  
   return urls;
 }
 
@@ -4405,6 +4411,197 @@ function renderEnglishArticle(articleIdx) {
 
 // --- 학습정보 페이지 ---
 // --- 서비스 상세 페이지 ---
+// --- 학습가이드 교육정보 아티클 ---
+const GUIDE_ARTICLES = [
+  {kw:"공부 집중하는 방법", title:"공부 집중하는 방법 | 집중력 200% 올리는 실전 기술", cat:"학습법"},
+  {kw:"시험기간 공부법", title:"시험기간 공부법 | 벼락치기 NO, 전략적 시험 대비", cat:"시험"},
+  {kw:"성적 올리는 습관", title:"성적 올리는 습관 | 상위 1%가 매일 하는 5가지", cat:"학습법"},
+  {kw:"암기 잘하는 방법", title:"암기 잘하는 방법 | 과학적 기억법으로 오래 기억하기", cat:"학습법"},
+  {kw:"수학 성적 올리는 법", title:"수학 성적 올리는 법 | 개념부터 응용까지 단계별 전략", cat:"과목"},
+  {kw:"영어 단어 외우는 법", title:"영어 단어 외우는 법 | 하루 50개 암기 실전 루틴", cat:"과목"},
+  {kw:"공부 루틴 만들기", title:"공부 루틴 만들기 | 매일 실천하는 학습 습관 설계", cat:"학습법"},
+  {kw:"중간고사 대비 공부법", title:"중간고사 대비 공부법 | 4주 전부터 시작하는 완벽 플랜", cat:"시험"},
+  {kw:"수능 100일 공부법", title:"수능 100일 공부법 | D-100 역전 가능한 전략 로드맵", cat:"시험"},
+  {kw:"자기주도학습 방법", title:"자기주도학습 방법 | 혼자서도 성적 올리는 학습 시스템", cat:"학습법"},
+  {kw:"영어회화 독학 방법", title:"영어회화 독학 방법 | 매일 30분으로 말문 트는 비결", cat:"외국어"},
+  {kw:"화상과외 추천", title:"화상과외 추천 | 온라인 1:1 수업 효과적으로 활용하기", cat:"과외"},
+  {kw:"과외 선생님 구하는 법", title:"과외 선생님 구하는 법 | 검증된 선생님 찾는 5가지 기준", cat:"과외"},
+  {kw:"학원 선택 기준", title:"학원 선택 기준 | 실패 없는 학원 고르기 체크리스트", cat:"과외"},
+  {kw:"초등 영어 공부법", title:"초등 영어 공부법 | 초등학생 눈높이에 맞는 영어 학습", cat:"과목"},
+  {kw:"중학생 공부법", title:"중학생 공부법 | 내신 1등급으로 가는 학습 전략", cat:"학습법"},
+  {kw:"성인 외국어 공부", title:"성인 외국어 공부 | 직장인을 위한 효율적 언어 학습법", cat:"외국어"},
+  {kw:"토익 공부법", title:"토익 공부법 | 단기간 점수 올리는 파트별 공략", cat:"시험"},
+  {kw:"과외 vs 학원 차이", title:"과외 vs 학원 차이 | 우리 아이에게 맞는 선택은?", cat:"과외"},
+  {kw:"집중력 높이는 공부법", title:"집중력 높이는 공부법 | 산만한 아이도 몰입하는 기술", cat:"학습법"},
+  {kw:"아이 공부습관 만들기", title:"아이 공부습관 만들기 | 학부모가 알아야 할 코칭법", cat:"학습법"},
+  {kw:"중학생 공부계획표", title:"중학생 공부계획표 | 주간·월간 학습 플래너 작성법", cat:"학습법"},
+  {kw:"고등학생 시간관리", title:"고등학생 시간관리 | 하루 24시간 200% 활용하는 법", cat:"학습법"},
+  {kw:"효율적인 복습 방법", title:"효율적인 복습 방법 | 에빙하우스 망각곡선 활용 전략", cat:"학습법"},
+];
+
+const GUIDE_INTROS = [
+  (kw)=>`${kw}에 대해 고민하고 계신가요? 많은 학생과 학부모님이 같은 고민을 하고 있어요. 이 글에서는 실제로 효과가 검증된 방법만 엄선해서 정리했습니다. 이론적인 이야기가 아니라, 당장 오늘부터 적용할 수 있는 실전 노하우를 담았어요. 끝까지 읽으시면 분명 도움이 될 거예요.`,
+  (kw)=>`${kw}, 어디서부터 시작해야 할지 막막하셨죠? 걱정 마세요. 이 가이드는 초보자도 바로 실행할 수 있는 단계별 방법으로 구성했어요. 인터넷에 떠도는 수많은 정보 중 진짜 효과 있는 것만 골라, 한 편의 글로 정리했습니다.`,
+  (kw)=>`"${kw}"을 검색하셨다면, 지금 이 순간이 변화의 시작이에요. 올바른 방법을 알고 실천하면 누구나 성과를 낼 수 있습니다. 이 글에서는 교육 전문가와 성적 향상에 성공한 학생들의 경험을 바탕으로 핵심만 뽑아 안내드립니다.`,
+  (kw)=>`${kw}은 학생이라면 누구나 한 번쯤 고민하는 주제예요. 하지만 정확한 방법을 아는 사람은 의외로 적습니다. 오늘 이 글 하나로 ${kw}에 대한 궁금증을 완벽하게 해결해 드릴게요. 읽는 데 5분, 효과는 한 학기입니다.`,
+  (kw)=>`${kw}에 관한 가장 실용적인 가이드를 준비했어요. 단순히 "열심히 하세요"가 아니라, 구체적으로 어떻게 해야 하는지를 알려드립니다. 실제 현장에서 효과가 입증된 방법론만 담았으니 믿고 따라와 주세요.`,
+  (kw)=>`${kw}의 핵심을 한 편에 담았습니다. 처음 시작하는 분부터 이미 시도해봤지만 효과를 못 본 분까지, 누구에게나 도움이 되는 내용으로 구성했어요. 오늘 배운 내용을 당장 적용해보시면 일주일 안에 변화를 체감할 수 있습니다.`,
+];
+
+const GUIDE_BODIES = [
+  (kw)=>({h:`${kw}의 핵심 원리`,p:`${kw}을 제대로 하려면 먼저 원리를 이해해야 합니다. 많은 사람들이 방법만 따라 하지만, 왜 그렇게 해야 하는지를 모르면 지속이 어려워요. 핵심은 단순합니다. 뇌가 정보를 받아들이는 방식에 맞춰 학습하면 효율이 극대화되고, 반대로 뇌의 작동 원리를 무시하면 시간만 낭비하게 됩니다. 이 원리를 바탕으로 아래의 구체적 방법들을 실천해보세요.`}),
+  (kw)=>({h:`실전에서 바로 쓰는 ${kw} 노하우`,p:`첫째, 목표를 구체적으로 설정하세요. '잘하자'가 아니라 '오늘 30분 안에 10문제 풀기'처럼 숫자로 명확하게 정해야 실행력이 올라갑니다. 둘째, 타이머를 활용하세요. 25분 집중 + 5분 휴식의 뽀모도로 기법은 전 세계적으로 효과가 검증된 방법이에요. 셋째, 환경을 정리하세요. 스마트폰은 다른 방에 두고, 책상 위에는 필요한 것만 올려두는 것이 집중의 첫걸음입니다.`}),
+  (kw)=>({h:`${kw}에서 흔히 하는 실수`,p:`가장 큰 실수는 한 번에 너무 많은 것을 하려는 거예요. 변화는 작은 것부터 시작해야 지속 가능합니다. 두 번째 실수는 결과에만 집중하는 것. 과정을 즐기지 못하면 금방 지칩니다. 세 번째는 비교하기. 다른 사람과 비교하지 말고 어제의 나와 비교하세요. 네 번째는 계획만 세우고 실행하지 않는 것. 불완전한 실행이 완벽한 계획보다 100배 낫습니다.`}),
+  (kw)=>({h:`전문가가 추천하는 ${kw} 3단계`,p:`1단계: 현재 상태를 정확히 파악하세요. 자신의 약점과 강점을 모르면 어디에 시간을 써야 할지 알 수 없습니다. 간단한 자가 진단 테스트만으로도 큰 도움이 돼요. 2단계: 실행 가능한 작은 목표를 세우세요. 하루 10분부터 시작해서 점차 늘려가는 것이 가장 효과적입니다. 3단계: 매주 돌아보며 조정하세요. 무엇이 효과가 있고 없었는지 기록하고 개선하면 성장 속도가 비약적으로 빨라집니다.`}),
+  (kw)=>({h:`${kw}의 과학적 근거`,p:`교육심리학 연구에 따르면 ${kw}의 효과는 '간격 반복'과 '능동적 회상'에 기반합니다. 단순히 눈으로 읽는 것보다 직접 떠올리며 테스트하는 방식이 기억 유지율을 3배 이상 높여줍니다. 또한 학습 후 24시간 이내에 1차 복습, 3일 후 2차 복습, 7일 후 3차 복습을 하면 장기 기억으로 전환되는 확률이 85% 이상으로 올라갑니다. 이 원리를 모든 학습에 적용하세요.`}),
+  (kw)=>({h:`${kw}을 습관으로 만드는 비결`,p:`습관의 핵심은 '트리거-행동-보상' 순환입니다. 예를 들어 '저녁 식사 후(트리거) 30분 공부하고(행동) 좋아하는 간식을 먹는다(보상)' 같은 구조를 만들면 자연스럽게 습관이 됩니다. 처음 21일이 가장 어렵지만, 한 달만 버티면 노력 없이도 자동으로 실행하게 돼요. 중요한 것은 완벽하지 않아도 매일 하는 것입니다. 1분이라도 매일 하면 뇌가 '이건 중요한 일'로 인식합니다.`}),
+  (kw)=>({h:`학부모님을 위한 ${kw} 코칭 팁`,p:`아이의 학습을 도울 때 가장 중요한 것은 '감시'가 아닌 '관심'입니다. "공부 했어?"보다 "오늘 뭐 배웠어?"라고 물어보세요. 작은 성취에도 구체적으로 칭찬해주면 아이의 학습 동기가 크게 올라갑니다. '잘했어'보다 '어제보다 실수가 2개나 줄었네!'처럼 과정을 칭찬하는 것이 효과적이에요. 아이가 스스로 공부하는 환경을 만들어주는 것이 장기적으로 가장 좋은 코칭입니다.`}),
+  (kw)=>({h:`${kw} 실천 체크리스트`,p:`오늘 바로 시작할 수 있는 체크리스트를 준비했어요. 하나, 학습 공간을 깨끗하게 정리했는가. 둘, 오늘의 학습 목표를 구체적으로 적었는가. 셋, 타이머를 준비했는가. 넷, 스마트폰을 시야 밖에 두었는가. 다섯, 완료 후 자신에게 줄 작은 보상을 정했는가. 이 다섯 가지만 매일 체크하면 한 달 뒤에는 눈에 띄는 변화를 경험할 수 있습니다.`}),
+];
+
+const GUIDE_TIPS = [
+  (kw)=>`💡 ${kw}의 핵심 한 줄 요약: 완벽한 계획보다 불완전한 실행이 낫습니다. 오늘 당장 5분이라도 시작하세요. 시작이 반이라는 말, 진심으로 맞는 말이에요.`,
+  (kw)=>`💡 전문가 조언: ${kw}에서 가장 중요한 것은 '꾸준함'입니다. 하루에 10시간 하고 한 주 쉬는 것보다, 매일 1시간씩 꾸준히 하는 게 3배 더 효과적이에요.`,
+  (kw)=>`💡 현직 선생님 추천: ${kw}을 처음 시도한다면 가장 쉬운 것부터 시작하세요. 작은 성공 경험이 쌓이면 어려운 것도 도전할 용기가 생깁니다.`,
+  (kw)=>`💡 상위권 학생의 비결: ${kw}에 성공한 학생들은 공통적으로 '기록'을 합니다. 오늘 무엇을 했고, 어디가 어려웠는지 적는 것만으로도 학습 효율이 40% 이상 올라갑니다.`,
+];
+
+const GUIDE_CLOSINGS = [
+  (kw)=>`${kw}에 대한 핵심 내용을 정리해 보았습니다. 이 글에서 소개한 방법들은 모두 실전에서 검증된 것들이에요. 한꺼번에 다 하려 하지 말고, 마음에 드는 것 한두 가지부터 시작해보세요. 꾸준히 실천하면 반드시 성과가 따라옵니다. 더 체계적인 학습 관리가 필요하시다면 과외안하니의 1:1 맞춤 과외도 고려해보세요.`,
+  (kw)=>`오늘 소개한 ${kw} 가이드가 도움이 되셨기를 바랍니다. 학습에는 왕도가 없지만, 올바른 방법은 있어요. 방향만 맞으면 노력한 만큼 반드시 결과가 나옵니다. 혼자 하기 어렵다면 전문 선생님의 도움을 받는 것도 좋은 방법이에요. 과외안하니에서 무료 상담을 받아보세요.`,
+  (kw)=>`${kw}의 핵심은 결국 실행입니다. 아무리 좋은 정보도 실행하지 않으면 소용이 없어요. 이 글을 읽은 지금 이 순간부터, 작은 것 하나라도 바로 시작해보세요. 시작한 사람과 고민만 하는 사람의 차이는 상상 이상으로 큽니다.`,
+];
+
+function renderGuideList() {
+  const cards = GUIDE_ARTICLES.map((a, i) => {
+    const img = getEduImage('guide' + i);
+    return `<a href="/학습가이드/article/${i}" class="gl-card">
+      <div class="gl-card-img"><img src="${img}" alt="${a.kw}" loading="lazy"/><div class="gl-card-overlay"></div><span class="gl-card-cat">${a.cat}</span></div>
+      <div class="gl-card-body"><h3>${a.kw}</h3><p>${a.title.split('|')[1]?.trim() || a.kw}</p></div>
+    </a>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead('학습가이드 - 공부법, 시험 대비, 학습 습관 | 과외안하니', '공부 집중법, 시험 대비 전략, 성적 올리는 습관까지. 학생과 학부모를 위한 교육 정보 가이드.', 'https://anhani.com/학습가이드')}
+  <style>${commonStyles()}
+    .gl-hero-wrap { position: relative; overflow: hidden; }
+    .gl-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .gl-hero-ov { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.88) 0%, rgba(99,102,241,0.65) 100%); }
+    .gl-hero { position: relative; padding: 72px 24px 56px; text-align: center; color: #fff; }
+    .gl-hero h1 { font-size: 36px; font-weight: 900; margin-bottom: 10px; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .gl-hero p { font-size: 16px; color: rgba(255,255,255,0.9); }
+    .gl-wrap { max-width: 1060px; margin: 0 auto; padding: 40px 24px 80px; }
+    .gl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .gl-card { display: block; background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid #e2e8f0; text-decoration: none; color: inherit; transition: all 0.25s; }
+    .gl-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: #6366f1; }
+    .gl-card-img { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #0f172a; }
+    .gl-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .gl-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%); }
+    .gl-card-cat { position: absolute; top: 12px; left: 12px; font-size: 11px; font-weight: 700; padding: 4px 10px; background: rgba(255,255,255,0.92); color: #4f46e5; border-radius: 6px; }
+    .gl-card-body { padding: 18px 20px; }
+    .gl-card-body h3 { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+    .gl-card-body p { font-size: 13px; color: #64748b; line-height: 1.5; }
+    @media (max-width: 640px) { .gl-hero h1 { font-size: 26px; } .gl-grid { grid-template-columns: 1fr; } }
+  </style></head><body>
+  ${navHTML('guide')}
+  <div class="gl-hero-wrap">
+    <img src="${getEduImage('guidemain')}" class="gl-hero-img" alt="학습가이드" loading="eager"/>
+    <div class="gl-hero-ov"></div>
+    <div class="gl-hero"><h1>학습가이드</h1><p>공부법, 시험 전략, 학습 습관까지 — 교육 전문 가이드</p></div>
+  </div>
+  <div class="gl-wrap"><div class="gl-grid">${cards}</div></div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+function renderGuideArticle(idx) {
+  const a = GUIDE_ARTICLES[idx];
+  if (!a) return null;
+  const h = strHash(a.kw);
+  const heroImg = getEduImage('guide' + idx);
+  const intro = GUIDE_INTROS[h % GUIDE_INTROS.length](a.kw);
+  const sec1 = GUIDE_BODIES[h % GUIDE_BODIES.length](a.kw);
+  const sec2 = GUIDE_BODIES[(h + 1) % GUIDE_BODIES.length](a.kw);
+  const sec3 = GUIDE_BODIES[(h + 2) % GUIDE_BODIES.length](a.kw);
+  const sec4 = GUIDE_BODIES[(h + 3) % GUIDE_BODIES.length](a.kw);
+  const sec5 = GUIDE_BODIES[(h + 4) % GUIDE_BODIES.length](a.kw);
+  const sec6 = GUIDE_BODIES[(h + 6) % GUIDE_BODIES.length](a.kw);
+  const tip = GUIDE_TIPS[h % GUIDE_TIPS.length](a.kw);
+  const closing = GUIDE_CLOSINGS[h % GUIDE_CLOSINGS.length](a.kw);
+
+  const otherLinks = GUIDE_ARTICLES.filter((_,i)=>i!==idx).sort(()=>((h+idx)%3)-1).slice(0,6).map((oa,oi)=>{
+    const oIdx = GUIDE_ARTICLES.indexOf(oa);
+    return `<a href="/학습가이드/article/${oIdx}" class="ga-rel">${oa.kw}</a>`;
+  }).join('');
+
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(a.title + ' | 과외안하니', a.kw + ' 완벽 가이드. 실전 노하우와 학습 전략을 한 번에 확인하세요.', 'https://anhani.com/학습가이드/article/' + idx)}
+  <meta property="og:image" content="${heroImg}">
+  <style>${commonStyles()}
+    .ga-wrap { max-width: 768px; margin: 0 auto; padding: 0 20px 80px; }
+    .ga-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; overflow: hidden; background: #0f172a; margin-bottom: 28px; }
+    .ga-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ga-hero-ov { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(99,102,241,0.55) 100%); }
+    .ga-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 36px; color: #fff; }
+    .ga-hero-text h1 { font-size: clamp(20px, 4vw, 32px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); line-height: 1.3; }
+    .ga-hero-text p { font-size: clamp(12px, 1.6vw, 14px); opacity: 0.88; margin-top: 6px; }
+    .ga-bc { font-size: 13px; color: #94a3b8; margin-bottom: 20px; padding-top: 20px; }
+    .ga-bc a { color: #6366f1; text-decoration: none; }
+    .ga-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 12px; }
+    .ga-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
+    .ga-content h2 { font-size: 20px; font-weight: 800; color: #0f172a; margin: 28px 0 12px; padding-left: 12px; border-left: 4px solid #6366f1; }
+    .ga-content p { font-size: 15px; color: #334155; line-height: 1.85; margin-bottom: 14px; word-break: keep-all; }
+    .ga-tip { background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 24px 0; font-size: 14px; line-height: 1.7; color: #78350f; }
+    .ga-cta { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 14px; padding: 28px 24px; text-align: center; color: #fff; margin: 36px 0; }
+    .ga-cta h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+    .ga-cta p { font-size: 13px; opacity: 0.85; margin-bottom: 14px; }
+    .ga-cta a { display: inline-block; margin: 0 4px; padding: 10px 20px; background: #fff; color: #4f46e5; font-size: 14px; font-weight: 700; border-radius: 8px; text-decoration: none; }
+    .ga-related { margin-top: 36px; padding-top: 24px; border-top: 2px solid #e2e8f0; }
+    .ga-related h3 { font-size: 17px; font-weight: 800; margin-bottom: 14px; }
+    .ga-rel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .ga-rel { padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #475569; font-size: 13px; font-weight: 600; transition: all 0.2s; }
+    .ga-rel:hover { border-color: #6366f1; color: #6366f1; }
+    @media (max-width: 640px) { .ga-rel-grid { grid-template-columns: 1fr; } }
+  </style></head><body>
+  ${navHTML('guide')}
+  <div class="ga-hero-wrap">
+    <img src="${heroImg}" alt="${a.kw}" loading="eager"/>
+    <div class="ga-hero-ov"></div>
+    <div class="ga-hero-text">
+      <h1>${a.title.split('|')[0].trim()}</h1>
+      <p>${a.title.split('|')[1]?.trim() || a.kw}</p>
+    </div>
+  </div>
+  <div class="ga-wrap">
+    <div class="ga-bc"><a href="/">홈</a> &gt; <a href="/학습가이드">학습가이드</a> &gt; ${a.kw}</div>
+    <span class="ga-badge">${a.cat}</span>
+    <div class="ga-meta">✏️ 과외안하니 편집팀 · 📅 2026년 4월</div>
+    <div class="ga-content">
+      <p>${intro}</p>
+      <h2>${sec1.h}</h2><p>${sec1.p}</p>
+      <h2>${sec2.h}</h2><p>${sec2.p}</p>
+      <div class="ga-tip">${tip}</div>
+      <h2>${sec3.h}</h2><p>${sec3.p}</p>
+      <h2>${sec4.h}</h2><p>${sec4.p}</p>
+      <h2>${sec5.h}</h2><p>${sec5.p}</p>
+      <h2>${sec6.h}</h2><p>${sec6.p}</p>
+      <p>${closing}</p>
+    </div>
+    <div class="ga-cta">
+      <h3>1:1 맞춤 과외로 확실하게</h3>
+      <p>전문 선생님과 함께 체계적으로 학습하세요</p>
+      <a href="https://naver.me/GYD2Ki40" target="_blank">⭐ 무료 체험</a>
+      <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a>
+    </div>
+    <div class="ga-related">
+      <h3>다른 학습가이드</h3>
+      <div class="ga-rel-grid">${otherLinks}</div>
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
 function renderServicePage() {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('1:1 맞춤 과외 서비스 안내 | 과외안하니', '초·중·고 전과목 1:1 맞춤 과외. 수준별 맞춤 수업, 내신·수능 완벽 대비, 올바른 학습습관 형성까지.', 'https://anhani.com/서비스')}
@@ -5237,7 +5434,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v26-hero-css-fix', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v26-study-guide', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
@@ -5686,6 +5883,23 @@ export default {
     
     // 학습정보
 
+    
+    // 학습가이드
+    if (decodedPath === '/학습가이드') {
+      return new Response(renderGuideList(), {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' }
+      });
+    }
+    const guideArtMatch = decodedPath.match(/^\/학습가이드\/article\/(\d+)$/);
+    if (guideArtMatch) {
+      const gIdx = parseInt(guideArtMatch[1]);
+      if (gIdx >= 0 && gIdx < GUIDE_ARTICLES.length) {
+        const html = renderGuideArticle(gIdx);
+        if (html) return new Response(html, {
+          headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
+        });
+      }
+    }
     
     // 화상수업
     if (pathname === '/video-lesson' || decodedPath === '/화상수업') {
