@@ -1197,6 +1197,53 @@ function renderHomepage() {
       .consult-form { flex: auto; width: 100%; }
       .consult-left h2 { font-size: 24px; }
     }
+
+    /* ===== 체험 수업 신청 섹션 ===== */
+    .inquiry-section { background: linear-gradient(180deg, #0a3520 0%, #064e3b 100%); padding: 80px 20px; }
+    .inquiry-inner { max-width: 780px; margin: 0 auto; }
+    .inquiry-title { text-align: center; font-size: clamp(30px, 5vw, 42px); font-weight: 900; color: #fff; margin-bottom: 8px; line-height: 1.15; }
+    .inquiry-title em { display: block; color: #34d399; font-style: normal; margin-top: 4px; }
+    .inquiry-desc { text-align: center; color: #a7f3d0; font-size: 14px; line-height: 1.8; margin-bottom: 32px; }
+    .inquiry-contact { display: flex; justify-content: center; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
+    .inq-phone, .inq-kakao { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform 0.15s; }
+    .inq-phone { background: #0f172a; color: #fff; }
+    .inq-phone .ic { color: #10b981; }
+    .inq-kakao { background: #fde047; color: #3b3b3b; }
+    .inq-phone:hover, .inq-kakao:hover { transform: translateY(-2px); }
+    .inquiry-form { display: flex; flex-direction: column; gap: 18px; }
+    .inq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .inq-col label, .inq-full label { display: block; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .inq-col label .req, .inq-full label .req { color: #34d399; }
+    .inq-col label .hint, .inq-full label .hint { color: #6ee7b7; font-size: 12px; font-weight: 500; margin-left: 6px; }
+    .inq-input, .inq-textarea { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 14px 16px; color: #fff; font-size: 14px; font-family: inherit; transition: border-color 0.15s; box-sizing: border-box; }
+    .inq-input::placeholder, .inq-textarea::placeholder { color: #6b7f75; }
+    .inq-input:focus, .inq-textarea:focus { outline: none; border-color: #34d399; }
+    .inq-textarea { resize: vertical; min-height: 100px; }
+    .inq-dropdown { position: relative; }
+    .inq-toggle { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 14px 16px; color: #6b7f75; font-size: 14px; cursor: pointer; text-align: left; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
+    .inq-toggle.has-value { color: #fff; }
+    .inq-arrow { font-size: 11px; color: #94a3b8; transition: transform 0.2s; margin-left: 8px; }
+    .inq-dropdown.open .inq-arrow { transform: rotate(180deg); }
+    .inq-menu { position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #064e3b; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 8px; display: none; z-index: 10; max-height: 280px; overflow-y: auto; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .inq-dropdown.open .inq-menu { display: block; }
+    .inq-menu label { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 6px; cursor: pointer; color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 0; }
+    .inq-menu label:hover { background: rgba(255,255,255,0.08); }
+    .inq-menu input[type=checkbox] { accent-color: #10b981; width: 16px; height: 16px; }
+    .inq-addr-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+    .inq-addr-btn { padding: 0 20px; background: #10b981; color: #fff; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; transition: background 0.15s; font-family: inherit; }
+    .inq-addr-btn:hover { background: #059669; }
+    .inq-submit { width: 100%; padding: 18px; background: #22c55e; color: #fff; border: none; border-radius: 10px; font-size: 17px; font-weight: 800; cursor: pointer; margin-top: 12px; transition: background 0.15s; font-family: inherit; }
+    .inq-submit:hover { background: #16a34a; }
+    .inq-submit:disabled { background: #475569; cursor: not-allowed; }
+    .inq-feedback { text-align: center; margin-top: 14px; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; }
+    .inq-feedback.ok { background: rgba(34,197,94,0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+    .inq-feedback.err { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+    @media (max-width: 640px) {
+      .inquiry-section { padding: 56px 16px; }
+      .inq-row { grid-template-columns: 1fr; }
+      .inq-addr-row { grid-template-columns: 1fr; }
+      .inq-addr-btn { padding: 14px; }
+    }
   </style>
 </head>
 <body>
@@ -1461,6 +1508,179 @@ function renderHomepage() {
     </div>
     <div class="subjects-grid">${subjectCards}</div>
   </section>
+  <!-- 체험 수업 신청 섹션 -->
+  <section class="inquiry-section" id="inquiry">
+    <div class="inquiry-inner">
+      <h2 class="inquiry-title">체험 수업<em>신청하기</em></h2>
+      <p class="inquiry-desc">궁금하신 점이나 체험 수업 문의, 무엇이든 남겨주세요.<br>내용 확인 후 빠르게 연락드립니다.</p>
+      <div class="inquiry-contact">
+        <a href="tel:010-6850-1420" class="inq-phone"><span class="ic">📞</span> 010-6850-1420</a>
+        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" rel="noopener" class="inq-kakao">💬 카카오 채널 상담</a>
+      </div>
+      <form id="inquiryForm" class="inquiry-form" novalidate>
+        <div class="inq-row">
+          <div class="inq-col">
+            <label>학생 이름 <span class="req">*</span></label>
+            <input type="text" name="name" class="inq-input" placeholder="이름을 입력해주세요" required maxlength="30">
+          </div>
+          <div class="inq-col">
+            <label>상담받으실 연락처 <span class="req">*</span></label>
+            <input type="tel" name="phone" class="inq-input" placeholder="010-0000-0000" required maxlength="20">
+          </div>
+        </div>
+        <div class="inq-full">
+          <label>학년 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label>
+          <div class="inq-dropdown">
+            <button type="button" class="inq-toggle" data-placeholder="학년을 선택해주세요"><span class="inq-label">학년을 선택해주세요</span><span class="inq-arrow">▼</span></button>
+            <div class="inq-menu">
+            <label><input type="checkbox" name="grades" value="초1"> 초1</label>
+            <label><input type="checkbox" name="grades" value="초2"> 초2</label>
+            <label><input type="checkbox" name="grades" value="초3"> 초3</label>
+            <label><input type="checkbox" name="grades" value="초4"> 초4</label>
+            <label><input type="checkbox" name="grades" value="초5"> 초5</label>
+            <label><input type="checkbox" name="grades" value="초6"> 초6</label>
+            <label><input type="checkbox" name="grades" value="중1"> 중1</label>
+            <label><input type="checkbox" name="grades" value="중2"> 중2</label>
+            <label><input type="checkbox" name="grades" value="중3"> 중3</label>
+            <label><input type="checkbox" name="grades" value="고1"> 고1</label>
+            <label><input type="checkbox" name="grades" value="고2"> 고2</label>
+            <label><input type="checkbox" name="grades" value="고3"> 고3</label>
+            <label><input type="checkbox" name="grades" value="검정고시"> 검정고시</label>
+            </div>
+          </div>
+        </div>
+        <div class="inq-full">
+          <label>희망 과목 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label>
+          <div class="inq-dropdown">
+            <button type="button" class="inq-toggle" data-placeholder="과목을 선택해주세요"><span class="inq-label">과목을 선택해주세요</span><span class="inq-arrow">▼</span></button>
+            <div class="inq-menu">
+            <label><input type="checkbox" name="subjects" value="국어"> 국어</label>
+            <label><input type="checkbox" name="subjects" value="영어"> 영어</label>
+            <label><input type="checkbox" name="subjects" value="수학"> 수학</label>
+            <label><input type="checkbox" name="subjects" value="사회"> 사회</label>
+            <label><input type="checkbox" name="subjects" value="과학"> 과학</label>
+            <label><input type="checkbox" name="subjects" value="코딩"> 코딩</label>
+            <label><input type="checkbox" name="subjects" value="검정고시"> 검정고시</label>
+            <label><input type="checkbox" name="subjects" value="논술"> 논술</label>
+            <label><input type="checkbox" name="subjects" value="영어회화"> 영어회화</label>
+            <label><input type="checkbox" name="subjects" value="중국어"> 중국어</label>
+            <label><input type="checkbox" name="subjects" value="일본어"> 일본어</label>
+            </div>
+          </div>
+        </div>
+        <div class="inq-full">
+          <label>주소 <span class="req">*</span></label>
+          <div class="inq-addr-row">
+            <input type="text" name="address" class="inq-input" placeholder="도로명 주소 검색" readonly required>
+            <button type="button" class="inq-addr-btn" id="addrBtn">주소 검색</button>
+          </div>
+        </div>
+        <div class="inq-full">
+          <label>상세주소</label>
+          <input type="text" name="addressDetail" class="inq-input" placeholder="상세주소를 입력해주세요 (예: 101동 202호)" maxlength="100">
+        </div>
+        <div class="inq-full">
+          <label>문의사항 <span class="hint">(선택)</span></label>
+          <textarea name="message" class="inq-textarea" placeholder="궁금한 점이나 요청사항을 자유롭게 적어주세요." maxlength="1000"></textarea>
+        </div>
+        <button type="submit" class="inq-submit">체험 수업 신청하기 →</button>
+        <div id="inqFeedback" class="inq-feedback" hidden></div>
+      </form>
+    </div>
+  </section>
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script>
+  (function(){
+    var dropdowns = document.querySelectorAll('.inq-dropdown');
+    dropdowns.forEach(function(dd){
+      var btn = dd.querySelector('.inq-toggle');
+      var menu = dd.querySelector('.inq-menu');
+      var labelEl = dd.querySelector('.inq-label');
+      var placeholder = btn.getAttribute('data-placeholder');
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        dropdowns.forEach(function(o){ if(o!==dd) o.classList.remove('open'); });
+        dd.classList.toggle('open');
+      });
+      menu.addEventListener('click', function(e){ e.stopPropagation(); });
+      menu.addEventListener('change', function(){
+        var checked = menu.querySelectorAll('input:checked');
+        var values = Array.prototype.map.call(checked, function(i){return i.value;});
+        if(values.length){
+          labelEl.textContent = values.join(', ');
+          btn.classList.add('has-value');
+        } else {
+          labelEl.textContent = placeholder;
+          btn.classList.remove('has-value');
+        }
+      });
+    });
+    document.addEventListener('click', function(){
+      dropdowns.forEach(function(o){ o.classList.remove('open'); });
+    });
+
+    var addrBtn = document.getElementById('addrBtn');
+    if(addrBtn) addrBtn.addEventListener('click', function(){
+      if(typeof daum === 'undefined'){ alert('주소 검색 스크립트 로드 실패. 페이지를 새로고침해주세요.'); return; }
+      new daum.Postcode({
+        oncomplete: function(d){
+          var f = document.getElementById('inquiryForm');
+          f.address.value = d.roadAddress || d.jibunAddress || '';
+          f.addressDetail.focus();
+        }
+      }).open();
+    });
+
+    var form = document.getElementById('inquiryForm');
+    var fb = document.getElementById('inqFeedback');
+    function showFb(t, m){ fb.className = 'inq-feedback '+t; fb.textContent = m; fb.hidden = false; setTimeout(function(){ fb.hidden = true; }, 6000); }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var submitBtn = form.querySelector('.inq-submit');
+      var grades = Array.prototype.map.call(form.querySelectorAll('[name=grades]:checked'), function(i){return i.value;});
+      var subjects = Array.prototype.map.call(form.querySelectorAll('[name=subjects]:checked'), function(i){return i.value;});
+      var data = {
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        grades: grades,
+        subjects: subjects,
+        address: form.address.value.trim(),
+        addressDetail: form.addressDetail.value.trim(),
+        message: form.message.value.trim()
+      };
+      if(!data.name) return showFb('err', '학생 이름을 입력해주세요.');
+      if(!data.phone || !/^[0-9\-\s]{9,20}$/.test(data.phone)) return showFb('err', '올바른 연락처를 입력해주세요.');
+      if(!grades.length) return showFb('err', '학년을 선택해주세요.');
+      if(!subjects.length) return showFb('err', '희망 과목을 선택해주세요.');
+      if(!data.address) return showFb('err', '주소를 입력해주세요.');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '전송 중...';
+      fetch('/api/inquiry', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      }).then(function(r){ return r.json().then(function(j){ return {ok: r.ok, data: j}; }).catch(function(){ return {ok: r.ok, data: {} }; }); })
+        .then(function(res){
+          if(res.ok && res.data.success){
+            showFb('ok', '✅ 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+            form.reset();
+            dropdowns.forEach(function(dd){
+              var b = dd.querySelector('.inq-toggle');
+              var l = dd.querySelector('.inq-label');
+              l.textContent = b.getAttribute('data-placeholder');
+              b.classList.remove('has-value');
+            });
+          } else {
+            showFb('err', (res.data && res.data.error) || '전송 실패. 잠시 후 다시 시도해주세요.');
+          }
+        })
+        .catch(function(){ showFb('err', '네트워크 오류. 잠시 후 다시 시도해주세요.'); })
+        .then(function(){ submitBtn.disabled = false; submitBtn.textContent = '체험 수업 신청하기 →'; });
+    });
+  })();
+  </script>
 
   ${footerHTML()}
 </body>
@@ -5684,10 +5904,77 @@ const INDEXNOW_KEY = 'bc7021aaa2ada0c01d58334f8753cb9e';
 const SITE_HOST = 'anhani.com';
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
     const pathname = url.pathname;
     
+    // === 체험 수업 신청 폼 제출 (Resend API) ===
+    if (pathname === '/api/inquiry' && request.method === 'POST') {
+      try {
+        const data = await request.json();
+        const name = String(data.name || '').slice(0, 50).trim();
+        const phone = String(data.phone || '').slice(0, 20).trim();
+        const grades = Array.isArray(data.grades) ? data.grades.slice(0, 15).map(g => String(g).slice(0, 20)) : [];
+        const subjects = Array.isArray(data.subjects) ? data.subjects.slice(0, 15).map(s => String(s).slice(0, 20)) : [];
+        const address = String(data.address || '').slice(0, 200).trim();
+        const addressDetail = String(data.addressDetail || '').slice(0, 100).trim();
+        const message = String(data.message || '').slice(0, 1000).trim();
+
+        if (!name || !phone || !grades.length || !subjects.length || !address) {
+          return new Response(JSON.stringify({error: '필수 항목이 누락되었습니다.'}), { status: 400, headers: {'Content-Type': 'application/json'} });
+        }
+
+        const esc = s => String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+        const resendKey = env && env.RESEND_API_KEY;
+        if (!resendKey) {
+          return new Response(JSON.stringify({error: '서버 설정 오류 (API 키 미설정)'}), { status: 500, headers: {'Content-Type': 'application/json'} });
+        }
+        const fromAddr = (env && env.RESEND_FROM) || 'onboarding@resend.dev';
+        const toAddr = (env && env.INQUIRY_TO) || 'nande5059@naver.com';
+        const nowKST = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+
+        const htmlBody = `<div style="font-family:-apple-system,'Noto Sans KR',sans-serif;max-width:640px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
+          <div style="background:linear-gradient(135deg,#064e3b,#10b981);padding:28px 24px;color:#fff;">
+            <h2 style="margin:0;font-size:22px;">🎓 체험 수업 신청 접수</h2>
+            <p style="margin:6px 0 0;opacity:0.9;font-size:13px;">anhani.com</p>
+          </div>
+          <div style="padding:24px;">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;">
+              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;width:110px;border-bottom:1px solid #e2e8f0;">학생 이름</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(name)}</td></tr>
+              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">연락처</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;"><a href="tel:${esc(phone)}" style="color:#0369a1;text-decoration:none;">${esc(phone)}</a></td></tr>
+              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">학년</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(grades.join(', '))}</td></tr>
+              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">희망 과목</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(subjects.join(', '))}</td></tr>
+              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">주소</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(address)}${addressDetail ? ' ' + esc(addressDetail) : ''}</td></tr>
+              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;vertical-align:top;">문의사항</td><td style="padding:12px;white-space:pre-wrap;line-height:1.6;">${esc(message) || '(없음)'}</td></tr>
+            </table>
+            <p style="color:#64748b;font-size:12px;margin:20px 0 0;text-align:right;">📅 접수 시각: ${nowKST}</p>
+          </div>
+        </div>`;
+
+        const resendRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + resendKey, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            from: fromAddr,
+            to: [toAddr],
+            subject: '[anhani.com] 체험 수업 신청 - ' + name,
+            html: htmlBody
+          })
+        });
+
+        if (!resendRes.ok) {
+          const errText = await resendRes.text();
+          console.log('Resend error:', errText);
+          return new Response(JSON.stringify({error: '이메일 발송 실패. 고객센터에 연락 부탁드립니다.'}), { status: 500, headers: {'Content-Type': 'application/json'} });
+        }
+
+        return new Response(JSON.stringify({success: true}), { headers: {'Content-Type': 'application/json'} });
+      } catch (err) {
+        return new Response(JSON.stringify({error: '처리 중 오류가 발생했습니다.'}), { status: 500, headers: {'Content-Type': 'application/json'} });
+      }
+    }
+
     // 버전 확인
     if (pathname === '/version') {
       return new Response('v26-new-logo', { headers: { 'Content-Type': 'text/plain' } });
