@@ -1198,45 +1198,45 @@ function renderHomepage() {
       .consult-left h2 { font-size: 24px; }
     }
 
-    /* ===== 체험 수업 신청 섹션 ===== */
-    .inquiry-section { background: linear-gradient(180deg, #0a3520 0%, #064e3b 100%); padding: 80px 20px; }
+    /* ===== 체험 수업 신청 섹션 (네이비/인디고 테마) ===== */
+    .inquiry-section { background: linear-gradient(180deg, #0c1425 0%, #1e1b4b 100%); padding: 80px 20px; }
     .inquiry-inner { max-width: 780px; margin: 0 auto; }
     .inquiry-title { text-align: center; font-size: clamp(30px, 5vw, 42px); font-weight: 900; color: #fff; margin-bottom: 8px; line-height: 1.15; }
-    .inquiry-title em { display: block; color: #34d399; font-style: normal; margin-top: 4px; }
-    .inquiry-desc { text-align: center; color: #a7f3d0; font-size: 14px; line-height: 1.8; margin-bottom: 32px; }
+    .inquiry-title em { display: block; color: #818cf8; font-style: normal; margin-top: 4px; }
+    .inquiry-desc { text-align: center; color: #c7d2fe; font-size: 14px; line-height: 1.8; margin-bottom: 32px; }
     .inquiry-contact { display: flex; justify-content: center; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
     .inq-phone, .inq-kakao { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform 0.15s; }
     .inq-phone { background: #0f172a; color: #fff; }
-    .inq-phone .ic { color: #10b981; }
+    .inq-phone .ic { color: #818cf8; }
     .inq-kakao { background: #fde047; color: #3b3b3b; }
     .inq-phone:hover, .inq-kakao:hover { transform: translateY(-2px); }
     .inquiry-form { display: flex; flex-direction: column; gap: 18px; }
     .inq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .inq-col label, .inq-full label { display: block; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .inq-col label .req, .inq-full label .req { color: #34d399; }
-    .inq-col label .hint, .inq-full label .hint { color: #6ee7b7; font-size: 12px; font-weight: 500; margin-left: 6px; }
-    .inq-input, .inq-textarea { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 14px 16px; color: #fff; font-size: 14px; font-family: inherit; transition: border-color 0.15s; box-sizing: border-box; }
-    .inq-input::placeholder, .inq-textarea::placeholder { color: #6b7f75; }
-    .inq-input:focus, .inq-textarea:focus { outline: none; border-color: #34d399; }
+    .inq-col label .req, .inq-full label .req { color: #818cf8; }
+    .inq-col label .hint, .inq-full label .hint { color: #a5b4fc; font-size: 12px; font-weight: 500; margin-left: 6px; }
+    .inq-input, .inq-textarea { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(165,180,252,0.2); border-radius: 8px; padding: 14px 16px; color: #fff; font-size: 14px; font-family: inherit; transition: border-color 0.15s; box-sizing: border-box; }
+    .inq-input::placeholder, .inq-textarea::placeholder { color: #7c83a8; }
+    .inq-input:focus, .inq-textarea:focus { outline: none; border-color: #818cf8; box-shadow: 0 0 0 3px rgba(129,140,248,0.15); }
     .inq-textarea { resize: vertical; min-height: 100px; }
     .inq-dropdown { position: relative; }
-    .inq-toggle { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 14px 16px; color: #6b7f75; font-size: 14px; cursor: pointer; text-align: left; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
+    .inq-toggle { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(165,180,252,0.2); border-radius: 8px; padding: 14px 16px; color: #7c83a8; font-size: 14px; cursor: pointer; text-align: left; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
     .inq-toggle.has-value { color: #fff; }
-    .inq-arrow { font-size: 11px; color: #94a3b8; transition: transform 0.2s; margin-left: 8px; }
+    .inq-arrow { font-size: 11px; color: #a5b4fc; transition: transform 0.2s; margin-left: 8px; }
     .inq-dropdown.open .inq-arrow { transform: rotate(180deg); }
-    .inq-menu { position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #064e3b; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 8px; display: none; z-index: 10; max-height: 280px; overflow-y: auto; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .inq-menu { position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #1e1b4b; border: 1px solid rgba(165,180,252,0.25); border-radius: 8px; padding: 8px; display: none; z-index: 10; max-height: 280px; overflow-y: auto; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
     .inq-dropdown.open .inq-menu { display: block; }
     .inq-menu label { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 6px; cursor: pointer; color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 0; }
-    .inq-menu label:hover { background: rgba(255,255,255,0.08); }
-    .inq-menu input[type=checkbox] { accent-color: #10b981; width: 16px; height: 16px; }
+    .inq-menu label:hover { background: rgba(129,140,248,0.12); }
+    .inq-menu input[type=checkbox] { accent-color: #6366f1; width: 16px; height: 16px; }
     .inq-addr-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
-    .inq-addr-btn { padding: 0 20px; background: #10b981; color: #fff; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; transition: background 0.15s; font-family: inherit; }
-    .inq-addr-btn:hover { background: #059669; }
-    .inq-submit { width: 100%; padding: 18px; background: #22c55e; color: #fff; border: none; border-radius: 10px; font-size: 17px; font-weight: 800; cursor: pointer; margin-top: 12px; transition: background 0.15s; font-family: inherit; }
-    .inq-submit:hover { background: #16a34a; }
-    .inq-submit:disabled { background: #475569; cursor: not-allowed; }
+    .inq-addr-btn { padding: 0 20px; background: #6366f1; color: #fff; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; transition: background 0.15s; font-family: inherit; }
+    .inq-addr-btn:hover { background: #4f46e5; }
+    .inq-submit { width: 100%; padding: 18px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; border: none; border-radius: 10px; font-size: 17px; font-weight: 800; cursor: pointer; margin-top: 12px; transition: all 0.15s; font-family: inherit; box-shadow: 0 4px 14px rgba(99,102,241,0.35); }
+    .inq-submit:hover { background: linear-gradient(135deg, #4f46e5, #4338ca); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(99,102,241,0.45); }
+    .inq-submit:disabled { background: #475569; cursor: not-allowed; transform: none; box-shadow: none; }
     .inq-feedback { text-align: center; margin-top: 14px; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; }
-    .inq-feedback.ok { background: rgba(34,197,94,0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+    .inq-feedback.ok { background: rgba(129,140,248,0.15); color: #c7d2fe; border: 1px solid rgba(129,140,248,0.35); }
     .inq-feedback.err { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
     @media (max-width: 640px) {
       .inquiry-section { padding: 56px 16px; }
@@ -5935,7 +5935,7 @@ export default {
         const nowKST = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 
         const htmlBody = `<div style="font-family:-apple-system,'Noto Sans KR',sans-serif;max-width:640px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
-          <div style="background:linear-gradient(135deg,#064e3b,#10b981);padding:28px 24px;color:#fff;">
+          <div style="background:linear-gradient(135deg,#312e81,#6366f1);padding:28px 24px;color:#fff;">
             <h2 style="margin:0;font-size:22px;">🎓 체험 수업 신청 접수</h2>
             <p style="margin:6px 0 0;opacity:0.9;font-size:13px;">anhani.com</p>
           </div>
