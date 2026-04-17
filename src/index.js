@@ -306,6 +306,20 @@ function getEduImage(seed) {
   return EDU_IMAGE_POOL[strHash(String(seed)) % EDU_IMAGE_POOL.length];
 }
 
+// 키워드 아티클 공통 썸네일 (실사 교육 이미지 + 인디고 오버레이, 중앙정렬)
+function renderArticleHero(title, subtitle, seed) {
+  const img = getEduImage(seed || title);
+  const subHTML = subtitle ? `<p style="font-size:clamp(12px,1.5vw,14px);opacity:0.9;text-align:center;margin:6px 0 0;text-shadow:0 2px 8px rgba(0,0,0,0.3);width:100%;">${subtitle}</p>` : '';
+  return `<div style="position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/180;overflow:hidden;background:#0f172a;border-radius:12px;">
+    <img src="${img}" alt="${title}" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,0.82) 0%,rgba(99,102,241,0.55) 100%);"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px 20px;color:#fff;">
+      <h1 style="font-size:clamp(18px,3vw,26px);font-weight:900;text-align:center;text-shadow:0 2px 12px rgba(0,0,0,0.4);line-height:1.3;margin:0;width:100%;">${title}</h1>
+      ${subHTML}
+    </div>
+  </div>`;
+}
+
 function generateThumbnail(location, level, subject) {
   const overlayColors = {
     "국어": "rgba(220,38,38,0.55)", "영어": "rgba(37,99,235,0.55)", "수학": "rgba(22,163,74,0.55)",
@@ -2736,9 +2750,9 @@ function renderGedKeywordArticle(subject, idx, title) {
     @media (max-width: 640px) { .gk-wrap h1 { font-size: 22px; } .gk-related-grid { grid-template-columns: 1fr; } }
   </style></head><body>
   ${navHTML('subject')}
+  ${renderArticleHero(title, '검정고시 완벽 가이드', subject + '-ged-' + idx)}
   <div class="gk-wrap">
     <div class="gk-badge">📝 검정고시 완벽 가이드</div>
-    <h1>${title}</h1>
     <div class="gk-meta"><span>✏️ 과외안하니 편집팀</span> · <span>📅 2026년 4월</span></div>
     <div class="gk-section">
       <h2>한눈에 보는 정보</h2>
@@ -2828,9 +2842,9 @@ function renderSubjectArticle(subject, articleIdx) {
     @media (max-width: 640px) { .sa-wrap h1 { font-size: 22px; } .sa-related-grid { grid-template-columns: 1fr; } }
   </style></head><body>
   ${navHTML('subject')}
+  ${renderArticleHero(title, subject + ' 학습 가이드', subject + '-subj-' + idx)}
   <div class="sa-wrap">
     <div class="sa-badge">${subject} 학습 가이드</div>
-    <h1>${title}</h1>
     <div class="sa-meta"><span>✏️ 과외안하니 편집팀</span> · <span>📅 2026년 4월</span></div>
     <div class="sa-article">
       <p>${opening}</p>
@@ -4586,11 +4600,7 @@ function renderChineseArticle(articleIdx) {
     @media (max-width: 640px) { .ca-hero h1 { font-size: 22px; } .ca-related-grid { grid-template-columns: 1fr; } .ca-sec-head { padding: 14px 16px; } .ca-sec-body { padding: 14px 16px; } }
   </style></head><body>
   ${navHTML('foreign')}
-  <div class="ca-hero">
-    <div class="ca-hero-badge">🇨🇳 CN 중국어 수업</div>
-    <h1>${kw.icon} ${kw.title}</h1>
-    <div class="ca-hero-meta">과외안하니 중국어팀 · 2026년 4월</div>
-  </div>
+  ${renderArticleHero(kw.icon + ' ' + kw.title, '🇨🇳 CN 중국어 1:1 맞춤 수업', '중국어-' + idx)}
   <div class="ca-wrap">
     <div class="ca-intro"><p>${intro}</p></div>
     <div class="ca-sections">
@@ -4722,11 +4732,7 @@ function renderJapaneseArticle(articleIdx) {
     @media (max-width: 640px) { .ca-hero h1 { font-size: 22px; } .ca-related-grid { grid-template-columns: 1fr; } }
   </style></head><body>
   ${navHTML('foreign')}
-  <div class="ca-hero">
-    <div class="ca-hero-badge">🇯🇵 JP 일본어 수업</div>
-    <h1>${kw.icon} ${kw.title}</h1>
-    <div class="ca-hero-meta">과외안하니 일본어팀 · 2026년 4월</div>
-  </div>
+  ${renderArticleHero(kw.icon + ' ' + kw.title, '🇯🇵 JP 일본어 1:1 맞춤 수업', '일본어-' + idx)}
   <div class="ca-wrap">
     <div class="ca-intro"><p>${intro}</p></div>
     <div class="ca-sections">
@@ -4856,11 +4862,7 @@ function renderEnglishArticle(articleIdx) {
     @media(max-width:640px){.ca-hero h1{font-size:22px}.ca-related-grid{grid-template-columns:1fr}}
   </style></head><body>
   ${navHTML('foreign')}
-  <div class="ca-hero">
-    <div class="ca-hero-badge">🇺🇸 EN 영어 회화 수업</div>
-    <h1>${kw.icon} ${kw.title}</h1>
-    <div class="ca-hero-meta">과외안하니 영어팀 · 2026년 4월</div>
-  </div>
+  ${renderArticleHero(kw.icon + ' ' + kw.title, '🇺🇸 EN 영어 회화 1:1 맞춤 수업', '영어-' + idx)}
   <div class="ca-wrap">
     <div class="ca-intro"><p>${intro}</p></div>
     <div class="ca-sections">
