@@ -5965,8 +5965,27 @@ export default {
 
         if (!resendRes.ok) {
           const errText = await resendRes.text();
-          console.log('Resend error:', errText);
-          return new Response(JSON.stringify({error: '이메일 발송 실패. 고객센터에 연락 부탁드립니다.'}), { status: 500, headers: {'Content-Type': 'application/json'} });
+          console.log('[Resend Error]', resendRes.status, errText);
+          let userMsg = '이메일 발송 실패';
+          let detail = errText;
+          try {
+            const j = JSON.parse(errText);
+            const errName = j.name || '';
+            const errMessage = j.message || j.error || errText;
+            detail = errMessage;
+            if (errName === 'validation_error' && /testing emails/i.test(errMessage)) {
+              userMsg = 'Resend 무료 플랜: 가입한 본인 이메일로만 수신 가능. 도메인 인증 필요';
+            } else if (/domain/i.test(errMessage) && /verif/i.test(errMessage)) {
+              userMsg = '발송 도메인 미인증. Resend에서 도메인 인증 필요';
+            } else if (errName === 'invalid_api_key' || resendRes.status === 401) {
+              userMsg = 'RESEND_API_KEY가 잘못되었습니다';
+            } else if (resendRes.status === 403) {
+              userMsg = 'Resend API 키 권한 부족 (Sending access 필요)';
+            } else {
+              userMsg = '이메일 발송 실패: ' + errMessage;
+            }
+          } catch(e) {}
+          return new Response(JSON.stringify({error: userMsg, detail: detail, status: resendRes.status}), { status: 500, headers: {'Content-Type': 'application/json'} });
         }
 
         return new Response(JSON.stringify({success: true}), { headers: {'Content-Type': 'application/json'} });
