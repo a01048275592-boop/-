@@ -4539,7 +4539,7 @@ function renderGuideArticle(idx) {
   <meta property="og:image" content="${heroImg}">
   <style>${commonStyles()}
     .ga-wrap { max-width: 768px; margin: 0 auto; padding: 0 20px 80px; }
-    .ga-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/350; overflow: hidden; background: #0f172a; margin-bottom: 28px; }
+    .ga-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/250; overflow: hidden; background: #0f172a; margin-bottom: 28px; }
     .ga-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .ga-hero-ov { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(99,102,241,0.55) 100%); }
     .ga-hero-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; color: #fff; }
@@ -5434,7 +5434,7 @@ export default {
     
     // 버전 확인
     if (pathname === '/version') {
-      return new Response('v26-guide-small-center', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v26-guide-compact', { headers: { 'Content-Type': 'text/plain' } });
     }
     
     // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
