@@ -4795,12 +4795,12 @@ function renderGuideArticle(idx) {
   <meta property="og:image" content="${heroImg}">
   <style>${commonStyles()}
     .ga-wrap { max-width: 768px; margin: 0 auto; padding: 0 20px 80px; }
-    .ga-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/250; overflow: hidden; background: #0f172a; margin-bottom: 28px; }
+    .ga-hero-wrap { position: relative; width: calc(100% - 40px); max-width: 728px; margin: 20px auto 24px; aspect-ratio: 1200/180; overflow: hidden; background: #0f172a; border-radius: 12px; }
     .ga-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .ga-hero-ov { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(99,102,241,0.55) 100%); }
-    .ga-hero-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 24px; color: #fff; }
-    .ga-hero-text h1 { font-size: clamp(22px, 4.5vw, 36px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); line-height: 1.3; }
-    .ga-hero-text p { font-size: clamp(13px, 1.8vw, 16px); opacity: 0.9; margin-top: 10px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .ga-hero-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 18px 20px; color: #fff; }
+    .ga-hero-text h1 { font-size: clamp(18px, 3vw, 26px); font-weight: 900; text-align: center; text-shadow: 0 2px 12px rgba(0,0,0,0.4); line-height: 1.3; margin: 0; width: 100%; }
+    .ga-hero-text p { font-size: clamp(12px, 1.5vw, 14px); opacity: 0.9; text-align: center; margin: 6px 0 0; text-shadow: 0 2px 8px rgba(0,0,0,0.3); width: 100%; }
     .ga-bc { font-size: 13px; color: #94a3b8; margin-bottom: 20px; padding-top: 20px; }
     .ga-bc a { color: #6366f1; text-decoration: none; }
     .ga-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 12px; }
