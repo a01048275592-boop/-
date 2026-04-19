@@ -1344,6 +1344,7 @@ function renderRegionDetail(region) {
 }
 
 // --- 시/군/구 상세 (동/읍/면 목록) ---
+function dcCSS(){return `.dc-bc{max-width:860px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.dc-bc a{color:#6366f1;text-decoration:none}.dc-wrap{max-width:860px;margin:0 auto;padding:20px 24px 60px}.dc-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:16px;padding:24px;margin-bottom:24px}.dc-box-t{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:900;color:#0f172a;margin-bottom:6px;padding-left:12px;border-left:4px solid #6366f1}.dc-head h1{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:10px}.dc-tabs{display:flex;gap:14px;font-size:13px;color:#64748b;margin-bottom:16px}.dc-tabs span:first-child{color:#4338ca;font-weight:700}') center/cover;border-radius:12px;margin-bottom:16px}.dc-info{background:#fff;border-radius:10px;padding:14px 18px}.dc-info-row{display:flex;gap:12px;padding:6px 0;font-size:13px}.dc-info-row strong{min-width:54px;color:#475569;font-weight:700}.dc-info-row span{color:#0f172a}.dc-xgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dc-xc{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;color:#0f172a;transition:.15s;--c:#6366f1}.dc-xc:hover{border-color:var(--c);background:#f8fafc}.dc-xc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}.dc-xc-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dc-xc-a{color:#94a3b8;font-size:14px}.dc-tagbox{display:flex;flex-wrap:wrap;gap:6px}.dc-tag{font-size:12px;padding:5px 12px;background:#fff;border:1px solid #e2e8f0;color:#475569;border-radius:14px}.dc-cta{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;text-align:center;padding:28px 24px;border-radius:14px;margin-top:24px}.dc-cta h3{font-size:19px;font-weight:900;margin-bottom:6px}.dc-cta p{font-size:13px;color:#c7d2fe;margin-bottom:14px}.dc-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.dc-cta-btn{padding:11px 22px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}.dc-cp{background:#fff;color:#312e81}.dc-cf{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}@media(max-width:640px){.dc-xgrid{grid-template-columns:1fr}.dc-head h1{font-size:18px}.dc-img{height:140px}}`;}
 function renderSigunguDetail(sido, sigungu) {
   const dongs = DONG_DATA[sigungu] || [];
   const eups = EUP_MYEON[sigungu] || [];
@@ -1351,21 +1352,35 @@ function renderSigunguDetail(sido, sigungu) {
   if (all.length === 0) return null;
   const SUBS = ['국어','영어','수학','사회','과학','논술','검정고시'];
   const LVLS = ['초등','중등','고등'];
-  const sc = {'국어':'#ef4444','영어':'#3b82f6','수학':'#22c55e','사회':'#f59e0b','과학':'#a855f7','논술':'#6366f1','검정고시':'#f97316'};
-  const lc = {'초등':'#22c55e','중등':'#3b82f6','고등':'#ef4444'};
   const e = encodeURIComponent;
   const bp = `/지역별/${e(sido)}/${e(sigungu)}`;
+  const kw = `${sigungu} 과외`;
+  const heroImg = getEduImage(kw);
+  const tags = [kw,`${sigungu} 초등과외`,`${sigungu} 중등과외`,`${sigungu} 고등과외`,`${sigungu} 수학과외`,`${sigungu} 영어과외`,`${sigungu} 국어과외`,`${sido} ${sigungu}`,`${sigungu} 1:1 과외`,`${sigungu} 과외 추천`];
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(sigungu + ' 과외 추천 - 동/학년/과목별 가이드 | 안하니', sido + ' ' + sigungu + ' 과외 · ' + all.length + '개 동/읍/면 · 초중고 전 과목 맞춤 과외 안내', 'https://anhani.com' + bp)}
-  <style>${commonStyles()}.sg-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#312e81 100%);color:#fff;padding:48px 24px;text-align:center}.sg-hero h1{font-size:30px;font-weight:900;margin-bottom:8px}.sg-hero h1 em{font-style:normal;color:#818cf8}.sg-hero p{font-size:15px;color:#94a3b8}.sg-bc{max-width:1000px;margin:0 auto;padding:16px 24px;font-size:13px;color:#94a3b8}.sg-bc a{color:#6366f1;text-decoration:none}.sg-wrap{max-width:1000px;margin:0 auto;padding:20px 24px 80px}.sg-section{margin-bottom:40px}.sg-stitle{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:6px;display:flex;align-items:center;gap:10px}.sg-stitle::before{content:'';width:4px;height:22px;background:#6366f1;border-radius:2px}.sg-sdesc{font-size:13px;color:#64748b;margin-bottom:16px;padding-left:14px}.sg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}.sg-kwgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}.sg-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:12px 10px;text-align:center;text-decoration:none;color:#0f172a;font-size:14px;font-weight:700;transition:all .15s}.sg-card:hover{border-color:#6366f1;background:#eef2ff;color:#4338ca;transform:translateY(-1px);box-shadow:0 2px 6px rgba(99,102,241,.12)}.sg-kwc{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;text-decoration:none;font-size:13px;font-weight:600;color:#0f172a;transition:all .15s}.sg-kwc:hover{border-color:var(--c);background:var(--b);color:var(--c)}.sg-kwc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}.sg-kwc-t{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media(max-width:640px){.sg-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px}.sg-kwgrid{grid-template-columns:1fr 1fr;gap:6px}.sg-card{padding:10px 6px;font-size:13px}.sg-kwc{font-size:12px;padding:7px 10px}}</style></head><body>
+  <style>${commonStyles()}${dcCSS()}.dc-img{width:100%;height:180px;background:url('${heroImg}.dc-box-d{font-size:13px;color:#475569;margin:4px 0 14px 12px}</style></head><body>
   ${navHTML('region')}
-  <div class="sg-hero"><h1>${sigungu} <em>과외 추천</em></h1><p>${sido} ${sigungu} · 동/학년/과목별 맞춤 가이드</p></div>
-  <div class="sg-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; ${sido} &gt; ${sigungu}</div>
-  <div class="sg-wrap">
-    <section class="sg-section"><h2 class="sg-stitle">${sigungu} 과외 추천</h2><p class="sg-sdesc">${all.length}개 동/읍/면 지역별 과외 가이드</p><div class="sg-grid">${all.map(d=>`<a href="${bp}/${e(d)}" class="sg-card">${d}</a>`).join('')}</div></section>
-    <section class="sg-section"><h2 class="sg-stitle">동·과목별 과외</h2><p class="sg-sdesc">동 × 7개 과목 조합 맞춤 안내</p><div class="sg-kwgrid">${all.flatMap(d=>SUBS.map(s=>`<a href="${bp}/${e(d)}/과목/${e(s)}" class="sg-kwc" style="--c:${sc[s]};--b:${sc[s]}15"><span class="sg-kwc-dot"></span><span class="sg-kwc-t">${d} ${s}과외</span></a>`)).join('')}</div></section>
-    <section class="sg-section"><h2 class="sg-stitle">동·학년별 과외</h2><p class="sg-sdesc">동 × 초·중·고 학년별 맞춤 안내</p><div class="sg-kwgrid">${all.flatMap(d=>LVLS.map(l=>`<a href="${bp}/${e(d)}/학년/${e(l)}" class="sg-kwc" style="--c:${lc[l]};--b:${lc[l]}15"><span class="sg-kwc-dot"></span><span class="sg-kwc-t">${d} ${l}과외</span></a>`)).join('')}</div></section>
-    <section class="sg-section"><h2 class="sg-stitle">동·학년+과목별 과외</h2><p class="sg-sdesc">동 × 학년 × 과목 조합 세부 안내</p><div class="sg-kwgrid">${all.flatMap(d=>LVLS.flatMap(l=>SUBS.map(s=>`<a href="${bp}/${e(d)}/${e(l)}/${e(s)}" class="sg-kwc" style="--c:${sc[s]};--b:${sc[s]}15"><span class="sg-kwc-dot"></span><span class="sg-kwc-t">${d} ${l} ${s}과외</span></a>`))).join('')}</div></section>
+  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${sido} &gt; ${sigungu}</div>
+  <div class="dc-wrap">
+    <div class="dc-box">
+      <div class="dc-head"><h1>${sigungu} 과외, ${sigungu} 우리 동네 학습 코칭 전문가</h1>
+        <div class="dc-tabs"><span>${sigungu}</span><span>${sido}</span><span>전 지역·전 과목</span><span>스마일레슨</span></div>
+      </div>
+      <div class="dc-img"></div>
+      <div class="dc-info">
+        <div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu}</span></div>
+        <div class="dc-info-row"><strong>대상</strong><span>초·중·고등학생 전학년</span></div>
+        <div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술·검정고시</span></div>
+        <div class="dc-info-row"><strong>체험</strong><span>무료 체험 수업 가능</span></div>
+      </div>
+    </div>
+    <div class="dc-box"><div class="dc-box-t">📍 ${sigungu} 동네 선택</div><p class="dc-box-d">원하는 동네를 클릭하시면 해당 동네의 세부 키워드(학년별·과목별·학년+과목별 과외)를 확인하실 수 있습니다.</p><div class="dc-xgrid">${all.map(d=>`<a href="${bp}/${e(d)}" class="dc-xc"><span class="dc-xc-dot"></span><span class="dc-xc-t">${d}</span><span class="dc-xc-a">→</span></a>`).join('')}</div></div>
+    <div class="dc-box"><div class="dc-box-t">${sigungu} 동·과목별 과외</div><p class="dc-box-d">동 × 7개 과목 조합 맞춤 안내</p><div class="dc-xgrid">${all.flatMap(d=>SUBS.map(s=>`<a href="${bp}/${e(d)}/과목/${e(s)}" class="dc-xc"><span class="dc-xc-dot"></span><span class="dc-xc-t">${d} ${s}과외</span><span class="dc-xc-a">→</span></a>`)).join('')}</div></div>
+    <div class="dc-box"><div class="dc-box-t">${sigungu} 동·학년별 과외</div><p class="dc-box-d">동 × 초·중·고 학년별 맞춤 안내</p><div class="dc-xgrid">${all.flatMap(d=>LVLS.map(l=>`<a href="${bp}/${e(d)}/학년/${e(l)}" class="dc-xc"><span class="dc-xc-dot"></span><span class="dc-xc-t">${d} ${l}과외</span><span class="dc-xc-a">→</span></a>`)).join('')}</div></div>
+    <div class="dc-box"><div class="dc-box-t">${sigungu} 동·학년+과목별 과외</div><p class="dc-box-d">동 × 학년 × 과목 조합 세부 안내</p><div class="dc-xgrid">${all.flatMap(d=>LVLS.flatMap(l=>SUBS.map(s=>`<a href="${bp}/${e(d)}/${e(l)}/${e(s)}" class="dc-xc"><span class="dc-xc-dot"></span><span class="dc-xc-t">${d} ${l} ${s}과외</span><span class="dc-xc-a">→</span></a>`))).join('')}</div></div>
+    <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${sigungu} 과외 · 검증된 선생님 빠른 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="https://naver.me/GYD2Ki40" target="_blank" class="dc-cta-btn dc-cf">무료 상담 신청 →</a></div></div>
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -1394,12 +1409,11 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     tags = [kw,`${sigungu} ${subj}과외`,`${sido} ${subj}과외`,`${dong} 과외 추천`,`${dong} 초등 ${subj}`,`${dong} 중등 ${subj}`,`${dong} 고등 ${subj}`,`${subj} 1:1 과외`,`${subj}과외 비용`,`${dong} 과외 후기`];
     intro = [`${sido} ${sigungu} ${dong}에서 ${subj}과외를 알아보고 계신가요? ${dong}에서도 ${subj}은 학년이 올라갈수록 격차가 벌어지는 과목이에요. ${core}이 핵심인데 학원 단체 수업으로는 개별 공백 잡기가 어렵습니다. ${dong} 지역 경험을 바탕으로 정리해드릴게요.`,`${subj}은 누적이 실력을 만드는 과목이에요. '맞는 선생님' 찾기가 쉽지 않습니다. 지문 한 줄 반응, ${dong} 학교 출제 경향을 아는지부터 확인하세요.`];
     sections = [
-      [`${kw}의 핵심 - ${core}`,`${subj}에서 가장 중요한 건 ${core}예요. 개념이 머릿속에서 서로 연결되는 구조를 만드는 게 진짜 관건입니다. 단순히 문제를 많이 푸는 것만으로는 부족해요. ${dong} ${subj}과외는 첫 수업에서 정확한 진단을 통해 현재 수준을 파악한 뒤, 부족한 영역부터 단계별로 촘촘하게 채워갑니다. ${core}이 탄탄하게 잡히면 시험 범위가 바뀌거나 출제 유형이 달라져도 흔들리지 않는 진짜 실력이 만들어져요. 특히 ${dong} 학부모님들은 이 부분을 가장 중요하게 보세요.`],
+      [`${kw}의 핵심 - ${core}`,`${subj}에서 가장 중요한 건 ${core}예요. 개념이 머릿속에서 서로 연결되는 구조를 만드는 게 관건입니다. ${dong} ${subj}과외는 첫 수업 정확한 진단 후 부족한 영역부터 단계별로 채워가요. ${core}이 탄탄하면 시험 범위가 바뀌어도 흔들리지 않는 실력이 됩니다.`],
       [`${dong} ${subj} 선생님 고를 때 3가지`,`첫째 ${dong} 인근 학교 ${subj} 시험 유형 파악 여부, 둘째 학생이 질문할 편한 분위기, 셋째 주간 리포트 피드백 제공. 이 세 가지만 체크해도 실패 확률이 크게 줄어요.`],
-      [`${subj}과외 비용 (${dong} 기준)`,`${dong} ${subj}과외비는 학년·선생님 경력에 따라 편차가 큽니다. 초등은 시간당 2만5천~4만원, 중등은 3만~5만원, 고등은 4만~7만원 선이에요. 대학생 과외는 2만원대부터 가능하지만, 경력 있는 전문 강사는 8만~10만원대까지 형성됩니다. 중요한 건 비용 숫자만 보고 결정하지 마시고, 꼭 체험 수업 후 아이 반응을 기준으로 판단하세요. 최근엔 ${sigungu} 지역에서 온라인 과외도 활성화되어 선택지가 한결 넓어졌습니다.`],
+      [`${subj}과외 비용 (${dong} 기준)`,`${dong} ${subj}과외비는 초등 시간당 2만5천~4만원, 중등 3만~5만원, 고등 4만~7만원 선이에요. 대학생은 2만원대, 전문 강사는 8만~10만원까지. 비용보다 체험 수업 후 결정하세요. ${sigungu}에서는 온라인 선택지도 넓어졌습니다.`],
       [`${dong} ${subj} 학습 루틴`,`${routine}. 이 루틴을 꾸준히 지키면 한 학기 만에 변화가 나타나요. ${subj}은 장기 누적이 효과적이고, 매일 30분 복습이 주 1회 3시간보다 효과적입니다.`],
-      [`${sigungu} ${dong} 내신 대비 전략`,`시험 4주 전 모드 전환: 1주차 범위 개념, 2주차 기출 분석, 3주차 약점 집중, 4주차 실전+오답. ${dong} 학교별 스타일 달라 3년치 기출 분석 선생님이 빠른 길입니다. 서술형 확대 경향도 반영해야 해요.`],
-      [`${subj}과외 효과 시점`,`${dong}에서 ${subj}과외를 시작하면 첫 1~2개월은 기초 공백을 메우는 기간이에요. 눈에 띄는 성적 향상은 보통 3~4개월차부터 나타납니다. 6개월 이상 꾸준히 이어가면 학습 습관 자체가 근본적으로 바뀌어요. 조급해하지 말고 최소 한 학기는 꾸준히 지켜보시길 권해드립니다. 과외는 빠른 효과를 내는 '약'이 아니라 꾸준한 반복으로 체질을 바꾸는 '운동'처럼 접근하셔야 가장 큰 효과를 볼 수 있어요. ${dong} 학부모님들도 한결같이 이 점을 강조하세요.`],
+      [`${sigungu} ${dong} 내신 대비와 효과 시점`,`시험 4주 전 모드 전환: 1주차 범위 개념, 2주차 기출 분석, 3주차 약점 집중, 4주차 실전+오답. ${dong} 학교별 스타일 달라 3년치 기출 분석 선생님이 빠른 길입니다. 효과는 첫 1~2개월 공백 메우기, 3~4개월 성적 향상, 6개월 이상 학습 습관 정착 순으로 나타나요. 최소 한 학기는 지켜보세요.`],
     ];
     review1 = `"${dong}에서 중2 ${subj}과외 4개월, 내신 70→90점대로 올랐어요! 우리 학교 ${subj} 시험 유형을 정확히 아시더라고요." - ${sigungu} ${dong} 중2 학부모`;
     review2 = `"고1 ${subj} 막막했는데 ${dong} 과외 선생님 덕분에 ${core}부터 다시 잡았어요. 모의고사도 오르고 공부 방법을 알게 됐습니다." - ${sigungu} ${dong} 고1 학생`;
@@ -1417,12 +1431,11 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     tags = [kw,`${sigungu} ${lvl}과외`,`${sido} ${lvl}과외`,`${dong} 과외 추천`,`${dong} ${lvl} 수학`,`${dong} ${lvl} 영어`,`${dong} ${lvl} 국어`,`${lvl}과외 비용`,`1:1 ${lvl}과외`,`${dong} 과외 후기`];
     intro = [`${sido} ${sigungu} ${dong}에서 ${lvl}학생 과외를 알아보시나요? ${lvl} 시기의 핵심 과제는 ${lcore}이에요. 이 시기에 잘못된 습관이 잡히면 회복이 어렵습니다. ${dong} 지역 경험으로 정리했어요.`,`${lvl}과외 핵심은 '${lf}'예요. 학원은 선택지는 많지만 개별 특성이 무시되기 쉽습니다. 1:1 과외는 아이 페이스에 맞춰 ${lcore}을 점검할 수 있어요. 수업은 ${lt} 진행이 표준입니다.`];
     sections = [
-      [`${lvl} 시기의 핵심 - ${lcore}`,`${lvl} 시기에 가장 중요하게 잡아야 할 건 ${lcore}이에요. 이 시기에 잘못된 학습 습관이 잡히면 이후 학년에서 회복하기가 정말 어렵습니다. ${dong} ${lvl}과외는 첫 수업에서 학생의 현재 상태를 정밀하게 진단한 뒤, 부족한 부분을 우선순위별로 체계적으로 채워나갑니다. 핵심은 ${lf}이라는 점이에요. 아이가 '공부가 재미있다'고 느끼는 순간부터 진짜 성장이 시작됩니다. 억지로 시키면 오히려 역효과가 나는 시기이기 때문에, 선생님의 태도와 접근 방식이 특히 중요해요.`],
+      [`${lvl} 시기의 핵심 - ${lcore}`,`${lvl} 시기에 꼭 잡아야 할 건 ${lcore}이에요. 이 시기 잘못된 습관이 잡히면 회복이 어렵습니다. ${dong} ${lvl}과외는 첫 수업 정밀 진단 후 부족한 부분을 우선순위별로 채워요. ${lf}입니다. 선생님의 태도와 접근 방식이 특히 중요합니다.`],
       [`${dong} ${lvl}과외 수업 루틴`,`${dong} ${lvl}과외는 ${lt} 진행이 보통이에요. 수업 후 당일 복습 시간을 선생님이 가이드합니다. ${lvl}은 '배우는 만큼 복습하는 시간'이 중요해요. 선생님은 자기 학습 습관까지 함께 잡아주는 역할입니다.`],
       [`${dong} ${lvl} 선생님 3대 체크`,`첫째, ${lvl} 지도 경력 2년 이상인지. 둘째, 아이와의 궁합. ${lvl}은 감정 기복이 커 라포 형성이 학습 효과를 좌우해요. 셋째, 학부모와 주간 리포트로 정기 소통하는지. 이 세 가지를 체험 수업에서 확인하세요.`],
-      [`${lvl}과외 비용 (${dong} 기준)`,`${dong} ${lvl}과외비는 과목과 선생님 경력에 따라 폭이 있습니다. 기본적으로 시간당 ${lp1}, ${lp2} 선이 표준이에요. 단순히 비용이 낮다고 선택하기보다는, 꼭 체험 수업 후 아이의 반응과 이해도 변화를 기준으로 판단하세요. 실제로 검증된 실력 있는 선생님 한 분이 1년 학습 방향을 송두리째 바꿀 수 있습니다. ${dong} 학부모님들도 장기적으로 보면 비용보다 선생님의 역량과 궁합이 훨씬 중요했다고 한결같이 말씀하세요.`],
-      [`${lvl} 과외 vs 학원`,`${dong}엔 학원도 많지만 ${lvl}에게는 1:1 과외가 강점이에요. ${lvl==='초등'?'페이스 조절 가능':lvl==='중등'?'개별 커리큘럼 효율적':'개인 플랜 단기 성과 유리'}합니다. 체험 후 결정하세요.`],
-      [`${dong} ${lvl}과외 효과 극대화`,`과외만 받는다고 성적이 크게 오르는 건 아니에요. ${lvl} 시기는 특히 가정의 학습 환경이 중요합니다. 과외 시간 외 매일 30분~1시간은 자기 학습 시간으로 확보하고, 규칙적인 수면 시간 유지, 스마트폰 사용 관리까지 함께 가야 해요. ${dong}에서 과외 효과를 크게 본 학부모님들 중에는 선생님과 주 1회 이상 소통하며 아이 상태와 학습 진행 상황을 공유한 공통점이 있었습니다. 가정과 선생님이 한 팀이 되면 효과가 배가되는 것을 경험하게 되실 거예요.`],
+      [`${lvl}과외 비용 (${dong} 기준)`,`${dong} ${lvl}과외비는 시간당 ${lp1}, ${lp2} 선이에요. 비용보다 체험 후 아이 반응으로 판단하세요. 검증된 선생님 한 분이 1년 학습 방향을 바꿉니다.`],
+      [`${lvl} 과외 vs 학원과 효과 극대화`,`${dong}엔 학원도 많지만 ${lvl}에게는 1:1 과외가 강점이에요. ${lvl==='초등'?'페이스 조절 가능':lvl==='중등'?'개별 커리큘럼 효율적':'개인 플랜 단기 성과 유리'}합니다. 체험 후 결정하세요. 과외만으로는 부족하니 매일 30분~1시간 자기 학습, 규칙적 수면, 스마트폰 관리가 병행되어야 합니다. 선생님과 주 1회 이상 소통한 분들이 효과를 크게 봤어요.`],
     ];
     review1 = `"${dong}에서 ${lvl==='초등'?'초4':lvl==='중등'?'중1':'고1'} 아이 과외 시작 3개월째예요. 선생님이 ${lcore}부터 천천히 잡아주셔서 공부에 자신감이 생겼어요. ${lvl} 시기는 타이밍이 정말 중요한 것 같습니다." - ${sigungu} ${dong} ${lvl} 학부모`;
     review2 = `"${dong} ${lvl}과외 매주 리포트 받아요. 아이 상태를 정확히 알 수 있고, 페이스 맞춰주시니 거부감이 없어요." - ${sigungu} ${dong} ${lvl} 학부모`;
@@ -1442,12 +1455,11 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     tags = [kw,`${dong} ${subj}과외`,`${dong} ${lvl}과외`,`${sigungu} ${lvl} ${subj}`,`${sido} ${lvl} ${subj}`,`${lvl} ${subj} 1:1`,`${lvl} ${subj} 내신`,`${subj}과외 비용`,`${dong} 과외 추천`,`${dong} 과외 후기`];
     intro = [`${sido} ${sigungu} ${dong}에서 ${lvl} ${subj}과외를 찾으시나요? ${lvl} 시기 ${subj}은 정말 중요해요. ${lcore}이 과제이고, ${subj}은 ${core} 역량이 집중 요구됩니다. ${dong} 학부모 상담 인사이트를 공유해요.`,`${lvl} ${subj}은 꾸준한 누적이 효과를 만듭니다. ${dong}처럼 교육열 높은 지역에서는 1:1 과외가 더 빠른 성과를 내는 경우가 많아요. ${lvl==='초등'?'초등은 흥미 유지가 최우선':lvl==='중등'?'중등은 내신과 고등 준비 병행 시기':'고등은 전략적 접근 필수 시기'}. 과외는 ${lt} 진행이 표준입니다.`];
     sections = [
-      [`${lvl} ${subj}의 핵심 - ${core}`,`${lvl} 시기 ${subj}에서 가장 중요한 건 ${core}이에요. 이 시기에 기초가 탄탄하게 잡히지 않으면 학년이 올라갈수록 따라가기가 점점 힘들어져요. ${dong} ${lvl} ${subj}과외는 첫 수업에서 정밀 진단을 통해 현재 ${core} 수준을 정확히 파악한 뒤, 부족한 부분부터 우선순위별로 집중 보완합니다. ${lvl} 시기 ${subj}은 나중에 다시 잡으려면 몇 배의 시간이 필요하니 지금이 가장 빠른 때예요.`],
+      [`${lvl} ${subj}의 핵심 - ${core}`,`${lvl} 시기 ${subj}에서 중요한 건 ${core}이에요. 기초가 안 잡히면 학년 올라갈수록 따라가기 힘듭니다. ${dong} ${lvl} ${subj}과외는 첫 수업 정밀 진단 후 ${core} 수준을 파악해 부족한 부분부터 집중 보완해요.`],
       [`${dong} ${lvl} ${subj} 체크포인트`,`첫째, ${dong} 인근 ${lvl==='초등'?'초등학교':lvl==='중등'?'중학교':'고등학교'} ${subj} 평가 패턴을 파악했는지. 둘째, ${core} 진단이 첫 수업에 있는지. 셋째, ${lvl} 특성(${lvl==='초등'?'집중력·흥미':lvl==='중등'?'사춘기 기복':'입시 멘탈'})을 이해하는지. 체험 수업에서 확인하세요.`],
       [`${lvl} ${subj}과외 비용 (${dong})`,`${dong} ${lvl} ${subj}과외는 ${lvl==='초등'?'시간당 2만5천~4만원, 주2회 월20~30만원':lvl==='중등'?'시간당 3만~5만원, 주2회 월25~40만원':'시간당 4만~7만원, 수능 대비 전문은 8만~10만원대'} 선입니다. ${subj==='수학'||subj==='과학'?'계산·개념 이해가 중요해 주2회 이상':subj==='영어'?'어휘 누적이 중요해 주2~3회':subj==='국어'||subj==='논술'?'독해·쓰기 훈련에 시간이 필요':'시험 일정 역산 집중 커리큘럼'} 권장합니다.`],
       [`${lvl} ${subj} 학습 루틴`,`${routine}을 ${lt} 스케줄로 돌려요. ${lvl==='초등'?'초등은 짧고 자주, 무리 없이':lvl==='중등'?'중등은 내신 주기에 맞춰 강약 조절':'고등은 모의고사 피드백 즉시 반영'}이 핵심이에요. ${dong} 선생님들은 학생별로 맞춤 조정합니다.`],
-      [`${sigungu} ${dong} 내신 전략`,`${lvl} ${subj}은 학교 평가 유형이 가장 중요해요. ${dong} 인근 학교 3년치 기출 분석 선생님이 가장 빠른 길입니다. ${lvl==='초등'?'초등은 수행평가·단원평가':lvl==='중등'?'중등은 중간·기말 서술형':'고등은 내신·모의·수능'}이 유형이고 각각 접근이 달라요. 시험 4주 전 범위→유형→실전 순으로 전환합니다.`],
-      [`효과 시점과 기대치`,`${lvl} ${subj}과외는 보통 1~2개월 기초 공백 메우기 → 3~4개월 눈에 띄는 성적 향상 → 6개월 이상 학습 습관 정착 순서로 효과가 나타나요. ${dong} 학부모님들 후기에서 가장 많이 나온 말이 '조급해하지 않고 한 학기는 지켜봤더니 아이가 정말 달라졌다'는 이야기였습니다. ${subj}은 누적이 실력을 만드는 과목이에요. 단기 몰아치기보다 장기 꾸준함이 훨씬 효과적이고, 이 꾸준함을 지원하는 게 바로 1:1 과외의 역할입니다.`],
+      [`${sigungu} ${dong} 내신 전략과 효과 시점`,`${lvl} ${subj}은 학교 평가 유형이 가장 중요해요. ${dong} 인근 학교 3년치 기출 분석 선생님이 빠른 길. ${lvl==='초등'?'수행평가·단원평가':lvl==='중등'?'중간·기말 서술형':'내신·모의·수능'} 각 유형별 접근이 다릅니다. 4주 전 범위→유형→실전 순 전환. 효과는 1~2개월 공백 메우기 → 3~4개월 성적 향상 → 6개월 이상 습관 정착 순이에요. 한 학기는 꾸준히 지켜보세요.`],
     ];
     review1 = `"${dong}에서 ${lvl==='초등'?'초5':lvl==='중등'?'중2':'고2'} ${subj}과외 받은 지 4개월 됐어요. 선생님이 ${core}부터 차근차근 잡아주셔서 ${subj} 점수가 눈에 띄게 올랐습니다. ${lvl} 시기 과외 시작하길 정말 잘했어요!" - ${sigungu} ${dong} ${lvl} 학부모`;
     review2 = `"${lvl} ${subj} 막막했는데 ${dong} 과외 덕분에 방향을 잡았어요. ${core} 위주 수업에 우리 학교 기출까지 챙겨주세요." - ${sigungu} ${dong} ${lvl} 학생`;
@@ -1457,18 +1469,51 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
   }
   // 공통 추가 섹션 (모든 타입에 부록으로 추가)
   sections.push(
-    [`${dong}에서 과외 vs 학원 어떻게 선택할까`,`${dong}은 학원 선택지가 많은 지역이지만, 모든 아이에게 학원이 답인 건 아닙니다. 아이가 수업 중 질문을 잘 못하는 성격이거나, 특정 단원에서 유독 막히는 경우, 혹은 학원 진도를 따라가지 못해 자신감을 잃고 있다면 1:1 과외가 훨씬 효과적이에요. ${dong} 학부모님들 중에는 학원 2~3곳을 바꿔도 성적이 정체되다가 과외로 전환 후 뚜렷한 변화를 본 사례가 많습니다. 반대로 경쟁 심리가 학습 동기가 되는 아이, 자기주도 학습 습관이 잡힌 아이는 학원이 더 맞을 수도 있어요. 우리 아이 성향을 정확히 파악한 뒤 선택하는 게 핵심입니다.`],
-    [`${kw} 시작 전 꼭 확인할 5가지`,`과외를 시작하기 전 다섯 가지를 꼭 체크하세요. 첫째, 수업 횟수와 1회당 시간을 미리 정하고 문서화합니다. 둘째, 과외비 결제 방식(월납·회차·선납)과 환불 규정을 명확히 합의합니다. 셋째, 시험 기간 추가 수업 가능 여부를 사전에 확인합니다. 넷째, 교재비 포함 여부와 추가 교재 구입 기준을 정합니다. 다섯째, 수업 취소·변경 시 최소 통보 시간을 합의합니다. ${dong} 지역 대다수 검증된 선생님들은 이런 부분을 투명하게 안내해 주시지만, 스스로 먼저 묻는 학부모님이 나중에 갈등 없이 오래 진행하세요. 과외는 단기가 아닌 긴 호흡의 파트너십입니다.`]
+    [`${dong}에서 과외 vs 학원 선택`,`${dong}은 학원이 많은 지역이지만 모든 아이에게 학원이 답은 아닙니다. 질문이 어려운 성격, 특정 단원에서 막히는 경우, 진도 따라가기 힘든 상황이라면 1:1 과외가 효과적이에요. 반대로 경쟁 심리로 동기가 생기거나 자기주도 습관이 잡힌 아이는 학원도 괜찮습니다. 아이 성향 파악이 핵심이에요.`],
+    [`${kw} 시작 전 확인할 5가지`,`첫째 수업 횟수·1회 시간 문서화, 둘째 결제 방식과 환불 규정 명확화, 셋째 시험 기간 추가 수업 가능 여부, 넷째 교재비 포함 여부, 다섯째 수업 취소·변경 통보 시간. ${dong} 검증된 선생님들은 이런 부분을 투명하게 안내하지만, 학부모가 먼저 물어두면 갈등 없이 오래 진행됩니다.`]
   );
   const heroImg = getEduImage(kw);
+  // 관련 키워드용 페어 (타입별로 다른 카테고리 카드 추가)
+  const relSubj = type === 'subj' ? arg1 : (type === 'lsubj' ? arg2 : null);
+  const relLvl = type === 'lvl' ? arg1 : (type === 'lsubj' ? arg1 : null);
+  const subjCards = SUBS.map(s => {
+    const [sco, scol] = SC[s];
+    const active = s === relSubj;
+    return `<a href="${bp}/과목/${e(s)}" class="dc-xc${active?' on':''}" style="--c:${scol}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${dong} ${s}과외</span><span class="dc-xc-a">→</span></a>`;
+  }).join('');
+  const lvlCards = LVLS.map(l => {
+    const lcol = l==='초등'?'#22c55e':l==='중등'?'#3b82f6':'#ef4444';
+    const active = l === relLvl;
+    return `<a href="${bp}/학년/${e(l)}" class="dc-xc${active?' on':''}" style="--c:${lcol}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${dong} ${l}과외</span><span class="dc-xc-a">→</span></a>`;
+  }).join('');
+  // 다른 동 리스트 (최대 12개)
+  const otherDongs = all.filter(d => d !== dong).slice(0, 12);
+  const dongLinks = otherDongs.map(d => `<a href="/지역별/${e(sido)}/${e(sigungu)}/${e(d)}" class="dc-xc"><span class="dc-xc-dot" style="background:#6366f1"></span><span class="dc-xc-t">${d}</span><span class="dc-xc-a">→</span></a>`).join('');
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(seoT, seoD, 'https://anhani.com' + canonPath)}
-  <style>${commonStyles()}.dc-hero{position:relative;background:linear-gradient(135deg,#0f172a,#1e1b4b 60%,${color} 220%);color:#fff;padding:52px 24px 44px;overflow:hidden}.dc-hero::before{content:'';position:absolute;inset:0;background:url('${heroImg}') center/cover;opacity:.2}.dc-hi{position:relative;max-width:840px;margin:0 auto}.dc-bc{font-size:13px;color:#a5b4fc;margin-bottom:12px}.dc-bc a{color:inherit;text-decoration:none}.dc-hi h1{font-size:28px;font-weight:900;line-height:1.3;margin-bottom:8px}.dc-hi h1 em{font-style:normal;color:#fbbf24}.dc-sub{font-size:14px;color:#cbd5e1}.dc-wrap{max-width:840px;margin:0 auto;padding:36px 24px 60px}.dc-body p{font-size:15px;color:#334155;line-height:1.9;margin-bottom:16px}.dc-body h2{font-size:19px;font-weight:900;color:#0f172a;margin:30px 0 12px;display:flex;align-items:center;gap:10px}.dc-body h2::before{content:'';width:4px;height:20px;background:${color};border-radius:2px}.dc-check{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 12px 12px 0;padding:18px 22px;margin:24px 0}.dc-check h3{font-size:15px;font-weight:800;color:#14532d;margin-bottom:8px}.dc-check ol{padding-left:20px;margin:0}.dc-check li{font-size:14px;color:#166534;line-height:1.8}.dc-review{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 12px 12px 0;padding:16px 20px;margin:14px 0;font-size:14px;color:#78350f;line-height:1.7;font-style:italic}.dc-tip{background:#eef2ff;border-radius:12px;padding:18px 22px;margin:24px 0}.dc-tip h3{font-size:15px;font-weight:800;color:#3730a3;margin-bottom:6px}.dc-tip p{font-size:14px;color:#4338ca;line-height:1.8;margin:0}.dc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:28px;padding-top:20px;border-top:1px dashed #e2e8f0}.dc-tag{font-size:12px;padding:4px 10px;background:#f1f5f9;color:#475569;border-radius:14px;text-decoration:none}.dc-tag:hover{background:${color};color:#fff}.dc-cta{background:linear-gradient(135deg,#4338ca,#6366f1);color:#fff;text-align:center;padding:28px 24px;border-radius:14px;margin-top:28px}.dc-cta h3{font-size:19px;font-weight:900;margin-bottom:6px}.dc-cta p{font-size:13px;color:#c7d2fe;margin-bottom:14px}.dc-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.dc-cta-btn{padding:11px 20px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}.dc-cp{background:#fff;color:#4338ca}.dc-cf{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}@media(max-width:640px){.dc-hi h1{font-size:21px}.dc-body h2{font-size:17px}}</style></head>
+  <style>${commonStyles()}${dcCSS()}.dc-img{width:100%;height:180px;background:url('${heroImg}.dc-xc.on{border-color:var(--c);background:#f8fafc}.dc-body p{font-size:15px;color:#334155;line-height:1.9;margin-bottom:14px}.dc-body h2{font-size:18px;font-weight:900;color:#0f172a;margin:24px 0 10px;display:flex;align-items:center;gap:10px}.dc-body h2::before{content:'';width:4px;height:20px;background:#6366f1;border-radius:2px}.dc-check{background:#eef2ff;border-radius:10px;padding:16px 20px;margin:18px 0}.dc-check h3{font-size:14px;font-weight:800;color:#3730a3;margin-bottom:8px}.dc-check ol{padding-left:18px;margin:0}.dc-check li{font-size:14px;color:#4338ca;line-height:1.8}.dc-review{background:#f8fafc;border-left:3px solid #6366f1;border-radius:0 8px 8px 0;padding:12px 16px;margin:10px 0;font-size:14px;color:#475569;line-height:1.7;font-style:italic}.dc-tip{background:#fffbeb;border-radius:10px;padding:14px 18px;margin:18px 0}.dc-tip h3{font-size:14px;font-weight:800;color:#92400e;margin-bottom:4px}.dc-tip p{font-size:13px;color:#78350f;line-height:1.8;margin:0}</style></head>
   <body>${navHTML('region')}
-  <div class="dc-hero"><div class="dc-hi"><div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; ${bc}</div><h1>${heroEm}</h1><p class="dc-sub">${dong} 학부모·학생을 위한 1:1 맞춤 과외 가이드</p></div></div>
-  <div class="dc-wrap"><div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-review">${review1}</div><div class="dc-review">${review2}</div><div class="dc-check"><h3>✅ ${dong} 과외 선생님 체크리스트</h3><ol>${checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-tip"><h3>💡 ${dong} 학부모 꿀팁</h3><p>${tip}</p></div><p>${closing}</p></div>
-  <div class="dc-tags">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div>
-  <div class="dc-cta"><h3>${kw} 무료 상담</h3><p>검증된 선생님 매칭 · 첫 수업 무료</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="https://naver.me/GYD2Ki40" target="_blank" class="dc-cta-btn dc-cf">무료 상담 신청</a></div></div></div>
+  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${bc}</div>
+  <div class="dc-wrap">
+    <div class="dc-box">
+      <div class="dc-head"><h1>${kw}, ${sigungu} 우리 동네 학습 코칭 전문가</h1>
+        <div class="dc-tabs"><span>${dong}</span><span>${sido} ${sigungu}</span><span>전 지역·전 과목</span><span>스마일레슨</span></div>
+      </div>
+      <div class="dc-img"></div>
+      <div class="dc-info">
+        <div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu} ${dong}</span></div>
+        <div class="dc-info-row"><strong>대상</strong><span>초·중·고등학생 전학년</span></div>
+        <div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술·검정고시</span></div>
+        <div class="dc-info-row"><strong>체험</strong><span>무료 체험 수업 가능</span></div>
+      </div>
+    </div>
+    ${otherDongs.length ? `<div class="dc-box"><div class="dc-box-t">📍 ${sigungu} 동네 선택</div><p style="font-size:13px;color:#475569;margin:0 0 14px 12px">다른 동네의 세부 키워드(학년별·과목별·학년+과목별 과외)를 확인하실 수 있습니다.</p><div class="dc-xgrid">${dongLinks}</div></div>` : ''}
+    <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-review">${review1}</div><div class="dc-review">${review2}</div><div class="dc-check"><h3>✅ ${dong} 과외 선생님 체크리스트</h3><ol>${checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-tip"><h3>💡 ${dong} 학부모 꿀팁</h3><p>${tip}</p></div><p>${closing}</p></div>
+    <div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div>
+    <div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div>
+    <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} · 검증된 선생님 빠른 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="https://naver.me/GYD2Ki40" target="_blank" class="dc-cta-btn dc-cf">무료 상담 신청 →</a></div></div>
+  </div>
   ${footerHTML()}
   </body></html>`;
 }
