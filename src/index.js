@@ -3819,6 +3819,14 @@ function renderAcademyDetail(center) {
     .ad-location { background: #f8fafc; border-radius: 14px; padding: 24px; }
     .ad-location h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
     .ad-location p { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 6px; }
+    .ad-addr { font-size: 15px; color: #0f172a; font-weight: 600; }
+    .ad-addr-detail { font-size: 13px; color: #94a3b8; }
+    .ad-map-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .ad-map-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .ad-map-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,.1); }
+    .ad-map-kakao { background: #FEE500; color: #191919; }
+    .ad-map-nav { background: #6366f1; color: #fff; }
+    .ad-map-naver { background: #03C75A; color: #fff; }
     .ad-office-info { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 22px; }
     .ad-office-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dashed #e2e8f0; }
     .ad-office-row:last-child { border-bottom: none; }
@@ -3905,14 +3913,25 @@ function renderAcademyDetail(center) {
       </div>
     </div>
     
-    ${c.l || c.a ? `<div class="ad-section">
+    ${c.l || c.a ? (()=>{
+      const addrQ = encodeURIComponent(c.a || '');
+      const nameQ = encodeURIComponent(fullName);
+      const naverLinkMatch = (c.l||'').match(/https?:\/\/naver\.me\/\w+/);
+      const naverLink = naverLinkMatch ? naverLinkMatch[0] : null;
+      const locText = (c.l||'').replace(/https?:\/\/\S+/g, '').trim().substring(0, 200);
+      return `<div class="ad-section">
       <div class="ad-section-title">위치 정보</div>
       <div class="ad-location">
         <h3>📍 ${fullName}</h3>
-        <p>${c.a}</p>
-        ${c.l ? `<p style="font-size:13px;color:#94a3b8;">${c.l.substring(0,200)}</p>` : ''}
+        <p class="ad-addr">${c.a}</p>
+        ${locText ? `<p class="ad-addr-detail">${locText}</p>` : ''}
+        <div class="ad-map-btns">
+          <a href="https://map.kakao.com/link/search/${addrQ}" target="_blank" rel="noopener" class="ad-map-btn ad-map-kakao">🗺️ 카카오맵에서 보기</a>
+          <a href="https://map.kakao.com/?eName=${nameQ}%20${addrQ}" target="_blank" rel="noopener" class="ad-map-btn ad-map-nav">🧭 길찾기</a>
+          ${naverLink ? `<a href="${naverLink}" target="_blank" rel="noopener" class="ad-map-btn ad-map-naver">📍 네이버지도</a>` : ''}
+        </div>
       </div>
-    </div>` : ''}
+    </div>`})() : ''}
     ${(()=>{const o=decodeOfficeName(c.n),r=decodeRegNo(c.n);return (o||r)?`<div class="ad-section"><div class="ad-section-title">학원 등록 정보</div><div class="ad-office-info">${o?`<div class="ad-office-row"><span class="ad-office-label">🏫 학원 명칭</span><span class="ad-office-val">${o}</span></div>`:''}${r?`<div class="ad-office-row"><span class="ad-office-label">📋 교육지원청 등록번호</span><span class="ad-office-val">${r}</span></div>`:''}</div></div>`:''})()}
     
     <div class="ad-section">
