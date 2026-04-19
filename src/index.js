@@ -3084,14 +3084,14 @@ function renderAcademyDetail(center) {
     </div>` : ''}
     ${(()=>{const o=decodeOfficeName(c.n),r=decodeRegNo(c.n);return (o||r)?`<div class="ad-section"><div class="ad-section-title">학원 등록 정보</div><div class="ad-office-info">${o?`<div class="ad-office-row"><span class="ad-office-label">🏫 학원 명칭</span><span class="ad-office-val">${o}</span></div>`:''}${r?`<div class="ad-office-row"><span class="ad-office-label">📋 교육지원청 등록번호</span><span class="ad-office-val">${r}</span></div>`:''}</div></div>`:''})()}
 
-    ${(()=>{const p=parseAcademyAddr(c.a);const regs=[p.si,p.gu,p.dong].filter(Boolean);const subs=c.s||[];if(!regs.length||!subs.length)return '';return `<div class="ad-section"><div class="ad-section-title">지역별 과목 학원 안내</div><p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">지역 × 과목 칩 클릭 → 맞춤 학원 안내 확인</p><div class="ad-school-table">${regs.map(rg=>`<div class="ad-school-row"><span class="ad-school-level" style="background:#eef2ff;color:#4338ca;min-width:60px;">${rg}</span><div class="ad-school-subjs">${subs.map(sj=>`<a class="ad-subj-chip" href="/지역학원/${encodeURIComponent(c.n)}/${encodeURIComponent(rg)}/${encodeURIComponent(sj)}" style="background:${({국어:'#fef2f2',영어:'#eff6ff',수학:'#f0fdf4',과학:'#faf5ff',사회:'#fffbeb'})[sj]||'#f1f5f9'};color:${({국어:'#ef4444',영어:'#3b82f6',수학:'#22c55e',과학:'#a855f7',사회:'#f59e0b'})[sj]||'#475569'}">${rg}${sj}학원</a>`).join('')}</div></div>`).join('')}</div></div>`})()}
-
     <div class="ad-section">
       <div class="ad-section-title">자주 묻는 질문</div>
       <div class="ad-faq">
         ${faqs.map(f => `<div class="ad-faq-item"><div class="ad-faq-q">Q. ${f.q}</div><div class="ad-faq-a">${f.a}</div></div>`).join('')}
       </div>
     </div>
+
+    ${(()=>{const p=parseAcademyAddr(c.a);const regs=[...new Set([c.r,p.si,p.gu,p.dong].filter(Boolean))];const subs=c.s||[];if(!regs.length||!subs.length)return '';const items=[];for(const rg of regs)for(const sj of subs)items.push([rg,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 관련 지역 학원 가이드</div><p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">${c.n}의 지역 × 수업 가능 과목 조합별 맞춤 안내입니다.</p><div style="display:flex;flex-direction:column;gap:10px">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/지역학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;text-decoration:none"><span style="font-size:18px;font-weight:900;color:#ef4444;min-width:28px">${n}</span><div><div style="font-size:15px;font-weight:700;color:#0f172a;margin-bottom:2px">${it[0]} ${it[1]}학원</div><div style="font-size:12.5px;color:#94a3b8">${fullName} ${it[0]} 학생을 위한 ${it[1]} 학원 안내</div></div></a>`}).join('')}</div></div>`})()}
 
     <div class="ad-cta-bar">
       <h3>${c.r} ${fullName} 무료 상담</h3>
@@ -5201,7 +5201,7 @@ export default {
       const center = CENTERS.find(c => c.n === centerName);
       if (center && (center.s||[]).includes(subject)) {
         const p = parseAcademyAddr(center.a);
-        const validRegions = [p.si, p.gu, p.dong].filter(Boolean);
+        const validRegions = [...new Set([center.r, p.si, p.gu, p.dong].filter(Boolean))];
         if (validRegions.includes(region)) {
           return new Response(renderRegionSubjectAcademy(center, region, subject), {
             headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
