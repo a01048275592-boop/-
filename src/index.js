@@ -1,8 +1,3 @@
-// ============================================================
-// anhani.com - 교육 과외 동적 페이지 생성 Worker
-// v9
-// ============================================================
-
 const LOGO_URI = "data:image/png;base64,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";
 const FOOTER_LOGO_URI = "data:image/jpeg;base64,/9j/4QC8RXhpZgAASUkqAAgAAAAGABIBAwABAAAAAQAAABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAAABMCAwABAAAAAQAAAGmHBAABAAAAZgAAAAAAAAAAdwEA6AMAAAB3AQDoAwAABgAAkAcABAAAADAyMTABkQcABAAAAAECAwAAoAcABAAAADAxMDABoAMAAQAAAP//AAACoAQAAQAAANcDAAADoAQAAQAAAL0AAAAAAAAA/+IB8ElDQ19QUk9GSUxFAAEBAAAB4GxjbXMEIAAAbW50clJHQiBYWVogB+IAAwAUAAkADgAdYWNzcE1TRlQAAAAAc2F3c2N0cmwAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1oYW5keem/Vlo+AbaDI4VVRvdPqgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKZGVzYwAAAPwAAAAkY3BydAAAASAAAAAid3RwdAAAAUQAAAAUY2hhZAAAAVgAAAAsclhZWgAAAYQAAAAUZ1hZWgAAAZgAAAAUYlhZWgAAAawAAAAUclRSQwAAAcAAAAAgZ1RSQwAAAcAAAAAgYlRSQwAAAcAAAAAgbWx1YwAAAAAAAAABAAAADGVuVVMAAAAIAAAAHABzAFIARwBCbWx1YwAAAAAAAAABAAAADGVuVVMAAAAGAAAAHABDAEMAMAAAWFlaIAAAAAAAAPbWAAEAAAAA0y1zZjMyAAAAAAABDD8AAAXd///zJgAAB5AAAP2S///7of///aIAAAPcAADAcVhZWiAAAAAAAABvoAAAOPIAAAOPWFlaIAAAAAAAAGKWAAC3iQAAGNpYWVogAAAAAAAAJKAAAA+FAAC2xHBhcmEAAAAAAAMAAAACZmkAAPKnAAANWQAAE9AAAApb/9sAQwAGBAUGBQQGBgUGBwcGCAoQCgoJCQoUDg8MEBcUGBgXFBYWGh0lHxobIxwWFiAsICMmJykqKRkfLTAtKDAlKCko/9sAQwEHBwcKCAoTCgoTKBoWGigoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgo/8AAEQgAvQPXAwEiAAIRAQMRAf/EAB0AAQACAgMBAQAAAAAAAAAAAAAHCAUGAQQJAwL/xABgEAABAwIDAwQKCQ8IBwcFAAABAAIDBAUGBxEIEiExQVFhExQiMnGBkbGy0RU3QlJydHWhsxYXIzQ1NlRVYmOSlKLB0hgkM1NzgpOjJ1ZkZYPCwyVERUak4uNDZoTh8P/EABgBAQADAQAAAAAAAAAAAAAAAAABAgME/8QAIhEBAQACAgIDAQEBAQAAAAAAAAECEQMxEiEyQVETImFC/9oADAMBAAIRAxEAPwCuaIi7WAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiLP4Twff8AFtX2vh+2VFY4HRz2t0jZ8J57keMqBgEVkcNbNcdPS9uY4v8AHSxNGr4qMgBo65XjQfo+NZojIjBQMb+07rVxjQkh9aXn54wfIqf0n0t4/qqoBPICU3Xe9PkVon585f2hhGHsHy7/AFU0FO0+MEn5l8BtNWwnR+DnbnVVNPzbieWX4an6rGitIzOrK+8FpvuEHNldwc6SggmA8euvzLs/U/kZjdr2WytpbbVv0IMUz6R4PQ1kvcHxNKeeu4eP/VUkVg8X7NN1pmuqMJXSC5QaFzYKjSKXTmAcO5ces7qg6/2K6Yer30V7oKihqm+4mYW69YPIR1jgrTKXpFljGoiKyBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAX6jY6R7WRtLnuOga0aknoX7pKeasqoqalifNUTPEccbBq57idAAOcq1uX+BcP5O4YOLMcvifet0FjCA/sDiOEcQ91Ied3Nx5BqTXLLxTJtq+WOQkLbcL/mRN2jRMb2btFzxHozTXWZ/uR+Ty9JHIsjjPPy04cpBZMsrbTGCEbgqnxFkLfgM4F3hOngKiXNbNO9Zg1u5UONJZ4n70FDG7uR0OefdO6zwHMBqdY+VZjb7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FyLfZCtqard73s0hfp5V0kRAREUgiIgIiICIiAiIgydPfrtTUbKSnuVZFTMJLYmTODRr0AFftmJL2xj2Nu9eGPGjh2d2hHlWJRRoCSSSTqSiIpBERAREQEREBERAREQZAXu6CJkQuNWI2DRrRM4ADq4rl98ur4HwvuVY6J40cwzOIcOgjVY5FAIiKQREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREGTw5frnhu7Q3KyVktJWRHVr4zyjocORwPODwKneo2n7m+wGCGwU0V4LN3trs5MQd74R6a+Iu8vIq6oq3GXtMtjvXq7V98uc9xu9XLV1s7t6SWV2pPqHQBwC6KIpQIiKQREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERB//2Q==";
 
@@ -37,7 +32,6 @@ function pickN(arr, n, rng) {
 // --- 지역 데이터 ---
 const REGIONS = {"서울": ["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"],"부산": ["강서구", "금정구", "기장군", "남구", "동구", "동래구", "부산진구", "북구", "사상구", "사하구", "서구", "수영구", "연제구", "영도구", "중구", "해운대구"],"대구": ["군위군", "남구", "달서구", "달성군", "동구", "북구", "서구", "수성구", "중구"],"인천": ["강화군", "계양구", "남동구", "동구", "미추홀구", "부평구", "서구", "연수구", "옹진군", "중구"],"광주": ["광산구", "남구", "동구", "북구", "서구"],"대전": ["대덕구", "동구", "서구", "유성구", "중구"],"울산": ["남구", "동구", "북구", "울주군", "중구"],"세종": ["세종시"],"경기": ["가평군", "고양시", "과천시", "광명시", "광주시", "구리시", "군포시", "김포시", "남양주시", "동두천시", "부천시", "성남시", "수원시", "시흥시", "안산시", "안성시", "안양시", "양주시", "양평군", "여주시", "연천군", "오산시", "용인시", "의왕시", "의정부시", "이천시", "파주시", "평택시", "포천시", "하남시", "화성시"],"강원": ["강릉시", "고성군", "동해시", "삼척시", "속초시", "양구군", "양양군", "영월군", "원주시", "인제군", "정선군", "철원군", "춘천시", "태백시", "평창군", "홍천군", "화천군", "횡성군"],"충북": ["괴산군", "단양군", "보은군", "영동군", "옥천군", "음성군", "제천시", "증평군", "진천군", "청주시", "충주시"],"충남": ["계룡시", "공주시", "금산군", "논산시", "당진시", "보령시", "부여군", "서산시", "서천군", "아산시", "예산군", "천안시", "청양군", "태안군", "홍성군"],"전북": ["고창군", "군산시", "김제시", "남원시", "무주군", "부안군", "순창군", "완주군", "익산시", "임실군", "장수군", "전주시", "정읍시", "진안군"],"전남": ["강진군", "고흥군", "곡성군", "광양시", "구례군", "나주시", "담양군", "목포시", "무안군", "보성군", "순천시", "신안군", "여수시", "영광군", "영암군", "완도군", "장성군", "장흥군", "진도군", "함평군", "해남군", "화순군"],"경북": ["경산시", "경주시", "고령군", "구미시", "김천시", "문경시", "봉화군", "상주시", "성주군", "안동시", "영덕군", "영양군", "영주시", "영천시", "예천군", "울릉군", "울진군", "의성군", "청도군", "청송군", "칠곡군", "포항시"],"경남": ["거제시", "거창군", "고성군", "김해시", "남해군", "밀양시", "사천시", "산청군", "양산시", "의령군", "진주시", "창녕군", "창원시", "통영시", "하동군", "함안군", "함양군", "합천군"],"제주": ["서귀포시", "제주시"],};
 
-// 읍/면 데이터 (법정동코드 기준)
 const EUP_MYEON = {"기장군": ["기장읍", "일광읍", "장안읍", "정관읍", "철마면"],"군위군": ["군위읍", "부계면", "산성면", "삼국유사면", "소보면", "우보면", "의흥면", "효령면"],"달성군": ["가창면", "구지면", "논공읍", "다사읍", "옥포읍", "유가읍", "하빈면", "현풍읍", "화원읍"],"강화군": ["강화읍", "교동면", "길상면", "내가면", "불은면", "삼산면", "서도면", "선원면", "송해면", "양도면", "양사면", "하점면", "화도면"],"옹진군": ["대청면", "덕적면", "백령면", "북도면", "연평면", "영흥면", "자월면"],"울주군": ["두동면", "두서면", "범서읍", "삼남읍", "삼동면", "상북면", "서생면", "언양읍", "온산읍", "온양읍", "웅촌면", "청량읍"],"가평군": ["가평읍", "북면", "상면", "설악면", "조종면", "청평면"],"광주시": ["곤지암읍", "남종면", "남한산성면", "도척면", "초월읍", "퇴촌면"],"김포시": ["고촌읍", "대곶면", "양촌읍", "월곶면", "통진읍", "하성면"],"남양주시": ["별내면", "수동면", "오남읍", "와부읍", "조안면", "진건읍", "진접읍", "퇴계원읍", "화도읍"],"안성시": ["고삼면", "공도읍", "금광면", "대덕면", "미양면", "보개면", "삼죽면", "서운면", "양성면", "원곡면", "일죽면", "죽산면"],"양주시": ["광적면", "남면", "백석읍", "은현면", "장흥면"],"양평군": ["강상면", "강하면", "개군면", "단월면", "서종면", "양동면", "양서면", "양평읍", "옥천면", "용문면", "지평면", "청운면"],"여주시": ["가남읍", "강천면", "금사면", "대신면", "북내면", "산북면", "세종대왕면", "점동면", "흥천면"],"연천군": ["군남면", "미산면", "백학면", "신서면", "연천읍", "왕징면", "장남면", "전곡읍", "중면", "청산면"],"이천시": ["대월면", "마장면", "모가면", "백사면", "부발읍", "설성면", "신둔면", "율면", "장호원읍", "호법면"],"파주시": ["광탄면", "군내면", "문산읍", "법원읍", "월롱면", "장단면", "적성면", "조리읍", "진동면", "진서면", "탄현면", "파주읍", "파평면"],"평택시": ["고덕면", "서탄면", "안중읍", "오성면", "진위면", "청북읍", "팽성읍", "포승읍", "현덕면"],"포천시": ["가산면", "관인면", "군내면", "내촌면", "소흘읍", "신북면", "영북면", "영중면", "이동면", "일동면", "창수면", "화현면"],"화성시": ["남양읍", "마도면", "매송면", "봉담읍", "비봉면", "서신면", "송산면", "양감면", "우정읍", "장안면", "정남면", "팔탄면", "향남읍"],"강릉시": ["강동면", "구정면", "사천면", "성산면", "연곡면", "옥계면", "왕산면", "주문진읍"],"고성군": ["간성읍", "거진읍", "수동면", "죽왕면", "토성면", "현내면"],"삼척시": ["가곡면", "근덕면", "노곡면", "도계읍", "미로면", "신기면", "원덕읍", "하장면"],"양구군": ["국토정중앙면", "동면", "방산면", "양구읍", "해안면"],"양양군": ["강현면", "서면", "손양면", "양양읍", "현남면", "현북면"],"영월군": ["김삿갓면", "남면", "무릉도원면", "북면", "산솔면", "상동읍", "영월읍", "주천면", "한반도면"],"원주시": ["귀래면", "문막읍", "부론면", "소초면", "신림면", "지정면", "판부면", "호저면", "흥업면"],"인제군": ["기린면", "남면", "북면", "상남면", "서화면", "인제읍"],"정선군": ["고한읍", "남면", "북평면", "사북읍", "신동읍", "여량면", "임계면", "정선읍", "화암면"],"철원군": ["갈말읍", "근남면", "근동면", "근북면", "김화읍", "동송읍", "서면", "원남면", "원동면", "임남면", "철원읍"],"춘천시": ["남면", "남산면", "동내면", "동면", "동산면", "북산면", "사북면", "서면", "신동면", "신북읍"],"평창군": ["대관령면", "대화면", "미탄면", "방림면", "봉평면", "용평면", "진부면", "평창읍"],"홍천군": ["남면", "내면", "내촌면", "두촌면", "북방면", "서면", "서석면", "영귀미면", "홍천읍", "화촌면"],"화천군": ["간동면", "사내면", "상서면", "하남면", "화천읍"],"횡성군": ["갑천면", "강림면", "공근면", "둔내면", "서원면", "안흥면", "우천면", "청일면", "횡성읍"],"괴산군": ["감물면", "괴산읍", "문광면", "불정면", "사리면", "소수면", "연풍면", "장연면", "청안면", "청천면", "칠성면"],"단양군": ["가곡면", "단성면", "단양읍", "대강면", "매포읍", "어상천면", "영춘면", "적성면"],"보은군": ["내북면", "마로면", "보은읍", "산외면", "삼승면", "속리산면", "수한면", "장안면", "탄부면", "회남면", "회인면"],"영동군": ["매곡면", "상촌면", "심천면", "양강면", "양산면", "영동읍", "용산면", "용화면", "추풍령면", "학산면", "황간면"],"옥천군": ["군북면", "군서면", "동이면", "안남면", "안내면", "옥천읍", "이원면", "청산면", "청성면"],"음성군": ["감곡면", "금왕읍", "대소면", "맹동면", "삼성면", "생극면", "소이면", "원남면", "음성읍"],"제천시": ["금성면", "덕산면", "백운면", "봉양읍", "송학면", "수산면", "청풍면", "한수면"],"증평군": ["도안면", "증평읍"],"진천군": ["광혜원면", "덕산읍", "문백면", "백곡면", "이월면", "진천읍", "초평면"],"충주시": ["금가면", "노은면", "대소원면", "동량면", "산척면", "살미면", "소태면", "수안보면", "신니면", "앙성면", "엄정면", "주덕읍", "중앙탑면"],"계룡시": ["두마면", "신도안면", "엄사면"],"공주시": ["계룡면", "반포면", "사곡면", "신풍면", "우성면", "유구읍", "의당면", "이인면", "정안면", "탄천면"],"금산군": ["군북면", "금산읍", "금성면", "남이면", "남일면", "복수면", "부리면", "제원면", "진산면", "추부면"],"논산시": ["가야곡면", "강경읍", "광석면", "노성면", "벌곡면", "부적면", "상월면", "성동면", "양촌면", "연무읍", "연산면", "은진면", "채운면"],"당진시": ["고대면", "대호지면", "면천면", "석문면", "송산면", "송악읍", "순성면", "신평면", "우강면", "정미면", "합덕읍"],"보령시": ["남포면", "미산면", "성주면", "오천면", "웅천읍", "주교면", "주산면", "주포면", "천북면", "청라면", "청소면"],"부여군": ["구룡면", "규암면", "남면", "내산면", "부여읍", "석성면", "세도면", "양화면", "옥산면", "외산면", "은산면", "임천면", "장암면", "초촌면", "충화면", "홍산면"],"서산시": ["고북면", "대산읍", "부석면", "성연면", "운산면", "음암면", "인지면", "지곡면", "팔봉면", "해미면"],"서천군": ["기산면", "마산면", "마서면", "문산면", "비인면", "서면", "서천읍", "시초면", "장항읍", "종천면", "판교면", "한산면", "화양면"],"아산시": ["도고면", "둔포면", "배방읍", "선장면", "송악면", "신창면", "염치읍", "영인면", "음봉면", "인주면", "탕정면"],"예산군": ["고덕면", "광시면", "대술면", "대흥면", "덕산면", "봉산면", "삽교읍", "신암면", "신양면", "예산읍", "오가면", "응봉면"],"청양군": ["남양면", "대치면", "목면", "비봉면", "운곡면", "장평면", "정산면", "청남면", "청양읍", "화성면"],"태안군": ["고남면", "근흥면", "남면", "소원면", "안면읍", "원북면", "이원면", "태안읍"],"홍성군": ["갈산면", "결성면", "광천읍", "구항면", "금마면", "서부면", "은하면", "장곡면", "홍동면", "홍북읍", "홍성읍"],"고창군": ["고수면", "고창읍", "공음면", "대산면", "무장면", "부안면", "상하면", "성내면", "성송면", "신림면", "심원면", "아산면", "해리면", "흥덕면"],"군산시": ["개정면", "나포면", "대야면", "서수면", "성산면", "옥구읍", "옥도면", "옥산면", "옥서면", "임피면", "회현면"],"김제시": ["공덕면", "광활면", "금구면", "금산면", "만경읍", "백구면", "백산면", "봉남면", "부량면", "성덕면", "용지면", "죽산면", "진봉면", "청하면", "황산면"],"남원시": ["금지면", "대강면", "대산면", "덕과면", "보절면", "사매면", "산내면", "산동면", "송동면", "수지면", "아영면", "운봉읍", "이백면", "인월면", "주생면", "주천면"],"무주군": ["무주읍", "무풍면", "부남면", "설천면", "안성면", "적상면"],"부안군": ["계화면", "동진면", "백산면", "변산면", "보안면", "부안읍", "상서면", "위도면", "주산면", "줄포면", "진서면", "하서면", "행안면"],"순창군": ["구림면", "금과면", "동계면", "복흥면", "순창읍", "쌍치면", "유등면", "인계면", "적성면", "팔덕면", "풍산면"],"완주군": ["경천면", "고산면", "구이면", "동상면", "봉동읍", "비봉면", "삼례읍", "상관면", "소양면", "용진읍", "운주면", "이서면", "화산면"],"익산시": ["금마면", "낭산면", "망성면", "삼기면", "성당면", "여산면", "오산면", "왕궁면", "용동면", "용안면", "웅포면", "춘포면", "함라면", "함열읍", "황등면"],"임실군": ["강진면", "관촌면", "덕치면", "삼계면", "성수면", "신덕면", "신평면", "오수면", "운암면", "임실읍", "지사면", "청웅면"],"장수군": ["계남면", "계북면", "번암면", "산서면", "장계면", "장수읍", "천천면"],"정읍시": ["감곡면", "고부면", "덕천면", "북면", "산내면", "산외면", "소성면", "신태인읍", "영원면", "옹동면", "이평면", "입암면", "정우면", "칠보면", "태인면"],"진안군": ["동향면", "마령면", "백운면", "부귀면", "상전면", "성수면", "안천면", "용담면", "정천면", "주천면", "진안읍"],"강진군": ["강진읍", "군동면", "대구면", "도암면", "마량면", "병영면", "성전면", "신전면", "옴천면", "작천면", "칠량면"],"고흥군": ["고흥읍", "과역면", "금산면", "남양면", "대서면", "도덕면", "도양읍", "도화면", "동강면", "동일면", "두원면", "봉래면", "영남면", "점암면", "포두면", "풍양면"],"곡성군": ["겸면", "고달면", "곡성읍", "목사동면", "삼기면", "석곡면", "오곡면", "오산면", "옥과면", "입면", "죽곡면"],"광양시": ["광양읍", "다압면", "봉강면", "옥곡면", "옥룡면", "진상면", "진월면"],"구례군": ["간전면", "광의면", "구례읍", "마산면", "문척면", "산동면", "용방면", "토지면"],"나주시": ["공산면", "금천면", "남평읍", "노안면", "다도면", "다시면", "동강면", "문평면", "반남면", "봉황면", "산포면", "세지면", "왕곡면"],"담양군": ["가사문학면", "고서면", "금성면", "담양읍", "대덕면", "대전면", "무정면", "봉산면", "수북면", "용면", "월산면", "창평면"],"무안군": ["망운면", "몽탄면", "무안읍", "삼향읍", "운남면", "일로읍", "청계면", "해제면", "현경면"],"보성군": ["겸백면", "노동면", "득량면", "문덕면", "미력면", "벌교읍", "보성읍", "복내면", "웅치면", "율어면", "조성면", "회천면"],"순천시": ["낙안면", "별량면", "상사면", "서면", "송광면", "승주읍", "외서면", "월등면", "주암면", "해룡면", "황전면"],"신안군": ["도초면", "비금면", "신의면", "안좌면", "암태면", "압해읍", "임자면", "자은면", "장산면", "증도면", "지도읍", "팔금면", "하의면", "흑산면"],"여수시": ["남면", "돌산읍", "삼산면", "소라면", "율촌면", "화양면", "화정면"],"영광군": ["군남면", "군서면", "낙월면", "대마면", "묘량면", "백수읍", "법성면", "불갑면", "염산면", "영광읍", "홍농읍"],"영암군": ["군서면", "금정면", "덕진면", "도포면", "미암면", "삼호읍", "서호면", "시종면", "신북면", "영암읍", "학산면"],"완도군": ["고금면", "군외면", "금당면", "금일읍", "노화읍", "보길면", "생일면", "소안면", "신지면", "약산면", "완도읍", "청산면"],"장성군": ["남면", "동화면", "북이면", "북일면", "북하면", "삼계면", "삼서면", "서삼면", "장성읍", "진원면", "황룡면"],"장흥군": ["관산읍", "대덕읍", "부산면", "안양면", "용산면", "유치면", "장동면", "장평면", "장흥읍", "회진면"],"진도군": ["고군면", "군내면", "의신면", "임회면", "조도면", "지산면", "진도읍"],"함평군": ["나산면", "대동면", "손불면", "신광면", "엄다면", "월야면", "학교면", "함평읍", "해보면"],"해남군": ["계곡면", "마산면", "문내면", "북일면", "북평면", "산이면", "삼산면", "송지면", "옥천면", "해남읍", "현산면", "화산면", "화원면", "황산면"],"화순군": ["능주면", "도곡면", "도암면", "동면", "동복면", "백아면", "사평면", "이서면", "이양면", "청풍면", "춘양면", "한천면", "화순읍"],"경산시": ["남산면", "남천면", "압량읍", "와촌면", "용성면", "자인면", "진량읍", "하양읍"],"경주시": ["감포읍", "강동면", "건천읍", "내남면", "문무대왕면", "산내면", "서면", "안강읍", "양남면", "외동읍", "천북면", "현곡면"],"고령군": ["개진면", "다산면", "대가야읍", "덕곡면", "성산면", "쌍림면", "우곡면", "운수면"],"구미시": ["고아읍", "도개면", "무을면", "산동읍", "선산읍", "옥성면", "장천면", "해평면"],"김천시": ["감문면", "감천면", "개령면", "구성면", "남면", "농소면", "대덕면", "대항면", "봉산면", "부항면", "아포읍", "어모면", "조마면", "증산면", "지례면"],"문경시": ["가은읍", "농암면", "동로면", "마성면", "문경읍", "산북면", "산양면", "영순면", "호계면"],"봉화군": ["명호면", "물야면", "법전면", "봉성면", "봉화읍", "상운면", "석포면", "소천면", "재산면", "춘양면"],"상주시": ["공검면", "공성면", "낙동면", "내서면", "모동면", "모서면", "사벌국면", "외남면", "외서면", "은척면", "이안면", "중동면", "청리면", "함창읍", "화남면", "화동면", "화북면", "화서면"],"성주군": ["가천면", "금수강산면", "대가면", "벽진면", "선남면", "성주읍", "수륜면", "용암면", "월항면", "초전면"],"안동시": ["길안면", "남선면", "남후면", "녹전면", "도산면", "북후면", "서후면", "예안면", "와룡면", "일직면", "임동면", "임하면", "풍산읍", "풍천면"],"영덕군": ["강구면", "남정면", "달산면", "병곡면", "영덕읍", "영해면", "지품면", "창수면", "축산면"],"영양군": ["석보면", "수비면", "영양읍", "일월면", "입암면", "청기면"],"영주시": ["단산면", "문수면", "봉현면", "부석면", "순흥면", "안정면", "이산면", "장수면", "평은면", "풍기읍"],"영천시": ["고경면", "금호읍", "대창면", "북안면", "신녕면", "임고면", "자양면", "청통면", "화남면", "화북면", "화산면"],"예천군": ["감천면", "개포면", "보문면", "예천읍", "용궁면", "용문면", "유천면", "은풍면", "지보면", "풍양면", "호명읍", "효자면"],"울릉군": ["북면", "서면", "울릉읍"],"울진군": ["근남면", "금강송면", "기성면", "매화면", "북면", "온정면", "울진읍", "죽변면", "평해읍", "후포면"],"의성군": ["가음면", "구천면", "금성면", "다인면", "단밀면", "단북면", "단촌면", "봉양면", "비안면", "사곡면", "신평면", "안계면", "안사면", "안평면", "옥산면", "의성읍", "점곡면", "춘산면"],"청도군": ["각남면", "각북면", "금천면", "매전면", "운문면", "이서면", "청도읍", "풍각면", "화양읍"],"청송군": ["부남면", "안덕면", "주왕산면", "진보면", "청송읍", "파천면", "현동면", "현서면"],"칠곡군": ["가산면", "기산면", "동명면", "북삼읍", "석적읍", "약목면", "왜관읍", "지천면"],"거제시": ["거제면", "남부면", "동부면", "둔덕면", "사등면", "연초면", "일운면", "장목면", "하청면"],"거창군": ["가북면", "가조면", "거창읍", "고제면", "남상면", "남하면", "마리면", "북상면", "신원면", "웅양면", "위천면", "주상면"],"고성군": ["개천면", "거류면", "고성읍", "구만면", "대가면", "동해면", "마암면", "삼산면", "상리면", "영오면", "영현면", "하이면", "하일면", "회화면"],"김해시": ["대동면", "상동면", "생림면", "주촌면", "진례면", "진영읍", "한림면"],"남해군": ["고현면", "남면", "남해읍", "미조면", "삼동면", "상주면", "서면", "설천면", "이동면", "창선면"],"밀양시": ["단장면", "무안면", "부북면", "산내면", "산외면", "삼랑진읍", "상남면", "상동면", "청도면", "초동면", "하남읍"],"사천시": ["곤명면", "곤양면", "사남면", "사천읍", "서포면", "용현면", "정동면", "축동면"],"산청군": ["금서면", "단성면", "산청읍", "삼장면", "생비량면", "생초면", "시천면", "신등면", "신안면", "오부면", "차황면"],"양산시": ["동면", "물금읍", "상북면", "원동면", "하북면"],"의령군": ["가례면", "궁류면", "낙서면", "대의면", "봉수면", "부림면", "용덕면", "유곡면", "의령읍", "정곡면", "지정면", "칠곡면", "화정면"],"진주시": ["금곡면", "금산면", "내동면", "대곡면", "대평면", "명석면", "문산읍", "미천면", "사봉면", "수곡면", "이반성면", "일반성면", "정촌면", "지수면", "진성면", "집현면"],"창녕군": ["계성면", "고암면", "길곡면", "남지읍", "대지면", "대합면", "도천면", "부곡면", "성산면", "영산면", "유어면", "이방면", "장마면", "창녕읍"],"통영시": ["광도면", "도산면", "사량면", "산양읍", "욕지면", "용남면", "한산면"],"하동군": ["고전면", "금남면", "금성면", "북천면", "악양면", "양보면", "옥종면", "적량면", "진교면", "청암면", "하동읍", "화개면", "횡천면"],"함안군": ["가야읍", "군북면", "대산면", "법수면", "산인면", "여항면", "칠북면", "칠서면", "칠원읍", "함안면"],"함양군": ["마천면", "백전면", "병곡면", "서상면", "서하면", "수동면", "안의면", "유림면", "지곡면", "함양읍", "휴천면"],"합천군": ["가야면", "가회면", "대병면", "대양면", "덕곡면", "묘산면", "봉산면", "삼가면", "쌍백면", "쌍책면", "야로면", "용주면", "율곡면", "적중면", "청덕면", "초계면", "합천읍"],"서귀포시": ["남원읍", "대정읍", "성산읍", "안덕면", "표선면"],"제주시": ["구좌읍", "애월읍", "우도면", "조천읍", "추자면", "한경면", "한림읍"],"세종시": ["조치원읍", "연기면", "연동면", "부강면", "금남면", "장군면", "연서면", "전의면", "전동면", "소정면"],};
 
 const DONG_DATA = {"강남구":["역삼동", "개포동", "청담동", "삼성동", "대치동", "신사동", "논현동", "압구정동", "세곡동", "자곡동", "율현동", "일원동", "수서동", "도곡동"],"강동구":["명일동", "고덕동", "상일동", "길동", "둔촌동", "암사동", "성내동", "천호동", "강일동"],"강릉시":["홍제동", "남문동", "명주동", "성내동", "임당동", "금학동", "용강동", "성남동", "옥천동", "교동", "포남동", "초당동", "강문동", "송정동", "견소동", "내곡동", "회산동", "장현동", "박월동", "담산동", "노암동", "유산동", "월호평동", "신석동", "입암동", "청량동", "두산동", "학동", "병산동", "남항진동", "유천동", "지변동", "죽헌동", "대전동", "운정동", "난곡동", "저동", "안현동", "운산동"],"강북구":["미아동", "번동", "수유동", "우이동"],"강서구":["염창동", "등촌동", "화곡동", "가양동", "마곡동", "내발산동", "외발산동", "공항동", "방화동", "개화동", "과해동", "오곡동", "오쇠동", "대저1동", "대저2동", "강동동", "명지동", "죽림동", "식만동", "죽동동", "봉림동", "송정동", "화전동", "녹산동", "생곡동", "구랑동", "지사동", "미음동", "범방동", "신호동", "동선동", "성북동", "눌차동", "천성동", "대항동"],"거제시":["능포동", "장승포동", "두모동", "아양동", "아주동", "옥포동", "덕포동", "장평동", "고현동", "상동동", "문동동", "삼거동", "양정동", "수월동"],"경산시":["삼남동", "삼북동", "서상동", "신교동", "상방동", "백천동", "옥곡동", "사정동", "옥산동", "중산동", "정평동", "대평동", "대정동", "임당동", "대동", "계양동", "중방동", "조영동", "남방동", "내동", "여천동", "유곡동", "신천동", "점촌동", "평산동", "사동", "삼풍동", "갑제동"],"경주시":["동부동", "서부동", "북부동", "성동동", "황오동", "노동동", "노서동", "성건동", "사정동", "황남동", "교동", "인왕동", "탑동", "충효동", "서악동", "효현동", "광명동", "동방동", "도지동", "남산동", "배반동", "구황동", "보문동", "황성동", "용강동", "동천동", "평동", "조양동", "시동", "시래동", "구정동", "마동", "하동", "진현동", "천군동", "신평동", "덕동", "암곡동", "황용동", "북군동", "손곡동", "율동", "배동", "석장동"],"계룡시":["금암동"],"계양구":["효성동", "계산동", "작전동", "서운동", "임학동", "용종동", "병방동", "방축동", "박촌동", "동양동", "귤현동", "상야동", "하야동", "평동", "노오지동", "선주지동", "이화동", "오류동", "갈현동", "둑실동", "목상동", "다남동", "장기동"],"공주시":["반죽동", "봉황동", "중학동", "중동", "산성동", "교동", "웅진동", "금성동", "옥룡동", "금학동", "봉정동", "주미동", "태봉동", "오곡동", "신기동", "소학동", "상왕동", "무릉동", "월송동", "신관동", "금흥동", "쌍신동", "월미동", "검상동", "석장리동", "송선동", "동현동"],"과천시":["관문동", "문원동", "갈현동", "막계동", "과천동", "주암동", "중앙동", "원문동", "별양동", "부림동"],"관악구":["봉천동", "신림동", "남현동"],"광명시":["광명동", "철산동", "하안동", "소하동", "노온사동", "일직동", "가학동", "옥길동"],"광산구":["송정동", "도산동", "도호동", "신촌동", "서봉동", "운수동", "선암동", "소촌동", "우산동", "황룡동", "박호동", "비아동", "도천동", "수완동", "월계동", "쌍암동", "산월동", "신창동", "신가동", "운남동", "안청동", "진곡동", "장덕동", "흑석동", "하남동", "장수동", "산정동", "월곡동", "등임동", "산막동", "고룡동", "신룡동", "두정동", "임곡동", "광산동", "오산동", "사호동", "하산동", "유계동", "본덕동", "용봉동", "요기동", "복룡동", "송대동", "옥동", "월전동", "장록동", "송촌동", "지죽동", "용동", "용곡동", "지정동", "명화동", "동산동", "연산동", "도덕동", "송산동", "지평동", "오운동", "삼거동", "양동", "내산동", "대산동", "송학동", "신동", "삼도동", "남산동", "송치동", "산수동", "선동", "지산동", "왕동", "북산동", "명도동", "동호동", "덕림동", "양산동", "동림동", "오선동"],"광양시":["황금동", "황길동", "도이동", "성황동", "중군동", "중동", "마동", "광영동", "태인동", "금호동"],"광주시":["경안동", "쌍령동", "송정동", "회덕동", "탄벌동", "목현동", "삼동", "중대동", "직동", "태전동", "장지동", "역동", "목동", "고산동", "신현동", "능평동", "문형동", "추자동", "매산동", "양벌동"],"광진구":["중곡동", "능동", "구의동", "광장동", "자양동", "화양동", "군자동"],"구로구":["신도림동", "구로동", "가리봉동", "고척동", "개봉동", "오류동", "궁동", "온수동", "천왕동", "항동"],"구리시":["갈매동", "사노동", "인창동", "교문동", "수택동", "아천동", "토평동"],"구미시":["원평동", "지산동", "도량동", "봉곡동", "부곡동", "선기동", "수점동", "남통동", "형곡동", "송정동", "신평동", "비산동", "공단동", "광평동", "사곡동", "상모동", "임은동", "오태동", "신동", "구평동", "황상동", "인의동", "진평동", "시미동", "임수동", "양호동", "거의동", "옥계동", "구포동", "금전동"],"군산시":["해망동", "신흥동", "금동", "월명동", "신창동", "오룡동", "금광동", "신풍동", "송풍동", "문화동", "삼학동", "선양동", "둔율동", "창성동", "명산동", "송창동", "개복동", "영화동", "장미동", "영동", "신영동", "죽성동", "평화동", "대명동", "장재동", "미원동", "중동", "금암동", "동흥남동", "서흥남동", "조촌동", "경장동", "경암동", "구암동", "내흥동", "개정동", "사정동", "수송동", "미장동", "지곡동", "나운동", "미룡동", "소룡동", "오식도동", "비응도동", "신관동", "개사동", "산북동", "내초동"],"군포시":["당동", "당정동", "부곡동", "산본동", "금정동", "둔대동", "속달동", "대야미동", "도마교동"],"금정구":["두구동", "노포동", "청룡동", "남산동", "선동", "오륜동", "구서동", "장전동", "부곡동", "서동", "금사동", "회동동", "금성동"],"금천구":["가산동", "독산동", "시흥동"],"김제시":["요촌동", "신풍동", "용동", "검산동", "순동", "백학동", "서암동", "신곡동", "교동", "옥산동", "갈공동", "하동", "흥사동", "상동동", "월성동", "황산동", "난봉동", "오정동", "복죽동", "입석동", "장화동", "신덕동", "월봉동", "신월동", "연정동", "명덕동", "제월동", "도장동", "서정동", "양전동"],"김천시":["감호동", "용두동", "모암동", "성내동", "평화동", "남산동", "황금동", "신음동", "교동", "삼락동", "문당동", "다수동", "백옥동", "부곡동", "지좌동", "덕곡동", "대광동", "응명동", "양천동", "율곡동"],"김포시":["북변동", "걸포동", "운양동", "장기동", "감정동", "사우동", "풍무동", "마산동", "구래동"],"김해시":["동상동", "서상동", "부원동", "봉황동", "대성동", "구산동", "삼계동", "내동", "외동", "흥동", "풍유동", "명법동", "이동", "화목동", "전하동", "강동", "삼정동", "어방동", "삼방동", "안동", "지내동", "불암동", "유하동", "내덕동", "부곡동", "무계동", "신문동", "삼문동", "대청동", "관동동", "율하동", "장유동", "응달동", "수가동"],"나주시":["토계동", "송월동", "안창동", "삼영동", "교동", "서내동", "산정동", "경현동", "보산동", "금계동", "금성동", "남내동", "과원동", "성북동", "중앙동", "대호동", "송촌동", "석현동", "청동", "남외동", "죽림동", "삼도동", "영산동", "용산동", "관정동", "평산동", "부덕동", "이창동", "대기동", "운곡동", "동수동", "오량동", "진포동", "빛가람동"],"남구":["대연동", "용호동", "용당동", "문현동", "우암동", "감만동", "이천동", "봉덕동", "대명동", "사동", "구동", "서동", "월산동", "백운동", "주월동", "노대동", "진월동", "덕남동", "행암동", "임암동", "송하동", "양림동", "방림동", "봉선동", "구소동", "양촌동", "도금동", "승촌동", "지석동", "압촌동", "화장동", "칠석동", "석정동", "신장동", "양과동", "이장동", "대지동", "원산동", "월성동", "무거동", "옥동", "두왕동", "신정동", "달동", "삼산동", "여천동", "야음동", "선암동", "상개동", "부곡동", "고사동", "성암동", "황성동", "용연동", "남화동", "용잠동", "장생포동", "매암동"],"남동구":["구월동", "간석동", "만수동", "장수동", "서창동", "운연동", "남촌동", "수산동", "도림동", "논현동", "고잔동"],"남양주시":["호평동", "평내동", "금곡동", "일패동", "이패동", "삼패동", "수석동", "지금동", "도농동", "별내동", "다산동"],"남원시":["동충동", "하정동", "죽항동", "쌍교동", "천거동", "금동", "조산동", "왕정동", "신정동", "화정동", "향교동", "용정동", "광치동", "내척동", "산곡동", "도통동", "월락동", "고죽동", "식정동", "갈치동", "노암동", "어현동", "신촌동"],"노원구":["월계동", "공릉동", "하계동", "상계동", "중계동"],"논산시":["화지동", "반월동", "대교동", "부창동", "취암동", "등화동", "지산동", "덕지동", "내동", "강산동", "관촉동"],"달서구":["성당동", "두류동", "파호동", "호림동", "갈산동", "신당동", "이곡동", "장동", "장기동", "용산동", "죽전동", "감삼동", "본리동", "상인동", "도원동", "진천동", "유천동", "대천동", "월성동", "월암동", "송현동", "대곡동", "본동", "호산동"],"당진시":["읍내동", "채운동", "우두동", "원당동", "시곡동", "수청동", "대덕동", "행정동", "용연동", "사기소동", "구룡동"],"대덕구":["오정동", "대화동", "읍내동", "연축동", "신대동", "와동", "송촌동", "법동", "중리동", "비래동", "석봉동", "목상동", "문평동", "신일동", "덕암동", "상서동", "평촌동", "장동", "용호동", "이현동", "갈전동", "부수동", "황호동", "삼정동", "미호동", "신탄진동"],"도봉구":["쌍문동", "방학동", "창동", "도봉동"],"동구":["초량동", "수정동", "좌천동", "범일동", "신암동", "신천동", "효목동", "평광동", "봉무동", "불로동", "도동", "지저동", "입석동", "검사동", "방촌동", "둔산동", "부동", "신평동", "서호동", "동호동", "신기동", "율하동", "용계동", "율암동", "상매동", "매여동", "각산동", "신서동", "동내동", "괴전동", "금강동", "대림동", "사복동", "숙천동", "내곡동", "능성동", "진인동", "도학동", "백안동", "미곡동", "용수동", "신무동", "미대동", "내동", "신용동", "중대동", "송정동", "덕곡동", "지묘동", "만석동", "화수동", "송현동", "화평동", "창영동", "금곡동", "송림동", "대인동", "수기동", "대의동", "궁동", "장동", "동명동", "계림동", "산수동", "지산동", "남동", "광산동", "금동", "호남동", "황금동", "서석동", "소태동", "용연동", "운림동", "학동", "월남동", "선교동", "내남동", "용산동", "원동", "인동", "효동", "천동", "가오동", "신흥동", "판암동", "삼정동", "용운동", "대동", "자양동", "신안동", "소제동", "가양동", "용전동", "성남동", "홍도동", "삼성동", "정동", "중동", "추동", "비룡동", "주산동", "마산동", "효평동", "직동", "세천동", "신상동", "신하동", "신촌동", "사성동", "내탑동", "오동", "주촌동", "낭월동", "대별동", "이사동", "대성동", "장척동", "소호동", "구도동", "삼괴동", "상소동", "하소동", "방어동", "화정동", "일산동", "전하동", "미포동", "주전동", "동부동", "서부동"],"동대문구":["신설동", "용두동", "제기동", "전농동", "답십리동", "장안동", "청량리동", "회기동", "휘경동", "이문동"],"동두천시":["송내동", "지행동", "생연동", "광암동", "걸산동", "보산동", "동두천동", "안흥동", "상봉암동", "하봉암동", "탑동동", "상패동"],"동래구":["명장동", "안락동", "칠산동", "낙민동", "복천동", "수안동", "명륜동", "온천동", "사직동"],"동작구":["노량진동", "상도동", "상도1동", "본동", "흑석동", "동작동", "사당동", "대방동", "신대방동"],"동해시":["천곡동", "평릉동", "송정동", "용정동", "지흥동", "효가동", "동회동", "나안동", "쇄운동", "부곡동", "발한동", "북평동", "구미동", "추암동", "구호동", "단봉동", "지가동", "이도동", "귀운동", "대구동", "호현동", "내동", "묵호진동", "삼화동", "이기동", "이로동", "어달동", "대진동", "망상동", "심곡동", "초구동", "괴란동", "만우동", "신흥동", "비천동", "달방동"],"마포구":["아현동", "공덕동", "신공덕동", "도화동", "용강동", "토정동", "마포동", "대흥동", "염리동", "노고산동", "신수동", "현석동", "구수동", "창전동", "상수동", "하중동", "신정동", "당인동", "서교동", "동교동", "합정동", "망원동", "연남동", "성산동", "중동", "상암동"],"목포시":["용당동", "산정동", "연산동", "대성동", "양동", "북교동", "남교동", "호남동", "대안동", "창평동", "명륜동", "죽동", "무안동", "측후동", "복만동", "동명동", "유달동", "만호동", "항동", "유동", "서산동", "금화동", "온금동", "죽교동", "상동", "용해동", "석현동", "달동", "율도동", "대양동", "옥암동"],"문경시":["점촌동", "영신동", "흥덕동", "우지동", "창동", "신기동", "불정동", "유곡동", "공평동", "모전동", "윤직동"],"미추홀구":["숭의동", "용현동", "학익동", "도화동", "주안동", "관교동", "문학동"],"밀양시":["내일동", "내이동", "교동", "삼문동", "남포동", "용평동", "활성동", "가곡동"],"보령시":["대천동", "죽정동", "화산동", "동대동", "명천동", "궁촌동", "내항동", "남곡동", "요암동", "신흑동"],"부산진구":["양정동", "전포동", "부전동", "범천동", "범전동", "연지동", "초읍동", "부암동", "당감동", "가야동", "개금동"],"부평구":["부평동", "십정동", "산곡동", "청천동", "삼산동", "갈산동", "부개동", "일신동", "구산동"],"북구":["금곡동", "화명동", "만덕동", "덕천동", "구포동", "침산동", "대현동", "산격동", "복현동", "검단동", "동변동", "서변동", "조야동", "노곡동", "읍내동", "동호동", "학정동", "도남동", "국우동", "구암동", "동천동", "관음동", "태전동", "매천동", "팔달동", "금호동", "사수동", "연경동", "중흥동", "유동", "누문동", "북동", "임동", "신안동", "용봉동", "동림동", "운암동", "우산동", "풍향동", "문흥동", "각화동", "두암동", "오치동", "삼각동", "매곡동", "충효동", "덕의동", "망월동", "청풍동", "화암동", "장등동", "운정동", "본촌동", "일곡동", "양산동", "연제동", "신용동", "용두동", "지야동", "태령동", "수곡동", "효령동", "용전동", "용강동", "생용동", "월출동", "대촌동", "오룡동", "창평동", "호계동", "가대동", "신천동", "중산동", "상안동", "천곡동", "달천동", "시례동", "무룡동", "구유동", "정자동", "신명동", "대안동", "당사동", "신현동", "산하동", "어물동", "명촌동", "진장동", "연암동", "효문동", "양정동", "화봉동", "송정동", "염포동"],"사상구":["삼락동", "모라동", "덕포동", "괘법동", "감전동", "주례동", "학장동", "엄궁동"],"사천시":["동동", "서동", "선구동", "동금동", "서금동", "동림동", "좌룡동", "벌리동", "용강동", "와룡동", "봉남동", "이금동", "이홀동", "궁지동", "사등동", "향촌동", "대방동", "실안동", "마도동", "늑도동", "신수동", "백천동", "신벽동", "노룡동", "대포동", "송포동", "죽림동"],"사하구":["괴정동", "당리동", "하단동", "신평동", "장림동", "다대동", "구평동", "감천동"],"삼척시":["성내동", "성북동", "읍상동", "읍중동", "당저동", "교동", "갈천동", "증산동", "우지동", "마달동", "자원동", "평전동", "등봉동", "도경동", "마평동", "오사동", "건지동", "원당동", "성남동", "남양동", "사직동", "오분동", "적노동", "조비동", "정상동", "정하동", "근산동"],"상주시":["성하동", "성동동", "인봉동", "복룡동", "냉림동", "서성동", "남성동", "서문동", "무양동", "낙양동", "개운동", "신봉동", "가장동", "양촌동", "지천동", "오대동", "흥각동", "거동동", "인평동", "서곡동", "화개동", "외답동", "헌신동", "병성동", "도남동", "낙상동", "중덕동", "초산동", "화산동", "계산동", "부원동", "죽전동", "만산동", "연원동", "남장동", "남적동"],"서구":["초장동", "남부민동", "암남동", "내당동", "비산동", "평리동", "상리동", "중리동", "이현동", "백석동", "시천동", "검암동", "경서동", "공촌동", "연희동", "심곡동", "가정동", "신현동", "석남동", "원창동", "가좌동", "마전동", "당하동", "원당동", "대곡동", "금곡동", "오류동", "왕길동", "불로동", "청라동", "양동", "농성동", "광천동", "유촌동", "덕흥동", "쌍촌동", "화정동", "치평동", "내방동", "서창동", "세하동", "용두동", "풍암동", "벽진동", "금호동", "마륵동", "매월동", "동천동", "복수동", "변동", "도마동", "정림동", "용문동", "탄방동", "괴정동", "가장동", "내동", "갈마동", "둔산동", "월평동", "가수원동", "도안동", "관저동", "흑석동", "매노동", "산직동", "장안동", "평촌동", "오동", "우명동", "원정동", "용촌동", "봉곡동", "괴곡동", "만년동"],"서귀포시":["서귀동", "법환동", "서호동", "호근동", "동홍동", "서홍동", "상효동", "하효동", "신효동", "보목동", "토평동", "중문동", "회수동", "대포동", "월평동", "강정동", "도순동", "하원동", "색달동", "상예동", "하예동", "영남동"],"서대문구":["합동", "미근동", "냉천동", "천연동", "옥천동", "영천동", "현저동", "북아현동", "홍제동", "대현동", "대신동", "신촌동", "봉원동", "창천동", "연희동", "홍은동", "북가좌동", "남가좌동"],"서산시":["읍내동", "동문동", "갈산동", "온석동", "잠홍동", "수석동", "석림동", "석남동", "예천동", "죽성동", "양대동", "오남동", "장동", "덕지천동"],"서초구":["방배동", "양재동", "우면동", "원지동", "잠원동", "반포동", "서초동", "내곡동", "염곡동", "신원동"],"성동구":["상왕십리동", "하왕십리동", "홍익동", "도선동", "마장동", "사근동", "행당동", "응봉동", "옥수동", "송정동", "용답동"],"성북구":["성북동", "돈암동", "정릉동", "길음동", "종암동", "하월곡동", "상월곡동", "장위동", "석관동"],"세종시":["반곡동", "소담동", "보람동", "대평동", "가람동", "한솔동", "나성동", "새롬동", "다정동", "어진동", "종촌동", "고운동", "아름동", "도담동", "산울동", "해밀동", "합강동", "집현동", "세종동", "누리동", "한별동", "다솜동", "용호동"],"속초시":["영랑동", "동명동", "중앙동", "금호동", "청학동", "교동", "노학동", "조양동", "청호동", "대포동", "도문동", "설악동", "장사동"],"송파구":["잠실동", "신천동", "풍납동", "송파동", "석촌동", "삼전동", "가락동", "문정동", "장지동", "방이동", "오금동", "거여동", "마천동"],"수성구":["범어동", "만촌동", "황금동", "중동", "상동", "파동", "두산동", "지산동", "범물동", "시지동", "매호동", "성동", "사월동", "신매동", "욱수동", "노변동", "삼덕동", "연호동", "이천동", "고모동", "가천동", "대흥동"],"수영구":["망미동", "수영동", "민락동", "광안동", "남천동"],"순천시":["삼거동", "와룡동", "영동", "옥천동", "행동", "금곡동", "매곡동", "석현동", "가곡동", "용당동", "조곡동", "생목동", "덕암동", "연향동", "풍덕동", "남정동", "인제동", "저전동", "장천동", "남내동", "중앙동", "동외동", "교량동", "대룡동", "홍내동", "오천동", "덕월동", "야흥동", "인월동", "안풍동", "대대동", "왕지동", "조례동"],"시흥시":["대야동", "신천동", "방산동", "포동", "미산동", "은행동", "안현동", "매화동", "도창동", "금이동", "과림동", "계수동", "화정동", "능곡동", "하중동", "하상동", "광석동", "물왕동", "산현동", "조남동", "논곡동", "목감동", "거모동", "군자동", "장현동", "장곡동", "월곶동", "정왕동", "죽율동", "무지내동", "배곧동"],"아산시":["온천동", "실옥동", "방축동", "기산동", "초사동", "신인동", "법곡동", "장존동", "좌부동", "읍내동", "풍기동", "용화동", "모종동", "권곡동", "배미동", "득산동", "점양동", "신동", "남동"],"안동시":["삼산동", "서부동", "북문동", "명륜동", "신안동", "율세동", "옥정동", "신세동", "법흥동", "용상동", "동문동", "동부동", "운흥동", "천리동", "남부동", "남문동", "안흥동", "대석동", "옥야동", "광석동", "당북동", "태화동", "화성동", "목성동", "법상동", "금곡동", "평화동", "안기동", "운안동", "성곡동", "상아동", "안막동", "옥동", "이천동", "노하동", "송현동", "송천동", "석동동", "정상동", "정하동", "수상동", "수하동"],"안성시":["봉산동", "숭인동", "영동", "봉남동", "구포동", "동본동", "명륜동", "옥천동", "낙원동", "창전동", "성남동", "신흥동", "인지동", "금산동", "연지동", "대천동", "서인동", "석정동", "아양동", "금석동", "계동", "옥산동", "사곡동", "도기동", "당왕동", "가사동", "가현동", "신건지동", "신소현동", "신모산동", "현수동", "발화동", "중리동"],"양산시":["다방동", "남부동", "중부동", "북부동", "명곡동", "신기동", "북정동", "산막동", "호계동", "교동", "유산동", "어곡동", "용당동", "삼호동", "명동", "주남동", "소주동", "주진동", "평산동", "덕계동", "매곡동"],"양주시":["유양동", "어둔동", "남방동", "마전동", "산북동", "광사동", "만송동", "삼숭동", "고읍동", "덕정동", "봉양동", "회암동", "율정동", "옥정동", "고암동", "덕계동", "회정동"],"양천구":["신정동", "목동", "신월동"],"여수시":["종화동", "수정동", "공화동", "관문동", "고소동", "동산동", "중앙동", "교동", "군자동", "충무동", "연등동", "광무동", "서교동", "봉강동", "봉산동", "남산동", "국동", "신월동", "여서동", "문수동", "오림동", "미평동", "둔덕동", "오천동", "만흥동", "덕충동", "경호동", "학동", "학용동", "안산동", "소호동", "시전동", "신기동", "웅천동", "선원동", "여천동", "화장동", "주삼동", "봉계동", "해산동", "화치동", "월하동", "평여동", "중흥동", "적량동", "월내동", "묘도동", "낙포동", "신덕동", "상암동", "호명동"],"여주시":["상동", "홍문동", "창동", "우만동", "단현동", "신진동", "하동", "교동", "월송동", "가업동", "연라동", "상거동", "하거동", "삼교동", "점봉동", "능현동", "멱곡동", "연양동", "매룡동", "천송동", "오학동", "현암동", "오금동"],"연수구":["옥련동", "선학동", "연수동", "청학동", "동춘동", "송도동"],"연제구":["거제동", "연산동"],"영도구":["청학동", "동삼동"],"영등포구":["영등포동", "여의도동", "당산동", "도림동", "양화동", "신길동", "대림동", "양평동"],"영주시":["영주동", "상망동", "하망동", "휴천동", "가흥동", "문정동", "고현동", "창진동", "상줄동", "조와동", "조암동", "적서동", "아지동"],"영천시":["조교동", "망정동", "야사동", "문내동", "문외동", "창구동", "교촌동", "과전동", "성내동", "화룡동", "도동", "금노동", "완산동", "범어동", "작산동", "봉동", "본촌동", "채신동", "괴연동", "대전동", "녹전동", "도림동", "오미동", "오수동", "쌍계동", "도남동", "매산동", "언하동", "신기동", "서산동"],"오산시":["오산동", "부산동", "원동", "궐동", "청학동", "가장동", "금암동", "수청동", "은계동", "내삼미동", "외삼미동", "양산동", "세교동", "지곶동", "서랑동", "서동", "벌음동", "두곡동", "탑동", "누읍동", "가수동", "고현동", "청호동", "갈곶동"],"용산구":["후암동", "갈월동", "남영동", "동자동", "서계동", "신창동", "산천동", "청암동", "효창동", "도원동", "용문동", "문배동", "신계동", "이촌동", "이태원동", "한남동", "동빙고동", "서빙고동", "주성동", "보광동"],"원주시":["중앙동", "평원동", "원동", "인동", "개운동", "명륜동", "단구동", "일산동", "학성동", "단계동", "우산동", "태장동", "봉산동", "행구동", "무실동", "관설동", "반곡동", "가현동"],"유성구":["원내동", "교촌동", "대정동", "용계동", "학하동", "계산동", "성북동", "세동", "송정동", "방동", "봉명동", "구암동", "덕명동", "원신흥동", "상대동", "복용동", "장대동", "갑동", "노은동", "지족동", "죽동", "궁동", "어은동", "구성동", "신성동", "가정동", "도룡동", "장동", "방현동", "화암동", "덕진동", "하기동", "추목동", "자운동", "신봉동", "수남동", "안산동", "외삼동", "반석동", "문지동", "전민동", "원촌동", "탑립동", "용산동", "봉산동", "관평동", "송강동", "금고동", "대동", "금탄동", "신동", "둔곡동", "구룡동"],"은평구":["수색동", "녹번동", "불광동", "갈현동", "구산동", "대조동", "응암동", "역촌동", "신사동", "증산동", "진관동"],"의왕시":["고천동", "이동", "삼동", "왕곡동", "오전동", "학의동", "내손동", "청계동", "포일동", "월암동", "초평동"],"의정부시":["의정부동", "호원동", "장암동", "신곡동", "용현동", "민락동", "낙양동", "자일동", "금오동", "가능동", "녹양동", "고산동", "산곡동"],"이천시":["창전동", "관고동", "중리동", "증일동", "율현동", "진리동", "안흥동", "갈산동", "증포동", "송정동", "사음동", "단월동", "대포동", "고담동", "장록동"],"익산시":["평화동", "갈산동", "주현동", "동산동", "마동", "남중동", "송학동", "목천동", "만석동", "현영동", "신용동", "신동", "영등동", "어양동", "신흥동", "금강동", "석탄동", "팔봉동", "덕기동", "석왕동", "은기동", "정족동", "임상동", "월성동", "부송동", "용제동", "석암동"],"정읍시":["수성동", "장명동", "상동", "시기동", "연지동", "농소동", "하모동", "상평동", "과교동", "삼산동", "진산동", "금붕동", "송산동", "신월동", "용산동", "교암동", "부전동", "쌍암동", "내장동", "영파동", "하북동", "구룡동", "흑암동", "용계동", "공평동", "망제동", "신정동"],"제주시":["일도일동", "일도이동", "이도일동", "이도이동", "삼도일동", "삼도이동", "건입동", "용담일동", "용담이동", "용담삼동", "화북일동", "화북이동", "삼양일동", "삼양이동", "삼양삼동", "봉개동", "아라일동", "아라이동", "오라일동", "오라이동", "오라삼동", "노형동", "외도일동", "외도이동", "이호일동", "이호이동", "도두일동", "도두이동", "도남동", "도련일동", "도련이동", "용강동", "회천동", "오등동", "월평동", "영평동", "연동", "도평동", "해안동", "내도동"],"제천시":["의림동", "서부동", "동현동", "남천동", "교동", "명동", "화산동", "영천동", "하소동", "신월동", "청전동", "모산동", "고암동", "장락동", "흑석동", "두학동", "고명동", "신백동", "강제동", "명지동", "산곡동", "왕암동", "천남동", "신동", "자작동", "대랑동"],"종로구":["청운동", "신교동", "궁정동", "효자동", "창성동", "통의동", "적선동", "통인동", "누상동", "누하동", "옥인동", "체부동", "필운동", "내자동", "사직동", "도렴동", "당주동", "내수동", "청진동", "서린동", "수송동", "중학동", "공평동", "관훈동", "견지동", "와룡동", "권농동", "운니동", "익선동", "경운동", "관철동", "인사동", "낙원동", "팔판동", "삼청동", "안국동", "소격동", "화동", "사간동", "송현동", "가회동", "재동", "계동", "원서동", "훈정동", "묘동", "봉익동", "돈의동", "장사동", "관수동", "인의동", "예지동", "원남동", "연지동", "효제동", "이화동", "연건동", "충신동", "동숭동", "혜화동", "창신동", "숭인동", "교남동", "평동", "송월동", "홍파동", "교북동", "행촌동", "구기동", "평창동", "부암동", "홍지동", "신영동", "무악동"],"중구":["무교동", "다동", "삼각동", "수하동", "장교동", "수표동", "소공동", "남창동", "북창동", "예관동", "묵정동", "남학동", "주자동", "예장동", "쌍림동", "주교동", "방산동", "오장동", "입정동", "산림동", "초동", "신당동", "흥인동", "무학동", "황학동", "서소문동", "정동", "순화동", "중림동", "영주동", "봉산동", "장관동", "상서동", "수동", "덕산동", "사일동", "동일동", "남일동", "전동", "동문동", "문화동", "공평동", "교동", "용덕동", "상덕동", "완전동", "도원동", "수창동", "인교동", "서야동", "하서동", "동산동", "포정동", "서내동", "대안동", "화전동", "향촌동", "북내동", "대신동", "달성동", "남산동", "대봉동", "사동", "신생동", "신포동", "답동", "선화동", "유동", "율목동", "내동", "경동", "용동", "인현동", "선린동", "중산동", "운남동", "운서동", "운북동", "을왕동", "남북동", "덕교동", "무의동", "은행동", "목동", "중촌동", "대흥동", "문창동", "석교동", "호동", "옥계동", "대사동", "부사동", "용두동", "오류동", "태평동", "유천동", "산성동", "사정동", "안영동", "무수동", "구완동", "침산동", "목달동", "정생동", "어남동", "금동", "학성동", "학산동", "복산동", "북정동", "옥교동", "성남동", "우정동", "성안동", "유곡동", "태화동", "다운동", "동동", "서동", "남외동", "장현동", "약사동", "반구동"],"중랑구":["면목동", "상봉동", "중화동", "묵동", "망우동", "신내동"],"진주시":["망경동", "주약동", "강남동", "칠암동", "본성동", "동성동", "남성동", "인사동", "대안동", "평안동", "중안동", "계동", "봉곡동", "상봉동", "봉래동", "수정동", "장대동", "옥봉동", "상대동", "하대동", "상평동", "초전동", "장재동", "하촌동", "신안동", "평거동", "이현동", "유곡동", "판문동", "귀곡동", "가좌동", "호탄동", "충무공동"],"춘천시":["봉의동", "요선동", "낙원동", "옥천동", "조양동", "죽림동", "운교동", "약사동", "효자동", "근화동", "우두동", "사농동", "후평동", "온의동", "교동", "퇴계동", "석사동", "삼천동", "칠전동", "송암동", "신동", "중도동"],"충주시":["성내동", "성남동", "성서동", "충인동", "교현동", "용산동", "호암동", "직동", "단월동", "풍동", "가주동", "용관동", "용두동", "달천동", "봉방동", "칠금동", "연수동", "목행동", "용탄동", "종민동", "안림동", "목벌동", "충의동", "지현동", "문화동", "금릉동"],"태백시":["황지동", "장성동", "금천동", "철암동", "문곡동", "동점동", "소도동", "혈동", "화전동", "적각동", "창죽동", "통동", "백산동", "원동", "상사미동", "하사미동", "조탄동"],"통영시":["도천동", "서호동", "명정동", "항남동", "중앙동", "문화동", "태평동", "동호동", "정량동", "북신동", "무전동", "평림동", "인평동", "당동", "미수동", "봉평동", "도남동"],"파주시":["금촌동", "아동동", "야동동", "검산동", "맥금동", "교하동", "야당동", "다율동", "오도동", "상지석동", "산남동", "동패동", "당하동", "문발동", "송촌동", "목동동", "하지석동", "서패동", "신촌동", "연다산동", "와동동", "금릉동"],"평택시":["서정동", "장당동", "모곡동", "칠괴동", "칠원동", "도일동", "가재동", "장안동", "이충동", "지산동", "독곡동", "신장동", "평택동", "통복동", "군문동", "유천동", "합정동", "비전동", "동삭동", "세교동", "지제동", "신대동", "소사동", "용이동", "월곡동", "청룡동", "죽백동", "고덕동"],"포천시":["신읍동", "어룡동", "자작동", "선단동", "설운동", "동교동"],"하남시":["천현동", "하산곡동", "창우동", "배알미동", "상산곡동", "신장동", "당정동", "덕풍동", "망월동", "풍산동", "미사동", "선동", "감북동", "감일동", "감이동", "학암동", "교산동", "춘궁동", "하사창동", "상사창동", "항동", "초일동", "초이동", "광암동"],"해운대구":["반송동", "석대동", "반여동", "재송동", "우동", "중동", "좌동", "송정동"],"화성시":["진안동", "병점동", "능동", "기산동", "반월동", "반정동", "황계동", "배양동", "기안동", "송산동", "안녕동", "반송동", "석우동", "오산동", "청계동", "영천동", "중동", "신동", "목동", "산척동", "장지동", "송동", "방교동", "금곡동", "새솔동"]};
@@ -282,7 +276,6 @@ function generateTags(location, level, subject, rng) {
 }
 
 // --- 썸네일 SVG 생성 ---
-// 교육/책 실사 이미지 풀 (Unsplash CDN, 무료 사용 가능)
 const EDU_IMAGE_POOL = [
   "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&q=80&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80&auto=format&fit=crop",
@@ -306,7 +299,6 @@ function getEduImage(seed) {
   return EDU_IMAGE_POOL[strHash(String(seed)) % EDU_IMAGE_POOL.length];
 }
 
-// 키워드 아티클 공통 썸네일 (실사 교육 이미지 + 인디고 오버레이, 중앙정렬)
 function renderArticleHero(title, subtitle, seed) {
   const img = getEduImage(seed || title);
   const subHTML = subtitle ? `<p style="font-size:clamp(12px,1.5vw,14px);opacity:0.9;text-align:center;margin:6px 0 0;text-shadow:0 2px 8px rgba(0,0,0,0.3);width:100%;">${subtitle}</p>` : '';
@@ -344,10 +336,10 @@ function generateThumbnail(location, level, subject) {
 function generateContent(location, level, subject, parentRegion) {
   const seed = hashCode(`${location}-${level}-${subject}`);
   const rng = seededRandom(seed);
-  
+
   const subj = SUBJECT_CONTENT[subject];
   const lvl = LEVEL_CONTENT[level];
-  
+
   const opening = pick(OPENINGS, rng)(location, level, subject);
   const why = pick(subj.why, rng);
   const tip = pick(subj.tip, rng);
@@ -369,7 +361,6 @@ function generateContent(location, level, subject, parentRegion) {
   const title = `${regionDisplay} ${level} ${subject} 과외 추천 - 비용, 선생님 선택 가이드`;
   const description = `${regionDisplay} ${level}학생 ${subject} 과외 정보를 찾고 계신가요? 과외비, 좋은 선생님 고르는 법, 실제 후기까지 한 번에 정리했습니다.`;
 
-  // 체크리스트 항목 (시드 기반으로 5개 선택)
   const checkPool = [
     `선생님의 ${subject} 지도 경력이 최소 2년 이상인지 확인하세요.`,
     `첫 수업 전 무료 상담이나 레벨 테스트를 제공하는지 물어보세요.`,
@@ -385,33 +376,33 @@ function generateContent(location, level, subject, parentRegion) {
   const bodyHTML = `
     <article>
       <p>${opening}</p>
-      
+
       <h2>${regionDisplay}에서 ${level} ${subject} 과외가 필요한 이유</h2>
       <p>${why}</p>
       <p>${levelChar}</p>
-      
+
       <h2>${subject} 과외 선생님 고르는 핵심 팁</h2>
       <p>${tip}</p>
       <p>${extra1}</p>
-      
+
       <h2>효과적인 ${subject} 과외 학습 방법</h2>
       <p>${method}</p>
       <p>${extra3}</p>
-      
+
       <h2>${regionDisplay} ${level} ${subject} 과외비 안내</h2>
       <p>${lvl.price}</p>
       <p>${lvl.duration}</p>
-      
+
       <h2>${regionDisplay} ${subject} 과외 선생님 선택 체크리스트</h2>
       <ul>${checks.map(c => `<li>${c}</li>`).join('')}</ul>
-      
+
       <h2>실제 ${regionDisplay} ${subject} 과외 후기</h2>
       <p>${review1}</p>
       <p>${review2}</p>
-      
+
       <h2>과외 시작 전 꼭 알아두세요</h2>
       <p>${extra2}</p>
-      
+
       <p>${closing}</p>
     </article>
   `;
@@ -447,39 +438,16 @@ function renderPage(location, level, subject, parentRegion, url) {
     "mainEntityOfPage": "${canonical}"
   }
   </script>
-  <style>
-    ${commonStyles()}
-    .page-container { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
-    .breadcrumb { font-size: 13px; color: #888; margin-bottom: 16px; }
-    .breadcrumb a { color: #6366f1; text-decoration: none; }
-    .breadcrumb a:hover { color: #312e81; }
-    .rp-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; border-radius: 14px; overflow: hidden; background: #0f172a; margin-bottom: 24px; }
-    .rp-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .rp-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${rpRgb},0.55) 100%); }
-    .rp-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; color: #fff; }
-    .rp-hero-text h2 { font-size: clamp(20px, 4vw, 34px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
-    .rp-hero-text p { font-size: clamp(12px, 1.6vw, 15px); opacity: 0.88; margin-top: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    .page-container h1 { font-size: 28px; font-weight: 800; color: #111; margin-bottom: 12px; line-height: 1.4; }
-    .meta { font-size: 13px; color: #999; margin-bottom: 32px; }
-    article h2 { font-size: 22px; font-weight: 700; color: #111; margin: 36px 0 16px; padding-left: 12px; border-left: 4px solid #6366f1; }
-    article p { font-size: 16px; margin-bottom: 16px; word-break: keep-all; line-height: 1.8; color: #334155; }
-    article ul { margin: 0 0 16px 20px; }
-    article li { font-size: 15px; margin-bottom: 8px; color: #475569; line-height: 1.7; }
-    .tags { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e5e7eb; }
-    .tags h3 { font-size: 14px; color: #666; margin-bottom: 12px; }
-    .tag { display: inline-block; background: #f3f4f6; color: #555; padding: 6px 14px; border-radius: 20px; font-size: 13px; margin: 0 6px 8px 0; text-decoration: none; }
-    .tag:hover { background: #eef2ff; color: #6366f1; }
-    @media (max-width: 640px) { .page-container h1 { font-size: 22px; } article h2 { font-size: 18px; } }
-  </style>
+  <style>${commonStyles()}.page-container{max-width:768px;margin:0 auto;padding:32px 20px 0}.breadcrumb{font-size:13px;color:#888;margin-bottom:16px}.breadcrumb a{color:#6366f1;text-decoration:none}.breadcrumb a:hover{color:#312e81}.rp-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.rp-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.rp-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.82) 0%,rgba(${rpRgb},.55) 100%)}.rp-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.rp-hero-text h2{font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 12px rgba(0,0,0,.4)}.rp-hero-text p{font-size:clamp(12px,1.6vw,15px);opacity:.88;margin-top:4px;text-shadow:0 2px 8px rgba(0,0,0,.3)}.page-container h1{font-size:28px;font-weight:800;color:#111;margin-bottom:12px;line-height:1.4}.meta{font-size:13px;color:#999;margin-bottom:32px}article h2{font-size:22px;font-weight:700;color:#111;margin:36px 0 16px;padding-left:12px;border-left:4px solid #6366f1}article p{font-size:16px;margin-bottom:16px;word-break:keep-all;line-height:1.8;color:#334155}article ul{margin:0 0 16px 20px}article li{font-size:15px;margin-bottom:8px;color:#475569;line-height:1.7}.tags{margin-top:48px;padding-top:24px;border-top:1px solid #e5e7eb}.tags h3{font-size:14px;color:#666;margin-bottom:12px}.tag{display:inline-block;background:#f3f4f6;color:#555;padding:6px 14px;border-radius:20px;font-size:13px;margin:0 6px 8px 0;text-decoration:none}.tag:hover{background:#eef2ff;color:#6366f1}@media (max-width:640px){.page-container h1{font-size:22px}article h2{font-size:18px}}</style>
 </head>
 <body>
   ${navHTML('region')}
-  
+
   <main class="page-container">
     <div class="breadcrumb">
       <a href="/">홈</a> &gt; <a href="/지역별">${parentRegion || location}</a> &gt; ${regionDisplay} ${level} ${subject} 과외
     </div>
-    
+
     <div class="rp-hero-wrap">
       <img src="${heroImg}" alt="${regionDisplay} ${level} ${subject} 과외" loading="eager"/>
       <div class="rp-hero-overlay"></div>
@@ -488,18 +456,18 @@ function renderPage(location, level, subject, parentRegion, url) {
         <p>${level} ${subject} 과외 · 1:1 맞춤 수업</p>
       </div>
     </div>
-    
+
     <h1>${regionDisplay} ${level} ${subject} 과외 추천 가이드</h1>
     <div class="meta">최종 업데이트: 2026년 4월 | 작성자: 안하니 교육팀</div>
-    
+
     ${bodyHTML}
-    
+
     <div class="tags">
       <h3>관련 태그</h3>
       ${tags.map(t => `<a href="/#" class="tag">#${t}</a>`).join('\n      ')}
     </div>
   </main>
-  
+
   ${footerHTML()}
 </body>
 </html>`;
@@ -507,38 +475,34 @@ function renderPage(location, level, subject, parentRegion, url) {
 
 // --- URL 파싱 ---
 function parseUrl(pathname) {
-  // URL 형식: /지역-학교급-과목-과외
   const decoded = decodeURIComponent(pathname.replace(/^\//, ''));
   if (!decoded) return null;
-  
+
   const parts = decoded.split('-');
   if (parts.length < 4) return null;
-  
+
   const suffix = parts[parts.length - 1]; // "과외"
   if (suffix !== '과외') return null;
-  
+
   const subject = parts[parts.length - 2];
   const level = parts[parts.length - 3];
   const location = parts.slice(0, parts.length - 3).join('-');
-  
+
   if (!SUBJECTS.includes(subject)) return null;
   if (!LEVELS.includes(level)) return null;
-  
+
   return { location, level, subject };
 }
 
 // --- 지역 유효성 검증 & 상위 지역 찾기 ---
 function findRegion(location) {
-  // 시/군/구 찾기
   for (const [parent, districts] of Object.entries(REGIONS)) {
     if (districts.includes(location)) {
       return { valid: true, parentRegion: parent };
     }
   }
-  // 읍/면 찾기
   for (const [parent, areas] of Object.entries(EUP_MYEON)) {
     if (areas.includes(location)) {
-      // 상위 군 찾기
       for (const [grandParent, districts] of Object.entries(REGIONS)) {
         if (districts.includes(parent)) {
           return { valid: true, parentRegion: `${grandParent} ${parent}` };
@@ -547,7 +511,6 @@ function findRegion(location) {
       return { valid: true, parentRegion: parent };
     }
   }
-  // 광역시/도 자체
   if (REGIONS[location]) {
     return { valid: true, parentRegion: null };
   }
@@ -557,8 +520,7 @@ function findRegion(location) {
 // --- 모든 URL 목록 생성 (sitemap용) ---
 function getAllUrls() {
   const urls = [];
-  
-  // 시/군/구
+
   for (const [parent, districts] of Object.entries(REGIONS)) {
     for (const district of districts) {
       for (const level of LEVELS) {
@@ -568,8 +530,7 @@ function getAllUrls() {
       }
     }
   }
-  
-  // 읍/면
+
   for (const [parent, areas] of Object.entries(EUP_MYEON)) {
     for (const area of areas) {
       for (const level of LEVELS) {
@@ -579,13 +540,11 @@ function getAllUrls() {
       }
     }
   }
-  
-  // 학교별 인덱스 페이지
+
   urls.push('/학교급별');
   urls.push('/학년별');
   for (const lv of ['middle', 'high']) {
     urls.push(`/학교급별/${lv}`);
-    // 시도별 인덱스
     const seen = new Set();
     for (const s of getSchools(lv)) {
       if (!seen.has(s[1])) {
@@ -593,7 +552,6 @@ function getAllUrls() {
         urls.push(`/학교급별/${lv}/${encodeURIComponent(getSidoFromIdx(s[1]))}`);
       }
     }
-    // 시군구별 인덱스
     const seenGugun = new Set();
     for (const s of getSchools(lv)) {
       const key = s[1] + '|' + s[2];
@@ -602,7 +560,6 @@ function getAllUrls() {
         urls.push(`/학교급별/${lv}/${encodeURIComponent(getSidoFromIdx(s[1]))}/${encodeURIComponent(s[2])}`);
       }
     }
-    // 학교 상세 + 키워드 아티클
     for (const s of getSchools(lv)) {
       urls.push(`/${encodeURIComponent(s[0])}-과외`);
       for (let i = 0; i < 10; i++) {
@@ -610,13 +567,12 @@ function getAllUrls() {
       }
     }
   }
-  
-  // 학습가이드 아티클
+
   urls.push('/학습가이드');
   for (let i = 0; i < GUIDE_ARTICLES.length; i++) {
     urls.push(`/학습가이드/article/${i}`);
   }
-  
+
   return urls;
 }
 
@@ -624,7 +580,7 @@ function getAllUrls() {
 function generateSitemap() {
   const urls = getAllUrls();
   const baseUrl = 'https://anhani.com';
-  
+
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -633,7 +589,7 @@ function generateSitemap() {
     <priority>1.0</priority>
   </url>
 `;
-  
+
   for (const url of urls) {
     xml += `  <url>
     <loc>${baseUrl}${url}</loc>
@@ -642,7 +598,7 @@ function generateSitemap() {
   </url>
 `;
   }
-  
+
   xml += `</urlset>`;
   return xml;
 }
@@ -652,7 +608,7 @@ function generateSitemapIndex(totalUrls) {
   const URLS_PER_SITEMAP = 10000;
   const numSitemaps = Math.ceil(totalUrls / URLS_PER_SITEMAP);
   const baseUrl = 'https://anhani.com';
-  
+
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
@@ -673,7 +629,7 @@ function generateSitemapPart(part) {
   const end = Math.min(start + URLS_PER_SITEMAP, allUrls.length);
   const urls = allUrls.slice(start, end);
   const baseUrl = 'https://anhani.com';
-  
+
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
@@ -711,7 +667,7 @@ function commonStyles() {
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: #f8fafc; color: #334155; line-height: 1.7; }
-    
+
     /* 네비게이션 */
     .nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
     .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
@@ -737,7 +693,7 @@ function commonStyles() {
     .nav-cta { background: #6366f1; color: #fff !important; border-radius: 8px !important; padding: 8px 20px !important; margin-left: 8px; }
     .nav-cta:hover { background: #4f46e5 !important; }
     .mobile-menu { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
-    
+
     /* 푸터 */
     .footer { background: #0f172a; color: #94a3b8; }
     .footer-notice { background: #1a2332; padding: 14px 24px; font-size: 13px; color: #64748b; text-align: center; border-bottom: 1px solid #1e293b; }
@@ -756,14 +712,14 @@ function commonStyles() {
     .footer-call-btn { display: inline-block; background: #6366f1; color: #fff; padding: 10px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
     .footer-call-btn:hover { background: #4f46e5; }
     .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px 24px; border-top: 1px solid #1e293b; font-size: 12px; color: #475569; }
-    
+
     @media (max-width: 768px) {
       .footer-main { flex-direction: column; text-align: center; gap: 24px; }
       .footer-right { text-align: center; }
       .footer-phone { font-size: 26px; }
       .footer-bottom { text-align: center; }
     }
-    
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .mobile-menu { display: block; }
@@ -789,7 +745,7 @@ function navHTML(activePage) {
       <a href="/" class="nav-logo"><img src="${LOGO_URI}" alt="과외안하니" class="nav-logo-img"><span class="nav-logo-text">과외안하니<span class="nav-logo-sub">전국 과외 정보 플랫폼</span></span></a>
       <div class="nav-visitor"><span class="nav-visitor-label">누적 방문자</span><span class="nav-visitor-num" id="visitorCount">304,953</span><span class="nav-visitor-unit">명</span></div>
       <div class="nav-links">
-        
+
         <div class="nav-item">
           <a href="/지역별" class="${activePage === 'region' ? 'active' : ''}">전국과외 <span class="arrow-down">▼</span></a>
           <div class="dropdown">
@@ -798,7 +754,7 @@ function navHTML(activePage) {
             <a href="/학교급별">학교별 과외</a>
           </div>
         </div>
-        
+
         <div class="nav-item">
           <a href="/과목별" class="${activePage === 'subject' ? 'active' : ''}">과목별 <span class="arrow-down">▼</span></a>
           <div class="dropdown">
@@ -811,18 +767,18 @@ function navHTML(activePage) {
             <a href="/과목별/검정고시">검정고시</a>
           </div>
         </div>
-        
+
         <div class="nav-item">
           <a href="/학원" class="${activePage === 'academy' ? 'active' : ''}">학원 <span class="arrow-down">▼</span></a>
           <div class="dropdown">
             <a href="/학원/전국지점">전국 지점 찾기</a>
           </div>
         </div>
-        
+
         <div class="nav-item">
           <a href="/학습가이드" class="${activePage === 'guide' ? 'active' : ''}">학습가이드</a>
         </div>
-        
+
         <div class="nav-item">
           <a href="/외국어" class="${activePage === 'foreign' ? 'active' : ''}">외국어 <span class="arrow-down">▼</span></a>
           <div class="dropdown">
@@ -831,7 +787,7 @@ function navHTML(activePage) {
             <a href="/외국어/일본어">일본어</a>
           </div>
         </div>
-        
+
         <a href="https://naver.me/GYD2Ki40" target="_blank" class="nav-cta">무료 상담</a>
       </div>
       <button class="mobile-menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">☰</button>
@@ -876,7 +832,6 @@ function footerHTML() {
 
 // --- 홈페이지 ---
 function renderHomepage() {
-  // 총 페이지 수 계산
   let totalLocations = 0;
   for (const districts of Object.values(REGIONS)) totalLocations += districts.length;
   for (const areas of Object.values(EUP_MYEON)) totalLocations += areas.length;
@@ -914,358 +869,14 @@ function renderHomepage() {
 <html lang="ko">
 <head>
   ${commonHead('안하니 - 전국 과외 정보 플랫폼', '전국 시/군/구/읍/면 초등, 중등, 고등 과외 정보! 국어, 영어, 수학, 사회, 과학, 코딩, 검정고시, 논술 과외를 찾아보세요.', 'https://anhani.com/')}
-  <style>
-    ${commonStyles()}
-    
-    /* 슬라이더 */
-    .slider { position: relative; width: 100%; height: 540px; overflow: hidden; }
-    .slider-track { display: flex; width: 400%; height: 100%; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    .slide { width: 25%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .slide-inner { position: relative; z-index: 2; max-width: 800px; padding: 0 40px; text-align: center; color: #fff; }
-    .slide-badge { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(4px); padding: 6px 20px; border-radius: 20px; font-size: 13px; font-weight: 500; margin-bottom: 16px; }
-    .slide h2 { font-size: 42px; font-weight: 900; line-height: 1.3; margin-bottom: 14px; letter-spacing: -1px; text-shadow: 0 2px 16px rgba(0,0,0,0.3); }
-    .slide h2 em { font-style: normal; }
-    .slide p { font-size: 17px; opacity: 0.9; margin-bottom: 28px; text-shadow: 0 1px 8px rgba(0,0,0,0.3); }
-    .slide-btn { display: inline-block; padding: 13px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .slide1 { background: linear-gradient(160deg, #070a12 0%, #0c1225 40%, #0a0f1e 100%); }
-    .slide1 h2 { font-size: 48px; letter-spacing: -1.5px; }
-    .slide1 h2 em { color: #60a5fa; }
-    .slide1 .slide-btn { background: #3b82f6; color: #fff; }
-    .slide1 .slide-btn:hover { background: #2563eb; transform: translateY(-2px); }
-    .slide1 .slide-btn-outline { display: inline-block; padding: 13px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; background: transparent; color: #94a3b8; border: 1.5px solid #334155; }
-    .slide1 .slide-btn-outline:hover { border-color: #60a5fa; color: #fff; transform: translateY(-2px); }
-    .slide1-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 28px; }
-    .slide1 .slide1-subtext { font-size: 16px; color: #64748b; margin-bottom: 6px; text-shadow: none; opacity: 1; }
-    .slide1 .slide1-subtext strong { color: #e2e8f0; font-weight: 700; }
-    .slide1-stats-row { display: flex; gap: 48px; justify-content: center; margin-top: 0; }
-    .slide1-stat { text-align: center; }
-    .slide1-stat-num { font-size: 32px; font-weight: 900; color: #60a5fa; letter-spacing: -0.5px; }
-    .slide1-stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
-    .slide1-illustration { margin: 0 auto 20px; width: 120px; height: 100px; position: relative; }
-    @media (max-width: 768px) {
-      .slide1 h2 { font-size: 30px; }
-      .slide1-stats-row { gap: 24px; }
-      .slide1-stat-num { font-size: 24px; }
-      .slide1-btns { flex-direction: column; align-items: center; gap: 10px; }
-      .slide1-illustration { width: 90px; height: 75px; }
-    }
-    .slide2 { background: linear-gradient(135deg, #4a1942 0%, #2d1035 50%, #1a0a20 100%); }
-    .slide2 h2 em { color: #f0abfc; }
-    .slide2 .slide-btn { background: #d946ef; color: #fff; }
-    .slide2 .slide-btn:hover { background: #c026d3; transform: translateY(-2px); }
-    .slide3 { background: linear-gradient(135deg, #3b1a00 0%, #6b3a1f 40%, #2a1200 100%); }
-    .slide3 h2 em { color: #fbbf24; }
-    .slide3 .slide-btn { background: #f59e0b; color: #1a0a00; }
-    .slide3 .slide-btn:hover { background: #d97706; transform: translateY(-2px); }
-    .slide4 { background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%); }
-    .slide4 h2 em { color: #34d399; }
-    .slide4 .slide-btn { background: #10b981; color: #fff; }
-    .slide4 .slide-btn:hover { background: #059669; transform: translateY(-2px); }
-    .slide::before { content: ''; position: absolute; inset: 0; z-index: 1; }
-    .slide1::before { background: radial-gradient(ellipse at 50% 30%, rgba(59,130,246,0.08) 0%, transparent 60%); }
-    .slide2::before { background: radial-gradient(ellipse at 50% 50%, rgba(217,70,239,0.15) 0%, transparent 60%); }
-    .slide3::before { background: radial-gradient(ellipse at 50% 60%, rgba(251,191,36,0.12) 0%, transparent 60%); }
-    .slide4::before { background: radial-gradient(ellipse at 30% 50%, rgba(52,211,153,0.12) 0%, transparent 60%); }
-    
-    /* 슬라이더 좌우 화살표 */
-    .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.2); color: #fff; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; transition: all 0.2s; }
-    .slider-arrow:hover { background: rgba(255,255,255,0.3); }
-    .slider-prev { left: 20px; }
-    .slider-next { right: 20px; }
-    
-    /* 슬라이더 인디케이터 */
-    .slider-dots { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 10px; }
-    .slider-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.3s; border: none; }
-    .slider-dot.active { background: #fff; width: 28px; border-radius: 5px; }
-    
-    /* 슬라이드 장식 요소 */
-    .slide-deco { position: absolute; z-index: 1; opacity: 0.15; }
-    .slide1 .deco1 { display: none; }
-    .slide1 .deco2 { display: none; }
-    .slide2 .deco1 { top: 10%; left: 15%; width: 200px; height: 200px; border: 3px solid #f0abfc; border-radius: 50%; }
-    .slide3 .deco1 { bottom: 10%; right: 12%; width: 150px; height: 150px; border: 3px solid #fbbf24; border-radius: 50%; }
-    .slide4 .deco1 { top: 15%; right: 15%; width: 120px; height: 120px; border: 3px solid #34d399; border-radius: 50%; }
-    .slide4 .deco2 { bottom: 20%; left: 10%; width: 80px; height: 80px; background: #34d399; border-radius: 12px; transform: rotate(30deg); }
-    
-    /* 슬라이드 통계 박스 */
-    .slide-stats { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); z-index: 2; display: flex; flex-direction: column; gap: 10px; }
-    .slide-stat-box { background: rgba(255,255,255,0.95); border-radius: 12px; padding: 14px 20px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.15); min-width: 180px; }
-    .slide-stat-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
-    .slide-stat-text { font-size: 11px; color: #64748b; line-height: 1.3; }
-    .slide-stat-text strong { display: block; font-size: 15px; color: #0f172a; }
-
-    @media (max-width: 768px) {
-      .slider { height: 480px; }
-      .slide h2 { font-size: 26px; }
-      .slide p { font-size: 14px; }
-      .slide-inner { padding: 0 20px; }
-      .slider-arrow { width: 36px; height: 36px; font-size: 16px; }
-      .slide-stats { display: none; }
-      .slide-deco { display: none; }
-    }
-    
-    /* 회원 합격후기 */
-    .review-section { background: #f8fafb; padding: 70px 24px 50px; }
-    .review-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
-    .review-main-title { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 36px; }
-    .review-main-title em { font-style: normal; color: #312e81; }
-    .review-track-wrap { position: relative; }
-    .review-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 4px; }
-    .review-track::-webkit-scrollbar { display: none; }
-    .rv-card { min-width: 340px; max-width: 340px; flex-shrink: 0; scroll-snap-align: start; background: #fff; border-radius: 16px; padding: 28px 24px; text-align: left; border: 1px solid #e8ebe8; transition: all 0.3s; display: flex; flex-direction: column; }
-    .rv-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-4px); }
-    .rv-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .rv-tag { display: inline-block; background: #e0e7ff; color: #3730a3; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 700; }
-    .rv-stars { color: #facc15; font-size: 14px; letter-spacing: 1px; }
-    .rv-text { font-size: 15px; color: #334155; line-height: 1.75; flex: 1; margin-bottom: 20px; }
-    .rv-text b { color: #0f172a; font-weight: 700; }
-    .rv-author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid #eef2ff; }
-    .rv-avatar-icon { width: 40px; height: 40px; background: #eef2ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-    .rv-info { text-align: left; }
-    .rv-info b { display: block; font-size: 14px; color: #0f172a; margin-bottom: 2px; }
-    .rv-info span { font-size: 12px; color: #94a3b8; }
-    .rv-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 28px; }
-    .rv-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #d1d5db; background: #fff; color: #475569; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-    .rv-arrow:hover { border-color: #312e81; color: #312e81; }
-    .rv-dots { display: flex; gap: 8px; align-items: center; }
-    .rv-dot { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; transition: all 0.3s; }
-    .rv-dot.active { width: 10px; height: 10px; background: #312e81; }
-
-    @media (max-width: 768px) {
-      .rv-card { min-width: 280px; max-width: 280px; padding: 20px 18px; }
-      .rv-text { font-size: 14px; }
-      .review-main-title { font-size: 22px; }
-    }
-
-    /* OUR STRENGTH */
-    .strength-section { background: #fff; padding: 80px 24px; }
-    .strength-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
-    .section-label-center { font-size: 13px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-    .strength-title { font-size: 28px; font-weight: 800; color: #0f172a; line-height: 1.5; margin-bottom: 12px; }
-    .strength-title em { font-style: normal; color: #6366f1; }
-    .strength-subtitle { font-size: 15px; color: #64748b; line-height: 1.8; margin-bottom: 48px; }
-    .strength-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .strength-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px 16px; text-align: center; transition: all 0.3s; }
-    .strength-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
-    .strength-icon { font-size: 36px; margin-bottom: 16px; }
-    .strength-sub { font-size: 12px; color: #94a3b8; margin-bottom: 8px; }
-    .strength-num { font-size: 40px; font-weight: 900; color: #6366f1; margin-bottom: 8px; }
-    .strength-unit { font-size: 20px; font-weight: 700; }
-    .strength-desc { font-size: 13px; color: #64748b; line-height: 1.6; }
-
-    /* 퍼스널 진단검사 */
-    .diagnosis-section { background: #0f172a; padding: 80px 24px; color: #fff; }
-    .diagnosis-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
-    .diagnosis-title { font-size: 28px; font-weight: 800; line-height: 1.5; margin-bottom: 12px; }
-    .diagnosis-title em { font-style: normal; color: #818cf8; }
-    .diagnosis-subtitle { font-size: 15px; color: #94a3b8; margin-bottom: 48px; }
-    .diagnosis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .diagnosis-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px 20px; text-align: left; transition: all 0.3s; }
-    .diagnosis-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
-    .diag-num { width: 32px; height: 32px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; margin-bottom: 14px; }
-    .diagnosis-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-    .diagnosis-card p { font-size: 13px; color: #94a3b8; line-height: 1.5; }
-
-    /* 선생님 역량 */
-    .teacher-section { background: #fff; padding: 80px 24px; }
-    .teacher-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
-    .teacher-title { font-size: 28px; font-weight: 800; color: #0f172a; line-height: 1.5; margin-bottom: 12px; }
-    .teacher-title em { font-style: normal; color: #6366f1; }
-    .teacher-subtitle { font-size: 15px; color: #64748b; line-height: 1.8; margin-bottom: 48px; }
-    .teacher-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .teacher-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 36px 24px; text-align: left; transition: all 0.3s; }
-    .teacher-card:hover { border-color: #6366f1; box-shadow: 0 8px 24px rgba(99,102,241,0.1); transform: translateY(-4px); }
-    .teacher-card-num { font-size: 24px; font-weight: 900; color: #6366f1; margin-bottom: 16px; }
-    .teacher-card h4 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
-    .teacher-card p { font-size: 14px; color: #64748b; line-height: 1.7; }
-
-    /* AI 학습시스템 */
-    .system-section { background: linear-gradient(135deg, #f0f4ff, #e8ecff); padding: 80px 24px; }
-    .system-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
-    .system-title { font-size: 28px; font-weight: 800; color: #0f172a; line-height: 1.5; margin-bottom: 12px; }
-    .system-title em { font-style: normal; color: #6366f1; }
-    .system-subtitle { font-size: 15px; color: #64748b; line-height: 1.8; margin-bottom: 36px; }
-    .system-sub-heading { font-size: 18px; font-weight: 700; color: #4f46e5; margin-bottom: 32px; }
-    .system-steps { display: flex; align-items: stretch; gap: 0; justify-content: center; }
-    .system-step { flex: 1; max-width: 280px; background: #fff; border-radius: 16px; padding: 32px 24px; border: 1px solid #e2e8f0; text-align: center; }
-    .system-step:hover { border-color: #6366f1; box-shadow: 0 8px 24px rgba(99,102,241,0.1); }
-    .step-badge { display: inline-block; background: #6366f1; color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 16px; }
-    .system-step h4 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
-    .system-step p { font-size: 13px; color: #64748b; line-height: 1.7; }
-    .system-arrow { display: flex; align-items: center; font-size: 24px; color: #6366f1; font-weight: 700; padding: 0 12px; }
-
-    /* 상담 폼 */
-    .consult-section { background: #0f172a; padding: 80px 24px; }
-    .consult-inner { max-width: 1000px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
-    .consult-left { flex: 1; color: #fff; }
-    .consult-left h2 { font-size: 32px; font-weight: 800; line-height: 1.4; margin-bottom: 16px; }
-    .consult-left h2 em { font-style: normal; color: #818cf8; }
-    .consult-left > p { font-size: 15px; color: #94a3b8; line-height: 1.8; margin-bottom: 24px; }
-    .consult-features { display: flex; flex-direction: column; gap: 8px; }
-    .consult-feat { font-size: 15px; color: #e2e8f0; }
-    .consult-form { flex: 0 0 380px; background: #fff; border-radius: 20px; padding: 36px 28px; }
-    .consult-form h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 20px; text-align: center; }
-    .form-input { display: block; width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 10px; font-size: 14px; margin-bottom: 12px; outline: none; transition: border-color 0.2s; background: #f8fafc; }
-    .form-input:focus { border-color: #6366f1; }
-    .form-submit { display: block; width: 100%; padding: 14px; background: #6366f1; color: #fff; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
-    .form-submit:hover { background: #4f46e5; }
-    .form-note { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 12px; }
-
-    /* 코칭 프로그램 */
-    .cp-section { background: #f8fafc; padding: 80px 24px; }
-    .cp-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
-    .cp-label { font-size: 13px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-    .cp-title { font-size: 28px; font-weight: 900; color: #0f172a; line-height: 1.5; margin-bottom: 48px; }
-    .cp-title em { font-style: normal; color: #6366f1; }
-    .cp-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .cp-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.06); transition: all 0.3s; }
-    .cp-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
-    .cp-card-header { padding: 20px 16px; color: #fff; text-align: center; }
-    .cp-card-header h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
-    .cp-card-header p { font-size: 12px; opacity: 0.85; }
-    .cp-purple { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
-    .cp-green { background: linear-gradient(135deg, #22c55e, #16a34a); }
-    .cp-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-    .cp-mint { background: linear-gradient(135deg, #a3e635, #65a30d); }
-    .cp-card-body { padding: 16px; min-height: 260px; }
-    .cp-mock { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; text-align: left; }
-    .cp-mock-title { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #f1f5f9; }
-    .cp-mock-bars { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-    .cp-bar-row { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #64748b; }
-    .cp-bar-row span:first-child { width: 50px; flex-shrink: 0; }
-    .cp-bar-row span:last-child { width: 24px; text-align: right; font-weight: 700; color: #334155; }
-    .cp-bar { flex: 1; height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
-    .cp-bar-fill { height: 100%; border-radius: 4px; }
-    .cp-mock-score { text-align: center; margin-top: 12px; }
-    .cp-score-circle { width: 52px; height: 52px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: #fff; }
-    .cp-score-circle span { font-size: 10px; font-weight: 400; }
-    .cp-purple-bg { background: #7c3aed; }
-    .cp-mock-radar { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
-    .cp-radar-item { padding: 8px; border-radius: 8px; font-size: 12px; color: #334155; text-align: center; }
-    .cp-radar-item b { display: block; font-size: 18px; color: #0f172a; margin-top: 2px; }
-    .cp-mock-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-    .cp-mock-tags span { padding: 3px 10px; background: #f1f5f9; border-radius: 4px; font-size: 11px; color: #64748b; }
-    .cp-mock-type { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
-    .cp-type-row { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #334155; }
-    .cp-type-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-    .cp-type-row b { margin-left: auto; font-size: 14px; }
-    .cp-mock-result { text-align: center; padding: 8px; background: #f1f5f9; border-radius: 8px; font-size: 12px; color: #64748b; }
-    .cp-mock-result b { color: #0f172a; }
-    .cp-card-name { padding: 14px; font-size: 15px; font-weight: 700; color: #334155; text-align: center; }
-    
-    @media (max-width: 768px) {
-      .cp-cards { grid-template-columns: 1fr 1fr; gap: 14px; }
-      .cp-title { font-size: 22px; }
-      .cp-card-body { min-height: 200px; }
-    }
-    @media (max-width: 480px) {
-      .cp-cards { grid-template-columns: 1fr; }
-    }
-
-    /* 플로팅 버튼 스타일은 commonStyles()에 통합됨 */
-
-    .stats { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
-    .stats-grid { display: none; }
-    
-    .section { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
-    .section-header { text-align: center; margin-bottom: 48px; }
-    .section-label { font-size: 13px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-    .section-title { font-size: 32px; font-weight: 800; color: #0f172a; line-height: 1.4; }
-    .section-title em { font-style: normal; color: #6366f1; }
-    
-    .regions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
-    .region-card { display: flex; align-items: center; gap: 14px; background: #fff; padding: 16px 20px; border-radius: 12px; text-decoration: none; color: inherit; border: 1px solid #e2e8f0; transition: all 0.2s; }
-    .region-card:hover { border-color: #6366f1; box-shadow: 0 4px 16px rgba(99,102,241,0.12); transform: translateY(-2px); }
-    .region-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #eef2ff, #e0e7ff); color: #6366f1; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; flex-shrink: 0; }
-    .region-info h3 { font-size: 16px; font-weight: 700; color: #0f172a; }
-    .region-info p { font-size: 12px; color: #94a3b8; }
-    .arrow { margin-left: auto; color: #cbd5e1; font-size: 18px; }
-    .region-card:hover .arrow { color: #6366f1; }
-    
-    .subjects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-    .subject-card { background: #fff; border-radius: 16px; padding: 28px 24px; text-decoration: none; color: inherit; border: 1px solid #e2e8f0; transition: all 0.2s; text-align: center; }
-    .subject-card:hover { border-color: var(--accent); box-shadow: 0 8px 24px rgba(0,0,0,0.06); transform: translateY(-4px); }
-    .subject-icon { font-size: 40px; margin-bottom: 12px; display: block; }
-    .subject-card h3 { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
-    .subject-card p { font-size: 14px; color: #94a3b8; }
-    .subject-card:hover h3 { color: var(--accent); }
-
-    .cta-section { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 24px; padding: 60px 40px; text-align: center; color: #fff; margin: 0 auto; max-width: 900px; }
-    .cta-section h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
-    .cta-section p { font-size: 16px; opacity: 0.8; margin-bottom: 28px; }
-    .cta-btn { display: inline-block; background: #fff; color: #4f46e5; padding: 14px 36px; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
-    
-    @media (max-width: 768px) {
-      .stats-grid { display: none; }
-      .section-title { font-size: 24px; }
-      .section { padding: 60px 20px; }
-      .strength-cards { grid-template-columns: repeat(2, 1fr); }
-      .strength-num { font-size: 32px; }
-      .strength-title, .diagnosis-title, .teacher-title, .system-title { font-size: 22px; }
-      .diagnosis-grid { grid-template-columns: 1fr 1fr; }
-      .teacher-cards { grid-template-columns: 1fr; }
-      .system-steps { flex-direction: column; align-items: center; gap: 12px; }
-      .system-arrow { transform: rotate(90deg); padding: 0; }
-      .consult-inner { flex-direction: column; gap: 32px; }
-      .consult-form { flex: auto; width: 100%; }
-      .consult-left h2 { font-size: 24px; }
-    }
-
-    /* ===== 체험 수업 신청 섹션 (네이비/인디고 테마) ===== */
-    .inquiry-section { background: linear-gradient(180deg, #0c1425 0%, #1e1b4b 100%); padding: 80px 20px; }
-    .inquiry-inner { max-width: 780px; margin: 0 auto; }
-    .inquiry-title { text-align: center; font-size: clamp(30px, 5vw, 42px); font-weight: 900; color: #fff; margin-bottom: 8px; line-height: 1.15; }
-    .inquiry-title em { display: block; color: #818cf8; font-style: normal; margin-top: 4px; }
-    .inquiry-desc { text-align: center; color: #c7d2fe; font-size: 14px; line-height: 1.8; margin-bottom: 32px; }
-    .inquiry-contact { display: flex; justify-content: center; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
-    .inq-phone, .inq-kakao { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform 0.15s; }
-    .inq-phone { background: #0f172a; color: #fff; }
-    .inq-phone .ic { color: #818cf8; }
-    .inq-kakao { background: #fde047; color: #3b3b3b; }
-    .inq-phone:hover, .inq-kakao:hover { transform: translateY(-2px); }
-    .inquiry-form { display: flex; flex-direction: column; gap: 18px; }
-    .inq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .inq-col label, .inq-full label { display: block; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .inq-col label .req, .inq-full label .req { color: #818cf8; }
-    .inq-col label .hint, .inq-full label .hint { color: #a5b4fc; font-size: 12px; font-weight: 500; margin-left: 6px; }
-    .inq-input, .inq-textarea { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(165,180,252,0.2); border-radius: 8px; padding: 14px 16px; color: #fff; font-size: 14px; font-family: inherit; transition: border-color 0.15s; box-sizing: border-box; }
-    .inq-input::placeholder, .inq-textarea::placeholder { color: #7c83a8; }
-    .inq-input:focus, .inq-textarea:focus { outline: none; border-color: #818cf8; box-shadow: 0 0 0 3px rgba(129,140,248,0.15); }
-    .inq-textarea { resize: vertical; min-height: 100px; }
-    .inq-dropdown { position: relative; }
-    .inq-toggle { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(165,180,252,0.2); border-radius: 8px; padding: 14px 16px; color: #7c83a8; font-size: 14px; cursor: pointer; text-align: left; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
-    .inq-toggle.has-value { color: #fff; }
-    .inq-arrow { font-size: 11px; color: #a5b4fc; transition: transform 0.2s; margin-left: 8px; }
-    .inq-dropdown.open .inq-arrow { transform: rotate(180deg); }
-    .inq-menu { position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #1e1b4b; border: 1px solid rgba(165,180,252,0.25); border-radius: 8px; padding: 8px; display: none; z-index: 10; max-height: 280px; overflow-y: auto; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
-    .inq-dropdown.open .inq-menu { display: block; }
-    .inq-menu label { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 6px; cursor: pointer; color: #fff; font-size: 14px; font-weight: 500; margin-bottom: 0; }
-    .inq-menu label:hover { background: rgba(129,140,248,0.12); }
-    .inq-menu input[type=checkbox] { accent-color: #6366f1; width: 16px; height: 16px; }
-    .inq-addr-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
-    .inq-addr-btn { padding: 0 20px; background: #6366f1; color: #fff; border: none; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; transition: background 0.15s; font-family: inherit; }
-    .inq-addr-btn:hover { background: #4f46e5; }
-    .inq-submit { width: 100%; padding: 18px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; border: none; border-radius: 10px; font-size: 17px; font-weight: 800; cursor: pointer; margin-top: 12px; transition: all 0.15s; font-family: inherit; box-shadow: 0 4px 14px rgba(99,102,241,0.35); }
-    .inq-submit:hover { background: linear-gradient(135deg, #4f46e5, #4338ca); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(99,102,241,0.45); }
-    .inq-submit:disabled { background: #475569; cursor: not-allowed; transform: none; box-shadow: none; }
-    .inq-feedback { text-align: center; margin-top: 14px; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: 600; }
-    .inq-feedback.ok { background: rgba(129,140,248,0.15); color: #c7d2fe; border: 1px solid rgba(129,140,248,0.35); }
-    .inq-feedback.err { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
-    @media (max-width: 640px) {
-      .inquiry-section { padding: 56px 16px; }
-      .inq-row { grid-template-columns: 1fr; }
-      .inq-addr-row { grid-template-columns: 1fr; }
-      .inq-addr-btn { padding: 14px; }
-    }
-  </style>
+  <style>${commonStyles()}/* 슬라이더 */.slider{position:relative;width:100%;height:540px;overflow:hidden}.slider-track{display:flex;width:400%;height:100%;transition:transform .8s cubic-bezier(.25,.46,.45,.94)}.slide{width:25%;height:100%;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}.slide-inner{position:relative;z-index:2;max-width:800px;padding:0 40px;text-align:center;color:#fff}.slide-badge{display:inline-block;background:rgba(255,255,255,.2);backdrop-filter:blur(4px);padding:6px 20px;border-radius:20px;font-size:13px;font-weight:500;margin-bottom:16px}.slide h2{font-size:42px;font-weight:900;line-height:1.3;margin-bottom:14px;letter-spacing:-1px;text-shadow:0 2px 16px rgba(0,0,0,.3)}.slide h2 em{font-style:normal}.slide p{font-size:17px;opacity:.9;margin-bottom:28px;text-shadow:0 1px 8px rgba(0,0,0,.3)}.slide-btn{display:inline-block;padding:13px 32px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all .2s}.slide1{background:linear-gradient(160deg,#070a12 0%,#0c1225 40%,#0a0f1e 100%)}.slide1 h2{font-size:48px;letter-spacing:-1.5px}.slide1 h2 em{color:#60a5fa}.slide1 .slide-btn{background:#3b82f6;color:#fff}.slide1 .slide-btn:hover{background:#2563eb;transform:translateY(-2px)}.slide1 .slide-btn-outline{display:inline-block;padding:13px 32px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all .2s;background:transparent;color:#94a3b8;border:1.5px solid #334155}.slide1 .slide-btn-outline:hover{border-color:#60a5fa;color:#fff;transform:translateY(-2px)}.slide1-btns{display:flex;gap:14px;justify-content:center;margin-bottom:28px}.slide1 .slide1-subtext{font-size:16px;color:#64748b;margin-bottom:6px;text-shadow:none;opacity:1}.slide1 .slide1-subtext strong{color:#e2e8f0;font-weight:700}.slide1-stats-row{display:flex;gap:48px;justify-content:center;margin-top:0}.slide1-stat{text-align:center}.slide1-stat-num{font-size:32px;font-weight:900;color:#60a5fa;letter-spacing:-.5px}.slide1-stat-label{font-size:13px;color:#64748b;margin-top:4px}.slide1-illustration{margin:0 auto 20px;width:120px;height:100px;position:relative}@media (max-width:768px){.slide1 h2{font-size:30px}.slide1-stats-row{gap:24px}.slide1-stat-num{font-size:24px}.slide1-btns{flex-direction:column;align-items:center;gap:10px}.slide1-illustration{width:90px;height:75px}}.slide2{background:linear-gradient(135deg,#4a1942 0%,#2d1035 50%,#1a0a20 100%)}.slide2 h2 em{color:#f0abfc}.slide2 .slide-btn{background:#d946ef;color:#fff}.slide2 .slide-btn:hover{background:#c026d3;transform:translateY(-2px)}.slide3{background:linear-gradient(135deg,#3b1a00 0%,#6b3a1f 40%,#2a1200 100%)}.slide3 h2 em{color:#fbbf24}.slide3 .slide-btn{background:#f59e0b;color:#1a0a00}.slide3 .slide-btn:hover{background:#d97706;transform:translateY(-2px)}.slide4{background:linear-gradient(135deg,#0f172a 0%,#1e293b 40%,#0f172a 100%)}.slide4 h2 em{color:#34d399}.slide4 .slide-btn{background:#10b981;color:#fff}.slide4 .slide-btn:hover{background:#059669;transform:translateY(-2px)}.slide::before{content:'';position:absolute;inset:0;z-index:1}.slide1::before{background:radial-gradient(ellipse at 50% 30%,rgba(59,130,246,.08) 0%,transparent 60%)}.slide2::before{background:radial-gradient(ellipse at 50% 50%,rgba(217,70,239,.15) 0%,transparent 60%)}.slide3::before{background:radial-gradient(ellipse at 50% 60%,rgba(251,191,36,.12) 0%,transparent 60%)}.slide4::before{background:radial-gradient(ellipse at 30% 50%,rgba(52,211,153,.12) 0%,transparent 60%)}/* 슬라이더 좌우 화살표 */.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.2);color:#fff;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;transition:all .2s}.slider-arrow:hover{background:rgba(255,255,255,.3)}.slider-prev{left:20px}.slider-next{right:20px}/* 슬라이더 인디케이터 */.slider-dots{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:10px}.slider-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:all .3s;border:none}.slider-dot.active{background:#fff;width:28px;border-radius:5px}/* 슬라이드 장식 요소 */.slide-deco{position:absolute;z-index:1;opacity:.15}.slide1 .deco1{display:none}.slide1 .deco2{display:none}.slide2 .deco1{top:10%;left:15%;width:200px;height:200px;border:3px solid #f0abfc;border-radius:50%}.slide3 .deco1{bottom:10%;right:12%;width:150px;height:150px;border:3px solid #fbbf24;border-radius:50%}.slide4 .deco1{top:15%;right:15%;width:120px;height:120px;border:3px solid #34d399;border-radius:50%}.slide4 .deco2{bottom:20%;left:10%;width:80px;height:80px;background:#34d399;border-radius:12px;transform:rotate(30deg)}/* 슬라이드 통계 박스 */.slide-stats{position:absolute;right:40px;top:50%;transform:translateY(-50%);z-index:2;display:flex;flex-direction:column;gap:10px}.slide-stat-box{background:rgba(255,255,255,.95);border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 16px rgba(0,0,0,.15);min-width:180px}.slide-stat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}.slide-stat-text{font-size:11px;color:#64748b;line-height:1.3}.slide-stat-text strong{display:block;font-size:15px;color:#0f172a}@media (max-width:768px){.slider{height:480px}.slide h2{font-size:26px}.slide p{font-size:14px}.slide-inner{padding:0 20px}.slider-arrow{width:36px;height:36px;font-size:16px}.slide-stats{display:none}.slide-deco{display:none}}/* 회원 합격후기 */.review-section{background:#f8fafb;padding:70px 24px 50px}.review-inner{max-width:1200px;margin:0 auto;text-align:center}.review-main-title{font-size:28px;font-weight:800;color:#0f172a;margin-bottom:36px}.review-main-title em{font-style:normal;color:#312e81}.review-track-wrap{position:relative}.review-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px}.review-track::-webkit-scrollbar{display:none}.rv-card{min-width:340px;max-width:340px;flex-shrink:0;scroll-snap-align:start;background:#fff;border-radius:16px;padding:28px 24px;text-align:left;border:1px solid #e8ebe8;transition:all .3s;display:flex;flex-direction:column}.rv-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.07);transform:translateY(-4px)}.rv-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.rv-tag{display:inline-block;background:#e0e7ff;color:#3730a3;padding:4px 12px;border-radius:6px;font-size:13px;font-weight:700}.rv-stars{color:#facc15;font-size:14px;letter-spacing:1px}.rv-text{font-size:15px;color:#334155;line-height:1.75;flex:1;margin-bottom:20px}.rv-text b{color:#0f172a;font-weight:700}.rv-author{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #eef2ff}.rv-avatar-icon{width:40px;height:40px;background:#eef2ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}.rv-info{text-align:left}.rv-info b{display:block;font-size:14px;color:#0f172a;margin-bottom:2px}.rv-info span{font-size:12px;color:#94a3b8}.rv-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:28px}.rv-arrow{width:40px;height:40px;border-radius:50%;border:1px solid #d1d5db;background:#fff;color:#475569;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}.rv-arrow:hover{border-color:#312e81;color:#312e81}.rv-dots{display:flex;gap:8px;align-items:center}.rv-dot{width:8px;height:8px;border-radius:50%;background:#d1d5db;transition:all .3s}.rv-dot.active{width:10px;height:10px;background:#312e81}@media (max-width:768px){.rv-card{min-width:280px;max-width:280px;padding:20px 18px}.rv-text{font-size:14px}.review-main-title{font-size:22px}}/* OUR STRENGTH */.strength-section{background:#fff;padding:80px 24px}.strength-inner{max-width:1000px;margin:0 auto;text-align:center}.section-label-center{font-size:13px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}.strength-title{font-size:28px;font-weight:800;color:#0f172a;line-height:1.5;margin-bottom:12px}.strength-title em{font-style:normal;color:#6366f1}.strength-subtitle{font-size:15px;color:#64748b;line-height:1.8;margin-bottom:48px}.strength-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.strength-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:32px 16px;text-align:center;transition:all .3s}.strength-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.06)}.strength-icon{font-size:36px;margin-bottom:16px}.strength-sub{font-size:12px;color:#94a3b8;margin-bottom:8px}.strength-num{font-size:40px;font-weight:900;color:#6366f1;margin-bottom:8px}.strength-unit{font-size:20px;font-weight:700}.strength-desc{font-size:13px;color:#64748b;line-height:1.6}/* 퍼스널 진단검사 */.diagnosis-section{background:#0f172a;padding:80px 24px;color:#fff}.diagnosis-inner{max-width:1000px;margin:0 auto;text-align:center}.diagnosis-title{font-size:28px;font-weight:800;line-height:1.5;margin-bottom:12px}.diagnosis-title em{font-style:normal;color:#818cf8}.diagnosis-subtitle{font-size:15px;color:#94a3b8;margin-bottom:48px}.diagnosis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.diagnosis-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 20px;text-align:left;transition:all .3s}.diagnosis-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}.diag-num{width:32px;height:32px;background:#6366f1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;margin-bottom:14px}.diagnosis-card h4{font-size:17px;font-weight:700;margin-bottom:8px}.diagnosis-card p{font-size:13px;color:#94a3b8;line-height:1.5}/* 선생님 역량 */.teacher-section{background:#fff;padding:80px 24px}.teacher-inner{max-width:1000px;margin:0 auto;text-align:center}.teacher-title{font-size:28px;font-weight:800;color:#0f172a;line-height:1.5;margin-bottom:12px}.teacher-title em{font-style:normal;color:#6366f1}.teacher-subtitle{font-size:15px;color:#64748b;line-height:1.8;margin-bottom:48px}.teacher-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.teacher-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:36px 24px;text-align:left;transition:all .3s}.teacher-card:hover{border-color:#6366f1;box-shadow:0 8px 24px rgba(99,102,241,.1);transform:translateY(-4px)}.teacher-card-num{font-size:24px;font-weight:900;color:#6366f1;margin-bottom:16px}.teacher-card h4{font-size:18px;font-weight:700;color:#0f172a;margin-bottom:12px}.teacher-card p{font-size:14px;color:#64748b;line-height:1.7}/* AI 학습시스템 */.system-section{background:linear-gradient(135deg,#f0f4ff,#e8ecff);padding:80px 24px}.system-inner{max-width:1000px;margin:0 auto;text-align:center}.system-title{font-size:28px;font-weight:800;color:#0f172a;line-height:1.5;margin-bottom:12px}.system-title em{font-style:normal;color:#6366f1}.system-subtitle{font-size:15px;color:#64748b;line-height:1.8;margin-bottom:36px}.system-sub-heading{font-size:18px;font-weight:700;color:#4f46e5;margin-bottom:32px}.system-steps{display:flex;align-items:stretch;gap:0;justify-content:center}.system-step{flex:1;max-width:280px;background:#fff;border-radius:16px;padding:32px 24px;border:1px solid #e2e8f0;text-align:center}.system-step:hover{border-color:#6366f1;box-shadow:0 8px 24px rgba(99,102,241,.1)}.step-badge{display:inline-block;background:#6366f1;color:#fff;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:16px}.system-step h4{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:10px}.system-step p{font-size:13px;color:#64748b;line-height:1.7}.system-arrow{display:flex;align-items:center;font-size:24px;color:#6366f1;font-weight:700;padding:0 12px}/* 상담 폼 */.consult-section{background:#0f172a;padding:80px 24px}.consult-inner{max-width:1000px;margin:0 auto;display:flex;gap:60px;align-items:center}.consult-left{flex:1;color:#fff}.consult-left h2{font-size:32px;font-weight:800;line-height:1.4;margin-bottom:16px}.consult-left h2 em{font-style:normal;color:#818cf8}.consult-left > p{font-size:15px;color:#94a3b8;line-height:1.8;margin-bottom:24px}.consult-features{display:flex;flex-direction:column;gap:8px}.consult-feat{font-size:15px;color:#e2e8f0}.consult-form{flex:0 0 380px;background:#fff;border-radius:20px;padding:36px 28px}.consult-form h3{font-size:20px;font-weight:700;color:#0f172a;margin-bottom:20px;text-align:center}.form-input{display:block;width:100%;padding:12px 16px;border:1px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:12px;outline:none;transition:border-color .2s;background:#f8fafc}.form-input:focus{border-color:#6366f1}.form-submit{display:block;width:100%;padding:14px;background:#6366f1;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s}.form-submit:hover{background:#4f46e5}.form-note{font-size:12px;color:#94a3b8;text-align:center;margin-top:12px}/* 코칭 프로그램 */.cp-section{background:#f8fafc;padding:80px 24px}.cp-inner{max-width:1200px;margin:0 auto;text-align:center}.cp-label{font-size:13px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}.cp-title{font-size:28px;font-weight:900;color:#0f172a;line-height:1.5;margin-bottom:48px}.cp-title em{font-style:normal;color:#6366f1}.cp-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.cp-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:all .3s}.cp-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,.1)}.cp-card-header{padding:20px 16px;color:#fff;text-align:center}.cp-card-header h3{font-size:18px;font-weight:800;margin-bottom:4px}.cp-card-header p{font-size:12px;opacity:.85}.cp-purple{background:linear-gradient(135deg,#7c3aed,#6d28d9)}.cp-green{background:linear-gradient(135deg,#22c55e,#16a34a)}.cp-blue{background:linear-gradient(135deg,#3b82f6,#2563eb)}.cp-mint{background:linear-gradient(135deg,#a3e635,#65a30d)}.cp-card-body{padding:16px;min-height:260px}.cp-mock{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;text-align:left}.cp-mock-title{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #f1f5f9}.cp-mock-bars{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}.cp-bar-row{display:flex;align-items:center;gap:8px;font-size:11px;color:#64748b}.cp-bar-row span:first-child{width:50px;flex-shrink:0}.cp-bar-row span:last-child{width:24px;text-align:right;font-weight:700;color:#334155}.cp-bar{flex:1;height:8px;background:#f1f5f9;border-radius:4px;overflow:hidden}.cp-bar-fill{height:100%;border-radius:4px}.cp-mock-score{text-align:center;margin-top:12px}.cp-score-circle{width:52px;height:52px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff}.cp-score-circle span{font-size:10px;font-weight:400}.cp-purple-bg{background:#7c3aed}.cp-mock-radar{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}.cp-radar-item{padding:8px;border-radius:8px;font-size:12px;color:#334155;text-align:center}.cp-radar-item b{display:block;font-size:18px;color:#0f172a;margin-top:2px}.cp-mock-tags{display:flex;gap:6px;flex-wrap:wrap}.cp-mock-tags span{padding:3px 10px;background:#f1f5f9;border-radius:4px;font-size:11px;color:#64748b}.cp-mock-type{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}.cp-type-row{display:flex;align-items:center;gap:8px;font-size:12px;color:#334155}.cp-type-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}.cp-type-row b{margin-left:auto;font-size:14px}.cp-mock-result{text-align:center;padding:8px;background:#f1f5f9;border-radius:8px;font-size:12px;color:#64748b}.cp-mock-result b{color:#0f172a}.cp-card-name{padding:14px;font-size:15px;font-weight:700;color:#334155;text-align:center}@media (max-width:768px){.cp-cards{grid-template-columns:1fr 1fr;gap:14px}.cp-title{font-size:22px}.cp-card-body{min-height:200px}}@media (max-width:480px){.cp-cards{grid-template-columns:1fr}}/* 플로팅 버튼 스타일은 commonStyles()에 통합됨 */.stats{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:10}.stats-grid{display:none}.section{max-width:1200px;margin:0 auto;padding:80px 24px}.section-header{text-align:center;margin-bottom:48px}.section-label{font-size:13px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}.section-title{font-size:32px;font-weight:800;color:#0f172a;line-height:1.4}.section-title em{font-style:normal;color:#6366f1}.regions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}.region-card{display:flex;align-items:center;gap:14px;background:#fff;padding:16px 20px;border-radius:12px;text-decoration:none;color:inherit;border:1px solid #e2e8f0;transition:all .2s}.region-card:hover{border-color:#6366f1;box-shadow:0 4px 16px rgba(99,102,241,.12);transform:translateY(-2px)}.region-icon{width:44px;height:44px;background:linear-gradient(135deg,#eef2ff,#e0e7ff);color:#6366f1;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0}.region-info h3{font-size:16px;font-weight:700;color:#0f172a}.region-info p{font-size:12px;color:#94a3b8}.arrow{margin-left:auto;color:#cbd5e1;font-size:18px}.region-card:hover .arrow{color:#6366f1}.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}.subject-card{background:#fff;border-radius:16px;padding:28px 24px;text-decoration:none;color:inherit;border:1px solid #e2e8f0;transition:all .2s;text-align:center}.subject-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-4px)}.subject-icon{font-size:40px;margin-bottom:12px;display:block}.subject-card h3{font-size:20px;font-weight:700;color:#0f172a;margin-bottom:6px}.subject-card p{font-size:14px;color:#94a3b8}.subject-card:hover h3{color:var(--accent)}.cta-section{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:24px;padding:60px 40px;text-align:center;color:#fff;margin:0 auto;max-width:900px}.cta-section h2{font-size:28px;font-weight:800;margin-bottom:12px}.cta-section p{font-size:16px;opacity:.8;margin-bottom:28px}.cta-btn{display:inline-block;background:#fff;color:#4f46e5;padding:14px 36px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;transition:all .2s}.cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.2)}@media (max-width:768px){.stats-grid{display:none}.section-title{font-size:24px}.section{padding:60px 20px}.strength-cards{grid-template-columns:repeat(2,1fr)}.strength-num{font-size:32px}.strength-title,.diagnosis-title,.teacher-title,.system-title{font-size:22px}.diagnosis-grid{grid-template-columns:1fr 1fr}.teacher-cards{grid-template-columns:1fr}.system-steps{flex-direction:column;align-items:center;gap:12px}.system-arrow{transform:rotate(90deg);padding:0}.consult-inner{flex-direction:column;gap:32px}.consult-form{flex:auto;width:100%}.consult-left h2{font-size:24px}}/* ===== 체험 수업 신청 섹션 (네이비/인디고 테마) ===== */.inquiry-section{background:linear-gradient(180deg,#0c1425 0%,#1e1b4b 100%);padding:80px 20px}.inquiry-inner{max-width:780px;margin:0 auto}.inquiry-title{text-align:center;font-size:clamp(30px,5vw,42px);font-weight:900;color:#fff;margin-bottom:8px;line-height:1.15}.inquiry-title em{display:block;color:#818cf8;font-style:normal;margin-top:4px}.inquiry-desc{text-align:center;color:#c7d2fe;font-size:14px;line-height:1.8;margin-bottom:32px}.inquiry-contact{display:flex;justify-content:center;gap:12px;margin-bottom:36px;flex-wrap:wrap}.inq-phone,.inq-kakao{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .15s}.inq-phone{background:#0f172a;color:#fff}.inq-phone .ic{color:#818cf8}.inq-kakao{background:#fde047;color:#3b3b3b}.inq-phone:hover,.inq-kakao:hover{transform:translateY(-2px)}.inquiry-form{display:flex;flex-direction:column;gap:18px}.inq-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.inq-col label,.inq-full label{display:block;font-size:13px;font-weight:700;color:#fff;margin-bottom:8px}.inq-col label .req,.inq-full label .req{color:#818cf8}.inq-col label .hint,.inq-full label .hint{color:#a5b4fc;font-size:12px;font-weight:500;margin-left:6px}.inq-input,.inq-textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(165,180,252,.2);border-radius:8px;padding:14px 16px;color:#fff;font-size:14px;font-family:inherit;transition:border-color .15s;box-sizing:border-box}.inq-input::placeholder,.inq-textarea::placeholder{color:#7c83a8}.inq-input:focus,.inq-textarea:focus{outline:none;border-color:#818cf8;box-shadow:0 0 0 3px rgba(129,140,248,.15)}.inq-textarea{resize:vertical;min-height:100px}.inq-dropdown{position:relative}.inq-toggle{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(165,180,252,.2);border-radius:8px;padding:14px 16px;color:#7c83a8;font-size:14px;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;font-family:inherit}.inq-toggle.has-value{color:#fff}.inq-arrow{font-size:11px;color:#a5b4fc;transition:transform .2s;margin-left:8px}.inq-dropdown.open .inq-arrow{transform:rotate(180deg)}.inq-menu{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#1e1b4b;border:1px solid rgba(165,180,252,.25);border-radius:8px;padding:8px;display:none;z-index:10;max-height:280px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.4)}.inq-dropdown.open .inq-menu{display:block}.inq-menu label{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:6px;cursor:pointer;color:#fff;font-size:14px;font-weight:500;margin-bottom:0}.inq-menu label:hover{background:rgba(129,140,248,.12)}.inq-menu input[type=checkbox]{accent-color:#6366f1;width:16px;height:16px}.inq-addr-row{display:grid;grid-template-columns:1fr auto;gap:10px}.inq-addr-btn{padding:0 20px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;transition:background .15s;font-family:inherit}.inq-addr-btn:hover{background:#4f46e5}.inq-submit{width:100%;padding:18px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:800;cursor:pointer;margin-top:12px;transition:all .15s;font-family:inherit;box-shadow:0 4px 14px rgba(99,102,241,.35)}.inq-submit:hover{background:linear-gradient(135deg,#4f46e5,#4338ca);transform:translateY(-2px);box-shadow:0 6px 18px rgba(99,102,241,.45)}.inq-submit:disabled{background:#475569;cursor:not-allowed;transform:none;box-shadow:none}.inq-feedback{text-align:center;margin-top:14px;padding:12px;border-radius:8px;font-size:14px;font-weight:600}.inq-feedback.ok{background:rgba(129,140,248,.15);color:#c7d2fe;border:1px solid rgba(129,140,248,.35)}.inq-feedback.err{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}@media (max-width:640px){.inquiry-section{padding:56px 16px}.inq-row{grid-template-columns:1fr}.inq-addr-row{grid-template-columns:1fr}.inq-addr-btn{padding:14px}}</style>
 </head>
 <body>
   ${navHTML('')}
-  
+
   <section class="slider" id="slider">
     <div class="slider-track" id="sliderTrack">
-      
+
       <div class="slide slide1">
         <div class="slide-deco deco1"></div>
         <div class="slide-deco deco2"></div>
@@ -1297,7 +908,7 @@ function renderHomepage() {
           </div>
         </div>
       </div>
-      
+
       <div class="slide slide2">
         <div class="slide-deco deco1"></div>
         <div class="slide-inner">
@@ -1307,7 +918,7 @@ function renderHomepage() {
           <a href="/지역별" class="slide-btn">합격 후기 보기 →</a>
         </div>
       </div>
-      
+
       <div class="slide slide3">
         <div class="slide-deco deco1"></div>
         <div class="slide-inner">
@@ -1317,7 +928,7 @@ function renderHomepage() {
           <a href="/지역별" class="slide-btn">지역별 과외 찾기 →</a>
         </div>
       </div>
-      
+
       <div class="slide slide4">
         <div class="slide-deco deco1"></div>
         <div class="slide-deco deco2"></div>
@@ -1328,7 +939,7 @@ function renderHomepage() {
           <a href="/과목별" class="slide-btn">과목별 보기 →</a>
         </div>
       </div>
-      
+
     </div>
     <button class="slider-arrow slider-prev" onclick="moveSlide(-1)">‹</button>
     <button class="slider-arrow slider-next" onclick="moveSlide(1)">›</button>
@@ -1339,12 +950,12 @@ function renderHomepage() {
       <button class="slider-dot" onclick="goSlide(3)"></button>
     </div>
   </section>
-  
+
   <script>
     let currentSlide = 0;
     const totalSlides = 4;
     let slideInterval = setInterval(() => moveSlide(1), 5000);
-    
+
     function moveSlide(dir) {
       currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
       updateSlider();
@@ -1363,8 +974,7 @@ function renderHomepage() {
       clearInterval(slideInterval);
       slideInterval = setInterval(() => moveSlide(1), 5000);
     }
-    
-    // 누적 방문자 카운터
+
     (function() {
       var base = 304953;
       var startDate = new Date('2026-04-13').getTime();
@@ -1375,7 +985,7 @@ function renderHomepage() {
       if (el) el.textContent = count.toLocaleString();
     })();
   </script>
-  
+
   <!-- 회원 합격후기 섹션 -->
   <section class="review-section">
     <div class="review-inner">
@@ -1704,8 +1314,7 @@ function renderHomepage() {
 // --- 카테고리: 지역별 ---
 function renderRegionList() {
   const allRegions = Object.keys(REGIONS);
-  
-  // 각 구별 대표 동네 데이터
+
   const subAreas = {
     "강남구":"역삼·개포·청담","강동구":"명일·고덕·상일","강북구":"미아·번·수유","강서구":"염창·등촌·화곡","관악구":"봉천·신림·남현",
     "광진구":"중곡·능·구의","구로구":"신도림·구로·가리봉","금천구":"가산·독산·시흥","노원구":"월계·공릉·하계","도봉구":"쌍문·방학·창",
@@ -1714,7 +1323,6 @@ function renderRegionList() {
     "용산구":"후암·갈월·남영","은평구":"수색·녹번·불광","종로구":"청운·신교·궁정","중구":"소공·명동·회현","중랑구":"면목·상봉·중화",
   };
 
-  // 지역별 카드 데이터 생성 (JSON)
   const regionData = {};
   for (const [parent, districts] of Object.entries(REGIONS)) {
     regionData[parent] = districts.map(d => ({
@@ -1725,53 +1333,28 @@ function renderRegionList() {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('지역별 과외 안내 | 전국 맞춤 과외 - 안하니', '전국 시/군/구 과외 정보를 지역별로 확인하세요.', 'https://anhani.com/지역별')}
-  <style>${commonStyles()}
-    .rg-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; }
-    .rg-label { display: inline-block; background: #312e81; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
-    .rg-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; line-height: 1.3; }
-    .rg-title em { font-style: normal; color: #312e81; }
-    .rg-subtitle { font-size: 15px; color: #64748b; margin-bottom: 36px; }
-    
-    .rg-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
-    .rg-tab { padding: 10px 22px; border-radius: 24px; border: 1.5px solid #d1d5db; background: #fff; font-size: 15px; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.2s; }
-    .rg-tab:hover { border-color: #312e81; color: #312e81; }
-    .rg-tab.active { background: #312e81; color: #fff; border-color: #312e81; }
-    
-    .rg-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-    .rg-card { background: #eef2ff; border: 1px solid #e0e7ff; border-radius: 12px; padding: 20px 16px; text-align: center; text-decoration: none; color: inherit; transition: all 0.2s; }
-    .rg-card:hover { border-color: #312e81; box-shadow: 0 4px 16px rgba(49,46,129,0.12); transform: translateY(-3px); }
-    .rg-card-name { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
-    .rg-card-sub { font-size: 12px; color: #94a3b8; }
-    
-    @media (max-width: 640px) {
-      .rg-title { font-size: 24px; }
-      .rg-tab { padding: 8px 16px; font-size: 13px; }
-      .rg-cards { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
-      .rg-card { padding: 14px 10px; }
-      .rg-card-name { font-size: 15px; }
-    }
-  </style></head><body>
+  <style>${commonStyles()}.rg-wrap{max-width:1000px;margin:0 auto;padding:48px 24px 80px}.rg-label{display:inline-block;background:#312e81;color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px}.rg-title{font-size:32px;font-weight:900;color:#0f172a;margin-bottom:10px;line-height:1.3}.rg-title em{font-style:normal;color:#312e81}.rg-subtitle{font-size:15px;color:#64748b;margin-bottom:36px}.rg-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}.rg-tab{padding:10px 22px;border-radius:24px;border:1.5px solid #d1d5db;background:#fff;font-size:15px;font-weight:600;color:#475569;cursor:pointer;transition:all .2s}.rg-tab:hover{border-color:#312e81;color:#312e81}.rg-tab.active{background:#312e81;color:#fff;border-color:#312e81}.rg-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.rg-card{background:#eef2ff;border:1px solid #e0e7ff;border-radius:12px;padding:20px 16px;text-align:center;text-decoration:none;color:inherit;transition:all .2s}.rg-card:hover{border-color:#312e81;box-shadow:0 4px 16px rgba(49,46,129,.12);transform:translateY(-3px)}.rg-card-name{font-size:17px;font-weight:800;color:#0f172a;margin-bottom:6px}.rg-card-sub{font-size:12px;color:#94a3b8}@media (max-width:640px){.rg-title{font-size:24px}.rg-tab{padding:8px 16px;font-size:13px}.rg-cards{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}.rg-card{padding:14px 10px}.rg-card-name{font-size:15px}}</style></head><body>
   ${navHTML('region')}
-  
+
   <div class="rg-wrap">
     <div class="rg-label">지역 선택</div>
     <h1 class="rg-title">전국 <em>지역별 과외</em> 안내</h1>
     <p class="rg-subtitle">지역 버튼을 클릭하면 해당 지역 시·구가 나타납니다.</p>
-    
+
     <div class="rg-tabs" id="rgTabs">
       ${allRegions.map((r, i) => `<div class="rg-tab${i === 0 ? ' active' : ''}" onclick="showRegion('${r}', this)">${r}</div>`).join('')}
     </div>
-    
+
     <div class="rg-cards" id="rgCards"></div>
   </div>
-  
+
   <script>
     var regionData = ${JSON.stringify(regionData)};
-    
+
     function showRegion(name, el) {
       document.querySelectorAll('.rg-tab').forEach(function(t) { t.classList.remove('active'); });
       if (el) el.classList.add('active');
-      
+
       var cards = document.getElementById('rgCards');
       var data = regionData[name] || [];
       cards.innerHTML = data.map(function(d) {
@@ -1781,10 +1364,10 @@ function renderRegionList() {
           '</a>';
       }).join('');
     }
-    
+
     showRegion('${allRegions[0]}', null);
   </script>
-  
+
   ${footerHTML()}
   </body></html>`;
 }
@@ -1793,10 +1376,10 @@ function renderRegionList() {
 function renderRegionDetail(region) {
   const districts = REGIONS[region];
   if (!districts) return null;
-  
+
   const cards = districts.map(d => {
     const dongCount = (DONG_DATA[d]||[]).length + (EUP_MYEON[d]||[]).length;
-    const links = SUBJECTS.map(s => 
+    const links = SUBJECTS.map(s =>
       `<a href="/${encodeURIComponent(`${d}-초등-${s}-과외`)}" class="subj-link">${s}</a>`
     ).join('');
     return `<div class="cat-card"><div class="cat-card-top"><h3>${d}</h3>${dongCount > 0 ? `<a href="/지역별/${encodeURIComponent(region)}/${encodeURIComponent(d)}" class="dong-link">동/읍/면 ${dongCount}개 →</a>` : ''}</div>
@@ -1809,25 +1392,7 @@ function renderRegionDetail(region) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(region + ' 과외 - 안하니', region + ' 지역 초등·중등·고등 과외 정보를 확인하세요.', 'https://anhani.com/지역별/' + encodeURIComponent(region))}
-  <style>${commonStyles()}
-    .page-hero { background: linear-gradient(135deg, #312e81, #4f46e5); color: #fff; padding: 48px 24px; text-align: center; }
-    .page-hero h1 { font-size: 32px; font-weight: 800; }
-    .page-hero p { opacity: 0.8; margin-top: 8px; }
-    .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 16px 24px; font-size: 14px; color: #94a3b8; }
-    .breadcrumb a { color: #6366f1; text-decoration: none; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px 24px 60px; }
-    .cat-card { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 16px; border: 1px solid #e2e8f0; }
-    .cat-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-    .cat-card h3 { font-size: 18px; font-weight: 700; color: #0f172a; }
-    .dong-link { font-size: 13px; color: #6366f1; text-decoration: none; font-weight: 600; }
-    .dong-link:hover { text-decoration: underline; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .subj-link { padding: 6px 14px; background: #f1f5f9; border-radius: 8px; color: #475569; text-decoration: none; font-size: 14px; transition: all 0.2s; }
-    .subj-link:hover { background: #eef2ff; color: #6366f1; }
-    .level-tabs { display: flex; gap: 8px; margin-bottom: 12px; }
-    .level-tab { padding: 4px 12px; background: #e2e8f0; border-radius: 6px; font-size: 13px; cursor: pointer; transition: all 0.2s; }
-    .level-tab:hover { background: #6366f1; color: #fff; }
-  </style></head><body>
+  <style>${commonStyles()}.page-hero{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;padding:48px 24px;text-align:center}.page-hero h1{font-size:32px;font-weight:800}.page-hero p{opacity:.8;margin-top:8px}.breadcrumb{max-width:1200px;margin:0 auto;padding:16px 24px;font-size:14px;color:#94a3b8}.breadcrumb a{color:#6366f1;text-decoration:none}.container{max-width:1200px;margin:0 auto;padding:20px 24px 60px}.cat-card{background:#fff;border-radius:12px;padding:24px;margin-bottom:16px;border:1px solid #e2e8f0}.cat-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.cat-card h3{font-size:18px;font-weight:700;color:#0f172a}.dong-link{font-size:13px;color:#6366f1;text-decoration:none;font-weight:600}.dong-link:hover{text-decoration:underline}.chips{display:flex;flex-wrap:wrap;gap:8px}.subj-link{padding:6px 14px;background:#f1f5f9;border-radius:8px;color:#475569;text-decoration:none;font-size:14px;transition:all .2s}.subj-link:hover{background:#eef2ff;color:#6366f1}.level-tabs{display:flex;gap:8px;margin-bottom:12px}.level-tab{padding:4px 12px;background:#e2e8f0;border-radius:6px;font-size:13px;cursor:pointer;transition:all .2s}.level-tab:hover{background:#6366f1;color:#fff}</style></head><body>
   ${navHTML('region')}
   <div class="page-hero"><h1>${region} 과외</h1><p>${region} 지역 ${districts.length}개 시/군/구 과외 정보</p></div>
   <div class="breadcrumb"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; ${region}</div>
@@ -1842,8 +1407,8 @@ function renderSigunguDetail(sido, sigungu) {
   const eups = EUP_MYEON[sigungu] || [];
   const all = [...dongs, ...eups];
   if (all.length === 0) return null;
-  
-  const dongCards = all.map(d => 
+
+  const dongCards = all.map(d =>
     `<a href="/지역별/${encodeURIComponent(sido)}/${encodeURIComponent(sigungu)}/${encodeURIComponent(d)}" class="sg-dong-card">
       <span class="sg-dong-name">${d}</span>
       <span class="sg-dong-meta">${sigungu} ${d} 과외 정보 →</span>
@@ -1852,21 +1417,7 @@ function renderSigunguDetail(sido, sigungu) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(sigungu + ' 동/읍/면별 과외 - 안하니', sido + ' ' + sigungu + ' 지역 동/읍/면별 과외 정보를 확인하세요. ' + all.length + '개 지역 과외 가이드.', 'https://anhani.com/지역별/' + encodeURIComponent(sido) + '/' + encodeURIComponent(sigungu))}
-  <style>${commonStyles()}
-    .sg-hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); color: #fff; padding: 48px 24px; text-align: center; }
-    .sg-hero h1 { font-size: 30px; font-weight: 900; margin-bottom: 8px; }
-    .sg-hero h1 em { font-style: normal; color: #818cf8; }
-    .sg-hero p { font-size: 15px; color: #94a3b8; }
-    .sg-bc { max-width: 960px; margin: 0 auto; padding: 16px 24px; font-size: 13px; color: #94a3b8; }
-    .sg-bc a { color: #6366f1; text-decoration: none; }
-    .sg-wrap { max-width: 960px; margin: 0 auto; padding: 20px 24px 80px; }
-    .sg-count { font-size: 15px; color: #64748b; margin-bottom: 20px; }
-    .sg-dong-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-    .sg-dong-card { display: flex; flex-direction: column; gap: 4px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 20px; text-decoration: none; transition: all 0.2s; }
-    .sg-dong-card:hover { border-color: #6366f1; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.04); }
-    .sg-dong-name { font-size: 16px; font-weight: 700; color: #0f172a; }
-    .sg-dong-meta { font-size: 12px; color: #94a3b8; }
-  </style></head><body>
+  <style>${commonStyles()}.sg-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#312e81 100%);color:#fff;padding:48px 24px;text-align:center}.sg-hero h1{font-size:30px;font-weight:900;margin-bottom:8px}.sg-hero h1 em{font-style:normal;color:#818cf8}.sg-hero p{font-size:15px;color:#94a3b8}.sg-bc{max-width:960px;margin:0 auto;padding:16px 24px;font-size:13px;color:#94a3b8}.sg-bc a{color:#6366f1;text-decoration:none}.sg-wrap{max-width:960px;margin:0 auto;padding:20px 24px 80px}.sg-count{font-size:15px;color:#64748b;margin-bottom:20px}.sg-dong-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.sg-dong-card{display:flex;flex-direction:column;gap:4px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;text-decoration:none;transition:all .2s}.sg-dong-card:hover{border-color:#6366f1;transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.04)}.sg-dong-name{font-size:16px;font-weight:700;color:#0f172a}.sg-dong-meta{font-size:12px;color:#94a3b8}</style></head><body>
   ${navHTML('region')}
   <div class="sg-hero"><h1>${sigungu} <em>동/읍/면별 과외</em></h1><p>${sido} ${sigungu} 지역 과외 정보</p></div>
   <div class="sg-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; <a href="/지역별/${encodeURIComponent(sido)}">${sido}</a> &gt; ${sigungu}</div>
@@ -1929,15 +1480,14 @@ const DONG_CLOSINGS = [
 function renderDongPage(sido, sigungu, dong) {
   const seed = hashCode(sido + sigungu + dong);
   const rng = seededRandom(seed);
-  
+
   const opening = pick(DONG_OPENINGS, rng)(sigungu, dong, sido);
   const sections = pickN(DONG_SECTIONS, 6, rng).map(fn => fn(sigungu, dong));
   const review1 = pick(DONG_REVIEWS, rng)(sigungu, dong);
   const usedR = Math.floor(rng() * DONG_REVIEWS.length);
   const review2 = pick(DONG_REVIEWS.filter((_,i) => i !== usedR), rng)(sigungu, dong);
   const closing = pick(DONG_CLOSINGS, rng)(sigungu, dong, sido);
-  
-  // 동적 체크리스트 (페이지마다 다른 5개)
+
   const checkPool = [
     `${dong} 인근 학교 내신 출제 경향을 아는 선생님인지 확인하세요.`,
     `체험 수업 후 아이의 반응을 반드시 살펴보세요. 궁합이 중요합니다.`,
@@ -1951,8 +1501,7 @@ function renderDongPage(sido, sigungu, dong) {
     `주간 학습 계획을 선생님과 함께 세우고 실행 여부를 확인하세요.`,
   ];
   const checks = pickN(checkPool, 5, rng);
-  
-  // 추가 팁 (페이지마다 다름)
+
   const tipPool = [
     `참고로 ${sigungu} ${dong} 지역에서는 주 2~3회 과외가 가장 일반적이에요. 하루 60~90분씩 집중해서 수업하면, 주 1회보다 학습 효과가 2배 이상 높다는 연구 결과도 있답니다.`,
     `${dong} 학부모님들 사이에서는 최근 '과외+자기주도학습' 조합이 인기예요. 과외에서 방향을 잡고, 나머지 시간에는 스스로 실행하는 방식이 장기적으로 가장 효과적입니다.`,
@@ -1962,13 +1511,13 @@ function renderDongPage(sido, sigungu, dong) {
     `${dong} 근처에 도서관이나 스터디카페가 있다면 적극 활용하세요. 과외 수업 후 바로 복습할 수 있는 환경이 갖춰져 있으면 학습 효과가 크게 올라갑니다.`,
   ];
   const tip = pick(tipPool, rng);
-  
+
   const title = `${sigungu} ${dong} 과외 추천 - 비용, 선생님, 학습 가이드`;
   const desc = `${sido} ${sigungu} ${dong} 과외 정보 완벽 정리! 과외비 시세, 좋은 선생님 찾는 법, 실제 후기까지.`;
   const canonical = `https://anhani.com/지역별/${encodeURIComponent(sido)}/${encodeURIComponent(sigungu)}/${encodeURIComponent(dong)}`;
-  
+
   const heroImg = getEduImage(sido + sigungu + dong);
-  
+
   const tagPool = [
     `${dong}과외`, `${sigungu}과외`, `${sido}과외`, `${dong}수학과외`,
     `${dong}영어과외`, `${dong}국어과외`, `${sigungu}1대1과외`, `${dong}초등과외`,
@@ -1981,32 +1530,7 @@ function renderDongPage(sido, sigungu, dong) {
   ${commonHead(title + ' | 과외안하니', desc, canonical)}
   <meta property="og:image" content="${heroImg}">
   <meta name="robots" content="index, follow">
-  <style>${commonStyles()}
-    .dp-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
-    .dp-bc { font-size: 13px; color: #94a3b8; margin-bottom: 16px; }
-    .dp-bc a { color: #6366f1; text-decoration: none; }
-    .dp-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; border-radius: 14px; overflow: hidden; background: #0f172a; margin-bottom: 24px; }
-    .dp-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .dp-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(99,102,241,0.55) 100%); }
-    .dp-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; color: #fff; }
-    .dp-hero-text h2 { font-size: clamp(20px, 4vw, 34px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
-    .dp-hero-text p { font-size: clamp(12px, 1.6vw, 15px); opacity: 0.88; margin-top: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    .dp-wrap h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 12px; line-height: 1.4; }
-    .dp-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
-    .dp-article h2 { font-size: 21px; font-weight: 700; color: #0f172a; margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid #6366f1; }
-    .dp-article p { font-size: 16px; color: #334155; line-height: 1.85; margin-bottom: 16px; word-break: keep-all; }
-    .dp-article ul { margin: 0 0 20px 20px; }
-    .dp-article li { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 8px; }
-    .dp-tags { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
-    .dp-tags h3 { font-size: 14px; color: #64748b; margin-bottom: 12px; }
-    .dp-tag { display: inline-block; background: #f3f4f6; color: #555; padding: 6px 14px; border-radius: 20px; font-size: 13px; margin: 0 6px 8px 0; text-decoration: none; }
-    .dp-tag:hover { background: #eef2ff; color: #6366f1; }
-    .dp-cta { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 14px; padding: 32px; text-align: center; color: #fff; margin: 40px 0; }
-    .dp-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .dp-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 16px; }
-    .dp-cta a { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
-    @media (max-width: 640px) { .dp-wrap h1 { font-size: 22px; } .dp-article h2 { font-size: 18px; } }
-  </style></head><body>
+  <style>${commonStyles()}.dp-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.dp-bc{font-size:13px;color:#94a3b8;margin-bottom:16px}.dp-bc a{color:#6366f1;text-decoration:none}.dp-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.dp-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.dp-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.82) 0%,rgba(99,102,241,.55) 100%)}.dp-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.dp-hero-text h2{font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 12px rgba(0,0,0,.4)}.dp-hero-text p{font-size:clamp(12px,1.6vw,15px);opacity:.88;margin-top:4px;text-shadow:0 2px 8px rgba(0,0,0,.3)}.dp-wrap h1{font-size:28px;font-weight:800;color:#0f172a;margin-bottom:12px;line-height:1.4}.dp-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.dp-article h2{font-size:21px;font-weight:700;color:#0f172a;margin:32px 0 14px;padding-left:12px;border-left:4px solid #6366f1}.dp-article p{font-size:16px;color:#334155;line-height:1.85;margin-bottom:16px;word-break:keep-all}.dp-article ul{margin:0 0 20px 20px}.dp-article li{font-size:15px;color:#475569;line-height:1.7;margin-bottom:8px}.dp-tags{margin-top:48px;padding-top:24px;border-top:1px solid #e2e8f0}.dp-tags h3{font-size:14px;color:#64748b;margin-bottom:12px}.dp-tag{display:inline-block;background:#f3f4f6;color:#555;padding:6px 14px;border-radius:20px;font-size:13px;margin:0 6px 8px 0;text-decoration:none}.dp-tag:hover{background:#eef2ff;color:#6366f1}.dp-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:14px;padding:32px;text-align:center;color:#fff;margin:40px 0}.dp-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.dp-cta p{font-size:14px;opacity:.7;margin-bottom:16px}.dp-cta a{display:inline-block;background:#fff;color:#4f46e5;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}@media (max-width:640px){.dp-wrap h1{font-size:22px}.dp-article h2{font-size:18px}}</style></head><body>
   ${navHTML('region')}
   <div class="dp-wrap">
     <div class="dp-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; <a href="/지역별/${encodeURIComponent(sido)}">${sido}</a> &gt; <a href="/지역별/${encodeURIComponent(sido)}/${encodeURIComponent(sigungu)}">${sigungu}</a> &gt; ${dong}</div>
@@ -2055,7 +1579,7 @@ function renderSubjectList() {
     "국어": "📖", "영어": "🌍", "수학": "📐", "사회": "🏛️",
     "과학": "🔬", "코딩": "💻", "검정고시": "📝", "논술": "✍️"
   };
-  
+
   const cards = SUBJECTS.map(s => {
     return `<div class="subj-card" style="--accent:${subjectColors[s]}">
       <div class="subj-header"><span class="subj-icon">${subjectIcons[s]}</span><h3><a href="/과목별/${encodeURIComponent(s)}" style="color:inherit;text-decoration:none">${s} 과외</a></h3></div>
@@ -2066,20 +1590,7 @@ function renderSubjectList() {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('과목별 과외 - 안하니', '국어, 영어, 수학, 사회, 과학, 코딩, 검정고시, 논술 과외 정보를 확인하세요.', 'https://anhani.com/과목별')}
-  <style>${commonStyles()}
-    .page-hero { background: linear-gradient(135deg, #312e81, #4f46e5); color: #fff; padding: 48px 24px; text-align: center; }
-    .page-hero h1 { font-size: 32px; font-weight: 800; }
-    .page-hero p { opacity: 0.8; margin-top: 8px; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
-    .subj-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 20px; border: 1px solid #e2e8f0; border-top: 4px solid var(--accent); }
-    .subj-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-    .subj-icon { font-size: 32px; }
-    .subj-card h3 { font-size: 22px; font-weight: 700; }
-    .subj-card > p { color: #64748b; font-size: 14px; margin-bottom: 16px; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .region-chip { padding: 6px 14px; background: #f1f5f9; border-radius: 8px; color: #475569; text-decoration: none; font-size: 13px; transition: all 0.2s; }
-    .region-chip:hover { background: #eef2ff; color: #6366f1; }
-  </style></head><body>
+  <style>${commonStyles()}.page-hero{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;padding:48px 24px;text-align:center}.page-hero h1{font-size:32px;font-weight:800}.page-hero p{opacity:.8;margin-top:8px}.container{max-width:1200px;margin:0 auto;padding:40px 24px}.subj-card{background:#fff;border-radius:16px;padding:28px;margin-bottom:20px;border:1px solid #e2e8f0;border-top:4px solid var(--accent)}.subj-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}.subj-icon{font-size:32px}.subj-card h3{font-size:22px;font-weight:700}.subj-card > p{color:#64748b;font-size:14px;margin-bottom:16px}.chips{display:flex;flex-wrap:wrap;gap:8px}.region-chip{padding:6px 14px;background:#f1f5f9;border-radius:8px;color:#475569;text-decoration:none;font-size:13px;transition:all .2s}.region-chip:hover{background:#eef2ff;color:#6366f1}</style></head><body>
   ${navHTML('subject')}
   <div class="page-hero"><h1>과목별 과외</h1><p>8개 전문 과목별 과외 정보</p></div>
   <div class="container">${cards}</div>
@@ -2158,10 +1669,6 @@ const SUBJECT_STUDY_GUIDE = {
     keywords: ["논술 제시문 분석 전략","논술 논리 구조 잡는 법","논술 첨삭 효과적으로 받기","논술 시간 배분 전략","논술 어휘력 향상 방법","논술 배경지식 쌓는 독서","논술 대학별 출제 경향","논술 모범 답안 분석법","논술 실전 연습 가이드","논술 합격을 위한 D-30","논술 주요 논제 유형 정리","논술 비판적 사고력 키우기","논술 인문계 vs 사회계 차이","논술 수리논술 대비법","논술 과학논술 가이드","논술 최신 시사 이슈 정리","논술 면접과 연계 전략","논술 자기소개서 연결법","논술 독서 포트폴리오","논술 요약 능력 키우기"]
   }
 };
-
-
-// ========== 과목별 동적 콘텐츠 풀 ==========
-// 8과목 × 4섹션: 핵심5가지 / 효과적인 공부법 / 로드맵 / 과목별 안내
 
 const SUBJ_ESSENTIALS = {
   "국어": [
@@ -2391,7 +1898,6 @@ const SUBJ_GUIDE_POOL = {
   },
 };
 
-
 function renderSubjectDetail(subject) {
   const guide = SUBJECT_STUDY_GUIDE[subject];
   if (!guide) return null;
@@ -2404,7 +1910,6 @@ function renderSubjectDetail(subject) {
   const icon = subjectIcons[subject] || "📚";
   const heroImg = EDU_IMAGE_POOL[subjectImgIdx[subject] ?? 0];
 
-  // 동적 콘텐츠 (과목명 기반 hash)
   const seed = strHash(subject);
   const essentialsPool = SUBJ_ESSENTIALS[subject] || SUBJ_ESSENTIALS["국어"];
   const essentials = essentialsPool[seed % essentialsPool.length];
@@ -2456,57 +1961,7 @@ function renderSubjectDetail(subject) {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(subject + ' 공부법 & 학습 전략 가이드 | 과외안하니', subject + ' 과목 공부법, 핵심 5가지, 효과적인 공부법, 로드맵, 과목별 안내까지 완벽 정리.', 'https://anhani.com/과목별/' + encodeURIComponent(subject))}
   <meta property="og:image" content="${heroImg}">
-  <style>${commonStyles()}
-    .sd-hero-wrap { position: relative; overflow: hidden; }
-    .sd-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-    .sd-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${rgb}, 0.6) 100%); z-index: 1; }
-    .sd-hero { position: relative; z-index: 2; padding: 72px 24px 60px; text-align: center; color: #fff; }
-    .sd-hero-icon { font-size: 52px; margin-bottom: 14px; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4)); }
-    .sd-hero h1 { font-size: 34px; font-weight: 900; margin-bottom: 10px; text-shadow: 0 2px 12px rgba(0,0,0,0.35); }
-    .sd-hero p { font-size: 15px; color: rgba(255,255,255,0.95); text-shadow: 0 2px 8px rgba(0,0,0,0.25); }
-    .sd-wrap { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
-    .sd-study { margin-bottom: 44px; }
-    .sd-study > h2, .sd-section-title { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; padding-left: 12px; border-left: 4px solid ${color}; }
-    .sd-sections { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
-    .sd-section { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px; }
-    .sd-section h3 { font-size: 17px; font-weight: 700; color: ${color}; margin-bottom: 12px; }
-    .sd-section ul { list-style: none; padding: 0; margin: 0; }
-    .sd-section li { font-size: 14px; color: #475569; line-height: 1.7; margin-bottom: 6px; }
-    .sd-ess-grid { display: flex; flex-direction: column; gap: 12px; margin-bottom: 44px; }
-    .sd-ess-card { display: flex; gap: 16px; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px 22px; transition: all 0.2s; }
-    .sd-ess-card:hover { border-color: ${color}; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
-    .sd-ess-num { flex-shrink: 0; width: 42px; height: 42px; background: rgba(${rgb},0.1); color: ${color}; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; }
-    .sd-ess-body h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 5px; }
-    .sd-ess-body p { font-size: 14px; color: #475569; line-height: 1.7; }
-    .sd-method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 44px; }
-    .sd-method-card { background: rgba(${rgb},0.06); border-radius: 14px; padding: 20px 22px; transition: all 0.2s; }
-    .sd-method-card:hover { transform: translateY(-3px); }
-    .sd-method-card h4 { font-size: 16px; font-weight: 800; color: ${color}; margin-bottom: 6px; }
-    .sd-method-card p { font-size: 14px; color: #334155; line-height: 1.7; }
-    .sd-road-timeline { position: relative; padding-left: 24px; margin-bottom: 44px; }
-    .sd-road-timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: rgba(${rgb},0.2); }
-    .sd-road-item { position: relative; margin-bottom: 18px; }
-    .sd-road-dot { position: absolute; left: -24px; top: 6px; width: 14px; height: 14px; background: ${color}; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 2px ${color}; }
-    .sd-road-body { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; }
-    .sd-road-body h4 { font-size: 15px; font-weight: 800; color: ${color}; margin-bottom: 6px; }
-    .sd-road-body p { font-size: 14px; color: #475569; line-height: 1.7; }
-    .sd-guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 44px; }
-    .sd-guide-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 22px; transition: all 0.2s; }
-    .sd-guide-card:hover { border-color: ${color}; }
-    .sd-guide-label { display: inline-block; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 10px; background: ${color}; color: #fff; margin-bottom: 10px; }
-    .sd-guide-card p { font-size: 14px; color: #334155; line-height: 1.7; }
-    .sd-kw-title { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; text-align: center; }
-    .sd-kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .sd-kw-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; text-decoration: none; color: #334155; font-size: 14px; transition: all 0.2s; line-height: 1.4; }
-    .sd-kw-item:hover { border-color: ${color}; color: ${color}; transform: translateX(4px); }
-    .sd-kw-arrow { color: #d1d5db; flex-shrink: 0; margin-left: 8px; }
-    .sd-kw-item:hover .sd-kw-arrow { color: ${color}; }
-    .sd-cta { background: linear-gradient(135deg, ${color}, ${color}dd); border-radius: 14px; padding: 32px; text-align: center; color: #fff; margin-top: 40px; }
-    .sd-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .sd-cta p { font-size: 14px; opacity: 0.92; margin-bottom: 16px; }
-    .sd-cta a { display: inline-block; background: #fff; color: ${color}; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
-    @media (max-width: 640px) { .sd-hero h1 { font-size: 26px; } .sd-hero-icon { font-size: 42px; } .sd-kw-grid { grid-template-columns: 1fr; } .sd-sections { grid-template-columns: 1fr; } .sd-ess-card { flex-direction: column; gap: 10px; } }
-  </style></head><body>
+  <style>${commonStyles()}.sd-hero-wrap{position:relative;overflow:hidden}.sd-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.sd-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.82) 0%,rgba(${rgb},.6) 100%);z-index:1}.sd-hero{position:relative;z-index:2;padding:72px 24px 60px;text-align:center;color:#fff}.sd-hero-icon{font-size:52px;margin-bottom:14px;filter:drop-shadow(0 2px 12px rgba(0,0,0,.4))}.sd-hero h1{font-size:34px;font-weight:900;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,.35)}.sd-hero p{font-size:15px;color:rgba(255,255,255,.95);text-shadow:0 2px 8px rgba(0,0,0,.25)}.sd-wrap{max-width:860px;margin:0 auto;padding:40px 24px 80px}.sd-study{margin-bottom:44px}.sd-study > h2,.sd-section-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;padding-left:12px;border-left:4px solid ${color}}.sd-sections{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.sd-section{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px}.sd-section h3{font-size:17px;font-weight:700;color:${color};margin-bottom:12px}.sd-section ul{list-style:none;padding:0;margin:0}.sd-section li{font-size:14px;color:#475569;line-height:1.7;margin-bottom:6px}.sd-ess-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:44px}.sd-ess-card{display:flex;gap:16px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:20px 22px;transition:all .2s}.sd-ess-card:hover{border-color:${color};box-shadow:0 4px 16px rgba(0,0,0,.05)}.sd-ess-num{flex-shrink:0;width:42px;height:42px;background:rgba(${rgb},.1);color:${color};border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}.sd-ess-body h4{font-size:16px;font-weight:800;color:#0f172a;margin-bottom:5px}.sd-ess-body p{font-size:14px;color:#475569;line-height:1.7}.sd-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:44px}.sd-method-card{background:rgba(${rgb},.06);border-radius:14px;padding:20px 22px;transition:all .2s}.sd-method-card:hover{transform:translateY(-3px)}.sd-method-card h4{font-size:16px;font-weight:800;color:${color};margin-bottom:6px}.sd-method-card p{font-size:14px;color:#334155;line-height:1.7}.sd-road-timeline{position:relative;padding-left:24px;margin-bottom:44px}.sd-road-timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:rgba(${rgb},.2)}.sd-road-item{position:relative;margin-bottom:18px}.sd-road-dot{position:absolute;left:-24px;top:6px;width:14px;height:14px;background:${color};border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px ${color}}.sd-road-body{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px}.sd-road-body h4{font-size:15px;font-weight:800;color:${color};margin-bottom:6px}.sd-road-body p{font-size:14px;color:#475569;line-height:1.7}.sd-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:44px}.sd-guide-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 22px;transition:all .2s}.sd-guide-card:hover{border-color:${color}}.sd-guide-label{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:10px;background:${color};color:#fff;margin-bottom:10px}.sd-guide-card p{font-size:14px;color:#334155;line-height:1.7}.sd-kw-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;text-align:center}.sd-kw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sd-kw-item{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;transition:all .2s;line-height:1.4}.sd-kw-item:hover{border-color:${color};color:${color};transform:translateX(4px)}.sd-kw-arrow{color:#d1d5db;flex-shrink:0;margin-left:8px}.sd-kw-item:hover .sd-kw-arrow{color:${color}}.sd-cta{background:linear-gradient(135deg,${color},${color}dd);border-radius:14px;padding:32px;text-align:center;color:#fff;margin-top:40px}.sd-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.sd-cta p{font-size:14px;opacity:.92;margin-bottom:16px}.sd-cta a{display:inline-block;background:#fff;color:${color};padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}@media (max-width:640px){.sd-hero h1{font-size:26px}.sd-hero-icon{font-size:42px}.sd-kw-grid{grid-template-columns:1fr}.sd-sections{grid-template-columns:1fr}.sd-ess-card{flex-direction:column;gap:10px}}</style></head><body>
   ${navHTML('subject')}
   <div class="sd-hero-wrap">
     <img src="${heroImg}" alt="${subject} 공부법" loading="eager" class="sd-hero-img"/>
@@ -2542,7 +1997,6 @@ function renderSubjectDetail(subject) {
   </body></html>`;
 }
 
-// ========== 검정고시 7개 키워드 전용 콘텐츠 (idx 20~26) ==========
 const GED_KW_CONTENT = {
   20: { // 국어 검정고시
     intro: "국어는 검정고시 전 과목의 기반이 되는 핵심 과목이에요. 비문학 독해력과 문학 작품 이해, 문법 기초가 골고루 출제되기 때문에 체계적 학습이 필요합니다. 기출 분석 중심으로 접근하면 단기간에 합격선을 넘을 수 있어요.",
@@ -2705,7 +2159,7 @@ function renderGedKeywordArticle(subject, idx, title) {
   if (!data) return null;
   const canonical = `https://anhani.com/과목별/${encodeURIComponent(subject)}/article/${idx}`;
   const guide = SUBJECT_STUDY_GUIDE[subject];
-  
+
   const essentialsHTML = data.essentials.map(e =>
     `<div class="gk-card"><div class="gk-card-t">${e.t}</div><div class="gk-card-d">${e.d}</div></div>`
   ).join('');
@@ -2715,40 +2169,11 @@ function renderGedKeywordArticle(subject, idx, title) {
   const roadmapHTML = data.roadmap.map((r,i) =>
     `<div class="gk-step"><div class="gk-step-num">${i+1}</div><div class="gk-step-body"><div class="gk-step-t">${r.t}</div><div class="gk-step-p">${r.p}</div></div></div>`
   ).join('');
-  
+
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(title + ' | 과외안하니', title + ' - 정보글, 핵심 5가지, 공부 전략, 합격 로드맵까지 한번에 정리', canonical)}
   <meta name="robots" content="index, follow">
-  <style>${commonStyles()}
-    .gk-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
-    .gk-badge { display: inline-block; background: #fff7ed; color: #ea580c; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
-    .gk-wrap h1 { font-size: 26px; font-weight: 900; color: #0f172a; line-height: 1.4; margin-bottom: 12px; }
-    .gk-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
-    .gk-section { margin: 32px 0; }
-    .gk-section h2 { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 14px; padding-left: 12px; border-left: 4px solid #f97316; }
-    .gk-intro { font-size: 16px; color: #334155; line-height: 1.85; word-break: keep-all; background: #fff7ed; padding: 20px; border-radius: 10px; }
-    .gk-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
-    .gk-card-t { font-size: 15px; font-weight: 800; color: #ea580c; margin-bottom: 6px; }
-    .gk-card-d { font-size: 14px; color: #475569; line-height: 1.7; word-break: keep-all; }
-    .gk-item { background: #f8fafc; border-left: 3px solid #f97316; border-radius: 0 8px 8px 0; padding: 14px 16px; margin-bottom: 8px; }
-    .gk-item-h { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-    .gk-item-p { font-size: 13px; color: #475569; line-height: 1.65; word-break: keep-all; }
-    .gk-step { display: flex; gap: 12px; margin-bottom: 12px; }
-    .gk-step-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #f97316; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; }
-    .gk-step-body { flex: 1; padding-top: 4px; }
-    .gk-step-t { font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-    .gk-step-p { font-size: 13px; color: #475569; line-height: 1.65; word-break: keep-all; }
-    .gk-cta { background: linear-gradient(135deg, #7c2d12, #ea580c); border-radius: 14px; padding: 28px; text-align: center; color: #fff; margin: 36px 0 20px; }
-    .gk-cta h3 { font-size: 19px; font-weight: 800; margin-bottom: 6px; }
-    .gk-cta p { font-size: 13px; opacity: 0.85; margin-bottom: 14px; }
-    .gk-cta a { display: inline-block; background: #fff; color: #9a3412; padding: 11px 26px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
-    .gk-related { margin-top: 32px; padding-top: 24px; border-top: 2px solid #e2e8f0; }
-    .gk-related h3 { font-size: 17px; font-weight: 800; margin-bottom: 14px; }
-    .gk-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .gk-related-item { padding: 11px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #475569; font-size: 12.5px; display: flex; justify-content: space-between; }
-    .gk-related-item:hover { border-color: #f97316; color: #ea580c; }
-    @media (max-width: 640px) { .gk-wrap h1 { font-size: 22px; } .gk-related-grid { grid-template-columns: 1fr; } }
-  </style></head><body>
+  <style>${commonStyles()}.gk-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.gk-badge{display:inline-block;background:#fff7ed;color:#ea580c;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:16px}.gk-wrap h1{font-size:26px;font-weight:900;color:#0f172a;line-height:1.4;margin-bottom:12px}.gk-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.gk-section{margin:32px 0}.gk-section h2{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:14px;padding-left:12px;border-left:4px solid #f97316}.gk-intro{font-size:16px;color:#334155;line-height:1.85;word-break:keep-all;background:#fff7ed;padding:20px;border-radius:10px}.gk-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;margin-bottom:10px}.gk-card-t{font-size:15px;font-weight:800;color:#ea580c;margin-bottom:6px}.gk-card-d{font-size:14px;color:#475569;line-height:1.7;word-break:keep-all}.gk-item{background:#f8fafc;border-left:3px solid #f97316;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:8px}.gk-item-h{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:4px}.gk-item-p{font-size:13px;color:#475569;line-height:1.65;word-break:keep-all}.gk-step{display:flex;gap:12px;margin-bottom:12px}.gk-step-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#f97316;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}.gk-step-body{flex:1;padding-top:4px}.gk-step-t{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:4px}.gk-step-p{font-size:13px;color:#475569;line-height:1.65;word-break:keep-all}.gk-cta{background:linear-gradient(135deg,#7c2d12,#ea580c);border-radius:14px;padding:28px;text-align:center;color:#fff;margin:36px 0 20px}.gk-cta h3{font-size:19px;font-weight:800;margin-bottom:6px}.gk-cta p{font-size:13px;opacity:.85;margin-bottom:14px}.gk-cta a{display:inline-block;background:#fff;color:#9a3412;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.gk-related{margin-top:32px;padding-top:24px;border-top:2px solid #e2e8f0}.gk-related h3{font-size:17px;font-weight:800;margin-bottom:14px}.gk-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.gk-related-item{padding:11px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:12.5px;display:flex;justify-content:space-between}.gk-related-item:hover{border-color:#f97316;color:#ea580c}@media (max-width:640px){.gk-wrap h1{font-size:22px}.gk-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('subject')}
   ${renderArticleHero(title, '검정고시 완벽 가이드', subject + '-ged-' + idx)}
   <div class="gk-wrap">
@@ -2795,22 +2220,21 @@ function renderSubjectArticle(subject, articleIdx) {
   const idx = parseInt(articleIdx);
   if (idx < 0 || idx >= guide.keywords.length) return null;
   const title = guide.keywords[idx];
-  
-  // 검정고시 전용 7개 키워드 아티클 (idx 20~26): 정보글+핵심5가지+공부전략+로드맵
+
   if (subject === "검정고시" && GED_KW_CONTENT[idx]) {
     return renderGedKeywordArticle(subject, idx, title);
   }
-  
+
   const seed = hashCode(subject + articleIdx);
   const rng = seededRandom(seed);
-  
+
   const opening = pick(ARTICLE_OPENINGS, rng)(title, subject, subject);
   const sections = pickN(ARTICLE_SECTIONS, 4, rng).map(fn => fn(subject, subject));
   const callouts = pickN(ARTICLE_CALLOUTS, 3, rng);
   const review = pick(REVIEW_TEMPLATES, rng)('전국', '전체', subject);
   const closing = pick(CLOSING_TEMPLATES, rng)('전국', '전체', subject);
   const canonical = `https://anhani.com/과목별/${encodeURIComponent(subject)}/article/${idx}`;
-  
+
   const sectionsHTML = sections.map((sec, i) => {
     let html = `<h2>${sec.h}</h2><p>${sec.p}</p>`;
     if (i < callouts.length) html += `<div class="sa-callout"><strong>💡 이렇게 수업합니다!</strong><p>${callouts[i]}</p></div>`;
@@ -2820,27 +2244,7 @@ function renderSubjectArticle(subject, articleIdx) {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(title + ' | 과외안하니', subject + ' 학습 전략 - ' + title, canonical)}
   <meta name="robots" content="index, follow">
-  <style>${commonStyles()}
-    .sa-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
-    .sa-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
-    .sa-wrap h1 { font-size: 26px; font-weight: 900; color: #0f172a; line-height: 1.4; margin-bottom: 12px; }
-    .sa-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
-    .sa-article h2 { font-size: 21px; font-weight: 700; color: #0f172a; margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid #6366f1; }
-    .sa-article p { font-size: 16px; color: #334155; line-height: 1.85; margin-bottom: 16px; word-break: keep-all; }
-    .sa-callout { background: #f0f9ff; border-left: 4px solid #3b82f6; border-radius: 0 10px 10px 0; padding: 18px 20px; margin: 20px 0; }
-    .sa-callout strong { font-size: 14px; color: #1d4ed8; display: block; margin-bottom: 6px; }
-    .sa-callout p { font-size: 14px; color: #475569; margin: 0; }
-    .sa-related { margin-top: 40px; padding-top: 24px; border-top: 2px solid #e2e8f0; }
-    .sa-related h3 { font-size: 18px; font-weight: 800; margin-bottom: 16px; }
-    .sa-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .sa-related-item { padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #475569; font-size: 13px; transition: all 0.2s; display: flex; justify-content: space-between; }
-    .sa-related-item:hover { border-color: #6366f1; color: #6366f1; }
-    .sa-cta { background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 14px; padding: 32px; text-align: center; color: #fff; margin: 40px 0; }
-    .sa-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .sa-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 16px; }
-    .sa-cta a { display: inline-block; background: #fff; color: #312e81; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
-    @media (max-width: 640px) { .sa-wrap h1 { font-size: 22px; } .sa-related-grid { grid-template-columns: 1fr; } }
-  </style></head><body>
+  <style>${commonStyles()}.sa-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.sa-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:16px}.sa-wrap h1{font-size:26px;font-weight:900;color:#0f172a;line-height:1.4;margin-bottom:12px}.sa-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.sa-article h2{font-size:21px;font-weight:700;color:#0f172a;margin:32px 0 14px;padding-left:12px;border-left:4px solid #6366f1}.sa-article p{font-size:16px;color:#334155;line-height:1.85;margin-bottom:16px;word-break:keep-all}.sa-callout{background:#f0f9ff;border-left:4px solid #3b82f6;border-radius:0 10px 10px 0;padding:18px 20px;margin:20px 0}.sa-callout strong{font-size:14px;color:#1d4ed8;display:block;margin-bottom:6px}.sa-callout p{font-size:14px;color:#475569;margin:0}.sa-related{margin-top:40px;padding-top:24px;border-top:2px solid #e2e8f0}.sa-related h3{font-size:18px;font-weight:800;margin-bottom:16px}.sa-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.sa-related-item{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;transition:all .2s;display:flex;justify-content:space-between}.sa-related-item:hover{border-color:#6366f1;color:#6366f1}.sa-cta{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:32px;text-align:center;color:#fff;margin:40px 0}.sa-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.sa-cta p{font-size:14px;opacity:.7;margin-bottom:16px}.sa-cta a{display:inline-block;background:#fff;color:#312e81;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}@media (max-width:640px){.sa-wrap h1{font-size:22px}.sa-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('subject')}
   ${renderArticleHero(title, subject + ' 학습 가이드', subject + '-subj-' + idx)}
   <div class="sa-wrap">
@@ -2873,26 +2277,21 @@ function renderSubjectArticle(subject, articleIdx) {
 }
 
 // --- 학교 데이터 (전국 중학교 3,290개 + 고등학교 2,384개) ---
-// 학교 데이터 (자동 생성)
 const SIDO_LIST = ["강원특별자치도","경기도","경상남도","경상북도","광주광역시","대구광역시","대전광역시","부산광역시","서울특별시","세종특별자치시","울산광역시","인천광역시","전라남도","전북특별자치도","제주특별자치도","충청남도","충청북도"];
 const SCHOOLS_MID = [["서울대학교사범대학부설중학교",8,"성북구","국","일반"],["서울대학교사범대학부설여자중학교",8,"종로구","국","일반"],["개원중학교",8,"강남구","공","일반"],["개포중학교",8,"강남구","공","일반"],["경원중학교",8,"서초구","공","일반"],["구룡중학교",8,"강남구","공","일반"],["압구정중학교",8,"강남구","공","일반"],["단국대학교사범대학부속중학교",8,"강남구","사","일반"],["대명중학교",8,"강남구","공","일반"],["대왕중학교",8,"강남구","공","일반"],["대청중학교",8,"강남구","공","일반"],["대치중학교",8,"강남구","공","일반"],["도곡중학교",8,"강남구","공","일반"],["동덕여자중학교",8,"서초구","사","일반"],["반포중학교",8,"서초구","공","일반"],["방배중학교",8,"서초구","공","일반"],["봉은중학교",8,"강남구","공","일반"],["서문여자중학교",8,"서초구","사","일반"],["서운중학교",8,"서초구","공","일반"],["서일중학교",8,"서초구","공","일반"],["서초중학교",8,"서초구","공","일반"],["세화여자중학교",8,"서초구","사","일반"],["수서중학교",8,"강남구","공","일반"],["숙명여자중학교",8,"강남구","사","일반"],["신구중학교",8,"강남구","공","일반"],["신동중학교",8,"서초구","공","일반"],["신반포중학교",8,"서초구","공","일반"],["신사중학교",8,"강남구","공","일반"],["언남중학교",8,"서초구","공","일반"],["언북중학교",8,"강남구","공","일반"],["언주중학교",8,"강남구","공","일반"],["역삼중학교",8,"강남구","공","일반"],["영동중학교",8,"서초구","공","일반"],["원촌중학교",8,"서초구","공","일반"],["은성중학교",8,"강남구","사","일반"],["이수중학교",8,"서초구","공","일반"],["중동중학교",8,"강남구","사","일반"],["진선여자중학교",8,"강남구","사","일반"],["청담중학교",8,"강남구","공","일반"],["휘문중학교",8,"강남구","사","일반"],["가락중학교",8,"송파구","공","일반"],["가원중학교",8,"송파구","공","일반"],["강일중학교",8,"강동구","공","일반"],["거원중학교",8,"송파구","공","일반"],["고덕중학교",8,"강동구","공","일반"],["동북중학교",8,"강동구","사","일반"],["동신중학교",8,"강동구","사","일반"],["둔촌중학교",8,"강동구","공","일반"],["명일중학교",8,"강동구","공","일반"],["문정중학교",8,"송파구","공","일반"],["방산중학교",8,"송파구","공","일반"],["방이중학교",8,"송파구","공","일반"],["배명중학교",8,"송파구","사","일반"],["배재중학교",8,"강동구","사","일반"],["보성중학교",8,"송파구","사","일반"],["보인중학교",8,"송파구","사","일반"],["상일중학교",8,"강동구","사","일반"],["석촌중학교",8,"송파구","공","일반"],["성내중학교",8,"강동구","공","일반"],["성덕여자중학교",8,"강동구","사","일반"],["세륜중학교",8,"송파구","공","일반"],["송파중학교",8,"송파구","공","일반"],["신명중학교",8,"강동구","공","일반"],["신암중학교",8,"강동구","공","일반"],["신천중학교",8,"송파구","공","일반"],["아주중학교",8,"송파구","공","일반"],["영파여자중학교",8,"송파구","사","일반"],["오금중학교",8,"송파구","공","일반"],["오륜중학교",8,"송파구","공","일반"],["오주중학교",8,"송파구","공","일반"],["잠실여자중학교",8,"송파구","사","일반"],["잠신중학교",8,"송파구","공","일반"],["잠실중학교",8,"송파구","공","일반"],["정신여자중학교",8,"송파구","사","일반"],["천일중학교",8,"강동구","공","일반"],["천호중학교",8,"강동구","공","일반"],["풍납중학교",8,"송파구","공","일반"],["풍성중학교",8,"송파구","공","일반"],["한산중학교",8,"강동구","공","일반"],["한영중학교",8,"강동구","사","일반"],["강신중학교",8,"양천구","공","일반"],["경서중학교",8,"강서구","공","일반"],["공항중학교",8,"강서구","공","일반"],["금옥중학교",8,"양천구","공","일반"],["덕원중학교",8,"강서구","사","일반"],["등명중학교",8,"강서구","공","일반"],["등원중학교",8,"강서구","공","일반"],["등촌중학교",8,"강서구","사","일반"],["마포중학교",8,"강서구","사","일반"],["명덕여자중학교",8,"강서구","사","일반"],["목동중학교",8,"양천구","공","일반"],["목일중학교",8,"양천구","공","일반"],["방원중학교",8,"강서구","공","일반"],["방화중학교",8,"강서구","공","일반"],["백석중학교",8,"강서구","공","일반"],["봉영여자중학교",8,"양천구","사","일반"],["삼정중학교",8,"강서구","공","일반"],["성재중학교",8,"강서구","공","일반"],["송정중학교",8,"강서구","공","일반"],["신남중학교",8,"양천구","공","일반"],["신목중학교",8,"양천구","공","일반"],["신서중학교",8,"양천구","공","일반"],["신원중학교",8,"양천구","공","일반"],["신월중학교",8,"양천구","공","일반"],["신정여자중학교",8,"강서구","사","일반"],["신화중학교",8,"양천구","공","일반"],["양강중학교",8,"양천구","공","일반"],["양동중학교",8,"양천구","공","일반"],["양서중학교",8,"양천구","공","일반"],["양정중학교",8,"양천구","사","일반"],["양천중학교",8,"양천구","공","일반"],["염창중학교",8,"강서구","공","일반"],["영도중학교",8,"양천구","사","일반"],["월촌중학교",8,"양천구","공","일반"],["화곡중학교",8,"강서구","사","일반"],["화원중학교",8,"강서구","공","일반"],["가산중학교",8,"금천구","공","일반"],["개봉중학교",8,"구로구","공","일반"],["개웅중학교",8,"구로구","공","일반"],["고척중학교",8,"구로구","공","일반"],["구로중학교",8,"구로구","공","일반"],["구일중학교",8,"구로구","공","일반"],["난곡중학교",8,"금천구","공","일반"],["당산서중학교",8,"영등포구","공","일반"],["당산중학교",8,"영등포구","공","일반"],["대림중학교",8,"영등포구","공","일반"],["대영중학교",8,"영등포구","공","일반"],["동일중학교",8,"금천구","사","일반"],["문래중학교",8,"영등포구","공","일반"],["문성중학교",8,"금천구","공","일반"],["문일중학교",8,"금천구","사","일반"],["세일중학교",8,"금천구","공","일반"],["시흥중학교",8,"금천구","공","일반"],["신도림중학교",8,"구로구","공","일반"],["안천중학교",8,"금천구","공","일반"],["선유중학교",8,"영등포구","공","일반"],["양화중학교",8,"영등포구","공","일반"],["여의도중학교",8,"영등포구","공","일반"],["영남중학교",8,"영등포구","공","일반"],["영림중학교",8,"구로구","공","일반"],["영서중학교",8,"구로구","공","일반"],["영원중학교",8,"영등포구","공","일반"],["오남중학교",8,"구로구","공","일반"],["경인중학교",8,"구로구","공","일반"],["오류중학교",8,"구로구","공","일반"],["우신중학교",8,"구로구","사","일반"],["윤중중학교",8,"영등포구","공","일반"],["한울중학교",8,"금천구","공","일반"],["경희여자중학교",8,"동대문구","사","일반"],["경희중학교",8,"동대문구","사","일반"],["대광중학교",8,"동대문구","사","일반"],["동국대학교사범대학부속중학교",8,"동대문구","사","일반"],["동대문중학교",8,"동대문구","공","일반"],["동원중학교",8,"중랑구","공","일반"],["면목중학교",8,"중랑구","공","일반"],["봉화중학교",8,"중랑구","공","일반"],["상봉중학교",8,"중랑구","공","일반"],["성일중학교",8,"동대문구","공","일반"],["송곡중학교",8,"중랑구","사","일반"],["숭인중학교",8,"동대문구","공","일반"],["신현중학교",8,"중랑구","공","일반"],["영란여자중학교",8,"중랑구","사","일반"],["용마중학교",8,"중랑구","공","일반"],["원묵중학교",8,"중랑구","공","일반"],["장안중학교",8,"중랑구","공","일반"],["장평중학교",8,"동대문구","공","일반"],["전농중학교",8,"동대문구","공","일반"],["전동중학교",8,"동대문구","공","일반"],["전일중학교",8,"동대문구","공","일반"],["정화여자중학교",8,"동대문구","사","일반"],["중랑중학교",8,"중랑구","공","일반"],["중화중학교",8,"중랑구","공","일반"],["청량중학교",8,"동대문구","공","일반"],["태릉중학교",8,"중랑구","공","일반"],["혜원여자중학교",8,"중랑구","사","일반"],["휘경여자중학교",8,"동대문구","사","일반"],["휘경중학교",8,"동대문구","공","일반"],["강남중학교",8,"동작구","공","일반"],["강현중학교",8,"동작구","공","일반"],["관악중학교",8,"관악구","공","일반"],["광신중학교",8,"관악구","사","일반"],["국사봉중학교",8,"동작구","공","일반"],["난우중학교",8,"관악구","공","일반"],["남강중학교",8,"관악구","사","일반"],["남서울중학교",8,"관악구","공","일반"],["남성중학교",8,"동작구","공","일반"],["당곡중학교",8,"관악구","공","일반"],["대방중학교",8,"동작구","공","일반"],["동양중학교",8,"동작구","사","일반"],["동작중학교",8,"동작구","공","일반"],["문창중학교",8,"동작구","공","일반"],["미성중학교",8,"관악구","공","일반"],["봉림중학교",8,"관악구","공","일반"],["봉원중학교",8,"관악구","공","일반"],["사당중학교",8,"동작구","공","일반"],["상도중학교",8,"동작구","공","일반"],["상현중학교",8,"동작구","공","일반"],["서울문영여자중학교",8,"관악구","사","일반"],["성남중학교",8,"동작구","사","일반"],["성보중학교",8,"관악구","사","일반"],["신관중학교",8,"관악구","공","일반"],["삼성중학교",8,"관악구","공","일반"],["신림중학교",8,"관악구","공","일반"],["영등포중학교",8,"동작구","공","일반"],["인헌중학교",8,"관악구","공","일반"],["장승중학교",8,"동작구","공","일반"],["중앙대학교사범대학부속중학교",8,"동작구","사","일반"],["공릉중학교",8,"노원구","공","일반"],["광운중학교",8,"노원구","사","일반"],["노곡중학교",8,"도봉구","공","일반"],["노원중학교",8,"노원구","공","일반"],["노일중학교",8,"노원구","공","일반"],["녹천중학교",8,"노원구","공","일반"],["도봉중학교",8,"도봉구","공","일반"],["방학중학교",8,"도봉구","공","일반"],["백운중학교",8,"도봉구","공","일반"],["북서울중학교",8,"도봉구","공","일반"],["불암중학교",8,"노원구","공","일반"],["상경중학교",8,"노원구","공","일반"],["상계제일중학교",8,"노원구","공","일반"],["상계중학교",8,"노원구","공","일반"],["상명중학교",8,"노원구","사","일반"],["상원중학교",8,"노원구","공","일반"],["선덕중학교",8,"도봉구","사","일반"],["수락중학교",8,"노원구","공","일반"],["신도봉중학교",8,"도봉구","공","일반"],["신방학중학교",8,"도봉구","공","일반"],["신상중학교",8,"노원구","공","일반"],["신창중학교",8,"노원구","공","일반"],["염광중학교",8,"노원구","사","일반"],["온곡중학교",8,"노원구","공","일반"],["월계중학교",8,"노원구","공","일반"],["재현중학교",8,"노원구","사","일반"],["정의여자중학교",8,"도봉구","사","일반"],["중계중학교",8,"노원구","공","일반"],["중원중학교",8,"노원구","공","일반"],["중평중학교",8,"노원구","공","일반"],["창동중학교",8,"도봉구","공","일반"],["창북중학교",8,"도봉구","공","일반"],["창일중학교",8,"도봉구","공","일반"],["청원중학교",8,"노원구","사","일반"],["태랑중학교",8,"노원구","공","일반"],["하계중학교",8,"노원구","공","일반"],["한천중학교",8,"노원구","공","일반"],["경성중학교",8,"마포구","사","일반"],["광성중학교",8,"마포구","사","일반"],["구산중학교",8,"은평구","공","일반"],["대성중학교",8,"은평구","사","일반"],["덕산중학교",8,"은평구","공","일반"],["동도중학교",8,"마포구","사","일반"],["동명여자중학교",8,"서대문구","사","일반"],["명지중학교",8,"서대문구","사","일반"],["불광중학교",8,"은평구","공","일반"],["상신중학교",8,"은평구","공","일반"],["서연중학교",8,"서대문구","공","일반"],["서울여자중학교",8,"마포구","공","일반"],["선일여자중학교",8,"은평구","사","일반"],["선정중학교",8,"은평구","사","일반"],["성사중학교",8,"마포구","공","일반"],["성산중학교",8,"마포구","공","일반"],["성서중학교",8,"마포구","공","일반"],["숭문중학교",8,"마포구","사","일반"],["숭실중학교",8,"은평구","사","일반"],["신수중학교",8,"마포구","공","일반"],["신연중학교",8,"서대문구","공","일반"],["아현중학교",8,"마포구","공","일반"],["연북중학교",8,"서대문구","공","일반"],["연서중학교",8,"은평구","공","일반"],["연신중학교",8,"은평구","공","일반"],["연천중학교",8,"은평구","공","일반"],["연희중학교",8,"서대문구","공","일반"],["영락중학교",8,"은평구","사","일반"],["예일여자중학교",8,"은평구","사","일반"],["은평중학교",8,"은평구","공","일반"],["이화여자대학교사범대학부속이화?금란중학교",8,"서대문구","사","일반"],["인창중학교",8,"서대문구","사","일반"],["정원여자중학교",8,"서대문구","사","일반"],["중암중학교",8,"마포구","공","일반"],["중앙여자중학교",8,"서대문구","사","일반"],["증산중학교",8,"은평구","공","일반"],["충암중학교",8,"은평구","사","일반"],["한성중학교",8,"서대문구","사","일반"],["홍은중학교",8,"서대문구","공","일반"],["홍익대학교사범대학부속여자중학교",8,"마포구","사","일반"],["건국대학교사범대학부속중학교",8,"광진구","사","일반"],["경수중학교",8,"성동구","공","일반"],["광남중학교",8,"광진구","공","일반"],["광양중학교",8,"광진구","공","일반"],["광장중학교",8,"광진구","공","일반"],["광진중학교",8,"광진구","공","일반"],["광희중학교",8,"성동구","공","일반"],["구의중학교",8,"광진구","공","일반"],["대원국제중학교",8,"광진구","사","일반"],["동마중학교",8,"성동구","공","일반"],["동국대학교사범대학부속가람중학교",8,"광진구","사","일반"],["무학중학교",8,"성동구","공","일반"],["성수중학교",8,"성동구","공","일반"],["성원중학교",8,"성동구","공","일반"],["신양중학교",8,"광진구","공","일반"],["옥정중학교",8,"성동구","공","일반"],["용곡중학교",8,"광진구","공","일반"],["자양중학교",8,"광진구","공","일반"],["한양대학교사범대학부속중학교",8,"성동구","사","일반"],["행당중학교",8,"성동구","공","일반"],["강북중학교",8,"강북구","공","일반"],["고려대학교사범대학부속중학교",8,"성북구","사","일반"],["고명중학교",8,"성북구","사","일반"],["남대문중학교",8,"성북구","사","일반"],["동구여자중학교",8,"성북구","사","일반"],["번동중학교",8,"강북구","공","일반"],["북악중학교",8,"성북구","공","일반"],["삼선중학교",8,"성북구","공","일반"],["서라벌중학교",8,"강북구","사","일반"],["석관중학교",8,"성북구","공","일반"],["성신여자중학교",8,"성북구","사","일반"],["성암여자중학교",8,"강북구","사","일반"],["수송중학교",8,"강북구","공","일반"],["수유중학교",8,"강북구","공","일반"],["신일중학교",8,"강북구","사","일반"],["영훈국제중학교",8,"강북구","사","일반"],["용문중학교",8,"성북구","사","일반"],["월곡중학교",8,"성북구","공","일반"],["인수중학교",8,"강북구","공","일반"],["장위중학교",8,"성북구","공","일반"],["종암중학교",8,"성북구","공","일반"],["창문여자중학교",8,"강북구","사","일반"],["한성여자중학교",8,"성북구","사","일반"],["홍익대학교사범대학부속중학교",8,"성북구","사","일반"],["화계중학교",8,"강북구","공","일반"],["경신중학교",8,"종로구","사","일반"],["금호중학교",8,"중구","공","일반"],["대경중학교",8,"중구","사","일반"],["대신중학교",8,"종로구","사","일반"],["덕성여자중학교",8,"종로구","사","일반"],["덕수중학교",8,"중구","공","일반"],["동성중학교",8,"종로구","사","일반"],["배문중학교",8,"용산구","사","일반"],["배화여자중학교",8,"종로구","사","일반"],["보성여자중학교",8,"용산구","사","일반"],["상명대학교사범대학부속여자중학교",8,"종로구","사","일반"],["선린중학교",8,"용산구","공","일반"],["성심여자중학교",8,"용산구","사","일반"],["숭의여자중학교",8,"동작구","사","일반"],["신광여자중학교",8,"용산구","사","일반"],["오산중학교",8,"용산구","사","일반"],["용강중학교",8,"용산구","공","일반"],["용산중학교",8,"용산구","공","일반"],["장원중학교",8,"중구","공","일반"],["장충중학교",8,"중구","사","일반"],["중앙중학교",8,"종로구","사","일반"],["창덕여자중학교",8,"중구","공","일반"],["청운중학교",8,"종로구","공","일반"],["한강중학교",8,"용산구","공","일반"],["한양중학교",8,"중구","사","일반"],["환일중학교",8,"중구","사","일반"],["서울체육중학교",8,"송파구","공","일반"],["삼각산중학교",8,"강북구","공","일반"],["을지중학교",8,"노원구","공","일반"],["구암중학교",8,"관악구","공","일반"],["경일중학교",8,"성동구","공","일반"],["마장중학교",8,"성동구","공","일반"],["개운중학교",8,"성북구","공","일반"],["양진중학교",8,"광진구","공","일반"],["염경중학교",8,"강서구","공","일반"],["효문중학교",8,"도봉구","공","일반"],["상암중학교",8,"마포구","공","일반"],["수명중학교",8,"강서구","공","일반"],["진관중학교",8,"은평구","공","일반"],["목운중학교",8,"양천구","공","일반"],["솔샘중학교",8,"강북구","공","일반"],["인왕중학교",8,"서대문구","공","일반"],["문현중학교",8,"송파구","공","일반"],["강명중학교",8,"강동구","공","일반"],["강동중학교",8,"강동구","공","일반"],["신도중학교",8,"은평구","공","일반"],["창천중학교",8,"마포구","공","일반"],["천왕중학교",8,"구로구","공","일반"],["가재울중학교",8,"서대문구","공","일반"],["위례솔중학교",8,"송파구","공","일반"],["길음중학교",8,"성북구","공","일반"],["마곡중학교",8,"강서구","공","일반"],["숭곡중학교",8,"성북구","공","일반"],["세곡중학교",8,"강남구","공","일반"],["송례중학교",8,"송파구","공","일반"],["내곡중학교",8,"서초구","공","일반"],["항동중학교",8,"구로구","공","일반"],["신길중학교",8,"영등포구","공","일반"],["마곡하늬중학교",8,"강서구","공","일반"],["해누리중학교",8,"송파구","공","일반"],["강빛중학교",8,"강동구","공","일반"],["감만중학교",7,"남구","공","일반"],["경남여자중학교",7,"동구","공","일반"],["남천중학교",7,"남구","공","일반"],["대연중학교",7,"남구","공","일반"],["대천중학교",7,"남구","공","일반"],["덕원중학교",7,"중구","사","일반"],["동항중학교",7,"남구","공","일반"],["문현여자중학교",7,"남구","공","일반"],["부산동여자중학교",7,"동구","사","일반"],["부산서중학교",7,"동구","공","일반"],["부산중학교",7,"동구","공","일반"],["분포중학교",7,"남구","공","일반"],["석포여자중학교",7,"남구","공","일반"],["선화여자중학교",7,"동구","사","일반"],["성동중학교",7,"남구","공","일반"],["용문중학교",7,"남구","공","일반"],["용호중학교",7,"남구","공","일반"],["해연중학교",7,"남구","사","일반"],["구서여자중학교",7,"금정구","공","일반"],["금사중학교",7,"금정구","공","일반"],["금정중학교",7,"금정구","사","일반"],["남산중학교",7,"금정구","공","일반"],["부산내성중학교",7,"동래구","공","일반"],["동래여자중학교",7,"금정구","사","일반"],["동래중학교",7,"동래구","공","일반"],["동신중학교",7,"동래구","공","일반"],["동해중학교",7,"동래구","사","일반"],["동현중학교",7,"금정구","공","일반"],["부곡여자중학교",7,"금정구","공","일반"],["부곡중학교",7,"금정구","공","일반"],["부산예술중학교",7,"금정구","사","일반"],["브니엘예술중학교",7,"금정구","사","일반"],["사직여자중학교",7,"동래구","공","일반"],["사직중학교",7,"동래구","공","일반"],["안락중학교",7,"동래구","공","일반"],["여명중학교",7,"동래구","공","일반"],["온천중학교",7,"동래구","공","일반"],["유락여자중학교",7,"동래구","공","일반"],["장전중학교",7,"금정구","공","일반"],["남일중학교",7,"동래구","공","일반"],["충렬중학교",7,"동래구","공","일반"],["학산여자중학교",7,"동래구","사","일반"],["혜화여자중학교",7,"동래구","사","일반"],["금양중학교",7,"금정구","공","일반"],["가야여자중학교",7,"부산진구","공","일반"],["개금여자중학교",7,"부산진구","공","일반"],["개림중학교",7,"부산진구","공","일반"],["거성중학교",7,"연제구","사","일반"],["거제여자중학교",7,"연제구","공","일반"],["광무여자중학교",7,"부산진구","공","일반"],["덕명여자중학교",7,"부산진구","사","일반"],["동의중학교",7,"부산진구","사","일반"],["동평여자중학교",7,"부산진구","공","일반"],["동평중학교",7,"부산진구","공","일반"],["모동중학교",7,"사상구","공","일반"],["부산개성중학교",7,"부산진구","공","일반"],["부산국제중학교",7,"부산진구","공","일반"],["부산동중학교",7,"부산진구","사","일반"],["부산중앙중학교",7,"기장군","공","일반"],["부산진여자중학교",7,"부산진구","공","일반"],["부산진중학교",7,"부산진구","공","일반"],["신라중학교",7,"사상구","사","일반"],["서면중학교",7,"부산진구","사","일반"],["연산중학교",7,"연제구","공","일반"],["연일중학교",7,"연제구","공","일반"],["연제중학교",7,"연제구","공","일반"],["연천중학교",7,"연제구","공","일반"],["이사벨중학교",7,"연제구","사","일반"],["초연중학교",7,"부산진구","공","일반"],["초읍중학교",7,"부산진구","공","일반"],["토현중학교",7,"연제구","공","일반"],["항도중학교",7,"부산진구","사","일반"],["가람중학교",7,"북구","공","일반"],["구남중학교",7,"북구","공","일반"],["구포중학교",7,"북구","공","일반"],["금곡중학교",7,"북구","공","일반"],["낙동중학교",7,"강서구","공","일반"],["녹산중학교",7,"강서구","사","일반"],["대저중학교",7,"강서구","사","일반"],["대천리중학교",7,"북구","공","일반"],["덕문중학교",7,"강서구","공","일반"],["덕천중학교",7,"북구","공","일반"],["덕포여자중학교",7,"사상구","공","일반"],["동주중학교",7,"사상구","공","일반"],["만덕중학교",7,"북구","공","일반"],["모라중학교",7,"사상구","공","일반"],["백양중학교",7,"북구","공","일반"],["양덕여자중학교",7,"북구","공","일반"],["엄궁중학교",7,"사상구","공","일반"],["용수중학교",7,"북구","공","일반"],["주감중학교",7,"사상구","공","일반"],["주례여자중학교",7,"사상구","공","일반"],["주례중학교",7,"사상구","공","일반"],["학장중학교",7,"사상구","공","일반"],["화명중학교",7,"북구","공","일반"],["화신중학교",7,"북구","공","일반"],["감천중학교",7,"사하구","공","일반"],["건국중학교",7,"사하구","사","일반"],["경남중학교",7,"서구","공","일반"],["남도여자중학교",7,"영도구","사","일반"],["다대중학교",7,"사하구","공","일반"],["다선중학교",7,"사하구","공","일반"],["다송중학교",7,"사하구","공","일반"],["대동중학교",7,"사하구","사","일반"],["대신여자중학교",7,"서구","사","일반"],["동주여자중학교",7,"사하구","사","일반"],["부산남중학교",7,"영도구","공","일반"],["부산대신중학교",7,"서구","공","일반"],["당리중학교",7,"사하구","공","일반"],["부산여자중학교",7,"서구","공","일반"],["부산영선중학교",7,"영도구","공","일반"],["부산중앙여자중학교",7,"서구","공","일반"],["사하중학교",7,"사하구","공","일반"],["삼성중학교",7,"사하구","사","일반"],["송도중학교",7,"서구","사","일반"],["신선중학교",7,"영도구","공","일반"],["영남중학교",7,"사하구","사","일반"],["영도제일중학교",7,"영도구","공","일반"],["장림여자중학교",7,"사하구","공","일반"],["장평중학교",7,"사하구","공","일반"],["초장중학교",7,"서구","공","일반"],["태종대중학교",7,"영도구","공","일반"],["하남중학교",7,"사하구","공","일반"],["하단중학교",7,"사하구","공","일반"],["해동중학교",7,"영도구","사","일반"],["광안중학교",7,"수영구","공","일반"],["기장중학교",7,"기장군","공","일반"],["동백중학교",7,"해운대구","공","일반"],["동수영중학교",7,"수영구","사","일반"],["동아중학교",7,"수영구","사","일반"],["망미중학교",7,"수영구","공","일반"],["반송여자중학교",7,"해운대구","공","일반"],["반송중학교",7,"해운대구","공","일반"],["반안중학교",7,"해운대구","공","일반"],["반여중학교",7,"해운대구","공","일반"],["부산수영중학교",7,"수영구","공","일반"],["부흥중학교",7,"해운대구","공","일반"],["상당중학교",7,"해운대구","공","일반"],["신곡중학교",7,"해운대구","공","일반"],["신도중학교",7,"해운대구","공","일반"],["양운중학교",7,"해운대구","공","일반"],["장안중학교",7,"기장군","사","일반"],["재송여자중학교",7,"해운대구","공","일반"],["재송중학교",7,"해운대구","공","일반"],["한바다중학교",7,"수영구","공","일반"],["해운대여자중학교",7,"해운대구","사","일반"],["해운대중학교",7,"해운대구","사","일반"],["금명중학교",7,"북구","공","일반"],["명진중학교",7,"북구","공","일반"],["대청중학교",7,"기장군","공","일반"],["인지중학교",7,"해운대구","공","일반"],["신덕중학교",7,"북구","공","일반"],["동양중학교",7,"부산진구","공","일반"],["해강중학교",7,"해운대구","공","일반"],["두송중학교",7,"사하구","공","일반"],["센텀중학교",7,"해운대구","공","일반"],["양동여자중학교",7,"부산진구","공","일반"],["장산중학교",7,"해운대구","공","일반"],["명호중학교",7,"강서구","공","일반"],["오륙도중학교",7,"남구","공","일반"],["신정중학교",7,"기장군","공","일반"],["신호중학교",7,"강서구","공","일반"],["모전중학교",7,"기장군","공","일반"],["정관중학교",7,"기장군","공","일반"],["지사중학교",7,"강서구","공","일반"],["부산체육중학교",7,"영도구","공","일반"],["명지중학교",7,"강서구","공","일반"],["경일중학교",7,"강서구","공","일반"],["일광중학교",7,"기장군","공","일반"],["오션중학교",7,"강서구","공","일반"],["가락중학교",7,"강서구","공","일반"],["경북대학교사범대학부설중학교",5,"중구","국","일반"],["경상중학교",5,"남구","공","일반"],["경일여자중학교",5,"남구","사","일반"],["경혜여자중학교",5,"남구","공","일반"],["경암중학교",5,"달서구","사","일반"],["구남중학교",5,"달서구","사","일반"],["대건중학교",5,"달서구","사","일반"],["대곡중학교",5,"달서구","공","일반"],["대구중학교",5,"남구","공","일반"],["대명중학교",5,"남구","공","일반"],["대서중학교",5,"달서구","공","일반"],["도원중학교",5,"달서구","공","일반"],["상서중학교",5,"달서구","사","일반"],["상원중학교",5,"달서구","공","일반"],["상인중학교",5,"달서구","공","일반"],["성당중학교",5,"달서구","공","일반"],["성산중학교",5,"달서구","공","일반"],["성서중학교",5,"달서구","공","일반"],["성지중학교",5,"달서구","공","일반"],["송현여자중학교",5,"달서구","사","일반"],["심인중학교",5,"달성군","사","일반"],["영남중학교",5,"달서구","사","일반"],["와룡중학교",5,"달서구","공","일반"],["용산중학교",5,"달서구","공","일반"],["원화중학교",5,"달서구","사","일반"],["월배중학교",5,"달서구","공","일반"],["이곡중학교",5,"달서구","공","일반"],["학산중학교",5,"달서구","공","일반"],["협성경복중학교",5,"남구","사","일반"],["효성중학교",5,"달서구","사","일반"],["가창중학교",5,"달성군","사","일반"],["경서중학교",5,"달성군","공","일반"],["구지중학교",5,"달성군","공","일반"],["논공중학교",5,"달성군","공","일반"],["다사중학교",5,"달성군","공","일반"],["달서중학교",5,"달성군","사","일반"],["달성중학교",5,"달성군","공","일반"],["포산중학교",5,"달성군","공","일반"],["현풍중학교",5,"달성군","사","일반"],["화원중학교",5,"달성군","공","일반"],["경구중학교",5,"중구","사","일반"],["경신중학교",5,"수성구","사","일반"],["계성중학교",5,"중구","사","일반"],["공산중학교",5,"동구","사","일반"],["능인중학교",5,"수성구","사","일반"],["대구동부중학교",5,"수성구","공","일반"],["대구동중학교",5,"수성구","공","일반"],["대구제일중학교",5,"중구","공","일반"],["대구중앙중학교",5,"수성구","사","일반"],["대륜중학교",5,"수성구","사","일반"],["덕원중학교",5,"수성구","사","일반"],["덕화중학교",5,"수성구","공","일반"],["동도중학교",5,"수성구","공","일반"],["동원중학교",5,"수성구","공","일반"],["동촌중학교",5,"동구","공","일반"],["범일중학교",5,"수성구","공","일반"],["범물중학교",5,"수성구","공","일반"],["불로중학교",5,"동구","공","일반"],["성명여자중학교",5,"중구","사","일반"],["소선여자중학교",5,"수성구","사","일반"],["황금중학교",5,"수성구","공","일반"],["수성중학교",5,"수성구","공","일반"],["매호중학교",5,"수성구","공","일반"],["시지중학교",5,"수성구","공","일반"],["신명여자중학교",5,"수성구","사","일반"],["신기중학교",5,"동구","공","일반"],["안심중학교",5,"동구","공","일반"],["영신중학교",5,"동구","사","일반"],["오성중학교",5,"수성구","사","일반"],["입석중학교",5,"동구","공","일반"],["정화중학교",5,"수성구","사","일반"],["지산중학교",5,"수성구","공","일반"],["청구중학교",5,"동구","사","일반"],["경명여자중학교",5,"북구","사","일반"],["대구청라중학교",5,"서구","사","일반"],["경운중학교",5,"서구","공","일반"],["경일중학교",5,"서구","공","일반"],["관음중학교",5,"북구","공","일반"],["관천중학교",5,"북구","공","일반"],["구암중학교",5,"북구","공","일반"],["대구북중학교",5,"북구","공","일반"],["대구일중학교",5,"북구","공","일반"],["동평중학교",5,"북구","공","일반"],["복현중학교",5,"북구","공","일반"],["산격중학교",5,"북구","공","일반"],["성광중학교",5,"북구","사","일반"],["성화중학교",5,"북구","사","일반"],["운암중학교",5,"북구","공","일반"],["서남중학교",5,"서구","공","일반"],["중리중학교",5,"서구","공","일반"],["칠곡중학교",5,"북구","공","일반"],["침산중학교",5,"북구","공","일반"],["팔달중학교",5,"북구","공","일반"],["대평중학교",5,"서구","공","일반"],["평리중학교",5,"서구","공","일반"],["학남중학교",5,"북구","공","일반"],["고산중학교",5,"수성구","공","일반"],["성곡중학교",5,"달서구","공","일반"],["북동중학교",5,"달성군","공","일반"],["서재중학교",5,"달성군","공","일반"],["강동중학교",5,"동구","공","일반"],["서변중학교",5,"북구","공","일반"],["강북중학교",5,"북구","공","일반"],["동변중학교",5,"북구","공","일반"],["천내중학교",5,"달성군","공","일반"],["노변중학교",5,"수성구","공","일반"],["대진중학교",5,"달서구","공","일반"],["월서중학교",5,"달서구","공","일반"],["매천중학교",5,"북구","공","일반"],["왕선중학교",5,"달성군","공","일반"],["율원중학교",5,"동구","공","일반"],["조암중학교",5,"달서구","공","일반"],["새론중학교",5,"동구","공","일반"],["월암중학교",5,"달서구","공","일반"],["대구체육중학교",5,"북구","공","일반"],["새본리중학교",5,"달서구","공","일반"],["사수중학교",5,"북구","공","일반"],["유가중학교",5,"달성군","공","일반"],["신아중학교",5,"동구","공","일반"],["한울안중학교",5,"달성군","사","일반"],["서동중학교",5,"달성군","공","일반"],["서대구중학교",5,"서구","공","일반"],["대구팔공중학교",5,"동구","공","일반"],["군위중학교",5,"군위군","공","일반"],["군위중학교우보분교장",5,"군위군","공","일반"],["의흥중학교",5,"군위군","공","일반"],["부계중학교",5,"군위군","공","일반"],["부계중학교효령분교장",5,"군위군","공","일반"],["강남중학교",11,"강화군","공","일반"],["강서중학교",11,"강화군","공","일반"],["강화여자중학교",11,"강화군","공","일반"],["강화중학교",11,"강화군","공","일반"],["교동중학교",11,"강화군","공","일반"],["동광중학교",11,"강화군","사","일반"],["승영중학교",11,"강화군","사","일반"],["서도중학교",11,"강화군","공","일반"],["심도중학교",11,"강화군","공","일반"],["관교여자중학교",11,"미추홀구","공","일반"],["관교중학교",11,"미추홀구","공","일반"],["광성중학교",11,"중구","사","일반"],["남인천여자중학교",11,"미추홀구","공","일반"],["대청중학교",11,"옹진군","공","일반"],["재능중학교",11,"동구","사","일반"],["덕적중학교",11,"옹진군","공","일반"],["동산중학교",11,"동구","사","일반"],["백령중학교",11,"옹진군","공","일반"],["선인중학교",11,"미추홀구","공","일반"],["선화여자중학교",11,"미추홀구","공","일반"],["송도중학교",11,"중구","사","일반"],["신흥여자중학교",11,"중구","공","일반"],["신흥중학교",11,"중구","공","일반"],["연평중학교",11,"옹진군","공","일반"],["영종중학교",11,"중구","공","일반"],["영흥중학교",11,"옹진군","공","일반"],["용유중학교",11,"중구","공","일반"],["용현여자중학교",11,"미추홀구","공","일반"],["용현중학교",11,"미추홀구","공","일반"],["인성여자중학교",11,"중구","사","일반"],["인천공항중학교",11,"중구","공","일반"],["인천남중학교",11,"미추홀구","공","일반"],["박문중학교",11,"연수구","사","일반"],["인하대학교사범대학부속중학교",11,"미추홀구","사","일반"],["인화여자중학교",11,"미추홀구","공","일반"],["제물포여자중학교",11,"미추홀구","공","일반"],["화도진중학교",11,"동구","공","일반"],["간석여자중학교",11,"남동구","공","일반"],["구월여자중학교",11,"남동구","공","일반"],["구월중학교",11,"남동구","공","일반"],["남동중학교",11,"남동구","공","일반"],["논곡중학교",11,"남동구","공","일반"],["동인천중학교",11,"남동구","공","일반"],["만성중학교",11,"남동구","공","일반"],["만수북중학교",11,"남동구","공","일반"],["만수여자중학교",11,"남동구","공","일반"],["만수중학교",11,"남동구","공","일반"],["만월중학교",11,"남동구","공","일반"],["상인천여자중학교",11,"남동구","공","일반"],["상인천중학교",11,"남동구","공","일반"],["선학중학교",11,"연수구","공","일반"],["숭덕여자중학교",11,"남동구","사","일반"],["연성중학교",11,"연수구","공","일반"],["연수중학교",11,"연수구","공","일반"],["연화중학교",11,"연수구","공","일반"],["인송중학교",11,"연수구","공","일반"],["인천여자중학교",11,"연수구","공","일반"],["옥련중학교",11,"연수구","공","일반"],["인천중학교",11,"연수구","공","일반"],["청량중학교",11,"연수구","공","일반"],["청학중학교",11,"연수구","공","일반"],["가정여자중학교",11,"서구","공","일반"],["인천가좌여자중학교",11,"서구","공","일반"],["갈산중학교",11,"부평구","공","일반"],["검단중학교",11,"서구","공","일반"],["검암중학교",11,"서구","공","일반"],["계산여자중학교",11,"계양구","공","일반"],["계산중학교",11,"계양구","공","일반"],["계양중학교",11,"계양구","공","일반"],["구산중학교",11,"부평구","공","일반"],["동암중학교",11,"부평구","공","일반"],["동인천여자중학교",11,"서구","공","일반"],["명현중학교",11,"계양구","공","일반"],["백석중학교",11,"서구","공","일반"],["부광중학교",11,"부평구","공","일반"],["부원여자중학교",11,"부평구","공","일반"],["부원중학교",11,"부평구","공","일반"],["인천동수중학교",11,"부평구","공","일반"],["부일중학교",11,"부평구","공","일반"],["부평동중학교",11,"부평구","공","일반"],["부평서여자중학교",11,"부평구","공","일반"],["부평서중학교",11,"부평구","공","일반"],["부평여자중학교",11,"부평구","공","일반"],["부평중학교",11,"부평구","공","일반"],["부흥중학교",11,"부평구","공","일반"],["북인천여자중학교",11,"계양구","공","일반"],["북인천중학교",11,"계양구","공","일반"],["불로중학교",11,"서구","공","일반"],["산곡남중학교",11,"부평구","공","일반"],["산곡여자중학교",11,"부평구","공","일반"],["산곡중학교",11,"부평구","공","일반"],["서곶중학교",11,"서구","공","일반"],["서운중학교",11,"계양구","공","일반"],["신현여자중학교",11,"서구","공","일반"],["신현중학교",11,"서구","공","일반"],["인천안남중학교",11,"계양구","공","일반"],["가좌중학교",11,"서구","공","일반"],["인천효성중학교",11,"계양구","공","일반"],["임학중학교",11,"계양구","공","일반"],["제물포중학교",11,"서구","공","일반"],["청천중학교",11,"부평구","공","일반"],["함박중학교",11,"연수구","공","일반"],["작전중학교",11,"계양구","공","일반"],["인천양촌중학교",11,"계양구","공","일반"],["인천예일중학교",11,"계양구","공","일반"],["간재울중학교",11,"서구","공","일반"],["능허대중학교",11,"연수구","공","일반"],["석정중학교",11,"남동구","공","일반"],["인주중학교",11,"미추홀구","공","일반"],["신송중학교",11,"연수구","공","일반"],["마전중학교",11,"서구","공","일반"],["원당중학교",11,"서구","공","일반"],["삼산중학교",11,"부평구","공","일반"],["진산중학교",11,"부평구","공","일반"],["인천당하중학교",11,"서구","공","일반"],["인천상정중학교",11,"부평구","공","일반"],["인천동양중학교",11,"계양구","공","일반"],["인천논현중학교",11,"남동구","공","일반"],["인천성리중학교",11,"남동구","공","일반"],["인천가현중학교",11,"서구","공","일반"],["인천계수중학교",11,"계양구","공","일반"],["인천동방중학교",11,"남동구","공","일반"],["인천정각중학교",11,"남동구","공","일반"],["인천서창중학교",11,"남동구","공","일반"],["인천석남중학교",11,"서구","공","일반"],["인천고잔중학교",11,"남동구","공","일반"],["인천해송중학교",11,"연수구","공","일반"],["인천사리울중학교",11,"남동구","공","일반"],["인천신정중학교",11,"연수구","공","일반"],["인천청라중학교",11,"서구","공","일반"],["인천초은중학교",11,"서구","공","일반"],["인천아라중학교",11,"서구","공","일반"],["인천이음중학교",11,"서구","공","일반"],["인천해원중학교",11,"서구","공","일반"],["인천예송중학교",11,"연수구","공","일반"],["인천청람중학교",11,"서구","공","일반"],["인천하늘중학교",11,"중구","공","일반"],["인천중산중학교",11,"중구","공","일반"],["인천경연중학교",11,"서구","공","일반"],["인천미송중학교",11,"연수구","공","일반"],["인천현송중학교",11,"연수구","공","일반"],["인천루원중학교",11,"서구","공","일반"],["인천청호중학교",11,"서구","공","일반"],["인천운서중학교",11,"중구","공","일반"],["인천은송중학교",11,"연수구","공","일반"],["전남대학교사범대학부설중학교",4,"북구","국","일반"],["각화중학교",4,"북구","공","일반"],["고려중학교",4,"북구","사","일반"],["광주경신중학교",4,"북구","사","일반"],["광주동신여자중학교",4,"북구","사","일반"],["광주동신중학교",4,"북구","사","일반"],["무등중학교",4,"동구","공","일반"],["광주북성중학교",4,"북구","공","일반"],["광주숭일중학교",4,"북구","사","일반"],["금호중앙중학교",4,"북구","사","일반"],["광주진흥중학교",4,"광산구","사","일반"],["광주체육중학교",4,"북구","공","일반"],["광주충장중학교",4,"동구","공","일반"],["두암중학교",4,"북구","공","일반"],["문산중학교",4,"북구","공","일반"],["문화중학교",4,"북구","공","일반"],["문흥중학교",4,"북구","공","일반"],["살레시오여자중학교",4,"동구","사","일반"],["살레시오중학교",4,"북구","사","일반"],["서강중학교",4,"북구","사","일반"],["신광중학교",4,"북구","공","일반"],["양산중학교",4,"북구","공","일반"],["용봉중학교",4,"북구","공","일반"],["우산중학교",4,"북구","공","일반"],["운림중학교",4,"동구","공","일반"],["운암중학교",4,"북구","공","일반"],["일곡중학교",4,"북구","공","일반"],["일동중학교",4,"북구","공","일반"],["조선대학교부속중학교",4,"동구","사","일반"],["조선대학교여자중학교",4,"동구","사","일반"],["광덕중학교",4,"서구","사","일반"],["광산중학교",4,"광산구","공","일반"],["평동중학교",4,"광산구","공","일반"],["광주동명중학교",4,"서구","공","일반"],["광주동성여자중학교",4,"남구","사","일반"],["광주동성중학교",4,"남구","사","일반"],["광주무진중학교",4,"남구","공","일반"],["광주서광중학교",4,"남구","공","일반"],["광주서석중학교",4,"서구","사","일반"],["광주송원중학교",4,"남구","사","일반"],["광주수피아여자중학교",4,"남구","사","일반"],["광주중학교",4,"서구","공","일반"],["광주화정중학교",4,"서구","공","일반"],["광주효광중학교",4,"서구","공","일반"],["금구중학교",4,"광산구","공","일반"],["금당중학교",4,"남구","공","일반"],["금호중학교",4,"서구","공","일반"],["대성여자중학교",4,"남구","사","일반"],["대촌중학교",4,"남구","공","일반"],["동아여자중학교",4,"남구","사","일반"],["문성중학교",4,"남구","사","일반"],["봉선중학교",4,"남구","공","일반"],["상무중학교",4,"서구","공","일반"],["상일중학교",4,"서구","공","일반"],["송정중학교",4,"광산구","공","일반"],["숭의중학교",4,"남구","사","일반"],["운남중학교",4,"광산구","공","일반"],["월계중학교",4,"광산구","공","일반"],["월곡중학교",4,"광산구","공","일반"],["임곡중학교",4,"광산구","사","일반"],["정광중학교",4,"광산구","사","일반"],["주월중학교",4,"남구","공","일반"],["천곡중학교",4,"광산구","공","일반"],["치평중학교",4,"서구","공","일반"],["풍암중학교",4,"서구","공","일반"],["하남중학교",4,"광산구","공","일반"],["전남중학교",4,"서구","공","일반"],["첨단중학교",4,"광산구","공","일반"],["송광중학교",4,"광산구","공","일반"],["신가중학교",4,"광산구","공","일반"],["영천중학교",4,"광산구","공","일반"],["봉산중학교",4,"광산구","공","일반"],["신창중학교",4,"광산구","공","일반"],["지산중학교",4,"북구","공","일반"],["운리중학교",4,"서구","공","일반"],["일신중학교",4,"북구","공","일반"],["대자중학교",4,"서구","공","일반"],["월봉중학교",4,"광산구","공","일반"],["유덕중학교",4,"서구","공","일반"],["용두중학교",4,"북구","공","일반"],["진남중학교",4,"남구","공","일반"],["산정중학교",4,"광산구","공","일반"],["성덕중학교",4,"광산구","공","일반"],["장덕중학교",4,"광산구","공","일반"],["수완중학교",4,"광산구","공","일반"],["선운중학교",4,"광산구","공","일반"],["신용중학교",4,"북구","공","일반"],["효천중학교",4,"남구","공","일반"],["수완하나중학교",4,"광산구","공","일반"],["고실중학교",4,"광산구","공","일반"],["광주예술중학교",4,"북구","공","일반"],["대전경덕중학교",6,"대덕구","사","일반"],["대전대성여자중학교",6,"동구","사","일반"],["대전대성중학교",6,"중구","사","일반"],["대전가양중학교",6,"동구","공","일반"],["대전가오중학교",6,"동구","공","일반"],["대전대문중학교",6,"중구","공","일반"],["대전대화중학교",6,"대덕구","공","일반"],["대전동산중학교",6,"중구","사","일반"],["우송중학교",6,"동구","사","일반"],["대전매봉중학교",6,"대덕구","공","일반"],["대전문화여자중학교",6,"중구","공","일반"],["대전법동중학교",6,"대덕구","공","일반"],["대전송촌중학교",6,"대덕구","공","일반"],["대전여자중학교",6,"중구","공","일반"],["오정중학교",6,"대덕구","공","일반"],["대전용운중학교",6,"동구","공","일반"],["대전용전중학교",6,"대덕구","공","일반"],["중리중학교",6,"대덕구","공","일반"],["대전중앙중학교",6,"중구","사","일반"],["대전중학교",6,"중구","공","일반"],["대전태평중학교",6,"중구","공","일반"],["동대전중학교",6,"동구","공","일반"],["동명중학교",6,"중구","사","일반"],["동신중학교",6,"동구","공","일반"],["보문중학교",6,"동구","사","일반"],["대전신일중학교",6,"중구","사","일반"],["신탄중앙중학교",6,"대덕구","공","일반"],["신탄진중학교",6,"대덕구","사","일반"],["청란여자중학교",6,"중구","사","일반"],["충남여자중학교",6,"중구","공","일반"],["충남중학교",6,"동구","공","일반"],["한밭여자중학교",6,"동구","공","일반"],["한밭중학교",6,"동구","공","일반"],["호수돈여자중학교",6,"중구","사","일반"],["회덕중학교",6,"대덕구","공","일반"],["가수원중학교",6,"서구","공","일반"],["갈마중학교",6,"서구","공","일반"],["기성중학교",6,"서구","공","일반"],["대덕중학교",6,"유성구","공","일반"],["대전갑천중학교",6,"서구","공","일반"],["대전관저중학교",6,"서구","공","일반"],["대전남선중학교",6,"서구","공","일반"],["대전내동중학교",6,"서구","공","일반"],["대전노은중학교",6,"유성구","공","일반"],["대전대신중학교",6,"서구","사","일반"],["대전도마중학교",6,"서구","공","일반"],["대전둔산중학교",6,"서구","공","일반"],["대전둔원중학교",6,"서구","공","일반"],["대전만년중학교",6,"서구","공","일반"],["대전문정중학교",6,"서구","공","일반"],["대전문지중학교",6,"유성구","공","일반"],["대전버드내중학교",6,"서구","공","일반"],["대전변동중학교",6,"서구","공","일반"],["대전봉산중학교",6,"서구","공","일반"],["대전봉우중학교",6,"서구","공","일반"],["대전삼육중학교",6,"서구","사","일반"],["대전삼천중학교",6,"서구","공","일반"],["대전서중학교",6,"서구","공","일반"],["대전송강중학교",6,"유성구","공","일반"],["대전어은중학교",6,"유성구","공","일반"],["대전월평중학교",6,"서구","공","일반"],["대전전민중학교",6,"유성구","공","일반"],["대전정림중학교",6,"서구","공","일반"],["대전지족중학교",6,"유성구","공","일반"],["대전체육중학교",6,"유성구","공","일반"],["대전탄방중학교",6,"서구","공","일반"],["동방여자중학교",6,"서구","사","일반"],["성덕중학교",6,"유성구","사","일반"],["유성중학교",6,"유성구","공","일반"],["진잠중학교",6,"유성구","공","일반"],["대전느리울중학교",6,"서구","공","일반"],["대전장대중학교",6,"유성구","공","일반"],["대전신계중학교",6,"서구","공","일반"],["대전외삼중학교",6,"유성구","공","일반"],["대전구봉중학교",6,"서구","공","일반"],["대전두리중학교",6,"유성구","공","일반"],["대전대청중학교",6,"대덕구","공","일반"],["대전자운중학교",6,"유성구","공","일반"],["대전하기중학교",6,"유성구","공","일반"],["대전동화중학교",6,"유성구","공","일반"],["대전괴정중학교",6,"서구","공","일반"],["대전글꽃중학교",6,"중구","공","일반"],["대전은어송중학교",6,"동구","공","일반"],["대전관평중학교",6,"유성구","공","일반"],["대전봉명중학교",6,"유성구","공","일반"],["대전도안중학교",6,"서구","공","일반"],["대전덕명중학교",6,"유성구","공","일반"],["대전새미래중학교",6,"유성구","공","일반"],["대전원신흥중학교",6,"유성구","공","일반"],["대전둔곡중학교",6,"유성구","공","일반"],["남창중학교",10,"울주군","공","일반"],["대현중학교",10,"남구","공","일반"],["동평중학교",10,"남구","공","일반"],["두광중학교",10,"울주군","공","일반"],["범서중학교",10,"울주군","공","일반"],["삼호중학교",10,"남구","공","일반"],["상북중학교",10,"울주군","공","일반"],["서생중학교",10,"울주군","공","일반"],["신일중학교",10,"남구","공","일반"],["신정중학교",10,"남구","공","일반"],["신언중학교",10,"울주군","공","일반"],["언양중학교",10,"울주군","공","일반"],["옥동중학교",10,"남구","공","일반"],["옥현중학교",10,"남구","공","일반"],["온산중학교",10,"울주군","공","일반"],["울산서여자중학교",10,"남구","공","일반"],["월평중학교",10,"남구","공","일반"],["울산중앙중학교",10,"남구","공","일반"],["웅촌중학교",10,"울주군","공","일반"],["청량중학교",10,"울주군","공","일반"],["울산강남중학교",10,"남구","공","일반"],["태화중학교",10,"남구","공","일반"],["학성중학교",10,"남구","공","일반"],["강동중학교",10,"북구","공","일반"],["농소중학교",10,"북구","공","일반"],["대송중학교",10,"동구","공","일반"],["명덕중학교",10,"동구","공","일반"],["무룡중학교",10,"중구","공","일반"],["방어진중학교",10,"동구","공","일반"],["성안중학교",10,"중구","공","일반"],["약사중학교",10,"중구","공","일반"],["외솔중학교",10,"중구","공","일반"],["가온중학교",10,"중구","공","일반"],["울산제일중학교",10,"중구","공","일반"],["일산중학교",10,"동구","공","일반"],["천곡중학교",10,"북구","공","일반"],["현대청운중학교",10,"동구","사","일반"],["학성여자중학교",10,"중구","공","일반"],["현대중학교",10,"동구","사","일반"],["화봉중학교",10,"북구","공","일반"],["화진중학교",10,"동구","공","일반"],["효정중학교",10,"북구","공","일반"],["유곡중학교",10,"중구","공","일반"],["화암중학교",10,"동구","공","일반"],["이화중학교",10,"북구","공","일반"],["천상중학교",10,"울주군","공","일반"],["무거중학교",10,"남구","공","일반"],["연암중학교",10,"북구","공","일반"],["진장중학교",10,"북구","공","일반"],["야음중학교",10,"남구","공","일반"],["문수중학교",10,"남구","공","일반"],["호계중학교",10,"북구","공","일반"],["남목중학교",10,"동구","공","일반"],["남외중학교",10,"중구","공","일반"],["매곡중학교",10,"북구","공","일반"],["삼남중학교",10,"울주군","공","일반"],["구영중학교",10,"울주군","공","일반"],["다운중학교",10,"중구","공","일반"],["달천중학교",10,"북구","공","일반"],["상안중학교",10,"북구","공","일반"],["울산중학교",10,"중구","공","일반"],["울산스포츠과학중학교",10,"북구","공","일반"],["장검중학교",10,"울주군","공","일반"],["고헌중학교",10,"북구","공","일반"],["장기중학교",9,"","공","일반"],["금호중학교",9,"","공","일반"],["연동중학교",9,"","공","일반"],["연서중학교",9,"","공","일반"],["전의중학교",9,"","공","일반"],["세종중학교",9,"","공","일반"],["조치원중학교",9,"","공","일반"],["한솔중학교",9,"","공","일반"],["부강중학교",9,"","공","일반"],["아름중학교",9,"","공","일반"],["도담중학교",9,"","공","일반"],["새롬중학교",9,"","공","일반"],["고운중학교",9,"","공","일반"],["종촌중학교",9,"","공","일반"],["두루중학교",9,"","공","일반"],["양지중학교",9,"","공","일반"],["어진중학교",9,"","공","일반"],["소담중학교",9,"","공","일반"],["새뜸중학교",9,"","공","일반"],["새움중학교",9,"","공","일반"],["글벗중학교",9,"","공","일반"],["보람중학교",9,"","공","일반"],["나성중학교",9,"","공","일반"],["반곡중학교",9,"","공","일반"],["다정중학교",9,"","공","일반"],["집현중학교",9,"","공","일반"],["해밀중학교",9,"","공","일반"],["산울중학교",9,"","공","일반"],["가평중학교",1,"가평군","공","일반"],["가평북중학교",1,"가평군","공","일반"],["설악중학교",1,"가평군","공","일반"],["조종중학교",1,"가평군","공","일반"],["청평중학교",1,"가평군","공","일반"],["가람중학교",1,"고양시 덕양구","공","일반"],["고양중학교",1,"고양시 덕양구","공","일반"],["능곡중학교",1,"고양시 덕양구","공","일반"],["대화중학교",1,"고양시 일산서구","공","일반"],["덕양중학교",1,"고양시 덕양구","공","일반"],["무원중학교",1,"고양시 덕양구","공","일반"],["발산중학교",1,"고양시 일산서구","공","일반"],["백마중학교",1,"고양시 일산동구","공","일반"],["백석중학교",1,"고양시 일산동구","공","일반"],["백신중학교",1,"고양시 일산동구","공","일반"],["백양중학교",1,"고양시 덕양구","공","일반"],["고양제일중학교",1,"고양시 덕양구","사","일반"],["신능중학교",1,"고양시 덕양구","공","일반"],["신일중학교",1,"고양시 일산서구","공","일반"],["오마중학교",1,"고양시 일산서구","공","일반"],["원당중학교",1,"고양시 덕양구","공","일반"],["일산동중학교",1,"고양시 일산서구","공","일반"],["일산중학교",1,"고양시 일산서구","공","일반"],["장성중학교",1,"고양시 일산서구","공","일반"],["저동중학교",1,"고양시 일산동구","공","일반"],["정발중학교",1,"고양시 일산동구","공","일반"],["중산중학교",1,"고양시 일산동구","공","일반"],["지도중학교",1,"고양시 덕양구","공","일반"],["한수중학교",1,"고양시 일산서구","공","일반"],["행신중학교",1,"고양시 덕양구","공","일반"],["호곡중학교",1,"고양시 일산서구","공","일반"],["화수중학교",1,"고양시 덕양구","공","일반"],["화정중학교",1,"고양시 덕양구","공","일반"],["가림중학교",1,"광명시","공","일반"],["광남중학교",1,"광명시","공","일반"],["광명북중학교",1,"광명시","공","일반"],["하안북중학교",1,"광명시","공","일반"],["광명중학교",1,"광명시","공","일반"],["소하중학교",1,"광명시","공","일반"],["안서중학교",1,"광명시","공","일반"],["철산중학교",1,"광명시","공","일반"],["하안중학교",1,"광명시","공","일반"],["경안중학교",1,"광주시","공","일반"],["경화여자중학교",1,"광주시","사","일반"],["광수중학교",1,"광주시","공","일반"],["광일중학교",1,"광주시","공","일반"],["곤지암중학교",1,"광주시","공","일반"],["광주중학교",1,"광주시","공","일반"],["남한중학교",1,"하남시","공","일반"],["동부중학교",1,"하남시","공","일반"],["신장중학교",1,"하남시","공","일반"],["탄벌중학교",1,"광주시","공","일반"],["하남중학교",1,"하남시","공","일반"],["갈뫼중학교",1,"의왕시","공","일반"],["고천중학교",1,"의왕시","공","일반"],["곡란중학교",1,"군포시","공","일반"],["군포중학교",1,"군포시","공","일반"],["궁내중학교",1,"군포시","공","일반"],["금정중학교",1,"군포시","공","일반"],["도장중학교",1,"군포시","공","일반"],["백운중학교",1,"의왕시","공","일반"],["산본중학교",1,"군포시","공","일반"],["수리중학교",1,"군포시","공","일반"],["용호중학교",1,"군포시","공","일반"],["의왕부곡중학교",1,"의왕시","공","일반"],["의왕중학교",1,"의왕시","공","일반"],["흥진중학교",1,"군포시","공","일반"],["고촌중학교",1,"김포시","공","일반"],["김포여자중학교",1,"김포시","공","일반"],["금파중학교",1,"김포시","공","일반"],["김포중학교",1,"김포시","공","일반"],["대곶중학교",1,"김포시","공","일반"],["분진중학교",1,"김포시","사","일반"],["양곡중학교",1,"김포시","사","일반"],["장기중학교",1,"김포시","공","일반"],["통진중학교",1,"김포시","사","일반"],["풍무중학교",1,"김포시","공","일반"],["하성중학교",1,"김포시","공","일반"],["광동중학교",1,"남양주시","사","일반"],["교문중학교",1,"구리시","공","일반"],["구리중학교",1,"구리시","공","일반"],["구리여자중학교",1,"구리시","공","일반"],["금곡중학교",1,"남양주시","공","일반"],["덕소중학교",1,"남양주시","공","일반"],["도농중학교",1,"남양주시","공","일반"],["동구중학교",1,"구리시","공","일반"],["동화중학교",1,"남양주시","사","일반"],["마석중학교",1,"남양주시","공","일반"],["미금중학교",1,"남양주시","공","일반"],["별내중학교",1,"남양주시","공","일반"],["수동중학교",1,"남양주시","사","일반"],["심석중학교",1,"남양주시","사","일반"],["오남중학교",1,"남양주시","공","일반"],["와부중학교",1,"남양주시","공","일반"],["연세중학교",1,"남양주시","사","일반"],["인창중학교",1,"구리시","공","일반"],["장자중학교",1,"구리시","공","일반"],["진건중학교",1,"남양주시","공","일반"],["토평중학교",1,"구리시","공","일반"],["퇴계원중학교",1,"남양주시","공","일반"],["호평중학교",1,"남양주시","공","일반"],["화광중학교",1,"남양주시","공","일반"],["고암중학교",1,"양주시","공","일반"],["남문중학교",1,"양주시","사","일반"],["덕계중학교",1,"양주시","공","일반"],["덕정중학교",1,"양주시","공","일반"],["동두천여자중학교",1,"동두천시","사","일반"],["동두천중학교",1,"동두천시","사","일반"],["한빛누리중학교",1,"동두천시","사","일반"],["신흥중학교",1,"동두천시","사","일반"],["양주백석중학교",1,"양주시","공","일반"],["조양중학교",1,"양주시","사","일반"],["계남중학교",1,"부천시 원미구","공","일반"],["내동중학교",1,"부천시 오정구","공","일반"],["덕산중학교",1,"부천시 오정구","공","일반"],["부명중학교",1,"부천시 원미구","공","일반"],["부인중학교",1,"부천시 원미구","공","일반"],["부일중학교",1,"부천시 소사구","공","일반"],["부천남중학교",1,"부천시 소사구","공","일반"],["부천동여자중학교",1,"부천시 소사구","공","일반"],["부천동중학교",1,"부천시 소사구","공","일반"],["부천부곡중학교",1,"부천시 원미구","공","일반"],["부천부흥중학교",1,"부천시 원미구","공","일반"],["부천여월중학교",1,"부천시 오정구","공","일반"],["부천여자중학교",1,"부천시 소사구","공","일반"],["부천중학교",1,"부천시 원미구","공","일반"],["상도중학교",1,"부천시 원미구","공","일반"],["상동중학교",1,"부천시 원미구","공","일반"],["상일중학교",1,"부천시 원미구","공","일반"],["석천중학교",1,"부천시 원미구","공","일반"],["성곡중학교",1,"부천시 오정구","공","일반"],["성주중학교",1,"부천시 소사구","공","일반"],["소명여자중학교",1,"부천시 원미구","사","일반"],["소사중학교",1,"부천시 소사구","공","일반"],["심원중학교",1,"부천시 원미구","공","일반"],["역곡중학교",1,"부천시 원미구","공","일반"],["중원중학교",1,"부천시 원미구","공","일반"],["중흥중학교",1,"부천시 원미구","공","일반"],["금광중학교",1,"성남시 중원구","공","일반"],["내정중학교",1,"성남시 분당구","공","일반"],["대원중학교",1,"성남시 중원구","공","일반"],["매송중학교",1,"성남시 분당구","공","일반"],["백현중학교",1,"성남시 분당구","공","일반"],["분당중학교",1,"성남시 분당구","공","일반"],["불곡중학교",1,"성남시 분당구","공","일반"],["상원여자중학교",1,"성남시 수정구","공","일반"],["서현중학교",1,"성남시 분당구","공","일반"],["성남동중학교",1,"성남시 중원구","공","일반"],["성남문원중학교",1,"성남시 수정구","공","일반"],["성남서중학교",1,"성남시 수정구","공","일반"],["성남여자중학교",1,"성남시 수정구","공","일반"],["성남중학교",1,"성남시 중원구","공","일반"],["동광중학교",1,"성남시 중원구","사","일반"],["성일중학교",1,"성남시 중원구","사","일반"],["송림중학교",1,"성남시 분당구","사","일반"],["수내중학교",1,"성남시 분당구","공","일반"],["숭신중학교",1,"성남시 중원구","사","일반"],["야탑중학교",1,"성남시 분당구","공","일반"],["양영중학교",1,"성남시 분당구","공","일반"],["영성중학교",1,"성남시 중원구","공","일반"],["은행중학교",1,"성남시 중원구","공","일반"],["이매중학교",1,"성남시 분당구","공","일반"],["장안중학교",1,"성남시 분당구","공","일반"],["정자중학교",1,"성남시 분당구","공","일반"],["태평중학교",1,"성남시 수정구","공","일반"],["풍생중학교",1,"성남시 수정구","사","일반"],["하탑중학교",1,"성남시 분당구","공","일반"],["고색중학교",1,"수원시 권선구","공","일반"],["곡선중학교",1,"수원시 권선구","공","일반"],["구운중학교",1,"수원시 권선구","공","일반"],["권선중학교",1,"수원시 권선구","공","일반"],["남수원중학교",1,"수원시 권선구","공","일반"],["대평중학교",1,"수원시 장안구","공","일반"],["동성중학교",1,"수원시 팔달구","공","일반"],["동수원중학교",1,"수원시 영통구","공","일반"],["매원중학교",1,"수원시 영통구","공","일반"],["매향중학교",1,"수원시 팔달구","사","일반"],["매현중학교",1,"수원시 영통구","공","일반"],["명인중학교",1,"수원시 장안구","공","일반"],["송원중학교",1,"수원시 장안구","공","일반"],["산남중학교",1,"수원시 영통구","공","일반"],["삼일중학교",1,"수원시 팔달구","사","일반"],["창용중학교",1,"수원시 장안구","공","일반"],["수성중학교",1,"수원시 장안구","공","일반"],["수원북중학교",1,"수원시 장안구","공","일반"],["수원제일중학교",1,"수원시 팔달구","공","일반"],["수원중학교",1,"수원시 팔달구","사","일반"],["수일여자중학교",1,"수원시 장안구","공","일반"],["수일중학교",1,"수원시 장안구","공","일반"],["숙지중학교",1,"수원시 팔달구","공","일반"],["연무중학교",1,"수원시 영통구","공","일반"],["영덕중학교",1,"수원시 영통구","공","일반"],["영복여자중학교",1,"수원시 팔달구","사","일반"],["영신중학교",1,"수원시 권선구","사","일반"],["영일중학교",1,"수원시 영통구","공","일반"],["영통중학교",1,"수원시 영통구","공","일반"],["원천중학교",1,"수원시 영통구","공","일반"],["율전중학교",1,"수원시 장안구","공","일반"],["율현중학교",1,"수원시 팔달구","공","일반"],["이목중학교",1,"수원시 장안구","공","일반"],["천천중학교",1,"수원시 장안구","공","일반"],["청명중학교",1,"수원시 영통구","공","일반"],["태장중학교",1,"수원시 영통구","공","일반"],["호매실중학교",1,"수원시 권선구","공","일반"],["화홍중학교",1,"수원시 권선구","공","일반"],["경수중학교",1,"안산시 상록구","공","일반"],["관산중학교",1,"안산시 단원구","공","일반"],["군자중학교",1,"시흥시","공","일반"],["대부중학교",1,"안산시 단원구","공","일반"],["대흥중학교",1,"시흥시","공","일반"],["반월중학교",1,"안산시 상록구","공","일반"],["별망중학교",1,"안산시 단원구","공","일반"],["본오중학교",1,"안산시 상록구","공","일반"],["상록중학교",1,"안산시 상록구","공","일반"],["서해중학교",1,"시흥시","공","일반"],["선부중학교",1,"안산시 단원구","공","일반"],["성안중학교",1,"안산시 상록구","공","일반"],["한국글로벌중학교",1,"시흥시","사","일반"],["성포중학교",1,"안산시 상록구","공","일반"],["소래중학교",1,"시흥시","공","일반"],["송운중학교",1,"시흥시","공","일반"],["송호중학교",1,"안산시 단원구","공","일반"],["시곡중학교",1,"안산시 상록구","공","일반"],["시흥은행중학교",1,"시흥시","공","일반"],["시흥중학교",1,"시흥시","공","일반"],["신천중학교",1,"시흥시","공","일반"],["안산부곡중학교",1,"안산시 상록구","공","일반"],["안산중학교",1,"안산시 상록구","사","일반"],["양지중학교",1,"안산시 단원구","공","일반"],["연성중학교",1,"시흥시","공","일반"],["와동중학교",1,"안산시 단원구","공","일반"],["원곡중학교",1,"안산시 단원구","공","일반"],["원일중학교",1,"안산시 단원구","공","일반"],["장곡중학교",1,"시흥시","공","일반"],["정왕중학교",1,"시흥시","공","일반"],["중앙중학교",1,"안산시 단원구","공","일반"],["함현중학교",1,"시흥시","공","일반"],["공도중학교",1,"안성시","공","일반"],["명륜여자중학교",1,"안성시","사","일반"],["서운중학교",1,"안성시","공","일반"],["안성여자중학교",1,"안성시","공","일반"],["안성중학교",1,"안성시","공","일반"],["안청중학교",1,"안성시","사","일반"],["양성중학교",1,"안성시","공","일반"],["일죽중학교",1,"안성시","공","일반"],["죽산중학교",1,"안성시","공","일반"],["과천문원중학교",1,"과천시","공","일반"],["과천중학교",1,"과천시","공","일반"],["인덕원중학교",1,"안양시 동안구","공","일반"],["관양중학교",1,"안양시 동안구","공","일반"],["귀인중학교",1,"안양시 동안구","공","일반"],["근명중학교",1,"안양시 만안구","사","일반"],["대안여자중학교",1,"안양시 동안구","공","일반"],["대안중학교",1,"안양시 동안구","공","일반"],["범계중학교",1,"안양시 동안구","공","일반"],["부림중학교",1,"안양시 동안구","공","일반"],["부안중학교",1,"안양시 동안구","공","일반"],["성문중학교",1,"안양시 만안구","사","일반"],["신기중학교",1,"안양시 동안구","공","일반"],["신성중학교",1,"안양시 만안구","사","일반"],["신안중학교",1,"안양시 만안구","공","일반"],["안양부흥중학교",1,"안양시 동안구","공","일반"],["안양서중학교",1,"안양시 만안구","공","일반"],["안양여자중학교",1,"안양시 만안구","사","일반"],["안양중학교",1,"안양시 만안구","공","일반"],["연현중학교",1,"안양시 만안구","공","일반"],["평촌중학교",1,"안양시 동안구","공","일반"],["호계중학교",1,"안양시 동안구","공","일반"],["강하중학교",1,"양평군","공","일반"],["개군중학교",1,"양평군","사","일반"],["국수중학교",1,"양평군","공","일반"],["양수중학교",1,"양평군","공","일반"],["단월중학교",1,"양평군","사","일반"],["서종중학교",1,"양평군","사","일반"],["양동중학교",1,"양평군","사","일반"],["양일중학교",1,"양평군","사","일반"],["양평중학교",1,"양평군","공","일반"],["용문중학교",1,"양평군","사","일반"],["지평중학교",1,"양평군","공","일반"],["청운중학교",1,"양평군","공","일반"],["강천중학교",1,"여주시","공","일반"],["대신중학교",1,"여주시","사","일반"],["상품중학교",1,"여주시","공","일반"],["세정중학교",1,"여주시","사","일반"],["여강중학교",1,"여주시","사","일반"],["여주제일중학교",1,"여주시","사","일반"],["여흥중학교",1,"여주시","공","일반"],["여주중학교",1,"여주시","공","일반"],["이포중학교",1,"여주시","공","일반"],["점동중학교",1,"여주시","공","일반"],["창명여자중학교",1,"여주시","사","일반"],["흥천중학교",1,"여주시","공","일반"],["군남중학교",1,"연천군","공","일반"],["대광중학교",1,"연천군","공","일반"],["백학중학교",1,"연천군","공","일반"],["연천중학교",1,"연천군","공","일반"],["전곡중학교",1,"연천군","공","일반"],["청산중학교",1,"연천군","공","일반"],["구갈중학교",1,"용인시 기흥구","공","일반"],["구성중학교",1,"용인시 기흥구","공","일반"],["나곡중학교",1,"용인시 기흥구","공","일반"],["남사중학교",1,"용인시 처인구","사","일반"],["대지중학교",1,"용인시 수지구","공","일반"],["모현중학교",1,"용인시 처인구","공","일반"],["문정중학교",1,"용인시 수지구","사","일반"],["백암중학교",1,"용인시 처인구","공","일반"],["상갈중학교",1,"용인시 기흥구","공","일반"],["상현중학교",1,"용인시 수지구","공","일반"],["서원중학교",1,"용인시 수지구","공","일반"],["성복중학교",1,"용인시 수지구","공","일반"],["소현중학교",1,"용인시 기흥구","공","일반"],["송전중학교",1,"용인시 처인구","공","일반"],["수지중학교",1,"용인시 수지구","공","일반"],["신갈중학교",1,"용인시 기흥구","공","일반"],["영문중학교",1,"용인시 처인구","공","일반"],["용인중학교",1,"용인시 처인구","공","일반"],["원삼중학교",1,"용인시 처인구","공","일반"],["이현중학교",1,"용인시 수지구","공","일반"],["정평중학교",1,"용인시 수지구","공","일반"],["죽전중학교",1,"용인시 수지구","공","일반"],["태성중학교",1,"용인시 처인구","사","일반"],["포곡중학교",1,"용인시 처인구","공","일반"],["홍천중학교",1,"용인시 수지구","공","일반"],["경민여자중학교",1,"의정부시","사","일반"],["경민중학교",1,"의정부시","사","일반"],["금오중학교",1,"의정부시","공","일반"],["민락중학교",1,"의정부시","공","일반"],["발곡중학교",1,"의정부시","공","일반"],["부용중학교",1,"의정부시","공","일반"],["신곡중학교",1,"의정부시","공","일반"],["다온중학교",1,"의정부시","공","일반"],["의정부여자중학교",1,"의정부시","공","일반"],["의정부중학교",1,"의정부시","공","일반"],["천보중학교",1,"의정부시","공","일반"],["충의중학교",1,"의정부시","공","일반"],["호원중학교",1,"의정부시","공","일반"],["회룡중학교",1,"의정부시","공","일반"],["효자중학교",1,"의정부시","공","일반"],["이천경남중학교",1,"이천시","공","일반"],["대월중학교",1,"이천시","공","일반"],["마장중학교",1,"이천시","공","일반"],["모가중학교",1,"이천시","공","일반"],["백사중학교",1,"이천시","공","일반"],["부발중학교",1,"이천시","공","일반"],["설봉중학교",1,"이천시","공","일반"],["율면중학교",1,"이천시","공","일반"],["이천송정중학교",1,"이천시","공","일반"],["이천양정여자중학교",1,"이천시","사","일반"],["이천중학교",1,"이천시","공","일반"],["장호원중학교",1,"이천시","공","일반"],["효양중학교",1,"이천시","공","일반"],["광탄중학교",1,"파주시","사","일반"],["교하중학교",1,"파주시","공","일반"],["문산동중학교",1,"파주시","사","일반"],["문산북중학교",1,"파주시","공","일반"],["문산수억중학교",1,"파주시","사","일반"],["문산중학교",1,"파주시","공","일반"],["법원여자중학교",1,"파주시","공","일반"],["봉일천중학교",1,"파주시","공","일반"],["삼광중학교",1,"파주시","사","일반"],["어유중학교",1,"파주시","공","일반"],["율곡중학교",1,"파주시","사","일반"],["지산중학교",1,"파주시","공","일반"],["정목중학교",1,"파주시","사","일반"],["파주중학교",1,"파주시","사","일반"],["파평중학교",1,"파주시","공","일반"],["탄현중학교",1,"파주시","공","일반"],["세교중학교",1,"평택시","공","일반"],["라온중학교",1,"평택시","사","일반"],["송탄중학교",1,"평택시","공","일반"],["신한중학교",1,"평택시","사","일반"],["안일중학교",1,"평택시","공","일반"],["안중중학교",1,"평택시","사","일반"],["오성중학교",1,"평택시","사","일반"],["은혜중학교",1,"평택시","사","일반"],["진위중학교",1,"평택시","사","일반"],["청담중학교",1,"평택시","사","일반"],["청북중학교",1,"평택시","공","일반"],["태광중학교",1,"평택시","사","일반"],["평택여자중학교",1,"평택시","공","일반"],["평택중학교",1,"평택시","공","일반"],["포승중학교",1,"평택시","공","일반"],["한광여자중학교",1,"평택시","사","일반"],["한광중학교",1,"평택시","사","일반"],["현화중학교",1,"평택시","공","일반"],["효명중학교",1,"평택시","사","일반"],["갈월중학교",1,"포천시","공","일반"],["경북중학교",1,"포천시","공","일반"],["관인중학교",1,"포천시","공","일반"],["내촌중학교",1,"포천시","공","일반"],["동남중학교",1,"포천시","사","일반"],["삼성중학교",1,"포천시","공","일반"],["영북중학교",1,"포천시","공","일반"],["영중중학교",1,"포천시","공","일반"],["이동중학교",1,"포천시","공","일반"],["일동중학교",1,"포천시","공","일반"],["포천여자중학교",1,"포천시","공","일반"],["포천중학교",1,"포천시","공","일반"],["동탄중학교",1,"화성시 동탄구","공","일반"],["봉담중학교",1,"화성시 효행구","공","일반"],["비봉중학교",1,"화성시 효행구","사","일반"],["삼괴중학교",1,"화성시 만세구","사","일반"],["서신중학교",1,"화성시 만세구","사","일반"],["성호중학교",1,"오산시","공","일반"],["안용중학교",1,"화성시 병점구","사","일반"],["양감중학교",1,"화성시 만세구","공","일반"],["매홀중학교",1,"오산시","공","일반"],["오산중학교",1,"오산시","사","일반"],["운암중학교",1,"오산시","공","일반"],["운천중학교",1,"오산시","공","일반"],["장안여자중학교",1,"화성시 만세구","사","일반"],["진안중학교",1,"화성시 병점구","공","일반"],["화도중학교",1,"화성시 만세구","사","일반"],["화성중학교",1,"화성시 만세구","사","일반"],["광문중학교",1,"광명시","공","일반"],["곡반중학교",1,"수원시 권선구","공","일반"],["망포중학교",1,"수원시 영통구","공","일반"],["정천중학교",1,"수원시 팔달구","공","일반"],["칠보중학교",1,"수원시 권선구","공","일반"],["분당구미중학교",1,"성남시 분당구","공","일반"],["호성중학교",1,"안양시 동안구","공","일반"],["부천일신중학교",1,"부천시 소사구","공","일반"],["선일중학교",1,"안산시 단원구","공","일반"],["진접중학교",1,"남양주시","공","일반"],["대송중학교",1,"고양시 일산서구","공","일반"],["현산중학교",1,"고양시 일산서구","공","일반"],["헌산중학교",1,"용인시 처인구","사","일반"],["생연중학교",1,"동두천시","공","일반"],["현암중학교",1,"용인시 수지구","공","일반"],["용인신릉중학교",1,"용인시 기흥구","공","일반"],["용인신촌중학교",1,"용인시 기흥구","공","일반"],["용인대덕중학교",1,"용인시 수지구","공","일반"],["손곡중학교",1,"용인시 수지구","공","일반"],["성지중학교",1,"용인시 기흥구","공","일반"],["언동중학교",1,"용인시 기흥구","공","일반"],["용신중학교",1,"용인시 처인구","공","일반"],["초지중학교",1,"안산시 단원구","공","일반"],["금릉중학교",1,"파주시","공","일반"],["이우중학교",1,"성남시 분당구","사","일반"],["대경중학교",1,"포천시","공","일반"],["당동중학교",1,"군포시","공","일반"],["안화중학교",1,"화성시 병점구","공","일반"],["대호중학교",1,"오산시","공","일반"],["두레자연중학교",1,"화성시 만세구","사","일반"],["송라중학교",1,"남양주시","공","일반"],["장내중학교",1,"남양주시","공","일반"],["목암중학교",1,"고양시 덕양구","공","일반"],["비산중학교",1,"안양시 동안구","공","일반"],["증포중학교",1,"이천시","공","일반"],["동암중학교",1,"의정부시","공","일반"],["덕현중학교",1,"양주시","공","일반"],["늘푸른중학교",1,"성남시 분당구","공","일반"],["영동중학교",1,"수원시 영통구","공","일반"],["삼숭중학교",1,"양주시","공","일반"],["장당중학교",1,"평택시","공","일반"],["평내중학교",1,"남양주시","공","일반"],["병점중학교",1,"화성시 병점구","공","일반"],["조원중학교",1,"수원시 장안구","공","일반"],["세류중학교",1,"수원시 권선구","공","일반"],["비전중학교",1,"평택시","공","일반"],["기안중학교",1,"화성시 효행구","공","일반"],["석호중학교",1,"안산시 상록구","공","일반"],["광덕중학교",1,"안산시 상록구","공","일반"],["송우중학교",1,"포천시","공","일반"],["한겨레중학교",1,"안성시","사","일반"],["당정중학교",1,"군포시","공","일반"],["동백중학교",1,"용인시 기흥구","공","일반"],["용인백현중학교",1,"용인시 기흥구","공","일반"],["송내중앙중학교",1,"동두천시","공","일반"],["초당중학교",1,"용인시 기흥구","공","일반"],["광주광남중학교",1,"광주시","공","일반"],["도곡중학교",1,"평택시","공","일반"],["세종중학교",1,"여주시","공","일반"],["신평중학교",1,"하남시","공","일반"],["양오중학교",1,"남양주시","공","일반"],["월곶중학교",1,"시흥시","공","일반"],["이충중학교",1,"평택시","공","일반"],["판곡중학교",1,"남양주시","공","일반"],["풍산중학교",1,"고양시 일산동구","공","일반"],["서정중학교",1,"고양시 덕양구","공","일반"],["회천중학교",1,"양주시","공","일반"],["시화중학교",1,"시흥시","공","일반"],["감정중학교",1,"김포시","공","일반"],["고양송산중학교",1,"고양시 일산서구","공","일반"],["금촌중학교",1,"파주시","공","일반"],["논곡중학교",1,"시흥시","공","일반"],["단원중학교",1,"안산시 단원구","공","일반"],["두일중학교",1,"파주시","공","일반"],["비룡중학교",1,"안성시","공","일반"],["서호중학교",1,"수원시 권선구","공","일반"],["석수중학교",1,"안산시 단원구","공","일반"],["안산성호중학교",1,"안산시 상록구","공","일반"],["용천중학교",1,"용인시 처인구","공","일반"],["임곡중학교",1,"안양시 동안구","공","일반"],["풍동중학교",1,"고양시 일산동구","공","일반"],["청심국제중학교",1,"가평군","사","일반"],["안산해양중학교",1,"안산시 상록구","공","일반"],["오산원일중학교",1,"오산시","공","일반"],["고림중학교",1,"용인시 처인구","공","일반"],["상촌중학교",1,"수원시 권선구","공","일반"],["기산중학교",1,"화성시 병점구","공","일반"],["석우중학교",1,"화성시 동탄구","공","일반"],["어람중학교",1,"남양주시","공","일반"],["잠원중학교",1,"수원시 영통구","공","일반"],["보라중학교",1,"용인시 기흥구","공","일반"],["녹양중학교",1,"의정부시","공","일반"],["솔뫼중학교",1,"의정부시","공","일반"],["중앙기독중학교",1,"수원시 영통구","사","일반"],["화성동화중학교",1,"화성시 효행구","공","일반"],["반송중학교",1,"화성시 동탄구","공","일반"],["솔빛중학교",1,"화성시 동탄구","공","일반"],["수주중학교",1,"부천시 오정구","공","일반"],["원미중학교",1,"부천시 원미구","공","일반"],["까치울중학교",1,"부천시 오정구","공","일반"],["안곡중학교",1,"고양시 일산동구","공","일반"],["청덕중학교",1,"용인시 기흥구","공","일반"],["고창중학교",1,"김포시","공","일반"],["시흥능곡중학교",1,"시흥시","공","일반"],["응곡중학교",1,"시흥시","공","일반"],["시흥매화중학교",1,"시흥시","공","일반"],["모락중학교",1,"의왕시","공","일반"],["은계중학교",1,"시흥시","공","일반"],["도촌중학교",1,"성남시 중원구","공","일반"],["샛별중학교",1,"성남시 분당구","공","일반"],["수진중학교",1,"성남시 수정구","공","일반"],["와우중학교",1,"화성시 효행구","공","일반"],["향남중학교",1,"화성시 만세구","공","일반"],["광릉중학교",1,"남양주시","공","일반"],["김포신곡중학교",1,"김포시","공","일반"],["예봉중학교",1,"남양주시","공","일반"],["양진중학교",1,"안성시","공","일반"],["신길중학교",1,"안산시 단원구","공","일반"],["한빛중학교",1,"파주시","공","일반"],["매탄중학교",1,"수원시 영통구","공","일반"],["보평중학교",1,"성남시 분당구","공","일반"],["운중중학교",1,"성남시 분당구","공","일반"],["판교중학교",1,"성남시 분당구","공","일반"],["가운중학교",1,"남양주시","공","일반"],["성사중학교",1,"고양시 덕양구","공","일반"],["풍양중학교",1,"남양주시","공","일반"],["덕풍중학교",1,"하남시","공","일반"],["신양중학교",1,"김포시","공","일반"],["용인한빛중학교",1,"용인시 수지구","공","일반"],["마송중학교",1,"김포시","공","일반"],["이호중학교",1,"안산시 상록구","공","일반"],["세마중학교",1,"오산시","공","일반"],["충현중학교",1,"광명시","공","일반"],["수원원일중학교",1,"수원시 영통구","공","일반"],["흥덕중학교",1,"용인시 기흥구","공","일반"],["별가람중학교",1,"남양주시","공","일반"],["화접중학교",1,"남양주시","공","일반"],["문시중학교",1,"오산시","공","일반"],["삼평중학교",1,"성남시 분당구","공","일반"],["덕이중학교",1,"고양시 일산서구","공","일반"],["만정중학교",1,"안성시","공","일반"],["상하중학교",1,"용인시 기흥구","공","일반"],["서천중학교",1,"용인시 기흥구","공","일반"],["선유중학교",1,"파주시","공","일반"],["성서중학교",1,"용인시 수지구","공","일반"],["예당중학교",1,"화성시 동탄구","공","일반"],["신현중학교",1,"광주시","공","일반"],["한가람중학교",1,"파주시","공","일반"],["광교중학교",1,"수원시 영통구","공","일반"],["이의중학교",1,"수원시 영통구","공","일반"],["푸른솔중학교",1,"김포시","공","일반"],["청옥중학교",1,"평택시","공","일반"],["초월중학교",1,"광주시","공","일반"],["운양중학교",1,"김포시","공","일반"],["고진중학교",1,"용인시 처인구","공","일반"],["신봉중학교",1,"용인시 수지구","공","일반"],["한숲중학교",1,"용인시 처인구","공","일반"],["하늘빛중학교",1,"김포시","공","일반"],["회암중학교",1,"양주시","공","일반"],["율정중학교",1,"양주시","공","일반"],["옥빛중학교",1,"양주시","공","일반"],["원흥중학교",1,"고양시 덕양구","공","일반"],["위례중앙중학교",1,"성남시 수정구","공","일반"],["위례한빛중학교",1,"성남시 수정구","공","일반"],["배곧중학교",1,"시흥시","공","일반"],["새동중학교",1,"화성시 만세구","공","일반"],["시흥가온중학교",1,"시흥시","공","일반"],["하길중학교",1,"화성시 만세구","공","일반"],["산내중학교",1,"파주시","공","일반"],["산들중학교",1,"파주시","공","일반"],["운정중학교",1,"파주시","공","일반"],["낙원중학교",1,"성남시 분당구","공","일반"],["덕장중학교",1,"의왕시","공","일반"],["동패중학교",1,"파주시","공","일반"],["부곡중앙중학교",1,"군포시","공","일반"],["신백현중학교",1,"성남시 분당구","공","일반"],["양도중학교",1,"김포시","공","일반"],["이천사동중학교",1,"이천시","공","일반"],["일산양일중학교",1,"고양시 일산동구","공","일반"],["주곡중학교",1,"남양주시","공","일반"],["해솔중학교",1,"파주시","공","일반"],["송양중학교",1,"의정부시","공","일반"],["경기체육중학교",1,"수원시 장안구","공","일반"],["화성반월중학교",1,"화성시 병점구","공","일반"],["은여울중학교",1,"김포시","공","일반"],["신원중학교",1,"고양시 덕양구","공","일반"],["수원다산중학교",1,"수원시 영통구","공","일반"],["능실중학교",1,"수원시 권선구","공","일반"],["김포한가람중학교",1,"김포시","공","일반"],["어정중학교",1,"용인시 기흥구","공","일반"],["천마중학교",1,"남양주시","공","일반"],["옥정중학교",1,"양주시","공","일반"],["미사강변중학교",1,"하남시","공","일반"],["한백중학교",1,"화성시 동탄구","공","일반"],["청계중학교",1,"화성시 동탄구","공","일반"],["도래울중학교",1,"고양시 덕양구","공","일반"],["한별중학교",1,"남양주시","공","일반"],["위례중학교",1,"하남시","공","일반"],["은가람중학교",1,"하남시","공","일반"],["미사중학교",1,"하남시","공","일반"],["조남중학교",1,"시흥시","공","일반"],["옥길중학교",1,"부천시 소사구","공","일반"],["박달중학교",1,"안양시 만안구","공","일반"],["다원중학교",1,"화성시 동탄구","공","일반"],["갈매중학교",1,"구리시","공","일반"],["윤슬중학교",1,"하남시","공","일반"],["송린중학교",1,"화성시 만세구","공","일반"],["청림중학교",1,"화성시 동탄구","공","일반"],["용이중학교",1,"평택시","공","일반"],["남양주다산중학교",1,"남양주시","공","일반"],["동탄목동중학교",1,"화성시 동탄구","공","일반"],["매양중학교",1,"광주시","공","일반"],["창성중학교",1,"성남시 수정구","공","일반"],["도당중학교",1,"부천시 원미구","공","일반"],["다산한강중학교",1,"남양주시","공","일반"],["배곧해솔중학교",1,"시흥시","공","일반"],["신백중학교",1,"화성시 만세구","공","일반"],["서연중학교",1,"화성시 동탄구","공","일반"],["빛가온중학교",1,"광명시","공","일반"],["향동중학교",1,"고양시 덕양구","공","일반"],["감일중학교",1,"하남시","공","일반"],["수현중학교",1,"화성시 효행구","공","일반"],["태전중학교",1,"광주시","공","일반"],["지축중학교",1,"고양시 덕양구","공","일반"],["안산해솔중학교",1,"안산시 상록구","공","일반"],["다산새봄중학교",1,"남양주시","공","일반"],["감일백제중학교",1,"하남시","공","일반"],["화성세정중학교",1,"화성시 동탄구","공","일반"],["민세중학교",1,"평택시","공","일반"],["심학중학교",1,"파주시","공","일반"],["나래중학교",1,"김포시","공","일반"],["범박중학교",1,"부천시 소사구","공","일반"],["광교호수중학교",1,"수원시 영통구","공","일반"],["향산중학교",1,"김포시","공","일반"],["덕은한강중학교",1,"고양시 덕양구","공","일반"],["모담중학교",1,"김포시","공","일반"],["동삭중학교",1,"평택시","공","일반"],["규장중학교",1,"수원시 권선구","공","일반"],["하랑중학교",1,"남양주시","공","일반"],["판교대장중학교",1,"성남시 분당구","공","일반"],["과천율목중학교",1,"과천시","공","일반"],["가수중학교",1,"오산시","공","일반"],["옥길새길중학교",1,"부천시 소사구","공","일반"],["내손중학교",1,"의왕시","공","일반"],["화성상신중학교",1,"화성시 만세구","공","일반"],["화담중학교",1,"화성시 효행구","공","일반"],["해창중학교",1,"평택시","공","일반"],["다율중학교",1,"파주시","공","일반"],["훈민중학교",1,"의정부시","공","일반"],["화성신동중학교",1,"화성시 동탄구","공","일반"],["청연중학교",1,"화성시 효행구","공","일반"],["소사벌중학교",1,"평택시","공","일반"],["시화나래중학교",1,"시흥시","공","일반"],["배다리중학교",1,"평택시","공","일반"],["배곧라라중학교",1,"시흥시","공","일반"],["한홀중학교",1,"하남시","공","일반"],["처인중학교",1,"용인시 처인구","공","일반"],["도현중학교",1,"용인시 처인구","공","일반"],["평택화양중학교",1,"평택시","공","일반"],["강릉해람중학교",0,"강릉시","공","일반"],["강릉중학교",0,"강릉시","공","일반"],["하슬라중학교",0,"강릉시","공","일반"],["경포중학교",0,"강릉시","공","일반"],["관동중학교",0,"강릉시","공","일반"],["동명중학교",0,"강릉시","공","일반"],["사천중학교",0,"강릉시","공","일반"],["옥계중학교",0,"강릉시","공","일반"],["왕산중학교",0,"강릉시","공","일반"],["율곡중학교",0,"강릉시","공","일반"],["주문진중학교",0,"강릉시","공","일반"],["거진중학교",0,"고성군","공","일반"],["고성중학교",0,"고성군","공","일반"],["대진중학교",0,"고성군","공","일반"],["동광중학교",0,"고성군","공","일반"],["동해광희중학교",0,"동해시","사","일반"],["동해삼육중학교",0,"동해시","사","일반"],["동해중학교",0,"동해시","공","일반"],["하랑중학교",0,"동해시","공","일반"],["묵호중학교",0,"동해시","공","일반"],["예람중학교",0,"동해시","공","일반"],["북평중학교",0,"동해시","공","일반"],["가곡중학교",0,"삼척시","공","일반"],["근덕중학교",0,"삼척시","공","일반"],["도계중학교",0,"삼척시","공","일반"],["미로중학교",0,"삼척시","공","일반"],["삼일중학교",0,"삼척시","사","일반"],["청아중학교",0,"삼척시","공","일반"],["삼척중학교",0,"삼척시","공","일반"],["원덕중학교",0,"삼척시","공","일반"],["임원중학교",0,"삼척시","공","일반"],["하장중학교",0,"삼척시","공","일반"],["강현중학교",0,"양양군","공","일반"],["설온중학교",0,"속초시","공","일반"],["설악중학교",0,"속초시","공","일반"],["속초해랑중학교",0,"속초시","공","일반"],["속초중학교",0,"속초시","공","일반"],["양양중학교",0,"양양군","공","일반"],["현남중학교",0,"양양군","공","일반"],["현북중학교",0,"양양군","공","일반"],["대암중학교",0,"양구군","공","일반"],["방산중학교",0,"양구군","공","일반"],["석천중학교",0,"양구군","공","일반"],["양구중학교",0,"양구군","공","일반"],["용하중학교",0,"양구군","공","일반"],["해안중학교",0,"양구군","공","일반"],["녹전중학교",0,"영월군","공","일반"],["마차중학교",0,"영월군","공","일반"],["봉래중학교",0,"영월군","공","일반"],["상동중학교",0,"영월군","공","일반"],["석정여자중학교",0,"영월군","사","일반"],["쌍룡중학교",0,"영월군","공","일반"],["연당중학교",0,"영월군","공","일반"],["영월중학교",0,"영월군","공","일반"],["옥동중학교",0,"영월군","공","일반"],["주천중학교",0,"영월군","공","일반"],["귀래중학교",0,"원주시","사","일반"],["남원주중학교",0,"원주시","공","일반"],["원주대성중학교",0,"원주시","사","일반"],["문막중학교",0,"원주시","공","일반"],["부론중학교",0,"원주시","공","일반"],["북원중학교",0,"원주시","공","일반"],["상지여자중학교",0,"원주시","사","일반"],["신림중학교",0,"원주시","공","일반"],["원주삼육중학교",0,"원주시","사","일반"],["원주여자중학교",0,"원주시","공","일반"],["원주중학교",0,"원주시","공","일반"],["육민관중학교",0,"원주시","사","일반"],["지정중학교",0,"원주시","공","일반"],["진광중학교",0,"원주시","사","일반"],["치악중학교",0,"원주시","공","일반"],["평원중학교",0,"원주시","공","일반"],["학성중학교",0,"원주시","공","일반"],["호저중학교",0,"원주시","공","일반"],["황둔중학교",0,"원주시","공","일반"],["기린중학교",0,"인제군","공","일반"],["상남중학교",0,"인제군","공","일반"],["서화중학교",0,"인제군","공","일반"],["신남중학교",0,"인제군","공","일반"],["원통중학교",0,"인제군","공","일반"],["인제중학교",0,"인제군","공","일반"],["고한중학교",0,"정선군","공","일반"],["나전중학교",0,"정선군","공","일반"],["문곡중학교",0,"정선군","사","일반"],["사북중학교",0,"정선군","공","일반"],["여량중학교",0,"정선군","공","일반"],["임계중학교",0,"정선군","공","일반"],["정선중학교",0,"정선군","공","일반"],["함백중학교",0,"정선군","공","일반"],["화동중학교",0,"정선군","공","일반"],["김화여자중학교",0,"철원군","공","일반"],["김화중학교",0,"철원군","공","일반"],["신철원중학교",0,"철원군","공","일반"],["철원여자중학교",0,"철원군","공","일반"],["철원중학교",0,"철원군","공","일반"],["강서중학교",0,"춘천시","공","일반"],["강원중학교",0,"춘천시","사","일반"],["광판중학교",0,"춘천시","공","일반"],["남춘천여자중학교",0,"춘천시","공","일반"],["남춘천중학교",0,"춘천시","공","일반"],["동산중학교",0,"춘천시","공","일반"],["봉의중학교",0,"춘천시","공","일반"],["소양중학교",0,"춘천시","공","일반"],["신포중학교",0,"춘천시","공","일반"],["우석중학교",0,"춘천시","공","일반"],["유봉여자중학교",0,"춘천시","사","일반"],["창촌중학교",0,"춘천시","공","일반"],["춘성중학교",0,"춘천시","공","일반"],["봄내중학교",0,"춘천시","공","일반"],["춘천중학교",0,"춘천시","공","일반"],["후평중학교",0,"춘천시","공","일반"],["상장중학교",0,"태백시","공","일반"],["철암중학교",0,"태백시","공","일반"],["태백중학교",0,"태백시","공","일반"],["함태중학교",0,"태백시","공","일반"],["세연중학교",0,"태백시","공","일반"],["황지중학교",0,"태백시","공","일반"],["계촌중학교",0,"평창군","공","일반"],["대화중학교",0,"평창군","공","일반"],["대관령중학교",0,"평창군","공","일반"],["미탄중학교",0,"평창군","공","일반"],["봉평중학교",0,"평창군","공","일반"],["용전중학교",0,"평창군","공","일반"],["진부중학교",0,"평창군","공","일반"],["평창중학교",0,"평창군","공","일반"],["내면중학교",0,"홍천군","공","일반"],["내촌중학교",0,"홍천군","공","일반"],["동화중학교",0,"홍천군","공","일반"],["두촌중학교",0,"홍천군","공","일반"],["서석중학교",0,"홍천군","공","일반"],["양덕중학교",0,"홍천군","공","일반"],["팔렬중학교",0,"홍천군","사","일반"],["한서중학교",0,"홍천군","공","일반"],["홍천여자중학교",0,"홍천군","공","일반"],["홍천중학교",0,"홍천군","공","일반"],["화촌중학교",0,"홍천군","공","일반"],["간동중학교",0,"화천군","공","일반"],["사내중학교",0,"화천군","공","일반"],["상서중학교",0,"화천군","공","일반"],["화천중학교",0,"화천군","공","일반"],["갑천중학교",0,"횡성군","공","일반"],["강림중학교",0,"횡성군","공","일반"],["공근중학교",0,"횡성군","공","일반"],["대동여자중학교",0,"횡성군","사","일반"],["둔내중학교",0,"횡성군","공","일반"],["서원중학교",0,"횡성군","공","일반"],["안흥중학교",0,"횡성군","공","일반"],["우천중학교",0,"횡성군","공","일반"],["청일중학교",0,"횡성군","공","일반"],["횡성중학교",0,"횡성군","공","일반"],["단구중학교",0,"원주시","공","일반"],["강원체육중학교",0,"춘천시","공","일반"],["대룡중학교",0,"춘천시","공","일반"],["솔올중학교",0,"강릉시","공","일반"],["반곡중학교",0,"원주시","공","일반"],["태장중학교",0,"원주시","공","일반"],["버들중학교",0,"원주시","공","일반"],["가정중학교",0,"춘천시","공","일반"],["섬강중학교",0,"원주시","공","일반"],["퇴계중학교",0,"춘천시","공","일반"],["한국교원대학교부설미호중학교",16,"청주시 흥덕구","국","일반"],["충북대학교사범대학부설중학교",16,"청주시 흥덕구","국","일반"],["괴산북중학교",16,"괴산군","공","일반"],["괴산중학교",16,"괴산군","공","일반"],["송면중학교",16,"괴산군","공","일반"],["연풍중학교",16,"괴산군","공","일반"],["증평여자중학교",16,"증평군","공","일반"],["증평중학교",16,"증평군","공","일반"],["청안중학교",16,"괴산군","사","일반"],["청천중학교",16,"괴산군","공","일반"],["칠성중학교",16,"괴산군","공","일반"],["형석중학교",16,"증평군","사","일반"],["단성중학교",16,"단양군","공","일반"],["단양중학교",16,"단양군","공","일반"],["매포중학교",16,"단양군","공","일반"],["영춘중학교",16,"단양군","공","일반"],["보덕중학교",16,"보은군","공","일반"],["보은여자중학교",16,"보은군","공","일반"],["보은중학교",16,"보은군","공","일반"],["속리산중학교",16,"보은군","공","일반"],["회인중학교",16,"보은군","공","일반"],["심천중학교",16,"영동군","사","일반"],["영동중학교",16,"영동군","공","일반"],["영신중학교",16,"영동군","사","일반"],["정수중학교",16,"영동군","사","일반"],["추풍령중학교",16,"영동군","사","일반"],["학산중학교",16,"영동군","공","일반"],["안내중학교",16,"옥천군","공","일반"],["옥천여자중학교",16,"옥천군","공","일반"],["옥천중학교",16,"옥천군","공","일반"],["이원중학교",16,"옥천군","공","일반"],["청산중학교",16,"옥천군","공","일반"],["감곡중학교",16,"음성군","공","일반"],["대소중학교",16,"음성군","공","일반"],["매괴여자중학교",16,"음성군","사","일반"],["무극중학교",16,"음성군","공","일반"],["삼성중학교",16,"음성군","공","일반"],["생극중학교",16,"음성군","사","일반"],["음성여자중학교",16,"음성군","공","일반"],["음성중학교",16,"음성군","공","일반"],["한일중학교",16,"음성군","사","일반"],["대제중학교",16,"제천시","사","일반"],["백운중학교",16,"제천시","공","일반"],["봉양중학교",16,"제천시","공","일반"],["송학중학교",16,"제천시","공","일반"],["수산중학교",16,"제천시","공","일반"],["의림여자중학교",16,"제천시","공","일반"],["제천덕산중학교",16,"제천시","공","일반"],["제천동중학교",16,"제천시","공","일반"],["제천여자중학교",16,"제천시","공","일반"],["제천중학교",16,"제천시","공","일반"],["청풍중학교",16,"제천시","공","일반"],["한송중학교",16,"제천시","공","일반"],["광혜원중학교",16,"진천군","공","일반"],["덕산중학교",16,"진천군","공","일반"],["이월중학교",16,"진천군","공","일반"],["진천여자중학교",16,"진천군","공","일반"],["진천중학교",16,"진천군","공","일반"],["가덕중학교",16,"청주시 상당구","공","일반"],["내수중학교",16,"청주시 청원구","공","일반"],["문의중학교",16,"청주시 상당구","공","일반"],["미원중학교",16,"청주시 상당구","공","일반"],["오창중학교",16,"청주시 청원구","공","일반"],["옥산중학교",16,"청주시 흥덕구","공","일반"],["현도중학교",16,"청주시 서원구","공","일반"],["가경중학교",16,"청주시 흥덕구","공","일반"],["경덕중학교",16,"청주시 흥덕구","공","일반"],["남성중학교",16,"청주시 서원구","공","일반"],["대성여자중학교",16,"청주시 상당구","사","일반"],["대성중학교",16,"청주시 흥덕구","사","일반"],["복대중학교",16,"청주시 흥덕구","공","일반"],["봉명중학교",16,"청주시 흥덕구","공","일반"],["서원중학교",16,"청주시 흥덕구","공","일반"],["세광중학교",16,"청주시 서원구","사","일반"],["수곡중학교",16,"청주시 서원구","공","일반"],["용암중학교",16,"청주시 상당구","공","일반"],["운호중학교",16,"청주시 서원구","사","일반"],["원봉중학교",16,"청주시 상당구","공","일반"],["율량중학교",16,"청주시 청원구","공","일반"],["일신여자중학교",16,"청주시 상당구","사","일반"],["주성중학교",16,"청주시 청원구","공","일반"],["청운중학교",16,"청주시 상당구","공","일반"],["청주남중학교",16,"청주시 서원구","공","일반"],["청주동중학교",16,"청주시 상당구","공","일반"],["청주여자중학교",16,"청주시 서원구","공","일반"],["청주중앙여자중학교",16,"청주시 청원구","공","일반"],["청주중앙중학교",16,"청주시 청원구","공","일반"],["청주중학교",16,"청주시 상당구","공","일반"],["충북여자중학교",16,"청주시 서원구","사","일반"],["노은중학교",16,"충주시","공","일반"],["충주미덕중학교",16,"충주시","사","일반"],["산척중학교",16,"충주시","공","일반"],["수안보중학교",16,"충주시","공","일반"],["신니중학교",16,"충주시","공","일반"],["신명중학교",16,"충주시","사","일반"],["앙성중학교",16,"충주시","공","일반"],["주덕중학교",16,"충주시","공","일반"],["중원중학교",16,"충주시","공","일반"],["충일중학교",16,"충주시","공","일반"],["충주북여자중학교",16,"충주시","사","일반"],["충주여자중학교",16,"충주시","공","일반"],["충주예성여자중학교",16,"충주시","공","일반"],["충주중앙중학교",16,"충주시","공","일반"],["충주중학교",16,"충주시","공","일반"],["칠금중학교",16,"충주시","공","일반"],["탄금중학교",16,"충주시","공","일반"],["내토중학교",16,"제천시","공","일반"],["원평중학교",16,"청주시 서원구","공","일반"],["서경중학교",16,"청주시 흥덕구","공","일반"],["금천중학교",16,"청주시 상당구","공","일반"],["운동중학교",16,"청주시 상당구","공","일반"],["용성중학교",16,"청주시 상당구","공","일반"],["송절중학교",16,"청주시 흥덕구","공","일반"],["산남중학교",16,"청주시 서원구","공","일반"],["성화중학교",16,"청주시 서원구","공","일반"],["각리중학교",16,"청주시 청원구","공","일반"],["오송중학교",16,"청주시 흥덕구","공","일반"],["서현중학교",16,"청주시 흥덕구","공","일반"],["솔밭중학교",16,"청주시 흥덕구","공","일반"],["동성중학교",16,"음성군","공","일반"],["양청중학교",16,"청주시 청원구","공","일반"],["괴산오성중학교",16,"괴산군","공","일반"],["새너울중학교",16,"영동군","공","일반"],["단양소백산중학교",16,"단양군","공","일반"],["서전중학교",16,"진천군","공","일반"],["중앙탑중학교",16,"충주시","공","일반"],["충주대소원중학교",16,"충주시","공","일반"],["생명중학교",16,"청주시 청원구","공","일반"],["충북체육중학교",16,"진천군","공","일반"],["솔강중학교",16,"청주시 흥덕구","공","일반"],["용아중학교",16,"청주시 상당구","공","일반"],["국립공주대학교사범대학부설중학교",15,"공주시","국","일반"],["경천중학교",15,"공주시","사","일반"],["공주북중학교",15,"공주시","사","일반"],["공주여자중학교",15,"공주시","공","일반"],["공주영명중학교",15,"공주시","사","일반"],["공주중학교",15,"공주시","공","일반"],["반포중학교",15,"공주시","공","일반"],["봉황중학교",15,"공주시","공","일반"],["사곡중학교",15,"공주시","공","일반"],["우성중학교",15,"공주시","공","일반"],["유구중학교",15,"공주시","공","일반"],["이인중학교",15,"공주시","공","일반"],["정안중학교",15,"공주시","공","일반"],["탄천중학교",15,"공주시","공","일반"],["금산동중학교",15,"금산군","공","일반"],["금산여자중학교",15,"금산군","공","일반"],["금산중학교",15,"금산군","공","일반"],["복수중학교",15,"금산군","공","일반"],["부리중학교",15,"금산군","공","일반"],["제원중학교",15,"금산군","공","일반"],["진산중학교",15,"금산군","공","일반"],["추부중학교",15,"금산군","공","일반"],["가야곡중학교",15,"논산시","공","일반"],["강경여자중학교",15,"논산시","공","일반"],["강경중학교",15,"논산시","공","일반"],["건양대학교병설건양중학교",15,"논산시","사","일반"],["광석중학교",15,"논산시","공","일반"],["기민중학교",15,"논산시","사","일반"],["노성중학교",15,"논산시","공","일반"],["논산대건중학교",15,"논산시","사","일반"],["논산여자중학교",15,"논산시","공","일반"],["논산중학교",15,"논산시","공","일반"],["쌘뽈여자중학교",15,"논산시","사","일반"],["엄사중학교",15,"계룡시","공","일반"],["연무여자중학교",15,"논산시","사","일반"],["연무중학교",15,"논산시","공","일반"],["연산중학교",15,"논산시","공","일반"],["용남중학교",15,"계룡시","공","일반"],["백제중학교",15,"부여군","사","일반"],["부여여자중학교",15,"부여군","공","일반"],["부여중학교",15,"부여군","공","일반"],["석성중학교",15,"부여군","공","일반"],["세도중학교",15,"부여군","공","일반"],["외산중학교",15,"부여군","사","일반"],["용강중학교",15,"부여군","사","일반"],["은산중학교",15,"부여군","공","일반"],["임천중학교",15,"부여군","공","일반"],["홍산중학교",15,"부여군","공","일반"],["도고중학교",15,"아산시","공","일반"],["둔포중학교",15,"아산시","사","일반"],["선도중학교",15,"아산시","공","일반"],["송남중학교",15,"아산시","공","일반"],["신창중학교",15,"아산시","공","일반"],["아산중학교",15,"아산시","사","일반"],["영인중학교",15,"아산시","공","일반"],["온양여자중학교",15,"아산시","공","일반"],["온양중학교",15,"아산시","공","일반"],["한올중학교",15,"아산시","사","일반"],["음봉중학교",15,"아산시","공","일반"],["인주중학교",15,"아산시","공","일반"],["고덕중학교",15,"예산군","공","일반"],["광시중학교",15,"예산군","사","일반"],["대술중학교",15,"예산군","공","일반"],["대흥중학교",15,"예산군","사","일반"],["덕산중학교",15,"예산군","공","일반"],["삽교중학교",15,"예산군","공","일반"],["신암중학교",15,"예산군","공","일반"],["신양중학교",15,"예산군","사","일반"],["예산여자중학교",15,"예산군","공","일반"],["예산중학교",15,"예산군","공","일반"],["임성중학교",15,"예산군","사","일반"],["천안계광중학교",15,"천안시 동남구","사","일반"],["광풍중학교",15,"천안시 동남구","사","일반"],["천안동성중학교",15,"천안시 서북구","사","일반"],["목천중학교",15,"천안시 동남구","공","일반"],["병천중학교",15,"천안시 동남구","공","일반"],["복자여자중학교",15,"천안시 동남구","사","일반"],["성환중학교",15,"천안시 서북구","공","일반"],["입장중학교",15,"천안시 서북구","공","일반"],["천남중학교",15,"천안시 동남구","공","일반"],["천성중학교",15,"천안시 동남구","사","일반"],["천안동중학교",15,"천안시 동남구","공","일반"],["천안두정중학교",15,"천안시 서북구","공","일반"],["천안봉서중학교",15,"천안시 서북구","공","일반"],["천안부성중학교",15,"천안시 서북구","공","일반"],["천안북중학교",15,"천안시 동남구","공","일반"],["천안서여자중학교",15,"천안시 동남구","사","일반"],["천안성정중학교",15,"천안시 서북구","공","일반"],["천안쌍용중학교",15,"천안시 서북구","공","일반"],["천안여자중학교",15,"천안시 동남구","공","일반"],["천안중학교",15,"천안시 동남구","공","일반"],["동영중학교",15,"청양군","사","일반"],["정산중학교",15,"청양군","공","일반"],["청신여자중학교",15,"청양군","사","일반"],["청양중학교",15,"청양군","공","일반"],["고대중학교",15,"당진시","공","일반"],["당진중학교",15,"당진시","공","일반"],["당진중학교대호지분교장",15,"당진시","공","일반"],["면천중학교",15,"당진시","공","일반"],["서야중학교",15,"당진시","사","일반"],["석문중학교",15,"당진시","사","일반"],["송산중학교",15,"당진시","공","일반"],["송악중학교",15,"당진시","사","일반"],["순성중학교",15,"당진시","공","일반"],["신평중학교",15,"당진시","사","일반"],["합덕여자중학교",15,"당진시","공","일반"],["합덕중학교",15,"당진시","공","일반"],["호서중학교",15,"당진시","사","일반"],["고북중학교",15,"서산시","공","일반"],["대산중학교",15,"서산시","사","일반"],["대철중학교",15,"서산시","사","일반"],["부석중학교",15,"서산시","공","일반"],["서령중학교",15,"서산시","사","일반"],["서산부춘중학교",15,"서산시","공","일반"],["서산여자중학교",15,"서산시","공","일반"],["서산중학교",15,"서산시","공","일반"],["서일중학교",15,"서산시","사","일반"],["성연중학교",15,"서산시","공","일반"],["음암중학교",15,"서산시","공","일반"],["인지중학교",15,"서산시","공","일반"],["팔봉중학교",15,"서산시","사","일반"],["해미중학교",15,"서산시","공","일반"],["동강중학교",15,"서천군","사","일반"],["비인중학교",15,"서천군","공","일반"],["서림여자중학교",15,"서천군","사","일반"],["서면중학교",15,"서천군","공","일반"],["서천여자중학교",15,"서천군","공","일반"],["서천중학교",15,"서천군","공","일반"],["장항중학교",15,"서천군","공","일반"],["판교중학교",15,"서천군","사","일반"],["한산중학교",15,"서천군","공","일반"],["남포중학교",15,"보령시","공","일반"],["대명중학교",15,"보령시","사","일반"],["대천서중학교",15,"보령시","공","일반"],["대천여자중학교",15,"보령시","공","일반"],["대천중학교",15,"보령시","공","일반"],["미산중학교",15,"보령시","공","일반"],["보령중학교",15,"보령시","공","일반"],["웅천중학교",15,"보령시","공","일반"],["천북중학교",15,"보령시","공","일반"],["청라중학교",15,"보령시","공","일반"],["한내여자중학교",15,"보령시","공","일반"],["근흥중학교",15,"태안군","공","일반"],["만리포중학교",15,"태안군","공","일반"],["남면중학교",15,"태안군","공","일반"],["안면중학교",15,"태안군","공","일반"],["원이중학교",15,"태안군","공","일반"],["태안여자중학교",15,"태안군","공","일반"],["태안중학교",15,"태안군","공","일반"],["갈산중학교",15,"홍성군","공","일반"],["광천중학교",15,"홍성군","공","일반"],["금마중학교",15,"홍성군","공","일반"],["서해삼육중학교",15,"홍성군","사","일반"],["홍동중학교",15,"홍성군","공","일반"],["홍성서부중학교",15,"홍성군","공","일반"],["홍성여자중학교",15,"홍성군","공","일반"],["홍성중학교",15,"홍성군","공","일반"],["홍주중학교",15,"홍성군","사","일반"],["천안오성중학교",15,"천안시 서북구","공","일반"],["천안성성중학교",15,"천안시 서북구","공","일반"],["천안백석중학교",15,"천안시 서북구","공","일반"],["천안신방중학교",15,"천안시 동남구","공","일반"],["천안불당중학교",15,"천안시 서북구","공","일반"],["천안용곡중학교",15,"천안시 동남구","공","일반"],["천안월봉중학교",15,"천안시 서북구","공","일반"],["온양용화중학교",15,"아산시","공","일반"],["서산석림중학교",15,"서산시","공","일반"],["서산명지중학교",15,"서산시","공","일반"],["계룡중학교",15,"계룡시","공","일반"],["온양신정중학교",15,"아산시","공","일반"],["아산배방중학교",15,"아산시","공","일반"],["원당중학교",15,"당진시","공","일반"],["천안새샘중학교",15,"천안시 동남구","공","일반"],["탕정중학교",15,"아산시","공","일반"],["설화중학교",15,"아산시","공","일반"],["천안가온중학교",15,"천안시 동남구","공","일반"],["환서중학교",15,"천안시 서북구","공","일반"],["내포중학교",15,"홍성군","공","일반"],["아산테크노중학교",15,"아산시","공","일반"],["모산중학교",15,"아산시","공","일반"],["천안불무중학교",15,"천안시 서북구","공","일반"],["한들물빛중학교",15,"아산시","공","일반"],["수청중학교",15,"당진시","공","일반"],["천안가람중학교",15,"천안시 서북구","공","일반"],["홍북중학교",15,"홍성군","공","일반"],["모종중학교",15,"아산시","공","일반"],["아산세교중학교",15,"아산시","공","일반"],["아산갈산중학교",15,"아산시","공","일반"],["고창남중학교",13,"고창군","사","일반"],["고창북중학교",13,"고창군","사","일반"],["자유중학교",13,"고창군","사","일반"],["고창중학교",13,"고창군","공","일반"],["공음중학교",13,"고창군","공","일반"],["대성중학교",13,"고창군","공","일반"],["상하중학교",13,"고창군","공","일반"],["성내중학교",13,"고창군","공","일반"],["신림중학교",13,"고창군","공","일반"],["심원중학교",13,"고창군","공","일반"],["아산중학교",13,"고창군","공","일반"],["영선중학교",13,"고창군","사","일반"],["해리중학교",13,"고창군","공","일반"],["흥덕중학교",13,"고창군","공","일반"],["군산남중학교",13,"군산시","공","일반"],["군산산북중학교",13,"군산시","공","일반"],["군산서흥중학교",13,"군산시","공","일반"],["군산영광중학교",13,"군산시","사","일반"],["군산월명중학교",13,"군산시","공","일반"],["군산자양중학교",13,"군산시","공","일반"],["군산제일중학교",13,"군산시","사","일반"],["군산중앙중학교",13,"군산시","사","일반"],["군산중학교",13,"군산시","공","일반"],["군산진포중학교",13,"군산시","공","일반"],["나포중학교",13,"군산시","공","일반"],["군산대성중학교",13,"군산시","사","일반"],["옥구중학교",13,"군산시","공","일반"],["임피중학교",13,"군산시","공","일반"],["회현중학교",13,"군산시","공","일반"],["금구중학교",13,"김제시","공","일반"],["동국대학교사범대학부속금산중학교",13,"김제시","사","일반"],["금성중학교",13,"김제시","사","일반"],["한들중학교",13,"김제시","공","일반"],["김제중앙중학교",13,"김제시","공","일반"],["김제중학교",13,"김제시","공","일반"],["덕암중학교",13,"김제시","사","일반"],["만경여자중학교",13,"김제시","사","일반"],["만경중학교",13,"김제시","사","일반"],["봉남중학교",13,"김제시","공","일반"],["용지중학교",13,"김제시","공","일반"],["청하중학교",13,"김제시","공","일반"],["금지중학교",13,"남원시","공","일반"],["남원용성중학교",13,"남원시","공","일반"],["남원중학교",13,"남원시","공","일반"],["남원하늘중학교",13,"남원시","공","일반"],["남원한빛중학교",13,"남원시","공","일반"],["대강중학교",13,"남원시","공","일반"],["보절중학교",13,"남원시","공","일반"],["산내중학교",13,"남원시","공","일반"],["송동중학교",13,"남원시","공","일반"],["아영중학교",13,"남원시","공","일반"],["용북중학교",13,"남원시","사","일반"],["운봉중학교",13,"남원시","공","일반"],["인월중학교",13,"남원시","공","일반"],["무주중학교",13,"무주군","공","일반"],["부남중학교",13,"무주군","공","일반"],["설천중학교",13,"무주군","공","일반"],["안성중학교",13,"무주군","공","일반"],["적상중학교",13,"무주군","공","일반"],["계화중학교",13,"부안군","공","일반"],["백산중학교",13,"부안군","사","일반"],["변산서중학교",13,"부안군","사","일반"],["변산중학교",13,"부안군","공","일반"],["보안중학교",13,"부안군","공","일반"],["낭주중학교",13,"부안군","사","일반"],["부안중학교",13,"부안군","공","일반"],["삼남중학교",13,"부안군","사","일반"],["상서중학교",13,"부안군","공","일반"],["위도중학교",13,"부안군","공","일반"],["줄포중학교",13,"부안군","공","일반"],["하서중학교",13,"부안군","공","일반"],["구림중학교",13,"순창군","공","일반"],["동계중학교",13,"순창군","공","일반"],["복흥중학교",13,"순창군","공","일반"],["순창북중학교",13,"순창군","사","일반"],["새솔중학교",13,"순창군","공","일반"],["순창중학교",13,"순창군","공","일반"],["쌍치중학교",13,"순창군","공","일반"],["고산중학교",13,"완주군","공","일반"],["구이중학교",13,"완주군","공","일반"],["삼례중학교",13,"완주군","공","일반"],["삼우중학교",13,"완주군","사","일반"],["상관중학교",13,"완주군","공","일반"],["소양중학교",13,"완주군","공","일반"],["완주중학교",13,"완주군","공","일반"],["용진중학교",13,"완주군","공","일반"],["운주중학교",13,"완주군","공","일반"],["전주예술중학교",13,"완주군","사","일반"],["화산중학교",13,"완주군","사","일반"],["이리남성여자중학교",13,"익산시","사","일반"],["남성중학교",13,"익산시","사","일반"],["삼기중학교",13,"익산시","공","일반"],["성당중학교",13,"익산시","공","일반"],["여산중학교",13,"익산시","공","일반"],["왕궁중학교",13,"익산시","공","일반"],["용안중학교",13,"익산시","공","일반"],["웅포중학교",13,"익산시","공","일반"],["원광여자중학교",13,"익산시","사","일반"],["원광중학교",13,"익산시","사","일반"],["이리남중학교",13,"익산시","공","일반"],["이리동중학교",13,"익산시","공","일반"],["이리북중학교",13,"익산시","공","일반"],["이리영등중학교",13,"익산시","공","일반"],["이리중학교",13,"익산시","사","일반"],["이일여자중학교",13,"익산시","사","일반"],["익산중학교",13,"익산시","사","일반"],["익산지원중학교",13,"익산시","공","일반"],["진경여자중학교",13,"익산시","사","일반"],["함라중학교",13,"익산시","공","일반"],["함열여자중학교",13,"익산시","사","일반"],["함열중학교",13,"익산시","공","일반"],["황등중학교",13,"익산시","사","일반"],["관촌중학교",13,"임실군","공","일반"],["삼계중학교",13,"임실군","공","일반"],["섬진중학교",13,"임실군","공","일반"],["성수중학교",13,"임실군","공","일반"],["오수중학교",13,"임실군","공","일반"],["임실동중학교",13,"임실군","공","일반"],["지사중학교",13,"임실군","공","일반"],["청웅중학교",13,"임실군","공","일반"],["계남중학교",13,"장수군","공","일반"],["계북중학교",13,"장수군","공","일반"],["번암중학교",13,"장수군","공","일반"],["산서중학교",13,"장수군","공","일반"],["장계중학교",13,"장수군","공","일반"],["장수중학교",13,"장수군","공","일반"],["천천중학교",13,"장수군","공","일반"],["전주기린중학교",13,"전주시 덕진구","공","일반"],["서전주중학교",13,"전주시 완산구","공","일반"],["완산중학교",13,"전주시 완산구","사","일반"],["전주우아중학교",13,"전주시 덕진구","공","일반"],["전주우전중학교",13,"전주시 완산구","공","일반"],["전라중학교",13,"전주시 덕진구","공","일반"],["전일중학교",13,"전주시 덕진구","공","일반"],["전주근영중학교",13,"전주시 완산구","사","일반"],["전주기전중학교",13,"전주시 완산구","사","일반"],["전주남중학교",13,"전주시 완산구","공","일반"],["전주덕일중학교",13,"전주시 덕진구","공","일반"],["전주덕진중학교",13,"전주시 덕진구","사","일반"],["전주동중학교",13,"전주시 덕진구","공","일반"],["전주서신중학교",13,"전주시 완산구","공","일반"],["전주서중학교",13,"전주시 완산구","공","일반"],["전주성심여자중학교",13,"전주시 완산구","사","일반"],["전주솔빛중학교",13,"전주시 덕진구","공","일반"],["전주신흥중학교",13,"전주시 완산구","사","일반"],["전주양지중학교",13,"전주시 완산구","공","일반"],["전주온고을중학교",13,"전주시 덕진구","공","일반"],["전북중학교",13,"전주시 덕진구","사","일반"],["전주신일중학교",13,"전주시 완산구","공","일반"],["전주중앙중학교",13,"전주시 덕진구","공","일반"],["전주중학교",13,"전주시 덕진구","공","일반"],["전주풍남중학교",13,"전주시 완산구","공","일반"],["전주해성중학교",13,"전주시 완산구","사","일반"],["전주호성중학교",13,"전주시 덕진구","공","일반"],["전주효문중학교",13,"전주시 완산구","사","일반"],["전주효정중학교",13,"전주시 완산구","공","일반"],["감곡중학교",13,"정읍시","공","일반"],["고부중학교",13,"정읍시","공","일반"],["배영중학교",13,"정읍시","사","일반"],["산외중학교",13,"정읍시","공","일반"],["소성중학교",13,"정읍시","공","일반"],["신태인중학교",13,"정읍시","사","일반"],["왕신여자중학교",13,"정읍시","사","일반"],["이평중학교",13,"정읍시","사","일반"],["입암중학교",13,"정읍시","공","일반"],["정산중학교",13,"정읍시","공","일반"],["정우중학교",13,"정읍시","공","일반"],["샘고을중학교",13,"정읍시","공","일반"],["정읍중학교",13,"정읍시","공","일반"],["정일중학교",13,"정읍시","공","일반"],["칠보중학교",13,"정읍시","공","일반"],["태인중학교",13,"정읍시","사","일반"],["학산중학교",13,"정읍시","사","일반"],["호남중학교",13,"정읍시","사","일반"],["동향중학교",13,"진안군","공","일반"],["마령중학교",13,"진안군","공","일반"],["백운중학교",13,"진안군","공","일반"],["부귀중학교",13,"진안군","공","일반"],["안천중학교",13,"진안군","공","일반"],["용담중학교",13,"진안군","공","일반"],["주천중학교",13,"진안군","공","일반"],["진성중학교",13,"진안군","공","일반"],["진안여자중학교",13,"진안군","공","일반"],["진안중학교",13,"진안군","공","일반"],["군산동원중학교",13,"군산시","공","일반"],["전주서곡중학교",13,"전주시 완산구","공","일반"],["지평선중학교",13,"김제시","사","일반"],["전주평화중학교",13,"전주시 완산구","공","일반"],["전주아중중학교",13,"전주시 덕진구","공","일반"],["전주곤지중학교",13,"전주시 완산구","공","일반"],["전주용소중학교",13,"전주시 덕진구","공","일반"],["익산어양중학교",13,"익산시","공","일반"],["전주용흥중학교",13,"전주시 완산구","공","일반"],["군산동산중학교",13,"군산시","공","일반"],["군산금강중학교",13,"군산시","공","일반"],["익산부송중학교",13,"익산시","공","일반"],["전북체육중학교",13,"완주군","공","일반"],["전주우림중학교",13,"전주시 완산구","공","일반"],["익산부천중학교",13,"익산시","공","일반"],["봉서중학교",13,"완주군","공","일반"],["전주오송중학교",13,"전주시 덕진구","공","일반"],["전북동화중학교",13,"정읍시","공","일반"],["전주온빛중학교",13,"전주시 덕진구","공","일반"],["전주만성중학교",13,"전주시 덕진구","공","일반"],["전주화정중학교",13,"전주시 덕진구","공","일반"],["전주양현중학교",13,"전주시 덕진구","공","일반"],["강진대구중학교",12,"강진군","공","일반"],["강진여자중학교",12,"강진군","공","일반"],["강진작천중학교",12,"강진군","공","일반"],["강진중학교",12,"강진군","공","일반"],["강진칠량중학교",12,"강진군","공","일반"],["도암중학교",12,"강진군","공","일반"],["병영중학교",12,"강진군","공","일반"],["성전중학교",12,"강진군","공","일반"],["고흥과역중학교",12,"고흥군","공","일반"],["고흥남양중학교",12,"고흥군","공","일반"],["고흥대서중학교",12,"고흥군","사","일반"],["고흥도덕중학교",12,"고흥군","공","일반"],["고흥도화중학교",12,"고흥군","공","일반"],["고흥백양중학교",12,"고흥군","공","일반"],["고흥여자중학교",12,"고흥군","공","일반"],["고흥점암중앙중학교",12,"고흥군","공","일반"],["고흥중학교",12,"고흥군","공","일반"],["고흥풍양중학교",12,"고흥군","공","일반"],["금산중학교",12,"고흥군","공","일반"],["녹동중학교",12,"고흥군","공","일반"],["동강중학교",12,"고흥군","사","일반"],["봉래중학교",12,"고흥군","공","일반"],["포두중학교",12,"고흥군","공","일반"],["곡성중학교",12,"곡성군","공","일반"],["석곡중학교",12,"곡성군","공","일반"],["옥과중학교",12,"곡성군","공","일반"],["광양골약중학교",12,"광양시","공","일반"],["광양다압중학교",12,"광양시","공","일반"],["희양중학교",12,"광양시","공","일반"],["광양제철중학교",12,"광양시","사","일반"],["광양중동중학교",12,"광양시","공","일반"],["광양중학교",12,"광양시","공","일반"],["광양진월중학교",12,"광양시","공","일반"],["광영중학교",12,"광양시","공","일반"],["동광양중학교",12,"광양시","공","일반"],["옥곡중학교",12,"광양시","공","일반"],["진상중학교",12,"광양시","공","일반"],["구례동중학교",12,"구례군","공","일반"],["구례북중학교",12,"구례군","공","일반"],["구례산동중학교",12,"구례군","공","일반"],["구례여자중학교",12,"구례군","공","일반"],["구례중학교",12,"구례군","공","일반"],["금성중학교",12,"나주시","사","일반"],["나주공산중학교",12,"나주시","공","일반"],["나주금천중학교",12,"나주시","공","일반"],["나주다시중학교",12,"나주시","공","일반"],["나주동강중학교",12,"나주시","공","일반"],["나주문평중학교",12,"나주시","공","일반"],["나주반남중학교",12,"나주시","공","일반"],["나주봉황중학교",12,"나주시","공","일반"],["나주중학교",12,"나주시","공","일반"],["남평중학교",12,"나주시","공","일반"],["노안중학교",12,"나주시","공","일반"],["세지중학교",12,"나주시","사","일반"],["영산포여자중학교",12,"나주시","공","일반"],["영산중학교",12,"나주시","사","일반"],["담양고서중학교",12,"담양군","공","일반"],["담양금성중학교",12,"담양군","공","일반"],["담양수북중학교",12,"담양군","공","일반"],["담양여자중학교",12,"담양군","공","일반"],["담양중학교",12,"담양군","공","일반"],["창평중학교",12,"담양군","공","일반"],["한재중학교",12,"담양군","공","일반"],["목포덕인중학교",12,"목포시","사","일반"],["목포여자중학교",12,"목포시","공","일반"],["목포영화중학교",12,"목포시","사","일반"],["목포유달중학교",12,"목포시","공","일반"],["목포정명여자중학교",12,"목포시","사","일반"],["목포제일중학교",12,"목포시","공","일반"],["목포중앙여자중학교",12,"목포시","공","일반"],["목포청호중학교",12,"목포시","공","일반"],["목포항도여자중학교",12,"목포시","공","일반"],["목포혜인여자중학교",12,"목포시","사","일반"],["목포홍일중학교",12,"목포시","사","일반"],["문태중학교",12,"목포시","사","일반"],["영흥중학교",12,"목포시","사","일반"],["망운중학교",12,"무안군","사","일반"],["무안몽탄중학교",12,"무안군","공","일반"],["무안북중학교",12,"무안군","공","일반"],["무안중학교",12,"무안군","공","일반"],["무안청계중학교",12,"무안군","공","일반"],["무안현경중학교",12,"무안군","공","일반"],["전남체육중학교",12,"무안군","공","일반"],["해제중학교",12,"무안군","사","일반"],["득량중학교",12,"보성군","사","일반"],["벌교여자중학교",12,"보성군","공","일반"],["벌교중학교",12,"보성군","공","일반"],["보성복내중학교",12,"보성군","공","일반"],["보성여자중학교",12,"보성군","공","일반"],["보성중학교",12,"보성군","공","일반"],["보성회천중학교",12,"보성군","공","일반"],["삼광중학교",12,"보성군","사","일반"],["예당중학교",12,"보성군","사","일반"],["조성중학교",12,"보성군","공","일반"],["순천금당중학교",12,"순천시","공","일반"],["순천낙안중학교",12,"순천시","공","일반"],["순천남산중학교",12,"순천시","공","일반"],["순천동산중학교",12,"순천시","공","일반"],["순천매산중학교",12,"순천시","사","일반"],["순천별량중학교",12,"순천시","공","일반"],["순천삼산중학교",12,"순천시","공","일반"],["순천승남중학교",12,"순천시","공","일반"],["순천승주중학교",12,"순천시","공","일반"],["순천승평중학교",12,"순천시","공","일반"],["순천신흥중학교",12,"순천시","공","일반"],["순천세빛중학교",12,"순천시","공","일반"],["순천연향중학교",12,"순천시","공","일반"],["순천월전중학교",12,"순천시","공","일반"],["순천이수중학교",12,"순천시","공","일반"],["순천주암중학교",12,"순천시","공","일반"],["순천팔마중학교",12,"순천시","공","일반"],["비금중학교",12,"신안군","공","일반"],["신안신의중학교",12,"신안군","공","일반"],["신안증도중학교",12,"신안군","공","일반"],["신안흑산중학교",12,"신안군","공","일반"],["안좌중학교",12,"신안군","공","일반"],["암태중학교",12,"신안군","공","일반"],["압해중학교",12,"신안군","공","일반"],["임자중학교",12,"신안군","공","일반"],["자은중학교",12,"신안군","공","일반"],["장산중학교",12,"신안군","공","일반"],["지명중학교",12,"신안군","공","일반"],["하의중학교",12,"신안군","공","일반"],["돌산중앙중학교",12,"여수시","공","일반"],["무선중학교",12,"여수시","공","일반"],["여선중학교",12,"여수시","공","일반"],["여수개도중학교",12,"여수시","공","일반"],["여수구봉중학교",12,"여수시","공","일반"],["여수문수중학교",12,"여수시","공","일반"],["여수아리울중학교",12,"여수시","공","일반"],["여수종고중학교",12,"여수시","사","일반"],["여수중앙중학교",12,"여수시","사","일반"],["여수중학교",12,"여수시","공","일반"],["율촌중학교",12,"여수시","공","일반"],["여수진남중학교",12,"여수시","공","일반"],["여수진성중학교",12,"여수시","사","일반"],["충덕중학교",12,"여수시","공","일반"],["화양중학교",12,"여수시","공","일반"],["여도중학교",12,"여수시","사","일반"],["여양중학교",12,"여수시","사","일반"],["법성중학교",12,"영광군","공","일반"],["성지송학중학교",12,"영광군","사","일반"],["영광군남중학교",12,"영광군","공","일반"],["영광대마중학교",12,"영광군","공","일반"],["영광백수중학교",12,"영광군","공","일반"],["영광옥당중학교",12,"영광군","공","일반"],["영광염산중학교",12,"영광군","공","일반"],["영광중학교",12,"영광군","공","일반"],["영광홍농중학교",12,"영광군","공","일반"],["해룡중학교",12,"영광군","사","일반"],["구림중학교",12,"영암군","공","일반"],["삼호서중학교",12,"영암군","공","일반"],["삼호중학교",12,"영암군","공","일반"],["시종중학교",12,"영암군","사","일반"],["신북중학교",12,"영암군","공","일반"],["영암금정중학교",12,"영암군","공","일반"],["영암낭주중학교",12,"영암군","공","일반"],["영암도포중학교",12,"영암군","공","일반"],["영암서호중학교",12,"영암군","공","일반"],["영암여자중학교",12,"영암군","사","일반"],["영암중학교",12,"영암군","공","일반"],["고금중학교",12,"완도군","공","일반"],["군외중학교",12,"완도군","공","일반"],["금당중학교",12,"완도군","공","일반"],["금일중학교",12,"완도군","공","일반"],["노화중학교",12,"완도군","공","일반"],["소안중학교",12,"완도군","공","일반"],["약산중학교",12,"완도군","공","일반"],["완도보길중학교",12,"완도군","공","일반"],["완도신지중학교",12,"완도군","공","일반"],["완도여자중학교",12,"완도군","공","일반"],["완도중학교",12,"완도군","공","일반"],["청산중학교",12,"완도군","공","일반"],["넙도초등학교노화중학교넙도분교장",12,"완도군","공","일반"],["삼계중학교",12,"장성군","공","일반"],["장성남중학교",12,"장성군","공","일반"],["장성백암중학교",12,"장성군","공","일반"],["장성삼서중학교",12,"장성군","공","일반"],["장성여자중학교",12,"장성군","공","일반"],["장성중학교",12,"장성군","공","일반"],["장성황룡중학교",12,"장성군","공","일반"],["대덕중학교",12,"장흥군","공","일반"],["장흥관산중학교",12,"장흥군","공","일반"],["장흥안양중학교",12,"장흥군","공","일반"],["장흥향원중학교",12,"장흥군","공","일반"],["장흥용산중학교",12,"장흥군","공","일반"],["장흥유치중학교",12,"장흥군","공","일반"],["장흥장평중학교",12,"장흥군","공","일반"],["장흥중학교",12,"장흥군","공","일반"],["장흥회덕중학교",12,"장흥군","공","일반"],["고성중학교",12,"진도군","공","일반"],["석교중학교",12,"진도군","공","일반"],["의신중학교",12,"진도군","사","일반"],["조도중학교",12,"진도군","공","일반"],["진도군내중학교",12,"진도군","공","일반"],["진도중학교",12,"진도군","사","일반"],["진도지산중학교",12,"진도군","사","일반"],["함평손불중학교",12,"함평군","공","일반"],["함평신광중학교",12,"함평군","공","일반"],["함평여자중학교",12,"함평군","공","일반"],["함평월야중학교",12,"함평군","공","일반"],["함평중학교",12,"함평군","공","일반"],["함평해보중학교",12,"함평군","공","일반"],["두륜중학교",12,"해남군","공","일반"],["북평중학교",12,"해남군","공","일반"],["산이중학교",12,"해남군","공","일반"],["송지중학교",12,"해남군","공","일반"],["우수영중학교",12,"해남군","공","일반"],["해남제일중학교",12,"해남군","공","일반"],["해남중학교",12,"해남군","공","일반"],["현산중학교",12,"해남군","공","일반"],["화산중학교",12,"해남군","공","일반"],["화원중학교",12,"해남군","사","일반"],["황산중학교",12,"해남군","공","일반"],["능주중학교",12,"화순군","사","일반"],["화순도곡중학교",12,"화순군","공","일반"],["화순도암중학교",12,"화순군","공","일반"],["화순동면중학교",12,"화순군","공","일반"],["화순동복중학교",12,"화순군","공","일반"],["화순북면중학교",12,"화순군","공","일반"],["화순사평중학교",12,"화순군","공","일반"],["화순이양중학교",12,"화순군","공","일반"],["화순제일중학교",12,"화순군","공","일반"],["화순중학교",12,"화순군","공","일반"],["거문중학교",12,"여수시","공","일반"],["남평중학교다도분교장",12,"나주시","공","일반"],["금일중학교생일분교장",12,"완도군","공","일반"],["가거도초등학교신안흑산중학교가거도분교장",12,"신안군","공","일반"],["돌산중학교",12,"여수시","공","일반"],["여남중학교",12,"여수시","공","일반"],["화양중학교화양남분교장",12,"여수시","공","일반"],["여천중학교",12,"여수시","공","일반"],["용정중학교",12,"보성군","사","일반"],["순천풍덕중학교",12,"순천시","공","일반"],["순천향림중학교",12,"순천시","공","일반"],["목포하당중학교",12,"목포시","공","일반"],["안산중학교",12,"여수시","공","일반"],["순천왕의중학교",12,"순천시","공","일반"],["광양백운중학교",12,"광양시","공","일반"],["목포옥암중학교",12,"목포시","공","일반"],["남악중학교",12,"무안군","공","일반"],["목포애향중학교",12,"목포시","공","일반"],["순천왕운중학교",12,"순천시","공","일반"],["빛가람중학교",12,"나주시","공","일반"],["여수삼일중학교",12,"여수시","공","일반"],["오룡중학교",12,"무안군","공","일반"],["청람중학교",12,"강진군","공","일반"],["광양마동중학교",12,"광양시","공","일반"],["광양용강중학교",12,"광양시","공","일반"],["여수웅천중학교",12,"여수시","공","일반"],["한국바둑중학교",12,"순천시","공","일반"],["매성중학교",12,"나주시","공","일반"],["나산실용예술중학교",12,"함평군","공","일반"],["무안행복중학교",12,"무안군","공","일반"],["한국창의예술중학교",12,"광양시","공","일반"],["무안희망중학교",12,"무안군","공","일반"],["경북체육중학교",3,"경산시","공","일반"],["경산여자중학교",3,"경산시","사","일반"],["경산중학교",3,"경산시","공","일반"],["대구가톨릭대학교사범대학부속무학중학교",3,"경산시","사","일반"],["용성중학교",3,"경산시","공","일반"],["경산제일중학교",3,"경산시","사","일반"],["자인중학교",3,"경산시","공","일반"],["장산중학교",3,"경산시","공","일반"],["진량중학교",3,"경산시","사","일반"],["하양여자중학교",3,"경산시","사","일반"],["감포중학교",3,"경주시","공","일반"],["경주여자중학교",3,"경주시","공","일반"],["경주중학교",3,"경주시","사","일반"],["계림중학교",3,"경주시","공","일반"],["근화여자중학교",3,"경주시","사","일반"],["무산중학교",3,"경주시","사","일반"],["문화중학교",3,"경주시","사","일반"],["불국중학교",3,"경주시","공","일반"],["산내중학교",3,"경주시","공","일반"],["서라벌여자중학교",3,"경주시","공","일반"],["선덕여자중학교",3,"경주시","사","일반"],["신라중학교",3,"경주시","공","일반"],["아화중학교",3,"경주시","공","일반"],["안강여자중학교",3,"경주시","사","일반"],["안강중학교",3,"경주시","공","일반"],["양남중학교",3,"경주시","공","일반"],["양북중학교",3,"경주시","공","일반"],["외동중학교",3,"경주시","공","일반"],["월성중학교",3,"경주시","사","일반"],["고령중학교",3,"고령군","공","일반"],["고령중학교개진분교장",3,"고령군","공","일반"],["다산중학교",3,"고령군","사","일반"],["성산중학교",3,"고령군","공","일반"],["쌍림중학교",3,"고령군","공","일반"],["우곡중학교",3,"고령군","공","일반"],["경구중학교",3,"구미시","사","일반"],["구미신평중학교",3,"구미시","공","일반"],["구미여자중학교",3,"구미시","공","일반"],["구미중학교",3,"구미시","공","일반"],["금오중학교",3,"구미시","공","일반"],["도개중학교",3,"구미시","사","일반"],["도송중학교",3,"구미시","공","일반"],["무을중학교",3,"구미시","공","일반"],["산동중학교",3,"구미시","공","일반"],["선산중학교",3,"구미시","공","일반"],["송정여자중학교",3,"구미시","공","일반"],["오상중학교",3,"구미시","사","일반"],["옥계중학교",3,"구미시","공","일반"],["인동중학교",3,"구미시","공","일반"],["진평중학교",3,"구미시","공","일반"],["해평중학교",3,"구미시","공","일반"],["현일중학교",3,"구미시","사","일반"],["형곡중학교",3,"구미시","공","일반"],["형남중학교",3,"구미시","공","일반"],["감문중학교",3,"김천시","공","일반"],["개령중학교",3,"김천시","공","일반"],["김천여자중학교",3,"김천시","공","일반"],["김천중앙중학교",3,"김천시","공","일반"],["김천중학교",3,"김천시","사","일반"],["율곡중학교",3,"김천시","공","일반"],["문성중학교",3,"김천시","사","일반"],["김천석천중학교",3,"김천시","사","일반"],["공학성의중학교",3,"김천시","사","일반"],["성의중학교",3,"김천시","사","일반"],["아포중학교",3,"김천시","공","일반"],["어모중학교",3,"김천시","공","일반"],["한일여자중학교",3,"김천시","사","일반"],["가은중학교",3,"문경시","공","일반"],["동로중학교",3,"문경시","공","일반"],["마성중학교",3,"문경시","공","일반"],["문경서중학교",3,"문경시","공","일반"],["문경여자중학교",3,"문경시","공","일반"],["문경중학교",3,"문경시","공","일반"],["산북중학교",3,"문경시","공","일반"],["산양중학교",3,"문경시","공","일반"],["점촌중학교",3,"문경시","사","일반"],["물야중학교",3,"봉화군","공","일반"],["봉화중학교",3,"봉화군","공","일반"],["석포중학교",3,"봉화군","공","일반"],["소천중학교",3,"봉화군","공","일반"],["춘양중학교",3,"봉화군","공","일반"],["춘양중학교서벽분교장",3,"봉화군","공","일반"],["낙운중학교",3,"상주시","공","일반"],["남산중학교",3,"상주시","사","일반"],["내서중학교",3,"상주시","공","일반"],["모서중학교",3,"상주시","공","일반"],["상주여자중학교",3,"상주시","공","일반"],["상주중학교",3,"상주시","공","일반"],["상지여자중학교",3,"상주시","사","일반"],["성신여자중학교",3,"상주시","사","일반"],["용운중학교",3,"상주시","사","일반"],["은척중학교",3,"상주시","공","일반"],["중모중학교",3,"상주시","공","일반"],["청리중학교",3,"상주시","공","일반"],["함창중학교",3,"상주시","사","일반"],["화동중학교",3,"상주시","공","일반"],["화령중학교",3,"상주시","공","일반"],["화북중학교",3,"상주시","공","일반"],["성주중학교가천분교장",3,"성주군","공","일반"],["명인중학교",3,"성주군","사","일반"],["벽진중학교",3,"성주군","공","일반"],["성주여자중학교",3,"성주군","사","일반"],["성주중학교",3,"성주군","공","일반"],["수륜중학교",3,"성주군","사","일반"],["용암중학교",3,"성주군","공","일반"],["초전중학교",3,"성주군","공","일반"],["경덕중학교",3,"안동시","사","일반"],["경안여자중학교",3,"안동시","사","일반"],["경안중학교",3,"안동시","사","일반"],["길안중학교",3,"안동시","공","일반"],["길주중학교",3,"안동시","공","일반"],["복주여자중학교",3,"안동시","공","일반"],["북후중학교",3,"안동시","공","일반"],["안동여자중학교",3,"안동시","공","일반"],["안동중학교",3,"안동시","공","일반"],["일직중학교",3,"안동시","사","일반"],["풍산중학교",3,"안동시","사","일반"],["풍천중학교",3,"안동시","공","일반"],["강구중학교",3,"영덕군","공","일반"],["남정중학교",3,"영덕군","공","일반"],["병곡중학교",3,"영덕군","공","일반"],["영덕여자중학교",3,"영덕군","사","일반"],["영덕중학교",3,"영덕군","공","일반"],["영해중학교",3,"영덕군","공","일반"],["지품중학교",3,"영덕군","공","일반"],["축산중학교",3,"영덕군","공","일반"],["석보중학교",3,"영양군","공","일반"],["수비중학교",3,"영양군","공","일반"],["영양여자중학교",3,"영양군","사","일반"],["영양중학교",3,"영양군","공","일반"],["금계중학교",3,"영주시","사","일반"],["단산중학교",3,"영주시","공","일반"],["대영중학교",3,"영주시","사","일반"],["동산여자중학교",3,"영주시","사","일반"],["부석중학교",3,"영주시","공","일반"],["소수중학교",3,"영주시","공","일반"],["영광여자중학교",3,"영주시","사","일반"],["영광중학교",3,"영주시","사","일반"],["영주여자중학교",3,"영주시","공","일반"],["영주중학교",3,"영주시","공","일반"],["풍기중학교",3,"영주시","공","일반"],["금호여자중학교",3,"영천시","공","일반"],["금호중학교",3,"영천시","사","일반"],["산동중학교",3,"영천시","사","일반"],["성남여자중학교",3,"영천시","사","일반"],["신녕중학교",3,"영천시","공","일반"],["영동중학교",3,"영천시","사","일반"],["영안중학교",3,"영천시","공","일반"],["영천여자중학교",3,"영천시","공","일반"],["영천중학교",3,"영천시","공","일반"],["청통중학교",3,"영천시","공","일반"],["감천중학교",3,"예천군","공","일반"],["대창중학교",3,"예천군","사","일반"],["예천여자중학교",3,"예천군","공","일반"],["예천중학교",3,"예천군","공","일반"],["용궁중학교",3,"예천군","공","일반"],["용문중학교",3,"예천군","공","일반"],["은풍중학교",3,"예천군","사","일반"],["지보중학교",3,"예천군","공","일반"],["풍양중학교",3,"예천군","공","일반"],["기성중학교",3,"울진군","공","일반"],["매화중학교",3,"울진군","공","일반"],["부구중학교",3,"울진군","공","일반"],["온정중학교",3,"울진군","공","일반"],["울진중학교",3,"울진군","공","일반"],["죽변중학교",3,"울진군","공","일반"],["평해중학교",3,"울진군","공","일반"],["후포중학교",3,"울진군","공","일반"],["금성중학교",3,"의성군","공","일반"],["다인중학교",3,"의성군","공","일반"],["봉양중학교",3,"의성군","공","일반"],["삼성중학교",3,"의성군","사","일반"],["안계중학교",3,"의성군","공","일반"],["의성여자중학교",3,"의성군","공","일반"],["의성중학교",3,"의성군","공","일반"],["탑리여자중학교",3,"의성군","사","일반"],["금천중학교",3,"청도군","공","일반"],["매전중학교",3,"청도군","공","일반"],["모계중학교",3,"청도군","사","일반"],["이서중학교",3,"청도군","사","일반"],["청도중학교",3,"청도군","사","일반"],["풍각중학교",3,"청도군","공","일반"],["구천중학교",3,"청송군","공","일반"],["안덕중학교",3,"청송군","공","일반"],["진성중학교",3,"청송군","사","일반"],["청송여자중학교",3,"청송군","사","일반"],["청송중학교",3,"청송군","공","일반"],["현동중학교",3,"청송군","사","일반"],["현서중학교",3,"청송군","공","일반"],["동명중학교",3,"칠곡군","공","일반"],["북삼중학교",3,"칠곡군","공","일반"],["순심여자중학교",3,"칠곡군","사","일반"],["순심중학교",3,"칠곡군","사","일반"],["신동중학교",3,"칠곡군","공","일반"],["약목중학교",3,"칠곡군","공","일반"],["왜관중학교",3,"칠곡군","공","일반"],["장곡중학교",3,"칠곡군","공","일반"],["구룡포중학교",3,"포항시 남구","공","일반"],["기계중학교",3,"포항시 북구","공","일반"],["기계중학교기북분교장",3,"포항시 북구","공","일반"],["대도중학교",3,"포항시 북구","공","일반"],["대동중학교",3,"포항시 북구","사","일반"],["대보중학교",3,"포항시 남구","공","일반"],["대송중학교",3,"포항시 남구","공","일반"],["대흥중학교",3,"포항시 북구","공","일반"],["동지여자중학교",3,"포항시 북구","사","일반"],["동지중학교",3,"포항시 북구","사","일반"],["상도중학교",3,"포항시 남구","공","일반"],["신광중학교",3,"포항시 북구","공","일반"],["신흥중학교",3,"포항시 남구","공","일반"],["양학중학교",3,"포항시 북구","공","일반"],["영일중학교",3,"포항시 남구","사","일반"],["오천중학교",3,"포항시 남구","사","일반"],["장기중학교",3,"포항시 남구","사","일반"],["서포중학교",3,"포항시 북구","사","일반"],["창포중학교",3,"포항시 북구","공","일반"],["청하중학교",3,"포항시 북구","사","일반"],["포항동해중학교",3,"포항시 남구","사","일반"],["포항여자중학교",3,"포항시 북구","공","일반"],["포항영신중학교",3,"포항시 북구","사","일반"],["포항제철중학교",3,"포항시 남구","사","일반"],["포항중학교",3,"포항시 북구","공","일반"],["포항항도중학교",3,"포항시 북구","공","일반"],["환호여자중학교",3,"포항시 북구","공","일반"],["흥해중학교",3,"포항시 북구","사","일반"],["상모중학교",3,"구미시","공","일반"],["송도중학교",3,"포항시 남구","공","일반"],["사동중학교",3,"경산시","공","일반"],["봉곡중학교",3,"구미시","공","일반"],["석전중학교",3,"칠곡군","공","일반"],["포항이동중학교",3,"포항시 남구","공","일반"],["유강중학교",3,"포항시 남구","공","일반"],["선주중학교",3,"구미시","공","일반"],["삼성현중학교",3,"경산시","공","일반"],["문명중학교",3,"경산시","사","일반"],["진보중학교",3,"청송군","공","일반"],["광평중학교",3,"구미시","공","일반"],["천생중학교",3,"구미시","공","일반"],["오태중학교",3,"구미시","공","일반"],["화랑중학교",3,"경주시","공","일반"],["신상중학교",3,"경산시","공","일반"],["인평중학교",3,"칠곡군","공","일반"],["옥계동부중학교",3,"구미시","공","일반"],["장흥중학교",3,"포항시 북구","공","일반"],["포항포은중학교",3,"포항시 남구","공","일반"],["별빛중학교",3,"영천시","공","일반"],["경북중부중학교",3,"의성군","공","일반"],["해마루중학교",3,"구미시","공","일반"],["구미인덕중학교",3,"구미시","공","일반"],["지품천중학교",3,"김천시","공","일반"],["청량중학교",3,"봉화군","공","일반"],["웅부중학교",3,"안동시","공","일반"],["양덕중학교",3,"포항시 북구","공","일반"],["운남중학교",3,"김천시","공","일반"],["압량중학교",3,"경산시","공","일반"],["울릉중학교",3,"울릉군","공","일반"],["석적중학교",3,"칠곡군","공","일반"],["경상국립대학교사범대학부설중학교",2,"진주시","국","일반"],["거제고현중학교",2,"거제시","공","일반"],["거제제일중학교",2,"거제시","공","일반"],["거제중앙중학교",2,"거제시","공","일반"],["거제중학교",2,"거제시","사","일반"],["성포중학교",2,"거제시","공","일반"],["동부중학교",2,"거제시","공","일반"],["둔덕중학교",2,"거제시","사","일반"],["신현중학교",2,"거제시","공","일반"],["연초중학교",2,"거제시","공","일반"],["옥포중학교",2,"거제시","공","일반"],["외포중학교",2,"거제시","사","일반"],["장목예술중학교",2,"거제시","사","일반"],["지세포중학교",2,"거제시","공","일반"],["하청중학교",2,"거제시","공","일반"],["해성중학교",2,"거제시","사","일반"],["가조중학교",2,"거창군","공","일반"],["거창대성중학교",2,"거창군","사","일반"],["거창여자중학교",2,"거창군","공","일반"],["거창중학교",2,"거창군","공","일반"],["거창중학교고제분교장",2,"거창군","공","일반"],["샛별중학교",2,"거창군","사","일반"],["웅양중학교",2,"거창군","공","일반"],["혜성여자중학교",2,"거창군","사","일반"],["고성동중학교",2,"고성군","공","일반"],["고성여자중학교",2,"고성군","공","일반"],["고성중학교",2,"고성군","공","일반"],["동해중학교",2,"고성군","공","일반"],["영천중학교",2,"고성군","공","일반"],["철성중학교",2,"고성군","사","일반"],["회화중학교",2,"고성군","공","일반"],["가야중학교",2,"김해시","공","일반"],["경운중학교",2,"김해시","공","일반"],["김해대동중학교",2,"김해시","공","일반"],["김해서중학교",2,"김해시","공","일반"],["김해여자중학교",2,"김해시","공","일반"],["김해중앙여자중학교",2,"김해시","사","일반"],["김해중학교",2,"김해시","공","일반"],["내동중학교",2,"김해시","공","일반"],["삼정중학교",2,"김해시","공","일반"],["생림중학교",2,"김해시","공","일반"],["신어중학교",2,"김해시","공","일반"],["영운중학교",2,"김해시","공","일반"],["월산중학교",2,"김해시","공","일반"],["임호중학교",2,"김해시","공","일반"],["장유중학교",2,"김해시","사","일반"],["진례중학교",2,"김해시","사","일반"],["진영장등중학교",2,"김해시","공","일반"],["한림중학교",2,"김해시","사","일반"],["한얼중학교",2,"김해시","공","일반"],["남해여자중학교",2,"남해군","공","일반"],["남해중학교",2,"남해군","공","일반"],["미조중학교",2,"남해군","공","일반"],["상주중학교",2,"남해군","사","일반"],["설천중학교",2,"남해군","공","일반"],["이동중학교",2,"남해군","사","일반"],["창선중학교",2,"남해군","사","일반"],["해성중학교",2,"남해군","사","일반"],["구산중학교구남분교장",2,"창원시 마산합포구","공","일반"],["구암중학교",2,"창원시 마산회원구","공","일반"],["내서중학교",2,"창원시 마산회원구","공","일반"],["마산동중학교",2,"창원시 마산회원구","공","일반"],["마산무학여자중학교",2,"창원시 마산회원구","사","일반"],["마산삼진중학교",2,"창원시 마산합포구","사","일반"],["마산서중학교",2,"창원시 마산합포구","공","일반"],["마산여자중학교",2,"창원시 마산회원구","공","일반"],["의신중학교",2,"창원시 마산합포구","사","일반"],["마산제일여자중학교",2,"창원시 마산합포구","사","일반"],["마산중앙중학교",2,"창원시 마산회원구","사","일반"],["마산중학교",2,"창원시 마산합포구","공","일반"],["삼계중학교",2,"창원시 마산회원구","공","일반"],["성지여자중학교",2,"창원시 마산합포구","사","일반"],["양덕여자중학교",2,"창원시 마산회원구","공","일반"],["양덕중학교",2,"창원시 마산회원구","공","일반"],["진전중학교",2,"창원시 마산합포구","공","일반"],["창신중학교",2,"창원시 마산회원구","사","일반"],["합포여자중학교",2,"창원시 마산회원구","공","일반"],["합포중학교",2,"창원시 마산합포구","공","일반"],["해운중학교",2,"창원시 마산합포구","공","일반"],["동명중학교",2,"밀양시","사","일반"],["무안중학교",2,"밀양시","공","일반"],["밀성여자중학교",2,"밀양시","사","일반"],["밀성중학교",2,"밀양시","사","일반"],["밀양동강중학교",2,"밀양시","사","일반"],["밀양여자중학교",2,"밀양시","공","일반"],["밀양중학교",2,"밀양시","공","일반"],["삼랑진중학교",2,"밀양시","사","일반"],["세종중학교",2,"밀양시","사","일반"],["동국대학교사범대학부속홍제중학교",2,"밀양시","사","일반"],["곤명중학교",2,"사천시","사","일반"],["곤양중학교",2,"사천시","공","일반"],["남양중학교",2,"사천시","사","일반"],["사천여자중학교",2,"사천시","공","일반"],["사천중학교",2,"사천시","공","일반"],["삼천포여자중학교",2,"사천시","사","일반"],["삼천포제일중학교",2,"사천시","공","일반"],["삼천포중앙여자중학교",2,"사천시","공","일반"],["삼천포중학교",2,"사천시","사","일반"],["서포중학교",2,"사천시","공","일반"],["용남중학교",2,"사천시","사","일반"],["단성중학교",2,"산청군","공","일반"],["덕산중학교",2,"산청군","공","일반"],["신등중학교",2,"산청군","공","일반"],["개운중학교",2,"양산시","사","일반"],["물금동아중학교",2,"양산시","사","일반"],["보광중학교",2,"양산시","사","일반"],["삼성중학교",2,"양산시","공","일반"],["양산중앙중학교",2,"양산시","공","일반"],["양산여자중학교",2,"양산시","사","일반"],["양산중학교",2,"양산시","공","일반"],["양주중학교",2,"양산시","공","일반"],["웅상중학교",2,"양산시","공","일반"],["원동중학교",2,"양산시","공","일반"],["신반중학교",2,"의령군","공","일반"],["의령여자중학교",2,"의령군","사","일반"],["의령중학교",2,"의령군","공","일반"],["정곡중학교",2,"의령군","사","일반"],["지정중학교",2,"의령군","사","일반"],["경해여자중학교",2,"진주시","사","일반"],["금곡중학교",2,"진주시","공","일반"],["대곡중학교",2,"진주시","공","일반"],["대아중학교",2,"진주시","사","일반"],["명석중학교",2,"진주시","공","일반"],["문산중학교",2,"진주시","공","일반"],["반성중학교",2,"진주시","공","일반"],["삼현여자중학교",2,"진주시","사","일반"],["지수중학교",2,"진주시","공","일반"],["진명여자중학교",2,"진주시","공","일반"],["진서중학교",2,"진주시","공","일반"],["진주남중학교",2,"진주시","공","일반"],["진주동명중학교",2,"진주시","사","일반"],["진주동중학교",2,"진주시","사","일반"],["진주봉원중학교",2,"진주시","공","일반"],["진주여자중학교",2,"진주시","공","일반"],["진주중앙중학교",2,"진주시","공","일반"],["진주중학교",2,"진주시","공","일반"],["동진여자중학교",2,"창원시 진해구","공","일반"],["동진중학교",2,"창원시 진해구","공","일반"],["웅동중학교",2,"창원시 진해구","사","일반"],["진해남중학교",2,"창원시 진해구","사","일반"],["남지여자중학교",2,"창녕군","사","일반"],["남지중학교",2,"창녕군","사","일반"],["대성중학교",2,"창녕군","사","일반"],["부곡중학교",2,"창녕군","공","일반"],["성산중학교",2,"창녕군","사","일반"],["신창여자중학교",2,"창녕군","사","일반"],["영산중학교",2,"창녕군","공","일반"],["창녕옥야중학교",2,"창녕군","사","일반"],["창녕여자중학교",2,"창녕군","사","일반"],["창녕중학교",2,"창녕군","공","일반"],["경원중학교",2,"창원시 성산구","공","일반"],["남산중학교",2,"창원시 성산구","공","일반"],["대방중학교",2,"창원시 성산구","공","일반"],["창원대산중학교",2,"창원시 의창구","사","일반"],["명서중학교",2,"창원시 의창구","공","일반"],["반림중학교",2,"창원시 성산구","공","일반"],["반송여자중학교",2,"창원시 성산구","공","일반"],["반송중학교",2,"창원시 성산구","공","일반"],["봉곡중학교",2,"창원시 의창구","공","일반"],["사파중학교",2,"창원시 성산구","공","일반"],["신월중학교",2,"창원시 성산구","공","일반"],["안남중학교",2,"창원시 성산구","공","일반"],["양곡중학교",2,"창원시 성산구","공","일반"],["웅남중학교",2,"창원시 성산구","공","일반"],["창덕중학교",2,"창원시 의창구","공","일반"],["창북중학교",2,"창원시 의창구","공","일반"],["창원남중학교",2,"창원시 성산구","사","일반"],["창원상남중학교",2,"창원시 성산구","공","일반"],["창원여자중학교",2,"창원시 의창구","사","일반"],["창원중앙중학교",2,"창원시 성산구","공","일반"],["창원중학교",2,"창원시 의창구","사","일반"],["토월중학교",2,"창원시 성산구","공","일반"],["팔룡중학교",2,"창원시 의창구","공","일반"],["도산중학교",2,"통영시","공","일반"],["사량중학교",2,"통영시","공","일반"],["산양중학교",2,"통영시","공","일반"],["욕지중학교",2,"통영시","공","일반"],["충렬여자중학교",2,"통영시","사","일반"],["충무여자중학교",2,"통영시","공","일반"],["충무중학교",2,"통영시","공","일반"],["동원중학교",2,"통영시","사","일반"],["통영여자중학교",2,"통영시","공","일반"],["통영중학교",2,"통영시","공","일반"],["한산중학교",2,"통영시","공","일반"],["금남중학교",2,"하동군","공","일반"],["악양중학교",2,"하동군","공","일반"],["옥종중학교",2,"하동군","공","일반"],["진교중학교",2,"하동군","공","일반"],["청암중학교",2,"하동군","공","일반"],["하동중앙중학교",2,"하동군","공","일반"],["하동중학교",2,"하동군","사","일반"],["화개중학교",2,"하동군","공","일반"],["군북중학교",2,"함안군","사","일반"],["대산중학교",2,"함안군","사","일반"],["칠성중학교",2,"함안군","사","일반"],["칠원중학교",2,"함안군","사","일반"],["함성중학교",2,"함안군","사","일반"],["함안여자중학교",2,"함안군","사","일반"],["함안중학교",2,"함안군","공","일반"],["마천중학교",2,"함양군","공","일반"],["서상중학교",2,"함양군","공","일반"],["수동중학교",2,"함양군","공","일반"],["안의중학교",2,"함양군","사","일반"],["함양여자중학교",2,"함양군","공","일반"],["함양중학교",2,"함양군","공","일반"],["가회중학교",2,"합천군","사","일반"],["대병중학교",2,"합천군","사","일반"],["묘산중학교",2,"합천군","사","일반"],["삼가중학교",2,"합천군","공","일반"],["야로중학교",2,"합천군","공","일반"],["초계중학교",2,"합천군","공","일반"],["합천여자중학교",2,"합천군","사","일반"],["합천중학교",2,"합천군","공","일반"],["해인중학교",2,"합천군","사","일반"],["호계중학교",2,"창원시 마산회원구","공","일반"],["안골포중학교",2,"창원시 진해구","공","일반"],["구산중학교",2,"김해시","공","일반"],["김해삼계중학교",2,"김해시","공","일반"],["능동중학교",2,"김해시","공","일반"],["웅상여자중학교",2,"양산시","공","일반"],["관동중학교",2,"김해시","공","일반"],["창원동중학교",2,"창원시 의창구","공","일반"],["안민중학교",2,"창원시 성산구","공","일반"],["명곡여자중학교",2,"창원시 의창구","공","일반"],["광려중학교",2,"창원시 마산회원구","공","일반"],["진주제일중학교",2,"진주시","공","일반"],["분성중학교",2,"김해시","공","일반"],["내덕중학교",2,"김해시","공","일반"],["계룡중학교",2,"거제시","공","일반"],["옥포성지중학교",2,"거제시","공","일반"],["신주중학교",2,"양산시","공","일반"],["서창중학교",2,"양산시","공","일반"],["김해대곡중학교",2,"김해시","공","일반"],["석동중학교",2,"창원시 진해구","공","일반"],["용원중학교",2,"창원시 진해구","공","일반"],["진영중학교",2,"김해시","공","일반"],["범어중학교",2,"양산시","공","일반"],["개양중학교",2,"진주시","공","일반"],["봉명중학교",2,"김해시","공","일반"],["삼정자중학교",2,"창원시 성산구","공","일반"],["수월중학교",2,"거제시","공","일반"],["통영중앙중학교",2,"통영시","공","일반"],["호암중학교",2,"함안군","공","일반"],["율하중학교",2,"김해시","공","일반"],["도계중학교",2,"창원시 의창구","공","일반"],["활천중학교",2,"김해시","공","일반"],["감계중학교",2,"창원시 의창구","공","일반"],["진해냉천중학교",2,"창원시 진해구","공","일반"],["대청중학교",2,"김해시","공","일반"],["웅천중학교",2,"창원시 진해구","공","일반"],["거제장평중학교",2,"거제시","공","일반"],["미리벌중학교",2,"밀양시","공","일반"],["소가야중학교",2,"고성군","공","일반"],["한다사중학교",2,"하동군","공","일반"],["거창덕유중학교",2,"거창군","공","일반"],["수남중학교",2,"김해시","공","일반"],["물금중학교",2,"양산시","공","일반"],["꽃내중학교",2,"남해군","공","일반"],["진해신항중학교",2,"창원시 진해구","공","일반"],["선인국제중학교",2,"진주시","사","일반"],["구산중학교",2,"창원시 마산합포구","공","일반"],["산청중학교",2,"산청군","공","일반"],["김해모산중학교",2,"김해시","공","일반"],["금오중학교",2,"양산시","공","일반"],["사송중학교",2,"양산시","공","일반"],["증산중학교",2,"양산시","공","일반"],["금송중학교",2,"양산시","공","일반"],["제주대학교사범대학부설중학교",14,"제주시","국","일반"],["김녕중학교",14,"제주시","공","일반"],["세화중학교",14,"제주시","공","일반"],["신엄중학교",14,"제주시","공","일반"],["신창중학교",14,"제주시","공","일반"],["애월중학교",14,"제주시","공","일반"],["우도중학교",14,"제주시","공","일반"],["저청중학교",14,"제주시","공","일반"],["조천중학교",14,"제주시","공","일반"],["추자중학교",14,"제주시","공","일반"],["한림여자중학교",14,"제주시","공","일반"],["한림중학교",14,"제주시","공","일반"],["함덕중학교",14,"제주시","공","일반"],["고산중학교",14,"제주시","공","일반"],["귀일중학교",14,"제주시","사","일반"],["남원중학교",14,"서귀포시","공","일반"],["대정중학교",14,"서귀포시","공","일반"],["무릉중학교",14,"서귀포시","공","일반"],["서귀중앙여자중학교",14,"서귀포시","공","일반"],["서귀포대신중학교",14,"서귀포시","공","일반"],["성산중학교",14,"서귀포시","공","일반"],["신산중학교",14,"서귀포시","공","일반"],["안덕중학교",14,"서귀포시","공","일반"],["위미중학교",14,"서귀포시","공","일반"],["중문중학교",14,"서귀포시","공","일반"],["표선중학교",14,"서귀포시","공","일반"],["효돈중학교",14,"서귀포시","공","일반"],["남주중학교",14,"서귀포시","사","일반"],["서귀포여자중학교",14,"서귀포시","공","일반"],["서귀포중학교",14,"서귀포시","공","일반"],["제주동여자중학교",14,"제주시","공","일반"],["제주동중학교",14,"제주시","공","일반"],["제주서중학교",14,"제주시","공","일반"],["아라중학교",14,"제주시","공","일반"],["제주제일중학교",14,"제주시","공","일반"],["제주중앙여자중학교",14,"제주시","공","일반"],["제주중앙중학교",14,"제주시","공","일반"],["신성여자중학교",14,"제주시","사","일반"],["오현중학교",14,"제주시","사","일반"],["제주여자중학교",14,"제주시","사","일반"],["제주중학교",14,"제주시","사","일반"],["한라중학교",14,"제주시","공","일반"],["노형중학교",14,"제주시","공","일반"],["오름중학교",14,"제주시","공","일반"],["탐라중학교",14,"제주시","공","일반"]];
 const SCHOOLS_HIGH = [["국립국악고등학교",8,"강남구","국","특수목적고등학교"],["서울대학교사범대학부설고등학교",8,"성북구","국","일반고등학교"],["국립전통예술고등학교",8,"금천구","국","특수목적고등학교"],["가락고등학교",8,"송파구","공","일반고등학교"],["강동고등학교",8,"강동구","사","일반고등학교"],["강서고등학교",8,"양천구","사","일반고등학교"],["개포고등학교",8,"강남구","공","일반고등학교"],["건국대학교사범대학부속고등학교",8,"광진구","사","일반고등학교"],["경기고등학교",8,"강남구","공","일반고등학교"],["경기여자고등학교",8,"강남구","공","일반고등학교"],["경동고등학교",8,"성북구","공","일반고등학교"],["경문고등학교",8,"동작구","사","일반고등학교"],["경복고등학교",8,"종로구","공","일반고등학교"],["경복여자고등학교",8,"강서구","사","일반고등학교"],["경성고등학교",8,"마포구","사","일반고등학교"],["경신고등학교",8,"종로구","사","일반고등학교"],["경인고등학교",8,"구로구","공","일반고등학교"],["경희고등학교",8,"동대문구","사","자율고등학교"],["경희여자고등학교",8,"동대문구","사","일반고등학교"],["계성고등학교",8,"성북구","사","일반고등학교"],["고려대학교사범대학부속고등학교",8,"성북구","사","일반고등학교"],["고척고등학교",8,"구로구","공","일반고등학교"],["공항고등학교",8,"강서구","공","일반고등학교"],["관악고등학교",8,"영등포구","공","일반고등학교"],["광남고등학교",8,"광진구","공","일반고등학교"],["광문고등학교",8,"강동구","사","일반고등학교"],["광성고등학교",8,"마포구","사","일반고등학교"],["광신고등학교",8,"관악구","사","일반고등학교"],["광양고등학교",8,"광진구","공","일반고등학교"],["광영고등학교",8,"양천구","사","일반고등학교"],["광영여자고등학교",8,"양천구","사","일반고등학교"],["구로고등학교",8,"구로구","공","일반고등학교"],["구일고등학교",8,"구로구","공","일반고등학교"],["압구정고등학교",8,"강남구","공","일반고등학교"],["금옥여자고등학교",8,"양천구","공","일반고등학교"],["금천고등학교",8,"금천구","공","일반고등학교"],["남강고등학교",8,"관악구","사","일반고등학교"],["노원고등학교",8,"노원구","공","일반고등학교"],["단국대학교사범대학부속고등학교",8,"강남구","사","일반고등학교"],["당곡고등학교",8,"관악구","공","일반고등학교"],["대광고등학교",8,"동대문구","사","자율고등학교"],["대성고등학교",8,"은평구","사","일반고등학교"],["대신고등학교",8,"종로구","사","일반고등학교"],["대영고등학교",8,"영등포구","공","일반고등학교"],["대원고등학교",8,"광진구","사","일반고등학교"],["대원여자고등학교",8,"광진구","사","일반고등학교"],["대일고등학교",8,"강서구","사","일반고등학교"],["대진고등학교",8,"노원구","사","일반고등학교"],["대진여자고등학교",8,"노원구","사","일반고등학교"],["대진디자인고등학교",8,"강남구","사","특성화고등학교"],["덕성여자고등학교",8,"종로구","사","일반고등학교"],["덕원여자고등학교",8,"강서구","사","일반고등학교"],["독산고등학교",8,"금천구","공","일반고등학교"],["동국대학교사범대학부속고등학교",8,"동대문구","사","일반고등학교"],["동덕여자고등학교",8,"서초구","사","일반고등학교"],["동명여자고등학교",8,"은평구","사","일반고등학교"],["동북고등학교",8,"강동구","사","일반고등학교"],["동성고등학교",8,"종로구","사","일반고등학교"],["동일여자고등학교",8,"금천구","사","일반고등학교"],["서울매그넷고등학교",8,"금천구","사","특성화고등학교"],["동작고등학교",8,"동작구","공","일반고등학교"],["둔촌고등학교",8,"강동구","공","일반고등학교"],["마포고등학교",8,"강서구","사","일반고등학교"],["면목고등학교",8,"중랑구","공","일반고등학교"],["명덕고등학교",8,"강서구","사","일반고등학교"],["명덕여자고등학교",8,"강서구","사","일반고등학교"],["동국대학교사범대학부속가람고등학교",8,"광진구","사","일반고등학교"],["명일여자고등학교",8,"강동구","공","일반고등학교"],["명지고등학교",8,"서대문구","사","일반고등학교"],["무학여자고등학교",8,"성동구","공","일반고등학교"],["서울문영여자고등학교",8,"관악구","사","일반고등학교"],["문일고등학교",8,"금천구","사","일반고등학교"],["미림여자고등학교",8,"관악구","사","일반고등학교"],["반포고등학교",8,"서초구","공","일반고등학교"],["배명고등학교",8,"송파구","사","일반고등학교"],["배문고등학교",8,"용산구","사","일반고등학교"],["배재고등학교",8,"강동구","사","자율고등학교"],["배화여자고등학교",8,"종로구","사","일반고등학교"],["백암고등학교",8,"양천구","사","일반고등학교"],["보성고등학교",8,"송파구","사","일반고등학교"],["보성여자고등학교",8,"용산구","사","일반고등학교"],["삼성고등학교",8,"관악구","공","일반고등학교"],["상계고등학교",8,"노원구","공","일반고등학교"],["상명대학교사범대학부속여자고등학교",8,"종로구","사","일반고등학교"],["상명고등학교",8,"노원구","사","일반고등학교"],["상문고등학교",8,"서초구","사","일반고등학교"],["상일여자고등학교",8,"강동구","사","일반고등학교"],["서라벌고등학교",8,"노원구","사","일반고등학교"],["서문여자고등학교",8,"서초구","사","일반고등학교"],["서울고등학교",8,"서초구","공","일반고등학교"],["서울미술고등학교",8,"관악구","사","일반고등학교"],["서울세종고등학교",8,"강남구","사","일반고등학교"],["서울여자고등학교",8,"마포구","공","일반고등학교"],["서울체육고등학교",8,"송파구","공","특수목적고등학교"],["서초고등학교",8,"서초구","공","일반고등학교"],["석관고등학교",8,"성북구","공","일반고등학교"],["선덕고등학교",8,"도봉구","사","자율고등학교"],["선일여자고등학교",8,"은평구","사","일반고등학교"],["선정고등학교",8,"은평구","사","일반고등학교"],["성남고등학교",8,"동작구","사","일반고등학교"],["성동고등학교",8,"중구","공","일반고등학교"],["성보고등학교",8,"관악구","사","일반고등학교"],["성신여자고등학교",8,"성북구","사","일반고등학교"],["성심여자고등학교",8,"용산구","사","일반고등학교"],["세화고등학교",8,"서초구","사","자율고등학교"],["세화여자고등학교",8,"서초구","사","자율고등학교"],["송곡고등학교",8,"중랑구","사","일반고등학교"],["송곡여자고등학교",8,"중랑구","사","일반고등학교"],["수도여자고등학교",8,"동작구","공","일반고등학교"],["수락고등학교",8,"노원구","공","일반고등학교"],["숙명여자고등학교",8,"강남구","사","일반고등학교"],["숭문고등학교",8,"마포구","사","일반고등학교"],["숭실고등학교",8,"은평구","사","일반고등학교"],["숭의여자고등학교",8,"동작구","사","일반고등학교"],["신광여자고등학교",8,"용산구","사","일반고등학교"],["신림고등학교",8,"관악구","공","일반고등학교"],["신목고등학교",8,"양천구","공","일반고등학교"],["신일고등학교",8,"강북구","사","자율고등학교"],["양재고등학교",8,"서초구","공","일반고등학교"],["양정고등학교",8,"양천구","사","자율고등학교"],["양천고등학교",8,"양천구","사","일반고등학교"],["목동고등학교",8,"양천구","사","일반고등학교"],["언남고등학교",8,"서초구","공","일반고등학교"],["여의도고등학교",8,"영등포구","공","일반고등학교"],["여의도여자고등학교",8,"영등포구","공","일반고등학교"],["염광고등학교",8,"노원구","사","일반고등학교"],["영동고등학교",8,"강남구","사","일반고등학교"],["영동일고등학교",8,"송파구","사","일반고등학교"],["영등포고등학교",8,"동작구","공","일반고등학교"],["영등포여자고등학교",8,"영등포구","공","일반고등학교"],["영락고등학교",8,"관악구","사","일반고등학교"],["서울영상고등학교",8,"양천구","사","특성화고등학교"],["영신고등학교",8,"영등포구","공","일반고등학교"],["영신여자고등학교",8,"노원구","사","일반고등학교"],["영일고등학교",8,"강서구","사","일반고등학교"],["영파여자고등학교",8,"송파구","사","일반고등학교"],["영훈고등학교",8,"강북구","사","일반고등학교"],["예일여자고등학교",8,"은평구","사","일반고등학교"],["오금고등학교",8,"송파구","공","일반고등학교"],["오류고등학교",8,"구로구","사","일반고등학교"],["오산고등학교",8,"용산구","사","일반고등학교"],["용문고등학교",8,"성북구","사","일반고등학교"],["용산고등학교",8,"용산구","공","일반고등학교"],["용화여자고등학교",8,"노원구","사","일반고등학교"],["우신고등학교",8,"구로구","사","일반고등학교"],["은광여자고등학교",8,"강남구","사","일반고등학교"],["은평메디텍고등학교",8,"은평구","사","특성화고등학교"],["이화여자고등학교",8,"중구","사","자율고등학교"],["이화여자대학교사범대학부속이화금란고등학교",8,"서대문구","사","일반고등학교"],["인창고등학교",8,"서대문구","사","일반고등학교"],["인헌고등학교",8,"관악구","공","일반고등학교"],["자양고등학교",8,"광진구","공","일반고등학교"],["잠신고등학교",8,"송파구","공","일반고등학교"],["잠실고등학교",8,"송파구","공","일반고등학교"],["잠실여자고등학교",8,"송파구","사","일반고등학교"],["장충고등학교",8,"중구","사","일반고등학교"],["장훈고등학교",8,"영등포구","사","일반고등학교"],["재현고등학교",8,"노원구","사","일반고등학교"],["정신여자고등학교",8,"송파구","사","일반고등학교"],["정의여자고등학교",8,"도봉구","사","일반고등학교"],["중경고등학교",8,"용산구","공","일반고등학교"],["중동고등학교",8,"강남구","사","자율고등학교"],["중산고등학교",8,"강남구","사","일반고등학교"],["중앙고등학교",8,"종로구","사","자율고등학교"],["중앙대학교사범대학부속고등학교",8,"강남구","사","일반고등학교"],["중앙여자고등학교",8,"서대문구","사","일반고등학교"],["중화고등학교",8,"중랑구","공","일반고등학교"],["진명여자고등학교",8,"양천구","사","일반고등학교"],["진선여자고등학교",8,"강남구","사","일반고등학교"],["창덕여자고등학교",8,"송파구","공","일반고등학교"],["창동고등학교",8,"도봉구","공","일반고등학교"],["창문여자고등학교",8,"강북구","사","일반고등학교"],["청담고등학교",8,"강남구","공","일반고등학교"],["청량고등학교",8,"동대문구","공","일반고등학교"],["청원고등학교",8,"노원구","사","일반고등학교"],["청원여자고등학교",8,"노원구","사","일반고등학교"],["충암고등학교",8,"은평구","사","일반고등학교"],["태릉고등학교",8,"중랑구","공","일반고등학교"],["풍문고등학교",8,"강남구","사","일반고등학교"],["한가람고등학교",8,"양천구","사","일반고등학교"],["한강미디어고등학교",8,"영등포구","공","특성화고등학교"],["한광고등학교",8,"강서구","사","일반고등학교"],["한국삼육고등학교",8,"노원구","사","일반고등학교"],["한서고등학교",8,"강서구","사","일반고등학교"],["한성고등학교",8,"서대문구","사","일반고등학교"],["한성여자고등학교",8,"성북구","사","일반고등학교"],["한양대학교사범대학부속고등학교",8,"성동구","사","자율고등학교"],["한영고등학교",8,"강동구","사","일반고등학교"],["현대고등학교",8,"강남구","사","자율고등학교"],["혜성여자고등학교",8,"노원구","사","일반고등학교"],["혜원여자고등학교",8,"중랑구","사","일반고등학교"],["혜화여자고등학교",8,"강북구","공","일반고등학교"],["홍익대학교사범대학부속고등학교",8,"성북구","사","일반고등학교"],["홍익대학교사범대학부속여자고등학교",8,"마포구","사","일반고등학교"],["화곡고등학교",8,"강서구","사","일반고등학교"],["환일고등학교",8,"중구","사","일반고등학교"],["휘경여자고등학교",8,"동대문구","사","일반고등학교"],["휘문고등학교",8,"강남구","사","자율고등학교"],["서울과학고등학교",8,"종로구","공","특수목적고등학교"],["한성과학고등학교",8,"서대문구","공","특수목적고등학교"],["대원외국어고등학교",8,"광진구","사","특수목적고등학교"],["대일외국어고등학교",8,"성북구","사","특수목적고등학교"],["명덕외국어고등학교",8,"강서구","사","특수목적고등학교"],["서울외국어고등학교",8,"도봉구","사","특수목적고등학교"],["이화여자외국어고등학교",8,"중구","사","특수목적고등학교"],["한영외국어고등학교",8,"강동구","사","특수목적고등학교"],["서울로봇고등학교",8,"강남구","공","특수목적고등학교"],["서울디지털콘텐츠고등학교",8,"강서구","공","특성화고등학교"],["경기기계공업고등학교",8,"노원구","공","특성화고등학교"],["광운인공지능고등학교",8,"노원구","사","특성화고등학교"],["단국대학교부속소프트웨어고등학교",8,"강남구","사","특성화고등학교"],["덕일전자공업고등학교",8,"구로구","사","특성화고등학교"],["서울디자인고등학교",8,"마포구","사","특성화고등학교"],["동양고등학교",8,"강서구","사","일반고등학교"],["서울방송고등학교",8,"성동구","공","특성화고등학교"],["상일미디어고등학교",8,"강동구","사","특성화고등학교"],["미래산업과학고등학교",8,"노원구","사","특성화고등학교"],["서울공업고등학교",8,"동작구","공","특성화고등학교"],["서울디지텍고등학교",8,"용산구","사","특성화고등학교"],["서울도시과학기술고등학교",8,"성북구","공","특수목적고등학교"],["성동공업고등학교",8,"중구","공","특성화고등학교"],["서울인공지능고등학교",8,"송파구","공","특성화고등학교"],["수도전기공업고등학교",8,"강남구","사","특수목적고등학교"],["신진과학기술고등학교",8,"은평구","사","특성화고등학교"],["영등포공업고등학교",8,"강서구","사","특성화고등학교"],["용산철도고등학교",8,"용산구","공","특성화고등학교"],["유한공업고등학교",8,"구로구","사","특성화고등학교"],["서울아이티고등학교",8,"노원구","사","특성화고등학교"],["인덕과학기술고등학교",8,"노원구","사","특성화고등학교"],["한양공업고등학교",8,"중구","사","특성화고등학교"],["서울반도체고등학교",8,"동대문구","공","특성화고등학교"],["경기상업고등학교",8,"종로구","공","특성화고등학교"],["서울의료보건고등학교",8,"중구","사","특성화고등학교"],["서울동구고등학교",8,"성북구","사","특성화고등학교"],["서울컨벤션고등학교",8,"강동구","사","특성화고등학교"],["서울여자상업고등학교",8,"관악구","사","특성화고등학교"],["선일빅데이터고등학교",8,"은평구","사","특성화고등학교"],["성덕고등학교",8,"강동구","사","일반고등학교"],["서울신정고등학교",8,"강서구","사","특성화고등학교"],["영락의료과학고등학교",8,"관악구","사","특성화고등학교"],["일신여자상업고등학교",8,"송파구","사","특성화고등학교"],["서울정화고등학교",8,"동대문구","사","특성화고등학교"],["해성국제컨벤션고등학교",8,"동대문구","사","특성화고등학교"],["홍익디자인고등학교",8,"마포구","사","특성화고등학교"],["선정국제관광고등학교",8,"은평구","사","특성화고등학교"],["성동글로벌경영고등학교",8,"중구","공","특성화고등학교"],["세그루패션디자인고등학교",8,"도봉구","사","특성화고등학교"],["영신간호비즈니스고등학교",8,"노원구","사","특성화고등학교"],["예일디자인고등학교",8,"은평구","사","특성화고등학교"],["덕원예술고등학교",8,"강서구","사","특수목적고등학교"],["서울예술고등학교",8,"종로구","사","특수목적고등학교"],["선화예술고등학교",8,"광진구","사","특수목적고등학교"],["경복비즈니스고등학교",8,"강서구","사","특성화고등학교"],["고명외식고등학교",8,"성북구","사","특성화고등학교"],["서울관광고등학교",8,"관악구","사","특성화고등학교"],["광신방송예술고등학교",8,"관악구","사","특성화고등학교"],["예림디자인고등학교",8,"구로구","사","특성화고등학교"],["대경생활과학고등학교",8,"중구","사","특성화고등학교"],["대동세무고등학교",8,"종로구","사","특성화고등학교"],["대일관광고등학교",8,"양천구","사","특성화고등학교"],["덕수고등학교",8,"송파구","공","일반고등학교"],["서울문화고등학교",8,"도봉구","공","특성화고등학교"],["동명생활경영고등학교",8,"은평구","사","특성화고등학교"],["미림마이스터고등학교",8,"관악구","사","특수목적고등학교"],["보인고등학교",8,"송파구","사","자율고등학교"],["서서울생활과학고등학교",8,"구로구","사","특성화고등학교"],["서울금융고등학교",8,"양천구","공","특성화고등학교"],["서일문화예술고등학교",8,"종로구","사","특성화고등학교"],["성암국제무역고등학교",8,"강북구","사","특성화고등학교"],["서울백영고등학교",8,"강서구","사","특성화고등학교"],["송곡관광고등학교",8,"중랑구","사","특성화고등학교"],["염광메디텍고등학교",8,"노원구","사","특성화고등학교"],["이화여자대학교병설미디어고등학교",8,"중랑구","사","특성화고등학교"],["서울동산고등학교",8,"노원구","사","특성화고등학교"],["서울홍신고등학교",8,"강서구","사","특성화고등학교"],["리라아트고등학교",8,"중구","사","특성화고등학교"],["서울웹툰애니메이션고등학교",8,"서초구","공","특성화고등학교"],["선린인터넷고등학교",8,"용산구","공","특성화고등학교"],["세명컴퓨터고등학교",8,"은평구","사","특성화고등학교"],["한세사이버보안고등학교",8,"마포구","사","특성화고등학교"],["누원고등학교",8,"도봉구","공","일반고등학교"],["방산고등학교",8,"송파구","공","일반고등학교"],["신현고등학교",8,"중랑구","공","일반고등학교"],["자운고등학교",8,"도봉구","공","일반고등학교"],["등촌고등학교",8,"강서구","공","일반고등학교"],["경일고등학교",8,"성동구","공","일반고등학교"],["선유고등학교",8,"영등포구","공","일반고등학교"],["월계고등학교",8,"노원구","공","일반고등학교"],["불암고등학교",8,"노원구","공","일반고등학교"],["세현고등학교",8,"강서구","공","일반고등학교"],["신서고등학교",8,"양천구","공","일반고등학교"],["효문고등학교",8,"도봉구","공","일반고등학교"],["원묵고등학교",8,"중랑구","공","일반고등학교"],["상암고등학교",8,"마포구","공","일반고등학교"],["서울국제고등학교",8,"종로구","공","특수목적고등학교"],["문정고등학교",8,"송파구","공","일반고등학교"],["세종과학고등학교",8,"구로구","공","특수목적고등학교"],["구현고등학교",8,"구로구","공","일반고등학교"],["삼각산고등학교",8,"강북구","공","일반고등학교"],["신도림고등학교",8,"구로구","공","일반고등학교"],["강일고등학교",8,"강동구","공","일반고등학교"],["성수고등학교",8,"성동구","공","일반고등학교"],["문현고등학교",8,"송파구","공","일반고등학교"],["진관고등학교",8,"은평구","공","일반고등학교"],["구암고등학교",8,"관악구","공","일반고등학교"],["신도고등학교",8,"은평구","공","일반고등학교"],["해성여자고등학교",8,"동대문구","사","일반고등학교"],["솔샘고등학교",8,"강북구","공","일반고등학교"],["선사고등학교",8,"강동구","공","일반고등학교"],["잠일고등학교",8,"송파구","공","일반고등학교"],["휘봉고등학교",8,"동대문구","공","일반고등학교"],["수명고등학교",8,"강서구","공","일반고등학교"],["은평고등학교",8,"은평구","공","일반고등학교"],["서울공연예술고등학교",8,"구로구","사","특수목적고등학교"],["가재울고등학교",8,"서대문구","공","일반고등학교"],["하나고등학교",8,"은평구","사","자율고등학교"],["금호고등학교",8,"성동구","공","일반고등학교"],["도선고등학교",8,"성동구","공","일반고등학교"],["부산대학교사범대학부설고등학교",7,"금정구","국","일반고등학교"],["부산기계공업고등학교",7,"해운대구","국","특수목적고등학교"],["부산해사고등학교",7,"영도구","국","특수목적고등학교"],["가야고등학교",7,"부산진구","사","일반고등학교"],["개금고등학교",7,"부산진구","공","일반고등학교"],["건국고등학교",7,"사하구","사","일반고등학교"],["경남고등학교",7,"서구","공","자율고등학교"],["경남공업고등학교",7,"부산진구","공","특성화고등학교"],["부경고등학교",7,"서구","공","일반고등학교"],["경남여자고등학교",7,"동구","공","일반고등학교"],["경성전자고등학교",7,"서구","사","특성화고등학교"],["경원고등학교",7,"부산진구","사","일반고등학교"],["경일고등학교",7,"강서구","사","일반고등학교"],["경혜여자고등학교",7,"북구","사","일반고등학교"],["계성여자고등학교",7,"연제구","사","특성화고등학교"],["광명고등학교",7,"영도구","사","일반고등학교"],["구덕고등학교",7,"사상구","공","일반고등학교"],["금성고등학교",7,"동구","사","일반고등학교"],["금정고등학교",7,"동래구","공","일반고등학교"],["금정여자고등학교",7,"금정구","공","일반고등학교"],["금샘고등학교",7,"금정구","사","특성화고등학교"],["기장고등학교",7,"기장군","공","일반고등학교"],["낙동고등학교",7,"북구","공","일반고등학교"],["남산고등학교",7,"금정구","공","일반고등학교"],["남성여자고등학교",7,"중구","사","일반고등학교"],["내성고등학교",7,"금정구","공","일반고등학교"],["다대고등학교",7,"사하구","공","일반고등학교"],["대광고등학교",7,"사하구","사","특성화고등학교"],["대덕여자고등학교",7,"사상구","사","일반고등학교"],["대동고등학교",7,"사하구","사","일반고등학교"],["대명여자고등학교",7,"동래구","사","일반고등학교"],["대양고등학교",7,"남구","사","특성화고등학교"],["대연고등학교",7,"남구","사","일반고등학교"],["세연고등학교",7,"남구","사","특성화고등학교"],["대진전자통신고등학교",7,"금정구","사","특성화고등학교"],["부산마케팅고등학교",7,"부산진구","사","특성화고등학교"],["덕문고등학교",7,"강서구","공","일반고등학교"],["덕문여자고등학교",7,"수영구","사","일반고등학교"],["데레사여자고등학교",7,"동구","사","일반고등학교"],["동래고등학교",7,"동래구","공","일반고등학교"],["동래여자고등학교",7,"금정구","사","일반고등학교"],["동래원예고등학교",7,"동래구","공","특성화고등학교"],["삼정고등학교",7,"북구","사","일반고등학교"],["동명공업고등학교",7,"남구","사","특성화고등학교"],["동아고등학교",7,"사하구","사","일반고등학교"],["동아공업고등학교",7,"사하구","사","특성화고등학교"],["동의고등학교",7,"부산진구","사","특성화고등학교"],["동인고등학교",7,"동래구","사","일반고등학교"],["동주여자고등학교",7,"중구","사","일반고등학교"],["동천고등학교",7,"남구","사","일반고등학교"],["세정고등학교",7,"부산진구","사","특성화고등학교"],["만덕고등학교",7,"북구","공","일반고등학교"],["문현여자고등학교",7,"남구","공","일반고등학교"],["배정고등학교",7,"남구","사","일반고등학교"],["부산강서고등학교",7,"강서구","공","일반고등학교"],["부산고등학교",7,"동구","공","일반고등학교"],["부산공업고등학교",7,"남구","공","특성화고등학교"],["부산국제고등학교",7,"부산진구","공","특수목적고등학교"],["부산남고등학교",7,"강서구","공","일반고등학교"],["부산남일고등학교",7,"수영구","공","일반고등학교"],["부산대저고등학교",7,"강서구","사","일반고등학교"],["부산동고등학교",7,"부산진구","사","일반고등학교"],["부산동성고등학교",7,"부산진구","사","일반고등학교"],["부산동여자고등학교",7,"수영구","공","일반고등학교"],["한국조형예술고등학교",7,"남구","공","특수목적고등학교"],["부산디지털고등학교",7,"중구","사","특성화고등학교"],["부산소프트웨어마이스터고등학교",7,"강서구","공","특수목적고등학교"],["개성고등학교",7,"부산진구","공","일반고등학교"],["부산서여자고등학교",7,"서구","공","일반고등학교"],["부산여자고등학교",7,"사하구","공","일반고등학교"],["부산여자상업고등학교",7,"수영구","사","특성화고등학교"],["부산영상예술고등학교",7,"영도구","공","특성화고등학교"],["부산예술고등학교",7,"금정구","사","특수목적고등학교"],["부산외국어고등학교",7,"연제구","사","특수목적고등학교"],["부산자동차마이스터고등학교",7,"사하구","공","특수목적고등학교"],["부산장안고등학교",7,"기장군","공","일반고등학교"],["부산전자공업고등학교",7,"동래구","공","특성화고등학교"],["부산정보고등학교",7,"부산진구","사","특성화고등학교"],["배정미래고등학교",7,"남구","사","특성화고등학교"],["부산정보관광고등학교",7,"금정구","사","특성화고등학교"],["부산관광고등학교",7,"서구","사","특성화고등학교"],["부산백양고등학교",7,"북구","공","일반고등학교"],["부산중앙고등학교",7,"남구","공","일반고등학교"],["부산중앙여자고등학교",7,"동래구","공","일반고등학교"],["부산진고등학교",7,"부산진구","공","일반고등학교"],["부산진여자고등학교",7,"부산진구","사","일반고등학교"],["부산진여자상업고등학교",7,"부산진구","공","특성화고등학교"],["부산체육고등학교",7,"영도구","공","특수목적고등학교"],["부산컴퓨터과학고등학교",7,"동구","사","특성화고등학교"],["한얼고등학교",7,"남구","사","일반고등학교"],["부일고등학교",7,"사하구","사","자율고등학교"],["부일전자디자인고등학교",7,"사하구","사","특성화고등학교"],["부흥고등학교",7,"해운대구","공","일반고등학교"],["브니엘고등학교",7,"금정구","사","일반고등학교"],["브니엘여자고등학교",7,"금정구","사","일반고등학교"],["브니엘예술고등학교",7,"금정구","사","특수목적고등학교"],["사직고등학교",7,"동래구","공","일반고등학교"],["사직여자고등학교",7,"동래구","사","일반고등학교"],["삼성여자고등학교",7,"사하구","사","일반고등학교"],["부산항공고등학교",7,"사상구","공","특성화고등학교"],["성도고등학교",7,"북구","사","일반고등학교"],["성모여자고등학교",7,"부산진구","사","일반고등학교"],["영산고등학교",7,"해운대구","사","특성화고등학교"],["성일여자고등학교",7,"사하구","사","일반고등학교"],["성지고등학교",7,"남구","사","일반고등학교"],["신도고등학교",7,"해운대구","공","일반고등학교"],["양운고등학교",7,"해운대구","공","일반고등학교"],["양정고등학교",7,"부산진구","사","일반고등학교"],["영도여자고등학교",7,"영도구","공","일반고등학교"],["예문여자고등학교",7,"남구","사","일반고등학교"],["용인고등학교",7,"동래구","사","일반고등학교"],["이사벨고등학교",7,"연제구","사","일반고등학교"],["장안제일고등학교",7,"기장군","사","일반고등학교"],["주례여자고등학교",7,"사상구","공","일반고등학교"],["지산고등학교",7,"금정구","사","일반고등학교"],["충렬고등학교",7,"동래구","공","일반고등학교"],["학산여자고등학교",7,"동래구","사","일반고등학교"],["부산보건고등학교",7,"영도구","사","특성화고등학교"],["부산문화여자고등학교",7,"해운대구","사","특성화고등학교"],["해동고등학교",7,"사하구","사","일반고등학교"],["해운대고등학교",7,"해운대구","사","자율고등학교"],["부산해군과학기술고등학교",7,"해운대구","공","특성화고등학교"],["해운대관광고등학교",7,"해운대구","사","특성화고등학교"],["해운대여자고등학교",7,"해운대구","사","일반고등학교"],["혜광고등학교",7,"중구","사","일반고등학교"],["혜화여자고등학교",7,"동래구","사","일반고등학교"],["화명고등학교",7,"북구","공","일반고등학교"],["금곡고등학교",7,"북구","공","일반고등학교"],["부산과학고등학교",7,"금정구","공","특수목적고등학교"],["분포고등학교",7,"남구","공","일반고등학교"],["반여고등학교",7,"해운대구","공","일반고등학교"],["부산센텀여자고등학교",7,"해운대구","사","일반고등학교"],["연제고등학교",7,"연제구","공","일반고등학교"],["해강고등학교",7,"해운대구","공","일반고등학교"],["금명여자고등학교",7,"북구","공","일반고등학교"],["센텀고등학교",7,"해운대구","공","일반고등학교"],["사상고등학교",7,"사상구","공","일반고등학교"],["명호고등학교",7,"강서구","공","일반고등학교"],["신정고등학교",7,"기장군","공","일반고등학교"],["정관고등학교",7,"기장군","공","일반고등학교"],["부산일과학고등학교",7,"사하구","공","특수목적고등학교"],["경북대학교사범대학부설고등학교",5,"중구","국","일반고등학교"],["강북고등학교",5,"북구","사","일반고등학교"],["경덕여자고등학교",5,"서구","공","일반고등학교"],["경명여자고등학교",5,"북구","사","일반고등학교"],["경북고등학교",5,"수성구","공","일반고등학교"],["경북공업고등학교",5,"중구","사","특성화고등학교"],["경북기계공업고등학교",5,"달서구","공","특수목적고등학교"],["경북여자고등학교",5,"중구","공","자율고등학교"],["경북여자상업고등학교",5,"남구","사","특성화고등학교"],["경북예술고등학교",5,"남구","사","특수목적고등학교"],["경상고등학교",5,"북구","사","일반고등학교"],["경상공업고등학교",5,"남구","사","특성화고등학교"],["경상여자고등학교",5,"북구","사","일반고등학교"],["경신고등학교",5,"수성구","사","일반고등학교"],["경원고등학교",5,"달서구","사","일반고등학교"],["경일여자고등학교",5,"남구","사","일반고등학교"],["경화여자고등학교",5,"달서구","사","일반고등학교"],["계성고등학교",5,"서구","사","자율고등학교"],["대구보건고등학교",5,"달서구","사","특성화고등학교"],["구암고등학교",5,"북구","공","일반고등학교"],["능인고등학교",5,"수성구","사","일반고등학교"],["다사고등학교",5,"달성군","공","일반고등학교"],["달서고등학교",5,"달성군","사","일반고등학교"],["달성고등학교",5,"서구","공","일반고등학교"],["대구소프트웨어마이스터고등학교",5,"달성군","공","특수목적고등학교"],["대건고등학교",5,"달서구","사","일반고등학교"],["대구고등학교",5,"남구","공","일반고등학교"],["대구공업고등학교",5,"동구","공","특성화고등학교"],["대구과학고등학교",5,"수성구","공","특수목적고등학교"],["대구남산고등학교",5,"수성구","사","일반고등학교"],["대구하이텍고등학교",5,"달서구","공","특성화고등학교"],["대구일마이스터고등학교",5,"동구","공","특수목적고등학교"],["대구동부고등학교",5,"동구","사","일반고등학교"],["대구상원고등학교",5,"달서구","공","일반고등학교"],["대구서부고등학교",5,"서구","공","일반고등학교"],["대구과학기술고등학교",5,"서구","공","특성화고등학교"],["대구여자상업고등학교",5,"남구","사","특성화고등학교"],["대구여자고등학교",5,"수성구","공","일반고등학교"],["대구외국어고등학교",5,"달서구","공","특수목적고등학교"],["대구농업마이스터고등학교",5,"수성구","공","특수목적고등학교"],["대구반도체마이스터고등학교",5,"달서구","공","특성화고등학교"],["대구관광고등학교",5,"동구","사","특성화고등학교"],["대구제일고등학교",5,"서구","사","일반고등학교"],["대구제일여자상업고등학교",5,"달서구","공","특성화고등학교"],["대구혜화여자고등학교",5,"수성구","사","일반고등학교"],["대륜고등학교",5,"수성구","사","일반고등학교"],["대구스마트고등학교",5,"북구","사","특성화고등학교"],["덕원고등학교",5,"수성구","사","일반고등학교"],["대원고등학교",5,"달성군","사","일반고등학교"],["상서고등학교",5,"달서구","사","특성화고등학교"],["상인고등학교",5,"달서구","공","일반고등학교"],["성광고등학교",5,"북구","사","일반고등학교"],["성서고등학교",5,"달서구","공","일반고등학교"],["성화여자고등학교",5,"북구","사","일반고등학교"],["송현여자고등학교",5,"달서구","사","일반고등학교"],["시지고등학교",5,"수성구","공","일반고등학교"],["신명고등학교",5,"중구","사","일반고등학교"],["심인고등학교",5,"달성군","사","일반고등학교"],["영남고등학교",5,"달서구","사","일반고등학교"],["영남공업고등학교",5,"수성구","사","특성화고등학교"],["영송여자고등학교",5,"북구","사","일반고등학교"],["영신고등학교",5,"동구","사","일반고등학교"],["영진고등학교",5,"북구","사","일반고등학교"],["오성고등학교",5,"수성구","사","일반고등학교"],["와룡고등학교",5,"달서구","공","일반고등학교"],["운암고등학교",5,"북구","공","일반고등학교"],["원화여자고등학교",5,"달서구","사","일반고등학교"],["정동고등학교",5,"동구","사","일반고등학교"],["정화여자고등학교",5,"수성구","사","일반고등학교"],["조일고등학교",5,"동구","사","특성화고등학교"],["대구중앙고등학교",5,"수성구","사","일반고등학교"],["청구고등학교",5,"동구","사","일반고등학교"],["포산고등학교",5,"달성군","공","자율고등학교"],["현풍고등학교",5,"달성군","사","일반고등학교"],["협성고등학교",5,"남구","사","일반고등학교"],["화원고등학교",5,"달성군","공","일반고등학교"],["효성여자고등학교",5,"달서구","사","일반고등학교"],["대구체육고등학교",5,"북구","공","특수목적고등학교"],["대곡고등학교",5,"달서구","공","일반고등학교"],["성산고등학교",5,"달서구","공","일반고등학교"],["학남고등학교",5,"북구","공","일반고등학교"],["도원고등학교",5,"달서구","공","일반고등학교"],["강동고등학교",5,"동구","공","자율고등학교"],["동문고등학교",5,"수성구","공","일반고등학교"],["달구벌고등학교",5,"동구","사","특성화고등학교"],["수성고등학교",5,"수성구","공","일반고등학교"],["대진고등학교",5,"달서구","공","일반고등학교"],["매천고등학교",5,"북구","공","일반고등학교"],["함지고등학교",5,"북구","공","일반고등학교"],["호산고등학교",5,"달서구","공","일반고등학교"],["칠성고등학교",5,"북구","공","일반고등학교"],["대구일과학고등학교",5,"동구","공","특수목적고등학교"],["비슬고등학교",5,"달성군","공","일반고등학교"],["대구국제고등학교",5,"북구","공","특수목적고등학교"],["대구공업고등학교 테크노폴리스 캠퍼스",5,"달성군","공","특성화고등학교"],["군위고등학교",5,"군위군","공","일반고등학교"],["효령고등학교",5,"군위군","공","특성화고등학교"],["인천해사고등학교",11,"중구","국","특수목적고등학교"],["가정고등학교",11,"서구","공","일반고등학교"],["강남영상미디어고등학교",11,"강화군","공","특성화고등학교"],["강화고등학교",11,"강화군","공","자율고등학교"],["강화여자고등학교",11,"강화군","공","일반고등학교"],["검단고등학교",11,"서구","공","일반고등학교"],["인천보건고등학교",11,"서구","사","특성화고등학교"],["계산고등학교",11,"계양구","공","일반고등학교"],["계산공업고등학교",11,"계양구","공","특성화고등학교"],["계산여자고등학교",11,"계양구","공","일반고등학교"],["계양고등학교",11,"계양구","공","일반고등학교"],["광성고등학교",11,"중구","사","일반고등학교"],["교동고등학교",11,"강화군","공","일반고등학교"],["산마을고등학교",11,"강화군","사","특성화고등학교"],["대인고등학교",11,"서구","사","일반고등학교"],["대청고등학교",11,"옹진군","공","일반고등학교"],["재능고등학교",11,"동구","사","특성화고등학교"],["덕신고등학교",11,"강화군","사","일반고등학교"],["덕적고등학교",11,"옹진군","공","일반고등학교"],["동산고등학교",11,"동구","사","일반고등학교"],["동인천고등학교",11,"남동구","공","일반고등학교"],["명신여자고등학교",11,"부평구","사","일반고등학교"],["인천금융고등학교",11,"남동구","사","특성화고등학교"],["문일여자고등학교",11,"남동구","사","일반고등학교"],["문학정보고등학교",11,"미추홀구","공","특성화고등학교"],["백령고등학교",11,"옹진군","공","일반고등학교"],["백석고등학교",11,"서구","공","일반고등학교"],["부개여자고등학교",11,"부평구","공","일반고등학교"],["부광고등학교",11,"부평구","공","일반고등학교"],["부광여자고등학교",11,"부평구","공","일반고등학교"],["부평고등학교",11,"부평구","공","자율고등학교"],["부평공업고등학교",11,"부평구","공","특성화고등학교"],["문곡고등학교",11,"서구","사","특성화고등학교"],["부평여자고등학교",11,"부평구","공","일반고등학교"],["인천미래생활고등학교",11,"부평구","공","특성화고등학교"],["한국글로벌셰프고등학교",11,"강화군","사","특성화고등학교"],["삼산고등학교",11,"부평구","공","자율고등학교"],["서도고등학교",11,"강화군","공","일반고등학교"],["서운고등학교",11,"계양구","공","일반고등학교"],["서인천고등학교",11,"서구","사","일반고등학교"],["석정여자고등학교",11,"남동구","공","일반고등학교"],["선인고등학교",11,"미추홀구","공","자율고등학교"],["인천비즈니스고등학교",11,"미추홀구","공","특성화고등학교"],["세일고등학교",11,"부평구","사","일반고등학교"],["송도고등학교",11,"연수구","사","일반고등학교"],["숭덕여자고등학교",11,"남동구","사","일반고등학교"],["신명여자고등학교",11,"남동구","사","일반고등학교"],["연수고등학교",11,"연수구","공","일반고등학교"],["연수여자고등학교",11,"연수구","공","일반고등학교"],["연평고등학교",11,"옹진군","공","일반고등학교"],["인천외국어고등학교",11,"부평구","사","특수목적고등학교"],["영종국제물류고등학교",11,"중구","공","특성화고등학교"],["영화국제관광고등학교",11,"동구","사","특성화고등학교"],["인천대중예술고등학교",11,"미추홀구","공","특성화고등학교"],["인천소방고등학교",11,"미추홀구","공","특성화고등학교"],["인명여자고등학교",11,"미추홀구","사","일반고등학교"],["인성여자고등학교",11,"중구","사","일반고등학교"],["인일여자고등학교",11,"중구","공","일반고등학교"],["인제고등학교",11,"남동구","사","일반고등학교"],["인천고등학교",11,"미추홀구","공","일반고등학교"],["인천공항고등학교",11,"중구","공","일반고등학교"],["인천과학고등학교",11,"중구","공","특수목적고등학교"],["인천기계공업고등학교",11,"미추홀구","공","특성화고등학교"],["인천남고등학교",11,"남동구","공","일반고등학교"],["인천대건고등학교",11,"연수구","사","일반고등학교"],["인천디자인고등학교",11,"서구","공","특성화고등학교"],["박문여자고등학교",11,"연수구","사","일반고등학교"],["인천생활과학고등학교",11,"연수구","공","특성화고등학교"],["인천여자고등학교",11,"연수구","공","일반고등학교"],["인천뷰티예술고등학교",11,"연수구","공","특성화고등학교"],["인천여자상업고등학교",11,"중구","공","특성화고등학교"],["인천예술고등학교",11,"남동구","공","특수목적고등학교"],["인천전자마이스터고등학교",11,"미추홀구","공","특수목적고등학교"],["인천반도체고등학교",11,"중구","공","특성화고등학교"],["인천중앙여자고등학교",11,"중구","사","특성화고등학교"],["인천체육고등학교",11,"서구","공","특수목적고등학교"],["인천해양과학고등학교",11,"연수구","공","특성화고등학교"],["인평자동차고등학교",11,"부평구","사","특성화고등학교"],["인하대학교사범대학부속고등학교",11,"미추홀구","사","일반고등학교"],["인항고등학교",11,"미추홀구","사","일반고등학교"],["인화여자고등학교",11,"미추홀구","공","일반고등학교"],["정석항공과학고등학교",11,"미추홀구","사","특성화고등학교"],["제물포고등학교",11,"중구","공","일반고등학교"],["제일고등학교",11,"부평구","사","일반고등학교"],["인천바이오과학고등학교",11,"연수구","공","특성화고등학교"],["학익고등학교",11,"미추홀구","공","일반고등학교"],["학익여자고등학교",11,"미추홀구","공","일반고등학교"],["한국주얼리고등학교",11,"서구","사","특성화고등학교"],["인천효성고등학교",11,"계양구","공","일반고등학교"],["가림고등학교",11,"서구","공","일반고등학교"],["작전여자고등학교",11,"계양구","공","일반고등학교"],["안남고등학교",11,"계양구","공","일반고등학교"],["작전고등학교",11,"계양구","공","일반고등학교"],["옥련여자고등학교",11,"연수구","공","일반고등학교"],["가좌고등학교",11,"서구","공","일반고등학교"],["인천예일고등학교",11,"계양구","공","일반고등학교"],["부개고등학교",11,"부평구","공","일반고등학교"],["인천산곡고등학교",11,"부평구","공","일반고등학교"],["인천부흥고등학교",11,"부평구","공","일반고등학교"],["도림고등학교",11,"남동구","공","일반고등학교"],["인천원당고등학교",11,"서구","공","일반고등학교"],["신송고등학교",11,"연수구","공","일반고등학교"],["인천영선고등학교",11,"부평구","공","일반고등학교"],["인천마전고등학교",11,"서구","공","일반고등학교"],["인천논현고등학교",11,"남동구","공","일반고등학교"],["인천진산과학고등학교",11,"부평구","공","특수목적고등학교"],["인천국제고등학교",11,"중구","공","특수목적고등학교"],["인천만수고등학교",11,"남동구","공","일반고등학교"],["인천신현고등학교",11,"서구","공","일반고등학교"],["인천남동고등학교",11,"남동구","공","일반고등학교"],["미추홀외국어고등학교",11,"남동구","공","특수목적고등학교"],["인천상정고등학교",11,"부평구","공","자율고등학교"],["인천세원고등학교",11,"계양구","공","일반고등학교"],["인천고잔고등학교",11,"남동구","공","일반고등학교"],["인천해송고등학교",11,"연수구","공","일반고등학교"],["인천송천고등학교",11,"남동구","공","일반고등학교"],["인천청라고등학교",11,"서구","공","일반고등학교"],["인천초은고등학교",11,"서구","공","일반고등학교"],["인천연송고등학교",11,"연수구","공","일반고등학교"],["인천영종고등학교",11,"중구","공","일반고등학교"],["인천해원고등학교",11,"서구","공","일반고등학교"],["인천하늘고등학교",11,"중구","사","자율고등학교"],["인천영흥고등학교",11,"옹진군","공","일반고등학교"],["인천과학예술영재학교",11,"연수구","공","특수목적고등학교"],["인천포스코고등학교",11,"연수구","사","자율고등학교"],["인천중산고등학교",11,"중구","공","일반고등학교"],["인천아라고등학교",11,"서구","공","일반고등학교"],["인천이음고등학교",11,"서구","공","일반고등학교"],["전남대학교사범대학부설고등학교",4,"북구","국","일반고등학교"],["고려고등학교",4,"북구","사","일반고등학교"],["광덕고등학교",4,"서구","사","일반고등학교"],["광일고등학교",4,"광산구","사","일반고등학교"],["광주경신여자고등학교",4,"북구","사","일반고등학교"],["광주고등학교",4,"동구","공","자율고등학교"],["광주과학고등학교",4,"북구","공","특수목적고등학교"],["광주공업고등학교",4,"북구","공","특성화고등학교"],["광주대동고등학교",4,"서구","사","일반고등학교"],["광주동성고등학교",4,"남구","사","일반고등학교"],["광주동신고등학교",4,"북구","사","일반고등학교"],["광주동신여자고등학교",4,"북구","사","일반고등학교"],["광주서석고등학교",4,"서구","사","일반고등학교"],["광주석산고등학교",4,"남구","사","일반고등학교"],["광주수피아여자고등학교",4,"남구","사","일반고등학교"],["광주숭일고등학교",4,"북구","사","일반고등학교"],["광주여자고등학교",4,"서구","공","일반고등학교"],["광주여자상업고등학교",4,"남구","사","특성화고등학교"],["광주예술고등학교",4,"북구","공","특수목적고등학교"],["광주인성고등학교",4,"남구","사","일반고등학교"],["광주자연과학고등학교",4,"북구","공","특성화고등학교"],["광주소프트웨어마이스터고등학교",4,"광산구","공","특수목적고등학교"],["광주전자공업고등학교",4,"광산구","공","특성화고등학교"],["광주자동화설비마이스터고등학교",4,"광산구","공","특수목적고등학교"],["광주제일고등학교",4,"북구","공","자율고등학교"],["금호중앙여자고등학교",4,"북구","사","일반고등학교"],["광주진흥고등학교",4,"광산구","사","일반고등학교"],["광주체육고등학교",4,"북구","공","특수목적고등학교"],["국제고등학교",4,"북구","사","일반고등학교"],["금파공업고등학교",4,"북구","사","특성화고등학교"],["금호고등학교",4,"북구","사","일반고등학교"],["대광여자고등학교",4,"남구","사","일반고등학교"],["대성여자고등학교",4,"남구","사","일반고등학교"],["동명고등학교",4,"광산구","사","특성화고등학교"],["동아여자고등학교",4,"남구","사","일반고등학교"],["동일미래과학고등학교",4,"남구","사","특성화고등학교"],["문성고등학교",4,"남구","사","일반고등학교"],["보문고등학교",4,"광산구","사","일반고등학교"],["살레시오고등학교",4,"북구","사","일반고등학교"],["살레시오여자고등학교",4,"동구","사","일반고등학교"],["상무고등학교",4,"서구","공","일반고등학교"],["서강고등학교",4,"북구","사","일반고등학교"],["서진여자고등학교",4,"남구","사","일반고등학교"],["설월여자고등학교",4,"남구","사","일반고등학교"],["명진고등학교",4,"광산구","사","일반고등학교"],["송원고등학교",4,"남구","사","일반고등학교"],["송원여자고등학교",4,"남구","사","일반고등학교"],["숭덕고등학교",4,"광산구","사","일반고등학교"],["숭의과학기술고등학교",4,"남구","사","특성화고등학교"],["전남고등학교",4,"서구","공","일반고등학교"],["전남공업고등학교",4,"광산구","공","특성화고등학교"],["전남여자고등학교",4,"동구","공","일반고등학교"],["전남여자상업고등학교",4,"북구","사","특성화고등학교"],["정광고등학교",4,"광산구","사","일반고등학교"],["조선대학교부속고등학교",4,"동구","사","일반고등학교"],["조선대학교여자고등학교",4,"동구","사","일반고등학교"],["호남삼육고등학교",4,"남구","사","일반고등학교"],["송원미래인재고등학교",4,"남구","사","특성화고등학교"],["운남고등학교",4,"광산구","공","일반고등학교"],["풍암고등학교",4,"서구","공","일반고등학교"],["첨단고등학교",4,"광산구","공","일반고등학교"],["상일여자고등학교",4,"서구","공","자율고등학교"],["장덕고등학교",4,"광산구","공","일반고등학교"],["수완고등학교",4,"광산구","공","일반고등학교"],["문정여자고등학교",4,"북구","공","일반고등학교"],["성덕고등학교",4,"광산구","공","일반고등학교"],["빛고을고등학교",4,"북구","공","일반고등학교"],["비아고등학교",4,"광산구","사","일반고등학교"],["대전생활과학고등학교",6,"대덕구","사","특성화고등학교"],["계룡디지텍고등학교",6,"동구","사","특성화고등학교"],["남대전고등학교",6,"중구","사","일반고등학교"],["대덕고등학교",6,"유성구","공","일반고등학교"],["대덕소프트웨어마이스터고등학교",6,"유성구","공","특수목적고등학교"],["대전대성고등학교",6,"중구","사","자율고등학교"],["대전대성여자고등학교",6,"동구","사","특성화고등학교"],["대전고등학교",6,"중구","공","자율고등학교"],["대전도시과학고등학교",6,"유성구","공","특성화고등학교"],["대전과학고등학교",6,"유성구","공","특수목적고등학교"],["대전관저고등학교",6,"서구","공","일반고등학교"],["대전노은고등학교",6,"유성구","공","자율고등학교"],["대전대신고등학교",6,"서구","사","자율고등학교"],["대전동산고등학교",6,"중구","사","일반고등학교"],["동아마이스터고등학교",6,"동구","사","특수목적고등학교"],["대전둔산여자고등학교",6,"서구","공","일반고등학교"],["대전둔원고등학교",6,"서구","공","일반고등학교"],["대전만년고등학교",6,"서구","공","일반고등학교"],["대전제일고등학교",6,"서구","사","일반고등학교"],["대전성모여자고등학교",6,"중구","사","일반고등학교"],["대전송촌고등학교",6,"대덕구","공","자율고등학교"],["대전신일여자고등학교",6,"중구","사","특성화고등학교"],["대전여자고등학교",6,"동구","공","자율고등학교"],["대전여자상업고등학교",6,"중구","사","특성화고등학교"],["대전국제통상고등학교",6,"중구","공","특성화고등학교"],["대전예술고등학교",6,"유성구","사","일반고등학교"],["대전외국어고등학교",6,"서구","공","특수목적고등학교"],["대전전자디자인고등학교",6,"유성구","공","특성화고등학교"],["대전중앙고등학교",6,"중구","사","일반고등학교"],["대전체육고등학교",6,"유성구","공","특수목적고등학교"],["대전한빛고등학교",6,"중구","사","일반고등학교"],["동대전고등학교",6,"대덕구","공","일반고등학교"],["동방고등학교",6,"서구","사","일반고등학교"],["대전동신과학고등학교",6,"동구","공","특수목적고등학교"],["명석고등학교",6,"동구","사","일반고등학교"],["보문고등학교",6,"동구","사","일반고등학교"],["대전이문고등학교",6,"대덕구","사","일반고등학교"],["서대전고등학교",6,"서구","사","일반고등학교"],["서대전여자고등학교",6,"서구","사","일반고등학교"],["서일고등학교",6,"서구","사","일반고등학교"],["서일여자고등학교",6,"서구","사","일반고등학교"],["신탄진고등학교",6,"대덕구","공","일반고등학교"],["우송고등학교",6,"동구","사","일반고등학교"],["유성고등학교",6,"유성구","공","일반고등학교"],["유성생명과학고등학교",6,"유성구","공","특성화고등학교"],["유성여자고등학교",6,"유성구","사","일반고등학교"],["중일고등학교",6,"유성구","사","일반고등학교"],["청란여자고등학교",6,"중구","사","일반고등학교"],["충남고등학교",6,"서구","공","자율고등학교"],["충남기계공업고등학교",6,"중구","공","특성화고등학교"],["충남여자고등학교",6,"중구","공","일반고등학교"],["한밭고등학교",6,"서구","공","일반고등학교"],["호수돈여자고등학교",6,"중구","사","일반고등학교"],["대전반석고등학교",6,"유성구","공","일반고등학교"],["대전구봉고등학교",6,"서구","공","일반고등학교"],["대전전민고등학교",6,"유성구","공","일반고등학교"],["대전괴정고등학교",6,"서구","공","일반고등학교"],["대전지족고등학교",6,"유성구","공","일반고등학교"],["대전용산고등학교",6,"유성구","공","일반고등학교"],["대전가오고등학교",6,"동구","공","일반고등학교"],["대전복수고등학교",6,"서구","공","일반고등학교"],["대전도안고등학교",6,"유성구","공","일반고등학교"],["문수고등학교",10,"남구","공","일반고등학교"],["남창고등학교",10,"울주군","공","일반고등학교"],["울산동천고등학교",10,"북구","공","일반고등학교"],["대송고등학교",10,"동구","공","일반고등학교"],["무룡고등학교",10,"북구","공","일반고등학교"],["방어진고등학교",10,"동구","공","일반고등학교"],["울산삼일고등학교",10,"남구","사","일반고등학교"],["성광여자고등학교",10,"남구","사","일반고등학교"],["성신고등학교",10,"중구","사","일반고등학교"],["신정고등학교",10,"남구","공","일반고등학교"],["우신고등학교",10,"남구","사","일반고등학교"],["울산기술공업고등학교",10,"울주군","사","특성화고등학교"],["울산경의고등학교",10,"울주군","사","일반고등학교"],["울산고등학교",10,"중구","사","일반고등학교"],["울산공업고등학교",10,"남구","공","특성화고등학교"],["울산상업고등학교",10,"울주군","공","특성화고등학교"],["울산생활과학고등학교",10,"동구","공","특성화고등학교"],["울산미용예술고등학교",10,"울주군","공","특성화고등학교"],["울산여자고등학교",10,"남구","공","일반고등학교"],["울산여자상업고등학교",10,"남구","공","특성화고등학교"],["울산예술고등학교",10,"울주군","사","일반고등학교"],["울산마이스터고등학교",10,"북구","공","특수목적고등학교"],["울산제일고등학교",10,"남구","사","일반고등학교"],["울산중앙고등학교",10,"중구","공","일반고등학교"],["울산가온고등학교",10,"중구","공","일반고등학교"],["울산에너지고등학교",10,"북구","공","특수목적고등학교"],["학성고등학교",10,"남구","공","일반고등학교"],["학성여자고등학교",10,"중구","공","일반고등학교"],["현대고등학교",10,"동구","사","일반고등학교"],["현대공업고등학교",10,"동구","사","특수목적고등학교"],["현대청운고등학교",10,"동구","사","자율고등학교"],["화암고등학교",10,"동구","공","일반고등학교"],["효정고등학교",10,"북구","공","일반고등학교"],["울산애니원고등학교",10,"중구","공","특성화고등학교"],["함월고등학교",10,"중구","공","일반고등학교"],["다운고등학교",10,"중구","공","일반고등학교"],["울산과학고등학교",10,"울주군","공","특수목적고등학교"],["남목고등학교",10,"동구","공","일반고등학교"],["삼산고등학교",10,"남구","공","일반고등학교"],["대현고등학교",10,"남구","공","일반고등학교"],["신선여자고등학교",10,"남구","공","일반고등학교"],["무거고등학교",10,"남구","공","일반고등학교"],["문현고등학교",10,"동구","공","자율고등학교"],["호계고등학교",10,"북구","공","일반고등학교"],["범서고등학교",10,"울주군","공","일반고등학교"],["달천고등학교",10,"북구","공","일반고등학교"],["울산외국어고등학교",10,"북구","공","특수목적고등학교"],["울산강남고등학교",10,"남구","공","일반고등학교"],["화봉고등학교",10,"북구","공","일반고등학교"],["매곡고등학교",10,"북구","공","일반고등학교"],["천상고등학교",10,"울주군","공","일반고등학교"],["언양고등학교",10,"울주군","공","일반고등학교"],["울산스포츠과학고등학교",10,"북구","공","특수목적고등학교"],["약사고등학교",10,"중구","공","자율고등학교"],["울산산업고등학교",10,"울주군","공","특성화고등학교"],["온산고등학교",10,"울주군","공","일반고등학교"],["강동고등학교",10,"북구","공","일반고등학교"],["세종대성고등학교",9,"","사","일반고등학교"],["세종여자고등학교",9,"","공","일반고등학교"],["한솔고등학교",9,"","공","일반고등학교"],["세종미래고등학교",9,"","공","특성화고등학교"],["세종고등학교",9,"","공","일반고등학교"],["아름고등학교",9,"","공","일반고등학교"],["도담고등학교",9,"","공","일반고등학교"],["세종국제고등학교",9,"","공","특수목적고등학교"],["종촌고등학교",9,"","공","일반고등학교"],["고운고등학교",9,"","공","일반고등학교"],["세종예술고등학교",9,"","공","특수목적고등학교"],["세종과학예술영재학교",9,"","공","특수목적고등학교"],["양지고등학교",9,"","공","일반고등학교"],["두루고등학교",9,"","공","일반고등학교"],["소담고등학교",9,"","공","일반고등학교"],["보람고등학교",9,"","공","일반고등학교"],["새롬고등학교",9,"","공","일반고등학교"],["반곡고등학교",9,"","공","일반고등학교"],["다정고등학교",9,"","공","일반고등학교"],["세종장영실고등학교",9,"","공","특성화고등학교"],["해밀고등학교",9,"","공","일반고등학교"],["세종캠퍼스고등학교",9,"","공","일반고등학교"],["가평고등학교",1,"가평군","공","일반고등학교"],["경기과학고등학교",1,"수원시 장안구","공","특수목적고등학교"],["경기대명고등학교",1,"수원시 권선구","공","특성화고등학교"],["경기체육고등학교",1,"수원시 장안구","공","특수목적고등학교"],["이천세무고등학교",1,"이천시","공","특성화고등학교"],["경민고등학교",1,"의정부시","사","일반고등학교"],["경민비즈니스고등학교",1,"의정부시","사","특성화고등학교"],["경민IT고등학교",1,"의정부시","사","특성화고등학교"],["경안고등학교",1,"안산시 단원구","사","일반고등학교"],["경일고등학교",1,"안산시 단원구","사","특성화고등학교"],["경화여자고등학교",1,"광주시","사","일반고등학교"],["계남고등학교",1,"부천시 원미구","공","일반고등학교"],["계원예술고등학교",1,"성남시 분당구","사","특수목적고등학교"],["백송고등학교",1,"고양시 일산서구","사","일반고등학교"],["고양외국어고등학교",1,"고양시 덕양구","사","특수목적고등학교"],["고양고등학교",1,"고양시 덕양구","공","특성화고등학교"],["고잔고등학교",1,"안산시 단원구","공","일반고등학교"],["과천고등학교",1,"과천시","공","일반고등학교"],["과천여자고등학교",1,"과천시","사","일반고등학교"],["과천외국어고등학교",1,"과천시","사","특수목적고등학교"],["과천중앙고등학교",1,"과천시","공","일반고등학교"],["경기게임마이스터고등학교",1,"안양시 동안구","공","특수목적고등학교"],["관양고등학교",1,"안양시 동안구","공","일반고등학교"],["관인고등학교",1,"포천시","공","일반고등학교"],["광동고등학교",1,"남양주시","사","일반고등학교"],["의정부광동고등학교",1,"의정부시","사","일반고등학교"],["광명고등학교",1,"광명시","공","일반고등학교"],["경기항공고등학교",1,"광명시","사","특성화고등학교"],["광명북고등학교",1,"광명시","공","일반고등학교"],["명문고등학교",1,"광명시","공","일반고등학교"],["창의경영고등학교",1,"광명시","공","특성화고등학교"],["광문고등학교",1,"광명시","공","일반고등학교"],["광주고등학교",1,"광주시","공","일반고등학교"],["곤지암고등학교",1,"광주시","공","일반고등학교"],["광주중앙고등학교",1,"광주시","공","일반고등학교"],["광탄고등학교",1,"파주시","사","일반고등학교"],["구리고등학교",1,"구리시","공","일반고등학교"],["구리여자고등학교",1,"구리시","공","일반고등학교"],["군자디지털과학고등학교",1,"시흥시","공","특성화고등학교"],["군포고등학교",1,"군포시","사","일반고등학교"],["군포e비즈니스고등학교",1,"군포시","공","특성화고등학교"],["권선고등학교",1,"수원시 권선구","공","일반고등학교"],["근명고등학교",1,"안양시 만안구","사","특성화고등학교"],["금곡고등학교",1,"남양주시","공","일반고등학교"],["기흥고등학교",1,"용인시 기흥구","공","일반고등학교"],["김포고등학교",1,"김포시","공","일반고등학교"],["김포과학기술고등학교",1,"김포시","공","특성화고등학교"],["낙생고등학교",1,"성남시 분당구","사","일반고등학교"],["한국외식과학고등학교",1,"양주시","사","특성화고등학교"],["남양고등학교",1,"화성시 만세구","공","일반고등학교"],["남양주고등학교",1,"남양주시","공","특성화고등학교"],["남한고등학교",1,"하남시","공","일반고등학교"],["능곡고등학교",1,"고양시 덕양구","공","일반고등학교"],["대부고등학교",1,"안산시 단원구","공","일반고등학교"],["대신고등학교",1,"여주시","사","일반고등학교"],["대평고등학교",1,"수원시 장안구","공","일반고등학교"],["덕산고등학교",1,"부천시 오정구","공","일반고등학교"],["덕소고등학교",1,"남양주시","사","일반고등학교"],["덕정고등학교",1,"양주시","공","일반고등학교"],["도당고등학교",1,"부천시 원미구","공","일반고등학교"],["동남고등학교",1,"포천시","사","일반고등학교"],["동두천고등학교",1,"동두천시","사","일반고등학교"],["한국문화영상고등학교",1,"동두천시","사","특성화고등학교"],["동두천중앙고등학교",1,"동두천시","공","일반고등학교"],["동안고등학교",1,"안양시 동안구","공","일반고등학교"],["동우여자고등학교",1,"수원시 장안구","사","일반고등학교"],["동원동우고등학교",1,"수원시 장안구","사","일반고등학교"],["동일공업고등학교",1,"평택시","사","특성화고등학교"],["동화고등학교",1,"남양주시","사","일반고등학교"],["두레자연고등학교",1,"화성시 만세구","사","특성화고등학교"],["마장고등학교",1,"이천시","공","일반고등학교"],["매향여자정보고등학교",1,"수원시 팔달구","사","특성화고등학교"],["무원고등학교",1,"고양시 덕양구","공","일반고등학교"],["문산고등학교",1,"파주시","공","일반고등학교"],["문산수억고등학교",1,"파주시","사","일반고등학교"],["문산제일고등학교",1,"파주시","공","일반고등학교"],["경기모바일과학고등학교",1,"안산시 상록구","공","특성화고등학교"],["발안바이오과학고등학교",1,"화성시 만세구","공","특성화고등학교"],["백마고등학교",1,"고양시 일산동구","공","일반고등학교"],["백석고등학교",1,"고양시 일산동구","공","일반고등학교"],["백신고등학교",1,"고양시 일산동구","공","일반고등학교"],["백암고등학교",1,"용인시 처인구","공","일반고등학교"],["백양고등학교",1,"고양시 덕양구","공","일반고등학교"],["백영고등학교",1,"안양시 동안구","사","일반고등학교"],["백운고등학교",1,"의왕시","공","일반고등학교"],["한빛누리고등학교",1,"동두천시","사","일반고등학교"],["부명고등학교",1,"부천시 원미구","공","일반고등학교"],["경기국제통상고등학교",1,"부천시 원미구","공","특성화고등학교"],["상동고등학교",1,"부천시 원미구","공","일반고등학교"],["부천고등학교",1,"부천시 소사구","공","일반고등학교"],["부천공업고등학교",1,"부천시 소사구","공","특성화고등학교"],["부천북고등학교",1,"부천시 원미구","공","일반고등학교"],["부천여자고등학교",1,"부천시 원미구","공","일반고등학교"],["부천정보산업고등학교",1,"부천시 원미구","공","특성화고등학교"],["부흥고등학교",1,"안양시 동안구","공","일반고등학교"],["분당고등학교",1,"성남시 분당구","공","일반고등학교"],["분당대진고등학교",1,"성남시 분당구","사","일반고등학교"],["분당경영고등학교",1,"성남시 분당구","공","특성화고등학교"],["분당중앙고등학교",1,"성남시 분당구","공","일반고등학교"],["불곡고등학교",1,"성남시 분당구","공","일반고등학교"],["사우고등학교",1,"김포시","공","일반고등학교"],["산본고등학교",1,"군포시","공","일반고등학교"],["경기폴리텍고등학교",1,"군포시","공","특성화고등학교"],["삼광고등학교",1,"파주시","사","일반고등학교"],["삼괴고등학교",1,"화성시 만세구","사","일반고등학교"],["삼일공업고등학교",1,"수원시 팔달구","사","특성화고등학교"],["삼일고등학교",1,"수원시 팔달구","사","특성화고등학교"],["서울삼육고등학교",1,"구리시","사","일반고등학교"],["서해고등학교",1,"시흥시","공","자율고등학교"],["서현고등학교",1,"성남시 분당구","공","일반고등학교"],["설악고등학교",1,"가평군","공","일반고등학교"],["성남테크노과학고등학교",1,"성남시 중원구","공","특성화고등학교"],["성남고등학교",1,"성남시 중원구","공","일반고등학교"],["성남여자고등학교",1,"성남시 중원구","공","일반고등학교"],["분당아람고등학교",1,"성남시 분당구","공","특성화고등학교"],["성문고등학교",1,"안양시 만안구","사","일반고등학교"],["성보경영고등학교",1,"성남시 수정구","사","특성화고등학교"],["성안고등학교",1,"안산시 상록구","공","일반고등학교"],["성일고등학교",1,"성남시 중원구","사","일반고등학교"],["동광고등학교",1,"성남시 중원구","사","일반고등학교"],["성일정보고등학교",1,"성남시 중원구","사","특성화고등학교"],["성호고등학교",1,"오산시","공","일반고등학교"],["세원고등학교",1,"고양시 일산동구","사","일반고등학교"],["소래고등학교",1,"시흥시","공","일반고등학교"],["소명여자고등학교",1,"부천시 원미구","사","일반고등학교"],["소사고등학교",1,"부천시 소사구","공","일반고등학교"],["소하고등학교",1,"광명시","공","일반고등학교"],["송림고등학교",1,"성남시 분당구","사","일반고등학교"],["송탄고등학교",1,"평택시","공","일반고등학교"],["라온고등학교",1,"평택시","사","일반고등학교"],["송현고등학교",1,"의정부시","공","일반고등학교"],["수내고등학교",1,"성남시 분당구","공","일반고등학교"],["수리고등학교",1,"군포시","공","일반고등학교"],["수성고등학교",1,"수원시 장안구","공","일반고등학교"],["홍익디자인고등학교",1,"화성시 효행구","사","특성화고등학교"],["수원고등학교",1,"수원시 팔달구","사","일반고등학교"],["수원공업고등학교",1,"수원시 팔달구","사","특성화고등학교"],["수원농생명과학고등학교",1,"수원시 장안구","공","특성화고등학교"],["수원여자고등학교",1,"수원시 팔달구","공","일반고등학교"],["수원정보과학고등학교",1,"수원시 영통구","공","특성화고등학교"],["한봄고등학교",1,"수원시 권선구","사","특성화고등학교"],["수일고등학교",1,"수원시 장안구","공","일반고등학교"],["수지고등학교",1,"용인시 수지구","공","일반고등학교"],["수택고등학교",1,"구리시","공","일반고등학교"],["숙지고등학교",1,"수원시 팔달구","공","일반고등학교"],["숭신여자고등학교",1,"성남시 중원구","사","일반고등학교"],["시온고등학교",1,"부천시 소사구","사","일반고등학교"],["경기스마트고등학교",1,"시흥시","공","특성화고등학교"],["신갈고등학교",1,"용인시 기흥구","사","일반고등학교"],["신성고등학교",1,"안양시 만안구","사","일반고등학교"],["신일비즈니스고등학교",1,"고양시 일산서구","공","특성화고등학교"],["신한고등학교",1,"평택시","사","일반고등학교"],["신흥고등학교",1,"동두천시","사","일반고등학교"],["심석고등학교",1,"남양주시","사","일반고등학교"],["심원고등학교",1,"부천시 원미구","공","일반고등학교"],["안법고등학교",1,"안성시","사","일반고등학교"],["안산강서고등학교",1,"안산시 단원구","사","일반고등학교"],["안산국제비즈니스고등학교",1,"안산시 상록구","사","특성화고등학교"],["안산고등학교",1,"안산시 상록구","사","일반고등학교"],["안산공업고등학교",1,"안산시 상록구","사","특성화고등학교"],["안산동산고등학교",1,"안산시 상록구","사","자율고등학교"],["안산디자인문화고등학교",1,"안산시 상록구","사","특성화고등학교"],["안성고등학교",1,"안성시","공","일반고등학교"],["두원공업고등학교",1,"안성시","사","특성화고등학교"],["안성여자고등학교",1,"안성시","공","일반고등학교"],["가온고등학교",1,"안성시","사","일반고등학교"],["안양고등학교",1,"안양시 만안구","공","일반고등학교"],["안양공업고등학교",1,"안양시 만안구","공","특성화고등학교"],["안양여자고등학교",1,"안양시 만안구","사","일반고등학교"],["안양문화고등학교",1,"안양시 만안구","사","특성화고등학교"],["안양예술고등학교",1,"안양시 만안구","사","특수목적고등학교"],["안양외국어고등학교",1,"안양시 만안구","사","특수목적고등학교"],["경기물류고등학교",1,"평택시","공","특성화고등학교"],["안중고등학교",1,"평택시","사","일반고등학교"],["야탑고등학교",1,"성남시 분당구","사","일반고등학교"],["양곡고등학교",1,"김포시","사","일반고등학교"],["양동고등학교",1,"양평군","사","일반고등학교"],["양명고등학교",1,"안양시 만안구","사","일반고등학교"],["양명여자고등학교",1,"안양시 만안구","사","일반고등학교"],["양서고등학교",1,"양평군","사","일반고등학교"],["양영디지털고등학교",1,"성남시 분당구","공","특성화고등학교"],["양일고등학교",1,"양평군","사","일반고등학교"],["양지고등학교",1,"안산시 단원구","공","일반고등학교"],["양평전자과학고등학교",1,"양평군","공","특성화고등학교"],["양평고등학교",1,"양평군","공","일반고등학교"],["여강고등학교",1,"여주시","사","일반고등학교"],["여주고등학교",1,"여주시","사","일반고등학교"],["세종고등학교",1,"여주시","공","일반고등학교"],["여주자영농업고등학교",1,"여주시","공","특성화고등학교"],["여주제일고등학교",1,"여주시","사","일반고등학교"],["연천고등학교",1,"연천군","공","일반고등학교"],["영덕고등학교",1,"수원시 영통구","공","일반고등학교"],["분당영덕여자고등학교",1,"성남시 분당구","사","일반고등학교"],["영복여자고등학교",1,"수원시 팔달구","사","일반고등학교"],["영북고등학교",1,"포천시","공","특성화고등학교"],["영생고등학교",1,"수원시 장안구","사","일반고등학교"],["동국대학교사범대학부속영석고등학교",1,"의정부시","사","일반고등학교"],["영신여자고등학교",1,"수원시 권선구","사","일반고등학교"],["오산고등학교",1,"오산시","사","일반고등학교"],["오산정보고등학교",1,"오산시","공","특성화고등학교"],["용문고등학교",1,"양평군","사","일반고등학교"],["용인고등학교",1,"용인시 처인구","공","일반고등학교"],["용인바이오고등학교",1,"용인시 처인구","공","특성화고등학교"],["덕영고등학교",1,"용인시 처인구","사","특성화고등학교"],["용호고등학교",1,"군포시","공","일반고등학교"],["우성고등학교",1,"의왕시","사","일반고등학교"],["원곡고등학교",1,"안산시 단원구","공","일반고등학교"],["원미고등학교",1,"부천시 원미구","공","일반고등학교"],["원종고등학교",1,"부천시 오정구","공","일반고등학교"],["유신고등학교",1,"수원시 팔달구","사","일반고등학교"],["율곡고등학교",1,"파주시","사","일반고등학교"],["율면고등학교",1,"이천시","공","일반고등학교"],["은행고등학교",1,"시흥시","공","일반고등학교"],["은혜고등학교",1,"평택시","사","일반고등학교"],["의정부고등학교",1,"의정부시","공","일반고등학교"],["의정부공업고등학교",1,"의정부시","공","특성화고등학교"],["의정부여자고등학교",1,"의정부시","공","일반고등학교"],["이매고등학교",1,"성남시 분당구","공","일반고등학교"],["이천고등학교",1,"이천시","공","일반고등학교"],["이천제일고등학교",1,"이천시","공","일반고등학교"],["이천양정여자고등학교",1,"이천시","사","일반고등학교"],["다산고등학교",1,"이천시","사","일반고등학교"],["이포고등학교",1,"여주시","공","일반고등학교"],["인창고등학교",1,"구리시","공","일반고등학교"],["일동고등학교",1,"포천시","공","일반고등학교"],["일산고등학교",1,"고양시 일산서구","공","특성화고등학교"],["일산대진고등학교",1,"고양시 일산서구","사","일반고등학교"],["일산동고등학교",1,"고양시 일산서구","공","일반고등학교"],["일산국제컨벤션고등학교",1,"고양시 일산서구","공","특성화고등학교"],["일죽고등학교",1,"안성시","공","특성화고등학교"],["장곡고등학교",1,"시흥시","공","일반고등학교"],["장안고등학교",1,"수원시 장안구","공","일반고등학교"],["부원고등학교",1,"이천시","사","일반고등학교"],["장호원고등학교",1,"이천시","공","일반고등학교"],["저동고등학교",1,"고양시 일산동구","공","일반고등학교"],["적성융합고등학교",1,"파주시","공","특성화고등학교"],["전곡고등학교",1,"연천군","공","일반고등학교"],["점동고등학교",1,"여주시","공","일반고등학교"],["정명고등학교",1,"부천시 소사구","사","일반고등학교"],["경기경영고등학교",1,"부천시 소사구","사","특성화고등학교"],["정발고등학교",1,"고양시 일산동구","공","일반고등학교"],["정왕고등학교",1,"시흥시","공","일반고등학교"],["조종고등학교",1,"가평군","공","일반고등학교"],["주엽고등학교",1,"고양시 일산서구","공","일반고등학교"],["경기영상과학고등학교",1,"고양시 일산서구","공","특성화고등학교"],["죽산고등학교",1,"안성시","공","일반고등학교"],["죽전고등학교",1,"용인시 수지구","공","일반고등학교"],["중산고등학교",1,"고양시 일산동구","공","일반고등학교"],["중원고등학교",1,"부천시 원미구","공","일반고등학교"],["중흥고등학교",1,"부천시 원미구","공","일반고등학교"],["지평고등학교",1,"양평군","공","일반고등학교"],["진건고등학교",1,"남양주시","공","일반고등학교"],["진성고등학교",1,"광명시","사","일반고등학교"],["진위고등학교",1,"평택시","사","일반고등학교"],["경기관광고등학교",1,"여주시","사","특성화고등학교"],["창현고등학교",1,"수원시 팔달구","사","일반고등학교"],["청담고등학교",1,"평택시","사","특성화고등학교"],["청명고등학교",1,"수원시 영통구","공","일반고등학교"],["청운고등학교",1,"양평군","공","일반고등학교"],["청평고등학교",1,"가평군","공","일반고등학교"],["청학고등학교",1,"남양주시","공","일반고등학교"],["초지고등학교",1,"안산시 단원구","공","일반고등학교"],["충현고등학교",1,"광명시","공","일반고등학교"],["태광고등학교",1,"평택시","사","일반고등학교"],["태성고등학교",1,"용인시 처인구","사","일반고등학교"],["태원고등학교",1,"성남시 분당구","사","일반고등학교"],["태장고등학교",1,"수원시 영통구","공","일반고등학교"],["토평고등학교",1,"구리시","공","일반고등학교"],["통진고등학교",1,"김포시","사","일반고등학교"],["퇴계원고등학교",1,"남양주시","공","일반고등학교"],["세경고등학교",1,"파주시","사","특성화고등학교"],["파주여자고등학교",1,"파주시","사","일반고등학교"],["파주고등학교",1,"파주시","사","일반고등학교"],["수원하이텍고등학교",1,"수원시 영통구","공","특수목적고등학교"],["평촌고등학교",1,"안양시 동안구","공","일반고등학교"],["평촌과학기술고등학교",1,"안양시 동안구","공","특성화고등학교"],["평촌경영고등학교",1,"안양시 동안구","공","특성화고등학교"],["평택고등학교",1,"평택시","공","일반고등학교"],["평택마이스터고등학교",1,"평택시","공","특수목적고등학교"],["평택여자고등학교",1,"평택시","공","일반고등학교"],["포천고등학교",1,"포천시","공","일반고등학교"],["포천일고등학교",1,"포천시","공","일반고등학교"],["풍덕고등학교",1,"용인시 수지구","공","일반고등학교"],["풍생고등학교",1,"성남시 수정구","사","일반고등학교"],["하남고등학교",1,"하남시","사","일반고등학교"],["하남경영고등학교",1,"하남시","공","특성화고등학교"],["하성고등학교",1,"김포시","공","일반고등학교"],["한광고등학교",1,"평택시","사","일반고등학교"],["한광여자고등학교",1,"평택시","사","일반고등학교"],["한국관광고등학교",1,"평택시","사","특성화고등학교"],["한국도예고등학교",1,"이천시","공","특성화고등학교"],["한국디지털미디어고등학교",1,"안산시 단원구","사","특성화고등학교"],["한국애니메이션고등학교",1,"하남시","공","특성화고등학교"],["한국조리과학고등학교",1,"시흥시","사","특성화고등학교"],["한솔고등학교",1,"성남시 분당구","공","일반고등학교"],["경기자동차과학고등학교",1,"시흥시","사","특성화고등학교"],["함현고등학교",1,"시흥시","공","자율고등학교"],["행신고등학교",1,"고양시 덕양구","공","일반고등학교"],["호원고등학교",1,"의정부시","공","일반고등학교"],["화성고등학교",1,"화성시 만세구","사","일반고등학교"],["화수고등학교",1,"고양시 덕양구","공","일반고등학교"],["화정고등학교",1,"고양시 덕양구","공","일반고등학교"],["화홍고등학교",1,"수원시 권선구","공","일반고등학교"],["효명고등학교",1,"평택시","사","일반고등학교"],["효성고등학교",1,"성남시 수정구","사","일반고등학교"],["효원고등학교",1,"수원시 영통구","공","일반고등학교"],["흥진고등학교",1,"군포시","공","일반고등학교"],["돌마고등학교",1,"성남시 분당구","공","일반고등학교"],["부용고등학교",1,"의정부시","공","일반고등학교"],["경기예술고등학교",1,"부천시 원미구","공","특수목적고등학교"],["송호고등학교",1,"안산시 상록구","공","일반고등학교"],["시흥고등학교",1,"시흥시","공","일반고등학교"],["운천고등학교",1,"오산시","공","일반고등학교"],["서원고등학교",1,"용인시 수지구","공","일반고등학교"],["천천고등학교",1,"수원시 장안구","공","일반고등학교"],["조원고등학교",1,"수원시 장안구","공","일반고등학교"],["늘푸른고등학교",1,"성남시 분당구","공","일반고등학교"],["충훈고등학교",1,"안양시 만안구","공","일반고등학교"],["상일고등학교",1,"부천시 원미구","공","일반고등학교"],["송내고등학교",1,"부천시 소사구","공","일반고등학교"],["구성고등학교",1,"용인시 기흥구","공","일반고등학교"],["매탄고등학교",1,"수원시 영통구","공","일반고등학교"],["인덕원고등학교",1,"안양시 동안구","공","일반고등학교"],["범박고등학교",1,"부천시 소사구","공","일반고등학교"],["덕계고등학교",1,"양주시","공","일반고등학교"],["단원고등학교",1,"안산시 단원구","공","일반고등학교"],["군서고등학교",1,"시흥시","공","일반고등학교"],["풍동고등학교",1,"고양시 일산동구","공","일반고등학교"],["도농고등학교",1,"남양주시","공","일반고등학교"],["평내고등학교",1,"남양주시","공","일반고등학교"],["신장고등학교",1,"하남시","공","일반고등학교"],["효양고등학교",1,"이천시","공","일반고등학교"],["보정고등학교",1,"용인시 기흥구","공","일반고등학교"],["풍무고등학교",1,"김포시","공","일반고등학교"],["병점고등학교",1,"화성시 병점구","공","일반고등학교"],["봉일천고등학교",1,"파주시","공","일반고등학교"],["교하고등학교",1,"파주시","공","일반고등학교"],["상우고등학교",1,"의정부시","사","일반고등학교"],["이우고등학교",1,"성남시 분당구","사","특성화고등학교"],["경기외국어고등학교",1,"의왕시","사","특수목적고등학교"],["경기북과학고등학교",1,"의정부시","공","특수목적고등학교"],["동두천외국어고등학교",1,"동두천시","공","특수목적고등학교"],["금촌고등학교",1,"파주시","공","일반고등학교"],["용인한국외국어대학교부설고등학교",1,"용인시 처인구","사","자율고등학교"],["양주백석고등학교",1,"양주시","공","일반고등학교"],["성남외국어고등학교",1,"성남시 분당구","공","특수목적고등학교"],["성포고등학교",1,"안산시 상록구","공","일반고등학교"],["수원외국어고등학교",1,"수원시 영통구","공","특수목적고등학교"],["청심국제고등학교",1,"가평군","사","특수목적고등학교"],["현화고등학교",1,"평택시","공","일반고등학교"],["호평고등학교",1,"남양주시","공","일반고등학교"],["김포외국어고등학교",1,"김포시","사","특수목적고등학교"],["용인백현고등학교",1,"용인시 기흥구","공","일반고등학교"],["한겨레고등학교",1,"안성시","사","특성화고등학교"],["가좌고등학교",1,"고양시 일산서구","공","일반고등학교"],["양주고등학교",1,"양주시","공","자율고등학교"],["송우고등학교",1,"포천시","공","일반고등학교"],["상원고등학교",1,"부천시 원미구","공","일반고등학교"],["성사고등학교",1,"고양시 덕양구","공","일반고등학교"],["성지고등학교",1,"용인시 기흥구","공","일반고등학교"],["현암고등학교",1,"용인시 수지구","공","일반고등학교"],["용인홍천고등학교",1,"용인시 수지구","공","일반고등학교"],["효자고등학교",1,"의정부시","공","일반고등학교"],["고양예술고등학교",1,"고양시 일산서구","사","특수목적고등학교"],["대지고등학교",1,"용인시 수지구","공","일반고등학교"],["동탄고등학교",1,"화성시 동탄구","공","일반고등학교"],["안화고등학교",1,"화성시 병점구","공","일반고등학교"],["운암고등학교",1,"오산시","공","일반고등학교"],["동백고등학교",1,"용인시 기흥구","공","일반고등학교"],["망포고등학교",1,"수원시 영통구","공","일반고등학교"],["매원고등학교",1,"수원시 영통구","공","일반고등학교"],["반송고등학교",1,"화성시 동탄구","공","일반고등학교"],["봉담고등학교",1,"화성시 효행구","공","일반고등학교"],["예당고등학교",1,"화성시 동탄구","공","일반고등학교"],["수주고등학교",1,"부천시 오정구","공","일반고등학교"],["고양일고등학교",1,"고양시 덕양구","공","일반고등학교"],["안곡고등학교",1,"고양시 일산동구","공","일반고등학교"],["와부고등학교",1,"남양주시","공","자율고등학교"],["고색고등학교",1,"수원시 권선구","공","자율고등학교"],["나루고등학교",1,"화성시 동탄구","공","일반고등학교"],["보라고등학교",1,"용인시 기흥구","공","일반고등학교"],["초당고등학교",1,"용인시 기흥구","공","일반고등학교"],["복정고등학교",1,"성남시 수정구","공","일반고등학교"],["포곡고등학교",1,"용인시 처인구","공","일반고등학교"],["향남고등학교",1,"화성시 만세구","공","일반고등학교"],["청덕고등학교",1,"용인시 기흥구","공","일반고등학교"],["시흥능곡고등학교",1,"시흥시","공","일반고등학교"],["시흥매화고등학교",1,"시흥시","공","일반고등학교"],["발곡고등학교",1,"의정부시","공","일반고등학교"],["신천고등학교",1,"시흥시","공","일반고등학교"],["선부고등학교",1,"안산시 단원구","공","일반고등학교"],["오남고등학교",1,"남양주시","공","일반고등학교"],["의왕고등학교",1,"의왕시","공","일반고등학교"],["이충고등학교",1,"평택시","공","일반고등학교"],["장기고등학교",1,"김포시","공","일반고등학교"],["신길고등학교",1,"안산시 단원구","공","일반고등학교"],["광남고등학교",1,"광주시","공","일반고등학교"],["광덕고등학교",1,"안산시 상록구","공","일반고등학교"],["흥덕고등학교",1,"용인시 기흥구","공","일반고등학교"],["덕현고등학교",1,"양주시","공","일반고등학교"],["서정고등학교",1,"고양시 덕양구","공","일반고등학교"],["운산고등학교",1,"광명시","공","일반고등학교"],["운정고등학교",1,"파주시","공","자율고등학교"],["마석고등학교",1,"남양주시","공","일반고등학교"],["상록고등학교",1,"안산시 상록구","공","일반고등학교"],["진접고등학교",1,"남양주시","공","일반고등학교"],["청북고등학교",1,"평택시","공","일반고등학교"],["세마고등학교",1,"오산시","공","일반고등학교"],["능동고등학교",1,"화성시 동탄구","공","일반고등학교"],["마송고등학교",1,"김포시","공","일반고등학교"],["모락고등학교",1,"의왕시","공","일반고등학교"],["경화여자English Business고등학교",1,"광주시","사","특성화고등학교"],["경기창조고등학교",1,"안성시","공","일반고등학교"],["보평고등학교",1,"성남시 분당구","공","일반고등학교"],["운중고등학교",1,"성남시 분당구","공","일반고등학교"],["가운고등학교",1,"남양주시","공","일반고등학교"],["동패고등학교",1,"파주시","공","일반고등학교"],["역곡고등학교",1,"부천시 원미구","공","일반고등학교"],["판교고등학교",1,"성남시 분당구","공","일반고등학교"],["세교고등학교",1,"오산시","공","일반고등학교"],["서천고등학교",1,"용인시 기흥구","공","일반고등학교"],["성복고등학교",1,"용인시 수지구","공","일반고등학교"],["대화고등학교",1,"고양시 일산서구","공","일반고등학교"],["이현고등학교",1,"이천시","공","일반고등학교"],["초월고등학교",1,"광주시","공","일반고등학교"],["향일고등학교",1,"화성시 만세구","공","일반고등학교"],["판곡고등학교",1,"남양주시","공","일반고등학교"],["광교고등학교",1,"수원시 영통구","공","일반고등학교"],["율천고등학교",1,"수원시 팔달구","공","일반고등학교"],["덕이고등학교",1,"고양시 일산서구","공","일반고등학교"],["송양고등학교",1,"의정부시","공","일반고등학교"],["별내고등학교",1,"남양주시","공","일반고등학교"],["군포중앙고등학교",1,"군포시","공","자율고등학교"],["상현고등학교",1,"용인시 수지구","공","일반고등학교"],["솔터고등학교",1,"김포시","공","일반고등학교"],["신봉고등학교",1,"용인시 수지구","공","일반고등학교"],["비전고등학교",1,"평택시","공","일반고등학교"],["부곡고등학교",1,"안산시 상록구","공","일반고등학교"],["풍산고등학교",1,"하남시","공","일반고등학교"],["호매실고등학교",1,"수원시 권선구","공","일반고등학교"],["고양국제고등학교",1,"고양시 일산동구","공","특수목적고등학교"],["저현고등학교",1,"고양시 일산동구","공","일반고등학교"],["고양동산고등학교",1,"고양시 덕양구","공","일반고등학교"],["광휘고등학교",1,"광명시","공","일반고등학교"],["화성반월고등학교",1,"화성시 병점구","공","일반고등학교"],["매홀고등학교",1,"오산시","공","일반고등학교"],["수원칠보고등학교",1,"수원시 권선구","공","일반고등학교"],["곡정고등학교",1,"수원시 권선구","공","일반고등학교"],["운양고등학교",1,"김포시","공","일반고등학교"],["한민고등학교",1,"파주시","사","일반고등학교"],["도래울고등학교",1,"고양시 덕양구","공","일반고등학교"],["옥정고등학교",1,"양주시","공","일반고등학교"],["미사고등학교",1,"하남시","공","일반고등학교"],["한백고등학교",1,"화성시 동탄구","공","일반고등학교"],["동탄중앙고등학교",1,"화성시 동탄구","공","일반고등학교"],["이의고등학교",1,"수원시 영통구","공","일반고등학교"],["김포제일고등학교",1,"김포시","공","일반고등학교"],["지산고등학교",1,"파주시","공","일반고등학교"],["별가람고등학교",1,"남양주시","공","일반고등학교"],["갈매고등학교",1,"구리시","공","일반고등학교"],["한빛고등학교",1,"파주시","공","일반고등학교"],["미사강변고등학교",1,"하남시","공","일반고등학교"],["태전고등학교",1,"광주시","공","일반고등학교"],["용인삼계고등학교",1,"용인시 처인구","공","일반고등학교"],["고림고등학교",1,"용인시 처인구","공","일반고등학교"],["배곧고등학교",1,"시흥시","공","일반고등학교"],["위례고등학교",1,"하남시","공","일반고등학교"],["하길고등학교",1,"화성시 만세구","공","일반고등학교"],["위례한빛고등학교",1,"성남시 수정구","공","일반고등학교"],["이산고등학교",1,"화성시 동탄구","공","일반고등학교"],["창의고등학교",1,"화성시 동탄구","공","일반고등학교"],["정현고등학교",1,"화성시 동탄구","공","일반고등학교"],["와우고등학교",1,"화성시 효행구","공","일반고등학교"],["고촌고등학교",1,"김포시","공","일반고등학교"],["새솔고등학교",1,"화성시 만세구","공","일반고등학교"],["서연고등학교",1,"화성시 동탄구","공","일반고등학교"],["남양주다산고등학교",1,"남양주시","공","일반고등학교"],["목감고등학교",1,"시흥시","공","일반고등학교"],["감일고등학교",1,"하남시","공","일반고등학교"],["옥빛고등학교",1,"양주시","공","일반고등학교"],["처인고등학교",1,"용인시 처인구","공","일반고등학교"],["신원고등학교",1,"고양시 덕양구","공","일반고등학교"],["향동고등학교",1,"고양시 덕양구","공","일반고등학교"],["이솔고등학교",1,"화성시 동탄구","공","일반고등학교"],["심학고등학교",1,"파주시","공","일반고등학교"],["치동고등학교",1,"화성시 동탄구","공","일반고등학교"],["운유고등학교",1,"김포시","공","일반고등학교"],["화담고등학교",1,"화성시 효행구","공","일반고등학교"],["신동고등학교",1,"화성시 동탄구","공","일반고등학교"],["김포호수고등학교",1,"김포시","공","일반고등학교"],["호연고등학교",1,"화성시 동탄구","공","일반고등학교"],["내손고등학교",1,"의왕시","공","특성화고등학교"],["중앙기독고등학교",1,"수원시 영통구","사","특성화고등학교"],["강원대학교사범대학부설고등학교",0,"춘천시","국","일반고등학교"],["가곡고등학교",0,"삼척시","공","일반고등학교"],["간동고등학교",0,"화천군","공","일반고등학교"],["갑천고등학교",0,"횡성군","공","일반고등학교"],["강릉고등학교",0,"강릉시","공","일반고등학교"],["강릉중앙고등학교",0,"강릉시","공","특성화고등학교"],["강릉명륜고등학교",0,"강릉시","사","일반고등학교"],["강릉문성고등학교",0,"강릉시","사","일반고등학교"],["강릉여자고등학교",0,"강릉시","공","일반고등학교"],["강릉정보공업고등학교",0,"강릉시","공","특성화고등학교"],["강릉제일고등학교",0,"강릉시","공","일반고등학교"],["강원고등학교",0,"춘천시","사","일반고등학교"],["강원과학고등학교",0,"원주시","공","특수목적고등학교"],["강원예술고등학교",0,"강릉시","공","특수목적고등학교"],["강원체육고등학교",0,"춘천시","공","특수목적고등학교"],["강일여자고등학교",0,"강릉시","사","일반고등학교"],["거진고등학교",0,"고성군","공","특성화고등학교"],["경포고등학교",0,"강릉시","공","일반고등학교"],["고성고등학교",0,"고성군","공","일반고등학교"],["고한고등학교",0,"정선군","공","일반고등학교"],["기린고등학교",0,"인제군","공","일반고등학교"],["김화고등학교",0,"철원군","공","일반고등학교"],["김화공업고등학교",0,"철원군","공","특성화고등학교"],["내면고등학교",0,"홍천군","공","일반고등학교"],["상지대관령고등학교",0,"평창군","사","일반고등학교"],["대성고등학교",0,"원주시","사","일반고등학교"],["대진고등학교",0,"고성군","공","일반고등학교"],["대화고등학교",0,"평창군","공","일반고등학교"],["도계고등학교",0,"삼척시","공","일반고등학교"],["도계전산정보고등학교",0,"삼척시","공","특성화고등학교"],["동광산업과학고등학교",0,"고성군","공","특성화고등학교"],["동해광희고등학교",0,"동해시","사","일반고등학교"],["동해삼육고등학교",0,"동해시","사","일반고등학교"],["동해상업고등학교",0,"동해시","공","특성화고등학교"],["둔내고등학교",0,"횡성군","공","일반고등학교"],["마차고등학교",0,"영월군","공","일반고등학교"],["묵호고등학교",0,"동해시","공","일반고등학교"],["민족사관고등학교",0,"횡성군","사","자율고등학교"],["봉의고등학교",0,"춘천시","공","일반고등학교"],["봉평고등학교",0,"평창군","공","일반고등학교"],["원주금융회계고등학교",0,"원주시","공","특성화고등학교"],["북원여자고등학교",0,"원주시","공","일반고등학교"],["북평고등학교",0,"동해시","공","일반고등학교"],["북평여자고등학교",0,"동해시","공","일반고등학교"],["사내고등학교",0,"화천군","공","일반고등학교"],["사북고등학교",0,"정선군","공","일반고등학교"],["삼일고등학교",0,"삼척시","사","일반고등학교"],["삼척고등학교",0,"삼척시","공","일반고등학교"],["삼척여자고등학교",0,"삼척시","공","일반고등학교"],["한국에너지마이스터고등학교",0,"삼척시","공","특수목적고등학교"],["상동고등학교",0,"영월군","공","일반고등학교"],["상지여자고등학교",0,"원주시","사","일반고등학교"],["서석고등학교",0,"홍천군","공","일반고등학교"],["석정여자고등학교",0,"영월군","사","일반고등학교"],["성수고등학교",0,"춘천시","사","일반고등학교"],["성수여자고등학교",0,"춘천시","사","일반고등학교"],["속초고등학교",0,"속초시","공","일반고등학교"],["설악고등학교",0,"속초시","공","일반고등학교"],["속초여자고등학교",0,"속초시","공","일반고등학교"],["신남고등학교",0,"인제군","공","일반고등학교"],["신철원고등학교",0,"철원군","공","일반고등학교"],["안흥고등학교",0,"횡성군","공","일반고등학교"],["양구여자고등학교",0,"양구군","공","일반고등학교"],["양구고등학교",0,"양구군","공","일반고등학교"],["양양고등학교",0,"양양군","공","일반고등학교"],["여량고등학교",0,"정선군","공","일반고등학교"],["영월고등학교",0,"영월군","공","일반고등학교"],["한국소방마이스터고등학교",0,"영월군","공","특수목적고등학교"],["원덕고등학교",0,"삼척시","공","일반고등학교"],["원주고등학교",0,"원주시","공","일반고등학교"],["미래고등학교",0,"원주시","공","특성화고등학교"],["영서고등학교",0,"원주시","공","특성화고등학교"],["원주삼육고등학교",0,"원주시","사","일반고등학교"],["원주여자고등학교",0,"원주시","공","일반고등학교"],["한국의료마이스터고등학교",0,"원주시","공","특수목적고등학교"],["원통고등학교",0,"인제군","공","일반고등학교"],["유봉여자고등학교",0,"춘천시","사","일반고등학교"],["육민관고등학교",0,"원주시","사","일반고등학교"],["인제고등학교",0,"인제군","공","일반고등학교"],["임계고등학교",0,"정선군","공","일반고등학교"],["장성여자고등학교",0,"태백시","공","일반고등학교"],["정선고등학교",0,"정선군","공","일반고등학교"],["정선정보공업고등학교",0,"정선군","공","특성화고등학교"],["주문진고등학교",0,"강릉시","공","일반고등학교"],["주천고등학교",0,"영월군","공","일반고등학교"],["진광고등학교",0,"원주시","사","일반고등학교"],["진부고등학교",0,"평창군","공","일반고등학교"],["철암고등학교",0,"태백시","공","일반고등학교"],["철원고등학교",0,"철원군","공","일반고등학교"],["철원여자고등학교",0,"철원군","공","일반고등학교"],["춘천고등학교",0,"춘천시","공","일반고등학교"],["춘천기계공업고등학교",0,"춘천시","공","특성화고등학교"],["강원생명과학고등학교",0,"춘천시","공","특성화고등학교"],["춘천한샘고등학교",0,"춘천시","공","특성화고등학교"],["춘천여자고등학교",0,"춘천시","공","일반고등학교"],["한국항공고등학교",0,"태백시","공","특성화고등학교"],["평창고등학교",0,"평창군","공","일반고등학교"],["함백고등학교",0,"정선군","공","일반고등학교"],["홍천고등학교",0,"홍천군","공","일반고등학교"],["홍천농업고등학교",0,"홍천군","공","특성화고등학교"],["홍천여자고등학교",0,"홍천군","공","일반고등학교"],["강원생활과학고등학교",0,"홍천군","공","특성화고등학교"],["화천고등학교",0,"화천군","공","일반고등학교"],["화천정보산업고등학교",0,"화천군","공","특성화고등학교"],["황지고등학교",0,"태백시","공","일반고등학교"],["황지정보산업고등학교",0,"태백시","공","특성화고등학교"],["횡성고등학교",0,"횡성군","공","일반고등학교"],["횡성여자고등학교",0,"횡성군","공","일반고등학교"],["치악고등학교",0,"원주시","공","일반고등학교"],["전인고등학교",0,"춘천시","사","특성화고등학교"],["팔렬고등학교",0,"홍천군","사","특성화고등학교"],["강원애니고등학교",0,"춘천시","공","특성화고등학교"],["문막고등학교",0,"원주시","공","일반고등학교"],["강원외국어고등학교",0,"양구군","사","일반고등학교"],["현천고등학교",0,"횡성군","공","특성화고등학교"],["섬강고등학교",0,"원주시","공","일반고등학교"],["한국교원대학교부설고등학교",16,"청주시 흥덕구","국","일반고등학교"],["충북대학교사범대학부설고등학교",16,"청주시 흥덕구","국","일반고등학교"],["광혜원고등학교",16,"진천군","공","일반고등학교"],["괴산고등학교",16,"괴산군","공","자율고등학교"],["충북반도체고등학교",16,"음성군","공","특수목적고등학교"],["금천고등학교",16,"청주시 상당구","공","일반고등학교"],["단양고등학교",16,"단양군","공","일반고등학교"],["한국호텔관광고등학교",16,"단양군","공","특성화고등학교"],["대성여자상업고등학교",16,"청주시 상당구","사","특성화고등학교"],["충주대원고등학교",16,"충주시","사","일반고등학교"],["매괴고등학교",16,"음성군","사","일반고등학교"],["충북에너지고등학교",16,"청주시 상당구","공","특수목적고등학교"],["보은고등학교",16,"보은군","사","일반고등학교"],["보은여자고등학교",16,"보은군","공","일반고등학교"],["충북생명산업고등학교",16,"보은군","공","특성화고등학교"],["상당고등학교",16,"청주시 상당구","공","일반고등학교"],["세광고등학교",16,"청주시 서원구","사","일반고등학교"],["세명고등학교",16,"제천시","사","일반고등학교"],["청주신흥고등학교",16,"청주시 청원구","사","일반고등학교"],["양업고등학교",16,"청주시 흥덕구","사","특성화고등학교"],["영동고등학교",16,"영동군","공","일반고등학교"],["영동산업과학고등학교",16,"영동군","공","특성화고등학교"],["영동미래고등학교",16,"영동군","사","특성화고등학교"],["오창고등학교",16,"청주시 청원구","공","일반고등학교"],["옥천고등학교",16,"옥천군","공","일반고등학교"],["충북산업과학고등학교",16,"옥천군","공","특성화고등학교"],["운호고등학교",16,"청주시 서원구","사","일반고등학교"],["음성고등학교",16,"음성군","공","일반고등학교"],["제천산업고등학교",16,"제천시","공","특성화고등학교"],["일신여자고등학교",16,"청주시 상당구","사","일반고등학교"],["제천고등학교",16,"제천시","공","일반고등학교"],["제천디지털전자고등학교",16,"제천시","공","특성화고등학교"],["제천제일고등학교",16,"제천시","공","일반고등학교"],["제천상업고등학교",16,"제천시","공","특성화고등학교"],["제천여자고등학교",16,"제천시","공","일반고등학교"],["충주중산고등학교",16,"충주시","사","일반고등학교"],["증평공업고등학교",16,"증평군","공","특성화고등학교"],["충북비즈니스고등학교",16,"증평군","공","특성화고등학교"],["진천고등학교",16,"진천군","공","일반고등학교"],["한국바이오마이스터고등학교",16,"진천군","공","특수목적고등학교"],["진천상업고등학교",16,"진천군","공","특성화고등학교"],["청산고등학교",16,"옥천군","공","일반고등학교"],["청석고등학교",16,"청주시 상당구","사","일반고등학교"],["청주고등학교",16,"청주시 흥덕구","공","자율고등학교"],["청주공업고등학교",16,"청주시 상당구","공","특성화고등학교"],["청주농업고등학교",16,"청주시 청원구","공","특성화고등학교"],["청주대성고등학교",16,"청주시 청원구","사","일반고등학교"],["청주여자고등학교",16,"청주시 청원구","공","일반고등학교"],["청주여자상업고등학교",16,"청주시 서원구","사","특성화고등학교"],["충북외국어고등학교",16,"청주시 흥덕구","공","특수목적고등학교"],["청주중앙여자고등학교",16,"청주시 서원구","공","일반고등학교"],["충북고등학교",16,"청주시 서원구","공","일반고등학교"],["충북공업고등학교",16,"청주시 흥덕구","공","특성화고등학교"],["충북과학고등학교",16,"청주시 상당구","공","특수목적고등학교"],["충북여자고등학교",16,"청주시 서원구","사","일반고등학교"],["충북예술고등학교",16,"청주시 흥덕구","공","특수목적고등학교"],["충북상업정보고등학교",16,"청주시 청원구","공","특성화고등학교"],["청주하이텍고등학교",16,"청주시 서원구","공","특성화고등학교"],["충북체육고등학교",16,"진천군","공","특수목적고등학교"],["충원고등학교",16,"충주시","사","일반고등학교"],["충주고등학교",16,"충주시","공","자율고등학교"],["충주공업고등학교",16,"충주시","공","특성화고등학교"],["국원고등학교",16,"충주시","공","일반고등학교"],["충주상업고등학교",16,"충주시","사","특성화고등학교"],["충주여자고등학교",16,"충주시","공","일반고등학교"],["한림디자인고등학교",16,"충주시","사","특성화고등학교"],["충주예성여자고등학교",16,"충주시","공","일반고등학교"],["학산고등학교",16,"영동군","공","일반고등학교"],["청주IT과학고등학교",16,"청주시 서원구","사","특성화고등학교"],["형석고등학교",16,"증평군","사","일반고등학교"],["황간고등학교",16,"영동군","공","일반고등학교"],["흥덕고등학교",16,"청주시 흥덕구","공","일반고등학교"],["서원고등학교",16,"청주시 흥덕구","공","일반고등학교"],["주성고등학교",16,"청주시 상당구","공","일반고등학교"],["양청고등학교",16,"청주시 청원구","공","일반고등학교"],["청원고등학교",16,"청주시 청원구","공","자율고등학교"],["산남고등학교",16,"청주시 서원구","공","일반고등학교"],["봉명고등학교",16,"청주시 흥덕구","공","일반고등학교"],["오송고등학교",16,"청주시 흥덕구","공","자율고등학교"],["대금고등학교",16,"음성군","공","일반고등학교"],["서전고등학교",16,"진천군","공","일반고등학교"],["중앙탑고등학교",16,"충주시","공","일반고등학교"],["동성고등학교",16,"음성군","공","일반고등학교"],["국립공주대학교사범대학부설고등학교",15,"공주시","국","일반고등학교"],["갈산고등학교",15,"홍성군","공","일반고등학교"],["강경고등학교",15,"논산시","공","일반고등학교"],["강경상업고등학교",15,"논산시","공","특성화고등학교"],["건양대학교병설건양고등학교",15,"논산시","사","일반고등학교"],["홍성공업고등학교",15,"홍성군","공","특성화고등학교"],["공주고등학교",15,"공주시","공","일반고등학교"],["공주마이스터고등학교",15,"공주시","공","특수목적고등학교"],["공주금성여자고등학교",15,"공주시","사","일반고등학교"],["공주생명과학고등학교",15,"공주시","공","특성화고등학교"],["공주여자고등학교",15,"공주시","공","일반고등학교"],["공주영명고등학교",15,"공주시","사","일반고등학교"],["공주정보고등학교",15,"공주시","사","특성화고등학교"],["한국K-POP고등학교",15,"홍성군","사","특성화고등학교"],["충남드론항공고등학교",15,"홍성군","공","특성화고등학교"],["금산고등학교",15,"금산군","공","일반고등학교"],["금산산업고등학교",15,"금산군","공","특성화고등학교"],["금산여자고등학교",15,"금산군","공","자율고등학교"],["논산고등학교",15,"논산시","공","일반고등학교"],["국방항공고등학교",15,"논산시","공","특성화고등학교"],["논산대건고등학교",15,"논산시","사","일반고등학교"],["논산여자고등학교",15,"논산시","공","일반고등학교"],["논산여자상업고등학교",15,"논산시","사","특성화고등학교"],["당진고등학교",15,"당진시","공","일반고등학교"],["당진정보고등학교",15,"당진시","공","특성화고등학교"],["대천고등학교",15,"보령시","공","일반고등학교"],["대천여자고등학교",15,"보령시","공","일반고등학교"],["대천여자상업고등학교",15,"보령시","공","특성화고등학교"],["대흥고등학교",15,"예산군","사","일반고등학교"],["덕산고등학교",15,"예산군","공","일반고등학교"],["아산스마트팩토리마이스터고등학교",15,"아산시","공","특수목적고등학교"],["만리포고등학교",15,"태안군","공","일반고등학교"],["목천고등학교",15,"천안시 동남구","공","일반고등학교"],["병천고등학교",15,"천안시 동남구","공","특성화고등학교"],["복자여자고등학교",15,"천안시 동남구","사","일반고등학교"],["부석고등학교",15,"서산시","공","일반고등학교"],["부여고등학교",15,"부여군","공","일반고등학교"],["부여여자고등학교",15,"부여군","공","일반고등학교"],["부여전자고등학교",15,"부여군","공","특성화고등학교"],["부여정보고등학교",15,"부여군","공","특성화고등학교"],["삽교고등학교",15,"예산군","사","일반고등학교"],["서령고등학교",15,"서산시","사","일반고등학교"],["서산고등학교",15,"서산시","공","일반고등학교"],["서산중앙고등학교",15,"서산시","공","일반고등학교"],["서산여자고등학교",15,"서산시","공","일반고등학교"],["서야고등학교",15,"당진시","사","일반고등학교"],["서일고등학교",15,"서산시","사","일반고등학교"],["서천고등학교",15,"서천군","공","일반고등학교"],["서천여자고등학교",15,"서천군","공","자율고등학교"],["한국미래문화고등학교",15,"서천군","사","특성화고등학교"],["서해삼육고등학교",15,"홍성군","사","일반고등학교"],["충남관광보건고등학교",15,"천안시 서북구","공","특성화고등학교"],["송악고등학교",15,"당진시","사","일반고등학교"],["신평고등학교",15,"당진시","사","일반고등학교"],["쌘뽈여자고등학교",15,"논산시","사","일반고등학교"],["아산고등학교",15,"아산시","사","일반고등학교"],["안면고등학교",15,"태안군","공","일반고등학교"],["연무고등학교",15,"논산시","사","일반고등학교"],["연무마이스터고등학교",15,"논산시","공","특수목적고등학교"],["예산고등학교",15,"예산군","사","일반고등학교"],["예산여자고등학교",15,"예산군","공","일반고등학교"],["예산예화여자고등학교",15,"예산군","사","특성화고등학교"],["충남반도체마이스터고등학교",15,"예산군","공","특성화고등학교"],["온양고등학교",15,"아산시","공","일반고등학교"],["온양여자고등학교",15,"아산시","공","일반고등학교"],["한올고등학교",15,"아산시","사","일반고등학교"],["용남고등학교",15,"계룡시","공","일반고등학교"],["서산공업고등학교",15,"서산시","공","특성화고등학교"],["웅천고등학교",15,"보령시","공","일반고등학교"],["장항고등학교",15,"서천군","사","일반고등학교"],["장항공업고등학교",15,"서천군","공","특성화고등학교"],["주산산업고등학교",15,"보령시","공","특성화고등학교"],["금산하이텍고등학교",15,"금산군","공","특성화고등학교"],["천안상업고등학교",15,"천안시 서북구","사","특성화고등학교"],["천안고등학교",15,"천안시 동남구","사","일반고등학교"],["천안공업고등학교",15,"천안시 동남구","공","특성화고등학교"],["천안제일고등학교",15,"천안시 동남구","공","특성화고등학교"],["북일고등학교",15,"천안시 동남구","사","자율고등학교"],["북일여자고등학교",15,"천안시 동남구","사","일반고등학교"],["천안여자고등학교",15,"천안시 동남구","공","일반고등학교"],["천안여자상업고등학교",15,"천안시 동남구","사","특성화고등학교"],["천안중앙고등학교",15,"천안시 동남구","공","일반고등학교"],["정산고등학교",15,"청양군","공","일반고등학교"],["충남과학고등학교",15,"공주시","공","특수목적고등학교"],["충남예술고등학교",15,"천안시 서북구","공","특수목적고등학교"],["한국국제비즈니스고등학교",15,"논산시","공","특성화고등학교"],["충남체육고등학교",15,"논산시","공","특수목적고등학교"],["충남해양과학고등학교",15,"보령시","공","특성화고등학교"],["태안고등학교",15,"태안군","공","일반고등학교"],["태안여자고등학교",15,"태안군","사","일반고등학교"],["충남디자인예술고등학교",15,"서천군","공","특수목적고등학교"],["한일고등학교",15,"공주시","사","일반고등학교"],["합덕제철고등학교",15,"당진시","공","특수목적고등학교"],["합덕고등학교",15,"당진시","공","일반고등학교"],["호서고등학교",15,"당진시","사","일반고등학교"],["한국식품마이스터고등학교",15,"부여군","공","특수목적고등학교"],["홍성고등학교",15,"홍성군","공","일반고등학교"],["홍성여자고등학교",15,"홍성군","공","일반고등학교"],["홍주고등학교",15,"홍성군","사","일반고등학교"],["천안두정고등학교",15,"천안시 서북구","공","일반고등학교"],["천안월봉고등학교",15,"천안시 서북구","공","일반고등학교"],["온양용화고등학교",15,"아산시","공","일반고등학교"],["천안쌍용고등학교",15,"천안시 서북구","공","일반고등학교"],["비전고등학교",15,"서천군","사","특성화고등학교"],["천안신당고등학교",15,"천안시 서북구","공","일반고등학교"],["충남외국어고등학교",15,"아산시","공","특수목적고등학교"],["계룡고등학교",15,"계룡시","공","일반고등학교"],["천안청수고등학교",15,"천안시 동남구","공","일반고등학교"],["천안업성고등학교",15,"천안시 서북구","공","일반고등학교"],["천안오성고등학교",15,"천안시 서북구","공","일반고등학교"],["대산고등학교",15,"서산시","공","자율고등학교"],["설화고등학교",15,"아산시","공","일반고등학교"],["청양고등학교",15,"청양군","공","일반고등학교"],["배방고등학교",15,"아산시","공","일반고등학교"],["충남삼성고등학교",15,"아산시","사","자율고등학교"],["천안불당고등학교",15,"천안시 서북구","공","일반고등학교"],["이순신고등학교",15,"아산시","공","일반고등학교"],["아산충무고등학교",15,"아산시","공","일반고등학교"],["전북대학교사범대학부설고등학교",13,"전주시 덕진구","국","일반고등학교"],["전북기계공업고등학교",13,"익산시","국","특수목적고등학교"],["강호항공고등학교",13,"고창군","사","특성화고등학교"],["고산고등학교",13,"완주군","공","특성화고등학교"],["고창고등학교",13,"고창군","공","일반고등학교"],["고창북고등학교",13,"고창군","사","일반고등학교"],["자유고등학교",13,"고창군","사","일반고등학교"],["군산고등학교",13,"군산시","공","일반고등학교"],["군산기계공업고등학교",13,"군산시","공","특수목적고등학교"],["한들고등학교",13,"군산시","공","일반고등학교"],["군산동고등학교",13,"군산시","공","일반고등학교"],["군산상일고등학교",13,"군산시","공","일반고등학교"],["군산여자고등학교",13,"군산시","공","일반고등학교"],["군산여자상업고등학교",13,"군산시","공","특성화고등학교"],["군산영광여자고등학교",13,"군산시","사","일반고등학교"],["군산제일고등학교",13,"군산시","사","일반고등학교"],["군산중앙고등학교",13,"군산시","사","일반고등학교"],["군산중앙여자고등학교",13,"군산시","사","일반고등학교"],["동국대학교사범대학부속금산고등학교",13,"김제시","사","일반고등학교"],["김제고등학교",13,"김제시","공","일반고등학교"],["김제서고등학교",13,"김제시","사","일반고등학교"],["김제여자고등학교",13,"김제시","공","일반고등학교"],["김제농생명마이스터고등학교",13,"김제시","공","특수목적고등학교"],["남성고등학교",13,"익산시","사","일반고등학교"],["남원고등학교",13,"남원시","공","일반고등학교"],["남원용성고등학교",13,"남원시","공","특성화고등학교"],["남원서진여자고등학교",13,"남원시","사","일반고등학교"],["남원여자고등학교",13,"남원시","공","일반고등학교"],["남원제일고등학교",13,"남원시","사","특성화고등학교"],["남원국악예술고등학교",13,"남원시","사","일반고등학교"],["덕암고등학교",13,"김제시","사","일반고등학교"],["덕암정보고등학교",13,"김제시","사","특성화고등학교"],["동계고등학교",13,"순창군","공","일반고등학교"],["동암고등학교",13,"전주시 완산구","사","일반고등학교"],["마령고등학교",13,"진안군","공","일반고등학교"],["만경고등학교",13,"김제시","사","일반고등학교"],["만경여자고등학교",13,"김제시","사","일반고등학교"],["무주고등학교",13,"무주군","공","일반고등학교"],["배영고등학교",13,"정읍시","사","일반고등학교"],["백산고등학교",13,"부안군","사","일반고등학교"],["백화고등학교",13,"장수군","사","일반고등학교"],["부안고등학교",13,"부안군","공","일반고등학교"],["전북베이커리고등학교",13,"부안군","공","특성화고등학교"],["부안여자고등학교",13,"부안군","사","일반고등학교"],["서림고등학교",13,"부안군","공","일반고등학교"],["산서고등학교",13,"장수군","공","일반고등학교"],["수소에너지고등학교",13,"완주군","공","특성화고등학교"],["상산고등학교",13,"전주시 완산구","사","자율고등학교"],["서영여자고등학교",13,"정읍시","사","일반고등학교"],["설천고등학교",13,"무주군","공","일반고등학교"],["성원고등학교",13,"남원시","사","일반고등학교"],["성일고등학교",13,"익산시","사","일반고등학교"],["세인고등학교",13,"완주군","사","특성화고등학교"],["전주솔내고등학교",13,"전주시 덕진구","공","일반고등학교"],["순창고등학교",13,"순창군","사","일반고등학교"],["순창제일고등학교",13,"순창군","공","일반고등학교"],["신태인고등학교",13,"정읍시","사","일반고등학교"],["안성고등학교",13,"무주군","공","일반고등학교"],["안천고등학교",13,"진안군","공","일반고등학교"],["여산고등학교",13,"익산시","공","일반고등학교"],["전북인공지능고등학교",13,"고창군","사","특성화고등학교"],["전북펫고등학교",13,"임실군","공","특성화고등학교"],["전주대학교사범대학부설고등학교",13,"전주시 완산구","사","일반고등학교"],["완산고등학교",13,"전주시 완산구","사","일반고등학교"],["완산여자고등학교",13,"전주시 완산구","사","특성화고등학교"],["완주고등학교",13,"완주군","사","일반고등학교"],["왕신여자고등학교",13,"정읍시","사","일반고등학교"],["우석고등학교",13,"전주시 덕진구","사","일반고등학교"],["전북여자고등학교",13,"전주시 덕진구","사","일반고등학교"],["원광고등학교",13,"익산시","사","일반고등학교"],["원광여자고등학교",13,"익산시","사","일반고등학교"],["원광보건고등학교",13,"익산시","사","특성화고등학교"],["위도고등학교",13,"부안군","공","일반고등학교"],["유일여자고등학교",13,"전주시 덕진구","사","일반고등학교"],["이리고등학교",13,"익산시","공","일반고등학교"],["이리공업고등학교",13,"익산시","공","특성화고등학교"],["이리남성여자고등학교",13,"익산시","사","일반고등학교"],["이리여자고등학교",13,"익산시","공","일반고등학교"],["이일여자고등학교",13,"익산시","사","일반고등학교"],["익산고등학교",13,"익산시","사","일반고등학교"],["인상고등학교",13,"정읍시","사","일반고등학교"],["인월고등학교",13,"남원시","공","일반고등학교"],["임실고등학교",13,"임실군","공","일반고등학교"],["한국치즈과학고등학교",13,"임실군","공","특성화고등학교"],["전북유니텍고등학교",13,"장수군","공","특성화고등학교"],["장수고등학교",13,"장수군","공","일반고등학교"],["전라고등학교",13,"전주시 덕진구","공","일반고등학교"],["전북과학고등학교",13,"익산시","공","특수목적고등학교"],["전북제일고등학교",13,"익산시","사","일반고등학교"],["전북체육고등학교",13,"완주군","공","특수목적고등학교"],["전일고등학교",13,"전주시 완산구","사","일반고등학교"],["전주고등학교",13,"전주시 완산구","공","일반고등학교"],["전주공업고등학교",13,"전주시 덕진구","공","특성화고등학교"],["전주근영여자고등학교",13,"전주시 완산구","사","일반고등학교"],["전주기전여자고등학교",13,"전주시 완산구","사","일반고등학교"],["전주생명과학고등학교",13,"전주시 덕진구","공","특성화고등학교"],["전주성심여자고등학교",13,"전주시 완산구","사","일반고등학교"],["전주신흥고등학교",13,"전주시 완산구","사","일반고등학교"],["전주여자고등학교",13,"전주시 덕진구","공","일반고등학교"],["전주여자상업고등학교",13,"전주시 완산구","공","특성화고등학교"],["전주영생고등학교",13,"전주시 완산구","사","일반고등학교"],["전주예술고등학교",13,"완주군","사","일반고등학교"],["전주중앙여자고등학교",13,"전주시 덕진구","사","일반고등학교"],["전주한일고등학교",13,"전주시 완산구","사","일반고등학교"],["전주해성고등학교",13,"전주시 완산구","사","일반고등학교"],["정읍고등학교",13,"정읍시","공","일반고등학교"],["정읍제일고등학교",13,"정읍시","공","특성화고등학교"],["정읍여자고등학교",13,"정읍시","공","일반고등학교"],["정주고등학교",13,"정읍시","사","일반고등학교"],["줄포자동차공업고등학교",13,"부안군","공","특성화고등학교"],["진경여자고등학교",13,"익산시","사","특성화고등학교"],["한국기술부사관고등학교",13,"진안군","공","특성화고등학교"],["진안제일고등학교",13,"진안군","공","일반고등학교"],["칠보고등학교",13,"정읍시","공","특성화고등학교"],["태인고등학교",13,"정읍시","사","일반고등학교"],["푸른꿈고등학교",13,"무주군","사","특성화고등학교"],["글로벌학산고등학교",13,"정읍시","사","특성화고등학교"],["한국전통문화고등학교",13,"전주시 완산구","공","일반고등학교"],["한국경마축산고등학교",13,"남원시","공","특수목적고등학교"],["한별고등학교",13,"완주군","공","일반고등학교"],["함열고등학교",13,"익산시","공","일반고등학교"],["함열여자고등학교",13,"익산시","사","일반고등학교"],["해리고등학교",13,"고창군","공","일반고등학교"],["호남고등학교",13,"정읍시","사","일반고등학교"],["호남제일고등학교",13,"전주시 완산구","사","일반고등학교"],["전주제일고등학교",13,"전주시 완산구","공","일반고등학교"],["한국마사고등학교",13,"장수군","사","일반고등학교"],["한국게임과학고등학교",13,"완주군","사","특성화고등학교"],["전북외국어고등학교",13,"군산시","공","특수목적고등학교"],["지평선고등학교",13,"김제시","사","특성화고등학교"],["한국한방고등학교",13,"진안군","사","특성화고등학교"],["양현고등학교",13,"전주시 덕진구","공","일반고등학교"],["강진고등학교",12,"강진군","공","일반고등학교"],["전남생명과학고등학교",12,"강진군","공","특수목적고등학교"],["고금고등학교",12,"완도군","공","일반고등학교"],["고흥고등학교",12,"고흥군","공","일반고등학교"],["녹동고등학교",12,"고흥군","공","일반고등학교"],["고흥도화고등학교",12,"고흥군","공","특성화고등학교"],["고흥산업과학고등학교",12,"고흥군","공","특성화고등학교"],["전남조리과학고등학교",12,"곡성군","공","특성화고등학교"],["광남고등학교",12,"나주시","사","일반고등학교"],["광양고등학교",12,"광양시","공","일반고등학교"],["광양하이텍고등학교",12,"광양시","공","특성화고등학교"],["광양여자고등학교",12,"광양시","공","일반고등학교"],["광양제철고등학교",12,"광양시","사","자율고등학교"],["구례고등학교",12,"구례군","공","일반고등학교"],["구림공업고등학교",12,"영암군","공","특성화고등학교"],["금성고등학교",12,"나주시","사","일반고등학교"],["나주고등학교",12,"나주시","공","일반고등학교"],["나주공업고등학교",12,"나주시","사","특성화고등학교"],["나주상업고등학교",12,"나주시","공","특성화고등학교"],["노화고등학교",12,"완도군","공","일반고등학교"],["능주고등학교",12,"화순군","사","일반고등학교"],["담양고등학교",12,"담양군","공","일반고등학교"],["담양공업고등학교",12,"담양군","공","특성화고등학교"],["한국말산업고등학교",12,"장흥군","공","특성화고등학교"],["도초고등학교",12,"신안군","공","일반고등학교"],["광양백운고등학교",12,"광양시","공","일반고등학교"],["목포고등학교",12,"목포시","공","일반고등학교"],["목포공업고등학교",12,"목포시","공","특성화고등학교"],["목포덕인고등학교",12,"목포시","사","일반고등학교"],["목포마리아회고등학교",12,"목포시","사","일반고등학교"],["목포조리과학고등학교",12,"목포시","사","특성화고등학교"],["목포중앙고등학교",12,"목포시","사","특성화고등학교"],["목포여자고등학교",12,"목포시","공","일반고등학교"],["목포여자상업고등학교",12,"목포시","사","특성화고등학교"],["목포정명여자고등학교",12,"목포시","사","일반고등학교"],["목포제일여자고등학교",12,"목포시","공","일반고등학교"],["목포혜인여자고등학교",12,"목포시","사","일반고등학교"],["목포홍일고등학교",12,"목포시","사","일반고등학교"],["무안고등학교",12,"무안군","공","일반고등학교"],["문태고등학교",12,"목포시","사","일반고등학교"],["백제고등학교",12,"무안군","사","일반고등학교"],["벌교고등학교",12,"보성군","사","일반고등학교"],["벌교상업고등학교",12,"보성군","공","특성화고등학교"],["벌교여자고등학교",12,"보성군","사","일반고등학교"],["법성고등학교",12,"영광군","공","특성화고등학교"],["병영상업고등학교",12,"강진군","공","특성화고등학교"],["보성고등학교",12,"보성군","공","일반고등학교"],["다향고등학교",12,"보성군","공","특성화고등학교"],["봉황고등학교",12,"나주시","공","일반고등학교"],["부영여자고등학교",12,"여수시","공","일반고등학교"],["삼계부사관고등학교",12,"장성군","공","특성화고등학교"],["진도국악고등학교",12,"진도군","공","특수목적고등학교"],["성전고등학교",12,"강진군","공","일반고등학교"],["송지고등학교",12,"해남군","공","일반고등학교"],["순천강남여자고등학교",12,"순천시","사","일반고등학교"],["순천고등학교",12,"순천시","공","일반고등학교"],["순천공업고등학교",12,"순천시","공","특성화고등학교"],["순천금당고등학교",12,"순천시","사","일반고등학교"],["순천매산고등학교",12,"순천시","사","일반고등학교"],["순천매산여자고등학교",12,"순천시","사","일반고등학교"],["순천여자고등학교",12,"순천시","공","일반고등학교"],["순천미래과학고등학교",12,"순천시","공","특성화고등학교"],["순천제일고등학교",12,"순천시","공","일반고등학교"],["순천청암고등학교",12,"순천시","사","특성화고등학교"],["순천효산고등학교",12,"순천시","사","특성화고등학교"],["순천효천고등학교",12,"순천시","사","일반고등학교"],["전남에너지고등학교",12,"영암군","공","특성화고등학교"],["안좌고등학교",12,"신안군","공","일반고등학교"],["신안해양과학고등학교",12,"신안군","공","특성화고등학교"],["약산고등학교",12,"완도군","공","일반고등학교"],["여남고등학교",12,"여수시","공","일반고등학교"],["여수고등학교",12,"여수시","공","일반고등학교"],["여수공업고등학교",12,"여수시","사","특성화고등학교"],["여수여자고등학교",12,"여수시","공","일반고등학교"],["여수석유화학고등학교",12,"여수시","공","특수목적고등학교"],["여수정보과학고등학교",12,"여수시","사","특성화고등학교"],["여수중앙여자고등학교",12,"여수시","사","일반고등학교"],["여수화양고등학교",12,"여수시","공","일반고등학교"],["여양고등학교",12,"여수시","사","일반고등학교"],["여천고등학교",12,"여수시","공","일반고등학교"],["여수해양과학고등학교",12,"여수시","공","특성화고등학교"],["영광고등학교",12,"영광군","공","일반고등학교"],["영광공업고등학교",12,"영광군","공","특성화고등학교"],["영광전자고등학교",12,"영광군","공","특성화고등학교"],["영산성지고등학교",12,"영광군","사","특성화고등학교"],["영산고등학교",12,"나주시","사","일반고등학교"],["전남미용고등학교",12,"나주시","공","특성화고등학교"],["영암고등학교",12,"영암군","공","일반고등학교"],["영암낭주고등학교",12,"영암군","공","일반고등학교"],["영암여자고등학교",12,"영암군","사","일반고등학교"],["영흥고등학교",12,"목포시","사","일반고등학교"],["예당고등학교",12,"보성군","사","일반고등학교"],["옥과고등학교",12,"곡성군","사","일반고등학교"],["완도고등학교",12,"완도군","공","일반고등학교"],["완도금일고등학교",12,"완도군","공","일반고등학교"],["완도수산고등학교",12,"완도군","공","특수목적고등학교"],["임자고등학교",12,"신안군","공","일반고등학교"],["장성고등학교",12,"장성군","사","일반고등학교"],["문향고등학교",12,"장성군","공","일반고등학교"],["장성하이텍고등학교",12,"장성군","공","특성화고등학교"],["장흥고등학교",12,"장흥군","공","일반고등학교"],["장흥관산고등학교",12,"장흥군","공","일반고등학교"],["전남미래자동차고등학교",12,"장흥군","공","특성화고등학교"],["전남과학고등학교",12,"나주시","공","특수목적고등학교"],["전남예술고등학교",12,"무안군","사","특수목적고등학교"],["전남외국어고등학교",12,"나주시","공","특수목적고등학교"],["목상고등학교",12,"목포시","공","일반고등학교"],["조도고등학교",12,"진도군","공","일반고등학교"],["한국바둑고등학교",12,"순천시","공","특수목적고등학교"],["지명고등학교",12,"신안군","공","일반고등학교"],["진도고등학교",12,"진도군","사","일반고등학교"],["진도실업고등학교",12,"진도군","공","특성화고등학교"],["한국항만물류고등학교",12,"광양시","공","특수목적고등학교"],["진성여자고등학교",12,"여수시","사","특성화고등학교"],["창평고등학교",12,"담양군","사","일반고등학교"],["하의고등학교",12,"신안군","공","일반고등학교"],["함평학다리고등학교",12,"함평군","공","일반고등학교"],["한빛고등학교",12,"담양군","사","특성화고등학교"],["한영고등학교",12,"여수시","사","일반고등학교"],["함평고등학교",12,"함평군","사","일반고등학교"],["함평골프고등학교",12,"함평군","공","특수목적고등학교"],["전남보건고등학교",12,"함평군","공","특성화고등학교"],["해남고등학교",12,"해남군","공","일반고등학교"],["해남공업고등학교",12,"해남군","공","특성화고등학교"],["해룡고등학교",12,"영광군","사","일반고등학교"],["호남원예고등학교",12,"나주시","공","특성화고등학교"],["화순고등학교",12,"화순군","공","일반고등학교"],["전남기술과학고등학교",12,"화순군","공","특성화고등학교"],["화순이양고등학교",12,"화순군","공","일반고등학교"],["화원고등학교",12,"해남군","사","일반고등학교"],["전남자연과학고등학교",12,"구례군","공","특성화고등학교"],["곡성고등학교",12,"곡성군","공","일반고등학교"],["전남체육고등학교",12,"무안군","공","특수목적고등학교"],["여수충무고등학교",12,"여수시","공","일반고등학교"],["남악고등학교",12,"무안군","공","자율고등학교"],["중마고등학교",12,"광양시","공","일반고등학교"],["순천팔마고등학교",12,"순천시","공","일반고등학교"],["광영고등학교",12,"광양시","공","일반고등학교"],["삼호고등학교",12,"영암군","공","일반고등학교"],["순천복성고등학교",12,"순천시","공","일반고등학교"],["한울고등학교",12,"곡성군","공","특성화고등학교"],["한국창의예술고등학교",12,"광양시","공","특수목적고등학교"],["매성고등학교",12,"나주시","공","일반고등학교"],["구미전자공업고등학교",3,"구미시","국","특수목적고등학교"],["가은고등학교",3,"문경시","공","일반고등학교"],["경북일고등학교",3,"예천군","공","일반고등학교"],["한국국제통상마이스터고등학교",3,"경주시","공","특수목적고등학교"],["강구정보고등학교",3,"영덕군","공","특성화고등학교"],["경구고등학교",3,"구미시","사","일반고등학교"],["경북과학고등학교",3,"포항시 남구","공","특수목적고등학교"],["경북생활과학고등학교",3,"구미시","공","특성화고등학교"],["경북외국어고등학교",3,"구미시","공","특수목적고등학교"],["한국펫고등학교",3,"봉화군","사","특성화고등학교"],["경북체육고등학교",3,"경산시","공","특수목적고등학교"],["경산고등학교",3,"경산시","공","자율고등학교"],["경산여자고등학교",3,"경산시","사","일반고등학교"],["경산제일고등학교",3,"경산시","사","특성화고등학교"],["경북기계금속고등학교",3,"경산시","공","특성화고등학교"],["경안고등학교",3,"안동시","사","일반고등학교"],["경안여자고등학교",3,"안동시","사","일반고등학교"],["경일고등학교",3,"안동시","사","일반고등학교"],["경주고등학교",3,"경주시","사","일반고등학교"],["한국반도체마이스터고등학교",3,"경주시","공","특수목적고등학교"],["경주디자인고등학교",3,"경주시","공","특성화고등학교"],["경주여자고등학교",3,"경주시","공","일반고등학교"],["경주여자정보고등학교",3,"경주시","사","특성화고등학교"],["경주정보고등학교",3,"경주시","사","특성화고등학교"],["경주화랑고등학교",3,"경주시","사","특성화고등학교"],["계림고등학교",3,"경주시","공","일반고등학교"],["한국조리명장고등학교",3,"고령군","공","특성화고등학교"],["포항과학기술고등학교",3,"포항시 남구","공","특성화고등학교"],["구미고등학교",3,"구미시","공","일반고등학교"],["구미여자고등학교",3,"구미시","공","일반고등학교"],["구미정보고등학교",3,"구미시","공","특성화고등학교"],["구미여자상업고등학교",3,"구미시","공","특성화고등학교"],["근화여자고등학교",3,"경주시","사","일반고등학교"],["금성고등학교",3,"의성군","공","일반고등학교"],["금오고등학교",3,"구미시","공","일반고등학교"],["금오공업고등학교",3,"구미시","공","특수목적고등학교"],["구미제일고등학교",3,"구미시","사","일반고등학교"],["금천고등학교",3,"청도군","공","일반고등학교"],["경북휴먼테크고등학교",3,"영천시","사","특성화고등학교"],["포은고등학교",3,"영천시","공","일반고등학교"],["경북세무고등학교",3,"포항시 북구","공","특성화고등학교"],["길원여자고등학교",3,"안동시","사","일반고등학교"],["김천고등학교",3,"김천시","사","자율고등학교"],["김천생명과학고등학교",3,"김천시","공","특성화고등학교"],["김천여자고등학교",3,"김천시","공","일반고등학교"],["김천예술고등학교",3,"김천시","사","일반고등학교"],["김천중앙고등학교",3,"김천시","공","일반고등학교"],["대가야고등학교",3,"고령군","사","일반고등학교"],["대구가톨릭대학교사범대학부속무학고등학교",3,"경산시","사","일반고등학교"],["대동고등학교",3,"포항시 북구","사","일반고등학교"],["대영고등학교",3,"영주시","사","일반고등학교"],["대창고등학교",3,"예천군","사","일반고등학교"],["도개고등학교",3,"구미시","사","일반고등학교"],["동명고등학교",3,"칠곡군","공","일반고등학교"],["한국미래산업고등학교",3,"영주시","사","특성화고등학교"],["동지고등학교",3,"포항시 북구","사","일반고등학교"],["동지여자고등학교",3,"포항시 북구","사","일반고등학교"],["명인고등학교",3,"성주군","사","특성화고등학교"],["모계고등학교",3,"청도군","사","일반고등학교"],["무산고등학교",3,"경주시","사","일반고등학교"],["문경공업고등학교",3,"문경시","공","특성화고등학교"],["문경여자고등학교",3,"문경시","사","일반고등학교"],["문명고등학교",3,"경산시","사","일반고등학교"],["문창고등학교",3,"문경시","사","일반고등학교"],["문화고등학교",3,"경주시","사","일반고등학교"],["경북소프트웨어마이스터고등학교",3,"의성군","공","특성화고등학교"],["봉화고등학교",3,"봉화군","공","자율고등학교"],["삼성생활예술고등학교",3,"경주시","사","특성화고등학교"],["상산전자고등학교",3,"상주시","공","특성화고등학교"],["상주고등학교",3,"상주시","사","일반고등학교"],["상주공업고등학교",3,"상주시","사","특성화고등학교"],["상주여자고등학교",3,"상주시","공","자율고등학교"],["우석여자고등학교",3,"상주시","사","일반고등학교"],["상지미래경영고등학교",3,"상주시","사","특성화고등학교"],["선덕여자고등학교",3,"경주시","사","일반고등학교"],["선산고등학교",3,"구미시","공","일반고등학교"],["한국국제조리고등학교",3,"영주시","사","특성화고등학교"],["동국대학교사범대학부속선화여자고등학교",3,"영천시","사","일반고등학교"],["성의고등학교",3,"김천시","사","일반고등학교"],["성의여자고등학교",3,"김천시","사","일반고등학교"],["성주고등학교",3,"성주군","공","일반고등학교"],["성창여자고등학교",3,"안동시","사","일반고등학교"],["성희여자고등학교",3,"안동시","사","일반고등학교"],["세명고등학교",3,"포항시 남구","사","일반고등학교"],["세화고등학교",3,"포항시 북구","사","일반고등학교"],["수비고등학교",3,"영양군","공","일반고등학교"],["순심고등학교",3,"칠곡군","사","일반고등학교"],["순심여자고등학교",3,"칠곡군","사","일반고등학교"],["신라고등학교",3,"경주시","사","일반고등학교"],["신라공업고등학교",3,"경주시","사","특성화고등학교"],["경북과학기술고등학교",3,"김천시","공","특성화고등학교"],["경주예일고등학교",3,"경주시","사","일반고등학교"],["경북모빌리티고등학교",3,"경주시","공","특성화고등학교"],["안동고등학교",3,"안동시","공","자율고등학교"],["경북하이텍고등학교",3,"안동시","사","특성화고등학교"],["한국생명과학고등학교",3,"안동시","공","특성화고등학교"],["안동여자고등학교",3,"안동시","공","일반고등학교"],["안동중앙고등학교",3,"안동시","사","일반고등학교"],["약목고등학교",3,"칠곡군","공","일반고등학교"],["영광고등학교",3,"영주시","사","일반고등학교"],["영광여자고등학교",3,"영주시","사","일반고등학교"],["영남삼육고등학교",3,"경산시","사","일반고등학교"],["영덕여자고등학교",3,"영덕군","사","일반고등학교"],["영덕고등학교",3,"영덕군","공","일반고등학교"],["영동고등학교",3,"영천시","사","일반고등학교"],["예일메디텍고등학교",3,"안동시","사","특성화고등학교"],["영양고등학교",3,"영양군","공","일반고등학교"],["영양여자고등학교",3,"영양군","사","일반고등학교"],["영일고등학교",3,"포항시 남구","사","일반고등학교"],["한국철도고등학교",3,"영주시","사","특성화고등학교"],["경북항공고등학교",3,"영주시","사","특성화고등학교"],["영주여자고등학교",3,"영주시","공","일반고등학교"],["영주제일고등학교",3,"영주시","공","자율고등학교"],["영천고등학교",3,"영천시","공","일반고등학교"],["영천전자고등학교",3,"영천시","사","특성화고등학교"],["영천여자고등학교",3,"영천시","공","일반고등학교"],["영천성남여자고등학교",3,"영천시","사","일반고등학교"],["영해고등학교",3,"영덕군","공","일반고등학교"],["예천여자고등학교",3,"예천군","공","일반고등학교"],["오상고등학교",3,"구미시","사","일반고등학교"],["오천고등학교",3,"포항시 남구","사","일반고등학교"],["경북자연과학고등학교",3,"상주시","사","특성화고등학교"],["울릉고등학교",3,"울릉군","공","특성화고등학교"],["울진고등학교",3,"울진군","공","자율고등학교"],["유성여자고등학교",3,"포항시 북구","사","일반고등학교"],["의성고등학교",3,"의성군","사","일반고등학교"],["의성유니텍고등학교",3,"의성군","공","특성화고등학교"],["의성여자고등학교",3,"의성군","공","일반고등학교"],["이서고등학교",3,"청도군","사","일반고등학교"],["점촌고등학교",3,"문경시","공","자율고등학교"],["죽변고등학교",3,"울진군","공","일반고등학교"],["포항보건고등학교",3,"포항시 북구","사","특성화고등학교"],["한국미래농업고등학교",3,"상주시","공","특성화고등학교"],["진량고등학교",3,"경산시","사","일반고등학교"],["진보고등학교",3,"청송군","공","일반고등학교"],["청도고등학교",3,"청도군","사","일반고등학교"],["경북드론고등학교",3,"청도군","공","특성화고등학교"],["청송고등학교",3,"청송군","공","일반고등학교"],["경북골프경영고등학교",3,"청송군","사","특성화고등학교"],["청송여자고등학교",3,"청송군","사","일반고등학교"],["한국산림과학고등학교",3,"봉화군","공","특성화고등학교"],["경북기계명장고등학교",3,"칠곡군","공","특성화고등학교"],["효청보건고등학교",3,"경주시","사","특성화고등학교"],["한국원자력마이스터고등학교",3,"울진군","공","특수목적고등학교"],["경북관광비즈니스고등학교",3,"울진군","공","특성화고등학교"],["포항고등학교",3,"포항시 북구","공","일반고등학교"],["포항여자고등학교",3,"포항시 북구","공","일반고등학교"],["포항여자전자고등학교",3,"포항시 북구","공","특성화고등학교"],["포항영신고등학교",3,"포항시 북구","사","일반고등학교"],["포항예술고등학교",3,"포항시 북구","사","일반고등학교"],["포항동성고등학교",3,"포항시 남구","사","일반고등학교"],["포항제철고등학교",3,"포항시 남구","사","자율고등학교"],["포항제철공업고등학교",3,"포항시 남구","사","특수목적고등학교"],["포항중앙고등학교",3,"포항시 북구","사","일반고등학교"],["포항중앙여자고등학교",3,"포항시 북구","사","일반고등학교"],["풍산고등학교",3,"안동시","사","일반고등학교"],["하양여자고등학교",3,"경산시","사","일반고등학교"],["김천한일고등학교",3,"김천시","사","일반고등학교"],["함창고등학교",3,"상주시","사","일반고등학교"],["현서고등학교",3,"청송군","공","일반고등학교"],["현일고등학교",3,"구미시","사","일반고등학교"],["화령고등학교",3,"상주시","공","일반고등학교"],["후포고등학교",3,"울진군","공","일반고등학교"],["포항흥해공업고등학교",3,"포항시 북구","공","특성화고등학교"],["경북바이오마이스터고등학교",3,"영천시","공","특수목적고등학교"],["한국해양마이스터고등학교",3,"포항시 북구","공","특수목적고등학교"],["안계고등학교",3,"의성군","공","일반고등학교"],["경북조리과학고등학교",3,"문경시","공","특성화고등학교"],["성주여자고등학교",3,"성주군","사","일반고등학교"],["인동고등학교",3,"구미시","공","자율고등학교"],["포항이동고등학교",3,"포항시 남구","공","일반고등학교"],["두호고등학교",3,"포항시 북구","공","일반고등학교"],["포항장성고등학교",3,"포항시 북구","공","일반고등학교"],["상모고등학교",3,"구미시","공","일반고등학교"],["사곡고등학교",3,"구미시","공","일반고등학교"],["선주고등학교",3,"구미시","공","일반고등학교"],["경산과학고등학교",3,"경산시","공","특수목적고등학교"],["형곡고등학교",3,"구미시","공","일반고등학교"],["북삼고등학교",3,"칠곡군","공","자율고등학교"],["사동고등학교",3,"경산시","공","일반고등학교"],["석적고등학교",3,"칠곡군","공","일반고등학교"],["율곡고등학교",3,"김천시","공","일반고등학교"],["구미산동고등학교",3,"구미시","공","일반고등학교"],["경상국립대학교사범대학부설고등학교",2,"진주시","국","일반고등학교"],["거창승강기고등학교",2,"거창군","공","특성화고등학교"],["거제고등학교",2,"거제시","사","일반고등학교"],["거제공업고등학교",2,"거제시","공","특수목적고등학교"],["거제여자상업고등학교",2,"거제시","공","특성화고등학교"],["거제제일고등학교",2,"거제시","공","자율고등학교"],["경남산업고등학교",2,"거제시","공","특성화고등학교"],["거제중앙고등학교",2,"거제시","공","일반고등학교"],["거창고등학교",2,"거창군","사","일반고등학교"],["거창대성고등학교",2,"거창군","사","일반고등학교"],["대성일고등학교",2,"거창군","사","일반고등학교"],["아림고등학교",2,"거창군","공","일반고등학교"],["거창여자고등학교",2,"거창군","공","일반고등학교"],["거창중앙고등학교",2,"거창군","사","일반고등학교"],["경남과학고등학교",2,"진주시","공","특수목적고등학교"],["경남예술고등학교",2,"진주시","사","특수목적고등학교"],["경남외국어고등학교",2,"양산시","사","특수목적고등학교"],["경남자영고등학교",2,"사천시","공","특성화고등학교"],["경남정보고등학교",2,"진주시","공","특성화고등학교"],["경남체육고등학교",2,"진주시","공","특수목적고등학교"],["경남항공고등학교",2,"고성군","공","특성화고등학교"],["경상고등학교",2,"창원시 의창구","사","일반고등학교"],["경해여자고등학교",2,"진주시","사","일반고등학교"],["고성고등학교",2,"고성군","사","일반고등학교"],["고성중앙고등학교",2,"고성군","공","일반고등학교"],["곤양고등학교",2,"사천시","공","일반고등학교"],["군북고등학교",2,"함안군","사","일반고등학교"],["금남고등학교",2,"하동군","공","일반고등학교"],["김해가야고등학교",2,"김해시","공","일반고등학교"],["김해건설공업고등학교",2,"김해시","공","특성화고등학교"],["김해경원고등학교",2,"김해시","공","일반고등학교"],["김해고등학교",2,"김해시","공","일반고등학교"],["김해생명과학고등학교",2,"김해시","공","특성화고등학교"],["김해여자고등학교",2,"김해시","공","일반고등학교"],["김해중앙여자고등학교",2,"김해시","사","일반고등학교"],["김해한일여자고등학교",2,"김해시","사","특성화고등학교"],["남지고등학교",2,"창녕군","사","일반고등학교"],["남해고등학교",2,"남해군","사","일반고등학교"],["경남해양과학고등학교",2,"남해군","공","특성화고등학교"],["남해정보산업고등학교",2,"남해군","공","특성화고등학교"],["남해제일고등학교",2,"남해군","공","일반고등학교"],["남해해성고등학교",2,"남해군","사","일반고등학교"],["단성고등학교",2,"산청군","공","일반고등학교"],["대곡고등학교",2,"진주시","공","일반고등학교"],["경남자동차고등학교",2,"진주시","사","특성화고등학교"],["대아고등학교",2,"진주시","사","일반고등학교"],["덕산고등학교",2,"산청군","공","일반고등학교"],["마산가포고등학교",2,"창원시 마산합포구","공","일반고등학교"],["마산고등학교",2,"창원시 마산합포구","공","일반고등학교"],["마산공업고등학교",2,"창원시 마산회원구","사","특성화고등학교"],["마산구암고등학교",2,"창원시 마산회원구","공","일반고등학교"],["마산무학여자고등학교",2,"창원시 마산회원구","사","일반고등학교"],["마산삼진고등학교",2,"창원시 마산합포구","사","일반고등학교"],["마산여자고등학교",2,"창원시 마산합포구","공","일반고등학교"],["마산용마고등학교",2,"창원시 마산합포구","공","일반고등학교"],["마산제일고등학교",2,"창원시 마산회원구","사","일반고등학교"],["마산제일여자고등학교",2,"창원시 마산합포구","사","일반고등학교"],["마산중앙고등학교",2,"창원시 마산합포구","사","일반고등학교"],["명덕고등학교",2,"함안군","사","일반고등학교"],["명신고등학교",2,"진주시","공","일반고등학교"],["밀성고등학교",2,"밀양시","사","일반고등학교"],["밀성제일고등학교",2,"밀양시","사","특성화고등학교"],["밀양고등학교",2,"밀양시","공","일반고등학교"],["한국나노마이스터고등학교",2,"밀양시","공","특수목적고등학교"],["밀양동명고등학교",2,"밀양시","사","일반고등학교"],["밀양여자고등학교",2,"밀양시","공","일반고등학교"],["보광고등학교",2,"양산시","사","일반고등학교"],["사천고등학교",2,"사천시","사","일반고등학교"],["사천여자고등학교",2,"사천시","사","특성화고등학교"],["삼가고등학교",2,"합천군","공","일반고등학교"],["삼랑진고등학교",2,"밀양시","사","일반고등학교"],["삼천포고등학교",2,"사천시","사","일반고등학교"],["삼천포공업고등학교",2,"사천시","공","특수목적고등학교"],["삼천포여자고등학교",2,"사천시","사","일반고등학교"],["삼천포중앙고등학교",2,"사천시","공","일반고등학교"],["삼현여자고등학교",2,"진주시","사","일반고등학교"],["서상고등학교",2,"함양군","공","일반고등학교"],["진주중앙고등학교",2,"진주시","공","일반고등학교"],["선명여자고등학교",2,"진주시","사","특성화고등학교"],["성지여자고등학교",2,"창원시 마산합포구","사","일반고등학교"],["경진고등학교",2,"진주시","사","특성화고등학교"],["세종고등학교",2,"밀양시","사","일반고등학교"],["경남간호고등학교",2,"산청군","사","특성화고등학교"],["신등고등학교",2,"산청군","공","일반고등학교"],["신반정보고등학교",2,"의령군","공","특성화고등학교"],["안의고등학교",2,"함양군","공","일반고등학교"],["야로고등학교",2,"합천군","공","일반고등학교"],["양산고등학교",2,"양산시","공","일반고등학교"],["양산제일고등학교",2,"양산시","사","일반고등학교"],["양산여자고등학교",2,"양산시","사","일반고등학교"],["영산고등학교",2,"창녕군","공","일반고등학교"],["창녕옥야고등학교",2,"창녕군","사","일반고등학교"],["옥종고등학교",2,"하동군","공","일반고등학교"],["용남고등학교",2,"사천시","사","일반고등학교"],["웅상고등학교",2,"양산시","공","일반고등학교"],["합천평화고등학교",2,"합천군","사","특성화고등학교"],["의령고등학교",2,"의령군","공","일반고등학교"],["의령여자고등학교",2,"의령군","사","일반고등학교"],["장유고등학교",2,"김해시","공","일반고등학교"],["진교고등학교",2,"하동군","공","일반고등학교"],["진서고등학교",2,"진주시","공","일반고등학교"],["진양고등학교",2,"진주시","공","일반고등학교"],["진영고등학교",2,"김해시","공","일반고등학교"],["진영제일고등학교",2,"김해시","공","특성화고등학교"],["진주고등학교",2,"진주시","공","일반고등학교"],["진주기계공업고등학교",2,"진주시","공","특성화고등학교"],["진주동명고등학교",2,"진주시","사","일반고등학교"],["진주여자고등학교",2,"진주시","공","일반고등학교"],["진주외국어고등학교",2,"진주시","사","일반고등학교"],["진주제일여자고등학교",2,"진주시","사","일반고등학교"],["진해고등학교",2,"창원시 진해구","공","일반고등학교"],["진해세화여자고등학교",2,"창원시 진해구","사","일반고등학교"],["진해여자고등학교",2,"창원시 진해구","공","일반고등학교"],["웅천고등학교",2,"창원시 진해구","공","일반고등학교"],["진해중앙고등학교",2,"창원시 진해구","사","일반고등학교"],["창녕고등학교",2,"창녕군","사","일반고등학교"],["한국과학기술고등학교",2,"창녕군","사","특성화고등학교"],["창녕대성고등학교",2,"창녕군","사","일반고등학교"],["창녕여자고등학교",2,"창녕군","사","일반고등학교"],["창녕슈퍼텍고등학교",2,"창녕군","공","특성화고등학교"],["창선고등학교",2,"남해군","사","일반고등학교"],["창신고등학교",2,"창원시 마산회원구","사","일반고등학교"],["창원경일고등학교",2,"창원시 성산구","사","일반고등학교"],["창원고등학교",2,"창원시 의창구","사","일반고등학교"],["창원공업고등학교",2,"창원시 의창구","사","특성화고등학교"],["창원기계공업고등학교",2,"창원시 성산구","공","특성화고등학교"],["창원남고등학교",2,"창원시 성산구","사","일반고등학교"],["창원남산고등학교",2,"창원시 성산구","공","일반고등학교"],["창원대산고등학교",2,"창원시 의창구","사","일반고등학교"],["창원명지여자고등학교",2,"창원시 의창구","공","일반고등학교"],["창원문성고등학교",2,"창원시 성산구","사","일반고등학교"],["창원사파고등학교",2,"창원시 성산구","공","일반고등학교"],["창원여자고등학교",2,"창원시 성산구","공","일반고등학교"],["창원용호고등학교",2,"창원시 성산구","공","일반고등학교"],["경남관광고등학교",2,"창원시 의창구","사","특성화고등학교"],["창원중앙고등학교",2,"창원시 성산구","공","일반고등학교"],["창원중앙여자고등학교",2,"창원시 성산구","공","일반고등학교"],["철성고등학교",2,"고성군","사","일반고등학교"],["초계고등학교",2,"합천군","공","특성화고등학교"],["충렬여자고등학교",2,"통영시","사","일반고등학교"],["충무고등학교",2,"통영시","공","일반고등학교"],["칠원고등학교",2,"함안군","사","일반고등학교"],["통영고등학교",2,"통영시","공","일반고등학교"],["통영여자고등학교",2,"통영시","공","일반고등학교"],["동원고등학교",2,"통영시","사","일반고등학교"],["하동고등학교",2,"하동군","공","일반고등학교"],["하동여자고등학교",2,"하동군","사","일반고등학교"],["한일여자고등학교",2,"창원시 마산회원구","사","특성화고등학교"],["함안고등학교",2,"함안군","공","일반고등학교"],["경남로봇고등학교",2,"함안군","사","특성화고등학교"],["함양고등학교",2,"함양군","공","일반고등학교"],["함양제일고등학교",2,"함양군","공","특성화고등학교"],["합천고등학교",2,"합천군","공","일반고등학교"],["합천여자고등학교",2,"합천군","사","일반고등학교"],["합포고등학교",2,"창원시 마산합포구","공","일반고등학교"],["해성고등학교",2,"거제시","사","일반고등학교"],["효암고등학교",2,"양산시","사","일반고등학교"],["간디고등학교",2,"산청군","사","특성화고등학교"],["창원봉림고등학교",2,"창원시 의창구","공","일반고등학교"],["창원신월고등학교",2,"창원시 성산구","공","일반고등학교"],["김해분성고등학교",2,"김해시","공","일반고등학교"],["김해대청고등학교",2,"김해시","공","일반고등학교"],["양산남부고등학교",2,"양산시","공","일반고등학교"],["창원경일여자고등학교",2,"창원시 성산구","사","일반고등학교"],["창원명곡고등학교",2,"창원시 의창구","공","일반고등학교"],["마산내서여자고등학교",2,"창원시 마산회원구","공","일반고등학교"],["김해분성여자고등학교",2,"김해시","공","일반고등학교"],["김해삼문고등학교",2,"김해시","공","일반고등학교"],["창원대암고등학교",2,"창원시 성산구","공","일반고등학교"],["창원토월고등학교",2,"창원시 성산구","공","일반고등학교"],["김해영운고등학교",2,"김해시","공","일반고등학교"],["김해외국어고등학교",2,"김해시","공","특수목적고등학교"],["물금고등학교",2,"양산시","공","일반고등학교"],["지리산고등학교",2,"산청군","사","특성화고등학교"],["거제옥포고등학교",2,"거제시","공","일반고등학교"],["서창고등학교",2,"양산시","공","일반고등학교"],["김해삼방고등학교",2,"김해시","공","일반고등학교"],["진해용원고등학교",2,"창원시 진해구","공","일반고등학교"],["김해제일고등학교",2,"김해시","공","일반고등학교"],["창원과학고등학교",2,"창원시 의창구","공","특수목적고등학교"],["태봉고등학교",2,"창원시 마산합포구","공","특성화고등학교"],["연초고등학교",2,"거제시","공","일반고등학교"],["김해율하고등학교",2,"김해시","공","일반고등학교"],["범어고등학교",2,"양산시","공","일반고등학교"],["거제상문고등학교",2,"거제시","공","일반고등학교"],["김해임호고등학교",2,"김해시","공","일반고등학교"],["구산고등학교",2,"김해시","공","일반고등학교"],["창원성민여자고등학교",2,"창원시 의창구","사","일반고등학교"],["김해수남고등학교",2,"김해시","공","일반고등학교"],["산청고등학교",2,"산청군","공","일반고등학교"],["증산고등학교",2,"양산시","공","일반고등학교"],["창원북면고등학교",2,"창원시 의창구","공","일반고등학교"],["양산인공지능고등학교",2,"양산시","공","특성화고등학교"],["제주대학교사범대학부설고등학교",14,"제주시","국","일반고등학교"],["대정고등학교",14,"서귀포시","공","일반고등학교"],["대정여자고등학교",14,"서귀포시","공","일반고등학교"],["서귀포고등학교",14,"서귀포시","공","일반고등학교"],["서귀포여자고등학교",14,"서귀포시","공","일반고등학교"],["세화고등학교",14,"제주시","공","일반고등학교"],["제주제일고등학교",14,"제주시","공","일반고등학교"],["제주중앙여자고등학교",14,"제주시","공","일반고등학교"],["한림고등학교",14,"제주시","공","일반고등학교"],["남녕고등학교",14,"제주시","사","일반고등학교"],["남주고등학교",14,"서귀포시","사","일반고등학교"],["대기고등학교",14,"제주시","사","일반고등학교"],["삼성여자고등학교",14,"서귀포시","사","일반고등학교"],["신성여자고등학교",14,"제주시","사","일반고등학교"],["오현고등학교",14,"제주시","사","일반고등학교"],["제주여자고등학교",14,"제주시","사","일반고등학교"],["애월고등학교",14,"제주시","공","일반고등학교"],["제주여자상업고등학교",14,"제주시","공","특성화고등학교"],["중문고등학교",14,"서귀포시","공","특성화고등학교"],["표선고등학교",14,"서귀포시","공","일반고등학교"],["한림공업고등학교",14,"제주시","공","특성화고등학교"],["함덕고등학교",14,"제주시","공","일반고등학교"],["한국뷰티고등학교",14,"제주시","공","특성화고등학교"],["영주고등학교",14,"제주시","사","일반고등학교"],["제주중앙고등학교",14,"제주시","사","일반고등학교"],["제주과학고등학교",14,"제주시","공","특수목적고등학교"],["제주고등학교",14,"제주시","공","특성화고등학교"],["서귀포산업과학고등학교",14,"서귀포시","공","특성화고등학교"],["성산고등학교",14,"서귀포시","공","일반고등학교"],["제주외국어고등학교",14,"제주시","공","특수목적고등학교"]];
 
-
-// 학교 데이터 헬퍼
 function getSchools(level) { return level === 'middle' ? SCHOOLS_MID : SCHOOLS_HIGH; }
 function getSidoFromIdx(idx) { return SIDO_LIST[idx] || ''; }
 function getSidoShort(sido) { return sido.replace(/특별시|광역시|특별자치시|특별자치도|도$/g, ''); }
 function levelName(level) { return level === 'middle' ? '중학교' : '고등학교'; }
 function levelColor(level) { return level === 'middle' ? '#8b5cf6' : '#ef4444'; }
 function levelBg(level) { return level === 'middle' ? '#f5f3ff' : '#fef2f2'; }
-// 학교 키: 동명 학교 구분용 (인덱스를 함께 매핑)
 function findSchoolByName(name) {
   for (let i = 0; i < SCHOOLS_MID.length; i++) if (SCHOOLS_MID[i][0] === name) return {level:'middle', idx:i, school:SCHOOLS_MID[i]};
   for (let i = 0; i < SCHOOLS_HIGH.length; i++) if (SCHOOLS_HIGH[i][0] === name) return {level:'high', idx:i, school:SCHOOLS_HIGH[i]};
   return null;
 }
-// 시도+시군구로 학교 필터
 function getSchoolsBySidoGugun(level, sidoIdx, gugun) {
   const schools = getSchools(level);
   const result = [];
@@ -2903,7 +2302,6 @@ function getSchoolsBySidoGugun(level, sidoIdx, gugun) {
   }
   return result;
 }
-// 시도의 시군구 목록 (학교수 포함)
 function getGugunsBySido(level, sidoIdx) {
   const schools = getSchools(level);
   const map = {};
@@ -2944,31 +2342,7 @@ function renderGradeMain() {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('학년별 과외 - 초1~고3 맞춤 과외 | 과외안하니', '초등 1학년부터 고등 3학년까지, 학년에 맞는 과목별 과외 정보를 한 곳에서 확인하세요.', 'https://anhani.com/학년별')}
-  <style>${commonStyles()}
-    .lv-hero-wrap { position: relative; overflow: hidden; }
-    .lv-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-    .lv-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.88) 0%, rgba(49,46,129,0.75) 100%); z-index: 1; }
-    .lv-hero { position: relative; z-index: 2; color: #fff; padding: 72px 24px 60px; text-align: center; }
-    .lv-hero h1 { font-size: 36px; font-weight: 900; margin-bottom: 10px; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
-    .lv-hero h1 em { font-style: normal; color: #a5b4fc; }
-    .lv-hero p { font-size: 16px; color: rgba(255,255,255,0.92); text-shadow: 0 2px 8px rgba(0,0,0,0.25); }
-    .lv-wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
-    .lv-school-card { background: #fff; border-radius: 16px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); overflow: hidden; }
-    .lv-card-thumb { position: relative; width: 100%; aspect-ratio: 1200/400; overflow: hidden; background: #0f172a; }
-    .lv-card-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .lv-card-thumb-overlay { position: absolute; inset: 0; }
-    .lv-card-thumb-text { position: absolute; inset: 0; display: flex; align-items: center; gap: 16px; padding: 0 32px; color: #fff; }
-    .lv-card-thumb-icon { font-size: 44px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
-    .lv-card-thumb-title { font-size: clamp(22px, 4vw, 32px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
-    .lv-school-card-body { padding: 24px 28px 28px; }
-    .lv-sc-desc { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 18px; }
-    .lv-grade-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-    .lv-grade-btn { padding: 12px 24px; border-radius: 10px; background: var(--gbg); color: var(--gc); font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; border: 1.5px solid transparent; }
-    .lv-grade-btn:hover { border-color: var(--gc); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-    .lv-sc-subjects { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 16px; border-top: 1px solid #f1f5f9; }
-    .lv-sc-subj { font-size: 12px; color: #94a3b8; padding: 4px 10px; background: #f8fafc; border-radius: 6px; }
-    @media (max-width: 640px) { .lv-hero h1 { font-size: 26px; } .lv-grade-btn { padding: 10px 18px; font-size: 14px; } .lv-card-thumb-text { padding: 0 20px; gap: 12px; } }
-  </style></head><body>
+  <style>${commonStyles()}.lv-hero-wrap{position:relative;overflow:hidden}.lv-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.lv-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.88) 0%,rgba(49,46,129,.75) 100%);z-index:1}.lv-hero{position:relative;z-index:2;color:#fff;padding:72px 24px 60px;text-align:center}.lv-hero h1{font-size:36px;font-weight:900;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,.3)}.lv-hero h1 em{font-style:normal;color:#a5b4fc}.lv-hero p{font-size:16px;color:rgba(255,255,255,.92);text-shadow:0 2px 8px rgba(0,0,0,.25)}.lv-wrap{max-width:960px;margin:0 auto;padding:40px 24px 80px}.lv-school-card{background:#fff;border-radius:16px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.04);overflow:hidden}.lv-card-thumb{position:relative;width:100%;aspect-ratio:1200/400;overflow:hidden;background:#0f172a}.lv-card-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.lv-card-thumb-overlay{position:absolute;inset:0}.lv-card-thumb-text{position:absolute;inset:0;display:flex;align-items:center;gap:16px;padding:0 32px;color:#fff}.lv-card-thumb-icon{font-size:44px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}.lv-card-thumb-title{font-size:clamp(22px,4vw,32px);font-weight:900;text-shadow:0 2px 12px rgba(0,0,0,.4)}.lv-school-card-body{padding:24px 28px 28px}.lv-sc-desc{font-size:14px;color:#64748b;line-height:1.6;margin-bottom:18px}.lv-grade-grid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}.lv-grade-btn{padding:12px 24px;border-radius:10px;background:var(--gbg);color:var(--gc);font-size:15px;font-weight:700;text-decoration:none;transition:all .2s;border:1.5px solid transparent}.lv-grade-btn:hover{border-color:var(--gc);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06)}.lv-sc-subjects{display:flex;flex-wrap:wrap;gap:6px;padding-top:16px;border-top:1px solid #f1f5f9}.lv-sc-subj{font-size:12px;color:#94a3b8;padding:4px 10px;background:#f8fafc;border-radius:6px}@media (max-width:640px){.lv-hero h1{font-size:26px}.lv-grade-btn{padding:10px 18px;font-size:14px}.lv-card-thumb-text{padding:0 20px;gap:12px}}</style></head><body>
   ${navHTML('region')}
   <div class="lv-hero-wrap">
     <img src="${getEduImage('grademain')}" alt="학년별 맞춤 과외" loading="eager" class="lv-hero-img"/>
@@ -2982,13 +2356,11 @@ function renderGradeMain() {
 
 // --- 카테고리: 학교별 ---
 function renderLevelList() {
-  // 시도별 학교 수 집계
   const midBySido = new Array(SIDO_LIST.length).fill(0);
   const highBySido = new Array(SIDO_LIST.length).fill(0);
   for (const s of SCHOOLS_MID) midBySido[s[1]]++;
   for (const s of SCHOOLS_HIGH) highBySido[s[1]]++;
 
-  // 인기 시도 빠른 진입 (서울/경기/부산)
   const popularSidos = ['서울특별시', '경기도', '부산광역시', '인천광역시', '대구광역시', '대전광역시'];
 
   const levelData = [
@@ -3027,27 +2399,7 @@ function renderLevelList() {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('학교별 과외 - 중·고등학교 맞춤 과외 | 과외안하니', '전국 중학교·고등학교별 맞춤 과외 정보. 우리 학교 시험 경향과 내신 특성을 꿰뚫는 과외 선생님을 찾아보세요.', 'https://anhani.com/학교급별')}
-  <style>${commonStyles()}
-    .lv-hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); color: #fff; padding: 56px 24px 48px; text-align: center; }
-    .lv-hero h1 { font-size: 34px; font-weight: 900; margin-bottom: 10px; }
-    .lv-hero h1 em { font-style: normal; color: #818cf8; }
-    .lv-hero p { font-size: 16px; color: #94a3b8; }
-    .lv-wrap { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
-    .lv-school-card { background: #fff; border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
-    .lv-sc-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
-    .lv-sc-icon { font-size: 36px; flex-shrink: 0; }
-    .lv-sc-header h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 6px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-    .lv-sc-count { font-size: 13px; font-weight: 600; color: #6366f1; background: #eef2ff; padding: 3px 10px; border-radius: 12px; }
-    .lv-sc-header p { font-size: 14px; color: #64748b; line-height: 1.6; }
-    .lv-sido-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; margin-bottom: 18px; }
-    .lv-sido-btn { padding: 11px 14px; border-radius: 10px; background: var(--gbg); color: var(--gc); font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; border: 1.5px solid transparent; display:flex; justify-content:space-between; align-items:center; }
-    .lv-sido-btn:hover { border-color: var(--gc); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-    .lv-sido-cnt { font-size: 11px; opacity: 0.7; }
-    .lv-card-actions { padding-top: 16px; border-top: 1px solid #f1f5f9; }
-    .lv-cta-btn { display:inline-block; padding: 12px 24px; color: #fff; font-size: 14px; font-weight: 700; border-radius: 10px; text-decoration: none; transition: all 0.2s; }
-    .lv-cta-btn:hover { transform: translateY(-2px); opacity: 0.92; }
-    @media (max-width: 640px) { .lv-hero h1 { font-size: 26px; } .lv-sido-btn { padding: 9px 12px; font-size: 13px; } }
-  </style></head><body>
+  <style>${commonStyles()}.lv-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#312e81 100%);color:#fff;padding:56px 24px 48px;text-align:center}.lv-hero h1{font-size:34px;font-weight:900;margin-bottom:10px}.lv-hero h1 em{font-style:normal;color:#818cf8}.lv-hero p{font-size:16px;color:#94a3b8}.lv-wrap{max-width:960px;margin:0 auto;padding:40px 24px 80px}.lv-school-card{background:#fff;border-radius:16px;padding:28px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.04)}.lv-sc-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}.lv-sc-icon{font-size:36px;flex-shrink:0}.lv-sc-header h3{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.lv-sc-count{font-size:13px;font-weight:600;color:#6366f1;background:#eef2ff;padding:3px 10px;border-radius:12px}.lv-sc-header p{font-size:14px;color:#64748b;line-height:1.6}.lv-sido-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:18px}.lv-sido-btn{padding:11px 14px;border-radius:10px;background:var(--gbg);color:var(--gc);font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;border:1.5px solid transparent;display:flex;justify-content:space-between;align-items:center}.lv-sido-btn:hover{border-color:var(--gc);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06)}.lv-sido-cnt{font-size:11px;opacity:.7}.lv-card-actions{padding-top:16px;border-top:1px solid #f1f5f9}.lv-cta-btn{display:inline-block;padding:12px 24px;color:#fff;font-size:14px;font-weight:700;border-radius:10px;text-decoration:none;transition:all .2s}.lv-cta-btn:hover{transform:translateY(-2px);opacity:.92}@media (max-width:640px){.lv-hero h1{font-size:26px}.lv-sido-btn{padding:9px 12px;font-size:13px}}</style></head><body>
   ${navHTML('region')}
   <div class="lv-hero"><h1>학교별 <em>맞춤 과외</em></h1><p>전국 중·고등학교, 우리 학교에 딱 맞는 과외를 찾아보세요</p></div>
   <div class="lv-wrap">${levelCards}</div>
@@ -3116,10 +2468,10 @@ function renderGradeSubjectPage(school, grade, subject) {
   const gradeNum = parseInt(grade);
   const maxGrade = school === "elementary" ? 6 : 3;
   const gradeLabel = `${shortName} ${gradeNum}학년`;
-  
+
   const seed = hashCode(school + grade + subject);
   const rng = seededRandom(seed);
-  
+
   const gc = GRADE_SUBJECT_CONTENT[school];
   const charText = pick(gc.charPool, rng)(gradeNum, subject);
   const subjTips = GRADE_SUBJ_TIPS[subject] || GRADE_SUBJ_TIPS["국어"];
@@ -3131,7 +2483,7 @@ function renderGradeSubjectPage(school, grade, subject) {
   const extra3 = pick(GRADE_EXTRA_POOL.filter((_,i)=>i!==usedE&&i!==usedE2), rng)(gradeNum, subject, schoolName);
   const review = pick(REVIEW_TEMPLATES, rng)('지역', shortName, subject);
   const closing = pick(CLOSING_TEMPLATES, rng)('지역', shortName, subject);
-  
+
   const checkPool = [
     `${gradeLabel} ${subject} 지도 경험이 풍부한 선생님인지 확인하세요.`,
     `첫 수업 전 레벨 테스트로 현재 수준을 정확히 진단하는지 확인하세요.`,
@@ -3152,51 +2504,15 @@ function renderGradeSubjectPage(school, grade, subject) {
   ${commonHead(gradeLabel + ' ' + subject + ' 과외 추천 가이드 | 과외안하니', gradeLabel + ' ' + subject + ' 과외 정보! 과외비, 학습 전략, 선생님 선택법까지 한 번에 정리했습니다.', canonical)}
   <meta property="og:image" content="${heroImg}">
   <meta name="robots" content="index, follow">
-  <style>${commonStyles()}
-    .gs-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
-    .gs-breadcrumb { font-size: 13px; color: #888; margin-bottom: 20px; }
-    .gs-breadcrumb a { color: #6366f1; text-decoration: none; }
-    .gs-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
-    .gs-tab { padding: 8px 16px; border-radius: 8px; border: 1.5px solid #e2e8f0; font-size: 13px; font-weight: 600; color: #64748b; text-decoration: none; transition: all 0.2s; }
-    .gs-tab:hover { border-color: #6366f1; color: #6366f1; }
-    .gs-tab.active { background: #6366f1; color: #fff; border-color: #6366f1; }
-    .gs-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; border-radius: 14px; overflow: hidden; background: #0f172a; margin-bottom: 24px; }
-    .gs-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .gs-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${rgb},0.55) 100%); }
-    .gs-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; color: #fff; }
-    .gs-hero-text h2 { font-size: clamp(22px, 4vw, 36px); font-weight: 900; margin-bottom: 6px; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
-    .gs-hero-text p { font-size: clamp(13px, 1.8vw, 16px); opacity: 0.92; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    .gs-wrap h1 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 12px; line-height: 1.4; }
-    .gs-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
-    .gs-article h2 { font-size: 21px; font-weight: 700; color: #0f172a; margin: 32px 0 14px; padding-left: 12px; border-left: 4px solid #6366f1; }
-    .gs-article p { font-size: 16px; color: #334155; line-height: 1.85; margin-bottom: 16px; word-break: keep-all; }
-    .gs-article ul { margin: 0 0 16px 20px; }
-    .gs-article li { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 8px; }
-    .gs-info-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-    .gs-info-box h3 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
-    .gs-info-box p { font-size: 14px; color: #64748b; margin-bottom: 4px; }
-    .gs-cta { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 14px; padding: 32px 24px; text-align: center; color: #fff; margin: 40px 0; }
-    .gs-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .gs-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 16px; }
-    .gs-cta a { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
-    @media (max-width: 640px) { .gs-wrap h1 { font-size: 22px; } .gs-article h2 { font-size: 18px; } }
-    .gs-keywords { margin-top: 48px; padding-top: 32px; border-top: 2px solid #e2e8f0; }
-    .gs-kw-title { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 20px; text-align: center; }
-    .gs-kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .gs-kw-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; text-decoration: none; color: #334155; font-size: 14px; font-weight: 500; transition: all 0.2s; line-height: 1.4; }
-    .gs-kw-item:hover { border-color: #6366f1; color: #6366f1; transform: translateX(4px); }
-    .gs-kw-arrow { color: #d1d5db; flex-shrink: 0; margin-left: 8px; }
-    .gs-kw-item:hover .gs-kw-arrow { color: #6366f1; }
-    @media (max-width: 640px) { .gs-kw-grid { grid-template-columns: 1fr; } }
-  </style></head><body>
+  <style>${commonStyles()}.gs-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.gs-breadcrumb{font-size:13px;color:#888;margin-bottom:20px}.gs-breadcrumb a{color:#6366f1;text-decoration:none}.gs-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}.gs-tab{padding:8px 16px;border-radius:8px;border:1.5px solid #e2e8f0;font-size:13px;font-weight:600;color:#64748b;text-decoration:none;transition:all .2s}.gs-tab:hover{border-color:#6366f1;color:#6366f1}.gs-tab.active{background:#6366f1;color:#fff;border-color:#6366f1}.gs-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.gs-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.gs-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.82) 0%,rgba(${rgb},.55) 100%)}.gs-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.gs-hero-text h2{font-size:clamp(22px,4vw,36px);font-weight:900;margin-bottom:6px;text-shadow:0 2px 12px rgba(0,0,0,.4)}.gs-hero-text p{font-size:clamp(13px,1.8vw,16px);opacity:.92;text-shadow:0 2px 8px rgba(0,0,0,.3)}.gs-wrap h1{font-size:28px;font-weight:800;color:#0f172a;margin-bottom:12px;line-height:1.4}.gs-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.gs-article h2{font-size:21px;font-weight:700;color:#0f172a;margin:32px 0 14px;padding-left:12px;border-left:4px solid #6366f1}.gs-article p{font-size:16px;color:#334155;line-height:1.85;margin-bottom:16px;word-break:keep-all}.gs-article ul{margin:0 0 16px 20px}.gs-article li{font-size:15px;color:#475569;line-height:1.7;margin-bottom:8px}.gs-info-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:20px}.gs-info-box h3{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}.gs-info-box p{font-size:14px;color:#64748b;margin-bottom:4px}.gs-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:14px;padding:32px 24px;text-align:center;color:#fff;margin:40px 0}.gs-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.gs-cta p{font-size:14px;opacity:.7;margin-bottom:16px}.gs-cta a{display:inline-block;background:#fff;color:#4f46e5;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}@media (max-width:640px){.gs-wrap h1{font-size:22px}.gs-article h2{font-size:18px}}.gs-keywords{margin-top:48px;padding-top:32px;border-top:2px solid #e2e8f0}.gs-kw-title{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:20px;text-align:center}.gs-kw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gs-kw-item{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all .2s;line-height:1.4}.gs-kw-item:hover{border-color:#6366f1;color:#6366f1;transform:translateX(4px)}.gs-kw-arrow{color:#d1d5db;flex-shrink:0;margin-left:8px}.gs-kw-item:hover .gs-kw-arrow{color:#6366f1}@media (max-width:640px){.gs-kw-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('region')}
   <div class="gs-wrap">
     <div class="gs-breadcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학년별</a> &gt; <a href="/grade/${school}/${gradeNum}">${gradeLabel}</a> &gt; ${subject}</div>
-    
+
     <div class="gs-tabs">
       ${getSubjectsForSchool(school).map(s => `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gs-tab${s===subject?' active':''}">${s}</a>`).join('')}
     </div>
-    
+
     <div class="gs-hero-wrap">
       <img src="${heroImg}" alt="${gradeLabel} ${subject} 과외" loading="eager"/>
       <div class="gs-hero-overlay"></div>
@@ -3205,18 +2521,18 @@ function renderGradeSubjectPage(school, grade, subject) {
         <p>${subject} 과외 · 1:1 맞춤 수업 · 전문 코칭</p>
       </div>
     </div>
-    
+
     <h1>${gradeLabel} ${subject} 과외 추천 가이드</h1>
     <div class="gs-meta">최종 업데이트: 2026년 4월 | ${gradeLabel} ${subject} 전문</div>
-    
+
     <div class="gs-article">
       <h2>${gradeLabel}에서 ${subject} 과외가 필요한 이유</h2>
       <p>${charText}</p>
-      
+
       <h2>${gradeLabel} ${subject} 과외 핵심 학습법</h2>
       <p>${tip1}</p>
       <p>${extra1}</p>
-      
+
       <h2>${gradeLabel} ${subject} 과외비 및 수업 안내</h2>
       <div class="gs-info-box">
         <h3>💰 과외비 시세</h3>
@@ -3224,29 +2540,29 @@ function renderGradeSubjectPage(school, grade, subject) {
         <h3 style="margin-top:12px">📅 추천 수업 일정</h3>
         <p>${gc.schedule} 수업이 가장 효과적입니다.</p>
       </div>
-      
+
       <h2>좋은 ${subject} 과외 선생님 고르는 체크리스트</h2>
       <ul>${checks.map(c => `<li>${c}</li>`).join('')}</ul>
-      
+
       <h2>${gradeLabel} ${subject} 과외 시작 전 알아두세요</h2>
       <p>${extra2}</p>
       <p>${extra3}</p>
-      
+
       <h2>실제 ${subject} 과외 후기</h2>
       <p>${review}</p>
-      
+
       <p>${closing}</p>
     </div>
-    
+
     <div class="gs-keywords">
       <h2 class="gs-kw-title">${gradeLabel} ${subject} 학습 가이드 목록</h2>
       <div class="gs-kw-grid">
-        ${generateKeywords(school, gradeNum, subject).map((kw, idx) => 
+        ${generateKeywords(school, gradeNum, subject).map((kw, idx) =>
           `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(subject)}/article/${idx}" class="gs-kw-item"><span>${kw}</span><span class="gs-kw-arrow">→</span></a>`
         ).join('')}
       </div>
     </div>
-    
+
     <div class="gs-cta">
       <h3>${gradeLabel} ${subject} 맞춤 과외 상담</h3>
       <p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p>
@@ -3427,25 +2743,25 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   const gradeLabel = `${shortName} ${gradeNum}학년`;
   const n = `${shortName}${gradeNum}`;
   const idx = parseInt(articleIdx);
-  
+
   const keywords = generateKeywords(school, gradeNum, subject);
   if (idx < 0 || idx >= keywords.length) return null;
   const title = keywords[idx];
-  
+
   const seed = hashCode(school + grade + subject + articleIdx);
   const rng = seededRandom(seed);
-  
+
   const opening = pick(ARTICLE_OPENINGS, rng)(title, gradeLabel, subject);
   const sections = pickN(ARTICLE_SECTIONS, 4, rng).map(fn => fn(gradeLabel, subject));
   const callouts = pickN(ARTICLE_CALLOUTS, 3, rng);
   const review = pick(REVIEW_TEMPLATES, rng)('지역', shortName, subject);
   const closing = pick(CLOSING_TEMPLATES, rng)('지역', shortName, subject);
-  
+
   const canonical = `https://anhani.com/grade/${school}/${grade}/${encodeURIComponent(subject)}/article/${idx}`;
   const heroImg = getEduImage(school + grade + subject + 'art' + idx);
   const subjectRgb = {"국어":"239,68,68","영어":"59,130,246","수학":"34,197,94","사회":"245,158,11","과학":"168,85,247","코딩":"6,182,212","검정고시":"249,115,22","논술":"99,102,241"};
   const kaRgb = subjectRgb[subject] || "99,102,241";
-  
+
   const sectionsHTML = sections.map((sec, i) => {
     let html = `<h2>${sec.h}</h2><p>${sec.p}</p>`;
     if (i < callouts.length) {
@@ -3458,36 +2774,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   ${commonHead(title + ' | 과외안하니', gradeLabel + ' ' + subject + ' 학습 전략 - ' + title, canonical)}
   <meta property="og:image" content="${heroImg}">
   <meta name="robots" content="index, follow">
-  <style>${commonStyles()}
-    .ka-wrap { max-width: 768px; margin: 0 auto; padding: 32px 20px 0; }
-    .ka-hero-wrap { position: relative; width: 100%; aspect-ratio: 1200/500; border-radius: 14px; overflow: hidden; background: #0f172a; margin-bottom: 24px; }
-    .ka-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .ka-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${kaRgb},0.55) 100%); }
-    .ka-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 32px; color: #fff; }
-    .ka-hero-text h2 { font-size: clamp(18px, 3.5vw, 28px); font-weight: 900; text-shadow: 0 2px 12px rgba(0,0,0,0.4); }
-    .ka-hero-text p { font-size: clamp(12px, 1.6vw, 14px); opacity: 0.88; margin-top: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    .ka-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 16px; }
-    .ka-wrap h1 { font-size: 28px; font-weight: 900; color: #0f172a; line-height: 1.4; margin-bottom: 12px; }
-    .ka-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
-    .ka-article h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin: 36px 0 14px; line-height: 1.4; }
-    .ka-article p { font-size: 16px; color: #334155; line-height: 1.85; margin-bottom: 16px; word-break: keep-all; }
-    .ka-callout { background: #f0f9ff; border-left: 4px solid #3b82f6; border-radius: 0 10px 10px 0; padding: 18px 20px; margin: 20px 0; }
-    .ka-callout strong { font-size: 14px; color: #1d4ed8; display: block; margin-bottom: 6px; }
-    .ka-callout p { font-size: 14px; color: #475569; margin: 0; }
-    .ka-related { margin-top: 48px; padding-top: 28px; border-top: 2px solid #e2e8f0; }
-    .ka-related h3 { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 16px; }
-    .ka-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .ka-related-item { padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #475569; font-size: 13px; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center; }
-    .ka-related-item:hover { border-color: #6366f1; color: #6366f1; }
-    .ka-cta { background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 14px; padding: 32px; text-align: center; color: #fff; margin: 40px 0; }
-    .ka-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
-    .ka-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 16px; }
-    .ka-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .ka-cta-btn { padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
-    .ka-cta-primary { background: #fff; color: #312e81; }
-    .ka-cta-secondary { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-    @media (max-width: 640px) { .ka-wrap h1 { font-size: 22px; } .ka-related-grid { grid-template-columns: 1fr; } }
-  </style></head><body>
+  <style>${commonStyles()}.ka-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.ka-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.ka-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ka-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.82) 0%,rgba(${kaRgb},.55) 100%)}.ka-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.ka-hero-text h2{font-size:clamp(18px,3.5vw,28px);font-weight:900;text-shadow:0 2px 12px rgba(0,0,0,.4)}.ka-hero-text p{font-size:clamp(12px,1.6vw,14px);opacity:.88;margin-top:4px;text-shadow:0 2px 8px rgba(0,0,0,.3)}.ka-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:16px}.ka-wrap h1{font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin-bottom:12px}.ka-meta{font-size:13px;color:#94a3b8;margin-bottom:28px;display:flex;align-items:center;gap:12px}.ka-article h2{font-size:22px;font-weight:800;color:#0f172a;margin:36px 0 14px;line-height:1.4}.ka-article p{font-size:16px;color:#334155;line-height:1.85;margin-bottom:16px;word-break:keep-all}.ka-callout{background:#f0f9ff;border-left:4px solid #3b82f6;border-radius:0 10px 10px 0;padding:18px 20px;margin:20px 0}.ka-callout strong{font-size:14px;color:#1d4ed8;display:block;margin-bottom:6px}.ka-callout p{font-size:14px;color:#475569;margin:0}.ka-related{margin-top:48px;padding-top:28px;border-top:2px solid #e2e8f0}.ka-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px}.ka-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ka-related-item{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;transition:all .2s;display:flex;justify-content:space-between;align-items:center}.ka-related-item:hover{border-color:#6366f1;color:#6366f1}.ka-cta{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:32px;text-align:center;color:#fff;margin:40px 0}.ka-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.ka-cta p{font-size:14px;opacity:.7;margin-bottom:16px}.ka-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.ka-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.ka-cta-primary{background:#fff;color:#312e81}.ka-cta-secondary{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}@media (max-width:640px){.ka-wrap h1{font-size:22px}.ka-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('region')}
   <div class="ka-wrap">
     <div class="ka-hero-wrap">
@@ -3501,7 +2788,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
     <div class="ka-badge">${schoolBadge[school]}</div>
     <h1>${title} | 1:1 맞춤 전략</h1>
     <div class="ka-meta"><span>✏️ 과외안하니 편집팀</span><span>📅 2026년 4월</span></div>
-    
+
     <div class="ka-article">
       <p>${opening}</p>
       ${sectionsHTML}
@@ -3509,7 +2796,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
       <p>${review}</p>
       <p>${closing}</p>
     </div>
-    
+
     <div class="ka-cta">
       <h3>${gradeLabel} ${subject} 무료 상담</h3>
       <p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p>
@@ -3518,7 +2805,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
         <a href="tel:010-6850-1420" class="ka-cta-btn ka-cta-secondary">010-6850-1420</a>
       </div>
     </div>
-    
+
     <div class="ka-related">
       <h3>${gradeLabel} ${subject} 학습 가이드 더보기</h3>
       <div class="ka-related-grid">
@@ -3539,7 +2826,7 @@ function generateRSS() {
   const regions = ["서울","경기","부산","대구","인천","광주","대전","울산"];
   const subjects = ["수학","영어","국어","과학","코딩"];
   const levels = ["초등","중등","고등"];
-  
+
   for (const region of regions) {
     const districts = REGIONS[region] || [];
     for (const d of districts.slice(0, 3)) {
@@ -3557,7 +2844,7 @@ function generateRSS() {
       }
     }
   }
-  
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
@@ -3600,53 +2887,10 @@ function decodeRegNo(centerName) {
 // --- 학원 전국 지점 페이지 ---
 function renderAcademyList() {
   const regionOrder = ["전체","서울","경기","인천","부산","대구","대전","광주","울산","세종","강원","충북","충남","전북","전남","경북","경남","제주"];
-  
+
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('전국 학원 지점 찾기 - 과외안하니', '전국 ${CENTERS.length}개 학원 지점 정보를 한눈에! 내 주변 학원을 찾아보세요.', 'https://anhani.com/학원/전국지점')}
-  <style>${commonStyles()}
-    .ac-wrap { max-width: 1080px; margin: 0 auto; padding: 48px 24px 80px; }
-    .ac-label { display: inline-block; background: #312e81; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
-    .ac-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 8px; }
-    .ac-title em { font-style: normal; color: #312e81; }
-    .ac-subtitle { font-size: 15px; color: #64748b; margin-bottom: 12px; }
-    .ac-count { font-size: 14px; color: #6366f1; font-weight: 700; margin-bottom: 32px; }
-    .ac-search { display: flex; gap: 8px; margin-bottom: 24px; }
-    .ac-search input { flex: 1; padding: 12px 16px; border: 1.5px solid #e2e8f0; border-radius: 10px; font-size: 15px; outline: none; background: #f8fafc; }
-    .ac-search input:focus { border-color: #6366f1; background: #fff; }
-    .ac-search button { padding: 12px 24px; background: #312e81; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; }
-    .ac-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-    .ac-tab { padding: 8px 18px; border-radius: 20px; border: 1.5px solid #d1d5db; background: #fff; font-size: 14px; font-weight: 600; color: #475569; cursor: pointer; transition: all 0.2s; }
-    .ac-tab:hover { border-color: #312e81; color: #312e81; }
-    .ac-tab.active { background: #312e81; color: #fff; border-color: #312e81; }
-    .ac-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-    .ac-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 0; overflow: hidden; transition: all 0.25s; display: flex; flex-direction: column; }
-    .ac-card:hover { border-color: #818cf8; box-shadow: 0 8px 28px rgba(99,102,241,0.1); transform: translateY(-4px); }
-    .ac-card-top { padding: 20px 20px 0; }
-    .ac-card-region { display: inline-block; font-size: 12px; color: #6366f1; font-weight: 600; margin-bottom: 8px; }
-    .ac-card-name { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 10px; line-height: 1.3; }
-    .ac-card-addr { display: flex; align-items: flex-start; gap: 6px; font-size: 13px; color: #64748b; margin-bottom: 8px; line-height: 1.5; }
-    .ac-card-addr .pin { color: #ef4444; flex-shrink: 0; font-size: 14px; margin-top: 1px; }
-    .ac-card-loc-link { font-size: 12px; color: #f97316; font-weight: 600; cursor: pointer; margin-bottom: 14px; display: inline-flex; align-items: center; gap: 4px; }
-    .ac-card-schools { padding: 0 20px 16px; flex: 1; }
-    .ac-sch-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; font-size: 13px; line-height: 1.4; }
-    .ac-sch-badge { flex-shrink: 0; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; min-width: 32px; text-align: center; }
-    .ac-sch-badge.el { background: #dbeafe; color: #1d4ed8; }
-    .ac-sch-badge.mid { background: #dcfce7; color: #15803d; }
-    .ac-sch-badge.hi { background: #fef3c7; color: #b45309; }
-    .ac-sch-names { color: #475569; font-weight: 500; }
-    .ac-card-bottom { display: flex; border-top: 1px solid #f1f5f9; }
-    .ac-card-btn { flex: 1; padding: 14px; text-align: center; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 6px; }
-    .ac-btn-detail { color: #475569; background: #fff; border-right: 1px solid #f1f5f9; }
-    .ac-btn-detail:hover { background: #f8fafc; color: #312e81; }
-    .ac-btn-consult { color: #fff; background: #312e81; }
-    .ac-btn-consult:hover { background: #3730a3; }
-    .ac-empty { text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 16px; }
-    @media (max-width: 640px) {
-      .ac-title { font-size: 24px; }
-      .ac-grid { grid-template-columns: 1fr; }
-      .ac-tab { padding: 6px 14px; font-size: 13px; }
-    }
-  </style></head><body>
+  <style>${commonStyles()}.ac-wrap{max-width:1080px;margin:0 auto;padding:48px 24px 80px}.ac-label{display:inline-block;background:#312e81;color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px}.ac-title{font-size:32px;font-weight:900;color:#0f172a;margin-bottom:8px}.ac-title em{font-style:normal;color:#312e81}.ac-subtitle{font-size:15px;color:#64748b;margin-bottom:12px}.ac-count{font-size:14px;color:#6366f1;font-weight:700;margin-bottom:32px}.ac-search{display:flex;gap:8px;margin-bottom:24px}.ac-search input{flex:1;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:15px;outline:none;background:#f8fafc}.ac-search input:focus{border-color:#6366f1;background:#fff}.ac-search button{padding:12px 24px;background:#312e81;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer}.ac-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}.ac-tab{padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:#fff;font-size:14px;font-weight:600;color:#475569;cursor:pointer;transition:all .2s}.ac-tab:hover{border-color:#312e81;color:#312e81}.ac-tab.active{background:#312e81;color:#fff;border-color:#312e81}.ac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}.ac-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:0;overflow:hidden;transition:all .25s;display:flex;flex-direction:column}.ac-card:hover{border-color:#818cf8;box-shadow:0 8px 28px rgba(99,102,241,.1);transform:translateY(-4px)}.ac-card-top{padding:20px 20px 0}.ac-card-region{display:inline-block;font-size:12px;color:#6366f1;font-weight:600;margin-bottom:8px}.ac-card-name{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:10px;line-height:1.3}.ac-card-addr{display:flex;align-items:flex-start;gap:6px;font-size:13px;color:#64748b;margin-bottom:8px;line-height:1.5}.ac-card-addr .pin{color:#ef4444;flex-shrink:0;font-size:14px;margin-top:1px}.ac-card-loc-link{font-size:12px;color:#f97316;font-weight:600;cursor:pointer;margin-bottom:14px;display:inline-flex;align-items:center;gap:4px}.ac-card-schools{padding:0 20px 16px;flex:1}.ac-sch-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.4}.ac-sch-badge{flex-shrink:0;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;min-width:32px;text-align:center}.ac-sch-badge.el{background:#dbeafe;color:#1d4ed8}.ac-sch-badge.mid{background:#dcfce7;color:#15803d}.ac-sch-badge.hi{background:#fef3c7;color:#b45309}.ac-sch-names{color:#475569;font-weight:500}.ac-card-bottom{display:flex;border-top:1px solid #f1f5f9}.ac-card-btn{flex:1;padding:14px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px}.ac-btn-detail{color:#475569;background:#fff;border-right:1px solid #f1f5f9}.ac-btn-detail:hover{background:#f8fafc;color:#312e81}.ac-btn-consult{color:#fff;background:#312e81}.ac-btn-consult:hover{background:#3730a3}.ac-empty{text-align:center;padding:60px 20px;color:#94a3b8;font-size:16px}@media (max-width:640px){.ac-title{font-size:24px}.ac-grid{grid-template-columns:1fr}.ac-tab{padding:6px 14px;font-size:13px}}</style></head><body>
   ${navHTML('academy')}
   <div class="ac-wrap">
     <div class="ac-label">학원 찾기</div>
@@ -3711,6 +2955,20 @@ function renderAcademyList() {
   </body></html>`;
 }
 
+// --- 주소에서 시/구/동 파싱 ---
+function parseAcademyAddr(addr) {
+  const parts = (addr||'').split(/\s+/);
+  let si='', gu='', dong='';
+  for (const p of parts) {
+    if (/^(서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주)(특별시|광역시|특별자치시|특별자치도|도)?$/.test(p)) continue;
+    if (p.length > 1 && p.endsWith('시')) { si = p.slice(0,-1); continue; }
+    if (p.length > 1 && p.endsWith('구')) { gu = p; continue; }
+    if (/^[가-힣]+동$/.test(p)) { dong = p; continue; }
+    if (/^[가-힣]+(읍|면)$/.test(p)) { dong = p; continue; }
+  }
+  return { si, gu, dong };
+}
+
 // --- 학원 상세 페이지 ---
 function renderAcademyDetail(center) {
   const c = center;
@@ -3727,20 +2985,18 @@ function renderAcademyDetail(center) {
   const years = 3 + Math.floor(rng() * 8);
   const counsels = 80 + Math.floor(rng() * 200);
   const satisfaction = 90 + Math.floor(rng() * 9);
-  
-  // 지역 정보 파싱
+
   const addrParts = c.a.split(' ');
   const sido = addrParts[0] || '';
   const sigungu = addrParts[1] || '';
-  
-  // 소개 문구 풀
+
   const introPool = [
     `${fullName}은 ${c.r} ${sigungu}에 위치한 공식 코칭 센터입니다. ${years}년 이상의 운영 경험을 바탕으로 ${sigungu} 인근 초·중·고 학생들의 수학·영어·국어 내신 성적 향상을 전문으로 지도합니다.`,
     `${c.r} ${sigungu} 학생들의 맞춤형 학습 코칭을 제공하는 ${fullName}입니다. 개원 이래 ${counsels}건 이상의 상담을 진행하며 지역 학생들의 성적 향상에 기여하고 있습니다.`,
     `${fullName}은 ${sigungu} 지역 학부모님들의 신뢰를 받는 1:1 맞춤 학습 코칭 전문 학원입니다. 학생 개인별 학습 수준을 정밀하게 분석하고, 목표에 맞는 최적의 커리큘럼을 설계합니다.`,
   ];
   const intro = pick(introPool, rng);
-  
+
   const featurePool = [
     {t:'학교 기출 완벽 분석', d:'인근 학교 내신 출제 패턴을 상시 분석합니다.'},
     {t:'3단계 코치 검증', d:'학력·경력·수업시연 3단계 심사를 통과한 코치만 배정합니다.'},
@@ -3752,7 +3008,7 @@ function renderAcademyDetail(center) {
     {t:'자습실 제공', d:'쾌적한 자습 공간을 운영하여 학습 집중도를 높입니다.'},
   ];
   const features = pickN(featurePool, 4, rng);
-  
+
   const faqPool = [
     {q:fullName+' 위치가 어디인가요?', a: c.l ? c.l.substring(0,120) : c.a + '에 위치해 있습니다.'},
     {q:(c.s||[]).join('·')+' 학원 첫 수업은 어떻게 진행되나요?', a:'첫 수업은 무료 수준 진단으로 진행합니다. 현재 성적과 취약 단원을 파악한 뒤 맞춤 커리큘럼을 설계합니다.'},
@@ -3761,98 +3017,15 @@ function renderAcademyDetail(center) {
     {q:'수업료는 어떻게 되나요?', a:'과목, 횟수, 시간에 따라 달라집니다. 무료 상담 시 맞춤 견적을 안내드립니다.'},
   ];
   const faqs = pickN(faqPool, 4, rng);
-  
-  // 과목 색상
+
   const subjColors = {'국어':'#ef4444','영어':'#3b82f6','수학':'#22c55e','과학':'#a855f7','사회':'#f59e0b'};
   const subjBgs = {'국어':'#fef2f2','영어':'#eff6ff','수학':'#f0fdf4','과학':'#faf5ff','사회':'#fffbeb'};
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(c.r + ' ' + fullName + ' | 과외안하니', c.r + ' ' + sigungu + ' ' + (c.s||[]).join('·') + ' 학원 | ' + fullName + ' 수업 안내, 담당 학교, 위치 정보', 'https://anhani.com/학원/' + encodeURIComponent(c.n))}
-  <style>${commonStyles()}
-    .ad-hero { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%); color: #fff; padding: 48px 24px 40px; }
-    .ad-hero-inner { max-width: 800px; margin: 0 auto; }
-    .ad-hero-breadcrumb { font-size: 13px; color: #94a3b8; margin-bottom: 16px; }
-    .ad-hero-breadcrumb a { color: #94a3b8; text-decoration: none; }
-    .ad-hero-breadcrumb a:hover { color: #fff; }
-    .ad-hero h1 { font-size: 28px; font-weight: 900; margin-bottom: 8px; line-height: 1.3; }
-    .ad-hero-addr { font-size: 14px; color: #a5b4fc; margin-bottom: 20px; }
-    .ad-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .ad-hero-btn { padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-    .ad-btn-primary { background: #fff; color: #312e81; }
-    .ad-btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
-    .ad-stats { max-width: 800px; margin: -24px auto 0; padding: 0 24px; position: relative; z-index: 10; }
-    .ad-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .ad-stat-card { background: #fff; border-radius: 14px; padding: 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 3px solid; }
-    .ad-stat-card:nth-child(1) { border-color: #6366f1; }
-    .ad-stat-card:nth-child(2) { border-color: #22c55e; }
-    .ad-stat-card:nth-child(3) { border-color: #f59e0b; }
-    .ad-stat-num { font-size: 28px; font-weight: 900; color: #0f172a; }
-    .ad-stat-label { font-size: 12px; color: #94a3b8; margin-top: 4px; }
-    .ad-main { max-width: 800px; margin: 0 auto; padding: 36px 24px 80px; }
-    .ad-section { margin-bottom: 40px; }
-    .ad-section-title { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
-    .ad-school-table { width: 100%; }
-    .ad-school-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; gap: 12px; }
-    .ad-school-row:last-child { border-bottom: none; }
-    .ad-school-level { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 6px; min-width: 40px; text-align: center; flex-shrink: 0; }
-    .ad-school-name { font-size: 15px; font-weight: 700; color: #0f172a; min-width: 80px; }
-    .ad-school-subjs { display: flex; flex-wrap: wrap; gap: 6px; }
-    .ad-subj-chip { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
-    .ad-intro { font-size: 15px; color: #334155; line-height: 1.8; }
-    .ad-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .ad-feat { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; }
-    .ad-feat h4 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
-    .ad-feat p { font-size: 13px; color: #64748b; line-height: 1.6; }
-    .ad-timeline { display: flex; gap: 0; justify-content: center; flex-wrap: wrap; }
-    .ad-tl-item { flex: 1; min-width: 100px; text-align: center; padding: 16px 8px; position: relative; }
-    .ad-tl-item::after { content: ''; position: absolute; top: 30px; right: 0; width: 50%; height: 2px; background: #e2e8f0; }
-    .ad-tl-item::before { content: ''; position: absolute; top: 30px; left: 0; width: 50%; height: 2px; background: #e2e8f0; }
-    .ad-tl-item:first-child::before { display: none; }
-    .ad-tl-item:last-child::after { display: none; }
-    .ad-tl-badge { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 13px; font-weight: 800; position: relative; z-index: 2; margin-bottom: 8px; }
-    .ad-tl-title { font-size: 12px; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
-    .ad-tl-desc { font-size: 11px; color: #94a3b8; }
-    .ad-faq { }
-    .ad-faq-item { background: #f8fafc; border-radius: 12px; padding: 18px 20px; margin-bottom: 12px; }
-    .ad-faq-q { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
-    .ad-faq-a { font-size: 14px; color: #64748b; line-height: 1.7; }
-    .ad-location { background: #f8fafc; border-radius: 14px; padding: 24px; }
-    .ad-location h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
-    .ad-location p { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 6px; }
-    .ad-addr { font-size: 15px; color: #0f172a; font-weight: 600; }
-    .ad-addr-detail { font-size: 13px; color: #94a3b8; }
-    .ad-map-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-    .ad-map-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: 700; text-decoration: none; transition: transform .15s, box-shadow .15s; }
-    .ad-map-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,.1); }
-    .ad-map-kakao { background: #FEE500; color: #191919; }
-    .ad-map-nav { background: #6366f1; color: #fff; }
-    .ad-map-naver { background: #03C75A; color: #fff; }
-    .ad-office-info { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 22px; }
-    .ad-office-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dashed #e2e8f0; }
-    .ad-office-row:last-child { border-bottom: none; }
-    .ad-office-label { font-size: 13px; font-weight: 700; color: #64748b; flex-shrink: 0; }
-    .ad-office-val { font-size: 14px; color: #0f172a; font-weight: 600; text-align: right; word-break: keep-all; }
-    @media (max-width: 640px) { .ad-office-row { flex-direction: column; align-items: flex-start; gap: 4px; } .ad-office-val { text-align: left; } }
-    .ad-subjs-sidebar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-    .ad-subj-tag { padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; }
-    .ad-cta-bar { background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 20px; padding: 36px 28px; text-align: center; color: #fff; }
-    .ad-cta-bar h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-    .ad-cta-bar p { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
-    .ad-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .ad-cta-btn { padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
-    .ad-cta-phone { background: #fff; color: #312e81; }
-    .ad-cta-form { background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
-    @media (max-width: 640px) {
-      .ad-hero h1 { font-size: 22px; }
-      .ad-stats-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .ad-stat-num { font-size: 22px; }
-      .ad-features { grid-template-columns: 1fr; }
-      .ad-timeline { flex-wrap: wrap; }
-      .ad-tl-item { min-width: 80px; }
-    }
-  </style></head><body>
+  <style>${commonStyles()}.ad-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#312e81 100%);color:#fff;padding:48px 24px 40px}.ad-hero-inner{max-width:800px;margin:0 auto}.ad-hero-breadcrumb{font-size:13px;color:#94a3b8;margin-bottom:16px}.ad-hero-breadcrumb a{color:#94a3b8;text-decoration:none}.ad-hero-breadcrumb a:hover{color:#fff}.ad-hero h1{font-size:28px;font-weight:900;margin-bottom:8px;line-height:1.3}.ad-hero-addr{font-size:14px;color:#a5b4fc;margin-bottom:20px}.ad-hero-btns{display:flex;gap:12px;flex-wrap:wrap}.ad-hero-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}.ad-btn-primary{background:#fff;color:#312e81}.ad-btn-secondary{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}.ad-stats{max-width:800px;margin:-24px auto 0;padding:0 24px;position:relative;z-index:10}.ad-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.ad-stat-card{background:#fff;border-radius:14px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.08);border-top:3px solid}.ad-stat-card:nth-child(1){border-color:#6366f1}.ad-stat-card:nth-child(2){border-color:#22c55e}.ad-stat-card:nth-child(3){border-color:#f59e0b}.ad-stat-num{font-size:28px;font-weight:900;color:#0f172a}.ad-stat-label{font-size:12px;color:#94a3b8;margin-top:4px}.ad-main{max-width:800px;margin:0 auto;padding:36px 24px 80px}.ad-section{margin-bottom:40px}.ad-section-title{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}.ad-school-table{width:100%}.ad-school-row{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #f1f5f9;gap:12px}.ad-school-row:last-child{border-bottom:none}.ad-school-level{font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px;min-width:40px;text-align:center;flex-shrink:0}.ad-school-name{font-size:15px;font-weight:700;color:#0f172a;min-width:80px}.ad-school-subjs{display:flex;flex-wrap:wrap;gap:6px}.ad-subj-chip{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px}.ad-intro{font-size:15px;color:#334155;line-height:1.8}.ad-features{display:grid;grid-template-columns:1fr 1fr;gap:14px}.ad-feat{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px}.ad-feat h4{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:6px}.ad-feat p{font-size:13px;color:#64748b;line-height:1.6}.ad-timeline{display:flex;gap:0;justify-content:center;flex-wrap:wrap}.ad-tl-item{flex:1;min-width:100px;text-align:center;padding:16px 8px;position:relative}.ad-tl-item::after{content:'';position:absolute;top:30px;right:0;width:50%;height:2px;background:#e2e8f0}.ad-tl-item::before{content:'';position:absolute;top:30px;left:0;width:50%;height:2px;background:#e2e8f0}.ad-tl-item:first-child::before{display:none}.ad-tl-item:last-child::after{display:none}.ad-tl-badge{display:inline-block;padding:4px 12px;border-radius:6px;font-size:13px;font-weight:800;position:relative;z-index:2;margin-bottom:8px}.ad-tl-title{font-size:12px;font-weight:700;color:#0f172a;margin-bottom:2px}.ad-tl-desc{font-size:11px;color:#94a3b8}.ad-faq{}.ad-faq-item{background:#f8fafc;border-radius:12px;padding:18px 20px;margin-bottom:12px}.ad-faq-q{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}.ad-faq-a{font-size:14px;color:#64748b;line-height:1.7}.ad-location{background:#f8fafc;border-radius:14px;padding:24px}.ad-location h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:10px}.ad-location p{font-size:14px;color:#64748b;line-height:1.6;margin-bottom:6px}.ad-addr{font-size:15px;color:#0f172a;font-weight:600}.ad-addr-detail{font-size:13px;color:#94a3b8}.ad-map-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.ad-map-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;transition:transform .15s,box-shadow .15s}.ad-map-btn:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.1)}.ad-map-kakao{background:#FEE500;color:#191919}.ad-map-nav{background:#6366f1;color:#fff}.ad-map-naver{background:#03C75A;color:#fff}.ad-office-info{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 22px}.ad-office-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed #e2e8f0}.ad-office-row:last-child{border-bottom:none}.ad-office-label{font-size:13px;font-weight:700;color:#64748b;flex-shrink:0}.ad-office-val{font-size:14px;color:#0f172a;font-weight:600;text-align:right;word-break:keep-all}@media (max-width:640px){.ad-office-row{flex-direction:column;align-items:flex-start;gap:4px}.ad-office-val{text-align:left}}.ad-subjs-sidebar{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.ad-subj-tag{padding:6px 14px;border-radius:8px;font-size:13px;font-weight:600}.ad-kw-list{display:flex;flex-direction:column;gap:10px}.ad-kw-item{display:flex;align-items:center;gap:16px;padding:16px 20px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;text-decoration:none;transition:transform .15s,border-color .15s,box-shadow .15s}.ad-kw-item:hover{transform:translateY(-2px);border-color:#6366f1;box-shadow:0 4px 12px rgba(99,102,241,.15)}.ad-kw-num{font-size:18px;font-weight:900;color:#ef4444;min-width:28px;flex-shrink:0}.ad-kw-body{flex:1;min-width:0}.ad-kw-t{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:2px}.ad-kw-d{font-size:12.5px;color:#94a3b8;line-height:1.5}.ad-cta-bar{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:20px;padding:36px 28px;text-align:center;color:#fff}.ad-cta-bar h3{font-size:22px;font-weight:800;margin-bottom:8px}.ad-cta-bar p{font-size:14px;opacity:.7;margin-bottom:20px}.ad-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.ad-cta-btn{padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}.ad-cta-phone{background:#fff;color:#312e81}.ad-cta-form{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3)}@media (max-width:640px){.ad-hero h1{font-size:22px}.ad-stats-row{grid-template-columns:repeat(3,1fr);gap:8px}.ad-stat-num{font-size:22px}.ad-features{grid-template-columns:1fr}.ad-timeline{flex-wrap:wrap}.ad-tl-item{min-width:80px}}</style></head><body>
   ${navHTML('academy')}
-  
+
   <div class="ad-hero">
     <div class="ad-hero-inner">
       <div class="ad-hero-breadcrumb"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; ${c.n}</div>
@@ -3864,7 +3037,7 @@ function renderAcademyDetail(center) {
       </div>
     </div>
   </div>
-  
+
   <div class="ad-stats">
     <div class="ad-stats-row">
       <div class="ad-stat-card"><div class="ad-stat-num">${years}년+</div><div class="ad-stat-label">운영 경력</div></div>
@@ -3872,7 +3045,7 @@ function renderAcademyDetail(center) {
       <div class="ad-stat-card"><div class="ad-stat-num">${satisfaction}%</div><div class="ad-stat-label">재등록률</div></div>
     </div>
   </div>
-  
+
   <div class="ad-main">
     ${schoolCount > 0 ? `<div class="ad-section">
       <div class="ad-section-title">${fullName} 담당 학교 (${schoolCount}개교)</div>
@@ -3885,7 +3058,7 @@ function renderAcademyDetail(center) {
         </div>`).join('')}
       </div>
     </div>` : ''}
-    
+
     <div class="ad-section">
       <div class="ad-section-title">${sigungu} ${(c.s||[]).slice(0,2).join('·')} 학원 ${fullName} 소개</div>
       <p class="ad-intro">${intro}</p>
@@ -3894,14 +3067,14 @@ function renderAcademyDetail(center) {
         ${(c.s||[]).map(subj => `<span class="ad-subj-tag" style="background:${subjBgs[subj]||'#f1f5f9'};color:${subjColors[subj]||'#475569'}">${subj}</span>`).join('')}
       </div>
     </div>
-    
+
     <div class="ad-section">
       <div class="ad-section-title">${fullName}만의 차별점</div>
       <div class="ad-features">
         ${features.map(f => `<div class="ad-feat"><h4>${f.t}</h4><p>${f.d}</p></div>`).join('')}
       </div>
     </div>
-    
+
     <div class="ad-section">
       <div class="ad-section-title">시험 D-28 내신 집중 플랜</div>
       <div class="ad-timeline">
@@ -3912,7 +3085,7 @@ function renderAcademyDetail(center) {
         <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#f3e8ff;color:#7c3aed;">D-1</div><div class="ad-tl-title">최종 확인</div><div class="ad-tl-desc">오답 재풀이<br>컨디션 관리</div></div>
       </div>
     </div>
-    
+
     ${c.l || c.a ? (()=>{
       const addrQ = encodeURIComponent(c.a || '');
       const nameQ = encodeURIComponent(fullName);
@@ -3933,14 +3106,18 @@ function renderAcademyDetail(center) {
       </div>
     </div>`})() : ''}
     ${(()=>{const o=decodeOfficeName(c.n),r=decodeRegNo(c.n);return (o||r)?`<div class="ad-section"><div class="ad-section-title">학원 등록 정보</div><div class="ad-office-info">${o?`<div class="ad-office-row"><span class="ad-office-label">🏫 학원 명칭</span><span class="ad-office-val">${o}</span></div>`:''}${r?`<div class="ad-office-row"><span class="ad-office-label">📋 교육지원청 등록번호</span><span class="ad-office-val">${r}</span></div>`:''}</div></div>`:''})()}
-    
+
     <div class="ad-section">
       <div class="ad-section-title">자주 묻는 질문</div>
       <div class="ad-faq">
         ${faqs.map(f => `<div class="ad-faq-item"><div class="ad-faq-q">Q. ${f.q}</div><div class="ad-faq-a">${f.a}</div></div>`).join('')}
       </div>
     </div>
-    
+
+    ${(()=>{const subs=c.s||[];if(!schoolCount||!subs.length)return '';const items=[];for(const s of allSchools)for(const sj of subs)items.push([s.name,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 담당 학교 × 과목 키워드 가이드</div><p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">${schoolCount}개 학교 × ${subs.length}개 과목 조합별 학원 안내입니다.</p><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/학교학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><div class="ad-kw-body"><div class="ad-kw-t">${it[0]} ${it[1]}학원</div><div class="ad-kw-d">${it[0]} 학생 맞춤 ${it[1]} 1:1 코칭 안내</div></div></a>`}).join('')}</div></div>`})()}
+
+    ${(()=>{const subs=c.s||[];const p=parseAcademyAddr(c.a);const regs=[...new Set([c.r,p.si,p.gu,p.dong].filter(Boolean))];if(!regs.length||!subs.length)return '';const items=[];for(const rg of regs)for(const sj of subs)items.push([rg,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 지역 × 과목 키워드 가이드</div><p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">${regs.length}개 지역 × ${subs.length}개 과목 조합별 학원 안내입니다.</p><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/지역학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><div class="ad-kw-body"><div class="ad-kw-t">${it[0]} ${it[1]}학원</div><div class="ad-kw-d">${it[0]} ${it[1]} 학원 맞춤 안내</div></div></a>`}).join('')}</div></div>`})()}
+
     <div class="ad-cta-bar">
       <h3>${c.r} ${fullName} 무료 상담</h3>
       <p>${c.r} ${sigungu} · 초·중·고 ${(c.s||[]).join('·')} 1:1 코칭 · 첫 수업 무료</p>
@@ -3950,7 +3127,228 @@ function renderAcademyDetail(center) {
       </div>
     </div>
   </div>
-  
+
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 학교 × 과목 키워드 아티클 동적 생성 ---
+function subjArticleStyle(col,bg,heroImg){return `<style>${commonStyles()}.sh{position:relative;padding:52px 24px 44px;color:#fff;overflow:hidden;background:linear-gradient(135deg,#0f172a,#1e1b4b 50%,${col} 200%)}.sh::before{content:'';position:absolute;inset:0;background:url('${heroImg}') center/cover;opacity:.18}.si{position:relative;max-width:800px;margin:0 auto}.sbc{font-size:13px;color:#94a3b8;margin-bottom:14px}.sbc a{color:inherit;text-decoration:none}.sbc a:hover{color:#fff}.sbd{display:inline-block;background:${bg};color:${col};padding:5px 14px;border-radius:20px;font-size:13px;font-weight:700;margin-bottom:14px}.sh h1{font-size:30px;font-weight:900;line-height:1.3;margin-bottom:10px}.sh h1 em{font-style:normal;color:#a5b4fc}.shs{font-size:15px;color:#cbd5e1;line-height:1.6}.sm{max-width:800px;margin:0 auto;padding:40px 24px 60px}.sx{margin-bottom:36px}.st{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:14px;display:flex;align-items:center;gap:8px}.st::before{content:'';width:4px;height:22px;background:${col};border-radius:2px}.sd{font-size:15px;color:#475569;line-height:1.7;margin-bottom:18px}.dg{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dc{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px;transition:transform .15s}.dc:hover{transform:translateY(-2px);border-color:${col}}.di{font-size:22px;margin-bottom:6px}.dt{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:4px}.dd{font-size:12.5px;color:#64748b;line-height:1.55}.sl{background:${bg};border-left:4px solid ${col};border-radius:0 12px 12px 0;padding:18px 22px}.sli{padding:10px 0;border-bottom:1px dashed rgba(15,23,42,.1);font-size:14.5px;color:#0f172a;line-height:1.6}.sli:last-child{border-bottom:none}.sli strong{color:${col};margin-right:8px}.cr{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;margin-bottom:10px}.cw{background:${col};color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:6px;flex-shrink:0;white-space:nowrap}.cct{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:4px}.ccd{font-size:13px;color:#64748b;line-height:1.55}.fc{background:linear-gradient(135deg,#f8fafc,#fff);border:1px solid #e2e8f0;border-radius:12px;padding:14px 16px;margin-bottom:10px}.fe{font-size:18px;margin-right:8px}.ft{font-size:14.5px;font-weight:700;color:#0f172a;display:inline}.fd{font-size:13px;color:#64748b;line-height:1.55;margin-top:4px}.fa{border-bottom:1px solid #e2e8f0;padding:14px 0}.fq{font-size:14.5px;font-weight:700;color:#0f172a;margin-bottom:6px}.fv{font-size:13.5px;color:#475569;line-height:1.6}.sct{background:linear-gradient(135deg,#0f172a,#312e81);color:#fff;padding:32px 24px;border-radius:16px;text-align:center;margin-top:36px}.sct h3{font-size:20px;font-weight:900;margin-bottom:8px}.sct p{font-size:14px;color:#a5b4fc;margin-bottom:18px}.scb{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.scbt{padding:12px 22px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.scp{background:#fff;color:#312e81}.scf{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}@media(max-width:640px){.dg{grid-template-columns:1fr}.sh h1{font-size:24px}}</style>`}
+
+function renderSchoolSubjectAcademy(center, schoolName, subject) {
+  const c = center;
+  const seed = hashCode(c.n + schoolName + subject + 's');
+  const rng = seededRandom(seed);
+  const fullName = c.n + '와와학습코칭학원';
+  const lvl = schoolName.endsWith('고') ? '고등' : schoolName.endsWith('중') ? '중등' : '초등';
+  const addrParts = (c.a||'').split(' ');
+  const sigungu = addrParts[1] || c.r;
+  const sc = {'국어':'#ef4444','영어':'#3b82f6','수학':'#22c55e','과학':'#a855f7','사회':'#f59e0b'};
+  const sbg = {'국어':'#fef2f2','영어':'#eff6ff','수학':'#f0fdf4','과학':'#faf5ff','사회':'#fffbeb'};
+  const col = sc[subject] || '#6366f1', bg = sbg[subject] || '#eef2ff';
+  const cm = {
+    '국어':['문학 감상력','비문학 독해력','어휘력','서술형 표현'],
+    '영어':['어휘 누적','문법 체계','독해 속도','서술형 작성'],
+    '수학':['연산 정확도','개념 이해','응용 풀이','오답 관리'],
+    '과학':['개념 시각화','실험 원리','도표 해석','서술형 정리'],
+    '사회':['개념 구조화','자료 해석','시사 연결','서술형 논리'],
+  };
+  const core = cm[subject] || cm['국어'];
+  const lp = {
+    '초등':'기초 개념을 탄탄하게 잡고 공부 습관을 만드는 시기',
+    '중등':'내신과 서술형에 대응하며 고등 준비를 시작하는 시기',
+    '고등':'내신·모의고사·수능까지 동시에 관리해야 하는 시기',
+  }[lvl];
+  const dp = [
+    ['🎯',schoolName+' 내신 밀착 분석',schoolName+' 기출 3년치를 학기마다 업데이트하고 서술형 채점 기준까지 반영한 맞춤 문제지를 제공합니다.'],
+    ['👥','1:1 맞춤 코칭','학생별 수준·성향·목표를 진단해 커리큘럼을 설계하고 진도와 속도를 개별 조정합니다.'],
+    ['📊','주간 학습 리포트','진도·이해도·숙제·취약 유형을 카카오톡으로 매주 전송해 부모님도 실시간 파악합니다.'],
+    ['📚','오답 자동 누적 관리','틀린 문제를 2주 후·1개월 후 재출제해 '+core[0]+'의 공백을 채웁니다.'],
+    ['🧭','내신 4주 집중 프로그램','범위→개념→유형→실전 순서로 단계 집중하며 시험 전 주말 자습실도 오픈합니다.'],
+    ['🧠','AI 진단 + 수동 첨삭','AI가 취약 유형을 뽑고 코치가 사고 과정을 첨삭해 진짜 실력으로 체화시킵니다.'],
+  ];
+  const diffs = pickN(dp, 4, rng);
+  const sm = {
+    '국어':['독해 지문을 문단 단위로 쪼개 주제어·접속사·결론을 구조화합니다','어휘는 매일 15개씩 누적·시험하며 맥락 속 의미까지 체크합니다','문학은 작품별 주제·화자·어조를 한 장으로 정리해 비교합니다','서술형 답안은 조건-근거-마무리 3단 구조로 훈련합니다'],
+    '영어':['단어는 어원과 예문을 함께 외워 장기기억으로 전환합니다','문법은 문장 구조 분석→독해 적용 순서로 실전화합니다','듣기는 받아쓰기와 섀도잉을 병행해 청취 속도를 올립니다','서술형은 틀린 표현을 모아 주간 첨삭 노트를 운영합니다'],
+    '수학':['개념→기본 유형→응용→심화의 4단계 원칙을 지킵니다','틀린 문제는 풀이 과정을 말로 설명하게 해 사고 공백을 잡아냅니다','계산 실수 유형을 분류해 같은 실수가 반복되지 않도록 관리합니다','서술형은 풀이 논리 순서를 함께 채점해 점수를 방어합니다'],
+    '과학':['암기 과목과 계산 과목의 접근법을 분리해 학습 시간을 배분합니다','개념은 그림·도표로 시각화해 구조 단위로 기억합니다','실험 단원은 조건·결과·해석을 분리해 정리합니다','서술형은 원리→증거→결론의 과학적 글쓰기 형식을 훈련합니다'],
+    '사회':['단원별 핵심 개념을 마인드맵으로 구조화해 전체 그림을 먼저 봅니다','지도·통계·사료 자료는 유형별로 분류해 해석 연습을 반복합니다','시사와 교과 개념을 연결해 서술형 배경 지식을 쌓습니다','역사는 인과관계 흐름도로, 지리는 공간 구조로 암기합니다'],
+  };
+  const strats = pickN(sm[subject] || sm['국어'], 4, rng);
+  const cu = {
+    '초등':[['1~2주','진단 + 기초 다지기','현재 수준 진단 후 부족한 '+core[0]+'부터 채웁니다.'],['3~6주','개념 체화','교과서 단원별 핵심 개념을 말로 설명할 때까지 반복합니다.'],['7~10주','응용 + 습관 형성','문제집 2권 병행, 매일 정해진 시간 자기주도 학습 습관을 만듭니다.'],['11주~','선행 + 사고력','다음 학기 개념 선행과 서술형 글쓰기를 병행합니다.']],
+    '중등':[['1~2주','진단 + '+schoolName+' 출제 분석',schoolName+' 최근 3년치 기출 분석으로 취약 영역을 특정합니다.'],['3~6주','개념 + 내신 유형','교과서·문제집 병행, 서술형 유형을 단원별 체크합니다.'],['7~10주','기출 + 실전 모의',schoolName+' 맞춤 모의고사 2~3회로 실수 패턴을 줄입니다.'],['D-14','최종 점검','주말 자습실, 예상 문제 집중 풀이와 컨디션 관리까지.']],
+    '고등':[['1~2주','진단 + 내신·모의 설계',schoolName+' 내신과 목표 대학을 함께 고려해 플랜을 세웁니다.'],['3~8주','개념 + 유형 심화','내신 범위 개념을 심화하며 모의고사 기출 유형까지 확장합니다.'],['9~12주','실전 + 서술형','기출 10년치 풀이, 서술형은 '+schoolName+' 기준 반영 첨삭.'],['D-21','실전 모의 + 멘탈','주간 실전 모의 2회, 시험 전략 상담으로 역량을 끌어올립니다.']],
+  }[lvl];
+  const fp = [
+    ['✍️',schoolName+' '+subject+' 내신을 확실히 올리고 싶은 학생','학교 기출 기반 맞춤 문제지로 약한 유형을 집중 공략합니다.'],
+    ['🔍',subject+' 어디가 막히는지 스스로 모르는 학생','입학 진단에서 막힌 지점을 짚어내고 거기서부터 다시 시작합니다.'],
+    ['🧱','개념은 아는데 시험 점수가 안 나오는 학생','실수 유형 분류표로 반복 실수의 뿌리부터 뜯어고칩니다.'],
+    ['⏱️','공부 시간 대비 효율이 낮은 학생','주 단위 계획표·리포트로 무엇을 얼마나 했는지 시각화합니다.'],
+    ['🎯','서술형 답안이 막막한 학생',subject+' 서술형 채점 기준에 맞춰 답안 구조와 표현을 훈련합니다.'],
+  ];
+  const fits = pickN(fp, 4, rng);
+  const faqs = [
+    ['Q. '+schoolName+' '+subject+' 내신 대비는 어떻게 진행되나요?',schoolName+' 최근 3년치 기출을 분석해 출제 패턴을 정리하고, 시험 4주 전부터 범위 집중 프로그램으로 전환하며 주말 자습실도 오픈합니다.'],
+    ['Q. 첫 수업은 어떻게 진행되나요?','무료 진단으로 현재 수준과 '+core[0]+'·'+core[1]+' 취약 지점을 파악한 뒤 '+lvl+' 맞춤 커리큘럼을 제안드립니다.'],
+    ['Q. 학교 숙제·수행평가도 봐주나요?','네, '+schoolName+' 수행평가 일정을 학사일정에 반영해 필요 시 별도 시간을 내어 지도합니다. 수업 외 카톡 질의응답도 가능합니다.'],
+    ['Q. 수업 빠진 날은 어떻게 되나요?','사전 공지 시 보강 수업을 제공합니다. 부득이한 경우 영상·요약 자료로 진도 공백을 메울 수 있도록 돕습니다.'],
+  ];
+  const heroImg = getEduImage(schoolName + subject + c.n);
+  const title = schoolName + ' ' + subject + '학원';
+  const seoTitle = title + ' | ' + fullName + ' 1:1 맞춤 수업 - 과외안하니';
+  const seoDesc = schoolName + ' ' + subject + ' 내신 대비와 ' + lvl + ' 맞춤 커리큘럼. ' + fullName + '이 제공하는 1:1 학습 코칭 안내.';
+  const url = 'https://anhani.com/학교학원/' + encodeURIComponent(c.n) + '/' + encodeURIComponent(schoolName) + '/' + encodeURIComponent(subject);
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(seoTitle, seoDesc, url)}
+  ${subjArticleStyle(col,bg,heroImg)}</head>
+  <body>${navHTML('region')}
+  <div class="sh"><div class="si">
+    <div class="sbc"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; <a href="/학원/${encodeURIComponent(c.n)}">${c.n}</a> &gt; ${title}</div>
+    <div class="sbd">${lvl} · ${subject}</div>
+    <h1><em>${schoolName}</em> ${subject}학원</h1>
+    <p class="shs">${sigungu} ${fullName}이 ${schoolName} 학생 대상 ${subject} 1:1 맞춤 코칭 가이드</p>
+  </div></div>
+  <div class="sm">
+    <div class="sx">
+      <div class="st">${title}이 필요한 이유</div>
+      <p class="sd">${lvl}학생의 ${subject}는 ${lp}입니다. 특히 ${schoolName} 학생이라면 학교 시험 출제 경향과 서술형 기준까지 고려한 전략이 필요합니다. ${fullName}은 ${schoolName} 맞춤으로 ${core[0]}·${core[1]}·${core[2]} 3가지 핵심 역량을 키웁니다.</p>
+    </div>
+    <div class="sx">
+      <div class="st">${fullName}만의 차별점</div>
+      <div class="dg">${diffs.map(d=>`<div class="dc"><div class="di">${d[0]}</div><div class="dt">${d[1]}</div><div class="dd">${d[2]}</div></div>`).join('')}</div>
+    </div>
+    <div class="sx">
+      <div class="st">${schoolName} ${subject} 학습 전략</div>
+      <p class="sd">${fullName}의 ${subject} 전담 코치가 ${schoolName} 학생에게 적용하는 핵심 전략입니다. ${lvl} 시기 ${subject}는 평상시 꾸준한 누적이 실력 차이를 만듭니다.</p>
+      <div class="sl">${strats.map((s,i)=>`<div class="sli"><strong>전략 ${i+1}.</strong>${s}.</div>`).join('')}</div>
+    </div>
+    <div class="sx">
+      <div class="st">${lvl} ${subject} 맞춤 커리큘럼</div>
+      <p class="sd">첫 수업부터 시험 대비까지 단계별로 진행되며 ${schoolName} 학사일정에 맞춰 조정됩니다.</p>
+      ${cu.map(s=>`<div class="cr"><span class="cw">${s[0]}</span><div><div class="cct">${s[1]}</div><div class="ccd">${s[2]}</div></div></div>`).join('')}
+    </div>
+    <div class="sx">
+      <div class="st">이런 학생에게 정말 좋습니다</div>
+      ${fits.map(f=>`<div class="fc"><span class="fe">${f[0]}</span><span class="ft">${f[1]}</span><div class="fd">${f[2]}</div></div>`).join('')}
+    </div>
+    <div class="sx">
+      <div class="st">자주 묻는 질문</div>
+      ${faqs.map(f=>`<div class="fa"><div class="fq">${f[0]}</div><div class="fv">${f[1]}</div></div>`).join('')}
+    </div>
+    <div class="sct">
+      <h3>${title} 무료 상담</h3>
+      <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
+      <div class="scb">
+        <a href="tel:010-6850-1420" class="scbt scp">010-6850-1420</a>
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="scbt scf">무료 상담 신청</a>
+      </div>
+    </div>
+  </div>
+  ${footerHTML()}
+  </body></html>`;
+}
+
+// --- 지역 × 과목 키워드 아티클 동적 생성 ---
+function renderRegionSubjectAcademy(center, region, subject) {
+  const c = center;
+  const seed = hashCode(c.n + region + subject + 'r');
+  const rng = seededRandom(seed);
+  const fullName = c.n + '와와학습코칭학원';
+  const rt = region.endsWith('구') ? '구' : (region.endsWith('동')||region.endsWith('읍')||region.endsWith('면')) ? '동' : '시';
+  const rtLabel = rt === '시' ? '시 권역' : rt === '구' ? '구 단위' : '동 생활권';
+  const sc = {'국어':'#ef4444','영어':'#3b82f6','수학':'#22c55e','과학':'#a855f7','사회':'#f59e0b'};
+  const sbg = {'국어':'#fef2f2','영어':'#eff6ff','수학':'#f0fdf4','과학':'#faf5ff','사회':'#fffbeb'};
+  const col = sc[subject] || '#6366f1', bg = sbg[subject] || '#eef2ff';
+  const rp = [
+    ['🚇','통학이 편한 거리감',region+' '+rtLabel+' 학생이 도보·짧은 대중교통으로 오갈 수 있는 위치, 야간 귀가 동선까지 고려했습니다.'],
+    ['🏘️',region+' 학생 특성 데이터화','같은 생활권에서 '+subject+'을 수년간 지도하며 지역 학생의 반복 유형과 약점 패턴을 축적해왔습니다.'],
+    ['📖','인근 학원가 정보망',region+' 학원가·학부모 커뮤니티와 소통하며 '+subject+' 교재·시험 트렌드를 빠르게 반영합니다.'],
+    ['🎯','맞벌이 가정 시간대 배려','맞벌이가 많은 '+region+' 특성을 반영해 귀가 시간대·주말 오전 등 수업 옵션이 다양합니다.'],
+    ['🧩','형제·자매 동반 편의','남매·자매 동반 수업 시 시간 조율과 동반 혜택을 유연하게 제공합니다.'],
+    ['🔎','또래 소그룹 편성',region+' 거주 동일 학년 소그룹 편성이 가능하며 또래 학습 동기를 활용합니다.'],
+  ];
+  const reasons = pickN(rp, 4, rng);
+  const sm = {
+    '국어':['학년별 권장 독서 리스트 기반 독해 훈련','어휘 앱 연동 매일 누적 테스트','문학·비문학 영역별 오답 분류','서술형 3문장 요약 루틴'],
+    '영어':['레벨별 단어장과 매일 15개 누적 체크','문장 5형식 기반 독해 훈련','듣기 받아쓰기·섀도잉 주 2회','라이팅 첨삭 리포트 월 2회'],
+    '수학':['연산 속도 주간 체크','개념노트와 예제 풀이 병행','오답 2주·4주 재출제 시스템','서술형 풀이 논리 채점'],
+    '과학':['개념 그림노트 제작','실험 단원 조건-결과-해석 정리','계산 단원 공식 정리 카드','서술형 원리→증거→결론 훈련'],
+    '사회':['단원 마인드맵 작성','자료(지도·통계·사료) 유형별 해석 훈련','시사 이슈 연결 노트','서술형 두괄식 논리 구성'],
+  };
+  const plan = pickN(sm[subject] || sm['국어'], 4, rng);
+  const tips = {
+    '국어':'지문을 소리 내어 한 번 더 읽으며 주제 문장에 밑줄을 긋는 습관이 이해도를 크게 올립니다.',
+    '영어':'잘 외운 단어도 예문과 함께 기억하면 독해·작문에서 훨씬 잘 응용됩니다.',
+    '수학':'풀이 과정 중 가장 헷갈린 한 줄을 따로 노트에 적어두면 같은 실수를 반복하지 않습니다.',
+    '과학':'개념을 종이에 그려서 설명해보면 애매하게 알고 있던 부분이 드러납니다.',
+    '사회':'한 단원이 끝날 때마다 키워드 10개로 다시 요약해보면 시험 대비가 훨씬 수월해집니다.',
+  }[subject] || '개념·유형·실전 3단계를 지키면 꾸준히 성적이 오릅니다.';
+  const fp = [
+    ['🏡',region+' 근처에서 수업받고 싶은 학생','긴 이동 없이 '+rtLabel+' 안에서 전문 코치의 '+subject+' 수업을 받을 수 있습니다.'],
+    ['⚖️','여러 과목을 한 곳에서 해결하고 싶은 학생',subject+' 외 다른 과목도 함께 관리돼 학습 동선이 정리됩니다.'],
+    ['📅','스케줄 조정이 까다로운 학생',region+' 인근 학교 시간표에 맞춰 수업 시간을 유연하게 조정합니다.'],
+    ['💬','편한 상담 분위기를 찾는 학부모','원장이 직접 상담하고 학생 상태를 공유해 만족도가 높습니다.'],
+    ['🎯',subject+' 점수를 단기간에 올리고 싶은 학생','단기 집중 프로그램과 인근 학교 시험 연동으로 최단 경로 성적 향상을 노립니다.'],
+  ];
+  const fits = pickN(fp, 4, rng);
+  const otherSubs = (c.s||[]).filter(s => s !== subject).slice(0, 4);
+  const faqs = [
+    ['Q. '+region+'에서 이곳으로 오는 길이 궁금해요.',c.l ? c.l.substring(0, 150) : (c.a + ' 근처에 위치합니다. 자세한 위치 안내는 상담 시 전달드립니다.')],
+    ['Q. '+region+' 다른 학원과 어떻게 다른가요?','1:1 맞춤 코칭이며 '+region+' 인근 학교 시험 일정과 연동해 커리큘럼을 조정합니다.'],
+    ['Q. '+subject+' 외 다른 과목도 함께 들을 수 있나요?',otherSubs.length ? (otherSubs.join('·') + ' 수업을 병행할 수 있습니다.') : '현재 '+subject+' 중심으로 운영 중입니다. 상담 시 안내 가능합니다.'],
+  ];
+  const heroImg = getEduImage(region + subject + c.n + 'r');
+  const title = region + ' ' + subject + '학원';
+  const seoTitle = title + ' | ' + fullName + ' 1:1 맞춤 수업 - 과외안하니';
+  const seoDesc = region + ' ' + subject + ' 1:1 학원 안내. ' + fullName + '이 제공하는 ' + rtLabel + ' 학생 맞춤 ' + subject + ' 커리큘럼.';
+  const url = 'https://anhani.com/지역학원/' + encodeURIComponent(c.n) + '/' + encodeURIComponent(region) + '/' + encodeURIComponent(subject);
+  return `<!DOCTYPE html><html lang="ko"><head>
+  ${commonHead(seoTitle, seoDesc, url)}
+  ${subjArticleStyle(col, bg, heroImg)}</head>
+  <body>${navHTML('region')}
+  <div class="sh"><div class="si">
+    <div class="sbc"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; <a href="/학원/${encodeURIComponent(c.n)}">${c.n}</a> &gt; ${title}</div>
+    <div class="sbd">${rtLabel} · ${subject}</div>
+    <h1><em>${region}</em> ${subject}학원</h1>
+    <p class="shs">${fullName}이 ${region} 학생 대상 ${subject} 1:1 맞춤 학원 가이드</p>
+  </div></div>
+  <div class="sm">
+    <div class="sx">
+      <div class="st">${title}을 찾고 있다면</div>
+      <p class="sd">${region} 인근에서 ${subject} 학원을 찾는 학생과 학부모를 위해 ${fullName}이 운영하는 ${subject} 1:1 맞춤 프로그램을 안내드립니다. ${rtLabel} 학생의 학습 특성과 통학 동선을 고려해 설계된 커리큘럼으로 ${subject}의 핵심 영역을 다룹니다.</p>
+    </div>
+    <div class="sx">
+      <div class="st">${title}으로 이곳을 추천하는 이유</div>
+      <div class="dg">${reasons.map(r=>`<div class="dc"><div class="di">${r[0]}</div><div class="dt">${r[1]}</div><div class="dd">${r[2]}</div></div>`).join('')}</div>
+    </div>
+    <div class="sx">
+      <div class="st">${subject} 학습 플랜</div>
+      <p class="sd">${region} 학생 수준에 맞춰 ${subject}의 핵심 역량을 단계별로 채웁니다. 매 수업마다 이전 진도를 복기한 뒤 신규 개념으로 진행해 공백 없는 누적 학습을 유지합니다.</p>
+      <div class="sl">${plan.map((p,i)=>`<div class="sli"><strong>플랜 ${i+1}.</strong>${p}.</div>`).join('')}</div>
+    </div>
+    <div class="sx">
+      <div class="st">${subject} 공부 꼭 기억할 한 가지</div>
+      <div class="cr" style="background:#fff8ed"><span class="cw" style="background:#f59e0b">TIP</span><div class="ccd" style="color:#78350f">${tips}</div></div>
+    </div>
+    <div class="sx">
+      <div class="st">이런 학부모·학생에게 적합합니다</div>
+      ${fits.map(f=>`<div class="fc"><span class="fe">${f[0]}</span><span class="ft">${f[1]}</span><div class="fd">${f[2]}</div></div>`).join('')}
+    </div>
+    <div class="sx">
+      <div class="st">자주 묻는 질문</div>
+      ${faqs.map(f=>`<div class="fa"><div class="fq">${f[0]}</div><div class="fv">${f[1]}</div></div>`).join('')}
+    </div>
+    <div class="sct">
+      <h3>${title} 무료 상담</h3>
+      <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
+      <div class="scb">
+        <a href="tel:010-6850-1420" class="scbt scp">010-6850-1420</a>
+        <a href="https://naver.me/GYD2Ki40" target="_blank" class="scbt scf">무료 상담 신청</a>
+      </div>
+    </div>
+  </div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -3959,76 +3357,9 @@ function renderAcademyDetail(center) {
 function renderContactPage() {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('문의하기 - 과외안하니', '궁금한 점을 편하게 남겨주세요. 전문 상담사가 빠른 시일 내에 연락드리겠습니다.', 'https://anhani.com/상담')}
-  <style>${commonStyles()}
-    .ct-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #312e81 100%); padding: 60px 24px 200px; text-align: center; color: #fff; position: relative; overflow: hidden; }
-    .ct-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 70% 30%, rgba(99,102,241,0.2) 0%, transparent 50%); }
-    .ct-hero-inner { position: relative; max-width: 600px; margin: 0 auto; }
-    .ct-hero-badge { display: inline-block; background: rgba(99,102,241,0.3); backdrop-filter: blur(4px); padding: 6px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(99,102,241,0.3); }
-    .ct-hero h1 { font-size: 36px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
-    .ct-hero h1 em { font-style: normal; color: #818cf8; }
-    .ct-hero p { font-size: 16px; color: #94a3b8; line-height: 1.7; }
-    
-    .ct-main { max-width: 1000px; margin: -160px auto 0; padding: 0 24px 80px; position: relative; }
-    .ct-cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
-    .ct-info-card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); text-align: center; transition: all 0.3s; border: 1px solid transparent; }
-    .ct-info-card:hover { transform: translateY(-4px); border-color: #6366f1; box-shadow: 0 8px 32px rgba(99,102,241,0.15); }
-    .ct-info-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 14px; }
-    .ct-info-card h3 { font-size: 13px; color: #94a3b8; margin-bottom: 6px; }
-    .ct-info-card .ct-info-val { font-size: 24px; font-weight: 900; color: #0f172a; }
-    
-    .ct-body { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; }
-    .ct-left-card { background: #fff; border-radius: 20px; padding: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
-    .ct-left-card h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 24px; }
-    .ct-timeline { position: relative; padding-left: 32px; }
-    .ct-timeline::before { content: ''; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, #6366f1, #a5b4fc); }
-    .ct-tl-item { position: relative; margin-bottom: 28px; }
-    .ct-tl-item:last-child { margin-bottom: 0; }
-    .ct-tl-dot { position: absolute; left: -32px; top: 2px; width: 24px; height: 24px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; box-shadow: 0 0 0 4px rgba(99,102,241,0.15); }
-    .ct-tl-title { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-    .ct-tl-desc { font-size: 13px; color: #94a3b8; line-height: 1.5; }
-    
-    .ct-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
-    .ct-benefit { background: #f8fafc; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 10px; }
-    .ct-benefit-icon { font-size: 20px; flex-shrink: 0; }
-    .ct-benefit-text { font-size: 13px; font-weight: 600; color: #334155; }
-    
-    .ct-form-card { background: #fff; border-radius: 20px; padding: 36px 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border-top: 4px solid #6366f1; }
-    .ct-form-header { text-align: center; margin-bottom: 28px; }
-    .ct-form-header h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-    .ct-form-header p { font-size: 13px; color: #94a3b8; }
-    .ct-form-tabs { display: flex; margin-bottom: 24px; background: #f1f5f9; border-radius: 12px; padding: 4px; }
-    .ct-ftab { flex: 1; padding: 12px; text-align: center; border-radius: 10px; font-size: 14px; font-weight: 600; color: #64748b; cursor: pointer; border: none; background: none; transition: all 0.2s; }
-    .ct-ftab.active { background: #6366f1; color: #fff; box-shadow: 0 2px 8px rgba(99,102,241,0.3); }
-    .ct-field { margin-bottom: 16px; }
-    .ct-field label { display: block; font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 6px; }
-    .ct-field label .req { color: #ef4444; }
-    .ct-field input, .ct-field select, .ct-field textarea { display: block; width: 100%; padding: 12px 14px; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 14px; outline: none; background: #fafbfc; transition: all 0.2s; font-family: inherit; }
-    .ct-field input:focus, .ct-field select:focus, .ct-field textarea:focus { border-color: #6366f1; background: #fff; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
-    .ct-field textarea { min-height: 100px; resize: vertical; }
-    .ct-privacy { background: #f8fafc; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
-    .ct-privacy h4 { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
-    .ct-privacy p { font-size: 11px; color: #94a3b8; line-height: 1.6; }
-    .ct-check { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 13px; color: #334155; cursor: pointer; }
-    .ct-check .req { color: #ef4444; }
-    .ct-submit { display: block; width: 100%; padding: 16px; background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; border: none; border-radius: 14px; font-size: 17px; font-weight: 800; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 16px rgba(99,102,241,0.3); }
-    .ct-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(99,102,241,0.4); }
-    .ct-success { display: none; text-align: center; padding: 48px 20px; }
-    .ct-success-icon { font-size: 48px; margin-bottom: 16px; }
-    .ct-success h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
-    .ct-success p { font-size: 14px; color: #64748b; line-height: 1.7; }
-    .ct-success a { display: inline-block; margin-top: 16px; color: #6366f1; font-weight: 600; text-decoration: none; }
-    
-    @media (max-width: 768px) {
-      .ct-hero h1 { font-size: 26px; }
-      .ct-cards-row { grid-template-columns: 1fr; }
-      .ct-body { grid-template-columns: 1fr; }
-      .ct-benefits { grid-template-columns: 1fr; }
-      .ct-hero { padding-bottom: 140px; }
-      .ct-main { margin-top: -100px; }
-    }
-  </style></head><body>
+  <style>${commonStyles()}.ct-hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#312e81 100%);padding:60px 24px 200px;text-align:center;color:#fff;position:relative;overflow:hidden}.ct-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 70% 30%,rgba(99,102,241,.2) 0%,transparent 50%)}.ct-hero-inner{position:relative;max-width:600px;margin:0 auto}.ct-hero-badge{display:inline-block;background:rgba(99,102,241,.3);backdrop-filter:blur(4px);padding:6px 18px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px;border:1px solid rgba(99,102,241,.3)}.ct-hero h1{font-size:36px;font-weight:900;line-height:1.3;margin-bottom:12px}.ct-hero h1 em{font-style:normal;color:#818cf8}.ct-hero p{font-size:16px;color:#94a3b8;line-height:1.7}.ct-main{max-width:1000px;margin:-160px auto 0;padding:0 24px 80px;position:relative}.ct-cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}.ct-info-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,.08);text-align:center;transition:all .3s;border:1px solid transparent}.ct-info-card:hover{transform:translateY(-4px);border-color:#6366f1;box-shadow:0 8px 32px rgba(99,102,241,.15)}.ct-info-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px}.ct-info-card h3{font-size:13px;color:#94a3b8;margin-bottom:6px}.ct-info-card .ct-info-val{font-size:24px;font-weight:900;color:#0f172a}.ct-body{display:grid;grid-template-columns:1fr 1.2fr;gap:32px}.ct-left-card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.06)}.ct-left-card h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:24px}.ct-timeline{position:relative;padding-left:32px}.ct-timeline::before{content:'';position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,#6366f1,#a5b4fc)}.ct-tl-item{position:relative;margin-bottom:28px}.ct-tl-item:last-child{margin-bottom:0}.ct-tl-dot{position:absolute;left:-32px;top:2px;width:24px;height:24px;background:#6366f1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;box-shadow:0 0 0 4px rgba(99,102,241,.15)}.ct-tl-title{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:4px}.ct-tl-desc{font-size:13px;color:#94a3b8;line-height:1.5}.ct-benefits{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}.ct-benefit{background:#f8fafc;border-radius:12px;padding:16px;display:flex;align-items:center;gap:10px}.ct-benefit-icon{font-size:20px;flex-shrink:0}.ct-benefit-text{font-size:13px;font-weight:600;color:#334155}.ct-form-card{background:#fff;border-radius:20px;padding:36px 32px;box-shadow:0 4px 24px rgba(0,0,0,.06);border-top:4px solid #6366f1}.ct-form-header{text-align:center;margin-bottom:28px}.ct-form-header h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:4px}.ct-form-header p{font-size:13px;color:#94a3b8}.ct-form-tabs{display:flex;margin-bottom:24px;background:#f1f5f9;border-radius:12px;padding:4px}.ct-ftab{flex:1;padding:12px;text-align:center;border-radius:10px;font-size:14px;font-weight:600;color:#64748b;cursor:pointer;border:none;background:none;transition:all .2s}.ct-ftab.active{background:#6366f1;color:#fff;box-shadow:0 2px 8px rgba(99,102,241,.3)}.ct-field{margin-bottom:16px}.ct-field label{display:block;font-size:13px;font-weight:700;color:#334155;margin-bottom:6px}.ct-field label .req{color:#ef4444}.ct-field input,.ct-field select,.ct-field textarea{display:block;width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14px;outline:none;background:#fafbfc;transition:all .2s;font-family:inherit}.ct-field input:focus,.ct-field select:focus,.ct-field textarea:focus{border-color:#6366f1;background:#fff;box-shadow:0 0 0 3px rgba(99,102,241,.1)}.ct-field textarea{min-height:100px;resize:vertical}.ct-privacy{background:#f8fafc;border-radius:12px;padding:16px;margin-bottom:16px}.ct-privacy h4{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:6px}.ct-privacy p{font-size:11px;color:#94a3b8;line-height:1.6}.ct-check{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:#334155;cursor:pointer}.ct-check .req{color:#ef4444}.ct-submit{display:block;width:100%;padding:16px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:14px;font-size:17px;font-weight:800;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(99,102,241,.3)}.ct-submit:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(99,102,241,.4)}.ct-success{display:none;text-align:center;padding:48px 20px}.ct-success-icon{font-size:48px;margin-bottom:16px}.ct-success h3{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px}.ct-success p{font-size:14px;color:#64748b;line-height:1.7}.ct-success a{display:inline-block;margin-top:16px;color:#6366f1;font-weight:600;text-decoration:none}@media (max-width:768px){.ct-hero h1{font-size:26px}.ct-cards-row{grid-template-columns:1fr}.ct-body{grid-template-columns:1fr}.ct-benefits{grid-template-columns:1fr}.ct-hero{padding-bottom:140px}.ct-main{margin-top:-100px}}</style></head><body>
   ${navHTML('')}
-  
+
   <div class="ct-hero">
     <div class="ct-hero-inner">
       <div class="ct-hero-badge">✨ 무료 상담 신청</div>
@@ -4036,7 +3367,7 @@ function renderContactPage() {
       <p>과외안하니 전문 상담사가<br>빠른 시일 내에 연락드리겠습니다</p>
     </div>
   </div>
-  
+
   <div class="ct-main">
     <div class="ct-cards-row">
       <a href="tel:010-6850-1420" class="ct-info-card" style="text-decoration:none;color:inherit;">
@@ -4055,7 +3386,7 @@ function renderContactPage() {
         <div class="ct-info-val">98.2%</div>
       </div>
     </div>
-    
+
     <div class="ct-body">
       <div>
         <div class="ct-left-card">
@@ -4090,7 +3421,7 @@ function renderContactPage() {
           <div class="ct-benefit"><div class="ct-benefit-icon">💰</div><div class="ct-benefit-text">합리적 수업료</div></div>
         </div>
       </div>
-      
+
       <div class="ct-form-card" id="ctFormCard">
         <div class="ct-form-header">
           <h2>상담 신청서</h2>
@@ -4132,7 +3463,7 @@ function renderContactPage() {
       </div>
     </div>
   </div>
-  
+
   <script>
     function submitContact(e) {
       e.preventDefault();
@@ -4140,7 +3471,7 @@ function renderContactPage() {
       return false;
     }
   </script>
-  
+
   ${footerHTML()}
   </body></html>`;
 }
@@ -4169,33 +3500,7 @@ function renderGradePage(school, grade) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(gradeLabel + ' 과외 - 과목별 맞춤 가이드 | 과외안하니', gradeLabel + ' 맞춤 과외 정보. 국어, 영어, 수학 등 8개 과목별 학습 전략과 선생님 매칭.', 'https://anhani.com/grade/' + school + '/' + grade)}
-  <style>${commonStyles()}
-    .gd-hero-wrap { position: relative; overflow: hidden; }
-    .gd-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-    .gd-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(${accentColor === '#3b82f6' ? '59,130,246' : accentColor === '#8b5cf6' ? '139,92,246' : '239,68,68'}, 0.55) 100%); z-index: 1; }
-    .gd-hero { position: relative; z-index: 2; color: #fff; padding: 72px 24px 60px; text-align: center; }
-    .gd-hero h1 { font-size: 34px; font-weight: 900; margin-bottom: 10px; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
-    .gd-hero h1 em { font-style: normal; color: #fff; background: rgba(255,255,255,0.15); padding: 2px 14px; border-radius: 8px; backdrop-filter: blur(4px); }
-    .gd-hero p { font-size: 15px; color: rgba(255,255,255,0.92); text-shadow: 0 2px 8px rgba(0,0,0,0.25); }
-    .gd-wrap { max-width: 900px; margin: 0 auto; padding: 32px 24px 80px; }
-    .gd-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; justify-content: center; }
-    .gd-tab { padding: 10px 22px; border-radius: 10px; border: 1.5px solid #e2e8f0; background: #fff; font-size: 14px; font-weight: 600; color: #475569; text-decoration: none; transition: all 0.2s; }
-    .gd-tab:hover { border-color: ${accentColor}; color: ${accentColor}; }
-    .gd-tab.active { background: ${accentColor}; color: #fff; border-color: ${accentColor}; }
-    .gd-section-title { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; text-align: center; }
-    .gd-subj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 40px; }
-    .gd-subj-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 20px; text-decoration: none; color: inherit; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
-    .gd-subj-card:hover { border-color: ${accentColor}; transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
-    .gd-subj-icon { font-size: 32px; margin-bottom: 10px; }
-    .gd-subj-card h3 { font-size: 17px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-    .gd-subj-card p { font-size: 12px; color: #94a3b8; }
-    .gd-subj-arrow { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #d1d5db; font-size: 16px; }
-    .gd-subj-card:hover .gd-subj-arrow { color: ${accentColor}; }
-    .gd-cta { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 16px; padding: 40px 28px; text-align: center; color: #fff; }
-    .gd-cta h3 { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
-    .gd-cta p { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
-    .gd-cta a { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
-  </style></head><body>
+  <style>${commonStyles()}.gd-hero-wrap{position:relative;overflow:hidden}.gd-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.gd-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.85) 0%,rgba(${accentColor === '#3b82f6' ? '59,130,246':accentColor === '#8b5cf6' ? '139,92,246':'239,68,68'},.55) 100%);z-index:1}.gd-hero{position:relative;z-index:2;color:#fff;padding:72px 24px 60px;text-align:center}.gd-hero h1{font-size:34px;font-weight:900;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,.3)}.gd-hero h1 em{font-style:normal;color:#fff;background:rgba(255,255,255,.15);padding:2px 14px;border-radius:8px;backdrop-filter:blur(4px)}.gd-hero p{font-size:15px;color:rgba(255,255,255,.92);text-shadow:0 2px 8px rgba(0,0,0,.25)}.gd-wrap{max-width:900px;margin:0 auto;padding:32px 24px 80px}.gd-tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap;justify-content:center}.gd-tab{padding:10px 22px;border-radius:10px;border:1.5px solid #e2e8f0;background:#fff;font-size:14px;font-weight:600;color:#475569;text-decoration:none;transition:all .2s}.gd-tab:hover{border-color:${accentColor};color:${accentColor}}.gd-tab.active{background:${accentColor};color:#fff;border-color:${accentColor}}.gd-section-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;text-align:center}.gd-subj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:40px}.gd-subj-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px 20px;text-decoration:none;color:inherit;transition:all .2s;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}.gd-subj-card:hover{border-color:${accentColor};transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.06)}.gd-subj-icon{font-size:32px;margin-bottom:10px}.gd-subj-card h3{font-size:17px;font-weight:700;color:#0f172a;margin-bottom:4px}.gd-subj-card p{font-size:12px;color:#94a3b8}.gd-subj-arrow{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:#d1d5db;font-size:16px}.gd-subj-card:hover .gd-subj-arrow{color:${accentColor}}.gd-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:16px;padding:40px 28px;text-align:center;color:#fff}.gd-cta h3{font-size:22px;font-weight:800;margin-bottom:12px}.gd-cta p{font-size:14px;opacity:.7;margin-bottom:20px}.gd-cta a{display:inline-block;background:#fff;color:#4f46e5;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}</style></head><body>
   ${navHTML('region')}
   <div class="gd-hero-wrap">
     <img src="${getEduImage(school + grade)}" alt="${gradeLabel} 과외" loading="eager" class="gd-hero-img"/>
@@ -4207,7 +3512,7 @@ function renderGradePage(school, grade) {
   </div>
   <div class="gd-wrap">
     <div class="gd-tabs">
-      ${Array.from({length: maxGrade}, (_, i) => 
+      ${Array.from({length: maxGrade}, (_, i) =>
         `<a href="/grade/${school}/${i+1}" class="gd-tab${i+1 === gradeNum ? ' active' : ''}">${shortName} ${i+1}학년</a>`
       ).join('')}
     </div>
@@ -4232,22 +3537,7 @@ function renderSchoolPage(region) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(targetRegion + ' 학교별 과외 - 과외안하니', targetRegion + ' 지역 학교별 맞춤 과외 정보. 초·중·고 학교에 맞는 선생님 매칭.', 'https://anhani.com/school/' + (regionEN[targetRegion]||'seoul'))}
-  <style>${commonStyles()}
-    .sc-wrap { max-width: 1000px; margin: 0 auto; padding: 48px 24px 80px; }
-    .sc-label { display: inline-block; background: #f59e0b; color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
-    .sc-title { font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 10px; }
-    .sc-title em { font-style: normal; color: #f59e0b; }
-    .sc-subtitle { font-size: 15px; color: #64748b; margin-bottom: 32px; }
-    .sc-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-    .sc-tab { padding: 8px 16px; border-radius: 20px; border: 1.5px solid #d1d5db; background: #fff; font-size: 14px; font-weight: 600; color: #475569; text-decoration: none; transition: all 0.2s; }
-    .sc-tab:hover { border-color: #f59e0b; color: #f59e0b; }
-    .sc-tab.active { background: #f59e0b; color: #fff; border-color: #f59e0b; }
-    .sc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-    .sc-card { background: #fffbeb; border: 1px solid #fef3c7; border-radius: 12px; padding: 20px 16px; text-align: center; text-decoration: none; color: inherit; transition: all 0.2s; }
-    .sc-card:hover { border-color: #f59e0b; transform: translateY(-3px); box-shadow: 0 4px 16px rgba(245,158,11,0.1); }
-    .sc-card h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-    .sc-card p { font-size: 12px; color: #94a3b8; }
-  </style></head><body>
+  <style>${commonStyles()}.sc-wrap{max-width:1000px;margin:0 auto;padding:48px 24px 80px}.sc-label{display:inline-block;background:#f59e0b;color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px}.sc-title{font-size:32px;font-weight:900;color:#0f172a;margin-bottom:10px}.sc-title em{font-style:normal;color:#f59e0b}.sc-subtitle{font-size:15px;color:#64748b;margin-bottom:32px}.sc-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}.sc-tab{padding:8px 16px;border-radius:20px;border:1.5px solid #d1d5db;background:#fff;font-size:14px;font-weight:600;color:#475569;text-decoration:none;transition:all .2s}.sc-tab:hover{border-color:#f59e0b;color:#f59e0b}.sc-tab.active{background:#f59e0b;color:#fff;border-color:#f59e0b}.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}.sc-card{background:#fffbeb;border:1px solid #fef3c7;border-radius:12px;padding:20px 16px;text-align:center;text-decoration:none;color:inherit;transition:all .2s}.sc-card:hover{border-color:#f59e0b;transform:translateY(-3px);box-shadow:0 4px 16px rgba(245,158,11,.1)}.sc-card h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:4px}.sc-card p{font-size:12px;color:#94a3b8}</style></head><body>
   ${navHTML('region')}
   <div class="sc-wrap">
     <div class="sc-label">학교별 과외</div>
@@ -4265,7 +3555,6 @@ function renderSchoolPage(region) {
 }
 
 // --- 회화 수업 페이지 ---
-// 외국어 동적 콘텐츠 풀 (유사도 분산용)
 const LANG_ESSENTIALS = {
   english: [
     [
@@ -4383,7 +3672,6 @@ function renderConversationPage(lang) {
   const d = langData[lang] || langData["english"];
   const heroImg = EDU_IMAGE_POOL[d.imgIdx] || EDU_IMAGE_POOL[0];
 
-  // 동적 콘텐츠 (언어별 hash로 풀 선택)
   const seed = strHash(lang);
   const essentialsPool = LANG_ESSENTIALS[lang] || LANG_ESSENTIALS.english;
   const essentials = essentialsPool[seed % essentialsPool.length];
@@ -4417,56 +3705,7 @@ function renderConversationPage(lang) {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(d.name + ' 회화 수업 - 과외안하니', d.name + ' 회화 1:1 맞춤 수업. 핵심 포인트, 공부법, 로드맵까지 완벽 가이드.', 'https://anhani.com/conversation/' + lang)}
   <meta property="og:image" content="${heroImg}">
-  <style>${commonStyles()}
-    .cv-wrap { max-width: 900px; margin: 0 auto; padding: 24px 24px 80px; }
-    .cv-hero-wrap { position: relative; border-radius: 20px; overflow: hidden; margin-bottom: 40px; aspect-ratio: 1200/500; background: #0f172a; }
-    .cv-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .cv-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(${d.rgb}, 0.55) 100%); }
-    .cv-hero-content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 32px 24px; text-align: center; color: #fff; }
-    .cv-flag { font-size: 52px; margin-bottom: 12px; filter: drop-shadow(0 2px 12px rgba(0,0,0,0.4)); }
-    .cv-title { font-size: clamp(26px, 4.5vw, 38px); font-weight: 900; margin-bottom: 12px; text-shadow: 0 2px 12px rgba(0,0,0,0.35); }
-    .cv-title em { font-style: normal; background: rgba(255,255,255,0.2); padding: 2px 16px; border-radius: 10px; backdrop-filter: blur(4px); }
-    .cv-desc { font-size: clamp(13px, 1.7vw, 15px); color: rgba(255,255,255,0.92); line-height: 1.7; margin-bottom: 20px; text-shadow: 0 2px 8px rgba(0,0,0,0.3); max-width: 600px; }
-    .cv-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .cv-btn { padding: 11px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-    .cv-btn-primary { background: #fff; color: ${d.color}; }
-    .cv-btn-primary:hover { transform: translateY(-2px); }
-    .cv-btn-secondary { background: rgba(255,255,255,0.18); color: #fff; border: 1.5px solid rgba(255,255,255,0.5); backdrop-filter: blur(6px); }
-    .cv-btn-secondary:hover { background: rgba(255,255,255,0.28); }
-    .cv-section { margin-bottom: 44px; }
-    .cv-section h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 18px; padding-left: 12px; border-left: 4px solid ${d.color}; }
-    .cv-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .cv-feat { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 16px; text-align: center; font-size: 15px; font-weight: 600; color: #334155; transition: all 0.2s; }
-    .cv-feat:hover { border-color: ${d.color}; transform: translateY(-2px); }
-    .cv-ess-grid { display: flex; flex-direction: column; gap: 14px; }
-    .cv-ess-card { display: flex; gap: 18px; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 22px 24px; transition: all 0.2s; }
-    .cv-ess-card:hover { border-color: ${d.color}; box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
-    .cv-ess-num { flex-shrink: 0; width: 44px; height: 44px; background: ${d.bgColor}; color: ${d.color}; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; }
-    .cv-ess-body { flex: 1; }
-    .cv-ess-body h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
-    .cv-ess-body p { font-size: 14px; color: #475569; line-height: 1.7; }
-    .cv-method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
-    .cv-method-card { background: ${d.bgColor}; border-radius: 14px; padding: 22px 24px; transition: all 0.2s; }
-    .cv-method-card:hover { transform: translateY(-3px); }
-    .cv-method-card h4 { font-size: 16px; font-weight: 800; color: ${d.color}; margin-bottom: 8px; }
-    .cv-method-card p { font-size: 14px; color: #334155; line-height: 1.7; }
-    .cv-road-timeline { position: relative; padding-left: 24px; }
-    .cv-road-timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: ${d.bgColor}; }
-    .cv-road-item { position: relative; margin-bottom: 20px; }
-    .cv-road-dot { position: absolute; left: -24px; top: 6px; width: 14px; height: 14px; background: ${d.color}; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 2px ${d.color}; }
-    .cv-road-body { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 22px; }
-    .cv-road-body h4 { font-size: 15px; font-weight: 800; color: ${d.color}; margin-bottom: 6px; }
-    .cv-road-body p { font-size: 14px; color: #475569; line-height: 1.7; }
-    .cv-levels { display: flex; flex-direction: column; gap: 10px; }
-    .cv-level { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
-    .cv-level-num { width: 36px; height: 36px; background: ${d.color}; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
-    .cv-level-text { font-size: 15px; font-weight: 600; color: #334155; }
-    .cv-lang-tabs { display: flex; gap: 10px; margin-bottom: 24px; justify-content: center; flex-wrap: wrap; }
-    .cv-lang-tab { padding: 10px 24px; border-radius: 10px; border: 1.5px solid #e2e8f0; font-size: 15px; font-weight: 600; text-decoration: none; color: #475569; transition: all 0.2s; background: #fff; }
-    .cv-lang-tab:hover { border-color: ${d.color}; }
-    .cv-lang-tab.active { background: ${d.color}; color: #fff; border-color: ${d.color}; }
-    @media (max-width: 640px) { .cv-features { grid-template-columns: 1fr 1fr; } .cv-hero-wrap { aspect-ratio: 3/2; } .cv-ess-card { flex-direction: column; gap: 10px; } }
-  </style></head><body>
+  <style>${commonStyles()}.cv-wrap{max-width:900px;margin:0 auto;padding:24px 24px 80px}.cv-hero-wrap{position:relative;border-radius:20px;overflow:hidden;margin-bottom:40px;aspect-ratio:1200/500;background:#0f172a}.cv-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.cv-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.82) 0%,rgba(${d.rgb},.55) 100%)}.cv-hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:32px 24px;text-align:center;color:#fff}.cv-flag{font-size:52px;margin-bottom:12px;filter:drop-shadow(0 2px 12px rgba(0,0,0,.4))}.cv-title{font-size:clamp(26px,4.5vw,38px);font-weight:900;margin-bottom:12px;text-shadow:0 2px 12px rgba(0,0,0,.35)}.cv-title em{font-style:normal;background:rgba(255,255,255,.2);padding:2px 16px;border-radius:10px;backdrop-filter:blur(4px)}.cv-desc{font-size:clamp(13px,1.7vw,15px);color:rgba(255,255,255,.92);line-height:1.7;margin-bottom:20px;text-shadow:0 2px 8px rgba(0,0,0,.3);max-width:600px}.cv-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.cv-btn{padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s}.cv-btn-primary{background:#fff;color:${d.color}}.cv-btn-primary:hover{transform:translateY(-2px)}.cv-btn-secondary{background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(6px)}.cv-btn-secondary:hover{background:rgba(255,255,255,.28)}.cv-section{margin-bottom:44px}.cv-section h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:18px;padding-left:12px;border-left:4px solid ${d.color}}.cv-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cv-feat{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 16px;text-align:center;font-size:15px;font-weight:600;color:#334155;transition:all .2s}.cv-feat:hover{border-color:${d.color};transform:translateY(-2px)}.cv-ess-grid{display:flex;flex-direction:column;gap:14px}.cv-ess-card{display:flex;gap:18px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px 24px;transition:all .2s}.cv-ess-card:hover{border-color:${d.color};box-shadow:0 4px 16px rgba(0,0,0,.05)}.cv-ess-num{flex-shrink:0;width:44px;height:44px;background:${d.bgColor};color:${d.color};border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}.cv-ess-body{flex:1}.cv-ess-body h4{font-size:16px;font-weight:800;color:#0f172a;margin-bottom:6px}.cv-ess-body p{font-size:14px;color:#475569;line-height:1.7}.cv-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.cv-method-card{background:${d.bgColor};border-radius:14px;padding:22px 24px;transition:all .2s}.cv-method-card:hover{transform:translateY(-3px)}.cv-method-card h4{font-size:16px;font-weight:800;color:${d.color};margin-bottom:8px}.cv-method-card p{font-size:14px;color:#334155;line-height:1.7}.cv-road-timeline{position:relative;padding-left:24px}.cv-road-timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:${d.bgColor}}.cv-road-item{position:relative;margin-bottom:20px}.cv-road-dot{position:absolute;left:-24px;top:6px;width:14px;height:14px;background:${d.color};border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px ${d.color}}.cv-road-body{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 22px}.cv-road-body h4{font-size:15px;font-weight:800;color:${d.color};margin-bottom:6px}.cv-road-body p{font-size:14px;color:#475569;line-height:1.7}.cv-levels{display:flex;flex-direction:column;gap:10px}.cv-level{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px}.cv-level-num{width:36px;height:36px;background:${d.color};color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}.cv-level-text{font-size:15px;font-weight:600;color:#334155}.cv-lang-tabs{display:flex;gap:10px;margin-bottom:24px;justify-content:center;flex-wrap:wrap}.cv-lang-tab{padding:10px 24px;border-radius:10px;border:1.5px solid #e2e8f0;font-size:15px;font-weight:600;text-decoration:none;color:#475569;transition:all .2s;background:#fff}.cv-lang-tab:hover{border-color:${d.color}}.cv-lang-tab.active{background:${d.color};color:#fff;border-color:${d.color}}@media (max-width:640px){.cv-features{grid-template-columns:1fr 1fr}.cv-hero-wrap{aspect-ratio:3/2}.cv-ess-card{flex-direction:column;gap:10px}}</style></head><body>
   ${navHTML('foreign')}
   <div class="cv-wrap">
     <div class="cv-lang-tabs">
@@ -4595,50 +3834,18 @@ function renderChineseArticle(articleIdx) {
   const idx = parseInt(articleIdx);
   if (idx < 0 || idx >= CN_KEYWORDS.length) return null;
   const kw = CN_KEYWORDS[idx];
-  
+
   const seed = hashCode('chinese-article-' + idx);
   const rng = seededRandom(seed);
-  
+
   const intro = pick(CN_ARTICLE_INTROS, rng)(kw.title);
   const secs = pickN(CN_SECTIONS, 5, rng).map(fn => fn(kw.title));
   const canonical = `https://anhani.com/외국어/중국어/article/${idx}`;
-  
+
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(kw.title + ' | 과외안하니 중국어', kw.title + ' - 1:1 맞춤 중국어 수업. 핵심 내용, 커리큘럼, 학습 효과까지 상세 안내.', canonical)}
   <meta name="robots" content="index, follow">
-  <style>${commonStyles()}
-    .ca-hero { background: linear-gradient(135deg, #450a0a 0%, #991b1b 50%, #dc2626 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
-    .ca-hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
-    .ca-hero h1 { font-size: 28px; font-weight: 900; line-height: 1.4; margin-bottom: 8px; }
-    .ca-hero-meta { font-size: 13px; color: rgba(255,255,255,0.6); }
-    .ca-wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 0; }
-    .ca-intro { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin-bottom: 28px; position: relative; }
-    .ca-intro::before { content: '💡'; position: absolute; top: -14px; left: 20px; background: #fff; padding: 0 8px; font-size: 20px; }
-    .ca-intro p { font-size: 15px; color: #334155; line-height: 1.8; margin: 0; word-break: keep-all; }
-    .ca-sections { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
-    .ca-sec { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 0; overflow: hidden; transition: all 0.2s; }
-    .ca-sec:hover { border-color: #fca5a5; box-shadow: 0 4px 16px rgba(220,38,38,0.06); }
-    .ca-sec-head { display: flex; align-items: center; gap: 14px; padding: 18px 20px; background: #fef2f2; border-bottom: 1px solid #fecaca; }
-    .ca-sec-num { width: 32px; height: 32px; background: #dc2626; color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
-    .ca-sec-title { font-size: 17px; font-weight: 700; color: #0f172a; }
-    .ca-sec-body { padding: 18px 20px; }
-    .ca-sec-body p { font-size: 15px; color: #475569; line-height: 1.8; margin: 0; word-break: keep-all; }
-    .ca-cta { background: linear-gradient(135deg, #450a0a, #dc2626); border-radius: 16px; padding: 32px 24px; text-align: center; color: #fff; margin: 32px 0; }
-    .ca-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-    .ca-cta p { font-size: 13px; opacity: 0.7; margin-bottom: 16px; }
-    .ca-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .ca-cta-btn { padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
-    .ca-cta-w { background: #fff; color: #dc2626; }
-    .ca-cta-o { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-    .ca-related { margin-top: 36px; padding-top: 28px; border-top: 2px solid #f1f5f9; }
-    .ca-related h3 { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #dc2626; }
-    .ca-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .ca-related-item { padding: 14px 16px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; text-decoration: none; color: #334155; font-size: 14px; font-weight: 500; transition: all 0.2s; display: flex; align-items: center; gap: 10px; }
-    .ca-related-item:hover { border-color: #dc2626; color: #dc2626; transform: translateX(4px); }
-    .ca-related-arrow { color: #d1d5db; margin-left: auto; flex-shrink: 0; }
-    .ca-related-item:hover .ca-related-arrow { color: #dc2626; }
-    @media (max-width: 640px) { .ca-hero h1 { font-size: 22px; } .ca-related-grid { grid-template-columns: 1fr; } .ca-sec-head { padding: 14px 16px; } .ca-sec-body { padding: 14px 16px; } }
-  </style></head><body>
+  <style>${commonStyles()}.ca-hero{background:linear-gradient(135deg,#450a0a 0%,#991b1b 50%,#dc2626 100%);color:#fff;padding:48px 24px 40px;text-align:center}.ca-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px}.ca-hero h1{font-size:28px;font-weight:900;line-height:1.4;margin-bottom:8px}.ca-hero-meta{font-size:13px;color:rgba(255,255,255,.6)}.ca-wrap{max-width:720px;margin:0 auto;padding:32px 20px 0}.ca-intro{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:28px;position:relative}.ca-intro::before{content:'💡';position:absolute;top:-14px;left:20px;background:#fff;padding:0 8px;font-size:20px}.ca-intro p{font-size:15px;color:#334155;line-height:1.8;margin:0;word-break:keep-all}.ca-sections{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}.ca-sec{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:0;overflow:hidden;transition:all .2s}.ca-sec:hover{border-color:#fca5a5;box-shadow:0 4px 16px rgba(220,38,38,.06)}.ca-sec-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fef2f2;border-bottom:1px solid #fecaca}.ca-sec-num{width:32px;height:32px;background:#dc2626;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}.ca-sec-title{font-size:17px;font-weight:700;color:#0f172a}.ca-sec-body{padding:18px 20px}.ca-sec-body p{font-size:15px;color:#475569;line-height:1.8;margin:0;word-break:keep-all}.ca-cta{background:linear-gradient(135deg,#450a0a,#dc2626);border-radius:16px;padding:32px 24px;text-align:center;color:#fff;margin:32px 0}.ca-cta h3{font-size:20px;font-weight:800;margin-bottom:6px}.ca-cta p{font-size:13px;opacity:.7;margin-bottom:16px}.ca-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.ca-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.ca-cta-w{background:#fff;color:#dc2626}.ca-cta-o{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}.ca-related{margin-top:36px;padding-top:28px;border-top:2px solid #f1f5f9}.ca-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #dc2626}.ca-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ca-related-item{padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all .2s;display:flex;align-items:center;gap:10px}.ca-related-item:hover{border-color:#dc2626;color:#dc2626;transform:translateX(4px)}.ca-related-arrow{color:#d1d5db;margin-left:auto;flex-shrink:0}.ca-related-item:hover .ca-related-arrow{color:#dc2626}@media (max-width:640px){.ca-hero h1{font-size:22px}.ca-related-grid{grid-template-columns:1fr}.ca-sec-head{padding:14px 16px}.ca-sec-body{padding:14px 16px}}</style></head><body>
   ${navHTML('foreign')}
   ${renderArticleHero(kw.icon + ' ' + kw.title, '🇨🇳 CN 중국어 1:1 맞춤 수업', '중국어-' + idx)}
   <div class="ca-wrap">
@@ -4734,43 +3941,11 @@ function renderJapaneseArticle(articleIdx) {
   const canonical = `https://anhani.com/외국어/일본어/article/${idx}`;
   const cl = '#dc2626';
   const clDk = '#450a0a';
-  
+
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(kw.title + ' | 과외안하니 일본어', kw.title + ' - 1:1 맞춤 일본어 수업. 핵심 내용, 커리큘럼, 학습 효과까지 상세 안내.', canonical)}
   <meta name="robots" content="index, follow">
-  <style>${commonStyles()}
-    .ca-hero { background: linear-gradient(135deg, #1a1a2e 0%, #4a1942 50%, #c2185b 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
-    .ca-hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
-    .ca-hero h1 { font-size: 28px; font-weight: 900; line-height: 1.4; margin-bottom: 8px; }
-    .ca-hero-meta { font-size: 13px; color: rgba(255,255,255,0.6); }
-    .ca-wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 0; }
-    .ca-intro { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin-bottom: 28px; position: relative; }
-    .ca-intro::before { content: '💡'; position: absolute; top: -14px; left: 20px; background: #fff; padding: 0 8px; font-size: 20px; }
-    .ca-intro p { font-size: 15px; color: #334155; line-height: 1.8; margin: 0; word-break: keep-all; }
-    .ca-sections { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
-    .ca-sec { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; transition: all 0.2s; }
-    .ca-sec:hover { border-color: #f9a8d4; box-shadow: 0 4px 16px rgba(194,24,91,0.06); }
-    .ca-sec-head { display: flex; align-items: center; gap: 14px; padding: 18px 20px; background: #fdf2f8; border-bottom: 1px solid #fbcfe8; }
-    .ca-sec-num { width: 32px; height: 32px; background: #c2185b; color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
-    .ca-sec-title { font-size: 17px; font-weight: 700; color: #0f172a; }
-    .ca-sec-body { padding: 18px 20px; }
-    .ca-sec-body p { font-size: 15px; color: #475569; line-height: 1.8; margin: 0; word-break: keep-all; }
-    .ca-cta { background: linear-gradient(135deg, #1a1a2e, #c2185b); border-radius: 16px; padding: 32px 24px; text-align: center; color: #fff; margin: 32px 0; }
-    .ca-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-    .ca-cta p { font-size: 13px; opacity: 0.7; margin-bottom: 16px; }
-    .ca-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .ca-cta-btn { padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; }
-    .ca-cta-w { background: #fff; color: #c2185b; }
-    .ca-cta-o { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
-    .ca-related { margin-top: 36px; padding-top: 28px; border-top: 2px solid #f1f5f9; }
-    .ca-related h3 { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 16px; padding-left: 12px; border-left: 4px solid #c2185b; }
-    .ca-related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .ca-related-item { padding: 14px 16px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; text-decoration: none; color: #334155; font-size: 14px; font-weight: 500; transition: all 0.2s; display: flex; align-items: center; gap: 10px; }
-    .ca-related-item:hover { border-color: #c2185b; color: #c2185b; transform: translateX(4px); }
-    .ca-related-arrow { color: #d1d5db; margin-left: auto; flex-shrink: 0; }
-    .ca-related-item:hover .ca-related-arrow { color: #c2185b; }
-    @media (max-width: 640px) { .ca-hero h1 { font-size: 22px; } .ca-related-grid { grid-template-columns: 1fr; } }
-  </style></head><body>
+  <style>${commonStyles()}.ca-hero{background:linear-gradient(135deg,#1a1a2e 0%,#4a1942 50%,#c2185b 100%);color:#fff;padding:48px 24px 40px;text-align:center}.ca-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px}.ca-hero h1{font-size:28px;font-weight:900;line-height:1.4;margin-bottom:8px}.ca-hero-meta{font-size:13px;color:rgba(255,255,255,.6)}.ca-wrap{max-width:720px;margin:0 auto;padding:32px 20px 0}.ca-intro{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:28px;position:relative}.ca-intro::before{content:'💡';position:absolute;top:-14px;left:20px;background:#fff;padding:0 8px;font-size:20px}.ca-intro p{font-size:15px;color:#334155;line-height:1.8;margin:0;word-break:keep-all}.ca-sections{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}.ca-sec{background:#fff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;transition:all .2s}.ca-sec:hover{border-color:#f9a8d4;box-shadow:0 4px 16px rgba(194,24,91,.06)}.ca-sec-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fdf2f8;border-bottom:1px solid #fbcfe8}.ca-sec-num{width:32px;height:32px;background:#c2185b;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}.ca-sec-title{font-size:17px;font-weight:700;color:#0f172a}.ca-sec-body{padding:18px 20px}.ca-sec-body p{font-size:15px;color:#475569;line-height:1.8;margin:0;word-break:keep-all}.ca-cta{background:linear-gradient(135deg,#1a1a2e,#c2185b);border-radius:16px;padding:32px 24px;text-align:center;color:#fff;margin:32px 0}.ca-cta h3{font-size:20px;font-weight:800;margin-bottom:6px}.ca-cta p{font-size:13px;opacity:.7;margin-bottom:16px}.ca-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.ca-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.ca-cta-w{background:#fff;color:#c2185b}.ca-cta-o{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}.ca-related{margin-top:36px;padding-top:28px;border-top:2px solid #f1f5f9}.ca-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #c2185b}.ca-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ca-related-item{padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all .2s;display:flex;align-items:center;gap:10px}.ca-related-item:hover{border-color:#c2185b;color:#c2185b;transform:translateX(4px)}.ca-related-arrow{color:#d1d5db;margin-left:auto;flex-shrink:0}.ca-related-item:hover .ca-related-arrow{color:#c2185b}@media (max-width:640px){.ca-hero h1{font-size:22px}.ca-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('foreign')}
   ${renderArticleHero(kw.icon + ' ' + kw.title, '🇯🇵 JP 일본어 1:1 맞춤 수업', '일본어-' + idx)}
   <div class="ca-wrap">
@@ -4864,43 +4039,11 @@ function renderEnglishArticle(articleIdx) {
   const intro = pick(EN_CV_INTROS, rng)(kw.title);
   const secs = pickN(EN_CV_SECTIONS, 5, rng).map(fn => fn(kw.title));
   const canonical = `https://anhani.com/외국어/영어/article/${idx}`;
-  
+
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(kw.title + ' | 과외안하니 영어', kw.title + ' - 1:1 맞춤 영어 회화 수업. 핵심 내용, 커리큘럼, 학습 효과까지 상세 안내.', canonical)}
   <meta name="robots" content="index, follow">
-  <style>${commonStyles()}
-    .ca-hero{background:linear-gradient(135deg,#0c2340 0%,#1e3a5f 50%,#3b82f6 100%);color:#fff;padding:48px 24px 40px;text-align:center}
-    .ca-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px}
-    .ca-hero h1{font-size:28px;font-weight:900;line-height:1.4;margin-bottom:8px}
-    .ca-hero-meta{font-size:13px;color:rgba(255,255,255,.6)}
-    .ca-wrap{max-width:720px;margin:0 auto;padding:32px 20px 0}
-    .ca-intro{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:28px;position:relative}
-    .ca-intro::before{content:'💡';position:absolute;top:-14px;left:20px;background:#fff;padding:0 8px;font-size:20px}
-    .ca-intro p{font-size:15px;color:#334155;line-height:1.8;margin:0;word-break:keep-all}
-    .ca-sections{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
-    .ca-sec{background:#fff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;transition:all .2s}
-    .ca-sec:hover{border-color:#93c5fd;box-shadow:0 4px 16px rgba(59,130,246,.06)}
-    .ca-sec-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:#eff6ff;border-bottom:1px solid #bfdbfe}
-    .ca-sec-num{width:32px;height:32px;background:#3b82f6;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
-    .ca-sec-title{font-size:17px;font-weight:700;color:#0f172a}
-    .ca-sec-body{padding:18px 20px}
-    .ca-sec-body p{font-size:15px;color:#475569;line-height:1.8;margin:0;word-break:keep-all}
-    .ca-cta{background:linear-gradient(135deg,#0c2340,#3b82f6);border-radius:16px;padding:32px 24px;text-align:center;color:#fff;margin:32px 0}
-    .ca-cta h3{font-size:20px;font-weight:800;margin-bottom:6px}
-    .ca-cta p{font-size:13px;opacity:.7;margin-bottom:16px}
-    .ca-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    .ca-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}
-    .ca-cta-w{background:#fff;color:#3b82f6}
-    .ca-cta-o{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
-    .ca-related{margin-top:36px;padding-top:28px;border-top:2px solid #f1f5f9}
-    .ca-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #3b82f6}
-    .ca-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .ca-related-item{padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all .2s;display:flex;align-items:center;gap:10px}
-    .ca-related-item:hover{border-color:#3b82f6;color:#3b82f6;transform:translateX(4px)}
-    .ca-related-arrow{color:#d1d5db;margin-left:auto;flex-shrink:0}
-    .ca-related-item:hover .ca-related-arrow{color:#3b82f6}
-    @media(max-width:640px){.ca-hero h1{font-size:22px}.ca-related-grid{grid-template-columns:1fr}}
-  </style></head><body>
+  <style>${commonStyles()}.ca-hero{background:linear-gradient(135deg,#0c2340 0%,#1e3a5f 50%,#3b82f6 100%);color:#fff;padding:48px 24px 40px;text-align:center}.ca-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px}.ca-hero h1{font-size:28px;font-weight:900;line-height:1.4;margin-bottom:8px}.ca-hero-meta{font-size:13px;color:rgba(255,255,255,.6)}.ca-wrap{max-width:720px;margin:0 auto;padding:32px 20px 0}.ca-intro{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:28px;position:relative}.ca-intro::before{content:'💡';position:absolute;top:-14px;left:20px;background:#fff;padding:0 8px;font-size:20px}.ca-intro p{font-size:15px;color:#334155;line-height:1.8;margin:0;word-break:keep-all}.ca-sections{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}.ca-sec{background:#fff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;transition:all .2s}.ca-sec:hover{border-color:#93c5fd;box-shadow:0 4px 16px rgba(59,130,246,.06)}.ca-sec-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:#eff6ff;border-bottom:1px solid #bfdbfe}.ca-sec-num{width:32px;height:32px;background:#3b82f6;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}.ca-sec-title{font-size:17px;font-weight:700;color:#0f172a}.ca-sec-body{padding:18px 20px}.ca-sec-body p{font-size:15px;color:#475569;line-height:1.8;margin:0;word-break:keep-all}.ca-cta{background:linear-gradient(135deg,#0c2340,#3b82f6);border-radius:16px;padding:32px 24px;text-align:center;color:#fff;margin:32px 0}.ca-cta h3{font-size:20px;font-weight:800;margin-bottom:6px}.ca-cta p{font-size:13px;opacity:.7;margin-bottom:16px}.ca-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.ca-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.ca-cta-w{background:#fff;color:#3b82f6}.ca-cta-o{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}.ca-related{margin-top:36px;padding-top:28px;border-top:2px solid #f1f5f9}.ca-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #3b82f6}.ca-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ca-related-item{padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all .2s;display:flex;align-items:center;gap:10px}.ca-related-item:hover{border-color:#3b82f6;color:#3b82f6;transform:translateX(4px)}.ca-related-arrow{color:#d1d5db;margin-left:auto;flex-shrink:0}.ca-related-item:hover .ca-related-arrow{color:#3b82f6}@media(max-width:640px){.ca-hero h1{font-size:22px}.ca-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('foreign')}
   ${renderArticleHero(kw.icon + ' ' + kw.title, '🇺🇸 EN 영어 회화 1:1 맞춤 수업', '영어-' + idx)}
   <div class="ca-wrap">
@@ -5001,26 +4144,7 @@ function renderGuideList() {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('학습가이드 - 공부법, 시험 대비, 학습 습관 | 과외안하니', '공부 집중법, 시험 대비 전략, 성적 올리는 습관까지. 학생과 학부모를 위한 교육 정보 가이드.', 'https://anhani.com/학습가이드')}
-  <style>${commonStyles()}
-    .gl-hero-wrap { position: relative; overflow: hidden; }
-    .gl-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .gl-hero-ov { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.88) 0%, rgba(99,102,241,0.65) 100%); }
-    .gl-hero { position: relative; padding: 72px 24px 56px; text-align: center; color: #fff; }
-    .gl-hero h1 { font-size: 36px; font-weight: 900; margin-bottom: 10px; text-shadow: 0 2px 12px rgba(0,0,0,0.3); }
-    .gl-hero p { font-size: 16px; color: rgba(255,255,255,0.9); }
-    .gl-wrap { max-width: 1060px; margin: 0 auto; padding: 40px 24px 80px; }
-    .gl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-    .gl-card { display: block; background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid #e2e8f0; text-decoration: none; color: inherit; transition: all 0.25s; }
-    .gl-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: #6366f1; }
-    .gl-card-img { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #0f172a; }
-    .gl-card-img img { width: 100%; height: 100%; object-fit: cover; }
-    .gl-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%); }
-    .gl-card-cat { position: absolute; top: 12px; left: 12px; font-size: 11px; font-weight: 700; padding: 4px 10px; background: rgba(255,255,255,0.92); color: #4f46e5; border-radius: 6px; }
-    .gl-card-body { padding: 18px 20px; }
-    .gl-card-body h3 { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
-    .gl-card-body p { font-size: 13px; color: #64748b; line-height: 1.5; }
-    @media (max-width: 640px) { .gl-hero h1 { font-size: 26px; } .gl-grid { grid-template-columns: 1fr; } }
-  </style></head><body>
+  <style>${commonStyles()}.gl-hero-wrap{position:relative;overflow:hidden}.gl-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.gl-hero-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.88) 0%,rgba(99,102,241,.65) 100%)}.gl-hero{position:relative;padding:72px 24px 56px;text-align:center;color:#fff}.gl-hero h1{font-size:36px;font-weight:900;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,.3)}.gl-hero p{font-size:16px;color:rgba(255,255,255,.9)}.gl-wrap{max-width:1060px;margin:0 auto;padding:40px 24px 80px}.gl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}.gl-card{display:block;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;text-decoration:none;color:inherit;transition:all .25s}.gl-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,.08);border-color:#6366f1}.gl-card-img{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f172a}.gl-card-img img{width:100%;height:100%;object-fit:cover}.gl-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 60%)}.gl-card-cat{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;padding:4px 10px;background:rgba(255,255,255,.92);color:#4f46e5;border-radius:6px}.gl-card-body{padding:18px 20px}.gl-card-body h3{font-size:17px;font-weight:800;color:#0f172a;margin-bottom:6px}.gl-card-body p{font-size:13px;color:#64748b;line-height:1.5}@media (max-width:640px){.gl-hero h1{font-size:26px}.gl-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('guide')}
   <div class="gl-hero-wrap">
     <img src="${getEduImage('guidemain')}" class="gl-hero-img" alt="학습가이드" loading="eager"/>
@@ -5055,32 +4179,7 @@ function renderGuideArticle(idx) {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(a.title + ' | 과외안하니', a.kw + ' 완벽 가이드. 실전 노하우와 학습 전략을 한 번에 확인하세요.', 'https://anhani.com/학습가이드/article/' + idx)}
   <meta property="og:image" content="${heroImg}">
-  <style>${commonStyles()}
-    .ga-wrap { max-width: 768px; margin: 0 auto; padding: 0 20px 80px; }
-    .ga-hero-wrap { position: relative; width: calc(100% - 40px); max-width: 728px; margin: 20px auto 24px; aspect-ratio: 1200/180; overflow: hidden; background: #0f172a; border-radius: 12px; }
-    .ga-hero-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .ga-hero-ov { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(99,102,241,0.55) 100%); }
-    .ga-hero-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 18px 20px; color: #fff; }
-    .ga-hero-text h1 { font-size: clamp(18px, 3vw, 26px); font-weight: 900; text-align: center; text-shadow: 0 2px 12px rgba(0,0,0,0.4); line-height: 1.3; margin: 0; width: 100%; }
-    .ga-hero-text p { font-size: clamp(12px, 1.5vw, 14px); opacity: 0.9; text-align: center; margin: 6px 0 0; text-shadow: 0 2px 8px rgba(0,0,0,0.3); width: 100%; }
-    .ga-bc { font-size: 13px; color: #94a3b8; margin-bottom: 20px; padding-top: 20px; }
-    .ga-bc a { color: #6366f1; text-decoration: none; }
-    .ga-badge { display: inline-block; background: #eef2ff; color: #4f46e5; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 12px; }
-    .ga-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
-    .ga-content h2 { font-size: 20px; font-weight: 800; color: #0f172a; margin: 28px 0 12px; padding-left: 12px; border-left: 4px solid #6366f1; }
-    .ga-content p { font-size: 15px; color: #334155; line-height: 1.85; margin-bottom: 14px; word-break: keep-all; }
-    .ga-tip { background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 24px 0; font-size: 14px; line-height: 1.7; color: #78350f; }
-    .ga-cta { background: linear-gradient(135deg, #312e81, #4f46e5); border-radius: 14px; padding: 28px 24px; text-align: center; color: #fff; margin: 36px 0; }
-    .ga-cta h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
-    .ga-cta p { font-size: 13px; opacity: 0.85; margin-bottom: 14px; }
-    .ga-cta a { display: inline-block; margin: 0 4px; padding: 10px 20px; background: #fff; color: #4f46e5; font-size: 14px; font-weight: 700; border-radius: 8px; text-decoration: none; }
-    .ga-related { margin-top: 36px; padding-top: 24px; border-top: 2px solid #e2e8f0; }
-    .ga-related h3 { font-size: 17px; font-weight: 800; margin-bottom: 14px; }
-    .ga-rel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .ga-rel { padding: 12px 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; text-decoration: none; color: #475569; font-size: 13px; font-weight: 600; transition: all 0.2s; }
-    .ga-rel:hover { border-color: #6366f1; color: #6366f1; }
-    @media (max-width: 640px) { .ga-rel-grid { grid-template-columns: 1fr; } }
-  </style></head><body>
+  <style>${commonStyles()}.ga-wrap{max-width:768px;margin:0 auto;padding:0 20px 80px}.ga-hero-wrap{position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/180;overflow:hidden;background:#0f172a;border-radius:12px}.ga-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ga-hero-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.82) 0%,rgba(99,102,241,.55) 100%)}.ga-hero-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px 20px;color:#fff}.ga-hero-text h1{font-size:clamp(18px,3vw,26px);font-weight:900;text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.4);line-height:1.3;margin:0;width:100%}.ga-hero-text p{font-size:clamp(12px,1.5vw,14px);opacity:.9;text-align:center;margin:6px 0 0;text-shadow:0 2px 8px rgba(0,0,0,.3);width:100%}.ga-bc{font-size:13px;color:#94a3b8;margin-bottom:20px;padding-top:20px}.ga-bc a{color:#6366f1;text-decoration:none}.ga-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:12px}.ga-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.ga-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:28px 0 12px;padding-left:12px;border-left:4px solid #6366f1}.ga-content p{font-size:15px;color:#334155;line-height:1.85;margin-bottom:14px;word-break:keep-all}.ga-tip{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0;font-size:14px;line-height:1.7;color:#78350f}.ga-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:14px;padding:28px 24px;text-align:center;color:#fff;margin:36px 0}.ga-cta h3{font-size:18px;font-weight:800;margin-bottom:8px}.ga-cta p{font-size:13px;opacity:.85;margin-bottom:14px}.ga-cta a{display:inline-block;margin:0 4px;padding:10px 20px;background:#fff;color:#4f46e5;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none}.ga-related{margin-top:36px;padding-top:24px;border-top:2px solid #e2e8f0}.ga-related h3{font-size:17px;font-weight:800;margin-bottom:14px}.ga-rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ga-rel{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;font-weight:600;transition:all .2s}.ga-rel:hover{border-color:#6366f1;color:#6366f1}@media (max-width:640px){.ga-rel-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('guide')}
   <div class="ga-hero-wrap">
     <img src="${heroImg}" alt="${a.kw}" loading="eager"/>
@@ -5123,94 +4222,7 @@ function renderGuideArticle(idx) {
 function renderServicePage() {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('1:1 맞춤 과외 서비스 안내 | 과외안하니', '초·중·고 전과목 1:1 맞춤 과외. 수준별 맞춤 수업, 내신·수능 완벽 대비, 올바른 학습습관 형성까지.', 'https://anhani.com/서비스')}
-  <style>${commonStyles()}
-    .sv-hero { background: linear-gradient(160deg, #0c1425 0%, #162044 40%, #1e1b4b 100%); color: #fff; padding: 80px 24px 60px; text-align: center; position: relative; overflow: hidden; }
-    .sv-hero::before { content:''; position:absolute; top:-50%; left:-20%; width:140%; height:200%; background: radial-gradient(circle at 30% 40%, rgba(99,102,241,0.12) 0%, transparent 50%); }
-    .sv-hero-inner { position: relative; max-width: 700px; margin: 0 auto; }
-    .sv-hero-badge { display: inline-block; background: rgba(99,102,241,0.2); border: 1px solid rgba(99,102,241,0.3); padding: 6px 20px; border-radius: 24px; font-size: 13px; font-weight: 600; color: #a5b4fc; margin-bottom: 24px; }
-    .sv-hero h1 { font-size: 42px; font-weight: 900; line-height: 1.3; margin-bottom: 16px; letter-spacing: -1px; }
-    .sv-hero h1 em { font-style: normal; color: #818cf8; }
-    .sv-hero-desc { font-size: 17px; color: #94a3b8; line-height: 1.7; margin-bottom: 32px; }
-    .sv-hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-    .sv-hero-btn { padding: 14px 32px; border-radius: 12px; font-size: 16px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-    .sv-btn-primary { background: #6366f1; color: #fff; }
-    .sv-btn-primary:hover { background: #4f46e5; transform: translateY(-2px); }
-    .sv-btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 1.5px solid rgba(255,255,255,0.2); }
-    .sv-hero-stats { display: flex; gap: 40px; justify-content: center; }
-    .sv-hero-stat { text-align: center; }
-    .sv-hero-stat-num { font-size: 28px; font-weight: 900; color: #fff; }
-    .sv-hero-stat-label { font-size: 12px; color: #64748b; margin-top: 4px; }
-    
-    .sv-section { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
-    .sv-section-label { font-size: 13px; font-weight: 700; color: #6366f1; text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 12px; }
-    .sv-section-title { font-size: 30px; font-weight: 900; color: #0f172a; text-align: center; line-height: 1.4; margin-bottom: 12px; }
-    .sv-section-title em { font-style: normal; color: #6366f1; }
-    .sv-section-desc { font-size: 15px; color: #64748b; text-align: center; line-height: 1.7; margin-bottom: 48px; }
-
-    .sv-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .sv-pillar { background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px 20px; text-align: center; transition: all 0.3s; }
-    .sv-pillar:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: #6366f1; }
-    .sv-pillar-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 16px; }
-    .sv-pillar h3 { font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
-    .sv-pillar p { font-size: 13px; color: #64748b; line-height: 1.6; }
-
-    .sv-process-bg { background: #f8fafc; }
-    .sv-process { display: flex; gap: 0; justify-content: center; align-items: stretch; position: relative; }
-    .sv-step { flex: 1; max-width: 200px; text-align: center; padding: 24px 16px; position: relative; }
-    .sv-step-num { width: 40px; height: 40px; background: #6366f1; color: #fff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800; margin-bottom: 14px; position: relative; z-index: 2; }
-    .sv-step h4 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
-    .sv-step p { font-size: 12px; color: #94a3b8; line-height: 1.5; }
-    .sv-step::after { content: ''; position: absolute; top: 44px; left: 50%; width: 100%; height: 2px; background: #e2e8f0; z-index: 1; }
-    .sv-step:last-child::after { display: none; }
-
-    .sv-diff { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .sv-diff-card { background: #fff; border-radius: 14px; padding: 28px 24px; border: 1px solid #e2e8f0; }
-    .sv-diff-card h4 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-    .sv-diff-card p { font-size: 14px; color: #64748b; line-height: 1.7; }
-
-    .sv-system-bg { background: #0f172a; color: #fff; }
-    .sv-system-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .sv-sys-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 28px 20px; text-align: center; }
-    .sv-sys-card:hover { background: rgba(255,255,255,0.1); }
-    .sv-sys-icon { font-size: 32px; margin-bottom: 12px; }
-    .sv-sys-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-    .sv-sys-card p { font-size: 13px; color: #94a3b8; line-height: 1.6; }
-
-    .sv-price-bg { background: #f0f4ff; }
-    .sv-price-table { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .sv-price-card { background: #fff; border-radius: 16px; padding: 32px 24px; text-align: center; border: 1.5px solid #e2e8f0; transition: all 0.3s; }
-    .sv-price-card.featured { border-color: #6366f1; box-shadow: 0 8px 32px rgba(99,102,241,0.15); transform: scale(1.03); }
-    .sv-price-badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 6px; margin-bottom: 12px; }
-    .sv-price-card h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-    .sv-price-range { font-size: 14px; color: #64748b; margin-bottom: 16px; }
-    .sv-price-features { list-style: none; padding: 0; margin: 0 0 20px; text-align: left; }
-    .sv-price-features li { font-size: 13px; color: #475569; padding: 6px 0; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 8px; }
-    .sv-price-btn { display: block; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; text-align: center; transition: all 0.2s; }
-    
-    .sv-contact-bg { background: linear-gradient(135deg, #1e1b4b, #312e81); color: #fff; }
-    .sv-contact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
-    .sv-contact-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 14px; padding: 28px 20px; text-align: center; }
-    .sv-contact-card:hover { background: rgba(255,255,255,0.12); }
-    .sv-contact-icon { font-size: 32px; margin-bottom: 10px; }
-    .sv-contact-card h4 { font-size: 14px; color: #a5b4fc; margin-bottom: 8px; }
-    .sv-contact-card .sv-contact-val { font-size: 20px; font-weight: 800; color: #fff; }
-    .sv-contact-card a { color: #fff; text-decoration: none; }
-
-    @media (max-width: 768px) {
-      .sv-hero h1 { font-size: 28px; }
-      .sv-hero-stats { gap: 20px; }
-      .sv-hero-stat-num { font-size: 22px; }
-      .sv-pillars { grid-template-columns: 1fr 1fr; }
-      .sv-process { flex-direction: column; align-items: center; }
-      .sv-step::after { display: none; }
-      .sv-diff { grid-template-columns: 1fr; }
-      .sv-system-grid { grid-template-columns: 1fr; }
-      .sv-price-table { grid-template-columns: 1fr; }
-      .sv-price-card.featured { transform: none; }
-      .sv-contact-grid { grid-template-columns: 1fr; }
-      .sv-section-title { font-size: 24px; }
-    }
-  </style></head><body>
+  <style>${commonStyles()}.sv-hero{background:linear-gradient(160deg,#0c1425 0%,#162044 40%,#1e1b4b 100%);color:#fff;padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden}.sv-hero::before{content:'';position:absolute;top:-50%;left:-20%;width:140%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(99,102,241,.12) 0%,transparent 50%)}.sv-hero-inner{position:relative;max-width:700px;margin:0 auto}.sv-hero-badge{display:inline-block;background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.3);padding:6px 20px;border-radius:24px;font-size:13px;font-weight:600;color:#a5b4fc;margin-bottom:24px}.sv-hero h1{font-size:42px;font-weight:900;line-height:1.3;margin-bottom:16px;letter-spacing:-1px}.sv-hero h1 em{font-style:normal;color:#818cf8}.sv-hero-desc{font-size:17px;color:#94a3b8;line-height:1.7;margin-bottom:32px}.sv-hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}.sv-hero-btn{padding:14px 32px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;transition:all .2s}.sv-btn-primary{background:#6366f1;color:#fff}.sv-btn-primary:hover{background:#4f46e5;transform:translateY(-2px)}.sv-btn-secondary{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.2)}.sv-hero-stats{display:flex;gap:40px;justify-content:center}.sv-hero-stat{text-align:center}.sv-hero-stat-num{font-size:28px;font-weight:900;color:#fff}.sv-hero-stat-label{font-size:12px;color:#64748b;margin-top:4px}.sv-section{max-width:960px;margin:0 auto;padding:80px 24px}.sv-section-label{font-size:13px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:12px}.sv-section-title{font-size:30px;font-weight:900;color:#0f172a;text-align:center;line-height:1.4;margin-bottom:12px}.sv-section-title em{font-style:normal;color:#6366f1}.sv-section-desc{font-size:15px;color:#64748b;text-align:center;line-height:1.7;margin-bottom:48px}.sv-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.sv-pillar{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:32px 20px;text-align:center;transition:all .3s}.sv-pillar:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,.08);border-color:#6366f1}.sv-pillar-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px}.sv-pillar h3{font-size:17px;font-weight:800;color:#0f172a;margin-bottom:8px}.sv-pillar p{font-size:13px;color:#64748b;line-height:1.6}.sv-process-bg{background:#f8fafc}.sv-process{display:flex;gap:0;justify-content:center;align-items:stretch;position:relative}.sv-step{flex:1;max-width:200px;text-align:center;padding:24px 16px;position:relative}.sv-step-num{width:40px;height:40px;background:#6366f1;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;margin-bottom:14px;position:relative;z-index:2}.sv-step h4{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:6px}.sv-step p{font-size:12px;color:#94a3b8;line-height:1.5}.sv-step::after{content:'';position:absolute;top:44px;left:50%;width:100%;height:2px;background:#e2e8f0;z-index:1}.sv-step:last-child::after{display:none}.sv-diff{display:grid;grid-template-columns:1fr 1fr;gap:16px}.sv-diff-card{background:#fff;border-radius:14px;padding:28px 24px;border:1px solid #e2e8f0}.sv-diff-card h4{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:8px;display:flex;align-items:center;gap:8px}.sv-diff-card p{font-size:14px;color:#64748b;line-height:1.7}.sv-system-bg{background:#0f172a;color:#fff}.sv-system-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.sv-sys-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px 20px;text-align:center}.sv-sys-card:hover{background:rgba(255,255,255,.1)}.sv-sys-icon{font-size:32px;margin-bottom:12px}.sv-sys-card h4{font-size:16px;font-weight:700;margin-bottom:8px}.sv-sys-card p{font-size:13px;color:#94a3b8;line-height:1.6}.sv-price-bg{background:#f0f4ff}.sv-price-table{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.sv-price-card{background:#fff;border-radius:16px;padding:32px 24px;text-align:center;border:1.5px solid #e2e8f0;transition:all .3s}.sv-price-card.featured{border-color:#6366f1;box-shadow:0 8px 32px rgba(99,102,241,.15);transform:scale(1.03)}.sv-price-badge{display:inline-block;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:12px}.sv-price-card h3{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:4px}.sv-price-range{font-size:14px;color:#64748b;margin-bottom:16px}.sv-price-features{list-style:none;padding:0;margin:0 0 20px;text-align:left}.sv-price-features li{font-size:13px;color:#475569;padding:6px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px}.sv-price-btn{display:block;padding:12px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;text-align:center;transition:all .2s}.sv-contact-bg{background:linear-gradient(135deg,#1e1b4b,#312e81);color:#fff}.sv-contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}.sv-contact-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:28px 20px;text-align:center}.sv-contact-card:hover{background:rgba(255,255,255,.12)}.sv-contact-icon{font-size:32px;margin-bottom:10px}.sv-contact-card h4{font-size:14px;color:#a5b4fc;margin-bottom:8px}.sv-contact-card .sv-contact-val{font-size:20px;font-weight:800;color:#fff}.sv-contact-card a{color:#fff;text-decoration:none}@media (max-width:768px){.sv-hero h1{font-size:28px}.sv-hero-stats{gap:20px}.sv-hero-stat-num{font-size:22px}.sv-pillars{grid-template-columns:1fr 1fr}.sv-process{flex-direction:column;align-items:center}.sv-step::after{display:none}.sv-diff{grid-template-columns:1fr}.sv-system-grid{grid-template-columns:1fr}.sv-price-table{grid-template-columns:1fr}.sv-price-card.featured{transform:none}.sv-contact-grid{grid-template-columns:1fr}.sv-section-title{font-size:24px}}</style></head><body>
   ${navHTML('')}
 
   <section class="sv-hero">
@@ -5370,27 +4382,7 @@ function renderServicePage() {
 function renderVideoLesson() {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('화상수업 - 과외안하니', '전국 어디서나 1:1 화상 과외. 실시간 화상 수업으로 집에서도 최고의 수업을 받으세요.', 'https://anhani.com/video-lesson')}
-  <style>${commonStyles()}
-    .vl-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
-    .vl-hero { background: linear-gradient(135deg, #1e1b4b, #312e81); border-radius: 20px; padding: 48px 32px; text-align: center; color: #fff; margin-bottom: 40px; }
-    .vl-title { font-size: 32px; font-weight: 900; margin-bottom: 10px; }
-    .vl-title em { font-style: normal; color: #818cf8; }
-    .vl-desc { font-size: 15px; opacity: 0.8; margin-bottom: 24px; line-height: 1.7; }
-    .vl-btn { display: inline-block; background: #fff; color: #4f46e5; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
-    .vl-section { margin-bottom: 36px; }
-    .vl-section h2 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 16px; text-align: center; }
-    .vl-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .vl-step { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px 20px; text-align: center; }
-    .vl-step-num { width: 40px; height: 40px; background: #6366f1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin: 0 auto 12px; }
-    .vl-step h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
-    .vl-step p { font-size: 13px; color: #64748b; line-height: 1.6; }
-    .vl-features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .vl-feat { background: #f8fafc; border-radius: 12px; padding: 20px; display: flex; align-items: flex-start; gap: 12px; }
-    .vl-feat-icon { font-size: 24px; flex-shrink: 0; }
-    .vl-feat h4 { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-    .vl-feat p { font-size: 13px; color: #64748b; }
-    @media (max-width: 640px) { .vl-steps { grid-template-columns: 1fr; } .vl-features { grid-template-columns: 1fr; } .vl-title { font-size: 24px; } }
-  </style></head><body>
+  <style>${commonStyles()}.vl-wrap{max-width:900px;margin:0 auto;padding:48px 24px 80px}.vl-hero{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:20px;padding:48px 32px;text-align:center;color:#fff;margin-bottom:40px}.vl-title{font-size:32px;font-weight:900;margin-bottom:10px}.vl-title em{font-style:normal;color:#818cf8}.vl-desc{font-size:15px;opacity:.8;margin-bottom:24px;line-height:1.7}.vl-btn{display:inline-block;background:#fff;color:#4f46e5;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}.vl-section{margin-bottom:36px}.vl-section h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:16px;text-align:center}.vl-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.vl-step{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:28px 20px;text-align:center}.vl-step-num{width:40px;height:40px;background:#6366f1;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;margin:0 auto 12px}.vl-step h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:6px}.vl-step p{font-size:13px;color:#64748b;line-height:1.6}.vl-features{display:grid;grid-template-columns:1fr 1fr;gap:12px}.vl-feat{background:#f8fafc;border-radius:12px;padding:20px;display:flex;align-items:flex-start;gap:12px}.vl-feat-icon{font-size:24px;flex-shrink:0}.vl-feat h4{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:4px}.vl-feat p{font-size:13px;color:#64748b}@media (max-width:640px){.vl-steps{grid-template-columns:1fr}.vl-features{grid-template-columns:1fr}.vl-title{font-size:24px}}</style></head><body>
   ${navHTML('')}
   <div class="vl-wrap">
     <div class="vl-hero">
@@ -5424,20 +4416,7 @@ function renderVideoLesson() {
 function renderStudyAbroad() {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('유학 정보 - 과외안하니', '미국, 영국, 캐나다, 호주 등 해외 유학 정보와 준비 가이드.', 'https://anhani.com/유학')}
-  <style>${commonStyles()}
-    .ab-wrap { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
-    .ab-hero { background: linear-gradient(135deg, #0c4a6e, #0369a1); border-radius: 20px; padding: 48px 32px; text-align: center; color: #fff; margin-bottom: 40px; }
-    .ab-title { font-size: 32px; font-weight: 900; margin-bottom: 10px; }
-    .ab-title em { font-style: normal; color: #7dd3fc; }
-    .ab-desc { font-size: 15px; opacity: 0.8; margin-bottom: 24px; }
-    .ab-btn { display: inline-block; background: #fff; color: #0369a1; padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none; }
-    .ab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
-    .ab-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 16px; text-align: center; transition: all 0.2s; }
-    .ab-card:hover { border-color: #0369a1; transform: translateY(-3px); }
-    .ab-card-flag { font-size: 36px; margin-bottom: 8px; }
-    .ab-card h3 { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
-    .ab-card p { font-size: 13px; color: #64748b; }
-  </style></head><body>
+  <style>${commonStyles()}.ab-wrap{max-width:900px;margin:0 auto;padding:48px 24px 80px}.ab-hero{background:linear-gradient(135deg,#0c4a6e,#0369a1);border-radius:20px;padding:48px 32px;text-align:center;color:#fff;margin-bottom:40px}.ab-title{font-size:32px;font-weight:900;margin-bottom:10px}.ab-title em{font-style:normal;color:#7dd3fc}.ab-desc{font-size:15px;opacity:.8;margin-bottom:24px}.ab-btn{display:inline-block;background:#fff;color:#0369a1;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}.ab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}.ab-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px 16px;text-align:center;transition:all .2s}.ab-card:hover{border-color:#0369a1;transform:translateY(-3px)}.ab-card-flag{font-size:36px;margin-bottom:8px}.ab-card h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:4px}.ab-card p{font-size:13px;color:#64748b}</style></head><body>
   ${navHTML('abroad')}
   <div class="ab-wrap">
     <div class="ab-hero">
@@ -5462,21 +4441,16 @@ function renderStudyAbroad() {
 
 // --- Worker 메인 ---
 
-// ========== 학교별 페이지 렌더 함수 ==========
-
-// 학교명 hash → 콘텐츠 변형 인덱스 (유사도 10% 미만 보장)
 function schoolHash(name) {
   let h = 0;
   for (let i = 0; i < name.length; i++) h = ((h << 5) - h) + name.charCodeAt(i);
   return Math.abs(h);
 }
 
-// SVG 교육/책 배경 썸네일
 function schoolThumbSVG(school, level, idx) {
   const name = school[0];
   const sidoShort = getSidoShort(getSidoFromIdx(school[1]));
   const gugun = school[2];
-  // 중학교는 보라/파랑 톤, 고등학교는 빨강/주황 톤 오버레이
   const overlays = level === 'middle'
     ? ['rgba(124,58,237,0.62)', 'rgba(79,70,229,0.62)', 'rgba(2,132,199,0.62)', 'rgba(22,163,74,0.55)']
     : ['rgba(220,38,38,0.62)', 'rgba(234,88,12,0.62)', 'rgba(217,119,6,0.62)', 'rgba(219,39,119,0.55)'];
@@ -5493,7 +4467,6 @@ function schoolThumbSVG(school, level, idx) {
   </div>`;
 }
 
-// 1) 학교급 메인 (시도 그리드)
 function renderSchoolLevelMain(level) {
   const lvName = levelName(level);
   const lvColor = levelColor(level);
@@ -5516,21 +4489,7 @@ function renderSchoolLevelMain(level) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(`전국 ${lvName} 과외 - 시도별 ${totalCount.toLocaleString()}개교 | 과외안하니`, `전국 ${lvName} ${totalCount.toLocaleString()}개교의 맞춤 과외 정보. 우리 지역 ${lvName}을 선택해 학교별 과외를 확인하세요.`, `https://anhani.com/학교급별/${level}`)}
-  <style>${commonStyles()}
-    .sl-hero { background: linear-gradient(135deg, ${lvColor} 0%, #1e1b4b 100%); color: #fff; padding: 56px 24px 48px; text-align: center; }
-    .sl-hero h1 { font-size: 32px; font-weight: 900; margin-bottom: 8px; }
-    .sl-hero p { font-size: 15px; color: rgba(255,255,255,0.85); }
-    .sl-bcrumb { max-width: 1100px; margin: 0 auto; padding: 16px 24px; font-size: 13px; color: #64748b; }
-    .sl-bcrumb a { color: #6366f1; text-decoration: none; }
-    .sl-wrap { max-width: 1100px; margin: 0 auto; padding: 12px 24px 80px; }
-    .ssd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-    .ssd-card { background: ${lvBg}; border: 1.5px solid transparent; border-radius: 12px; padding: 18px 16px; text-align: center; text-decoration: none; transition: all 0.2s; }
-    .ssd-card:hover { border-color: ${lvColor}; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.06); }
-    .ssd-name { font-size: 16px; font-weight: 800; color: ${lvColor}; margin-bottom: 6px; }
-    .ssd-cnt { font-size: 22px; font-weight: 900; color: #0f172a; }
-    .ssd-cnt span { font-size: 11px; font-weight: 600; color: #94a3b8; margin-left: 3px; }
-    @media (max-width: 640px) { .sl-hero h1 { font-size: 24px; } .ssd-grid { grid-template-columns: repeat(2, 1fr); } }
-  </style></head><body>
+  <style>${commonStyles()}.sl-hero{background:linear-gradient(135deg,${lvColor} 0%,#1e1b4b 100%);color:#fff;padding:56px 24px 48px;text-align:center}.sl-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}.sl-hero p{font-size:15px;color:rgba(255,255,255,.85)}.sl-bcrumb{max-width:1100px;margin:0 auto;padding:16px 24px;font-size:13px;color:#64748b}.sl-bcrumb a{color:#6366f1;text-decoration:none}.sl-wrap{max-width:1100px;margin:0 auto;padding:12px 24px 80px}.ssd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.ssd-card{background:${lvBg};border:1.5px solid transparent;border-radius:12px;padding:18px 16px;text-align:center;text-decoration:none;transition:all .2s}.ssd-card:hover{border-color:${lvColor};transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.06)}.ssd-name{font-size:16px;font-weight:800;color:${lvColor};margin-bottom:6px}.ssd-cnt{font-size:22px;font-weight:900;color:#0f172a}.ssd-cnt span{font-size:11px;font-weight:600;color:#94a3b8;margin-left:3px}@media (max-width:640px){.sl-hero h1{font-size:24px}.ssd-grid{grid-template-columns:repeat(2,1fr)}}</style></head><body>
   ${navHTML('region')}
   <div class="sl-hero"><h1>전국 ${lvName} 과외</h1><p>${totalCount.toLocaleString()}개교 · 시도별로 우리 학교를 찾아보세요</p></div>
   <div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별 과외</a> &gt; ${lvName}</div>
@@ -5539,7 +4498,6 @@ function renderSchoolLevelMain(level) {
   </body></html>`;
 }
 
-// 2) 시도 → 시군구 리스트
 function renderSchoolBySido(level, sidoIdx) {
   const lvName = levelName(level);
   const lvColor = levelColor(level);
@@ -5557,21 +4515,7 @@ function renderSchoolBySido(level, sidoIdx) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(`${sdShort} ${lvName} 과외 - ${totalCount}개교 | 과외안하니`, `${sdShort} 지역 ${lvName} ${totalCount}개교의 맞춤 과외 정보. 시군구별로 우리 학교를 찾아보세요.`, `https://anhani.com/학교급별/${level}/${encodeURIComponent(sido)}`)}
-  <style>${commonStyles()}
-    .sl-hero { background: linear-gradient(135deg, ${lvColor} 0%, #1e1b4b 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
-    .sl-hero h1 { font-size: 28px; font-weight: 900; margin-bottom: 8px; }
-    .sl-hero p { font-size: 14px; color: rgba(255,255,255,0.85); }
-    .sl-bcrumb { max-width: 1100px; margin: 0 auto; padding: 16px 24px; font-size: 13px; color: #64748b; }
-    .sl-bcrumb a { color: #6366f1; text-decoration: none; }
-    .sl-wrap { max-width: 1100px; margin: 0 auto; padding: 12px 24px 80px; }
-    .ssd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-    .ssd-card { background: ${lvBg}; border: 1.5px solid transparent; border-radius: 12px; padding: 16px 14px; text-align: center; text-decoration: none; transition: all 0.2s; }
-    .ssd-card:hover { border-color: ${lvColor}; transform: translateY(-2px); }
-    .ssd-name { font-size: 15px; font-weight: 800; color: ${lvColor}; margin-bottom: 4px; }
-    .ssd-cnt { font-size: 19px; font-weight: 900; color: #0f172a; }
-    .ssd-cnt span { font-size: 11px; font-weight: 600; color: #94a3b8; margin-left: 3px; }
-    @media (max-width: 640px) { .ssd-grid { grid-template-columns: repeat(2, 1fr); } }
-  </style></head><body>
+  <style>${commonStyles()}.sl-hero{background:linear-gradient(135deg,${lvColor} 0%,#1e1b4b 100%);color:#fff;padding:48px 24px 40px;text-align:center}.sl-hero h1{font-size:28px;font-weight:900;margin-bottom:8px}.sl-hero p{font-size:14px;color:rgba(255,255,255,.85)}.sl-bcrumb{max-width:1100px;margin:0 auto;padding:16px 24px;font-size:13px;color:#64748b}.sl-bcrumb a{color:#6366f1;text-decoration:none}.sl-wrap{max-width:1100px;margin:0 auto;padding:12px 24px 80px}.ssd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.ssd-card{background:${lvBg};border:1.5px solid transparent;border-radius:12px;padding:16px 14px;text-align:center;text-decoration:none;transition:all .2s}.ssd-card:hover{border-color:${lvColor};transform:translateY(-2px)}.ssd-name{font-size:15px;font-weight:800;color:${lvColor};margin-bottom:4px}.ssd-cnt{font-size:19px;font-weight:900;color:#0f172a}.ssd-cnt span{font-size:11px;font-weight:600;color:#94a3b8;margin-left:3px}@media (max-width:640px){.ssd-grid{grid-template-columns:repeat(2,1fr)}}</style></head><body>
   ${navHTML('region')}
   <div class="sl-hero"><h1>${sdShort} ${lvName}</h1><p>${totalCount}개교 · 시군구별로 학교를 찾아보세요</p></div>
   <div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; ${sdShort}</div>
@@ -5580,7 +4524,6 @@ function renderSchoolBySido(level, sidoIdx) {
   </body></html>`;
 }
 
-// 3) 시군구 → 학교 리스트
 function renderSchoolByGugun(level, sidoIdx, gugun) {
   const lvName = levelName(level);
   const lvColor = levelColor(level);
@@ -5601,20 +4544,7 @@ function renderSchoolByGugun(level, sidoIdx, gugun) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(`${sdShort} ${gugun} ${lvName} 과외 - ${list.length}개교 | 과외안하니`, `${sdShort} ${gugun} ${lvName} ${list.length}개교의 맞춤 과외 정보. 학교 이름을 선택해 학교별 시험 경향과 과외 정보를 확인하세요.`, `https://anhani.com/학교급별/${level}/${encodeURIComponent(sido)}/${encodeURIComponent(gugun)}`)}
-  <style>${commonStyles()}
-    .sl-hero { background: linear-gradient(135deg, ${lvColor} 0%, #1e1b4b 100%); color: #fff; padding: 44px 24px 36px; text-align: center; }
-    .sl-hero h1 { font-size: 26px; font-weight: 900; margin-bottom: 6px; }
-    .sl-hero p { font-size: 14px; color: rgba(255,255,255,0.85); }
-    .sl-bcrumb { max-width: 1100px; margin: 0 auto; padding: 16px 24px; font-size: 13px; color: #64748b; }
-    .sl-bcrumb a { color: #6366f1; text-decoration: none; }
-    .sl-wrap { max-width: 1100px; margin: 0 auto; padding: 12px 24px 80px; }
-    .sl-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-    .sl-school-card { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; text-decoration: none; transition: all 0.2s; }
-    .sl-school-card:hover { border-color: ${lvColor}; background: ${lvBg}; transform: translateY(-2px); }
-    .sl-school-name { font-size: 15px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
-    .sl-school-meta { font-size: 12px; color: #94a3b8; }
-    @media (max-width: 640px) { .sl-list { grid-template-columns: 1fr; } }
-  </style></head><body>
+  <style>${commonStyles()}.sl-hero{background:linear-gradient(135deg,${lvColor} 0%,#1e1b4b 100%);color:#fff;padding:44px 24px 36px;text-align:center}.sl-hero h1{font-size:26px;font-weight:900;margin-bottom:6px}.sl-hero p{font-size:14px;color:rgba(255,255,255,.85)}.sl-bcrumb{max-width:1100px;margin:0 auto;padding:16px 24px;font-size:13px;color:#64748b}.sl-bcrumb a{color:#6366f1;text-decoration:none}.sl-wrap{max-width:1100px;margin:0 auto;padding:12px 24px 80px}.sl-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}.sl-school-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px 16px;text-decoration:none;transition:all .2s}.sl-school-card:hover{border-color:${lvColor};background:${lvBg};transform:translateY(-2px)}.sl-school-name{font-size:15px;font-weight:800;color:#0f172a;margin-bottom:4px}.sl-school-meta{font-size:12px;color:#94a3b8}@media (max-width:640px){.sl-list{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('region')}
   <div class="sl-hero"><h1>${sdShort} ${gugun} ${lvName}</h1><p>${list.length}개교 · 학교를 선택하세요</p></div>
   <div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; <a href="/학교급별/${level}/${encodeURIComponent(sido)}">${sdShort}</a> &gt; ${gugun}</div>
@@ -5623,7 +4553,6 @@ function renderSchoolByGugun(level, sidoIdx, gugun) {
   </body></html>`;
 }
 
-// 학교 상세 콘텐츠 풀 (유사도 10% 미만)
 const SCHOOL_INTRO_POOL = [
   (sn, lv, rg) => `${sn}는 ${rg}에 위치한 ${lv}으로, 학교 고유의 시험 출제 경향과 진도 속도를 가진 학교입니다. ${sn} 재학생을 위한 과외는 단순한 과목 선행이 아니라, 우리 학교 시험 스타일에 정확히 맞춘 맞춤 학습이 무엇보다 중요해요. 학교별 내신 변별력이 높은 요즘, 같은 과목이라도 학교마다 출제 방식이 다르기 때문에 학교 정보를 잘 아는 과외 선생님과의 매칭이 성적 상승의 핵심입니다.`,
   (sn, lv, rg) => `${rg} ${sn}에 다니는 학생이라면, 학교별 맞춤 과외의 중요성을 누구보다 잘 알고 계실 거예요. ${sn}는 자체 진도와 출제 패턴을 가진 학교로, 일반적인 학원 커리큘럼만으로는 내신을 100% 대비하기 어렵습니다. 학교 시험지와 수업 진도를 정확히 분석해 1:1로 지도하는 과외가 ${sn} 학생에게 가장 효과적인 학습 방법입니다.`,
@@ -5652,7 +4581,6 @@ const SCHOOL_FAQ_POOL = [
   (sn, lv) => ({q:`성적이 얼마나 빨리 오를 수 있나요?`, a:`${sn} 과외를 시작하면 보통 한 학기 내신 시험에서 변화를 확인할 수 있어요. 처음 1~2개월은 진단과 기초 다지기, 이후부터 본격적인 성적 상승이 시작되는 패턴이 일반적입니다.`}),
 ];
 
-// 신규 3개 섹션용 콘텐츠 풀 (안내 / 특징 / 커리큘럼)
 const SCHOOL_GUIDE_POOL = [
   (sn, lv, rg) => `${sn} 과외는 ${rg}에서 재학 중인 ${lv} 학생들을 위한 1:1 맞춤 학습 프로그램입니다. 학교별 시험 출제 경향과 진도 차이를 반영해 설계되며, 학생 개인의 현재 수준에 맞춰 커리큘럼이 조정돼요. 첫 수업에서는 학생의 학습 상태를 정밀하게 진단한 뒤, 목표 성적과 남은 기간을 고려해 단계별 학습 계획을 수립합니다. ${sn}의 학사 일정에 맞춘 내신 집중 기간과 평소 기초 다지기 기간을 구분해 운영하기 때문에, 학교 수업과 자연스럽게 맞물려 학습 효율을 극대화할 수 있어요.`,
   (sn, lv, rg) => `${rg} ${sn} 학생을 위한 과외 안내를 드립니다. ${sn} 과외는 단순한 보충 수업이 아니라, 학교 수업·내신 시험·수능(또는 고입)까지 연결되는 통합 학습 솔루션이에요. 수업은 주 2~3회를 기본으로 하며, 과목별로 회당 60~120분 진행됩니다. 수업료는 학년과 과목에 따라 조정되고, 처음에는 무료 체험 수업을 통해 학생과 선생님의 궁합을 확인한 후 정규 수업을 시작하는 안전한 방식으로 운영돼요. 모든 수업은 학생 맞춤형으로 설계됩니다.`,
@@ -5686,7 +4614,6 @@ const SCHOOL_CURRICULUM_POOL = [
   (sn, lv, rg) => `${sn} 학생을 위한 커리큘럼은 목표 성적에 따라 3가지 트랙으로 나뉩니다. 기초 회복 트랙은 현재 하위권 학생이 중위권으로 진입하도록 돕고, 중위권 상승 트랙은 중위권을 상위권으로 끌어올리는 데 집중해요. 상위권 유지 트랙은 이미 상위권인 학생이 최상위권으로 도약하도록 고난도 심화 문제와 서술형 대비를 강화합니다. ${rg} ${sn} 학생 누구나 자신의 현재 위치에 맞는 최적의 학습 경로를 선택할 수 있어요.`,
 ];
 
-// 4) 학교 상세 페이지
 function renderSchoolDetail(level, idx) {
   const schools = getSchools(level);
   if (idx < 0 || idx >= schools.length) return null;
@@ -5709,7 +4636,6 @@ function renderSchoolDetail(level, idx) {
   const tip1 = SCHOOL_TIPS_POOL[h % SCHOOL_TIPS_POOL.length](sn);
   const tip2 = SCHOOL_TIPS_POOL[(h + 2) % SCHOOL_TIPS_POOL.length](sn);
 
-  // 신규 3개 섹션 (안내 / 특징 / 커리큘럼) - 학교별 hash로 다른 문구 선택, 각 섹션 2개 문단
   const guide1 = SCHOOL_GUIDE_POOL[h % SCHOOL_GUIDE_POOL.length](sn, lvName, region);
   const guide2 = SCHOOL_GUIDE_POOL[(h + 3) % SCHOOL_GUIDE_POOL.length](sn, lvName, region);
   const feature1 = SCHOOL_FEATURE_POOL[(h + 1) % SCHOOL_FEATURE_POOL.length](sn, lvName, region);
@@ -5717,10 +4643,8 @@ function renderSchoolDetail(level, idx) {
   const curri1 = SCHOOL_CURRICULUM_POOL[(h + 2) % SCHOOL_CURRICULUM_POOL.length](sn, lvName, region);
   const curri2 = SCHOOL_CURRICULUM_POOL[(h + 6) % SCHOOL_CURRICULUM_POOL.length](sn, lvName, region);
 
-  // FAQ 3개 선택
   const faqs = [SCHOOL_FAQ_POOL[h % 4](sn, lvName), SCHOOL_FAQ_POOL[(h + 1) % 4](sn, lvName), SCHOOL_FAQ_POOL[(h + 2) % 4](sn, lvName)];
 
-  // 키워드 아티클 5개 (학교명 + 키워드 조합)
   const articleKeywords = level === 'middle'
     ? [`${sn} 1학년 과외`, `${sn} 수학 과외`, `${sn} 영어 내신`, `${sn} 시험 대비`, `${sn} 선생님 추천`,
        `${sn} 국어 과외`, `${sn} 영어 과외`, `${sn} 수학 내신`, `${sn} 사회 과외`, `${sn} 과학 과외`]
@@ -5728,7 +4652,6 @@ function renderSchoolDetail(level, idx) {
        `${sn} 국어 과외`, `${sn} 영어 과외`, `${sn} 수학 1등급`, `${sn} 사회 과외`, `${sn} 과학 과외`];
   const articleLinks = articleKeywords.map((kw, i) => `<a href="/${encodeURIComponent(sn)}-과외/article/${i}" class="sd-article-card"><span class="sd-article-num">${String(i+1).padStart(2,'0')}</span><div class="sd-article-text"><div class="sd-article-title">${kw}</div><div class="sd-article-desc">${sn} 학생을 위한 ${kw.replace(sn+' ','')} 정보</div></div></a>`).join('');
 
-  // 인근 동일 시군구 학교 (최대 6개)
   const nearby = getSchoolsBySidoGugun(level, school[1], gugun)
     .filter(x => x.idx !== idx).slice(0, 6);
   const nearbyHTML = nearby.length > 0
@@ -5737,43 +4660,7 @@ function renderSchoolDetail(level, idx) {
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(`${sn} 과외 - ${region} ${lvName} 맞춤 과외 | 과외안하니`, `${sn}(${region}) 재학생을 위한 학교 맞춤 1:1 과외. 학교별 시험 경향, 내신 출제 패턴, 과외 선생님 매칭 정보를 확인하세요.`, `https://anhani.com/${encodeURIComponent(sn)}-과외`)}
-  <style>${commonStyles()}
-    .sd-hero-img { width: 100%; max-width: 960px; margin: 24px auto 0; padding: 0 24px; }
-    .sd-bcrumb { max-width: 960px; margin: 0 auto; padding: 16px 24px 0; font-size: 13px; color: #64748b; }
-    .sd-bcrumb a { color: #6366f1; text-decoration: none; }
-    .sd-wrap { max-width: 880px; margin: 0 auto; padding: 24px 24px 80px; }
-    .sd-title-block { margin-bottom: 24px; }
-    .sd-title-block h1 { font-size: 30px; font-weight: 900; color: #0f172a; margin-bottom: 8px; line-height: 1.3; }
-    .sd-title-block h1 em { font-style: normal; color: ${lvColor}; }
-    .sd-meta { display: flex; flex-wrap: wrap; gap: 8px; }
-    .sd-meta-item { font-size: 12px; padding: 4px 10px; background: ${lvBg}; color: ${lvColor}; border-radius: 12px; font-weight: 600; }
-    .sd-content { font-size: 15px; line-height: 1.85; color: #334155; }
-    .sd-content p { margin-bottom: 18px; }
-    .sd-section { margin: 36px 0; }
-    .sd-h3 { font-size: 19px; font-weight: 800; color: #0f172a; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid ${lvColor}; display: inline-block; }
-    .sd-tip-card { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 16px 18px; border-radius: 8px; margin-bottom: 12px; font-size: 14px; line-height: 1.7; color: #78350f; }
-    .sd-faq-item { background: #f8fafc; border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; }
-    .sd-faq-q { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
-    .sd-faq-q::before { content: 'Q. '; color: ${lvColor}; }
-    .sd-faq-a { font-size: 14px; line-height: 1.7; color: #475569; }
-    .sd-faq-a::before { content: 'A. '; color: #94a3b8; font-weight: 700; }
-    .sd-articles { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    .sd-article-card { display: flex; align-items: center; gap: 14px; background: #fff; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 14px 18px; text-decoration: none; transition: all 0.2s; }
-    .sd-article-card:hover { border-color: ${lvColor}; transform: translateX(4px); }
-    .sd-article-num { font-size: 18px; font-weight: 900; color: ${lvColor}; min-width: 28px; }
-    .sd-article-title { font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
-    .sd-article-desc { font-size: 12px; color: #94a3b8; }
-    .sd-nearby { display: flex; flex-wrap: wrap; gap: 8px; }
-    .sd-nearby-item { font-size: 13px; padding: 7px 14px; background: #fff; border: 1px solid #e2e8f0; border-radius: 18px; color: #475569; text-decoration: none; transition: all 0.2s; }
-    .sd-nearby-item:hover { border-color: ${lvColor}; color: ${lvColor}; background: ${lvBg}; }
-    .sd-cta-box { margin: 36px 0 0; padding: 28px 24px; background: linear-gradient(135deg, ${lvColor} 0%, #312e81 100%); border-radius: 14px; text-align: center; color: #fff; }
-    .sd-cta-box h4 { font-size: 19px; font-weight: 800; margin-bottom: 8px; }
-    .sd-cta-box p { font-size: 14px; opacity: 0.9; margin-bottom: 16px; }
-    .sd-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .sd-cta-btn { padding: 11px 22px; background: #fff; color: ${lvColor}; font-size: 14px; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
-    .sd-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-    @media (max-width: 640px) { .sd-title-block h1 { font-size: 22px; } }
-  </style></head><body>
+  <style>${commonStyles()}.sd-hero-img{width:100%;max-width:960px;margin:24px auto 0;padding:0 24px}.sd-bcrumb{max-width:960px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.sd-bcrumb a{color:#6366f1;text-decoration:none}.sd-wrap{max-width:880px;margin:0 auto;padding:24px 24px 80px}.sd-title-block{margin-bottom:24px}.sd-title-block h1{font-size:30px;font-weight:900;color:#0f172a;margin-bottom:8px;line-height:1.3}.sd-title-block h1 em{font-style:normal;color:${lvColor}}.sd-meta{display:flex;flex-wrap:wrap;gap:8px}.sd-meta-item{font-size:12px;padding:4px 10px;background:${lvBg};color:${lvColor};border-radius:12px;font-weight:600}.sd-content{font-size:15px;line-height:1.85;color:#334155}.sd-content p{margin-bottom:18px}.sd-section{margin:36px 0}.sd-h3{font-size:19px;font-weight:800;color:#0f172a;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid ${lvColor};display:inline-block}.sd-tip-card{background:#fffbeb;border-left:4px solid #f59e0b;padding:16px 18px;border-radius:8px;margin-bottom:12px;font-size:14px;line-height:1.7;color:#78350f}.sd-faq-item{background:#f8fafc;border-radius:10px;padding:16px 20px;margin-bottom:10px}.sd-faq-q{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}.sd-faq-q::before{content:'Q. ';color:${lvColor}}.sd-faq-a{font-size:14px;line-height:1.7;color:#475569}.sd-faq-a::before{content:'A. ';color:#94a3b8;font-weight:700}.sd-articles{display:grid;grid-template-columns:1fr;gap:10px}.sd-article-card{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px 18px;text-decoration:none;transition:all .2s}.sd-article-card:hover{border-color:${lvColor};transform:translateX(4px)}.sd-article-num{font-size:18px;font-weight:900;color:${lvColor};min-width:28px}.sd-article-title{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:2px}.sd-article-desc{font-size:12px;color:#94a3b8}.sd-nearby{display:flex;flex-wrap:wrap;gap:8px}.sd-nearby-item{font-size:13px;padding:7px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;color:#475569;text-decoration:none;transition:all .2s}.sd-nearby-item:hover{border-color:${lvColor};color:${lvColor};background:${lvBg}}.sd-cta-box{margin:36px 0 0;padding:28px 24px;background:linear-gradient(135deg,${lvColor} 0%,#312e81 100%);border-radius:14px;text-align:center;color:#fff}.sd-cta-box h4{font-size:19px;font-weight:800;margin-bottom:8px}.sd-cta-box p{font-size:14px;opacity:.9;margin-bottom:16px}.sd-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.sd-cta-btn{padding:11px 22px;background:#fff;color:${lvColor};font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:all .2s}.sd-cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.15)}@media (max-width:640px){.sd-title-block h1{font-size:22px}}</style></head><body>
   ${navHTML('region')}
   <div class="sd-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; <a href="/학교급별/${level}/${encodeURIComponent(sido)}">${sdShort}</a> &gt; <a href="/학교급별/${level}/${encodeURIComponent(sido)}/${encodeURIComponent(gugun)}">${gugun}</a> &gt; ${sn}</div>
   <div class="sd-hero-img">${schoolThumbSVG(school, level, idx)}</div>
@@ -5836,7 +4723,6 @@ function renderSchoolDetail(level, idx) {
   </body></html>`;
 }
 
-// 학교 키워드 아티클 콘텐츠 풀
 const SCHOOL_ART_INTRO = [
   (sn, kw) => `${sn} 학생을 위한 ${kw} 가이드를 준비했습니다. ${sn} 재학생만의 학습 환경과 시험 패턴을 고려한 실전 정보로, 일반적인 조언과는 다른 우리 학교 맞춤 내용을 담았어요.`,
   (sn, kw) => `${kw}에 관심 있는 ${sn} 학생과 학부모님께, 실제 ${sn}의 학사 일정과 시험 출제 경향에 맞춘 ${kw} 핵심 노하우를 공유합니다. 학교 특성에 맞는 전략이 성적 상승의 지름길이에요.`,
@@ -5854,7 +4740,6 @@ const SCHOOL_ART_OUTRO = [
   (sn, kw) => `좋은 ${kw} 결정이 ${sn} 학생의 학습 인생을 바꿀 수 있습니다. 무료 체험 수업으로 선생님과의 케미를 먼저 확인하고, 만족스러우면 정규 수업으로 이어가는 방식이 안전해요.`,
 ];
 
-// 5) 학교 키워드 아티클
 function renderSchoolArticleNew(level, idx, articleIdx) {
   const schools = getSchools(level);
   if (idx < 0 || idx >= schools.length) return null;
@@ -5884,32 +4769,11 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
   const body3 = SCHOOL_ART_BODY[(h + 2) % SCHOOL_ART_BODY.length](sn, kwShort);
   const outro = SCHOOL_ART_OUTRO[h % SCHOOL_ART_OUTRO.length](sn, kwShort);
 
-  // 다른 아티클 4개 링크
   const otherLinks = articleKeywords.map((k, i) => i !== aIdx ? `<a href="/${encodeURIComponent(sn)}-과외/article/${i}" class="sa-rel-item">${k}</a>` : '').filter(Boolean).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(`${kw} - ${sdShort} ${gugun} ${lvName} 가이드 | 과외안하니`, `${sn} 학생을 위한 ${kwShort} 실전 가이드. 학교 특성에 맞춘 ${kwShort} 노하우와 효과적인 학습 전략을 확인하세요.`, `https://anhani.com/${encodeURIComponent(sn)}-과외/article/${aIdx}`)}
-  <style>${commonStyles()}
-    .sa-hero-img { max-width: 880px; margin: 24px auto 0; padding: 0 24px; }
-    .sa-bcrumb { max-width: 880px; margin: 0 auto; padding: 16px 24px 0; font-size: 13px; color: #64748b; }
-    .sa-bcrumb a { color: #6366f1; text-decoration: none; }
-    .sa-wrap { max-width: 800px; margin: 0 auto; padding: 24px 24px 80px; }
-    .sa-tag { display: inline-block; padding: 4px 12px; background: ${lvBg}; color: ${lvColor}; font-size: 12px; font-weight: 700; border-radius: 12px; margin-bottom: 14px; }
-    .sa-title { font-size: 28px; font-weight: 900; color: #0f172a; margin-bottom: 12px; line-height: 1.3; }
-    .sa-meta { font-size: 13px; color: #94a3b8; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 1px solid #e2e8f0; }
-    .sa-content { font-size: 15px; line-height: 1.9; color: #334155; }
-    .sa-content p { margin-bottom: 20px; }
-    .sa-rel-box { margin-top: 40px; padding: 22px; background: #f8fafc; border-radius: 12px; }
-    .sa-rel-title { font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
-    .sa-rel-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .sa-rel-item { font-size: 13px; padding: 7px 14px; background: #fff; border: 1px solid #e2e8f0; border-radius: 18px; color: #475569; text-decoration: none; transition: all 0.2s; }
-    .sa-rel-item:hover { border-color: ${lvColor}; color: ${lvColor}; }
-    .sa-cta { margin-top: 28px; padding: 24px; background: linear-gradient(135deg, ${lvColor} 0%, #312e81 100%); border-radius: 12px; text-align: center; color: #fff; }
-    .sa-cta h4 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
-    .sa-cta p { font-size: 13px; opacity: 0.9; margin-bottom: 14px; }
-    .sa-cta a { display: inline-block; margin: 0 4px; padding: 9px 18px; background: #fff; color: ${lvColor}; font-size: 13px; font-weight: 700; border-radius: 7px; text-decoration: none; }
-    @media (max-width: 640px) { .sa-title { font-size: 22px; } }
-  </style></head><body>
+  <style>${commonStyles()}.sa-hero-img{max-width:880px;margin:24px auto 0;padding:0 24px}.sa-bcrumb{max-width:880px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.sa-bcrumb a{color:#6366f1;text-decoration:none}.sa-wrap{max-width:800px;margin:0 auto;padding:24px 24px 80px}.sa-tag{display:inline-block;padding:4px 12px;background:${lvBg};color:${lvColor};font-size:12px;font-weight:700;border-radius:12px;margin-bottom:14px}.sa-title{font-size:28px;font-weight:900;color:#0f172a;margin-bottom:12px;line-height:1.3}.sa-meta{font-size:13px;color:#94a3b8;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid #e2e8f0}.sa-content{font-size:15px;line-height:1.9;color:#334155}.sa-content p{margin-bottom:20px}.sa-rel-box{margin-top:40px;padding:22px;background:#f8fafc;border-radius:12px}.sa-rel-title{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:12px}.sa-rel-grid{display:flex;flex-wrap:wrap;gap:8px}.sa-rel-item{font-size:13px;padding:7px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;color:#475569;text-decoration:none;transition:all .2s}.sa-rel-item:hover{border-color:${lvColor};color:${lvColor}}.sa-cta{margin-top:28px;padding:24px;background:linear-gradient(135deg,${lvColor} 0%,#312e81 100%);border-radius:12px;text-align:center;color:#fff}.sa-cta h4{font-size:17px;font-weight:800;margin-bottom:6px}.sa-cta p{font-size:13px;opacity:.9;margin-bottom:14px}.sa-cta a{display:inline-block;margin:0 4px;padding:9px 18px;background:#fff;color:${lvColor};font-size:13px;font-weight:700;border-radius:7px;text-decoration:none}@media (max-width:640px){.sa-title{font-size:22px}}</style></head><body>
   ${navHTML('region')}
   <div class="sa-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; <a href="/${encodeURIComponent(sn)}-과외">${sn}</a> &gt; ${kwShort}</div>
   <div class="sa-hero-img">${schoolThumbSVG(school, level, idx + aIdx + 1)}</div>
@@ -5939,9 +4803,6 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
   </body></html>`;
 }
 
-
-// === IndexNow 설정 ===
-// 네이버 IndexNow 키 (직접 생성. 별도 발급 불필요)
 const INDEXNOW_KEY = 'bc7021aaa2ada0c01d58334f8753cb9e';
 const SITE_HOST = 'anhani.com';
 
@@ -5949,8 +4810,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const pathname = url.pathname;
-    
-    // === 체험 수업 신청 폼 제출 (Resend API) ===
+
     if (pathname === '/api/inquiry' && request.method === 'POST') {
       try {
         const data = await request.json();
@@ -6036,13 +4896,10 @@ export default {
       }
     }
 
-    // 버전 확인
     if (pathname === '/version') {
       return new Response('v26-new-logo', { headers: { 'Content-Type': 'text/plain' } });
     }
-    
-    // === IndexNow 자동 진행 (한 번 클릭으로 모든 청크 자동 처리) ===
-    // 사용법: https://anhani.com/indexnow-auto
+
     if (pathname === '/indexnow-auto') {
       if (INDEXNOW_KEY === 'PUT_YOUR_INDEXNOW_KEY_HERE') {
         return new Response('IndexNow 키 미설정', { status: 400 });
@@ -6051,17 +4908,9 @@ export default {
       const chunkSize = 10000;
       const allUrls = getAllUrls();
       const total = allUrls.length;
-      
-      // 모두 끝났으면 완료 페이지
+
       if (offset >= total) {
-        return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>IndexNow 완료</title><style>
-          body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px;}
-          .box{background:#fff;border-radius:16px;padding:48px;box-shadow:0 4px 24px rgba(0,0,0,0.06);text-align:center;max-width:480px;}
-          h1{color:#16a34a;font-size:32px;margin-bottom:16px;}
-          p{color:#64748b;font-size:16px;line-height:1.7;margin-bottom:8px;}
-          .stat{font-size:48px;font-weight:900;color:#16a34a;margin:24px 0;}
-          a{display:inline-block;margin-top:24px;padding:12px 28px;background:#6366f1;color:#fff;text-decoration:none;border-radius:8px;font-weight:700;}
-        </style></head><body>
+        return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>IndexNow 완료</title><style>body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px}.box{background:#fff;border-radius:16px;padding:48px;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center;max-width:480px}h1{color:#16a34a;font-size:32px;margin-bottom:16px}p{color:#64748b;font-size:16px;line-height:1.7;margin-bottom:8px}.stat{font-size:48px;font-weight:900;color:#16a34a;margin:24px 0}a{display:inline-block;margin-top:24px;padding:12px 28px;background:#6366f1;color:#fff;text-decoration:none;border-radius:8px;font-weight:700}</style></head><body>
           <div class="box">
             <h1>🎉 IndexNow 제출 완료!</h1>
             <div class="stat">${total.toLocaleString()}</div>
@@ -6071,8 +4920,7 @@ export default {
           </div>
         </body></html>`, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
       }
-      
-      // 현재 청크 제출
+
       const chunk = allUrls.slice(offset, offset + chunkSize)
         .map(u => `https://${SITE_HOST}${u}`);
       let naverStatus = 0;
@@ -6092,60 +4940,42 @@ export default {
       } catch (e) {
         errMsg = String(e);
       }
-      
+
       const nextOffset = offset + chunkSize;
       const completed = Math.min(nextOffset, total);
       const percent = Math.round((completed / total) * 100);
       const statusOk = (naverStatus === 200 || naverStatus === 202);
-      
-      // 자동으로 다음 청크 진행 (3초 후)
+
       return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
         <title>IndexNow 진행 중... ${percent}%</title>
         <meta http-equiv="refresh" content="3;url=/indexnow-auto?offset=${nextOffset}">
-        <style>
-          body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px;}
-          .box{background:#fff;border-radius:16px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,0.06);text-align:center;max-width:520px;width:100%;}
-          h1{color:#0f172a;font-size:24px;margin-bottom:24px;}
-          .progress{background:#e2e8f0;border-radius:999px;height:14px;overflow:hidden;margin:20px 0;}
-          .bar{background:linear-gradient(90deg,#6366f1,#8b5cf6);height:100%;border-radius:999px;transition:width 0.3s;}
-          .stat{font-size:32px;font-weight:900;color:#6366f1;margin:8px 0;}
-          .meta{color:#64748b;font-size:14px;margin:6px 0;}
-          .ok{color:#16a34a;font-weight:700;}
-          .err{color:#dc2626;font-weight:700;}
-          .spin{display:inline-block;width:18px;height:18px;border:3px solid #e2e8f0;border-top-color:#6366f1;border-radius:50%;animation:s 0.8s linear infinite;vertical-align:middle;margin-right:6px;}
-          @keyframes s{to{transform:rotate(360deg);}}
-        </style></head><body>
+        <style>body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px}.box{background:#fff;border-radius:16px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center;max-width:520px;width:100%}h1{color:#0f172a;font-size:24px;margin-bottom:24px}.progress{background:#e2e8f0;border-radius:999px;height:14px;overflow:hidden;margin:20px 0}.bar{background:linear-gradient(90deg,#6366f1,#8b5cf6);height:100%;border-radius:999px;transition:width .3s}.stat{font-size:32px;font-weight:900;color:#6366f1;margin:8px 0}.meta{color:#64748b;font-size:14px;margin:6px 0}.ok{color:#16a34a;font-weight:700}.err{color:#dc2626;font-weight:700}.spin{display:inline-block;width:18px;height:18px;border:3px solid #e2e8f0;border-top-color:#6366f1;border-radius:50%;animation:s .8s linear infinite;vertical-align:middle;margin-right:6px}@keyframes s{to{transform:rotate(360deg)}}</style></head><body>
           <div class="box">
             <h1><span class="spin"></span> IndexNow 자동 제출 중...</h1>
             <div class="stat">${percent}%</div>
             <div class="progress"><div class="bar" style="width:${percent}%"></div></div>
             <p class="meta">${completed.toLocaleString()} / ${total.toLocaleString()} URL 처리</p>
-            <p class="meta">현재 청크: ${chunk.length.toLocaleString()}개 제출 → 
+            <p class="meta">현재 청크: ${chunk.length.toLocaleString()}개 제출 →
               ${statusOk ? `<span class="ok">✓ 네이버 응답 ${naverStatus}</span>` : `<span class="err">⚠ 응답 ${naverStatus} ${errMsg}</span>`}</p>
             <p class="meta" style="margin-top:20px;color:#94a3b8;font-size:12px;">3초 후 다음 청크 자동 진행 (이 창을 닫지 마세요)</p>
           </div>
         </body></html>`, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
     }
-    
-    // === IndexNow 키 파일 자동 호스팅 ===
-    // 네이버가 https://anhani.com/{KEY}.txt 를 요청하면 자동 응답
-    if (INDEXNOW_KEY !== 'PUT_YOUR_INDEXNOW_KEY_HERE' && 
+
+    if (INDEXNOW_KEY !== 'PUT_YOUR_INDEXNOW_KEY_HERE' &&
         pathname === `/${INDEXNOW_KEY}.txt`) {
-      return new Response(INDEXNOW_KEY, { 
-        headers: { 'Content-Type': 'text/plain; charset=utf-8' } 
+      return new Response(INDEXNOW_KEY, {
+        headers: { 'Content-Type': 'text/plain; charset=utf-8' }
       });
     }
-    
-    // === IndexNow 자동 제출 endpoint ===
-    // 사용법: https://anhani.com/indexnow-submit?offset=0
-    // 응답에 next_url 있으면 그 URL을 다시 호출 (총 8번 정도)
+
     if (pathname === '/indexnow-submit') {
       if (INDEXNOW_KEY === 'PUT_YOUR_INDEXNOW_KEY_HERE') {
         return new Response(JSON.stringify({
           error: 'INDEXNOW_KEY가 설정되지 않았습니다. index.js 상단의 INDEXNOW_KEY를 수정하세요.'
-        }, null, 2), { 
+        }, null, 2), {
           status: 400,
-          headers: { 'Content-Type': 'application/json; charset=utf-8' } 
+          headers: { 'Content-Type': 'application/json; charset=utf-8' }
         });
       }
       const offset = parseInt(url.searchParams.get('offset') || '0');
@@ -6153,17 +4983,17 @@ export default {
       const allUrls = getAllUrls();
       const chunk = allUrls.slice(offset, offset + chunkSize)
         .map(u => `https://${SITE_HOST}${u}`);
-      
+
       if (chunk.length === 0) {
         return new Response(JSON.stringify({
           done: true,
           message: '모든 URL 제출 완료',
           total: allUrls.length
-        }, null, 2), { 
-          headers: { 'Content-Type': 'application/json; charset=utf-8' } 
+        }, null, 2), {
+          headers: { 'Content-Type': 'application/json; charset=utf-8' }
         });
       }
-      
+
       let naverStatus = 0;
       let naverResponse = '';
       try {
@@ -6182,12 +5012,12 @@ export default {
       } catch (e) {
         naverResponse = String(e);
       }
-      
+
       const nextOffset = offset + chunkSize;
-      const nextUrl = nextOffset < allUrls.length 
-        ? `https://${SITE_HOST}/indexnow-submit?offset=${nextOffset}` 
+      const nextUrl = nextOffset < allUrls.length
+        ? `https://${SITE_HOST}/indexnow-submit?offset=${nextOffset}`
         : null;
-      
+
       return new Response(JSON.stringify({
         submitted: chunk.length,
         offset: offset,
@@ -6196,22 +5026,19 @@ export default {
         naver_response: naverResponse.substring(0, 500),
         next_url: nextUrl,
         next_action: nextUrl ? '👉 위 next_url을 브라우저에서 다시 열어주세요' : '🎉 모든 제출 완료!'
-      }, null, 2), { 
-        headers: { 'Content-Type': 'application/json; charset=utf-8' } 
+      }, null, 2), {
+        headers: { 'Content-Type': 'application/json; charset=utf-8' }
       });
     }
-    
-    // robots.txt
+
     if (pathname === '/robots.txt') {
       return new Response(robotsTxt(), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
     }
-    
-    // RSS 피드
+
     if (pathname === '/rss' || pathname === '/rss.xml' || pathname === '/feed') {
       return new Response(generateRSS(), { headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' } });
     }
-    
-    // 사이트맵
+
     if (pathname === '/sitemap.xml') {
       const allUrls = getAllUrls();
       if (allUrls.length > 10000) {
@@ -6223,8 +5050,7 @@ export default {
         headers: { 'Content-Type': 'application/xml; charset=utf-8' }
       });
     }
-    
-    // 분할 사이트맵
+
     const sitemapMatch = pathname.match(/^\/sitemap-(\d+)\.xml$/);
     if (sitemapMatch) {
       const part = parseInt(sitemapMatch[1]);
@@ -6232,22 +5058,19 @@ export default {
         headers: { 'Content-Type': 'application/xml; charset=utf-8' }
       });
     }
-    
-    // 홈페이지
+
     if (pathname === '/' || pathname === '') {
       return new Response(renderHomepage(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
-    
-    // 카테고리: 지역별
+
     if (pathname === '/%EC%A7%80%EC%97%AD%EB%B3%84' || pathname === '/지역별') {
       return new Response(renderRegionList(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
-    
-    // 카테고리: 특정 지역
+
     const regionPath = decodeURIComponent(pathname);
     const dongMatch = regionPath.match(/^\/지역별\/(.+?)\/(.+?)\/(.+)$/);
     if (dongMatch) {
@@ -6284,8 +5107,7 @@ export default {
         if (html) return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
       }
     }
-    
-    // 카테고리: 과목별
+
     if (pathname === '/%EA%B3%BC%EB%AA%A9%EB%B3%84' || pathname === '/과목별') {
       return new Response(renderSubjectList(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
@@ -6311,22 +5133,19 @@ export default {
         });
       }
     }
-    
-    // 카테고리: 학년별 (이전 버전 복원)
+
     if (pathname === '/%ED%95%99%EB%85%84%EB%B3%84' || pathname === '/학년별') {
       return new Response(renderGradeMain(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
 
-    // 카테고리: 학교급별
     if (pathname === '/%ED%95%99%EA%B5%90%EA%B8%89%EB%B3%84' || pathname === '/학교급별') {
       return new Response(renderLevelList(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
 
-    // 학교급별/{level} - 시도 그리드
     const decodedPathL = decodeURIComponent(pathname);
     const schLvMatch = decodedPathL.match(/^\/학교급별\/(middle|high)$/);
     if (schLvMatch) {
@@ -6335,7 +5154,6 @@ export default {
       });
     }
 
-    // 학교급별/{level}/{시도} - 시군구 그리드
     const schSidoMatch = decodedPathL.match(/^\/학교급별\/(middle|high)\/([^\/]+)$/);
     if (schSidoMatch) {
       const sidoIdx = SIDO_LIST.indexOf(schSidoMatch[2]);
@@ -6347,7 +5165,6 @@ export default {
       }
     }
 
-    // 학교급별/{level}/{시도}/{시군구} - 학교 리스트
     const schGugunMatch = decodedPathL.match(/^\/학교급별\/(middle|high)\/([^\/]+)\/([^\/]+)$/);
     if (schGugunMatch) {
       const sidoIdx = SIDO_LIST.indexOf(schGugunMatch[2]);
@@ -6359,7 +5176,6 @@ export default {
       }
     }
 
-    // 학교 키워드 아티클: /{학교명}-과외/article/{idx}
     const schArtMatch = decodedPathL.match(/^\/(.+)-과외\/article\/(\d+)$/);
     if (schArtMatch) {
       const found = findSchoolByName(schArtMatch[1]);
@@ -6371,7 +5187,6 @@ export default {
       }
     }
 
-    // 학교 상세: /{학교명}-과외
     const schDetailMatch = decodedPathL.match(/^\/(.+)-과외$/);
     if (schDetailMatch) {
       const found = findSchoolByName(schDetailMatch[1]);
@@ -6382,15 +5197,13 @@ export default {
       }
     }
 
-    // 학원 전국지점
     const decodedPath = decodeURIComponent(pathname);
     if (decodedPath === '/학원' || decodedPath === '/학원/전국지점') {
       return new Response(renderAcademyList(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
-    
-    // 학원 상세 페이지
+
     const academyMatch = decodedPath.match(/^\/학원\/(.+)$/);
     if (academyMatch && academyMatch[1] !== '전국지점') {
       const centerName = academyMatch[1];
@@ -6401,8 +5214,42 @@ export default {
         });
       }
     }
-    
-    // 학년별 키워드 아티클
+
+    const schoolSubjMatch = decodedPath.match(/^\/학교학원\/([^\/]+)\/([^\/]+)\/([^\/]+)$/);
+    if (schoolSubjMatch) {
+      const center = CENTERS.find(c => c.n === schoolSubjMatch[1]);
+      const schoolName = schoolSubjMatch[2];
+      const subject = schoolSubjMatch[3];
+      if (center && (center.s||[]).includes(subject)) {
+        const allSchools = [
+          ...(center.e ? center.e.split(/[,\s]+/).filter(Boolean) : []),
+          ...(center.m ? center.m.split(/[,\s]+/).filter(Boolean) : []),
+          ...(center.h ? center.h.split(/[,\s]+/).filter(Boolean) : [])
+        ].map(s => s.trim());
+        if (allSchools.includes(schoolName)) {
+          return new Response(renderSchoolSubjectAcademy(center, schoolName, subject), {
+            headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
+          });
+        }
+      }
+    }
+
+    const regionSubjMatch = decodedPath.match(/^\/지역학원\/([^\/]+)\/([^\/]+)\/([^\/]+)$/);
+    if (regionSubjMatch) {
+      const center = CENTERS.find(c => c.n === regionSubjMatch[1]);
+      const region = regionSubjMatch[2];
+      const subject = regionSubjMatch[3];
+      if (center && (center.s||[]).includes(subject)) {
+        const p = parseAcademyAddr(center.a);
+        const valid = [...new Set([center.r, p.si, p.gu, p.dong].filter(Boolean))];
+        if (valid.includes(region)) {
+          return new Response(renderRegionSubjectAcademy(center, region, subject), {
+            headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
+          });
+        }
+      }
+    }
+
     const articleMatch = pathname.match(/^\/grade\/(elementary|middle|high)\/(\d+)\/(.+)\/article\/(\d+)$/);
     if (articleMatch) {
       const subj = decodeURIComponent(articleMatch[3]);
@@ -6414,8 +5261,7 @@ export default {
         });
       }
     }
-    
-    // 학년별 과외
+
     const gradeSubjMatch = pathname.match(/^\/grade\/(elementary|middle|high)\/(\d+)\/(.+)$/);
     if (gradeSubjMatch) {
       const subj = decodeURIComponent(gradeSubjMatch[3]);
@@ -6432,8 +5278,7 @@ export default {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
-    
-    // 학교별 과외
+
     const regionEN = {"seoul":"서울","gyeonggi":"경기","incheon":"인천","busan":"부산","daegu":"대구","daejeon":"대전","gwangju":"광주","ulsan":"울산","sejong":"세종","gangwon":"강원","chungbuk":"충북","chungnam":"충남","jeonbuk":"전북","jeonnam":"전남","gyeongbuk":"경북","gyeongnam":"경남","jeju":"제주"};
     const schoolMatch = pathname.match(/^\/school\/([a-z]+)$/);
     if (schoolMatch && regionEN[schoolMatch[1]]) {
@@ -6446,8 +5291,7 @@ export default {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
-    
-    // 회화 수업
+
     const convMatch = pathname.match(/^\/conversation\/(english|chinese|japanese)$/);
     if (convMatch) {
       return new Response(renderConversationPage(convMatch[1]), {
@@ -6484,11 +5328,7 @@ export default {
         headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=86400' }
       });
     }
-    
-    // 학습정보
 
-    
-    // 학습가이드
     if (decodedPath === '/학습가이드') {
       return new Response(renderGuideList(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
@@ -6504,43 +5344,37 @@ export default {
         });
       }
     }
-    
-    // 화상수업
+
     if (pathname === '/video-lesson' || decodedPath === '/화상수업') {
       return new Response(renderVideoLesson(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
-    
-    // 서비스 소개
+
     if (decodedPath === '/서비스' || decodedPath === '/소개' || pathname === '/service') {
       return new Response(renderServicePage(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
-    
-    // 문의하기/상담
+
     if (decodedPath === '/상담' || decodedPath === '/contact' || decodedPath === '/문의') {
       return new Response(renderContactPage(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
-    
-    // 유학
+
     if (decodedPath === '/유학') {
       return new Response(renderStudyAbroad(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
-    
-    // 상세 랜딩페이지
+
     if (decodedPath === '/상세' || decodedPath === '/landing' || decodedPath === '/서비스소개') {
       return new Response(renderLandingPage(), {
         headers: { 'Content-Type': 'text/html; charset=utf-8' }
       });
     }
 
-    // 콘텐츠 페이지
     const parsed = parseUrl(pathname);
     if (parsed) {
       const regionInfo = findRegion(parsed.location);
@@ -6554,8 +5388,7 @@ export default {
         });
       }
     }
-    
-    // 404
+
     return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>페이지를 찾을 수 없습니다 | 안하니</title></head><body style="font-family:sans-serif;text-align:center;padding:100px 20px;"><h1>404</h1><p>요청하신 페이지를 찾을 수 없습니다.</p><a href="/">홈으로 돌아가기</a></body></html>`, {
       status: 404,
       headers: { 'Content-Type': 'text/html; charset=utf-8' }
