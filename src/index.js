@@ -1344,7 +1344,7 @@ function renderRegionDetail(region) {
 }
 
 // --- 시/군/구 상세 (동/읍/면 목록) ---
-function dcCSS(){return `.dc-bc{max-width:860px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.dc-bc a{color:#6366f1;text-decoration:none}.dc-wrap{max-width:860px;margin:0 auto;padding:20px 24px 60px}.dc-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:16px;padding:24px;margin-bottom:24px}.dc-box-t{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:900;color:#0f172a;margin-bottom:6px;padding-left:12px;border-left:4px solid #6366f1}.dc-head h1{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:10px}.dc-tabs{display:flex;gap:14px;font-size:13px;color:#64748b;margin-bottom:16px}.dc-tabs span:first-child{color:#4338ca;font-weight:700}.dc-info{background:#fff;border-radius:10px;padding:14px 18px}.dc-info-row{display:flex;gap:12px;padding:6px 0;font-size:13px}.dc-info-row strong{min-width:54px;color:#475569;font-weight:700}.dc-info-row span{color:#0f172a}.dc-xgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dc-xc{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;color:#0f172a;transition:.15s;--c:#6366f1}.dc-xc:hover{border-color:var(--c);background:#f8fafc}.dc-xc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}.dc-xc-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dc-xc-a{color:#94a3b8;font-size:14px}.dc-tagbox{display:flex;flex-wrap:wrap;gap:6px}.dc-tag{font-size:12px;padding:5px 12px;background:#fff;border:1px solid #e2e8f0;color:#475569;border-radius:14px}.dc-cta{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;text-align:center;padding:28px 24px;border-radius:14px;margin-top:24px}.dc-cta h3{font-size:19px;font-weight:900;margin-bottom:6px}.dc-cta p{font-size:13px;color:#c7d2fe;margin-bottom:14px}.dc-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.dc-cta-btn{padding:11px 22px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}.dc-cp{background:#fff;color:#312e81}.dc-cf{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}@media(max-width:640px){.dc-xgrid{grid-template-columns:1fr}.dc-head h1{font-size:18px}.dc-img{height:140px}}`;}
+function dcCSS(){return `.dc-bc{max-width:860px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.dc-bc a{color:#6366f1;text-decoration:none}.dc-wrap{max-width:860px;margin:0 auto;padding:20px 24px 60px}.dc-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:16px;padding:24px;margin-bottom:24px}.dc-box-t{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:900;color:#0f172a;margin-bottom:6px;padding-left:12px;border-left:4px solid #6366f1}.dc-head h1{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:10px}.dc-tabs{display:flex;gap:14px;font-size:13px;color:#64748b;margin-bottom:16px}.dc-tabs span:first-child{color:#4338ca;font-weight:700}.dc-info{background:#fff;border-radius:10px;padding:14px 18px}.dc-info-row{display:flex;gap:12px;padding:6px 0;font-size:13px}.dc-info-row strong{min-width:54px;color:#475569;font-weight:700}.dc-info-row span{color:#0f172a}.dc-xgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dc-xc{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;color:#0f172a;transition:.15s;--c:#6366f1}.dc-xc:hover{border-color:var(--c);background:#f8fafc}.dc-xc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}.dc-xc-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dc-xc-a{color:#94a3b8;font-size:14px}.dc-tagbox{display:flex;flex-wrap:wrap;gap:6px}.dc-tag{font-size:12px;padding:5px 12px;background:#fff;border:1px solid #e2e8f0;color:#475569;border-radius:14px}.dc-cta{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;text-align:center;padding:28px 24px;border-radius:14px;margin-top:24px}.dc-cta h3{font-size:19px;font-weight:900;margin-bottom:6px}.dc-cta p{font-size:13px;color:#c7d2fe;margin-bottom:14px}.dc-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.dc-cta-btn{padding:11px 22px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}.dc-cp{background:#fff;color:#312e81}.dc-cf{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}@media(max-width:640px){.dc-xgrid{grid-template-columns:1fr}.dc-head h1{font-size:18px}.dc-img{height:140px}}.dc-body p{font-size:15px;color:#334155;line-height:1.9;margin-bottom:14px}.dc-body h2{font-size:18px;font-weight:900;color:#0f172a;margin:24px 0 10px;display:flex;align-items:center;gap:10px}.dc-body h2::before{content:'';width:4px;height:20px;background:#6366f1;border-radius:2px}.dc-check{background:#eef2ff;border-radius:10px;padding:16px 20px;margin:18px 0}.dc-check h3{font-size:14px;font-weight:800;color:#3730a3;margin-bottom:8px}.dc-check ol{padding-left:18px;margin:0}.dc-check li{font-size:14px;color:#4338ca;line-height:1.8}.dc-review{background:#f8fafc;border-left:3px solid #6366f1;border-radius:0 8px 8px 0;padding:12px 16px;margin:10px 0;font-size:14px;color:#475569;line-height:1.7;font-style:italic}.dc-tip{background:#fffbeb;border-radius:10px;padding:14px 18px;margin:18px 0}.dc-tip h3{font-size:14px;font-weight:800;color:#92400e;margin-bottom:4px}.dc-tip p{font-size:13px;color:#78350f;line-height:1.8;margin:0}`;}
 function renderSigunguDetail(sido, sigungu) {
   const dongs = DONG_DATA[sigungu] || [];
   const eups = EUP_MYEON[sigungu] || [];
@@ -1352,20 +1352,27 @@ function renderSigunguDetail(sido, sigungu) {
   if (all.length === 0) return null;
   const SUBS = ['국어','영어','수학','사회','과학','논술','검정고시'];
   const LVLS = ['초등','중등','고등'];
+  const sc = {'국어':'#ef4444','영어':'#3b82f6','수학':'#22c55e','사회':'#f59e0b','과학':'#a855f7','논술':'#6366f1','검정고시':'#f97316'};
+  const lc = {'초등':'#22c55e','중등':'#3b82f6','고등':'#ef4444'};
   const e = encodeURIComponent;
   const bp = `/지역별/${e(sido)}/${e(sigungu)}`;
   const kw = `${sigungu} 과외`;
   const heroImg = getEduImage(kw);
-  const tags = [kw,`${sigungu} 초등과외`,`${sigungu} 중등과외`,`${sigungu} 고등과외`,`${sigungu} 수학과외`,`${sigungu} 영어과외`,`${sigungu} 국어과외`,`${sido} ${sigungu}`,`${sigungu} 1:1 과외`,`${sigungu} 과외 추천`];
+  const tags = [kw,`${sigungu} 초등과외`,`${sigungu} 중등과외`,`${sigungu} 고등과외`,`${sigungu} 수학과외`,`${sigungu} 영어과외`,`${sido} ${sigungu}`,`${sigungu} 1:1 과외`];
+  const intro = [`${kw}는 ${sido} ${sigungu} 지역 학생들을 위한 1:1 맞춤 수업입니다. 지역 내 다양한 동네와 학교 특성을 반영한 검증된 선생님 매칭으로 확실한 학습 결과를 만듭니다. 혼자 공부는 한계가 있고, 모르는 문제가 누적되어 잘못된 풀이가 습관이 돼요. ${kw}에서 중요한 건 선생님 실력보다 '궁합'. 과외안하니는 성향 분석 → 매칭 → 무료 체험 → 교체로 완벽한 궁합을 만듭니다.`];
+  const sections = [
+    [`${kw} 성적 향상 핵심 전략`,`${sigungu} 학생 시기에 맞는 맞춤 커리큘럼이 효과적이에요. 가장 중요한 건 개념 이해. 단순 암기로는 응용에서 무너집니다. ${kw} 선생님은 스스로 개념 설명이 가능할 때까지 반복 확인하며, 이해 위에 유형별 풀이를 더해 고득점을 만듭니다. 정기 리포트로 주간·월간 진도와 성적 변화가 학부모님과 공유돼요.`],
+    [`초·중·고 학습 전략과 수업 운영`,`시험 3주 전 개념 총정리, 2주 전 기출 분석, 1주 전 예상 문제 풀이, 시험 직전 핵심 요약 점검 단계로 자신감을 만들어요. 문제 풀이는 양보다 질, 100문제 대충보다 10문제 깊이 분석이 효과적. 시험 직전 집중 관리, 방학 단기 특강, 수행평가 긴급 대비 등 유연한 서비스도 제공합니다. 방문/화상 선택 가능. 고민할수록 같은 결과니 지금 ${kw}를 시작하세요.`]
+  ];
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(sigungu + ' 과외 추천 - 동/학년/과목별 가이드 | 안하니', sido + ' ' + sigungu + ' 과외 · ' + all.length + '개 동/읍/면 · 초중고 전 과목 맞춤 과외 안내', 'https://anhani.com' + bp)}
-  <style>${commonStyles()}${dcCSS()}.dc-img{width:100%;height:180px;background:url('${heroImg}') center/cover;border-radius:12px;margin-bottom:16px}.dc-box-d{font-size:13px;color:#475569;margin:4px 0 14px 12px}</style></head><body>
+  ${commonHead(kw + ', ' + sigungu + ' 동네 학습 코칭 전문가 | 안하니', sido + ' ' + sigungu + ' 1:1 맞춤 과외 · ' + all.length + '개 동 · 초중고 전 과목', 'https://anhani.com' + bp)}
+  <style>${commonStyles()}${dcCSS()}.dc-img{width:100%;height:180px;background:url('${heroImg}') center/cover;border-radius:12px;margin-bottom:16px}</style></head><body>
   ${navHTML('region')}
   <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${sido} &gt; ${sigungu}</div>
   <div class="dc-wrap">
     <div class="dc-box">
-      <div class="dc-head"><h1>${sigungu} 과외, ${sigungu} 우리 동네 학습 코칭 전문가</h1>
-        <div class="dc-tabs"><span>${sigungu}</span><span>${sido}</span><span>전 지역·전 과목</span><span>스마일레슨</span></div>
+      <div class="dc-head"><h1>${kw}, ${sigungu} 우리 동네 학습 코칭 전문가</h1>
+        <div class="dc-tabs"><span>${sigungu}</span><span>${sido}</span><span>전 지역·전 과목</span><span>과외안하니</span></div>
       </div>
       <div class="dc-img"></div>
       <div class="dc-info">
@@ -1375,12 +1382,11 @@ function renderSigunguDetail(sido, sigungu) {
         <div class="dc-info-row"><strong>체험</strong><span>무료 체험 수업 가능</span></div>
       </div>
     </div>
-    <div class="dc-box"><div class="dc-box-t">📍 ${sigungu} 동네 선택</div><p class="dc-box-d">원하는 동네를 클릭하시면 해당 동네의 세부 키워드(학년별·과목별·학년+과목별 과외)를 확인하실 수 있습니다.</p><div class="dc-xgrid">${all.map(d=>`<a href="${bp}/${e(d)}" class="dc-xc"><span class="dc-xc-dot"></span><span class="dc-xc-t">${d}</span><span class="dc-xc-a">→</span></a>`).join('')}</div></div>
-    <div class="dc-box"><div class="dc-box-t">${sigungu} 동·과목별 과외</div><p class="dc-box-d">동 × 7개 과목 조합 맞춤 안내</p><div class="dc-xgrid">${all.flatMap(d=>SUBS.map(s=>`<a href="${bp}/${e(d)}/과목/${e(s)}" class="dc-xc"><span class="dc-xc-dot"></span><span class="dc-xc-t">${d} ${s}과외</span><span class="dc-xc-a">→</span></a>`)).join('')}</div></div>
-    <div class="dc-box"><div class="dc-box-t">${sigungu} 동·학년별 과외</div><p class="dc-box-d">동 × 초·중·고 학년별 맞춤 안내</p><div class="dc-xgrid">${all.flatMap(d=>LVLS.map(l=>`<a href="${bp}/${e(d)}/학년/${e(l)}" class="dc-xc"><span class="dc-xc-dot"></span><span class="dc-xc-t">${d} ${l}과외</span><span class="dc-xc-a">→</span></a>`)).join('')}</div></div>
-    <div class="dc-box"><div class="dc-box-t">${sigungu} 동·학년+과목별 과외</div><p class="dc-box-d">동 × 학년 × 과목 조합 세부 안내</p><div class="dc-xgrid">${all.flatMap(d=>LVLS.flatMap(l=>SUBS.map(s=>`<a href="${bp}/${e(d)}/${e(l)}/${e(s)}" class="dc-xc"><span class="dc-xc-dot"></span><span class="dc-xc-t">${d} ${l} ${s}과외</span><span class="dc-xc-a">→</span></a>`))).join('')}</div></div>
+    <div class="dc-box"><div class="dc-box-t">📍 ${sigungu} 동네 선택</div><p style="font-size:13px;color:#475569;margin:4px 0 14px 12px">동네 클릭 시 세부 키워드 확인 가능</p><div class="dc-xgrid">${all.map(d=>`<a href="${bp}/${e(d)}" class="dc-xc"><span class="dc-xc-dot"></span><span class="dc-xc-t">${d}</span></a>`).join('')}</div></div>
+    <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}</div>
+    <div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s+'과외',sc[s]]),...LVLS.map(l=>[l+'과외',lc[l]])].map(a=>`<a href="#" class="dc-xc" style="--c:${a[1]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}</span></a>`).join('')}</div></div>
     <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${sigungu} 과외 · 검증된 선생님 빠른 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="https://naver.me/GYD2Ki40" target="_blank" class="dc-cta-btn dc-cf">무료 상담 신청 →</a></div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증된 선생님 빠른 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="https://naver.me/GYD2Ki40" target="_blank" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -1491,7 +1497,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
   const dongLinks = otherDongs.map(d => `<a href="/지역별/${e(sido)}/${e(sigungu)}/${e(d)}" class="dc-xc"><span class="dc-xc-dot" style="background:#6366f1"></span><span class="dc-xc-t">${d}</span><span class="dc-xc-a">→</span></a>`).join('');
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(seoT, seoD, 'https://anhani.com' + canonPath)}
-  <style>${commonStyles()}${dcCSS()}.dc-img{width:100%;height:180px;background:url('${heroImg}') center/cover;border-radius:12px;margin-bottom:16px}.dc-xc.on{border-color:var(--c);background:#f8fafc}.dc-body p{font-size:15px;color:#334155;line-height:1.9;margin-bottom:14px}.dc-body h2{font-size:18px;font-weight:900;color:#0f172a;margin:24px 0 10px;display:flex;align-items:center;gap:10px}.dc-body h2::before{content:'';width:4px;height:20px;background:#6366f1;border-radius:2px}.dc-check{background:#eef2ff;border-radius:10px;padding:16px 20px;margin:18px 0}.dc-check h3{font-size:14px;font-weight:800;color:#3730a3;margin-bottom:8px}.dc-check ol{padding-left:18px;margin:0}.dc-check li{font-size:14px;color:#4338ca;line-height:1.8}.dc-review{background:#f8fafc;border-left:3px solid #6366f1;border-radius:0 8px 8px 0;padding:12px 16px;margin:10px 0;font-size:14px;color:#475569;line-height:1.7;font-style:italic}.dc-tip{background:#fffbeb;border-radius:10px;padding:14px 18px;margin:18px 0}.dc-tip h3{font-size:14px;font-weight:800;color:#92400e;margin-bottom:4px}.dc-tip p{font-size:13px;color:#78350f;line-height:1.8;margin:0}</style></head>
+  <style>${commonStyles()}${dcCSS()}.dc-img{width:100%;height:180px;background:url('${heroImg}') center/cover;border-radius:12px;margin-bottom:16px}.dc-xc.on{border-color:var(--c);background:#f8fafc}</style></head>
   <body>${navHTML('region')}
   <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${bc}</div>
   <div class="dc-wrap">
@@ -1512,7 +1518,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     <div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div>
     <div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div>
     <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} · 검증된 선생님 빠른 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="https://naver.me/GYD2Ki40" target="_blank" class="dc-cta-btn dc-cf">무료 상담 신청 →</a></div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증된 선생님 빠른 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="https://naver.me/GYD2Ki40" target="_blank" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
   </div>
   ${footerHTML()}
   </body></html>`;
