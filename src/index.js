@@ -2976,9 +2976,9 @@ function renderAcademyDetail(center) {
   const rng = seededRandom(seed);
   const fullName = c.n + '와와학습코칭학원';
   const allSchools = [
-    ...(c.e ? c.e.split(/[,\s]+/).filter(Boolean).map(s=>({name:s.trim(),level:'초등'})) : []),
-    ...(c.m ? c.m.split(/[,\s]+/).filter(Boolean).map(s=>({name:s.trim(),level:'중등'})) : []),
-    ...(c.h ? c.h.split(/[,\s]+/).filter(Boolean).map(s=>({name:s.trim(),level:'고등'})) : [])
+    ...(c.e ? c.e.split(/[,\s/]+/).filter(Boolean).map(s=>({name:s.trim(),level:'초등'})) : []),
+    ...(c.m ? c.m.split(/[,\s/]+/).filter(Boolean).map(s=>({name:s.trim(),level:'중등'})) : []),
+    ...(c.h ? c.h.split(/[,\s/]+/).filter(Boolean).map(s=>({name:s.trim(),level:'고등'})) : [])
   ];
   const schoolCount = allSchools.length;
   const subjCount = (c.s||[]).length;
@@ -3114,9 +3114,9 @@ function renderAcademyDetail(center) {
       </div>
     </div>
 
-    ${(()=>{const subs=c.s||[];if(!schoolCount||!subs.length)return '';const items=[];for(const s of allSchools)for(const sj of subs)items.push([s.name,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 관련 학교별 학원 가이드</div><p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">${c.n}의 학교 × 수업 가능 과목 조합별 맞춤 안내입니다.</p><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/학교학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><div class="ad-kw-body"><div class="ad-kw-t">${it[0]} ${it[1]}학원</div><div class="ad-kw-d">${it[0]} 학생 맞춤 ${it[1]} 1:1 코칭 안내</div></div></a>`}).join('')}</div></div>`})()}
+    ${(()=>{const subs=c.s||[];if(!schoolCount||!subs.length)return '';const items=[];for(const s of allSchools)for(const sj of subs)items.push([s.name,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 관련 학교별 학원 가이드</div><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/학교학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><div class="ad-kw-body"><div class="ad-kw-t">${it[0]} ${it[1]}학원</div><div class="ad-kw-d">${it[0]} 학생 맞춤 ${it[1]} 1:1 코칭 안내</div></div></a>`}).join('')}</div></div>`})()}
 
-    ${(()=>{const subs=c.s||[];const p=parseAcademyAddr(c.a);const regs=[...new Set([c.r,p.si,p.gu,p.dong].filter(Boolean))];if(!regs.length||!subs.length)return '';const items=[];for(const rg of regs)for(const sj of subs)items.push([rg,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 관련 지역 학원 가이드</div><p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">${c.n}의 지역 × 수업 가능 과목 조합별 맞춤 안내입니다.</p><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/지역학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><div class="ad-kw-body"><div class="ad-kw-t">${it[0]} ${it[1]}학원</div><div class="ad-kw-d">${it[0]} ${it[1]} 학원 맞춤 안내</div></div></a>`}).join('')}</div></div>`})()}
+    ${(()=>{const subs=c.s||[];const p=parseAcademyAddr(c.a);const regs=[...new Set([c.r,p.si,p.gu,p.dong].filter(Boolean))];if(!regs.length||!subs.length)return '';const items=[];for(const rg of regs)for(const sj of subs)items.push([rg,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 관련 지역 학원 가이드</div><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/지역학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><div class="ad-kw-body"><div class="ad-kw-t">${it[0]} ${it[1]}학원</div><div class="ad-kw-d">${it[0]} ${it[1]} 학원 맞춤 안내</div></div></a>`}).join('')}</div></div>`})()}
 
     <div class="ad-cta-bar">
       <h3>${c.r} ${fullName} 무료 상담</h3>
@@ -5222,9 +5222,9 @@ export default {
       const subject = schoolSubjMatch[3];
       if (center && (center.s||[]).includes(subject)) {
         const allSchools = [
-          ...(center.e ? center.e.split(/[,\s]+/).filter(Boolean) : []),
-          ...(center.m ? center.m.split(/[,\s]+/).filter(Boolean) : []),
-          ...(center.h ? center.h.split(/[,\s]+/).filter(Boolean) : [])
+          ...(center.e ? center.e.split(/[,\s/]+/).filter(Boolean) : []),
+          ...(center.m ? center.m.split(/[,\s/]+/).filter(Boolean) : []),
+          ...(center.h ? center.h.split(/[,\s/]+/).filter(Boolean) : [])
         ].map(s => s.trim());
         if (allSchools.includes(schoolName)) {
           return new Response(renderSchoolSubjectAcademy(center, schoolName, subject), {
