@@ -1293,34 +1293,22 @@ function renderHomepage() {
 // --- 카테고리: 지역별 ---
 function renderRegionList() {
   const allRegions = Object.keys(REGIONS);
-  const metroCities = ['서울','부산','대구','인천','광주','대전','울산','세종'];
   const totalRegions = allRegions.reduce((sum, r) => sum + REGIONS[r].length, 0);
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('지역별 과외 안내 | 전국 맞춤 과외 - 안하니', '전국 시/군/구 과외 정보를 지역별로 한눈에 확인하세요.', 'https://anhani.com/지역별')}
-  <style>${commonStyles()}.rg-wrap{max-width:1000px;margin:0 auto;padding:40px 24px 80px}.rg-head{margin-bottom:28px}.rg-label{display:inline-block;background:#312e81;color:#fff;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px}.rg-title{font-size:30px;font-weight:900;color:#0f172a;margin-bottom:8px;line-height:1.3}.rg-title em{font-style:normal;color:#6366f1}.rg-subtitle{font-size:14px;color:#64748b}.rg-anchor{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);margin:0 -24px 32px;padding:12px 24px;border-bottom:1px solid #e2e8f0;display:flex;flex-wrap:wrap;gap:6px}.rg-anchor a{padding:6px 12px;border-radius:18px;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#475569;text-decoration:none;background:#fff;transition:all .15s;white-space:nowrap}.rg-anchor a:hover{border-color:#6366f1;color:#6366f1;background:#eef2ff}.rg-anchor a.metro{background:#eef2ff;color:#4338ca;border-color:#c7d2fe}.rg-sec{margin-bottom:36px;scroll-margin-top:60px}.rg-sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}.rg-sec-title{font-size:22px;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:10px}.rg-sec-title::before{content:'';width:4px;height:22px;border-radius:2px;background:#6366f1}.rg-sec-title.metro::before{background:#ef4444}.rg-sec-count{font-size:13px;color:#94a3b8;font-weight:600}.rg-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}.rg-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 10px;text-align:center;text-decoration:none;color:#0f172a;font-size:14px;font-weight:700;transition:all .15s}.rg-card:hover{background:#eef2ff;border-color:#6366f1;color:#4338ca;transform:translateY(-1px);box-shadow:0 2px 6px rgba(99,102,241,.12)}.rg-sec.metro .rg-card{background:#fef2f2;border-color:#fecaca}.rg-sec.metro .rg-card:hover{background:#fee2e2;border-color:#ef4444;color:#b91c1c;box-shadow:0 2px 6px rgba(239,68,68,.12)}@media (max-width:640px){.rg-title{font-size:22px}.rg-sec-title{font-size:18px}.rg-sec-title::before{height:18px}.rg-cards{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px}.rg-card{padding:10px 6px;font-size:13px}.rg-anchor{gap:4px;padding:10px 24px;margin-bottom:20px}.rg-anchor a{padding:5px 10px;font-size:12px}}</style></head><body>
+  <style>${commonStyles()}.rg-wrap{max-width:1000px;margin:0 auto;padding:40px 24px 80px}.rg-head{margin-bottom:28px}.rg-label{display:inline-block;background:#312e81;color:#fff;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px}.rg-title{font-size:30px;font-weight:900;color:#0f172a;margin-bottom:8px;line-height:1.3}.rg-title em{font-style:normal;color:#6366f1}.rg-subtitle{font-size:14px;color:#64748b}.rg-anchor{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);margin:0 -24px 32px;padding:12px 24px;border-bottom:1px solid #e2e8f0;display:flex;flex-wrap:wrap;gap:6px}.rg-anchor a{padding:6px 12px;border-radius:18px;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#475569;text-decoration:none;background:#fff;transition:.15s;white-space:nowrap}.rg-anchor a:hover{border-color:#6366f1;color:#6366f1;background:#eef2ff}.rg-sec{margin-bottom:36px;scroll-margin-top:60px}.rg-sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}.rg-sec-title{font-size:22px;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:10px}.rg-sec-title::before{content:'';width:4px;height:22px;border-radius:2px;background:#6366f1}.rg-sec-count{font-size:13px;color:#94a3b8;font-weight:600}.rg-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}.rg-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 10px;text-align:center;text-decoration:none;color:#0f172a;font-size:14px;font-weight:700;transition:.15s}.rg-card:hover{background:#eef2ff;border-color:#6366f1;color:#4338ca;transform:translateY(-1px);box-shadow:0 2px 6px rgba(99,102,241,.12)}@media (max-width:640px){.rg-title{font-size:22px}.rg-sec-title{font-size:18px}.rg-sec-title::before{height:18px}.rg-cards{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px}.rg-card{padding:10px 6px;font-size:13px}.rg-anchor{gap:4px;padding:10px 24px;margin-bottom:20px}.rg-anchor a{padding:5px 10px;font-size:12px}}</style></head><body>
   ${navHTML('region')}
   <div class="rg-wrap">
     <div class="rg-head">
       <div class="rg-label">지역별 과외</div>
       <h1 class="rg-title">전국 <em>지역별 과외</em> 안내</h1>
-      <p class="rg-subtitle">전국 17개 시·도 <strong>${totalRegions}개 지역</strong>의 맞춤 과외 정보를 한눈에 확인하세요.</p>
+      <p class="rg-subtitle">전국 17개 시·도 <strong>${totalRegions}개 시·군·구</strong>의 맞춤 과외 정보를 한눈에 확인하세요.</p>
     </div>
     <nav class="rg-anchor">
-      ${allRegions.map(r => `<a href="#${r}"${metroCities.includes(r)?' class="metro"':''}>${r}</a>`).join('')}
+      ${allRegions.map(r => `<a href="#${r}">${r}</a>`).join('')}
     </nav>
-    ${allRegions.map(r => {
-      const isMetro = metroCities.includes(r);
-      return `<section class="rg-sec${isMetro?' metro':''}" id="${r}">
-        <div class="rg-sec-head">
-          <h2 class="rg-sec-title${isMetro?' metro':''}">${r}</h2>
-          <span class="rg-sec-count">${REGIONS[r].length}개 ${isMetro?'구·군':'시·군'}</span>
-        </div>
-        <div class="rg-cards">
-          ${REGIONS[r].map(d => `<a href="/${encodeURIComponent(d + '-초등-수학-과외')}" class="rg-card">${d}</a>`).join('')}
-        </div>
-      </section>`;
-    }).join('')}
+    ${allRegions.map(r => `<section class="rg-sec" id="${r}"><div class="rg-sec-head"><h2 class="rg-sec-title">${r}</h2><span class="rg-sec-count">${REGIONS[r].length}개 시·군·구</span></div><div class="rg-cards">${REGIONS[r].map(d => `<a href="/지역별/${encodeURIComponent(r)}/${encodeURIComponent(d)}" class="rg-card">${d}</a>`).join('')}</div></section>`).join('')}
   </div>
   ${footerHTML()}
   </body></html>`;
