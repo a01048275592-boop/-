@@ -787,7 +787,7 @@ function navHTML(activePage) {
           </div>
         </div>
 
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="nav-cta">무료 상담</a>
+        <a href="/#inquiry" class="nav-cta">무료 상담</a>
       </div>
       <button class="mobile-menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">☰</button>
     </div>
@@ -799,7 +799,7 @@ function footerHTML() {
   <div class="floating-btns">
     <a href="tel:010-6850-1420" class="float-btn float-call">📞 전화상담</a>
     <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="float-btn float-kakao">💬 카카오톡 상담</a>
-    <a href="https://naver.me/GYD2Ki40" target="_blank" class="float-btn float-free">⭐ 무료체험 신청</a>
+    <a href="/#inquiry" class="float-btn float-free">⭐ 무료체험 신청</a>
   </div>
   <footer class="footer">
     <div class="footer-notice">
@@ -815,7 +815,7 @@ function footerHTML() {
         <a href="/">홈</a>
         <a href="/과목별">과목별 과외</a>
         <a href="/지역별">지역별 과외</a>
-        <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담</a>
+        <a href="/#inquiry">무료 상담</a>
       </div>
       <div class="footer-right">
         <div class="footer-phone-label">무료 상담 전화</div>
@@ -885,7 +885,7 @@ function renderHomepage() {
           <p class="slide1-subtext">학습 루틴부터 환경까지 설계하는</p>
           <p class="slide1-subtext"><strong>빈틈 없는 맞춤 관리</strong>로 확실한 성적 반전을 만듭니다.</p>
           <div class="slide1-btns">
-            <a href="https://naver.me/GYD2Ki40" target="_blank" class="slide-btn">무료 상담 신청 →</a>
+            <a href="/#inquiry" class="slide-btn">무료 상담 신청 →</a>
             <a href="/서비스" class="slide-btn-outline">서비스 더 알아보기</a>
           </div>
           <div class="slide1-stats-row">
@@ -1399,7 +1399,7 @@ function renderSigunguDetail(sido, sigungu, cat, val) {
     <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}</div>
     <div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s,'과목',sc[s]]),...LVLS.map(l=>[l,'학년',lc[l]])].map(a=>`<a href="${bp}/${a[1]}/${e(a[0])}" class="dc-xc" style="--c:${a[2]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}과외</span></a>`).join('')}</div></div>
     <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="https://naver.me/GYD2Ki40" target="_blank" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="/#inquiry" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -1549,7 +1549,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     <div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div>
     <div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div>
     <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="https://naver.me/GYD2Ki40" target="_blank" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="/#inquiry" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -1976,7 +1976,7 @@ function renderSubjectDetail(subject) {
     <div class="sd-cta">
       <h3>${subject} 맞춤 과외 상담</h3>
       <p>${subject} 전문 선생님을 무료로 매칭해 드립니다</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담 신청 →</a>
+      <a href="/#inquiry">무료 상담 신청 →</a>
     </div>
   </div>
   ${footerHTML()}
@@ -2184,7 +2184,7 @@ function renderGedKeywordArticle(subject, idx, title) {
     <div class="gk-cta">
       <h3>검정고시 전문 과외 상담</h3>
       <p>1:1 맞춤 커리큘럼으로 단기 합격을 실현하세요</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담 신청 →</a>
+      <a href="/#inquiry">무료 상담 신청 →</a>
     </div>
     <div class="gk-related">
       <h3>검정고시 가이드 더보기</h3>
@@ -2246,7 +2246,7 @@ function renderSubjectArticle(subject, articleIdx) {
     <div class="sa-cta">
       <h3>${subject} 전문 과외 상담</h3>
       <p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담 신청 →</a>
+      <a href="/#inquiry">무료 상담 신청 →</a>
     </div>
     <div class="sa-related">
       <h3>${subject} 학습 가이드 더보기</h3>
@@ -2552,7 +2552,7 @@ function renderGradeSubjectPage(school, grade, subject) {
     <div class="gs-cta">
       <h3>${gradeLabel} ${subject} 맞춤 과외 상담</h3>
       <p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담 신청 →</a>
+      <a href="/#inquiry">무료 상담 신청 →</a>
     </div>
   </div>
   ${footerHTML()}
@@ -2787,7 +2787,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
       <h3>${gradeLabel} ${subject} 무료 상담</h3>
       <p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p>
       <div class="ka-cta-btns">
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ka-cta-btn ka-cta-primary">무료 상담 신청</a>
+        <a href="/#inquiry" class="ka-cta-btn ka-cta-primary">무료 상담 신청</a>
         <a href="tel:010-6850-1420" class="ka-cta-btn ka-cta-secondary">010-6850-1420</a>
       </div>
     </div>
@@ -2914,7 +2914,7 @@ function renderAcademyList() {
           (schools ? '<div class="ac-card-schools">' + schools + '</div>' : '<div style="flex:1"></div>') +
           '<div class="ac-card-bottom">' +
             '<a href="' + detailUrl + '" class="ac-card-btn ac-btn-detail">📄 상세보기</a>' +
-            '<a href="https://naver.me/GYD2Ki40" target="_blank" class="ac-card-btn ac-btn-consult">💬 상담</a>' +
+            '<a href="/#inquiry" class="ac-card-btn ac-btn-consult">💬 상담</a>' +
           '</div>' +
         '</div>';
       }).join('');
@@ -3018,7 +3018,7 @@ function renderAcademyDetail(center) {
       <h1>${c.r} ${sigungu} ${(c.s||[]).join(' · ')} 학원 | ${fullName}</h1>
       <p class="ad-hero-addr">${c.a}</p>
       <div class="ad-hero-btns">
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ad-hero-btn ad-btn-primary">무료 상담 신청</a>
+        <a href="/#inquiry" class="ad-hero-btn ad-btn-primary">무료 상담 신청</a>
         <a href="tel:010-6850-1420" class="ad-hero-btn ad-btn-secondary">010-6850-1420</a>
       </div>
     </div>
@@ -3109,7 +3109,7 @@ function renderAcademyDetail(center) {
       <p>${c.r} ${sigungu} · 초·중·고 ${(c.s||[]).join('·')} 1:1 코칭 · 첫 수업 무료</p>
       <div class="ad-cta-btns">
         <a href="tel:010-6850-1420" class="ad-cta-btn ad-cta-phone">010-6850-1420</a>
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ad-cta-btn ad-cta-form">무료 상담 신청</a>
+        <a href="/#inquiry" class="ad-cta-btn ad-cta-form">무료 상담 신청</a>
       </div>
     </div>
   </div>
@@ -3228,7 +3228,7 @@ function renderSchoolSubjectAcademy(center, schoolName, subject) {
       <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
       <div class="scb">
         <a href="tel:010-6850-1420" class="scbt scp">010-6850-1420</a>
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="scbt scf">무료 상담 신청</a>
+        <a href="/#inquiry" class="scbt scf">무료 상담 신청</a>
       </div>
     </div>
   </div>
@@ -3331,7 +3331,7 @@ function renderRegionSubjectAcademy(center, region, subject) {
       <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
       <div class="scb">
         <a href="tel:010-6850-1420" class="scbt scp">010-6850-1420</a>
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="scbt scf">무료 상담 신청</a>
+        <a href="/#inquiry" class="scbt scf">무료 상담 신청</a>
       </div>
     </div>
   </div>
@@ -3453,7 +3453,7 @@ function renderContactPage() {
   <script>
     function submitContact(e) {
       e.preventDefault();
-      window.open('https://naver.me/GYD2Ki40', '_blank');
+      window.open('/#inquiry', '_blank');
       return false;
     }
   </script>
@@ -3507,7 +3507,7 @@ function renderGradePage(school, grade) {
     <div class="gd-cta">
       <h3>${gradeLabel} 맞춤 과외 상담</h3>
       <p>우리 아이에게 딱 맞는 선생님을 무료로 매칭해 드립니다</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank">무료 상담 신청 →</a>
+      <a href="/#inquiry">무료 상담 신청 →</a>
     </div>
   </div>
   ${footerHTML()}
@@ -3707,7 +3707,7 @@ function renderConversationPage(lang) {
         <h1 class="cv-title"><em>${d.name} 회화</em> 수업</h1>
         <p class="cv-desc">${d.desc}</p>
         <div class="cv-btns">
-          <a href="https://naver.me/GYD2Ki40" target="_blank" class="cv-btn cv-btn-primary">⭐ 무료 체험</a>
+          <a href="/#inquiry" class="cv-btn cv-btn-primary">⭐ 무료 체험</a>
           <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="cv-btn cv-btn-secondary">💬 카톡 상담</a>
         </div>
       </div>
@@ -3846,7 +3846,7 @@ function renderChineseArticle(articleIdx) {
       <h3>🇨🇳 중국어 무료 체험 수업</h3>
       <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
       <div class="ca-cta-btns">
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
+        <a href="/#inquiry" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
         <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
       </div>
     </div>
@@ -3946,7 +3946,7 @@ function renderJapaneseArticle(articleIdx) {
       <h3>🇯🇵 일본어 무료 체험 수업</h3>
       <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
       <div class="ca-cta-btns">
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
+        <a href="/#inquiry" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
         <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
       </div>
     </div>
@@ -4041,7 +4041,7 @@ function renderEnglishArticle(articleIdx) {
       <h3>🇺🇸 영어 회화 무료 체험 수업</h3>
       <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
       <div class="ca-cta-btns">
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
+        <a href="/#inquiry" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
         <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
       </div>
     </div>
@@ -4193,7 +4193,7 @@ function renderGuideArticle(idx) {
     <div class="ga-cta">
       <h3>1:1 맞춤 과외로 확실하게</h3>
       <p>전문 선생님과 함께 체계적으로 학습하세요</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank">⭐ 무료 체험</a>
+      <a href="/#inquiry">⭐ 무료 체험</a>
       <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a>
     </div>
     <div class="ga-related">
@@ -4217,7 +4217,7 @@ function renderServicePage() {
       <h1>아이의 성적을<br><em>확실하게</em> 바꾸는 방법</h1>
       <p class="sv-hero-desc">수준별 맞춤 수업부터 내신·수능 완벽 대비,<br>올바른 학습습관 형성까지. 과외안하니가 책임집니다.</p>
       <div class="sv-hero-btns">
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-hero-btn sv-btn-primary">무료 상담 신청 →</a>
+        <a href="/#inquiry" class="sv-hero-btn sv-btn-primary">무료 상담 신청 →</a>
         <a href="tel:010-6850-1420" class="sv-hero-btn sv-btn-secondary">📞 010-6850-1420</a>
       </div>
       <div class="sv-hero-stats">
@@ -4303,7 +4303,7 @@ function renderServicePage() {
             <li>✅ 학부모 주간 리포트</li>
             <li>✅ 첫 수업 무료 체험</li>
           </ul>
-          <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-price-btn" style="background:#dbeafe;color:#1d4ed8">무료 상담 신청</a>
+          <a href="/#inquiry" class="sv-price-btn" style="background:#dbeafe;color:#1d4ed8">무료 상담 신청</a>
         </div>
         <div class="sv-price-card featured">
           <div class="sv-price-badge" style="background:#6366f1;color:#fff">인기</div>
@@ -4316,7 +4316,7 @@ function renderServicePage() {
             <li>✅ 서술형 집중 훈련</li>
             <li>✅ 시험 전 추가 수업</li>
           </ul>
-          <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-price-btn" style="background:#6366f1;color:#fff">무료 상담 신청</a>
+          <a href="/#inquiry" class="sv-price-btn" style="background:#6366f1;color:#fff">무료 상담 신청</a>
         </div>
         <div class="sv-price-card">
           <div class="sv-price-badge" style="background:#fef3c7;color:#b45309">고등</div>
@@ -4329,7 +4329,7 @@ function renderServicePage() {
             <li>✅ 입시 전략 컨설팅</li>
             <li>✅ 모의고사 분석 리포트</li>
           </ul>
-          <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-price-btn" style="background:#fef3c7;color:#b45309">무료 상담 신청</a>
+          <a href="/#inquiry" class="sv-price-btn" style="background:#fef3c7;color:#b45309">무료 상담 신청</a>
         </div>
       </div>
     </div>
@@ -4351,7 +4351,7 @@ function renderServicePage() {
           <h4>카카오톡 상담 (ID: kdy5592)</h4>
           <div class="sv-contact-val">카카오톡 채팅</div>
         </a>
-        <a href="https://naver.me/GYD2Ki40" target="_blank" class="sv-contact-card" style="text-decoration:none">
+        <a href="/#inquiry" class="sv-contact-card" style="text-decoration:none">
           <div class="sv-contact-icon">📝</div>
           <h4>무료 상담 신청</h4>
           <div class="sv-contact-val">온라인 신청서</div>
@@ -4374,7 +4374,7 @@ function renderVideoLesson() {
     <div class="vl-hero">
       <h1 class="vl-title">전국 어디서나<br><em>1:1 화상 과외</em></h1>
       <p class="vl-desc">거리 제한 없이 전국 최고의 선생님과<br>실시간으로 수업받을 수 있습니다.</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank" class="vl-btn">무료 체험 신청 →</a>
+      <a href="/#inquiry" class="vl-btn">무료 체험 신청 →</a>
     </div>
     <div class="vl-section">
       <h2>화상수업 진행 과정</h2>
@@ -4408,7 +4408,7 @@ function renderStudyAbroad() {
     <div class="ab-hero">
       <h1 class="ab-title">꿈을 향한 <em>해외 유학</em></h1>
       <p class="ab-desc">미국, 영국, 캐나다, 호주 등 해외 유학 준비를 도와드립니다</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank" class="ab-btn">유학 상담 신청 →</a>
+      <a href="/#inquiry" class="ab-btn">유학 상담 신청 →</a>
     </div>
     <div class="ab-grid">
       <div class="ab-card"><div class="ab-card-flag">🇺🇸</div><h3>미국 유학</h3><p>아이비리그, 주립대</p></div>
@@ -4699,7 +4699,7 @@ function renderSchoolDetail(level, idx) {
         <h4>${sn} 맞춤 과외, 지금 상담받으세요</h4>
         <p>학교별 시험 경향을 아는 선생님과 1:1로 매칭해 드립니다</p>
         <div class="sd-cta-btns">
-          <a href="https://naver.me/GYD2Ki40" target="_blank" class="sd-cta-btn">⭐ 무료 체험 신청</a>
+          <a href="/#inquiry" class="sd-cta-btn">⭐ 무료 체험 신청</a>
           <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="sd-cta-btn">💬 카톡 상담</a>
         </div>
       </div>
@@ -4781,7 +4781,7 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
     <div class="sa-cta">
       <h4>${sn} 맞춤 과외 무료 상담</h4>
       <p>학교별 시험 경향을 아는 선생님과 매칭해 드립니다</p>
-      <a href="https://naver.me/GYD2Ki40" target="_blank">⭐ 무료 체험</a>
+      <a href="/#inquiry">⭐ 무료 체험</a>
       <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a>
     </div>
   </div>
