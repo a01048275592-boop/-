@@ -787,7 +787,7 @@ function navHTML(activePage) {
           </div>
         </div>
 
-        <a href="/#inquiry" class="nav-cta">무료 상담</a>
+        <a href="/체험신청" class="nav-cta">무료 상담</a>
       </div>
       <button class="mobile-menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">☰</button>
     </div>
@@ -799,7 +799,7 @@ function footerHTML() {
   <div class="floating-btns">
     <a href="tel:010-6850-1420" class="float-btn float-call">📞 전화상담</a>
     <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="float-btn float-kakao">💬 카카오톡 상담</a>
-    <a href="/#inquiry" class="float-btn float-free">⭐ 무료체험 신청</a>
+    <a href="/체험신청" class="float-btn float-free">⭐ 무료체험 신청</a>
   </div>
   <footer class="footer">
     <div class="footer-notice">
@@ -815,7 +815,7 @@ function footerHTML() {
         <a href="/">홈</a>
         <a href="/과목별">과목별 과외</a>
         <a href="/지역별">지역별 과외</a>
-        <a href="/#inquiry">무료 상담</a>
+        <a href="/체험신청">무료 상담</a>
       </div>
       <div class="footer-right">
         <div class="footer-phone-label">무료 상담 전화</div>
@@ -830,6 +830,189 @@ function footerHTML() {
 }
 
 // --- 홈페이지 ---
+function inquiryBlock(){return `  <!-- 체험 수업 신청 섹션 -->
+  <section class="inquiry-section" id="inquiry">
+    <div class="inquiry-inner">
+      <h2 class="inquiry-title">체험 수업<em>신청하기</em></h2>
+      <p class="inquiry-desc">궁금하신 점이나 체험 수업 문의, 무엇이든 남겨주세요.<br>내용 확인 후 빠르게 연락드립니다.</p>
+      <div class="inquiry-contact">
+        <a href="tel:010-6850-1420" class="inq-phone"><span class="ic">📞</span> 010-6850-1420</a>
+        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" rel="noopener" class="inq-kakao">💬 카카오 채널 상담</a>
+      </div>
+      <form id="inquiryForm" class="inquiry-form" novalidate>
+        <div class="inq-row">
+          <div class="inq-col">
+            <label>학생 이름 <span class="req">*</span></label>
+            <input type="text" name="name" class="inq-input" placeholder="이름을 입력해주세요" required maxlength="30">
+          </div>
+          <div class="inq-col">
+            <label>상담받으실 연락처 <span class="req">*</span></label>
+            <input type="tel" name="phone" class="inq-input" placeholder="010-0000-0000" required maxlength="20">
+          </div>
+        </div>
+        <div class="inq-full">
+          <label>학년 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label>
+          <div class="inq-dropdown">
+            <button type="button" class="inq-toggle" data-placeholder="학년을 선택해주세요"><span class="inq-label">학년을 선택해주세요</span><span class="inq-arrow">▼</span></button>
+            <div class="inq-menu">
+            <label><input type="checkbox" name="grades" value="초1"> 초1</label>
+            <label><input type="checkbox" name="grades" value="초2"> 초2</label>
+            <label><input type="checkbox" name="grades" value="초3"> 초3</label>
+            <label><input type="checkbox" name="grades" value="초4"> 초4</label>
+            <label><input type="checkbox" name="grades" value="초5"> 초5</label>
+            <label><input type="checkbox" name="grades" value="초6"> 초6</label>
+            <label><input type="checkbox" name="grades" value="중1"> 중1</label>
+            <label><input type="checkbox" name="grades" value="중2"> 중2</label>
+            <label><input type="checkbox" name="grades" value="중3"> 중3</label>
+            <label><input type="checkbox" name="grades" value="고1"> 고1</label>
+            <label><input type="checkbox" name="grades" value="고2"> 고2</label>
+            <label><input type="checkbox" name="grades" value="고3"> 고3</label>
+            <label><input type="checkbox" name="grades" value="검정고시"> 검정고시</label>
+            </div>
+          </div>
+        </div>
+        <div class="inq-full">
+          <label>희망 과목 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label>
+          <div class="inq-dropdown">
+            <button type="button" class="inq-toggle" data-placeholder="과목을 선택해주세요"><span class="inq-label">과목을 선택해주세요</span><span class="inq-arrow">▼</span></button>
+            <div class="inq-menu">
+            <label><input type="checkbox" name="subjects" value="국어"> 국어</label>
+            <label><input type="checkbox" name="subjects" value="영어"> 영어</label>
+            <label><input type="checkbox" name="subjects" value="수학"> 수학</label>
+            <label><input type="checkbox" name="subjects" value="사회"> 사회</label>
+            <label><input type="checkbox" name="subjects" value="과학"> 과학</label>
+            <label><input type="checkbox" name="subjects" value="코딩"> 코딩</label>
+            <label><input type="checkbox" name="subjects" value="검정고시"> 검정고시</label>
+            <label><input type="checkbox" name="subjects" value="논술"> 논술</label>
+            <label><input type="checkbox" name="subjects" value="영어회화"> 영어회화</label>
+            <label><input type="checkbox" name="subjects" value="중국어"> 중국어</label>
+            <label><input type="checkbox" name="subjects" value="일본어"> 일본어</label>
+            </div>
+          </div>
+        </div>
+        <div class="inq-full">
+          <label>주소 <span class="req">*</span></label>
+          <div class="inq-addr-row">
+            <input type="text" name="address" class="inq-input" placeholder="도로명 주소 검색" readonly required>
+            <button type="button" class="inq-addr-btn" id="addrBtn">주소 검색</button>
+          </div>
+        </div>
+        <div class="inq-full">
+          <label>상세주소</label>
+          <input type="text" name="addressDetail" class="inq-input" placeholder="상세주소를 입력해주세요 (예: 101동 202호)" maxlength="100">
+        </div>
+        <div class="inq-full">
+          <label>문의사항 <span class="hint">(선택)</span></label>
+          <textarea name="message" class="inq-textarea" placeholder="궁금한 점이나 요청사항을 자유롭게 적어주세요." maxlength="1000"></textarea>
+        </div>
+        <button type="submit" class="inq-submit">체험 수업 신청하기 →</button>
+        <div id="inqFeedback" class="inq-feedback" hidden></div>
+      </form>
+    </div>
+  </section>
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script>
+  (function(){
+    var dropdowns = document.querySelectorAll('.inq-dropdown');
+    dropdowns.forEach(function(dd){
+      var btn = dd.querySelector('.inq-toggle');
+      var menu = dd.querySelector('.inq-menu');
+      var labelEl = dd.querySelector('.inq-label');
+      var placeholder = btn.getAttribute('data-placeholder');
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        dropdowns.forEach(function(o){ if(o!==dd) o.classList.remove('open'); });
+        dd.classList.toggle('open');
+      });
+      menu.addEventListener('click', function(e){ e.stopPropagation(); });
+      menu.addEventListener('change', function(){
+        var checked = menu.querySelectorAll('input:checked');
+        var values = Array.prototype.map.call(checked, function(i){return i.value;});
+        if(values.length){
+          labelEl.textContent = values.join(', ');
+          btn.classList.add('has-value');
+        } else {
+          labelEl.textContent = placeholder;
+          btn.classList.remove('has-value');
+        }
+      });
+    });
+    document.addEventListener('click', function(){
+      dropdowns.forEach(function(o){ o.classList.remove('open'); });
+    });
+
+    var addrBtn = document.getElementById('addrBtn');
+    if(addrBtn) addrBtn.addEventListener('click', function(){
+      if(typeof daum === 'undefined'){ alert('주소 검색 스크립트 로드 실패. 페이지를 새로고침해주세요.'); return; }
+      new daum.Postcode({
+        oncomplete: function(d){
+          var f = document.getElementById('inquiryForm');
+          f.address.value = d.roadAddress || d.jibunAddress || '';
+          f.addressDetail.focus();
+        }
+      }).open();
+    });
+
+    var form = document.getElementById('inquiryForm');
+    var fb = document.getElementById('inqFeedback');
+    function showFb(t, m){ fb.className = 'inq-feedback '+t; fb.textContent = m; fb.hidden = false; setTimeout(function(){ fb.hidden = true; }, 6000); }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var submitBtn = form.querySelector('.inq-submit');
+      var grades = Array.prototype.map.call(form.querySelectorAll('[name=grades]:checked'), function(i){return i.value;});
+      var subjects = Array.prototype.map.call(form.querySelectorAll('[name=subjects]:checked'), function(i){return i.value;});
+      var data = {
+        name: form.name.value.trim(),
+        phone: form.phone.value.trim(),
+        grades: grades,
+        subjects: subjects,
+        address: form.address.value.trim(),
+        addressDetail: form.addressDetail.value.trim(),
+        message: form.message.value.trim()
+      };
+      if(!data.name) return showFb('err', '학생 이름을 입력해주세요.');
+      if(!data.phone || !/^[0-9\-\s]{9,20}$/.test(data.phone)) return showFb('err', '올바른 연락처를 입력해주세요.');
+      if(!grades.length) return showFb('err', '학년을 선택해주세요.');
+      if(!subjects.length) return showFb('err', '희망 과목을 선택해주세요.');
+      if(!data.address) return showFb('err', '주소를 입력해주세요.');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '전송 중...';
+      fetch('/api/inquiry', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      }).then(function(r){ return r.json().then(function(j){ return {ok: r.ok, data: j}; }).catch(function(){ return {ok: r.ok, data: {} }; }); })
+        .then(function(res){
+          if(res.ok && res.data.success){
+            showFb('ok', '✅ 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+            form.reset();
+            dropdowns.forEach(function(dd){
+              var b = dd.querySelector('.inq-toggle');
+              var l = dd.querySelector('.inq-label');
+              l.textContent = b.getAttribute('data-placeholder');
+              b.classList.remove('has-value');
+            });
+          } else {
+            showFb('err', (res.data && res.data.error) || '전송 실패. 잠시 후 다시 시도해주세요.');
+          }
+        })
+        .catch(function(){ showFb('err', '네트워크 오류. 잠시 후 다시 시도해주세요.'); })
+        .then(function(){ submitBtn.disabled = false; submitBtn.textContent = '체험 수업 신청하기 →'; });
+    });
+  })();
+  </script>
+`;}
+function renderInquiryPage(){
+  return `<!DOCTYPE html><html lang="ko"><head>
+${commonHead('체험 수업 신청 - 무료 상담 | 안하니', '과외안하니 체험 수업 및 무료 상담 신청 페이지. 학생 정보와 희망 과목, 주소를 남겨주시면 빠르게 연락드립니다.', 'https://anhani.com/체험신청')}
+<style>${commonStyles()}.inquiry-section{min-height:calc(100vh - 200px)}</style></head><body>
+${navHTML('')}
+${inquiryBlock()}
+${footerHTML()}
+</body></html>`;
+}
 function renderHomepage() {
   let totalLocations = 0;
   for (const districts of Object.values(REGIONS)) totalLocations += districts.length;
@@ -885,7 +1068,7 @@ function renderHomepage() {
           <p class="slide1-subtext">학습 루틴부터 환경까지 설계하는</p>
           <p class="slide1-subtext"><strong>빈틈 없는 맞춤 관리</strong>로 확실한 성적 반전을 만듭니다.</p>
           <div class="slide1-btns">
-            <a href="/#inquiry" class="slide-btn">무료 상담 신청 →</a>
+            <a href="/체험신청" class="slide-btn">무료 상담 신청 →</a>
             <a href="/서비스" class="slide-btn-outline">서비스 더 알아보기</a>
           </div>
           <div class="slide1-stats-row">
@@ -1110,179 +1293,6 @@ function renderHomepage() {
     </div>
     <div class="subjects-grid">${subjectCards}</div>
   </section>
-  <!-- 체험 수업 신청 섹션 -->
-  <section class="inquiry-section" id="inquiry">
-    <div class="inquiry-inner">
-      <h2 class="inquiry-title">체험 수업<em>신청하기</em></h2>
-      <p class="inquiry-desc">궁금하신 점이나 체험 수업 문의, 무엇이든 남겨주세요.<br>내용 확인 후 빠르게 연락드립니다.</p>
-      <div class="inquiry-contact">
-        <a href="tel:010-6850-1420" class="inq-phone"><span class="ic">📞</span> 010-6850-1420</a>
-        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" rel="noopener" class="inq-kakao">💬 카카오 채널 상담</a>
-      </div>
-      <form id="inquiryForm" class="inquiry-form" novalidate>
-        <div class="inq-row">
-          <div class="inq-col">
-            <label>학생 이름 <span class="req">*</span></label>
-            <input type="text" name="name" class="inq-input" placeholder="이름을 입력해주세요" required maxlength="30">
-          </div>
-          <div class="inq-col">
-            <label>상담받으실 연락처 <span class="req">*</span></label>
-            <input type="tel" name="phone" class="inq-input" placeholder="010-0000-0000" required maxlength="20">
-          </div>
-        </div>
-        <div class="inq-full">
-          <label>학년 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label>
-          <div class="inq-dropdown">
-            <button type="button" class="inq-toggle" data-placeholder="학년을 선택해주세요"><span class="inq-label">학년을 선택해주세요</span><span class="inq-arrow">▼</span></button>
-            <div class="inq-menu">
-            <label><input type="checkbox" name="grades" value="초1"> 초1</label>
-            <label><input type="checkbox" name="grades" value="초2"> 초2</label>
-            <label><input type="checkbox" name="grades" value="초3"> 초3</label>
-            <label><input type="checkbox" name="grades" value="초4"> 초4</label>
-            <label><input type="checkbox" name="grades" value="초5"> 초5</label>
-            <label><input type="checkbox" name="grades" value="초6"> 초6</label>
-            <label><input type="checkbox" name="grades" value="중1"> 중1</label>
-            <label><input type="checkbox" name="grades" value="중2"> 중2</label>
-            <label><input type="checkbox" name="grades" value="중3"> 중3</label>
-            <label><input type="checkbox" name="grades" value="고1"> 고1</label>
-            <label><input type="checkbox" name="grades" value="고2"> 고2</label>
-            <label><input type="checkbox" name="grades" value="고3"> 고3</label>
-            <label><input type="checkbox" name="grades" value="검정고시"> 검정고시</label>
-            </div>
-          </div>
-        </div>
-        <div class="inq-full">
-          <label>희망 과목 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label>
-          <div class="inq-dropdown">
-            <button type="button" class="inq-toggle" data-placeholder="과목을 선택해주세요"><span class="inq-label">과목을 선택해주세요</span><span class="inq-arrow">▼</span></button>
-            <div class="inq-menu">
-            <label><input type="checkbox" name="subjects" value="국어"> 국어</label>
-            <label><input type="checkbox" name="subjects" value="영어"> 영어</label>
-            <label><input type="checkbox" name="subjects" value="수학"> 수학</label>
-            <label><input type="checkbox" name="subjects" value="사회"> 사회</label>
-            <label><input type="checkbox" name="subjects" value="과학"> 과학</label>
-            <label><input type="checkbox" name="subjects" value="코딩"> 코딩</label>
-            <label><input type="checkbox" name="subjects" value="검정고시"> 검정고시</label>
-            <label><input type="checkbox" name="subjects" value="논술"> 논술</label>
-            <label><input type="checkbox" name="subjects" value="영어회화"> 영어회화</label>
-            <label><input type="checkbox" name="subjects" value="중국어"> 중국어</label>
-            <label><input type="checkbox" name="subjects" value="일본어"> 일본어</label>
-            </div>
-          </div>
-        </div>
-        <div class="inq-full">
-          <label>주소 <span class="req">*</span></label>
-          <div class="inq-addr-row">
-            <input type="text" name="address" class="inq-input" placeholder="도로명 주소 검색" readonly required>
-            <button type="button" class="inq-addr-btn" id="addrBtn">주소 검색</button>
-          </div>
-        </div>
-        <div class="inq-full">
-          <label>상세주소</label>
-          <input type="text" name="addressDetail" class="inq-input" placeholder="상세주소를 입력해주세요 (예: 101동 202호)" maxlength="100">
-        </div>
-        <div class="inq-full">
-          <label>문의사항 <span class="hint">(선택)</span></label>
-          <textarea name="message" class="inq-textarea" placeholder="궁금한 점이나 요청사항을 자유롭게 적어주세요." maxlength="1000"></textarea>
-        </div>
-        <button type="submit" class="inq-submit">체험 수업 신청하기 →</button>
-        <div id="inqFeedback" class="inq-feedback" hidden></div>
-      </form>
-    </div>
-  </section>
-  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script>
-  (function(){
-    var dropdowns = document.querySelectorAll('.inq-dropdown');
-    dropdowns.forEach(function(dd){
-      var btn = dd.querySelector('.inq-toggle');
-      var menu = dd.querySelector('.inq-menu');
-      var labelEl = dd.querySelector('.inq-label');
-      var placeholder = btn.getAttribute('data-placeholder');
-      btn.addEventListener('click', function(e){
-        e.stopPropagation();
-        dropdowns.forEach(function(o){ if(o!==dd) o.classList.remove('open'); });
-        dd.classList.toggle('open');
-      });
-      menu.addEventListener('click', function(e){ e.stopPropagation(); });
-      menu.addEventListener('change', function(){
-        var checked = menu.querySelectorAll('input:checked');
-        var values = Array.prototype.map.call(checked, function(i){return i.value;});
-        if(values.length){
-          labelEl.textContent = values.join(', ');
-          btn.classList.add('has-value');
-        } else {
-          labelEl.textContent = placeholder;
-          btn.classList.remove('has-value');
-        }
-      });
-    });
-    document.addEventListener('click', function(){
-      dropdowns.forEach(function(o){ o.classList.remove('open'); });
-    });
-
-    var addrBtn = document.getElementById('addrBtn');
-    if(addrBtn) addrBtn.addEventListener('click', function(){
-      if(typeof daum === 'undefined'){ alert('주소 검색 스크립트 로드 실패. 페이지를 새로고침해주세요.'); return; }
-      new daum.Postcode({
-        oncomplete: function(d){
-          var f = document.getElementById('inquiryForm');
-          f.address.value = d.roadAddress || d.jibunAddress || '';
-          f.addressDetail.focus();
-        }
-      }).open();
-    });
-
-    var form = document.getElementById('inquiryForm');
-    var fb = document.getElementById('inqFeedback');
-    function showFb(t, m){ fb.className = 'inq-feedback '+t; fb.textContent = m; fb.hidden = false; setTimeout(function(){ fb.hidden = true; }, 6000); }
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var submitBtn = form.querySelector('.inq-submit');
-      var grades = Array.prototype.map.call(form.querySelectorAll('[name=grades]:checked'), function(i){return i.value;});
-      var subjects = Array.prototype.map.call(form.querySelectorAll('[name=subjects]:checked'), function(i){return i.value;});
-      var data = {
-        name: form.name.value.trim(),
-        phone: form.phone.value.trim(),
-        grades: grades,
-        subjects: subjects,
-        address: form.address.value.trim(),
-        addressDetail: form.addressDetail.value.trim(),
-        message: form.message.value.trim()
-      };
-      if(!data.name) return showFb('err', '학생 이름을 입력해주세요.');
-      if(!data.phone || !/^[0-9\-\s]{9,20}$/.test(data.phone)) return showFb('err', '올바른 연락처를 입력해주세요.');
-      if(!grades.length) return showFb('err', '학년을 선택해주세요.');
-      if(!subjects.length) return showFb('err', '희망 과목을 선택해주세요.');
-      if(!data.address) return showFb('err', '주소를 입력해주세요.');
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = '전송 중...';
-      fetch('/api/inquiry', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-      }).then(function(r){ return r.json().then(function(j){ return {ok: r.ok, data: j}; }).catch(function(){ return {ok: r.ok, data: {} }; }); })
-        .then(function(res){
-          if(res.ok && res.data.success){
-            showFb('ok', '✅ 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
-            form.reset();
-            dropdowns.forEach(function(dd){
-              var b = dd.querySelector('.inq-toggle');
-              var l = dd.querySelector('.inq-label');
-              l.textContent = b.getAttribute('data-placeholder');
-              b.classList.remove('has-value');
-            });
-          } else {
-            showFb('err', (res.data && res.data.error) || '전송 실패. 잠시 후 다시 시도해주세요.');
-          }
-        })
-        .catch(function(){ showFb('err', '네트워크 오류. 잠시 후 다시 시도해주세요.'); })
-        .then(function(){ submitBtn.disabled = false; submitBtn.textContent = '체험 수업 신청하기 →'; });
-    });
-  })();
-  </script>
 
   ${footerHTML()}
 </body>
@@ -1399,7 +1409,7 @@ function renderSigunguDetail(sido, sigungu, cat, val) {
     <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}</div>
     <div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s,'과목',sc[s]]),...LVLS.map(l=>[l,'학년',lc[l]])].map(a=>`<a href="${bp}/${a[1]}/${e(a[0])}" class="dc-xc" style="--c:${a[2]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}과외</span></a>`).join('')}</div></div>
     <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="/#inquiry" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -1549,7 +1559,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     <div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div>
     <div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div>
     <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="/#inquiry" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -1976,7 +1986,7 @@ function renderSubjectDetail(subject) {
     <div class="sd-cta">
       <h3>${subject} 맞춤 과외 상담</h3>
       <p>${subject} 전문 선생님을 무료로 매칭해 드립니다</p>
-      <a href="/#inquiry">무료 상담 신청 →</a>
+      <a href="/체험신청">무료 상담 신청 →</a>
     </div>
   </div>
   ${footerHTML()}
@@ -2184,7 +2194,7 @@ function renderGedKeywordArticle(subject, idx, title) {
     <div class="gk-cta">
       <h3>검정고시 전문 과외 상담</h3>
       <p>1:1 맞춤 커리큘럼으로 단기 합격을 실현하세요</p>
-      <a href="/#inquiry">무료 상담 신청 →</a>
+      <a href="/체험신청">무료 상담 신청 →</a>
     </div>
     <div class="gk-related">
       <h3>검정고시 가이드 더보기</h3>
@@ -2246,7 +2256,7 @@ function renderSubjectArticle(subject, articleIdx) {
     <div class="sa-cta">
       <h3>${subject} 전문 과외 상담</h3>
       <p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p>
-      <a href="/#inquiry">무료 상담 신청 →</a>
+      <a href="/체험신청">무료 상담 신청 →</a>
     </div>
     <div class="sa-related">
       <h3>${subject} 학습 가이드 더보기</h3>
@@ -2552,7 +2562,7 @@ function renderGradeSubjectPage(school, grade, subject) {
     <div class="gs-cta">
       <h3>${gradeLabel} ${subject} 맞춤 과외 상담</h3>
       <p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p>
-      <a href="/#inquiry">무료 상담 신청 →</a>
+      <a href="/체험신청">무료 상담 신청 →</a>
     </div>
   </div>
   ${footerHTML()}
@@ -2787,7 +2797,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
       <h3>${gradeLabel} ${subject} 무료 상담</h3>
       <p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p>
       <div class="ka-cta-btns">
-        <a href="/#inquiry" class="ka-cta-btn ka-cta-primary">무료 상담 신청</a>
+        <a href="/체험신청" class="ka-cta-btn ka-cta-primary">무료 상담 신청</a>
         <a href="tel:010-6850-1420" class="ka-cta-btn ka-cta-secondary">010-6850-1420</a>
       </div>
     </div>
@@ -2914,7 +2924,7 @@ function renderAcademyList() {
           (schools ? '<div class="ac-card-schools">' + schools + '</div>' : '<div style="flex:1"></div>') +
           '<div class="ac-card-bottom">' +
             '<a href="' + detailUrl + '" class="ac-card-btn ac-btn-detail">📄 상세보기</a>' +
-            '<a href="/#inquiry" class="ac-card-btn ac-btn-consult">💬 상담</a>' +
+            '<a href="/체험신청" class="ac-card-btn ac-btn-consult">💬 상담</a>' +
           '</div>' +
         '</div>';
       }).join('');
@@ -3018,7 +3028,7 @@ function renderAcademyDetail(center) {
       <h1>${c.r} ${sigungu} ${(c.s||[]).join(' · ')} 학원 | ${fullName}</h1>
       <p class="ad-hero-addr">${c.a}</p>
       <div class="ad-hero-btns">
-        <a href="/#inquiry" class="ad-hero-btn ad-btn-primary">무료 상담 신청</a>
+        <a href="/체험신청" class="ad-hero-btn ad-btn-primary">무료 상담 신청</a>
         <a href="tel:010-6850-1420" class="ad-hero-btn ad-btn-secondary">010-6850-1420</a>
       </div>
     </div>
@@ -3109,7 +3119,7 @@ function renderAcademyDetail(center) {
       <p>${c.r} ${sigungu} · 초·중·고 ${(c.s||[]).join('·')} 1:1 코칭 · 첫 수업 무료</p>
       <div class="ad-cta-btns">
         <a href="tel:010-6850-1420" class="ad-cta-btn ad-cta-phone">010-6850-1420</a>
-        <a href="/#inquiry" class="ad-cta-btn ad-cta-form">무료 상담 신청</a>
+        <a href="/체험신청" class="ad-cta-btn ad-cta-form">무료 상담 신청</a>
       </div>
     </div>
   </div>
@@ -3228,7 +3238,7 @@ function renderSchoolSubjectAcademy(center, schoolName, subject) {
       <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
       <div class="scb">
         <a href="tel:010-6850-1420" class="scbt scp">010-6850-1420</a>
-        <a href="/#inquiry" class="scbt scf">무료 상담 신청</a>
+        <a href="/체험신청" class="scbt scf">무료 상담 신청</a>
       </div>
     </div>
   </div>
@@ -3331,7 +3341,7 @@ function renderRegionSubjectAcademy(center, region, subject) {
       <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
       <div class="scb">
         <a href="tel:010-6850-1420" class="scbt scp">010-6850-1420</a>
-        <a href="/#inquiry" class="scbt scf">무료 상담 신청</a>
+        <a href="/체험신청" class="scbt scf">무료 상담 신청</a>
       </div>
     </div>
   </div>
@@ -3453,7 +3463,7 @@ function renderContactPage() {
   <script>
     function submitContact(e) {
       e.preventDefault();
-      window.open('/#inquiry', '_blank');
+      window.open('/체험신청', '_blank');
       return false;
     }
   </script>
@@ -3507,7 +3517,7 @@ function renderGradePage(school, grade) {
     <div class="gd-cta">
       <h3>${gradeLabel} 맞춤 과외 상담</h3>
       <p>우리 아이에게 딱 맞는 선생님을 무료로 매칭해 드립니다</p>
-      <a href="/#inquiry">무료 상담 신청 →</a>
+      <a href="/체험신청">무료 상담 신청 →</a>
     </div>
   </div>
   ${footerHTML()}
@@ -3707,7 +3717,7 @@ function renderConversationPage(lang) {
         <h1 class="cv-title"><em>${d.name} 회화</em> 수업</h1>
         <p class="cv-desc">${d.desc}</p>
         <div class="cv-btns">
-          <a href="/#inquiry" class="cv-btn cv-btn-primary">⭐ 무료 체험</a>
+          <a href="/체험신청" class="cv-btn cv-btn-primary">⭐ 무료 체험</a>
           <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="cv-btn cv-btn-secondary">💬 카톡 상담</a>
         </div>
       </div>
@@ -3846,7 +3856,7 @@ function renderChineseArticle(articleIdx) {
       <h3>🇨🇳 중국어 무료 체험 수업</h3>
       <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
       <div class="ca-cta-btns">
-        <a href="/#inquiry" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
+        <a href="/체험신청" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
         <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
       </div>
     </div>
@@ -3946,7 +3956,7 @@ function renderJapaneseArticle(articleIdx) {
       <h3>🇯🇵 일본어 무료 체험 수업</h3>
       <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
       <div class="ca-cta-btns">
-        <a href="/#inquiry" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
+        <a href="/체험신청" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
         <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
       </div>
     </div>
@@ -4041,7 +4051,7 @@ function renderEnglishArticle(articleIdx) {
       <h3>🇺🇸 영어 회화 무료 체험 수업</h3>
       <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
       <div class="ca-cta-btns">
-        <a href="/#inquiry" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
+        <a href="/체험신청" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
         <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
       </div>
     </div>
@@ -4193,7 +4203,7 @@ function renderGuideArticle(idx) {
     <div class="ga-cta">
       <h3>1:1 맞춤 과외로 확실하게</h3>
       <p>전문 선생님과 함께 체계적으로 학습하세요</p>
-      <a href="/#inquiry">⭐ 무료 체험</a>
+      <a href="/체험신청">⭐ 무료 체험</a>
       <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a>
     </div>
     <div class="ga-related">
@@ -4217,7 +4227,7 @@ function renderServicePage() {
       <h1>아이의 성적을<br><em>확실하게</em> 바꾸는 방법</h1>
       <p class="sv-hero-desc">수준별 맞춤 수업부터 내신·수능 완벽 대비,<br>올바른 학습습관 형성까지. 과외안하니가 책임집니다.</p>
       <div class="sv-hero-btns">
-        <a href="/#inquiry" class="sv-hero-btn sv-btn-primary">무료 상담 신청 →</a>
+        <a href="/체험신청" class="sv-hero-btn sv-btn-primary">무료 상담 신청 →</a>
         <a href="tel:010-6850-1420" class="sv-hero-btn sv-btn-secondary">📞 010-6850-1420</a>
       </div>
       <div class="sv-hero-stats">
@@ -4303,7 +4313,7 @@ function renderServicePage() {
             <li>✅ 학부모 주간 리포트</li>
             <li>✅ 첫 수업 무료 체험</li>
           </ul>
-          <a href="/#inquiry" class="sv-price-btn" style="background:#dbeafe;color:#1d4ed8">무료 상담 신청</a>
+          <a href="/체험신청" class="sv-price-btn" style="background:#dbeafe;color:#1d4ed8">무료 상담 신청</a>
         </div>
         <div class="sv-price-card featured">
           <div class="sv-price-badge" style="background:#6366f1;color:#fff">인기</div>
@@ -4316,7 +4326,7 @@ function renderServicePage() {
             <li>✅ 서술형 집중 훈련</li>
             <li>✅ 시험 전 추가 수업</li>
           </ul>
-          <a href="/#inquiry" class="sv-price-btn" style="background:#6366f1;color:#fff">무료 상담 신청</a>
+          <a href="/체험신청" class="sv-price-btn" style="background:#6366f1;color:#fff">무료 상담 신청</a>
         </div>
         <div class="sv-price-card">
           <div class="sv-price-badge" style="background:#fef3c7;color:#b45309">고등</div>
@@ -4329,7 +4339,7 @@ function renderServicePage() {
             <li>✅ 입시 전략 컨설팅</li>
             <li>✅ 모의고사 분석 리포트</li>
           </ul>
-          <a href="/#inquiry" class="sv-price-btn" style="background:#fef3c7;color:#b45309">무료 상담 신청</a>
+          <a href="/체험신청" class="sv-price-btn" style="background:#fef3c7;color:#b45309">무료 상담 신청</a>
         </div>
       </div>
     </div>
@@ -4351,7 +4361,7 @@ function renderServicePage() {
           <h4>카카오톡 상담 (ID: kdy5592)</h4>
           <div class="sv-contact-val">카카오톡 채팅</div>
         </a>
-        <a href="/#inquiry" class="sv-contact-card" style="text-decoration:none">
+        <a href="/체험신청" class="sv-contact-card" style="text-decoration:none">
           <div class="sv-contact-icon">📝</div>
           <h4>무료 상담 신청</h4>
           <div class="sv-contact-val">온라인 신청서</div>
@@ -4374,7 +4384,7 @@ function renderVideoLesson() {
     <div class="vl-hero">
       <h1 class="vl-title">전국 어디서나<br><em>1:1 화상 과외</em></h1>
       <p class="vl-desc">거리 제한 없이 전국 최고의 선생님과<br>실시간으로 수업받을 수 있습니다.</p>
-      <a href="/#inquiry" class="vl-btn">무료 체험 신청 →</a>
+      <a href="/체험신청" class="vl-btn">무료 체험 신청 →</a>
     </div>
     <div class="vl-section">
       <h2>화상수업 진행 과정</h2>
@@ -4408,7 +4418,7 @@ function renderStudyAbroad() {
     <div class="ab-hero">
       <h1 class="ab-title">꿈을 향한 <em>해외 유학</em></h1>
       <p class="ab-desc">미국, 영국, 캐나다, 호주 등 해외 유학 준비를 도와드립니다</p>
-      <a href="/#inquiry" class="ab-btn">유학 상담 신청 →</a>
+      <a href="/체험신청" class="ab-btn">유학 상담 신청 →</a>
     </div>
     <div class="ab-grid">
       <div class="ab-card"><div class="ab-card-flag">🇺🇸</div><h3>미국 유학</h3><p>아이비리그, 주립대</p></div>
@@ -4699,7 +4709,7 @@ function renderSchoolDetail(level, idx) {
         <h4>${sn} 맞춤 과외, 지금 상담받으세요</h4>
         <p>학교별 시험 경향을 아는 선생님과 1:1로 매칭해 드립니다</p>
         <div class="sd-cta-btns">
-          <a href="/#inquiry" class="sd-cta-btn">⭐ 무료 체험 신청</a>
+          <a href="/체험신청" class="sd-cta-btn">⭐ 무료 체험 신청</a>
           <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="sd-cta-btn">💬 카톡 상담</a>
         </div>
       </div>
@@ -4781,7 +4791,7 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
     <div class="sa-cta">
       <h4>${sn} 맞춤 과외 무료 상담</h4>
       <p>학교별 시험 경향을 아는 선생님과 매칭해 드립니다</p>
-      <a href="/#inquiry">⭐ 무료 체험</a>
+      <a href="/체험신청">⭐ 무료 체험</a>
       <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a>
     </div>
   </div>
@@ -5019,6 +5029,13 @@ export default {
 
     if (pathname === '/robots.txt') {
       return new Response(robotsTxt(), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+    }
+
+    if (pathname === '/체험신청' || pathname === '/inquiry' || pathname === '/무료상담' || pathname === '/무료체험'
+        || pathname === encodeURI('/체험신청') || pathname === encodeURI('/무료상담') || pathname === encodeURI('/무료체험')) {
+      return new Response(renderInquiryPage(), {
+        headers: { 'Content-Type': 'text/html;charset=utf-8' }
+      });
     }
 
     if (pathname === '/rss' || pathname === '/rss.xml' || pathname === '/feed') {
