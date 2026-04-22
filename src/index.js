@@ -657,7 +657,9 @@ function commonHead(title, description, canonical) {
   <meta property="og:url" content="${canonical}">
   <meta property="og:site_name" content="안하니">
   <meta property="og:locale" content="ko_KR">
-  <link rel="icon" type="image/png" href="data:image/png;base64,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">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="shortcut icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="${canonical}">`;
 }
 
@@ -4830,7 +4832,7 @@ export default {
           return new Response(JSON.stringify({error: '서버 설정 오류 (API 키 미설정)'}), { status: 500, headers: {'Content-Type': 'application/json'} });
         }
         const fromAddr = (env && env.RESEND_FROM) || 'onboarding@resend.dev';
-        const toAddr = (env && env.INQUIRY_TO) || 'nande5059@naver.com';
+        const toAddr = (env && env.INQUIRY_TO) || 'a01048275592@gmail.com';
         const nowKST = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
 
         const htmlBody = `<div style="font-family:-apple-system,'Noto Sans KR',sans-serif;max-width:640px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
@@ -5036,6 +5038,19 @@ export default {
         || pathname === encodeURI('/체험신청') || pathname === encodeURI('/무료상담') || pathname === encodeURI('/무료체험')) {
       return new Response(renderInquiryPage(), {
         headers: { 'Content-Type': 'text/html;charset=utf-8' }
+      });
+    }
+
+    if (pathname === '/favicon.ico' || pathname === '/favicon.png' || pathname === '/apple-touch-icon.png' || pathname === '/apple-touch-icon-precomposed.png') {
+      const b64 = LOGO_URI.split(',')[1];
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new Response(bytes, {
+        headers: {
+          'Content-Type': 'image/png',
+          'Cache-Control': 'public, max-age=604800'
+        }
       });
     }
 
