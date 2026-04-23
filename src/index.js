@@ -711,15 +711,19 @@ function commonStyles() {
     .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px 24px; border-top: 1px solid #1e293b; font-size: 12px; color: #475569; }
 
     @media (max-width: 768px) {
-      .footer-main { flex-direction: column; text-align: center; gap: 24px; }
-      .footer-right { text-align: center; }
+      .footer-main { flex-direction: column; text-align: left; gap: 24px; }
+      .footer-right { text-align: left; }
       .footer-phone { font-size: 26px; }
-      .footer-bottom { text-align: center; }
+      .footer-bottom { text-align: left; }
     }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .mobile-menu { display: block; }
+      .nav-visitor { gap: 3px; padding: 3px 8px; border-radius: 5px; }
+      .nav-visitor-label { font-size: 8px; }
+      .nav-visitor-num { font-size: 12px; }
+      .nav-visitor-unit { font-size: 8px; }
     }
 
     /* 플로팅 CTA 버튼 (모든 페이지 공통) */
