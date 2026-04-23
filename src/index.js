@@ -671,7 +671,7 @@ function commonStyles() {
 
     /* 네비게이션 */
     .nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
-    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-inner { max-width: 1600px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
     .nav-logo { text-decoration: none; display: flex; align-items: center; }
     .nav-logo-img { height: 42px; width: auto; }
     .nav-logo-text { font-size: 20px; font-weight: 900; color: #1e293b; margin-left: 10px; white-space: nowrap; line-height: 1.2; }
