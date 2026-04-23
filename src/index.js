@@ -701,10 +701,6 @@ function commonStyles() {
     .footer-notice-icon { color: #f59e0b; margin-right: 6px; }
     .footer-main { max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: flex; align-items: flex-start; justify-content: space-between; }
     .footer-left { }
-    .footer-service { }
-    .footer-service h4 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 14px; }
-    .footer-service a { display: block; color: #94a3b8; font-size: 14px; text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
-    .footer-service a:hover { color: #fff; }
     .footer-logo { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px; }
     .footer-desc { font-size: 14px; color: #64748b; line-height: 1.7; }
     .footer-right { text-align: right; }
@@ -811,13 +807,6 @@ function footerHTML() {
       <div class="footer-left">
         <div class="footer-logo"><img src="${FOOTER_LOGO_URI}" alt="과외안하니" style="height:52px; border-radius:8px;"></div>
         <p class="footer-desc">유아부터 성인까지<br>1:1 실시간 맞춤 수업 진행</p>
-      </div>
-      <div class="footer-service">
-        <h4>서비스</h4>
-        <a href="/">홈</a>
-        <a href="/과목별">과목별 과외</a>
-        <a href="/지역별">지역별 과외</a>
-        <a href="/체험신청">무료 상담</a>
       </div>
       <div class="footer-right">
         <div class="footer-phone-label">무료 상담 전화</div>
