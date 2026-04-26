@@ -2355,6 +2355,30 @@ function renderLevelList() {
 
   const popularSidos = ['서울특별시', '경기도', '부산광역시', '인천광역시', '대구광역시', '대전광역시'];
 
+  // 초등학교 카드 (별도 - 중·고와 무관)
+  const elemCard = (() => {
+    const sidoToShort = {'서울특별시':'서울','경기도':'경기','부산광역시':'부산','인천광역시':'인천','대구광역시':'대구','대전광역시':'대전'};
+    const popularBtns = popularSidos.map(sd => {
+      const sdShort = sidoToShort[sd];
+      if (!sdShort || !REGIONS[sdShort]) return '';
+      const cnt = REGIONS[sdShort].length;
+      return `<a href="/학교급별/elem/${encodeURIComponent(sdShort)}" class="lv-sido-btn" style="--gc:#0ea5e9;--gbg:#e0f2fe">${sdShort} <span class="lv-sido-cnt">${cnt}개구</span></a>`;
+    }).filter(Boolean).join('');
+    return `<div class="lv-school-card" style="border-top:4px solid #0ea5e9">
+      <div class="lv-sc-header">
+        <span class="lv-sc-icon">📖</span>
+        <div>
+          <h3>초등학교 과외 <span class="lv-sc-count">전국 17개 시도</span></h3>
+          <p>학습 습관과 기초 실력을 다지는 가장 중요한 시기입니다. 학년별 발달 단계와 학교 진도에 맞춘 1:1 맞춤 과외가 평생 학습 태도를 결정합니다.</p>
+        </div>
+      </div>
+      <div class="lv-sido-grid">${popularBtns}</div>
+      <div class="lv-card-actions">
+        <a href="/학교급별/elem" class="lv-cta-btn" style="background:#0ea5e9">전국 초등학교 전체 보기 →</a>
+      </div>
+    </div>`;
+  })();
+
   const levelData = [
     {key:"middle", short:"중", name:"중학교", color:"#8b5cf6", bg:"#f5f3ff", icon:"📚",
      desc:"내신 대비가 본격화되는 시기입니다. 학교별 시험 경향과 출제 스타일에 맞춘 맞춤 과외가 성적을 좌우합니다.",
@@ -2390,11 +2414,11 @@ function renderLevelList() {
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead('학교별 과외 - 중·고등학교 맞춤 과외 | 과외안하니', '전국 중학교·고등학교별 맞춤 과외 정보. 우리 학교 시험 경향과 내신 특성을 꿰뚫는 과외 선생님을 찾아보세요.', 'https://anhani.com/학교급별')}
+  ${commonHead('학교별 과외 - 초·중·고등학교 맞춤 과외 | 과외안하니', '전국 초등·중학교·고등학교별 맞춤 과외 정보. 우리 학교 시험 경향과 내신 특성을 꿰뚫는 과외 선생님을 찾아보세요.', 'https://anhani.com/학교급별')}
   <style>${commonStyles()}.lv-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#312e81 100%);color:#fff;padding:56px 24px 48px;text-align:center}.lv-hero h1{font-size:34px;font-weight:900;margin-bottom:10px}.lv-hero h1 em{font-style:normal;color:#818cf8}.lv-hero p{font-size:16px;color:#94a3b8}.lv-wrap{max-width:960px;margin:0 auto;padding:40px 24px 80px}.lv-school-card{background:#fff;border-radius:16px;padding:28px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.04)}.lv-sc-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}.lv-sc-icon{font-size:36px;flex-shrink:0}.lv-sc-header h3{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.lv-sc-count{font-size:13px;font-weight:600;color:#6366f1;background:#eef2ff;padding:3px 10px;border-radius:12px}.lv-sc-header p{font-size:14px;color:#64748b;line-height:1.6}.lv-sido-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:18px}.lv-sido-btn{padding:11px 14px;border-radius:10px;background:var(--gbg);color:var(--gc);font-size:14px;font-weight:700;text-decoration:none;transition:.2s;border:1.5px solid transparent;display:flex;justify-content:space-between;align-items:center}.lv-sido-btn:hover{border-color:var(--gc);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06)}.lv-sido-cnt{font-size:11px;opacity:.7}.lv-card-actions{padding-top:16px;border-top:1px solid #f1f5f9}.lv-cta-btn{display:inline-block;padding:12px 24px;color:#fff;font-size:14px;font-weight:700;border-radius:10px;text-decoration:none;transition:.2s}.lv-cta-btn:hover{transform:translateY(-2px);opacity:.92}@media (max-width:640px){.lv-hero h1{font-size:26px}.lv-sido-btn{padding:9px 12px;font-size:13px}}</style></head><body>
   ${navHTML('region')}
-  <div class="lv-hero"><h1>학교별 <em>맞춤 과외</em></h1><p>전국 중·고등학교, 우리 학교에 딱 맞는 과외를 찾아보세요</p></div>
-  <div class="lv-wrap">${levelCards}</div>
+  <div class="lv-hero"><h1>학교별 <em>맞춤 과외</em></h1><p>전국 초·중·고등학교, 우리 학교에 딱 맞는 과외를 찾아보세요</p></div>
+  <div class="lv-wrap">${elemCard}${levelCards}</div>
   ${footerHTML()}
   </body></html>`;
 }
