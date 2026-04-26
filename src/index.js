@@ -4459,6 +4459,34 @@ function schoolThumbSVG(school, level, idx) {
   </div>`;
 }
 
+// --- 초등학교 동적 생성 페이지 ---
+function elemCSS(){return `.sl-bcrumb{max-width:1100px;margin:24px auto 0;padding:0 24px;font-size:13px;color:#64748b}.sl-bcrumb a{color:#6366f1;text-decoration:none}.sl-hero{background:linear-gradient(135deg,#0c4a6e 0%,#0ea5e9 100%);color:#fff;padding:48px 24px;text-align:center}.sl-hero h1{font-size:30px;font-weight:900;margin-bottom:10px}.sl-hero p{font-size:15px;color:rgba(255,255,255,.9)}.sl-wrap{max-width:1100px;margin:0 auto;padding:32px 24px 80px}.sl-intro{background:#f0f9ff;border-left:4px solid #0ea5e9;padding:18px 22px;border-radius:8px;margin-bottom:28px;line-height:1.7;font-size:14px;color:#475569}.sl-section-title{font-size:20px;font-weight:800;color:#0f172a;margin:28px 0 14px}.ssd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}.ssd-card{padding:16px;background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#0f172a;text-align:center;transition:.2s}.ssd-card:hover{border-color:#0ea5e9;background:#f0f9ff;transform:translateY(-2px)}.ssd-name{font-size:15px;font-weight:700;margin-bottom:4px}.ssd-cnt{font-size:18px;font-weight:800;color:#0ea5e9}.ssd-cnt span{font-size:11px;font-weight:500;color:#64748b;margin-left:3px}.ssd-cnt-elem{font-size:12px;color:#0ea5e9;font-weight:600}.elv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-bottom:6px}.elv-btn{padding:14px 12px;background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#0f172a;font-size:14px;font-weight:600;text-align:center;transition:.2s}.elv-btn:hover{border-color:#0ea5e9;background:#f0f9ff;transform:translateY(-2px)}.elv-cta{background:#0ea5e9;color:#fff;padding:16px 24px;border-radius:10px;text-decoration:none;font-weight:700;display:inline-block;margin-top:24px}@media (max-width:640px){.sl-hero h1{font-size:22px}}`;}
+
+function renderElemMain(){
+  const sidoList=Object.keys(REGIONS);
+  const cards=sidoList.map(sd=>`<a href="/학교급별/elem/${encodeURIComponent(sd)}" class="ssd-card"><div class="ssd-name">${sd}</div><div class="ssd-cnt">${REGIONS[sd].length}<span>개 시군구</span></div></a>`).join('');
+  return `<!DOCTYPE html><html lang="ko"><head>${commonHead('전국 초등학교 과외 - 시도별 맞춤 과외 | 과외안하니','전국 초등학교 맞춤 과외 정보. 학년별 발달 단계와 학교 진도에 맞춘 1:1 과외로 학습 습관을 다지세요.','https://anhani.com/학교급별/elem')}<style>${commonStyles()}${elemCSS()}</style></head><body>${navHTML('region')}<div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별 과외</a> &gt; 초등학교</div><div class="sl-hero"><h1>전국 초등학교 과외</h1><p>17개 시도, 우리 지역 초등학생 맞춤 과외를 찾아보세요</p></div><div class="sl-wrap"><div class="sl-intro">초등학생 시기는 학습 습관과 기초 실력을 다지는 가장 중요한 시기예요. 무리한 선행보다는 학년별 발달 단계와 학교 진도에 맞춘 1:1 맞춤 과외가 평생 학습 태도를 결정합니다. 우리 지역을 선택해 시군구별 초등학교 과외 정보를 확인해 보세요.</div><h2 class="sl-section-title">📍 시도별 초등학교 과외</h2><div class="ssd-grid">${cards}</div></div>${footerHTML()}</body></html>`;
+}
+
+function renderElemSido(sidoShort){
+  if(!REGIONS[sidoShort])return null;
+  const sgList=REGIONS[sidoShort];
+  const cards=sgList.map(sg=>`<a href="/학교급별/elem/${encodeURIComponent(sidoShort)}/${encodeURIComponent(sg)}" class="ssd-card"><div class="ssd-name">${sg}</div><div class="ssd-cnt-elem">초등 과외</div></a>`).join('');
+  return `<!DOCTYPE html><html lang="ko"><head>${commonHead(`${sidoShort} 초등학교 과외 - ${sgList.length}개 시군구 | 과외안하니`,`${sidoShort} 지역 ${sgList.length}개 시군구의 초등학교 맞춤 과외 정보. 우리 동네 초등학생 1:1 과외 선생님을 찾아보세요.`,`https://anhani.com/학교급별/elem/${encodeURIComponent(sidoShort)}`)}<style>${commonStyles()}${elemCSS()}</style></head><body>${navHTML('region')}<div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별 과외</a> &gt; <a href="/학교급별/elem">초등학교</a> &gt; ${sidoShort}</div><div class="sl-hero"><h1>${sidoShort} 초등학교 과외</h1><p>${sidoShort} ${sgList.length}개 시군구 초등학생 맞춤 1:1 과외</p></div><div class="sl-wrap"><div class="sl-intro">${sidoShort} 지역은 시군구별로 학교 진도와 학습 분위기가 다릅니다. 우리 동네 초등학교의 특성을 잘 아는 선생님과의 1:1 매칭이 효과적인 학습 관리의 시작입니다. ${sidoShort} 지역 초등학생을 위한 검증된 과외 선생님을 시군구별로 만나보세요.</div><h2 class="sl-section-title">📍 ${sidoShort} 시군구별 초등학교 과외</h2><div class="ssd-grid">${cards}</div></div>${footerHTML()}</body></html>`;
+}
+
+function renderElemSigungu(sidoShort,sigungu){
+  if(!REGIONS[sidoShort]||!REGIONS[sidoShort].includes(sigungu))return null;
+  const grades=['초1','초2','초3','초4','초5','초6'];
+  const subjects=['국어','영어','수학','사회','과학','코딩','논술','한자'];
+  const gradeBtns=grades.map(g=>`<a href="/지역별/${encodeURIComponent(sidoShort)}/${encodeURIComponent(sigungu)}/학년/${encodeURIComponent(g)}" class="elv-btn">${g}</a>`).join('');
+  const subjBtns=subjects.map(s=>`<a href="/지역별/${encodeURIComponent(sidoShort)}/${encodeURIComponent(sigungu)}/과목/${encodeURIComponent(s)}" class="elv-btn">${s}</a>`).join('');
+  const dongKey=`${sidoShort} ${sigungu}`;
+  const dongs=(typeof DONG_DATA!=='undefined'&&DONG_DATA[dongKey])?DONG_DATA[dongKey].slice(0,12):[];
+  const dongBtns=dongs.length?dongs.map(d=>`<a href="/지역별/${encodeURIComponent(sidoShort)}/${encodeURIComponent(sigungu)}/${encodeURIComponent(d)}" class="elv-btn">${d}</a>`).join(''):'';
+  return `<!DOCTYPE html><html lang="ko"><head>${commonHead(`${sigungu} 초등학교 과외 - 학년별 과목별 1:1 맞춤 | 과외안하니`,`${sidoShort} ${sigungu} 초등학생을 위한 1:1 맞춤 과외. 학년별 발달 단계와 과목 특성에 맞춘 검증된 선생님 매칭.`,`https://anhani.com/학교급별/elem/${encodeURIComponent(sidoShort)}/${encodeURIComponent(sigungu)}`)}<style>${commonStyles()}${elemCSS()}</style></head><body>${navHTML('region')}<div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별 과외</a> &gt; <a href="/학교급별/elem">초등학교</a> &gt; <a href="/학교급별/elem/${encodeURIComponent(sidoShort)}">${sidoShort}</a> &gt; ${sigungu}</div><div class="sl-hero"><h1>${sigungu} 초등학교 과외</h1><p>${sigungu} 초등학생을 위한 1:1 맞춤 과외</p></div><div class="sl-wrap"><div class="sl-intro">${sigungu}는 ${sidoShort} 안에서도 초등 자녀 교육에 대한 관심이 높은 지역이에요. 초등학생 시기 1:1 과외는 단순히 성적을 올리는 것보다 학습 습관과 기초 개념을 단단히 다지는 데 초점을 맞춰야 합니다. ${sigungu} 지역 학교 진도와 시험 유형을 잘 아는 검증 선생님이 아이 페이스에 맞춰 체계적으로 관리해 드립니다.</div><h2 class="sl-section-title">📚 학년별 과외</h2><div class="elv-grid">${gradeBtns}</div><h2 class="sl-section-title">📝 과목별 과외</h2><div class="elv-grid">${subjBtns}</div>${dongBtns?`<h2 class="sl-section-title">🏘️ ${sigungu} 동별 과외</h2><div class="elv-grid">${dongBtns}</div>`:''}<a href="/체험신청" class="elv-cta">무료 체험 수업 신청하기 →</a></div>${footerHTML()}</body></html>`;
+}
+
 function renderSchoolLevelMain(level) {
   const lvName = levelName(level);
   const lvColor = levelColor(level);
@@ -5188,6 +5216,20 @@ export default {
     }
 
     const decodedPathL = decodeURIComponent(pathname);
+    if (decodedPathL === '/학교급별/elem') {
+      return new Response(renderElemMain(), {headers: {'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}});
+    }
+    const elemSidoMatch = decodedPathL.match(/^\/학교급별\/elem\/([^\/]+)$/);
+    if (elemSidoMatch) {
+      const html = renderElemSido(elemSidoMatch[1]);
+      if (html) return new Response(html, {headers: {'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}});
+    }
+    const elemSgMatch = decodedPathL.match(/^\/학교급별\/elem\/([^\/]+)\/([^\/]+)$/);
+    if (elemSgMatch) {
+      const html = renderElemSigungu(elemSgMatch[1], elemSgMatch[2]);
+      if (html) return new Response(html, {headers: {'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}});
+    }
+
     const schLvMatch = decodedPathL.match(/^\/학교급별\/(middle|high)$/);
     if (schLvMatch) {
       return new Response(renderSchoolLevelMain(schLvMatch[1]), {
