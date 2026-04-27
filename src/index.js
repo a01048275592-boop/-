@@ -3704,24 +3704,24 @@ const LANG_ROADMAP = {
 
 function renderConversationPage(lang) {
   const langData = {
-    "english": { name: "영어", flag: "🇺🇸", color: "#3b82f6", rgb: "59,130,246", bgColor: "#eff6ff", imgIdx: 1,
+    "english": { name: "영어", flag: "🇺🇸", color: "#3b82f6", rgb: "59,130,246", bgColor: "#eff6ff", img: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&q=80&auto=format&fit=crop",
       desc: "원어민 수준의 영어 회화 실력을 키우세요. 일상 회화부터 비즈니스 영어까지 1:1 맞춤 수업을 제공합니다.",
       features: ["원어민 발음 교정","비즈니스 영어 회화","토익/토플 스피킹 대비","여행 영어 회화","면접 영어 준비","영어 프레젠테이션"],
       levels: ["왕초보 (알파벳부터)","초급 (간단한 인사/자기소개)","중급 (일상 대화 가능)","중상급 (토론/의견 표현)","고급 (원어민 수준 회화)"]
     },
-    "chinese": { name: "중국어", flag: "🇨🇳", color: "#dc2626", rgb: "220,38,38", bgColor: "#fef2f2", imgIdx: 4,
+    "chinese": { name: "중국어", flag: "🇨🇳", color: "#dc2626", rgb: "220,38,38", bgColor: "#fef2f2", img: "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1200&q=80&auto=format&fit=crop",
       desc: "중국어 회화의 기초부터 고급까지, 체계적인 1:1 수업으로 실력을 키우세요. HSK 대비도 함께 진행합니다.",
       features: ["성조/발음 교정","일상 중국어 회화","비즈니스 중국어","HSK 시험 대비","중국 유학 준비","중국어 면접 대비"],
       levels: ["왕초보 (핀인부터)","초급 (간단한 인사)","중급 (일상 대화)","중상급 (HSK 4급)","고급 (HSK 5~6급)"]
     },
-    "japanese": { name: "일본어", flag: "🇯🇵", color: "#dc2626", rgb: "219,39,119", bgColor: "#fef2f2", imgIdx: 7,
+    "japanese": { name: "일본어", flag: "🇯🇵", color: "#dc2626", rgb: "219,39,119", bgColor: "#fef2f2", img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80&auto=format&fit=crop",
       desc: "일본어 회화를 즐겁게 배우세요. 히라가나부터 비즈니스 일본어까지 1:1 맞춤 수업을 진행합니다.",
       features: ["히라가나/가타카나","일상 일본어 회화","비즈니스 일본어","JLPT 시험 대비","일본 유학/취업 준비","애니메이션/드라마 회화"],
       levels: ["왕초보 (문자부터)","초급 (간단한 인사)","중급 (일상 대화)","중상급 (JLPT N2)","고급 (JLPT N1)"]
     }
   };
   const d = langData[lang] || langData["english"];
-  const heroImg = EDU_IMAGE_POOL[d.imgIdx] || EDU_IMAGE_POOL[0];
+  const heroImg = d.img;
 
   const seed = strHash(lang);
   const essentialsPool = LANG_ESSENTIALS[lang] || LANG_ESSENTIALS.english;
