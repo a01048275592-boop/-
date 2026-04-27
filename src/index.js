@@ -1,5 +1,5 @@
 const LOGO_URI = "data:image/png;base64,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";
-const FOOTER_LOGO_URI = "data:image/jpeg;base64,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";
+const FOOTER_LOGO_URI = "data:image/jpeg;base64,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";
 
 // --- 해시 함수 (결정적 랜덤) ---
 function hashCode(str) {
@@ -2992,33 +2992,84 @@ function renderAcademyDetail(center) {
   const sido = addrParts[0] || '';
   const sigungu = addrParts[1] || '';
 
+  // pickV: 학원별 시드로 변형 표현 선택
+  const pickV = (arr) => arr[Math.floor(rng() * arr.length)];
+
   const introPool = [
     `${fullName}은 ${c.r} ${sigungu}에 위치한 공식 코칭 센터입니다. ${years}년 이상의 운영 경험을 바탕으로 ${sigungu} 인근 초·중·고 학생들의 수학·영어·국어 내신 성적 향상을 전문으로 지도합니다.`,
     `${c.r} ${sigungu} 학생들의 맞춤형 학습 코칭을 제공하는 ${fullName}입니다. 개원 이래 ${counsels}건 이상의 상담을 진행하며 지역 학생들의 성적 향상에 기여하고 있습니다.`,
     `${fullName}은 ${sigungu} 지역 학부모님들의 신뢰를 받는 1:1 맞춤 학습 코칭 전문 학원입니다. 학생 개인별 학습 수준을 정밀하게 분석하고, 목표에 맞는 최적의 커리큘럼을 설계합니다.`,
+    `${c.r} ${sigungu}에서 ${years}년째 운영 중인 ${fullName}은 학생 한 명 한 명의 학습 상태를 면밀히 살펴 개인 맞춤 코칭을 진행합니다. 인근 학교의 시험 출제 경향까지 분석해 효율적인 내신 대비를 돕고 있어요.`,
+    `${fullName}은 ${sigungu} 일대 학생들에게 검증된 학습 코칭을 제공해 온 전문 학원이에요. 단순 강의가 아닌 학습 과정 전반을 관리하는 코칭형 시스템으로, ${counsels}건 이상의 상담 노하우가 쌓여 있습니다.`,
+    `${sigungu}에 자리 잡은 ${fullName}은 학원이라는 단어보다 학습 파트너에 가까운 공간이에요. 매주 학습 진행을 점검하고 부족한 부분은 즉시 보완하는 밀착 관리 방식이 특징입니다.`,
+    `${fullName}은 ${c.r} ${sigungu} 학생들이 가장 많이 선택하는 1:1 코칭 학원 중 하나예요. 학교별 시험 패턴, 학생별 약점, 학년별 진도까지 종합적으로 고려해 맞춤 커리큘럼을 만들어 드립니다.`,
   ];
-  const intro = pick(introPool, rng);
+  const intro = pickV(introPool);
 
   const featurePool = [
-    {t:'학교 기출 완벽 분석', d:'인근 학교 내신 출제 패턴을 상시 분석합니다.'},
-    {t:'3단계 코치 검증', d:'학력·경력·수업시연 3단계 심사를 통과한 코치만 배정합니다.'},
-    {t:'주간 학습 보고서', d:'매 수업 후 학습 내용을 카카오톡으로 상세히 전송합니다.'},
-    {t:'첫 수업 무료 체험', d:'첫 체험 수업은 무료, 코치 교체도 무료입니다.'},
-    {t:'AI 학습 진단', d:'입학 시 AI 기반 진단검사로 취약점을 정밀 파악합니다.'},
-    {t:'오답 관리 시스템', d:'틀린 문제를 자동 수집하여 반복 학습 자료로 제공합니다.'},
-    {t:'실시간 질의응답', d:'수업 외 시간에도 카카오톡으로 질문이 가능합니다.'},
-    {t:'자습실 제공', d:'쾌적한 자습 공간을 운영하여 학습 집중도를 높입니다.'},
+    [{t:'학교 기출 완벽 분석', d:'인근 학교 내신 출제 패턴을 상시 분석합니다.'},{t:'학교별 기출 정밀 분석', d:'인근 학교의 시험 출제 흐름을 꾸준히 추적합니다.'}],
+    [{t:'3단계 코치 검증', d:'학력·경력·수업시연 3단계 심사를 통과한 코치만 배정합니다.'},{t:'엄격한 코치 심사', d:'전공·실력·인성 평가를 거쳐 검증된 강사만 학생과 매칭합니다.'}],
+    [{t:'주간 학습 보고서', d:'매 수업 후 학습 내용을 카카오톡으로 상세히 전송합니다.'},{t:'학부모 소통 채널', d:'수업 진행 상황을 정기 리포트로 공유해 안심 관리합니다.'}],
+    [{t:'첫 수업 무료 체험', d:'첫 체험 수업은 무료, 코치 교체도 무료입니다.'},{t:'무료 체험 수업', d:'부담 없이 시작하실 수 있도록 첫 수업과 코치 교체가 무료입니다.'}],
+    [{t:'AI 학습 진단', d:'입학 시 AI 기반 진단검사로 취약점을 정밀 파악합니다.'},{t:'개인 맞춤 진단검사', d:'첫 만남에서 학생 수준과 성향을 다각도로 분석합니다.'}],
+    [{t:'오답 관리 시스템', d:'틀린 문제를 자동 수집하여 반복 학습 자료로 제공합니다.'},{t:'반복 오답 케어', d:'한 번 틀린 문제는 다시 만날 때까지 반복 학습으로 잡아드려요.'}],
+    [{t:'실시간 질의응답', d:'수업 외 시간에도 카카오톡으로 질문이 가능합니다.'},{t:'24시간 질문 채널', d:'수업이 없는 시간에도 카톡으로 자유롭게 질문할 수 있어요.'}],
+    [{t:'자습실 제공', d:'쾌적한 자습 공간을 운영하여 학습 집중도를 높입니다.'},{t:'몰입형 자습 공간', d:'조용하고 깔끔한 자습실에서 집중 학습이 가능합니다.'}],
+    [{t:'수준별 단계 학습', d:'학생의 현재 실력에 맞춰 단계적으로 난이도를 조정합니다.'},{t:'단계별 맞춤 진도', d:'학생 수준을 고려해 차근차근 난도를 끌어올립니다.'}],
+    [{t:'시험 직전 집중 케어', d:'시험 2~3주 전 집중 보강으로 마무리를 책임집니다.'},{t:'D-day 집중 보강', d:'시험을 앞두고 추가 비용 없이 집중 케어를 제공합니다.'}],
   ];
-  const features = pickN(featurePool, 4, rng);
+  const features = pickN(featurePool, 4, rng).map(group=>group[Math.floor(rng()*group.length)]);
 
   const faqPool = [
-    {q:fullName+' 위치가 어디인가요?', a: c.l ? c.l.substring(0,120) : c.a + '에 위치해 있습니다.'},
-    {q:(c.s||[]).join('·')+' 학원 첫 수업은 어떻게 진행되나요?', a:'첫 수업은 무료 수준 진단으로 진행합니다. 현재 성적과 취약 단원을 파악한 뒤 맞춤 커리큘럼을 설계합니다.'},
-    {q:sigungu+' 내신 몇 등급까지 올릴 수 있나요?', a:'보통 2~3개월 집중 코칭 후 1~2등급 향상 사례가 많습니다. 시험 전 단기 집중(4~8주) 코스도 운영합니다.'},
-    {q:'학원과 병행해도 되나요?', a:'학원에서 부족한 부분을 1:1 코칭으로 보완하는 방식이 가장 효과적입니다.'},
-    {q:'수업료는 어떻게 되나요?', a:'과목, 횟수, 시간에 따라 달라집니다. 무료 상담 시 맞춤 견적을 안내드립니다.'},
+    [{q:fullName+' 위치가 어디인가요?', a: c.l ? c.l.substring(0,120) : c.a + '에 위치해 있습니다.'}],
+    [{q:(c.s||[]).join('·')+' 학원 첫 수업은 어떻게 진행되나요?', a:'첫 수업은 무료 수준 진단으로 진행합니다. 현재 성적과 취약 단원을 파악한 뒤 맞춤 커리큘럼을 설계합니다.'},{q:'첫 수업은 어떤 식으로 시작하나요?', a:'무료 진단으로 시작합니다. 학생의 현재 실력과 약한 부분을 점검한 후 개인별 학습 계획을 만들어 드려요.'}],
+    [{q:sigungu+' 내신 몇 등급까지 올릴 수 있나요?', a:'보통 2~3개월 집중 코칭 후 1~2등급 향상 사례가 많습니다. 시험 전 단기 집중(4~8주) 코스도 운영합니다.'},{q:'성적은 얼마나 빨리 오르나요?', a:'평균 2~3개월 안에 1~2등급 상승하는 학생이 다수입니다. 시험 전 4~8주 단기 집중반도 별도로 운영해요.'}],
+    [{q:'학원과 병행해도 되나요?', a:'학원에서 부족한 부분을 1:1 코칭으로 보완하는 방식이 가장 효과적입니다.'},{q:'다른 학원과 같이 다녀도 괜찮나요?', a:'네, 학원 수업에서 놓친 부분을 1:1로 채우는 방식이 시너지가 가장 큽니다.'}],
+    [{q:'수업료는 어떻게 되나요?', a:'과목, 횟수, 시간에 따라 달라집니다. 무료 상담 시 맞춤 견적을 안내드립니다.'},{q:'비용은 얼마 정도 들까요?', a:'선택 과목과 수업 횟수에 따라 다릅니다. 무료 상담을 통해 정확한 견적을 받으실 수 있어요.'}],
+    [{q:'주 몇 회 수업이 가장 효율적인가요?', a:'학생 수준과 목표에 따라 주 2~3회를 권장합니다. 시험 직전에는 회차를 늘려 집중 케어할 수 있습니다.'},{q:'적정 수업 횟수는 몇 회인가요?', a:'일반적으로 주 2~3회가 가장 효과적이에요. 시험 임박 시에는 횟수를 추가해 집중 학습이 가능합니다.'}],
+    [{q:'코치 변경이 가능한가요?', a:'학생과 코치의 성향이 맞지 않으면 언제든 교체 가능하며, 별도 비용은 발생하지 않습니다.'},{q:'선생님이 잘 안 맞으면 바꿀 수 있나요?', a:'언제든 무료로 교체 가능합니다. 학생과 잘 맞는 코치를 만날 때까지 도와드려요.'}],
+    [{q:'온라인 수업도 운영하나요?', a:'대면 수업이 기본이지만, 학생 사정에 따라 화상 수업도 가능합니다. 상담 시 자세히 안내드려요.'},{q:'화상 수업은 가능한가요?', a:'기본은 대면이지만 필요할 경우 화상 수업도 진행합니다. 상담 때 편한 방식을 알려주세요.'}],
+    [{q:'시험 기간에 추가 수업이 가능한가요?', a:'시험 2~3주 전부터 집중 보강 수업을 진행합니다. 추가 비용 없이 정규 수업 시간을 늘려드릴 수 있어요.'},{q:'내신 기간에 보강 수업이 되나요?', a:'시험 2~3주 전부터 추가 비용 없이 정규 시간을 연장해 집중 보강해 드립니다.'}],
   ];
-  const faqs = pickN(faqPool, 4, rng);
+  const faqs = pickN(faqPool, 4, rng).map(group=>group[Math.floor(rng()*group.length)]);
+
+  // 고정 표현 변형 (학원별 다르게)
+  const heroSubLabel = pickV(['무료 상담 신청','상담 신청하기','지금 상담 받기']);
+  const ctaTagPool = [
+    `${c.r} ${sigungu} · 초·중·고 ${(c.s||[]).join('·')} 1:1 코칭 · 첫 수업 무료`,
+    `${sigungu} 인근 학교 맞춤 ${(c.s||[]).join('·')} 코칭 · 무료 체험 진행 중`,
+    `${c.r} 지역 ${(c.s||[]).join('·')} 1:1 코칭 · 학생 맞춤 진단 후 시작`,
+  ];
+  const ctaTag = pickV(ctaTagPool);
+  const ctaTitlePool = [
+    `${c.r} ${fullName} 무료 상담`,
+    `${fullName} 상담 신청 안내`,
+    `${fullName}에서 시작하세요`,
+  ];
+  const ctaTitle = pickV(ctaTitlePool);
+  const introTitlePool = [
+    `${sigungu} ${(c.s||[]).slice(0,2).join('·')} 학원 ${fullName} 소개`,
+    `${fullName} | ${sigungu} ${(c.s||[]).slice(0,2).join('·')} 코칭`,
+    `${fullName} 학원 안내 (${sigungu})`,
+  ];
+  const introTitle = pickV(introTitlePool);
+  const featTitlePool = [
+    `${fullName}만의 차별점`,
+    `${fullName}의 강점`,
+    `${fullName}을 선택하는 이유`,
+  ];
+  const featTitle = pickV(featTitlePool);
+  const subjLabel = pickV(['수업 가능 과목','진행 과목','전문 과목']);
+  const schoolLabel = pickV([`${fullName} 담당 학교`, `${c.n} 인근 학교`, `${c.n} 등록 학교 목록`]);
+  const schoolDesc = pickV(['학교명 클릭 → 과목별 학원 수업 확인','학교명을 누르면 과목별 수업 안내가 열립니다','학교를 선택하면 해당 학교 맞춤 코칭이 표시됩니다']);
+  const statLabels = pickV([
+    {y:'운영 경력', c:'누적 상담', s:'재등록률'},
+    {y:'운영 기간', c:'상담 누적', s:'학부모 만족도'},
+    {y:'운영 연수', c:'상담 완료', s:'만족도'},
+  ]);
+  const faqTitle = pickV(['자주 묻는 질문','학부모님 질문 모음','자주 들어오는 문의']);
+  const locTitle = pickV(['위치 정보','오시는 길','학원 위치']);
+  const tlTitle = pickV(['시험 D-28 내신 집중 플랜','내신 4주 집중 코스','D-28 내신 대비 일정']);
 
   const subjColors = {'국어':'#ef4444','영어':'#3b82f6','수학':'#22c55e','과학':'#a855f7','사회':'#f59e0b'};
   const subjBgs = {'국어':'#fef2f2','영어':'#eff6ff','수학':'#f0fdf4','과학':'#faf5ff','사회':'#fffbeb'};
@@ -3034,7 +3085,7 @@ function renderAcademyDetail(center) {
       <h1>${c.r} ${sigungu} ${(c.s||[]).join(' · ')} 학원 | ${fullName}</h1>
       <p class="ad-hero-addr">${c.a}</p>
       <div class="ad-hero-btns">
-        <a href="/체험신청" class="ad-hero-btn ad-btn-primary">무료 상담 신청</a>
+        <a href="/체험신청" class="ad-hero-btn ad-btn-primary">${heroSubLabel}</a>
         <a href="tel:010-6850-1420" class="ad-hero-btn ad-btn-secondary">010-6850-1420</a>
       </div>
     </div>
@@ -3042,16 +3093,16 @@ function renderAcademyDetail(center) {
 
   <div class="ad-stats">
     <div class="ad-stats-row">
-      <div class="ad-stat-card"><div class="ad-stat-num">${years}년+</div><div class="ad-stat-label">운영 경력</div></div>
-      <div class="ad-stat-card"><div class="ad-stat-num">${counsels}건+</div><div class="ad-stat-label">누적 상담</div></div>
-      <div class="ad-stat-card"><div class="ad-stat-num">${satisfaction}%</div><div class="ad-stat-label">재등록률</div></div>
+      <div class="ad-stat-card"><div class="ad-stat-num">${years}년+</div><div class="ad-stat-label">${statLabels.y}</div></div>
+      <div class="ad-stat-card"><div class="ad-stat-num">${counsels}건+</div><div class="ad-stat-label">${statLabels.c}</div></div>
+      <div class="ad-stat-card"><div class="ad-stat-num">${satisfaction}%</div><div class="ad-stat-label">${statLabels.s}</div></div>
     </div>
   </div>
 
   <div class="ad-main">
     ${schoolCount > 0 ? `<div class="ad-section">
-      <div class="ad-section-title">${fullName} 담당 학교 (${schoolCount}개교)</div>
-      <p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">학교명 클릭 → 과목별 학원 수업 확인</p>
+      <div class="ad-section-title">${schoolLabel} (${schoolCount}개교)</div>
+      <p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">${schoolDesc}</p>
       <div class="ad-school-table">
         ${allSchools.map(s => `<div class="ad-school-row">
           <span class="ad-school-level" style="background:${s.level==='초등'?'#dbeafe':s.level==='중등'?'#dcfce7':'#fef3c7'};color:${s.level==='초등'?'#1d4ed8':s.level==='중등'?'#15803d':'#b45309'}">${s.level}</span>
@@ -3062,23 +3113,23 @@ function renderAcademyDetail(center) {
     </div>` : ''}
 
     <div class="ad-section">
-      <div class="ad-section-title">${sigungu} ${(c.s||[]).slice(0,2).join('·')} 학원 ${fullName} 소개</div>
+      <div class="ad-section-title">${introTitle}</div>
       <p class="ad-intro">${intro}</p>
       <div class="ad-subjs-sidebar">
-        <span style="font-size:14px;font-weight:700;color:#0f172a;margin-right:4px;">수업 가능 과목</span>
+        <span style="font-size:14px;font-weight:700;color:#0f172a;margin-right:4px;">${subjLabel}</span>
         ${(c.s||[]).map(subj => `<span class="ad-subj-tag" style="background:${subjBgs[subj]||'#f1f5f9'};color:${subjColors[subj]||'#475569'}">${subj}</span>`).join('')}
       </div>
     </div>
 
     <div class="ad-section">
-      <div class="ad-section-title">${fullName}만의 차별점</div>
+      <div class="ad-section-title">${featTitle}</div>
       <div class="ad-features">
         ${features.map(f => `<div class="ad-feat"><h4>${f.t}</h4><p>${f.d}</p></div>`).join('')}
       </div>
     </div>
 
     <div class="ad-section">
-      <div class="ad-section-title">시험 D-28 내신 집중 플랜</div>
+      <div class="ad-section-title">${tlTitle}</div>
       <div class="ad-timeline">
         <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#dbeafe;color:#1d4ed8;">D-28</div><div class="ad-tl-title">범위 확인</div><div class="ad-tl-desc">교과서 정독<br>계획표 작성</div></div>
         <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#dcfce7;color:#15803d;">D-21</div><div class="ad-tl-title">개념 정리</div><div class="ad-tl-desc">핵심 노트<br>기본 문제</div></div>
@@ -3095,7 +3146,7 @@ function renderAcademyDetail(center) {
       const naverLink = naverLinkMatch ? naverLinkMatch[0] : null;
       const locText = (c.l||'').replace(/https?:\/\/\S+/g, '').trim().substring(0, 200);
       return `<div class="ad-section">
-      <div class="ad-section-title">위치 정보</div>
+      <div class="ad-section-title">${locTitle}</div>
       <div class="ad-location">
         <h3>📍 ${fullName}</h3>
         <p class="ad-addr">${c.a}</p>
@@ -3110,7 +3161,7 @@ function renderAcademyDetail(center) {
     ${(()=>{const o=decodeOfficeName(c.n),r=decodeRegNo(c.n);return (o||r)?`<div class="ad-section"><div class="ad-section-title">학원 등록 정보</div><div class="ad-office-info">${o?`<div class="ad-office-row"><span class="ad-office-label">🏫 학원 명칭</span><span class="ad-office-val">${o}</span></div>`:''}${r?`<div class="ad-office-row"><span class="ad-office-label">📋 교육지원청 등록번호</span><span class="ad-office-val">${r}</span></div>`:''}</div></div>`:''})()}
 
     <div class="ad-section">
-      <div class="ad-section-title">자주 묻는 질문</div>
+      <div class="ad-section-title">${faqTitle}</div>
       <div class="ad-faq">
         ${faqs.map(f => `<div class="ad-faq-item"><div class="ad-faq-q">Q. ${f.q}</div><div class="ad-faq-a">${f.a}</div></div>`).join('')}
       </div>
@@ -3121,11 +3172,11 @@ function renderAcademyDetail(center) {
     ${(()=>{const subs=c.s||[];const p=parseAcademyAddr(c.a);const regs=[...new Set([c.r,p.si,p.gu,p.dong].filter(Boolean))];if(!regs.length||!subs.length)return '';const items=[];for(const rg of regs)for(const sj of subs)items.push([rg,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 관련 지역 학원 가이드</div><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/지역학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><span class="ad-kw-t">${it[0]} ${it[1]}학원</span></a>`}).join('')}</div></div>`})()}
 
     <div class="ad-cta-bar">
-      <h3>${c.r} ${fullName} 무료 상담</h3>
-      <p>${c.r} ${sigungu} · 초·중·고 ${(c.s||[]).join('·')} 1:1 코칭 · 첫 수업 무료</p>
+      <h3>${ctaTitle}</h3>
+      <p>${ctaTag}</p>
       <div class="ad-cta-btns">
         <a href="tel:010-6850-1420" class="ad-cta-btn ad-cta-phone">010-6850-1420</a>
-        <a href="/체험신청" class="ad-cta-btn ad-cta-form">무료 상담 신청</a>
+        <a href="/체험신청" class="ad-cta-btn ad-cta-form">${heroSubLabel}</a>
       </div>
     </div>
   </div>
