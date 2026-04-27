@@ -3061,7 +3061,7 @@ function renderAcademyDetail(center) {
   const featTitle = pickV(featTitlePool);
   const subjLabel = pickV(['수업 가능 과목','진행 과목','전문 과목']);
   const schoolLabel = pickV([`${fullName} 담당 학교`, `${c.n} 인근 학교`, `${c.n} 등록 학교 목록`]);
-  const schoolDesc = pickV(['학교명 클릭 → 과목별 학원 수업 확인','학교명을 누르면 과목별 수업 안내가 열립니다','학교를 선택하면 해당 학교 맞춤 코칭이 표시됩니다']);
+  const schoolDesc = pickV(['학원명 클릭 → 학교별 과목 학원 페이지로 이동','과목 학원명을 누르면 학교별 맞춤 안내가 열립니다','학원명 칩을 선택하면 해당 학교 과목 페이지가 표시됩니다']);
   const statLabels = pickV([
     {y:'운영 경력', c:'누적 상담', s:'재등록률'},
     {y:'운영 기간', c:'상담 누적', s:'학부모 만족도'},
@@ -3107,7 +3107,7 @@ function renderAcademyDetail(center) {
         ${allSchools.map(s => `<div class="ad-school-row">
           <span class="ad-school-level" style="background:${s.level==='초등'?'#dbeafe':s.level==='중등'?'#dcfce7':'#fef3c7'};color:${s.level==='초등'?'#1d4ed8':s.level==='중등'?'#15803d':'#b45309'}">${s.level}</span>
           <span class="ad-school-name">${s.name}</span>
-          <div class="ad-school-subjs">${(c.s||[]).map(subj => `<span class="ad-subj-chip" style="background:${subjBgs[subj]||'#f1f5f9'};color:${subjColors[subj]||'#475569'}">${subj}학원</span>`).join('')}</div>
+          <div class="ad-school-subjs">${(c.s||[]).map(subj => `<a href="/학교학원/${encodeURIComponent(c.n)}/${encodeURIComponent(s.name)}/${encodeURIComponent(subj)}" class="ad-subj-chip" style="background:${subjBgs[subj]||'#f1f5f9'};color:${subjColors[subj]||'#475569'};text-decoration:none">${subj}학원</a>`).join('')}</div>
         </div>`).join('')}
       </div>
     </div>` : ''}
@@ -3166,8 +3166,6 @@ function renderAcademyDetail(center) {
         ${faqs.map(f => `<div class="ad-faq-item"><div class="ad-faq-q">Q. ${f.q}</div><div class="ad-faq-a">${f.a}</div></div>`).join('')}
       </div>
     </div>
-
-    ${(()=>{const subs=c.s||[];if(!schoolCount||!subs.length)return '';const items=[];for(const s of allSchools)for(const sj of subs)items.push([s.name,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 관련 학교별 학원 가이드</div><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/학교학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><span class="ad-kw-t">${it[0]} ${it[1]}학원</span></a>`}).join('')}</div></div>`})()}
 
     ${(()=>{const subs=c.s||[];const p=parseAcademyAddr(c.a);const regs=[...new Set([c.r,p.si,p.gu,p.dong].filter(Boolean))];if(!regs.length||!subs.length)return '';const items=[];for(const rg of regs)for(const sj of subs)items.push([rg,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 관련 지역 학원 가이드</div><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/지역학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><span class="ad-kw-t">${it[0]} ${it[1]}학원</span></a>`}).join('')}</div></div>`})()}
 
