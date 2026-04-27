@@ -696,7 +696,7 @@ function commonStyles() {
     .mobile-menu { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
 
     /* 푸터 */
-    .footer { background: #0f172a; color: #94a3b8; }
+    .footer { background: #0f172a; color: #94a3b8; margin-top: 32px; }
     .footer-notice { background: #1a2332; padding: 14px 24px; font-size: 13px; color: #64748b; text-align: center; border-bottom: 1px solid #1e293b; }
     .footer-notice-icon { color: #f59e0b; margin-right: 6px; }
     .footer-main { max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: flex; align-items: flex-start; justify-content: space-between; }
