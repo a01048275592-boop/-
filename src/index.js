@@ -723,7 +723,10 @@ function commonStyles() {
       .footer-right { text-align: left; }
       .footer-phone { font-size: 26px; }
       .footer-bottom { text-align: left; }
-      .footer-nav { padding: 0; gap: 20px 28px; }
+      .footer-nav { padding: 0; gap: 0; flex-wrap: nowrap; justify-content: space-between; overflow-x: auto; }
+      .footer-nav-col { min-width: 0; flex-direction: row; gap: 0; }
+      .footer-nav-col a { display: none; }
+      .footer-nav-title { font-size: 12px; margin-bottom: 0; white-space: nowrap; }
     }
 
     @media (max-width: 768px) {
