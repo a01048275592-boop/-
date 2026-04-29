@@ -304,12 +304,11 @@ function getEduImage(seed) {
 
 function renderArticleHero(title, subtitle, seed) {
   const img = getEduImage(seed || title);
-  const subHTML = subtitle ? `<p style="font-size:clamp(12px,1.5vw,14px);opacity:0.9;text-align:center;margin:6px 0 0;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6);width:100%;">${subtitle}</p>` : '';
-  return `<div style="position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/180;overflow:hidden;background:#0f172a;border-radius:12px;">
+  const subHTML = subtitle ? `<p style="font-size:clamp(12px,1.6vw,15px);opacity:.88;margin:6px 0 0;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6);">${subtitle}</p>` : '';
+  return `<div style="position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/500;overflow:hidden;background:#0f172a;border-radius:14px;">
     <img src="${img}" alt="${title}" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-    <div style="position:absolute;inset:0;background:transparent;"></div>
-    <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px 20px;color:#fff;">
-      <h1 style="font-size:clamp(18px,3vw,26px);font-weight:900;text-align:center;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.3;margin:0;width:100%;">${title}</h1>
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff;">
+      <h2 style="font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.3;margin:0;">${title}</h2>
       ${subHTML}
     </div>
   </div>`;
@@ -2191,6 +2190,7 @@ function renderGedKeywordArticle(subject, idx, title) {
   ${renderArticleHero(title, '검정고시 완벽 가이드', subject + '-ged-' + idx)}
   <div class="gk-wrap">
     <div class="gk-badge">📝 검정고시 완벽 가이드</div>
+    <h1>${title}</h1>
     <div class="gk-meta"><span>✏️ 과외안하니 편집팀</span> · <span>📅 2026년 4월</span></div>
     <div class="gk-section">
       <h2>한눈에 보는 정보</h2>
@@ -2262,6 +2262,7 @@ function renderSubjectArticle(subject, articleIdx) {
   ${renderArticleHero(title, subject + ' 학습 가이드', subject + '-subj-' + idx)}
   <div class="sa-wrap">
     <div class="sa-badge">${subject} 학습 가이드</div>
+    <h1>${title}</h1>
     <div class="sa-meta"><span>✏️ 과외안하니 편집팀</span> · <span>📅 2026년 4월</span></div>
     <div class="sa-article">
       <p>${opening}</p>
@@ -3918,6 +3919,7 @@ function renderChineseArticle(articleIdx) {
   ${navHTML('foreign')}
   ${renderArticleHero(kw.icon + ' ' + kw.title, '🇨🇳 CN 중국어 1:1 맞춤 수업', '중국어-' + idx)}
   <div class="ca-wrap">
+    <h1 style="font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin:0 0 20px">${kw.title}</h1>
     <div class="ca-intro"><p>${intro}</p></div>
     <div class="ca-sections">
       ${secs.map((s,i) => `<div class="ca-sec">
@@ -4018,6 +4020,7 @@ function renderJapaneseArticle(articleIdx) {
   ${navHTML('foreign')}
   ${renderArticleHero(kw.icon + ' ' + kw.title, '🇯🇵 JP 일본어 1:1 맞춤 수업', '일본어-' + idx)}
   <div class="ca-wrap">
+    <h1 style="font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin:0 0 20px">${kw.title}</h1>
     <div class="ca-intro"><p>${intro}</p></div>
     <div class="ca-sections">
       ${secs.map((s,i) => `<div class="ca-sec">
@@ -4116,6 +4119,7 @@ function renderEnglishArticle(articleIdx) {
   ${navHTML('foreign')}
   ${renderArticleHero(kw.icon + ' ' + kw.title, '🇺🇸 EN 영어 회화 1:1 맞춤 수업', '영어-' + idx)}
   <div class="ca-wrap">
+    <h1 style="font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin:0 0 20px">${kw.title}</h1>
     <div class="ca-intro"><p>${intro}</p></div>
     <div class="ca-sections">
       ${secs.map((s,i) => `<div class="ca-sec"><div class="ca-sec-head"><div class="ca-sec-num">${i+1}</div><div class="ca-sec-title">${s.h}</div></div><div class="ca-sec-body"><p>${s.p}</p></div></div>`).join('')}
@@ -4248,19 +4252,20 @@ function renderGuideArticle(idx) {
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(a.title + ' | 과외안하니', a.kw + ' 완벽 가이드. 실전 노하우와 학습 전략을 한 번에 확인하세요.', 'https://anhani.com/학습가이드/article/' + idx)}
   <meta property="og:image" content="${heroImg}">
-  <style>${commonStyles()}.ga-wrap{max-width:768px;margin:0 auto;padding:0 20px 80px}.ga-hero-wrap{position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/180;overflow:hidden;background:#0f172a;border-radius:12px}.ga-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ga-hero-ov{position:absolute;inset:0;background:transparent}.ga-hero-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px 20px;color:#fff}.ga-hero-text h1{font-size:clamp(18px,3vw,26px);font-weight:900;text-align:center;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.3;margin:0;width:100%}.ga-hero-text p{font-size:clamp(12px,1.5vw,14px);opacity:.9;text-align:center;margin:6px 0 0;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6);width:100%}.ga-bc{font-size:13px;color:#94a3b8;margin-bottom:20px;padding-top:20px}.ga-bc a{color:#6366f1;text-decoration:none}.ga-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:12px}.ga-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.ga-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:28px 0 12px;padding-left:12px;border-left:4px solid #6366f1}.ga-content p{font-size:15px;color:#334155;line-height:1.85;margin-bottom:14px;word-break:keep-all}.ga-tip{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0;font-size:14px;line-height:1.7;color:#78350f}.ga-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:14px;padding:28px 24px;text-align:center;color:#fff;margin:36px 0}.ga-cta h3{font-size:18px;font-weight:800;margin-bottom:8px}.ga-cta p{font-size:13px;opacity:.85;margin-bottom:14px}.ga-cta a{display:inline-block;margin:0 4px;padding:10px 20px;background:#fff;color:#4f46e5;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none}.ga-related{margin-top:36px;padding-top:24px;border-top:2px solid #e2e8f0}.ga-related h3{font-size:17px;font-weight:800;margin-bottom:14px}.ga-rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ga-rel{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;font-weight:600;transition:.2s}.ga-rel:hover{border-color:#6366f1;color:#6366f1}@media (max-width:640px){.ga-rel-grid{grid-template-columns:1fr}}</style></head><body>
+  <style>${commonStyles()}.ga-wrap{max-width:768px;margin:0 auto;padding:0 20px 80px}.ga-hero-wrap{position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/500;overflow:hidden;background:#0f172a;border-radius:14px}.ga-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ga-hero-ov{position:absolute;inset:0;background:transparent}.ga-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.ga-hero-text h2{font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.3;margin:0}.ga-hero-text p{font-size:clamp(12px,1.6vw,15px);opacity:.88;margin:6px 0 0;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.ga-bc{font-size:13px;color:#94a3b8;margin-bottom:20px;padding-top:20px}.ga-bc a{color:#6366f1;text-decoration:none}.ga-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:12px}.ga-title{font-size:28px;font-weight:900;color:#0f172a;margin-bottom:12px;line-height:1.4}.ga-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.ga-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:28px 0 12px;padding-left:12px;border-left:4px solid #6366f1}.ga-content p{font-size:15px;color:#334155;line-height:1.85;margin-bottom:14px;word-break:keep-all}.ga-tip{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0;font-size:14px;line-height:1.7;color:#78350f}.ga-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:14px;padding:28px 24px;text-align:center;color:#fff;margin:36px 0}.ga-cta h3{font-size:18px;font-weight:800;margin-bottom:8px}.ga-cta p{font-size:13px;opacity:.85;margin-bottom:14px}.ga-cta a{display:inline-block;margin:0 4px;padding:10px 20px;background:#fff;color:#4f46e5;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none}.ga-related{margin-top:36px;padding-top:24px;border-top:2px solid #e2e8f0}.ga-related h3{font-size:17px;font-weight:800;margin-bottom:14px}.ga-rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ga-rel{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;font-weight:600;transition:.2s}.ga-rel:hover{border-color:#6366f1;color:#6366f1}@media (max-width:640px){.ga-rel-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('guide')}
   <div class="ga-hero-wrap">
     <img src="${heroImg}" alt="${a.kw}" loading="eager"/>
     <div class="ga-hero-ov"></div>
     <div class="ga-hero-text">
-      <h1>${a.title.split('|')[0].trim()}</h1>
+      <h2>${a.title.split('|')[0].trim()}</h2>
       <p>${a.title.split('|')[1]?.trim() || a.kw}</p>
     </div>
   </div>
   <div class="ga-wrap">
     <div class="ga-bc"><a href="/">홈</a> &gt; <a href="/학습가이드">학습가이드</a> &gt; ${a.kw}</div>
     <span class="ga-badge">${a.cat}</span>
+    <h1 class="ga-title">${a.title.split('|')[0].trim()}</h1>
     <div class="ga-meta">✏️ 과외안하니 편집팀 · 📅 2026년 4월</div>
     <div class="ga-content">
       <p>${intro}</p>
