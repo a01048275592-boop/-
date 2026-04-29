@@ -812,7 +812,7 @@ function footerHTML() {
     </div>
     <div class="footer-main">
       <div class="footer-left">
-        <div class="footer-logo"><img src="${FOOTER_LOGO_URI}" alt="과외안하니" style="height:52px; border-radius:8px;"></div>
+        <div class="footer-logo" style="display:flex;align-items:center;gap:12px;"><img src="${FOOTER_LOGO_URI}" alt="과외안하니" style="height:52px; border-radius:8px;"><span>과외안하니</span></div>
         <p class="footer-desc">유아부터 성인까지<br>1:1 실시간 맞춤 수업 진행</p>
       </div>
       <div class="footer-right">
