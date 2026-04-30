@@ -368,6 +368,22 @@ function generateContent(location, level, subject, parentRegion) {
     }
   } catch(e) { _rsHTML = ''; }
 
+  let _extraHTML = '';
+  try {
+    const _ctx = { loc: location, parent: parentRegion, regionDisplay, level, subject };
+    const _eseed = hashCode(`${location}-${level}-${subject}-extra`);
+    const _en = _eseed % 3;
+    if (_en > 0) {
+      const _estart = (_eseed >>> 4) % EXTRA_SECTION_POOL.length;
+      const _epicked = [];
+      for (let i = 0; i < _en; i++) {
+        const r = EXTRA_SECTION_POOL[(_estart + i) % EXTRA_SECTION_POOL.length](_ctx);
+        if (r) _epicked.push(r);
+      }
+      _extraHTML = _epicked.map(s => `<h2>${s.h}</h2><p>${s.p}</p>`).join('\n');
+    }
+  } catch(e) { _extraHTML = ''; }
+
   const title = `${regionDisplay} ${level} ${subject} 과외 추천 - 비용, 선생님 선택 가이드`;
   const description = `${regionDisplay} ${level}학생 ${subject} 과외 정보를 찾고 계신가요? 과외비, 좋은 선생님 고르는 법, 실제 후기까지 한 번에 정리했습니다.`;
 
@@ -411,6 +427,8 @@ function generateContent(location, level, subject, parentRegion) {
       <h2>실제 ${regionDisplay} ${subject} 과외 후기</h2>
       <p>${review1}</p>
       <p>${review2}</p>
+
+      ${_extraHTML}
 
       <h2>과외 시작 전 꼭 알아두세요</h2>
       <p>${extra2}</p>
@@ -2135,6 +2153,13 @@ const SCHOOLS_HIGH = [["국립국악고등학교",8,"강남구","국","S"],["서
 const ST={I:'일반고등학교',C:'특성화고등학교',S:'특수목적고등학교',A:'자율고등학교'};const decST=t=>ST[t]||t||'일반';
 function getSidoIdxFromShort(short){for(let i=0;i<SIDO_LIST.length;i++)if(getSidoShort(SIDO_LIST[i])===short)return i;return -1;}
 function getRegionCtx(loc,parent){let sido=null,gugun=null;if(parent===null||parent===undefined){sido=loc;}else if(parent.indexOf(' ')>0){const p=parent.split(' ');sido=p[0];gugun=p[1];}else{sido=parent;gugun=loc;}return{sido,gugun};}
+function getRegionStats(loc,parent){const ctx=getRegionCtx(loc,parent);if(!ctx.gugun||!ctx.sido)return null;const idx=getSidoIdxFromShort(ctx.sido);if(idx<0)return null;const mid=getSchoolsBySidoGugun('middle',idx,ctx.gugun);const high=getSchoolsBySidoGugun('high',idx,ctx.gugun);if(mid.length===0&&high.length===0)return null;const all=mid.concat(high);const priv=all.filter(s=>s.school[3]==='사').length;const privPct=all.length>0?Math.round(priv*100/all.length):0;return{midCount:mid.length,highCount:high.length,totalCount:all.length,privPct,region:ctx.gugun};}
+const EXTRA_SECTION_POOL=[
+(c)=>{const s=getRegionStats(c.loc,c.parent);if(!s)return null;return{h:`${c.regionDisplay} 학교 환경 한눈에`,p:`${s.region} 지역에는 중학교 ${s.midCount}곳, 고등학교 ${s.highCount}곳이 있고, 사립 비율은 약 ${s.privPct}% 수준입니다. 학교마다 진도와 평가 방식이 다르므로, 우리 학교 시험 패턴을 알고 있는 ${c.subject} 과외 선생님을 만나는 것이 가장 효율적이에요.`};},
+(c)=>{const ctx=getRegionCtx(c.loc,c.parent);if(!ctx.gugun)return null;if(typeof DONG_DATA==='undefined'||!DONG_DATA[ctx.gugun])return null;const dongs=DONG_DATA[ctx.gugun];if(dongs.length===0)return null;const sample=dongs.slice(0,Math.min(3,dongs.length)).join(', ');return{h:`${ctx.gugun} 통학권 ${c.subject} 과외 안내`,p:`${ctx.gugun}은 ${dongs.length}개 동으로 구성되어 있으며, ${sample} 등 다양한 지역에서 ${c.level} 학생들의 ${c.subject} 과외 의뢰가 활발합니다. 거주지 기준으로 가까운 선생님 매칭이 가능하고, 화상 과외도 병행할 수 있어요.`};},
+(c)=>{const lvHint=c.level==='초등'?'초등 단계는 학습 습관과 흥미가 가장 중요한 시기':c.level==='중등'?'중등 단계는 고등 진학을 위한 기초 다지기 시기':'고등 단계는 입시와 직결되는 결정적 시기';return{h:`${c.level} ${c.subject}, 이런 점 유의하세요`,p:`${lvHint}입니다. ${c.regionDisplay} 학부모님들 사이에서도 ${c.subject} 과외 시작 시기에 대한 고민이 많은데, 너무 늦지 않게 시작하되 아이 수준과 학습 의지를 먼저 확인하는 것이 순서입니다.`};},
+(c)=>({h:`${c.subject} 과외, 자기주도 학습과 병행하는 법`,p:`${c.regionDisplay}에서 ${c.subject} 과외를 받더라도, 주 5~7시간의 자기주도 학습은 별도로 확보해야 효과가 극대화됩니다. 과외에서 배운 내용을 그날 안에 복습하고, 다음 수업까지 모르는 점을 정리해 두는 습관이 ${c.level} 학습 성과를 좌우합니다.`}),
+];
 function pickRegionSchools(loc,level,parent,n,rng){const ctx=getRegionCtx(loc,parent);if(level==='중등'||level==='고등'){const idx=getSidoIdxFromShort(ctx.sido);if(idx<0)return null;const sl=level==='중등'?'middle':'high';const all=getSchoolsBySidoGugun(sl,idx,ctx.gugun);if(all.length===0)return null;const names=all.map(s=>s.school[0]);const picked=pickN(names,Math.min(n,names.length),rng);return{count:all.length,picked,sl,dispRegion:ctx.gugun||ctx.sido};}if(level==='초등'){if(!ctx.gugun)return null;if(typeof DONG_DATA==='undefined'||!DONG_DATA[ctx.gugun])return null;const dongs=DONG_DATA[ctx.gugun];const all=[...new Set(dongs.map(d=>d.replace(/[동읍면리]$/,'')+'초등학교'))];if(all.length===0)return null;const picked=pickN(all,Math.min(n,all.length),rng);return{count:all.length,picked,sl:'elem',dispRegion:ctx.gugun};}return null;}
 const SCHOOL_SECTION_POOL=[
 (reg,n,lv,names,subj)=>`${reg}에는 총 ${n}개의 ${lv}가 있으며, 대표적으로 ${names.join(', ')} 등이 있습니다. 학교마다 시험 출제 경향과 내신 평가 방식이 다르기 때문에, 우리 아이가 다니는 학교에 맞춘 ${subj} 과외가 가장 효과적입니다.`,
@@ -4920,7 +4945,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v82-phase2a-fixed', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v83-phase2b-section-variability', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
