@@ -337,6 +337,83 @@ function generateThumbnail(location, level, subject) {
 }
 
 // --- 콘텐츠 생성 ---
+// --- 시군구 메타데이터 (Phase 3-A: 서울 25 + 경기 31 = 56개) ---
+const SIGUNGU_META = {
+"강남구":{type:"핫스팟",hub:"대치동·도곡동",price:"5~10만",edge:"의대·SKY 입시 선행 학습 수요 압도적"},
+"서초구":{type:"핫스팟",hub:"반포·서초·방배",price:"5~9만",edge:"명문대 진학 목표 학부모 비율 높음, 전 과목 균형"},
+"송파구":{type:"핫스팟",hub:"잠실·문정",price:"4~8만",edge:"영재·과학고 대비와 내신 관리 모두 강세"},
+"양천구":{type:"핫스팟",hub:"목동 학원가",price:"4~8만",edge:"목동 8학군, 특목고·자사고 진학 수요 집중"},
+"노원구":{type:"학군지",hub:"중계동 은행사거리",price:"3~6만",edge:"강북 최대 사교육 거점, 의대·약대 이공계 강세"},
+"마포구":{type:"학군지",hub:"공덕·상암",price:"3~6만",edge:"직장인 자녀 비율 높은 균형형, 외고 진학 꾸준"},
+"용산구":{type:"학군지",hub:"한남·이태원",price:"4~8만",edge:"외국인학교 인근, 영어 회화·국제학교 대비 강세"},
+"성북구":{type:"학군지",hub:"성신여대·길음",price:"3~5만",edge:"대학 인접지 안정적 학습 분위기, 내신·정시 균형"},
+"강동구":{type:"학군지",hub:"명일·고덕",price:"3~6만",edge:"명일동 학원가 중심, 강남 인근 분위기로 의대·SKY 대비 수요 꾸준"},
+"강북구":{type:"평균형",hub:"미아·수유",price:"2~4만",edge:"공교육 중심 균형 학습, 지역 밀착형 소규모 과외 선호"},
+"강서구":{type:"학군지",hub:"화곡·발산·마곡",price:"3~5만",edge:"마곡지구 신흥 학습 수요 증가, 직장인 자녀 균형 학습"},
+"관악구":{type:"균형형",hub:"봉천·신림",price:"3~5만",edge:"서울대 인근 학습 분위기, 내신·정시 균형 수요"},
+"광진구":{type:"학군지",hub:"광장·자양·중곡",price:"3~6만",edge:"광장동 학원가 중심 한강 동부 학군지, 자사고 진학 강세"},
+"구로구":{type:"평균형",hub:"신도림·구로",price:"3~5만",edge:"신도림 학원가, 영어·수학 기초 다지기 수요 위주"},
+"금천구":{type:"평균형",hub:"시흥·독산",price:"2~4만",edge:"가산디지털단지 인접 직장인 자녀 균형 학습"},
+"도봉구":{type:"평균형",hub:"창동·방학",price:"2~4만",edge:"강북 외곽 지역 밀착형, 내신 위주 1:1 과외 선호"},
+"동대문구":{type:"균형형",hub:"휘경·전농",price:"3~5만",edge:"휘경동 학원가, 외국어대 인접 학습 분위기"},
+"동작구":{type:"학군지",hub:"사당·상도·노량진",price:"3~6만",edge:"노량진 입시 메카 인접, 재수·수능 인프라 강함"},
+"서대문구":{type:"균형형",hub:"신촌·연희·홍은",price:"3~5만",edge:"연세대 인근 학습 분위기, 외국어·논술 수요 꾸준"},
+"성동구":{type:"학군지",hub:"행당·성수",price:"3~6만",edge:"한양대 인근, 강남권 통학 수요 함께 형성"},
+"영등포구":{type:"균형형",hub:"여의도·당산",price:"3~6만",edge:"여의도 직장인 자녀 비율 높음, 영어·수학 선행 수요"},
+"은평구":{type:"균형형",hub:"불광·연신내",price:"2~4만",edge:"연신내 학원가, 내신·정시 대비 균형"},
+"종로구":{type:"학군지",hub:"평창·삼청",price:"3~6만",edge:"전통 명문가 학습 분위기, 정시·논술 균형"},
+"중구":{type:"평균형",hub:"신당·황학",price:"3~5만",edge:"도심 직장인 자녀 위주, 영어·수학 균형"},
+"중랑구":{type:"평균형",hub:"면목·상봉",price:"2~4만",edge:"면목·상봉 학원가, 지역 밀착형 내신 관리"},
+"성남시":{type:"핫스팟",hub:"분당 정자·서현",price:"4~7만",edge:"판교 IT 학부모 수요, 강남권 버금가는 인프라"},
+"고양시":{type:"학군지",hub:"일산 백마·중산",price:"3~6만",edge:"경기 북부 최대 학군지, 외고·국제고 대비 강세"},
+"가평군":{type:"소규모",hub:"가평읍",price:"2~4만",edge:"가평읍 중심 소규모 과외, 1:1 밀착 지도 선호"},
+"과천시":{type:"핫스팟",hub:"별양·중앙",price:"4~8만",edge:"강남 인접 신흥 학군지, 과학고·자사고 대비 집중"},
+"광명시":{type:"학군지",hub:"철산·하안·소하",price:"3~6만",edge:"강남권 통학과 신도시 학습 수요 결합"},
+"광주시":{type:"균형형",hub:"경안·태전",price:"2~4만",edge:"분당 인접 신도시 학습 수요 증가"},
+"구리시":{type:"균형형",hub:"인창·교문",price:"3~5만",edge:"강동·노원 인접 학습권, 내신 위주"},
+"군포시":{type:"균형형",hub:"산본·금정",price:"3~5만",edge:"산본 신도시 학습권, 안양·평촌 인프라 연계"},
+"김포시":{type:"균형형",hub:"장기·풍무·운양",price:"3~5만",edge:"김포한강신도시 학습 수요, 외고·국제고 대비 강세"},
+"남양주시":{type:"균형형",hub:"별내·다산·평내",price:"3~5만",edge:"별내·다산신도시 신흥 학군지, 영재교육원 대비"},
+"동두천시":{type:"평균형",hub:"생연·송내",price:"2~4만",edge:"경기 북부 소규모 학원가, 내신 관리 위주"},
+"부천시":{type:"학군지",hub:"중동·상동",price:"3~5만",edge:"중동·상동 학원가 활발, 외고·자사고 진학 꾸준"},
+"수원시":{type:"핫스팟",hub:"영통·매탄·광교",price:"4~7만",edge:"영통구 중심 경기 남부 최대 학군지, 자사고 진학 강세"},
+"시흥시":{type:"균형형",hub:"정왕·은행",price:"3~5만",edge:"시화·정왕신도시, 안산권 학원 인프라 활용"},
+"안산시":{type:"학군지",hub:"본오·고잔",price:"3~5만",edge:"본오·고잔 학원가, 한양대 안산캠 이공계 수요"},
+"안성시":{type:"평균형",hub:"공도·안성",price:"2~4만",edge:"공도읍 신도시 학습 수요 증가, 내신 위주"},
+"안양시":{type:"학군지",hub:"평촌·범계",price:"3~6만",edge:"평촌 학원가가 경기 남부 핵심 학군 핫스팟, 의대·SKY 강세"},
+"양주시":{type:"평균형",hub:"옥정·덕정",price:"2~4만",edge:"옥정신도시 신흥 학습 수요, 내신 관리 위주"},
+"양평군":{type:"소규모",hub:"양평읍",price:"2~4만",edge:"양평읍 중심 소규모 과외, 1:1 밀착 지도"},
+"여주시":{type:"평균형",hub:"여주·점동",price:"2~4만",edge:"여주읍 학원가, 지역 밀착형 내신 관리"},
+"연천군":{type:"소규모",hub:"전곡·연천",price:"2~3만",edge:"군 단위 소규모 학원가, 1:1 밀착 선호"},
+"오산시":{type:"균형형",hub:"오산·운암",price:"3~5만",edge:"오산세교지구 신흥 학습 수요, 평택·화성 인접"},
+"용인시":{type:"핫스팟",hub:"수지·기흥·죽전",price:"4~7만",edge:"수지구 학원가가 분당 인접 1티어 학군, 외고·국제고 강세"},
+"의왕시":{type:"균형형",hub:"내손·고천",price:"3~5만",edge:"평촌·과천 인접 학원권, 내신·선행 균형"},
+"의정부시":{type:"균형형",hub:"민락·의정부",price:"3~5만",edge:"민락신도시 학습 수요, 외고·자사고 진학 꾸준"},
+"이천시":{type:"평균형",hub:"창전·증포",price:"2~4만",edge:"이천읍 학원가, 지역 밀착형 내신 관리"},
+"파주시":{type:"균형형",hub:"운정·교하·금촌",price:"3~5만",edge:"운정·교하신도시 신흥 학군지, 외고·국제고 대비"},
+"평택시":{type:"균형형",hub:"비전·소사벌·고덕",price:"3~5만",edge:"미군기지·삼성반도체 인접, 영어·이공계 수요"},
+"포천시":{type:"평균형",hub:"신읍·소흘",price:"2~4만",edge:"포천 신읍·소흘읍 학원가, 군 단위 소규모"},
+"하남시":{type:"학군지",hub:"미사·풍산",price:"3~6만",edge:"미사강변신도시 학군 핫스팟 부상, 강남 통학권"},
+"화성시":{type:"학군지",hub:"동탄·병점·향남",price:"3~6만",edge:"동탄1·2신도시 경기 남부 신흥 학군지, 자사고·과학고 강세"}
+};
+const TYPE_LABEL={"핫스팟":"전국 손꼽히는 학군 핫스팟","학군지":"안정적인 학군지","균형형":"균형형 학습 지역","평균형":"평균적인 학습 분위기","소규모":"소규모 밀착형 학습 환경"};
+const TYPE_SHORT={"핫스팟":"학군 핫스팟","학군지":"학군지","균형형":"균형형","평균형":"평균형","소규모":"소규모형"};
+function _eg(s){const last=s.charCodeAt(s.length-1);if(last<0xAC00||last>0xD7A3)return s+'라는';return s+(((last-0xAC00)%28===0)?'라는':'이라는');}
+function _eun(s){const last=s.charCodeAt(s.length-1);if(last<0xAC00||last>0xD7A3)return s+'는';return s+(((last-0xAC00)%28===0)?'는':'은');}
+const REGION_H2=[c=>`${c.sigungu} 과외 환경의 특징`,c=>`이 지역의 학습 분위기 한눈에 보기`,c=>`${c.regionDisplay} 사교육 환경`,c=>`과외 시작 전 알아둘 ${c.sigungu} 정보`];
+const REGION_SPECIFIC_PARAGRAPHS=[
+c=>`${c.regionDisplay}의 ${c.level} ${c.subject} 과외 환경을 살펴볼게요. ${_eun(c.sigungu)} ${c.meta.hub} 학원가를 중심으로 학습 인프라가 형성되어 있고, 과외비는 시간당 ${c.meta.price}원대가 평균이에요. ${_eg(c.meta.edge)} 점이 이 지역 학부모들이 자주 언급하는 특징입니다.`,
+c=>`${_eun(c.sigungu)} ${TYPE_LABEL[c.meta.type]}으로 분류되는 지역이에요. ${c.meta.hub} 일대에 학원과 과외 선생님이 모여 있어, ${c.location} 학생들도 인접 학습 인프라를 활용하기 좋습니다.`,
+c=>`${c.sigungu}의 학습 환경 특징은 ${_eg(c.meta.edge)} 점이에요. 이런 분위기는 ${c.subject} 과외에도 영향을 미쳐, ${c.level} 학생 학부모님들이 선생님을 고를 때 신경 써서 보는 부분이기도 합니다.`,
+c=>`${c.regionDisplay} ${c.subject} 과외비는 시간당 ${c.meta.price}원대 선이 일반적이에요. ${_eun(c.sigungu)} ${TYPE_SHORT[c.meta.type]} 지역이라, 강사 경력과 수업 형태에 따라 시세가 형성됩니다.`,
+c=>`${c.location}에서 가까운 ${c.meta.hub} 학원가는 ${c.sigungu}의 학습 거점이에요. 과외 선생님 중에서도 이 지역에서 활동하시는 분들이 많아, ${c.subject} 과외 매칭이 비교적 쉬운 편입니다.`,
+c=>`${c.sigungu}의 ${c.subject} 과외 환경을 한눈에 보면, ${c.meta.hub} 중심의 학원가, 시간당 ${c.meta.price}원대 시세, 그리고 ${_eg(c.meta.edge)} 지역색이 핵심이에요. ${c.location}에서 과외를 시작하실 때 이런 지역 분위기를 참고하시면 도움이 됩니다.`,
+c=>`${c.sigungu} 학부모님들 사이에서는 ${_eg(c.meta.edge)} 평이 자주 들려요. 그만큼 ${c.meta.hub} 학원가의 인프라 활용도가 높고, ${c.subject} 과외 수요도 그 흐름과 맞닿아 있습니다.`,
+c=>`${c.location}이 속한 ${_eun(c.sigungu)} ${TYPE_SHORT[c.meta.type]} 지역이라, ${c.level} ${c.subject} 학습도 그에 맞는 패턴으로 진행되는 경우가 많아요. ${c.meta.hub} 인근 강사진을 활용하면 효율이 좋습니다.`,
+c=>`${c.subject} 과외비를 비교해보시면, ${_eun(c.sigungu)} 시간당 ${c.meta.price}원대 선에서 강사 경력이나 수업 형태가 결정되는 편이에요. ${_eg(c.meta.edge)} 지역 특성이 시세에도 반영된 결과입니다.`,
+c=>`${c.regionDisplay}에서 ${c.level} ${c.subject} 과외 선생님을 찾으신다면, ${c.meta.hub} 학원가에서 활동하시는 분들을 우선 알아보시는 걸 추천해요. ${_eun(c.sigungu)} ${_eg(c.meta.edge)} 분위기라, 그에 맞는 강사를 고르는 게 효과적입니다.`
+];
+
 function generateContent(location, level, subject, parentRegion) {
   const seed = hashCode(`${location}-${level}-${subject}`);
   const rng = seededRandom(seed);
@@ -369,6 +446,22 @@ function generateContent(location, level, subject, parentRegion) {
       _rsHTML = `<h2>${regionDisplay} 인근 ${levelName(_rs.sl)} 정보</h2><p>${pick(SCHOOL_SECTION_POOL, rng)(_rs.dispRegion, _rs.count, levelName(_rs.sl), _rs.picked, subject)}</p>`;
     }
   } catch(e) { _rsHTML = ''; }
+
+  let _regionH2 = '';
+  let _regionMetaHTML = '';
+  try {
+    const _rmctx = getRegionCtx(location, parentRegion);
+    const _sigungu = _rmctx.gugun;
+    if (_sigungu && SIGUNGU_META[_sigungu]) {
+      const _meta = SIGUNGU_META[_sigungu];
+      const _rmseed = hashCode(`${location}-${level}-${subject}-region`);
+      const _ridx = _rmseed % REGION_SPECIFIC_PARAGRAPHS.length;
+      const _hidx = (_rmseed >>> 5) % REGION_H2.length;
+      const _ric = { meta: _meta, location, level, subject, regionDisplay, sigungu: _sigungu };
+      _regionH2 = `<h2>${REGION_H2[_hidx](_ric)}</h2>`;
+      _regionMetaHTML = `<p>${REGION_SPECIFIC_PARAGRAPHS[_ridx](_ric)}</p>`;
+    }
+  } catch(e) { _regionH2 = ''; _regionMetaHTML = ''; }
 
   let _extraHTML = '';
   try {
@@ -423,6 +516,9 @@ function generateContent(location, level, subject, parentRegion) {
       <p>${lvl.duration}</p>
 
       ${_rsHTML}
+
+      ${_regionH2}
+      ${_regionMetaHTML}
 
       <h2>${regionDisplay} ${subject} 과외 선생님 선택 체크리스트</h2>
       <ul>${checks.map(c => `<li>${c}</li>`).join('')}</ul>
@@ -5030,7 +5126,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v85-seo-indexing-boost', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v86-region-meta', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
