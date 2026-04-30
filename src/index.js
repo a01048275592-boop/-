@@ -21,6 +21,8 @@ function seededRandom(seed) {
   };
 }
 
+const BUILD_DATE_ISO = new Date().toISOString();
+const BUILD_DATE_W3C = BUILD_DATE_ISO.split('T')[0];
 function pick(arr, rng) {
   return arr[Math.floor(rng() * arr.length)];
 }
@@ -445,6 +447,28 @@ function generateContent(location, level, subject, parentRegion) {
 function renderPage(location, level, subject, parentRegion, url) {
   const { title, description, bodyHTML, tags } = generateContent(location, level, subject, parentRegion);
   const heroImg = getEduImage(location + level + subject);
+
+  const _crumbItems = [{ name: '홈', item: 'https://anhani.com/' }];
+  if (parentRegion === null || parentRegion === undefined) {
+    _crumbItems.push({ name: location });
+  } else if (typeof parentRegion === 'string' && parentRegion.indexOf(' ') > 0) {
+    const _pp = parentRegion.split(' ');
+    _crumbItems.push({ name: _pp[0] });
+    _crumbItems.push({ name: _pp[1] });
+    _crumbItems.push({ name: location });
+  } else {
+    _crumbItems.push({ name: parentRegion });
+    _crumbItems.push({ name: location });
+  }
+  const breadcrumbJsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": _crumbItems.map((it, i) => {
+      const o = { "@type": "ListItem", "position": i + 1, "name": it.name };
+      if (it.item) o.item = it.item;
+      return o;
+    })
+  });
   const subjectRgb = {"국어":"239,68,68","영어":"59,130,246","수학":"34,197,94","사회":"245,158,11","과학":"168,85,247","코딩":"6,182,212","검정고시":"249,115,22","논술":"99,102,241"};
   const rpRgb = subjectRgb[subject] || "99,102,241";
   const regionDisplay = parentRegion ? `${parentRegion} ${location}` : location;
@@ -464,10 +488,16 @@ function renderPage(location, level, subject, parentRegion, url) {
     "@type": "Article",
     "headline": "${title}",
     "description": "${description}",
+    "image": "${heroImg}",
+    "datePublished": "${BUILD_DATE_ISO}",
+    "dateModified": "${BUILD_DATE_ISO}",
     "author": { "@type": "Organization", "name": "안하니" },
     "publisher": { "@type": "Organization", "name": "안하니", "url": "https://anhani.com" },
     "mainEntityOfPage": "${canonical}"
   }
+  </script>
+  <script type="application/ld+json">
+  ${breadcrumbJsonLd}
   </script>
   <style>${commonStyles()}.page-container{max-width:768px;margin:0 auto;padding:32px 20px 0}.breadcrumb{font-size:13px;color:#888;margin-bottom:16px}.breadcrumb a{color:#6366f1;text-decoration:none}.breadcrumb a:hover{color:#312e81}.rp-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.rp-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.rp-hero-overlay{position:absolute;inset:0;background:transparent}.rp-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.rp-hero-text h2{font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.rp-hero-text p{font-size:clamp(12px,1.6vw,15px);opacity:.88;margin-top:4px;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.page-container h1{font-size:28px;font-weight:800;color:#111;margin-bottom:12px;line-height:1.4}.meta{font-size:13px;color:#999;margin-bottom:32px}article h2{font-size:22px;font-weight:700;color:#111;margin:36px 0 16px;padding-left:12px;border-left:4px solid #6366f1}article p{font-size:16px;margin-bottom:16px;word-break:keep-all;line-height:1.8;color:#334155}article ul{margin:0 0 16px 20px}article li{font-size:15px;margin-bottom:8px;color:#475569;line-height:1.7}.tags{margin-top:48px;padding-top:24px;border-top:1px solid #e5e7eb}.tags h3{font-size:14px;color:#666;margin-bottom:12px}.tag{display:inline-block;background:#f3f4f6;color:#555;padding:6px 14px;border-radius:20px;font-size:13px;margin:0 6px 8px 0;text-decoration:none}.tag:hover{background:#eef2ff;color:#6366f1}@media (max-width:640px){.page-container h1{font-size:22px}article h2{font-size:18px}}</style>
 </head>
@@ -551,36 +581,33 @@ function findRegion(location) {
 // --- 모든 URL 목록 생성 (sitemap용) ---
 function getAllUrls() {
   const urls = [];
-
   for (const [parent, districts] of Object.entries(REGIONS)) {
     for (const district of districts) {
       for (const level of LEVELS) {
         for (const subject of SUBJECTS) {
-          urls.push(`/${encodeURIComponent(`${district}-${level}-${subject}-과외`)}`);
+          urls.push({ u: `/${encodeURIComponent(`${district}-${level}-${subject}-과외`)}`, p: '0.8' });
         }
       }
     }
   }
-
   for (const [parent, areas] of Object.entries(EUP_MYEON)) {
     for (const area of areas) {
       for (const level of LEVELS) {
         for (const subject of SUBJECTS) {
-          urls.push(`/${encodeURIComponent(`${area}-${level}-${subject}-과외`)}`);
+          urls.push({ u: `/${encodeURIComponent(`${area}-${level}-${subject}-과외`)}`, p: '0.7' });
         }
       }
     }
   }
-
-  urls.push('/학교급별');
-  urls.push('/학년별');
+  urls.push({ u: '/학교급별', p: '0.7' });
+  urls.push({ u: '/학년별', p: '0.7' });
   for (const lv of ['middle', 'high']) {
-    urls.push(`/학교급별/${lv}`);
+    urls.push({ u: `/학교급별/${lv}`, p: '0.6' });
     const seen = new Set();
     for (const s of getSchools(lv)) {
       if (!seen.has(s[1])) {
         seen.add(s[1]);
-        urls.push(`/학교급별/${lv}/${encodeURIComponent(getSidoFromIdx(s[1]))}`);
+        urls.push({ u: `/학교급별/${lv}/${encodeURIComponent(getSidoFromIdx(s[1]))}`, p: '0.6' });
       }
     }
     const seenGugun = new Set();
@@ -588,22 +615,20 @@ function getAllUrls() {
       const key = s[1] + '|' + s[2];
       if (!seenGugun.has(key)) {
         seenGugun.add(key);
-        urls.push(`/학교급별/${lv}/${encodeURIComponent(getSidoFromIdx(s[1]))}/${encodeURIComponent(s[2])}`);
+        urls.push({ u: `/학교급별/${lv}/${encodeURIComponent(getSidoFromIdx(s[1]))}/${encodeURIComponent(s[2])}`, p: '0.5' });
       }
     }
     for (const s of getSchools(lv)) {
-      urls.push(`/${encodeURIComponent(s[0])}-과외`);
+      urls.push({ u: `/${encodeURIComponent(s[0])}-과외`, p: '0.5' });
       for (let i = 0; i < 10; i++) {
-        urls.push(`/${encodeURIComponent(s[0])}-과외/article/${i}`);
+        urls.push({ u: `/${encodeURIComponent(s[0])}-과외/article/${i}`, p: '0.4' });
       }
     }
   }
-
-  urls.push('/학습가이드');
+  urls.push({ u: '/학습가이드', p: '0.7' });
   for (let i = 0; i < GUIDE_ARTICLES.length; i++) {
-    urls.push(`/학습가이드/article/${i}`);
+    urls.push({ u: `/학습가이드/article/${i}`, p: '0.5' });
   }
-
   return urls;
 }
 
@@ -616,16 +641,18 @@ function generateSitemap() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${baseUrl}/</loc>
+    <lastmod>${BUILD_DATE_W3C}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 `;
 
-  for (const url of urls) {
+  for (const item of urls) {
     xml += `  <url>
-    <loc>${baseUrl}${url}</loc>
+    <loc>${baseUrl}${item.u}</loc>
+    <lastmod>${BUILD_DATE_W3C}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>${item.p}</priority>
   </url>
 `;
   }
@@ -664,11 +691,12 @@ function generateSitemapPart(part) {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
-  for (const url of urls) {
+  for (const item of urls) {
     xml += `  <url>
-    <loc>${baseUrl}${url}</loc>
+    <loc>${baseUrl}${item.u}</loc>
+    <lastmod>${BUILD_DATE_W3C}</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>${item.p}</priority>
   </url>
 `;
   }
@@ -681,6 +709,9 @@ function commonHead(title, description, canonical) {
   return `<meta charset="UTF-8">
   <meta name="naver-site-verification" content="2d31a5395d70375a6b80e71c055be5e739383013" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="NaverBot" content="All">
+  <meta name="Yeti" content="All">
   <title>${title}</title>
   <meta name="description" content="${description}">
   <meta property="og:title" content="${title}">
@@ -692,6 +723,10 @@ function commonHead(title, description, canonical) {
   <meta property="og:image" content="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=630&fit=crop">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="article:modified_time" content="${BUILD_DATE_ISO}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${title}">
+  <meta name="twitter:description" content="${description}">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="shortcut icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -4995,7 +5030,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v84-phase2b-fully-dynamic', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v85-seo-indexing-boost', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
