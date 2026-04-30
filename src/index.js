@@ -370,14 +370,15 @@ function generateContent(location, level, subject, parentRegion) {
 
   let _extraHTML = '';
   try {
-    const _ctx = { loc: location, parent: parentRegion, regionDisplay, level, subject };
     const _eseed = hashCode(`${location}-${level}-${subject}-extra`);
+    const _ctxBase = { loc: location, parent: parentRegion, regionDisplay, level, subject };
     const _en = _eseed % 3;
     if (_en > 0) {
       const _estart = (_eseed >>> 4) % EXTRA_SECTION_POOL.length;
       const _epicked = [];
       for (let i = 0; i < _en; i++) {
-        const r = EXTRA_SECTION_POOL[(_estart + i) % EXTRA_SECTION_POOL.length](_ctx);
+        const _ictx = Object.assign({}, _ctxBase, { h: hashCode(`${location}-${level}-${subject}-x${i}`) });
+        const r = EXTRA_SECTION_POOL[(_estart + i) % EXTRA_SECTION_POOL.length](_ictx);
         if (r) _epicked.push(r);
       }
       _extraHTML = _epicked.map(s => `<h2>${s.h}</h2><p>${s.p}</p>`).join('\n');
@@ -2154,11 +2155,60 @@ const ST={I:'일반고등학교',C:'특성화고등학교',S:'특수목적고등
 function getSidoIdxFromShort(short){for(let i=0;i<SIDO_LIST.length;i++)if(getSidoShort(SIDO_LIST[i])===short)return i;return -1;}
 function getRegionCtx(loc,parent){let sido=null,gugun=null;if(parent===null||parent===undefined){sido=loc;}else if(parent.indexOf(' ')>0){const p=parent.split(' ');sido=p[0];gugun=p[1];}else{sido=parent;gugun=loc;}return{sido,gugun};}
 function getRegionStats(loc,parent){const ctx=getRegionCtx(loc,parent);if(!ctx.gugun||!ctx.sido)return null;const idx=getSidoIdxFromShort(ctx.sido);if(idx<0)return null;const mid=getSchoolsBySidoGugun('middle',idx,ctx.gugun);const high=getSchoolsBySidoGugun('high',idx,ctx.gugun);if(mid.length===0&&high.length===0)return null;const all=mid.concat(high);const priv=all.filter(s=>s.school[3]==='사').length;const privPct=all.length>0?Math.round(priv*100/all.length):0;return{midCount:mid.length,highCount:high.length,totalCount:all.length,privPct,region:ctx.gugun};}
+const _SEC_ENV_H=[
+(c,s)=>`${c.regionDisplay} 학교 환경 한눈에`,
+(c,s)=>`${s.region}의 ${c.subject} 학습 환경`,
+(c,s)=>`${c.regionDisplay} 지역 학교 분포`,
+(c,s)=>`데이터로 보는 ${s.region} ${c.subject} 환경`,
+];
+const _SEC_ENV_B=[
+(c,s)=>`${s.region} 지역에는 중학교 ${s.midCount}곳, 고등학교 ${s.highCount}곳이 있고, 사립 비율은 약 ${s.privPct}% 수준입니다. 학교마다 진도와 평가 방식이 다르므로, 우리 학교 시험 패턴을 알고 있는 ${c.subject} 과외 선생님을 만나는 것이 효율적이에요.`,
+(c,s)=>`${s.region} 안에서 운영되는 중·고교는 총 ${s.totalCount}곳입니다. 이 중 사립이 약 ${s.privPct}%로, 학교에 따라 ${c.subject} 출제 경향과 진도 속도 차이가 큽니다. 우리 아이 학교 데이터를 가진 선생님을 우선적으로 고려하세요.`,
+(c,s)=>`이 지역(${s.region})은 중학교 ${s.midCount}개교 + 고등학교 ${s.highCount}개교 규모입니다. 사립 ${s.privPct}% 환경에서 ${c.subject} 내신 변별이 학교별로 크게 달라지기 때문에, 학교 단위로 커리큘럼을 조정해줄 수 있는 과외가 필요해요.`,
+(c,s)=>`${s.region}의 중·고 합산 ${s.totalCount}개교 중 사립이 ${s.privPct}%를 차지합니다. ${c.subject} 시험 난이도와 출제 스타일이 학교마다 달라, 같은 ${c.level} 과정이어도 우리 학교 맞춤 전략이 필수입니다.`,
+];
+const _SEC_DONG_H=[
+(c,g,d)=>`${g} 통학권 ${c.subject} 과외 안내`,
+(c,g,d)=>`${g} 동 단위 ${c.subject} 매칭 정보`,
+(c,g,d)=>`${g} 거주지별 ${c.subject} 과외 옵션`,
+(c,g,d)=>`${g} ${c.level} ${c.subject}, 동네 단위로 보기`,
+];
+const _SEC_DONG_B=[
+(c,g,d)=>`${g}은 ${d.length}개 동으로 구성되어 있으며, ${d.slice(0,3).join(', ')} 등 다양한 지역에서 ${c.level} 학생들의 ${c.subject} 과외 의뢰가 활발합니다. 거주지 기준으로 가까운 선생님 매칭이 가능하고, 화상 과외도 병행할 수 있어요.`,
+(c,g,d)=>`${g} 안의 ${d.length}개 행정동 가운데 ${d.slice(0,4).join('·')} 등은 ${c.subject} 과외 수요가 꾸준한 지역입니다. 동네별로 활동 중인 선생님 풀이 다르므로, 정확한 거주 동을 알려주시면 매칭 정확도가 올라갑니다.`,
+(c,g,d)=>`${g}의 동 ${d.length}곳 중 ${d.slice(0,3).join(', ')} 인근에서 의뢰가 자주 들어와요. ${c.level} ${c.subject} 과외는 통학 시간이 짧을수록 지속률이 높기 때문에, 동 단위로 매칭 가능 선생님을 먼저 확인해 보세요.`,
+(c,g,d)=>`${g}은 ${d.slice(0,2).join('·')} 등 ${d.length}개 동을 포함합니다. 같은 시군구라도 동에 따라 학교 환경과 학원가 분포가 달라, ${c.subject} 과외 매칭 시 동 정보를 함께 전달하면 맞춤도가 더 높아집니다.`,
+];
+const _SEC_LV_H=[
+(c)=>`${c.level} ${c.subject}, 이런 점 유의하세요`,
+(c)=>`${c.level} 학습기, ${c.subject} 과외 포인트`,
+(c)=>`${c.regionDisplay} ${c.level} ${c.subject} 시작 전 체크`,
+(c)=>`${c.level} 단계의 ${c.subject} 학습 우선순위`,
+];
+const _SEC_LV_B=[
+(c,h)=>`${h}입니다. ${c.regionDisplay} 학부모님들 사이에서도 ${c.subject} 과외 시작 시기에 대한 고민이 많은데, 너무 늦지 않게 시작하되 아이 수준과 학습 의지를 먼저 확인하는 것이 순서입니다.`,
+(c,h)=>`${h}이라는 점을 기억하세요. ${c.regionDisplay}에서 ${c.subject} 과외를 시작할 때는 진단 평가로 현재 수준을 먼저 파악하고, 부족한 단원부터 단계적으로 채워가는 방식이 효과적이에요.`,
+(c,h)=>`${h}이기 때문에, ${c.subject} 과외도 단순 진도 빼기보다는 개념 이해와 응용력 균형을 잡는 방향이 좋습니다. ${c.regionDisplay} 학부모님들도 결과보다 과정 평가에 더 신경 쓰시는 추세예요.`,
+(c,h)=>`${h}이라 ${c.subject} 학습 부담이 커지는 시기입니다. ${c.regionDisplay}에서는 학교 진도와 별도로 선행/심화 균형을 잡는 과외가 선호되며, 아이의 컨디션을 가장 먼저 살피는 것이 핵심이에요.`,
+];
+const _SEC_LV_HINT={'초등':['초등 단계는 학습 습관과 흥미가 가장 중요한 시기','초등기는 기초 개념을 단단히 다지는 출발점','초등은 자기주도 학습의 씨앗을 심는 시기'],'중등':['중등 단계는 고등 진학을 위한 기초 다지기 시기','중학생은 내신과 선행 균형을 잡아야 하는 단계','중등기는 학습 격차가 본격적으로 벌어지기 시작하는 때'],'고등':['고등 단계는 입시와 직결되는 결정적 시기','고등학생은 내신·수능·생기부를 동시에 챙겨야 하는 단계','고등기는 시간 효율과 전략이 성적을 좌우하는 때']};
+const _SEC_SELF_H=[
+(c)=>`${c.subject} 과외, 자기주도 학습과 병행하는 법`,
+(c)=>`${c.regionDisplay} ${c.subject} 과외 + 자기주도, 황금 비율`,
+(c)=>`${c.subject} 과외 효과를 두 배로, 자기주도 결합법`,
+(c)=>`${c.level} ${c.subject}, 과외와 자기주도 시간 분배`,
+];
+const _SEC_SELF_B=[
+(c)=>`${c.regionDisplay}에서 ${c.subject} 과외를 받더라도, 주 5~7시간의 자기주도 학습은 별도로 확보해야 효과가 극대화됩니다. 과외에서 배운 내용을 그날 안에 복습하고, 다음 수업까지 모르는 점을 정리해 두는 습관이 ${c.level} 학습 성과를 좌우합니다.`,
+(c)=>`과외는 방향을 잡아주는 도구이고, 실제 실력은 혼자 푸는 시간에서 만들어집니다. ${c.regionDisplay} ${c.level} 학생 기준으로 ${c.subject} 자습 시간은 주 6시간 이상이 권장되며, 오답 노트와 개념 정리 루틴을 함께 잡으면 과외 비용 대비 성과가 크게 올라갑니다.`,
+(c)=>`${c.subject} 과외 1시간당 자기주도 복습 1.5~2시간이 가장 좋은 비율로 알려져 있어요. ${c.regionDisplay}에서 과외를 시작한 ${c.level} 학생들도 복습 루틴을 만든 경우 1~2개월 안에 체감 성적 변화를 보고합니다.`,
+(c)=>`${c.regionDisplay} ${c.level} ${c.subject} 과외 효과는 자기주도 시간에 비례합니다. 수업 직후 30분 복습 + 주말 누적 정리 + 시험 2주 전 집중 모의고사 패턴이 가장 검증된 루틴이에요.`,
+];
 const EXTRA_SECTION_POOL=[
-(c)=>{const s=getRegionStats(c.loc,c.parent);if(!s)return null;return{h:`${c.regionDisplay} 학교 환경 한눈에`,p:`${s.region} 지역에는 중학교 ${s.midCount}곳, 고등학교 ${s.highCount}곳이 있고, 사립 비율은 약 ${s.privPct}% 수준입니다. 학교마다 진도와 평가 방식이 다르므로, 우리 학교 시험 패턴을 알고 있는 ${c.subject} 과외 선생님을 만나는 것이 가장 효율적이에요.`};},
-(c)=>{const ctx=getRegionCtx(c.loc,c.parent);if(!ctx.gugun)return null;if(typeof DONG_DATA==='undefined'||!DONG_DATA[ctx.gugun])return null;const dongs=DONG_DATA[ctx.gugun];if(dongs.length===0)return null;const sample=dongs.slice(0,Math.min(3,dongs.length)).join(', ');return{h:`${ctx.gugun} 통학권 ${c.subject} 과외 안내`,p:`${ctx.gugun}은 ${dongs.length}개 동으로 구성되어 있으며, ${sample} 등 다양한 지역에서 ${c.level} 학생들의 ${c.subject} 과외 의뢰가 활발합니다. 거주지 기준으로 가까운 선생님 매칭이 가능하고, 화상 과외도 병행할 수 있어요.`};},
-(c)=>{const lvHint=c.level==='초등'?'초등 단계는 학습 습관과 흥미가 가장 중요한 시기':c.level==='중등'?'중등 단계는 고등 진학을 위한 기초 다지기 시기':'고등 단계는 입시와 직결되는 결정적 시기';return{h:`${c.level} ${c.subject}, 이런 점 유의하세요`,p:`${lvHint}입니다. ${c.regionDisplay} 학부모님들 사이에서도 ${c.subject} 과외 시작 시기에 대한 고민이 많은데, 너무 늦지 않게 시작하되 아이 수준과 학습 의지를 먼저 확인하는 것이 순서입니다.`};},
-(c)=>({h:`${c.subject} 과외, 자기주도 학습과 병행하는 법`,p:`${c.regionDisplay}에서 ${c.subject} 과외를 받더라도, 주 5~7시간의 자기주도 학습은 별도로 확보해야 효과가 극대화됩니다. 과외에서 배운 내용을 그날 안에 복습하고, 다음 수업까지 모르는 점을 정리해 두는 습관이 ${c.level} 학습 성과를 좌우합니다.`}),
+(c)=>{const s=getRegionStats(c.loc,c.parent);if(!s)return null;const h=c.h;return{h:_SEC_ENV_H[h%_SEC_ENV_H.length](c,s),p:_SEC_ENV_B[(h>>>3)%_SEC_ENV_B.length](c,s)};},
+(c)=>{const ctx=getRegionCtx(c.loc,c.parent);if(!ctx.gugun)return null;if(typeof DONG_DATA==='undefined'||!DONG_DATA[ctx.gugun])return null;const d=DONG_DATA[ctx.gugun];if(d.length===0)return null;const h=c.h;return{h:_SEC_DONG_H[h%_SEC_DONG_H.length](c,ctx.gugun,d),p:_SEC_DONG_B[(h>>>3)%_SEC_DONG_B.length](c,ctx.gugun,d)};},
+(c)=>{const hints=_SEC_LV_HINT[c.level]||_SEC_LV_HINT['중등'];const h=c.h;const hint=hints[h%hints.length];return{h:_SEC_LV_H[(h>>>2)%_SEC_LV_H.length](c),p:_SEC_LV_B[(h>>>5)%_SEC_LV_B.length](c,hint)};},
+(c)=>{const h=c.h;return{h:_SEC_SELF_H[h%_SEC_SELF_H.length](c),p:_SEC_SELF_B[(h>>>3)%_SEC_SELF_B.length](c)};},
 ];
 function pickRegionSchools(loc,level,parent,n,rng){const ctx=getRegionCtx(loc,parent);if(level==='중등'||level==='고등'){const idx=getSidoIdxFromShort(ctx.sido);if(idx<0)return null;const sl=level==='중등'?'middle':'high';const all=getSchoolsBySidoGugun(sl,idx,ctx.gugun);if(all.length===0)return null;const names=all.map(s=>s.school[0]);const picked=pickN(names,Math.min(n,names.length),rng);return{count:all.length,picked,sl,dispRegion:ctx.gugun||ctx.sido};}if(level==='초등'){if(!ctx.gugun)return null;if(typeof DONG_DATA==='undefined'||!DONG_DATA[ctx.gugun])return null;const dongs=DONG_DATA[ctx.gugun];const all=[...new Set(dongs.map(d=>d.replace(/[동읍면리]$/,'')+'초등학교'))];if(all.length===0)return null;const picked=pickN(all,Math.min(n,all.length),rng);return{count:all.length,picked,sl:'elem',dispRegion:ctx.gugun};}return null;}
 const SCHOOL_SECTION_POOL=[
@@ -4945,7 +4995,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v83-phase2b-section-variability', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v84-phase2b-fully-dynamic', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
