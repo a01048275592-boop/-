@@ -5024,10 +5024,288 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
 const INDEXNOW_KEY = 'bc7021aaa2ada0c01d58334f8753cb9e';
 const SITE_HOST = 'anhani.com';
 
+// ===== v90: 자동 색인 시스템 (매일 오전 9시 KST Cron) =====
+// Tier 1: 학군 핵심 (강남/서초/송파/성남시 분당·판교)
+const TIER1_SIGUNGUS = {
+  '서울': ['강남구', '서초구', '송파구'],
+  '경기': ['성남시']  // 분당구·수정구·중원구 모두 포함
+};
+// Tier 2: 서울 일반구 + 6대 광역시
+const TIER2_SIDOS_FULL = ['부산', '대구', '인천', '광주', '대전', '울산'];
+
+// 우선순위 URL 큐 빌더 (~9000개 핵심 URL, 6개월 1회전)
+function buildPriorityQueue() {
+  const urls = [];
+  const sub8 = ['국어','영어','수학','사회','과학','코딩','검정고시','논술'];
+
+  // 1. 코어 인덱스 (~10개)
+  ['/', '/지역별', '/과목별', '/학년별', '/학교급별', '/서비스', '/학습가이드',
+   '/conversation/english', '/conversation/chinese', '/conversation/japanese'].forEach(p => urls.push(p));
+
+  // 2. Tier 1 시군구 + 동 + 동 카테고리 (~120 + 학년/과목 카테고리 1500)
+  for (const sd of Object.keys(TIER1_SIGUNGUS)) {
+    for (const sg of TIER1_SIGUNGUS[sd]) {
+      const esd = encodeURIComponent(sd), esg = encodeURIComponent(sg);
+      urls.push(`/지역별/${esd}/${esg}`);
+      const dongs = [...getDongs(sd, sg), ...(EUP_MYEON[sg] || [])];
+      for (const d of dongs) {
+        const ed = encodeURIComponent(d);
+        urls.push(`/지역별/${esd}/${esg}/${ed}`);
+        // Tier 1 동 카테고리 (학년 4개 + 과목 8개) — 검색량 매우 높음
+        for (const lvl of ['초등','중등','고등','검정고시']) {
+          urls.push(`/지역별/${esd}/${esg}/${ed}/학년/${encodeURIComponent(lvl)}`);
+        }
+        for (const s of sub8) {
+          urls.push(`/지역별/${esd}/${esg}/${ed}/과목/${encodeURIComponent(s)}`);
+        }
+      }
+    }
+  }
+
+  // 3. Tier 2 서울 나머지 구 + 동 (~400개)
+  if (REGIONS['서울']) {
+    for (const sg of REGIONS['서울']) {
+      if (TIER1_SIGUNGUS['서울'].includes(sg)) continue;
+      const esg = encodeURIComponent(sg);
+      urls.push(`/지역별/${encodeURIComponent('서울')}/${esg}`);
+      const dongs = [...getDongs('서울', sg), ...(EUP_MYEON[sg] || [])];
+      for (const d of dongs) urls.push(`/지역별/${encodeURIComponent('서울')}/${esg}/${encodeURIComponent(d)}`);
+    }
+  }
+
+  // 4. Tier 2 경기 핵심 시군구 (~500개)
+  const gyeonggiKey = ['수원시','용인시','고양시','안양시','과천시','광명시','부천시','하남시','화성시'];
+  if (REGIONS['경기']) {
+    for (const sg of gyeonggiKey) {
+      if (!REGIONS['경기'].includes(sg)) continue;
+      const esg = encodeURIComponent(sg);
+      urls.push(`/지역별/${encodeURIComponent('경기')}/${esg}`);
+      const dongs = [...getDongs('경기', sg), ...(EUP_MYEON[sg] || [])];
+      for (const d of dongs) urls.push(`/지역별/${encodeURIComponent('경기')}/${esg}/${encodeURIComponent(d)}`);
+    }
+  }
+
+  // 5. Tier 2 광역시 (~700개)
+  for (const sd of TIER2_SIDOS_FULL) {
+    if (!REGIONS[sd]) continue;
+    const esd = encodeURIComponent(sd);
+    for (const sg of REGIONS[sd]) {
+      const esg = encodeURIComponent(sg);
+      urls.push(`/지역별/${esd}/${esg}`);
+      const dongs = [...getDongs(sd, sg), ...(EUP_MYEON[sg] || [])];
+      for (const d of dongs) urls.push(`/지역별/${esd}/${esg}/${encodeURIComponent(d)}`);
+    }
+  }
+
+  // 6. Tier 3: 경기 나머지 시군구 (~2500개) — 6개월 사이클 채우기용
+  if (REGIONS['경기']) {
+    for (const sg of REGIONS['경기']) {
+      if (gyeonggiKey.includes(sg)) continue;
+      const esg = encodeURIComponent(sg);
+      urls.push(`/지역별/${encodeURIComponent('경기')}/${esg}`);
+      const dongs = [...getDongs('경기', sg), ...(EUP_MYEON[sg] || [])];
+      for (const d of dongs) urls.push(`/지역별/${encodeURIComponent('경기')}/${esg}/${encodeURIComponent(d)}`);
+    }
+  }
+
+  // 7. 학년-과목 96개 + 키워드 아티클 30개씩 (총 ~2880개) — 검색량 매우 높음
+  for (const sl of ['elementary','middle','high']) {
+    const max = sl === 'elementary' ? 6 : 3;
+    for (let g = 1; g <= max; g++) {
+      for (const s of sub8) {
+        const es = encodeURIComponent(s);
+        urls.push(`/grade/${sl}/${g}/${es}`);
+        for (let i = 0; i < 30; i++) urls.push(`/grade/${sl}/${g}/${es}/article/${i}`);
+      }
+    }
+  }
+
+  // 8. 과목별 페이지 + 키워드 아티클 0~9 (~80개)
+  for (const s of sub8) {
+    const es = encodeURIComponent(s);
+    urls.push(`/과목별/${es}`);
+    for (let i = 0; i < 9; i++) urls.push(`/과목별/${es}/article/${i}`);
+  }
+
+  // 9. 회화 키워드 아티클 (~90개)
+  for (const lang of ['english','chinese','japanese']) {
+    for (let i = 0; i < 30; i++) urls.push(`/conversation/${lang}/article/${i}`);
+  }
+
+  // 10. 학습가이드 (~30개)
+  for (let i = 0; i < 30; i++) urls.push(`/학습가이드/article/${i}`);
+
+  return urls;
+}
+
+// 3개 검색엔진 동시 호출 (네이버/Bing/Yandex)
+async function pingIndexNow3Engines(urlList) {
+  const body = JSON.stringify({
+    host: SITE_HOST,
+    key: INDEXNOW_KEY,
+    keyLocation: `https://${SITE_HOST}/${INDEXNOW_KEY}.txt`,
+    urlList
+  });
+  const headers = { 'Content-Type': 'application/json; charset=utf-8' };
+  const endpoints = [
+    { name: 'naver',  url: 'https://api.searchadvisor.naver.com/indexnow' },
+    { name: 'bing',   url: 'https://www.bing.com/indexnow' },
+    { name: 'yandex', url: 'https://yandex.com/indexnow' }
+  ];
+  const results = await Promise.all(endpoints.map(async ep => {
+    try {
+      const res = await fetch(ep.url, { method: 'POST', headers, body });
+      return { engine: ep.name, status: res.status, ok: (res.status === 200 || res.status === 202) };
+    } catch (e) {
+      return { engine: ep.name, status: 0, ok: false, error: String(e).slice(0, 100) };
+    }
+  }));
+  return results;
+}
+
+// 자동 색인 1회 실행 (오늘의 50개 처리)
+async function runAutoIndexBatch(env) {
+  if (!env || !env.INDEX_STATE) {
+    return { ok: false, error: 'KV namespace INDEX_STATE 미설정' };
+  }
+  const queue = buildPriorityQueue();
+  const total = queue.length;
+  const offsetStr = await env.INDEX_STATE.get('offset');
+  const offset = parseInt(offsetStr || '0') % total;
+  const batchSize = 50;
+  const batch = queue.slice(offset, offset + batchSize);
+  // 회전 처리: 끝에 도달하면 앞에서 채움
+  if (batch.length < batchSize) {
+    batch.push(...queue.slice(0, batchSize - batch.length));
+  }
+  const fullUrls = batch.map(p => `https://${SITE_HOST}${p}`);
+
+  // 3개 엔진 동시 호출
+  const results = await pingIndexNow3Engines(fullUrls);
+  const naverResult = results.find(r => r.engine === 'naver');
+  const naverOk = naverResult && naverResult.ok;
+
+  // 네이버 실패시 ALL_FAILED 큐에 모든 URL 추가 (옵션 2: 형이 직접 판단)
+  const failedRaw = await env.INDEX_STATE.get('all_failed');
+  const allFailed = failedRaw ? JSON.parse(failedRaw) : [];
+  if (!naverOk) {
+    const ts = new Date().toISOString();
+    const status = naverResult ? naverResult.status : 0;
+    for (const u of fullUrls) {
+      allFailed.push({ url: u, status, ts });
+    }
+    await env.INDEX_STATE.put('all_failed', JSON.stringify(allFailed.slice(-500))); // 최근 500개만 유지
+  }
+
+  // offset 진행 (실패 여부 무관 - 옵션 2: 진행은 계속, 실패는 별도 큐)
+  const newOffset = (offset + batchSize) % total;
+  await env.INDEX_STATE.put('offset', String(newOffset));
+
+  // 통계 업데이트
+  const statsRaw = await env.INDEX_STATE.get('stats');
+  const stats = statsRaw ? JSON.parse(statsRaw) : { totalProcessed: 0, totalFailed: 0, runs: 0, cycleStartedAt: new Date().toISOString() };
+  stats.totalProcessed += fullUrls.length;
+  if (!naverOk) stats.totalFailed += fullUrls.length;
+  stats.runs += 1;
+  stats.lastRunAt = new Date().toISOString();
+  stats.lastOffset = offset;
+  stats.lastBatchSize = batch.length;
+  stats.lastResults = results;
+  if (newOffset < offset) stats.cycleStartedAt = new Date().toISOString(); // 한 바퀴 돔
+  await env.INDEX_STATE.put('stats', JSON.stringify(stats));
+
+  return {
+    ok: true,
+    offset, newOffset, total,
+    batchSize: fullUrls.length,
+    results,
+    naverOk,
+    failedQueueSize: allFailed.length
+  };
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const pathname = url.pathname;
+
+    // ===== v90: 자동 색인 시스템 API =====
+    // /api/auto-index : 수동 트리거 (오늘의 50개 즉시 실행)
+    // /api/auto-index?retry=failed : 실패 큐만 재시도
+    if (pathname === '/api/auto-index') {
+      if (!env || !env.INDEX_STATE) {
+        return new Response(JSON.stringify({
+          error: 'Cloudflare KV "INDEX_STATE" namespace 미설정. wrangler.toml 또는 대시보드에서 KV 바인딩을 추가해주세요.'
+        }, null, 2), { status: 500, headers: { 'Content-Type': 'application/json' } });
+      }
+      const retry = url.searchParams.get('retry');
+      if (retry === 'failed') {
+        // 실패 큐만 재시도 (형이 직접 트리거)
+        const failedRaw = await env.INDEX_STATE.get('all_failed');
+        const allFailed = failedRaw ? JSON.parse(failedRaw) : [];
+        if (allFailed.length === 0) {
+          return new Response(JSON.stringify({ ok: true, message: '실패 큐가 비어있습니다.' }, null, 2),
+            { headers: { 'Content-Type': 'application/json' } });
+        }
+        // 한번에 최대 50개씩만 재시도
+        const retryBatch = allFailed.slice(0, 50).map(x => x.url);
+        const results = await pingIndexNow3Engines(retryBatch);
+        const naverResult = results.find(r => r.engine === 'naver');
+        const naverOk = naverResult && naverResult.ok;
+        if (naverOk) {
+          // 성공: 재시도한 URL들을 실패 큐에서 제거
+          const retried = new Set(retryBatch);
+          const remaining = allFailed.filter(x => !retried.has(x.url));
+          await env.INDEX_STATE.put('all_failed', JSON.stringify(remaining));
+          return new Response(JSON.stringify({
+            ok: true, retried: retryBatch.length, results,
+            failedRemaining: remaining.length
+          }, null, 2), { headers: { 'Content-Type': 'application/json' } });
+        } else {
+          return new Response(JSON.stringify({
+            ok: false, retried: retryBatch.length, results,
+            message: '재시도 실패. 큐 유지.'
+          }, null, 2), { headers: { 'Content-Type': 'application/json' } });
+        }
+      }
+      // 일반 트리거: 오늘의 50개 처리
+      const result = await runAutoIndexBatch(env);
+      return new Response(JSON.stringify(result, null, 2),
+        { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
+    }
+
+    // /api/index-stats : 통계 + 실패 큐 확인
+    if (pathname === '/api/index-stats') {
+      if (!env || !env.INDEX_STATE) {
+        return new Response(JSON.stringify({ error: 'KV INDEX_STATE 미설정' }, null, 2),
+          { status: 500, headers: { 'Content-Type': 'application/json' } });
+      }
+      const offsetStr = await env.INDEX_STATE.get('offset');
+      const statsRaw = await env.INDEX_STATE.get('stats');
+      const failedRaw = await env.INDEX_STATE.get('all_failed');
+      const queue = buildPriorityQueue();
+      const offset = parseInt(offsetStr || '0');
+      const allFailed = failedRaw ? JSON.parse(failedRaw) : [];
+      const stats = statsRaw ? JSON.parse(statsRaw) : null;
+
+      // 응답코드별 그룹화 (형이 4xx/5xx 구분 쉽게)
+      const failedByStatus = {};
+      for (const f of allFailed) {
+        const k = String(f.status || '0');
+        if (!failedByStatus[k]) failedByStatus[k] = [];
+        failedByStatus[k].push(f);
+      }
+
+      // 다음 처리 예정 10개 미리보기
+      const upcoming = queue.slice(offset, offset + 10).map(p => `https://${SITE_HOST}${p}`);
+
+      return new Response(JSON.stringify({
+        queue: { total: queue.length, currentOffset: offset, progressPercent: ((offset / queue.length) * 100).toFixed(1) },
+        stats,
+        failed: { count: allFailed.length, byStatus: failedByStatus },
+        upcoming
+      }, null, 2), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
+    }
 
     if (pathname === '/api/inquiry' && request.method === 'POST') {
       try {
@@ -5115,7 +5393,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v89-robots-cleanup', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v90-auto-index', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
@@ -5682,5 +5960,11 @@ export default {
       status: 404,
       headers: {'Content-Type':'text/html;charset=utf-8'}
     });
+  },
+
+  // ===== v90: Cron Trigger 핸들러 =====
+  // wrangler.toml의 [triggers] crons 설정에 의해 매일 KST 09:00 (UTC 00:00) 자동 실행
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(runAutoIndexBatch(env));
   }
 };
