@@ -824,6 +824,7 @@ function commonHead(title, description, canonical) {
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
   <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="shortcut icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="canonical" href="${canonical}">`;
@@ -5126,7 +5127,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v86-region-meta', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v87-favicon-fix', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
@@ -5271,7 +5272,20 @@ export default {
       });
     }
 
-    if (pathname === '/favicon.ico' || pathname === '/favicon.png' || pathname === '/apple-touch-icon.png' || pathname === '/apple-touch-icon-precomposed.png') {
+    if (pathname === '/favicon.ico') {
+      const b64 = FAVICON_URI.split(',')[1];
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new Response(bytes, {
+        headers: {
+          'Content-Type': 'image/x-icon',
+          'Cache-Control': 'public, max-age=604800'
+        }
+      });
+    }
+
+    if (pathname === '/favicon.png' || pathname === '/apple-touch-icon.png' || pathname === '/apple-touch-icon-precomposed.png') {
       const b64 = FAVICON_URI.split(',')[1];
       const bin = atob(b64);
       const bytes = new Uint8Array(bin.length);
