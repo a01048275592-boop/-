@@ -5148,7 +5148,7 @@ async function pingIndexNow3Engines(urlList) {
   });
   const headers = { 'Content-Type': 'application/json; charset=utf-8' };
   const endpoints = [
-    { name: 'naver',  url: 'https://api.searchadvisor.naver.com/indexnow' },
+    { name: 'naver',  url: 'https://searchadvisor.naver.com/indexnow' },
     { name: 'bing',   url: 'https://www.bing.com/indexnow' },
     { name: 'yandex', url: 'https://yandex.com/indexnow' }
   ];
@@ -5393,7 +5393,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v90-auto-index', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v91-naver-endpoint-fix', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
@@ -5422,7 +5422,7 @@ export default {
       let naverStatus = 0;
       let errMsg = '';
       try {
-        const res = await fetch('https://api.searchadvisor.naver.com/indexnow', {
+        const res = await fetch('https://searchadvisor.naver.com/indexnow', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json; charset=utf-8' },
           body: JSON.stringify({
@@ -5493,7 +5493,7 @@ export default {
       let naverStatus = 0;
       let naverResponse = '';
       try {
-        const res = await fetch('https://api.searchadvisor.naver.com/indexnow', {
+        const res = await fetch('https://searchadvisor.naver.com/indexnow', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json; charset=utf-8' },
           body: JSON.stringify({
