@@ -573,11 +573,9 @@ function renderPage(location, level, subject, parentRegion, url) {
   return `<!DOCTYPE html>
 <html lang="ko">
 <head>
-  ${commonHead(title + ' | 안하니', description, canonical)}
+  ${commonHead(title + ' | 안하니', description, canonical, heroImg)}
   <meta name="robots" content="index, follow">
-  <meta property="og:image" content="${heroImg}">
   <meta property="og:type" content="article">
-  <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -801,7 +799,9 @@ function generateSitemapPart(part) {
 }
 
 // --- 공통 레이아웃 ---
-function commonHead(title, description, canonical) {
+const DEFAULT_OG_IMAGE = "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=630&fit=crop";
+function commonHead(title, description, canonical, ogImage) {
+  const _img = ogImage || DEFAULT_OG_IMAGE;
   return `<meta charset="UTF-8">
   <meta name="naver-site-verification" content="2d31a5395d70375a6b80e71c055be5e739383013" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -816,13 +816,14 @@ function commonHead(title, description, canonical) {
   <meta property="og:site_name" content="안하니">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=630&fit=crop">
+  <meta property="og:image" content="${_img}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="article:modified_time" content="${BUILD_DATE_ISO}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
+  <meta name="twitter:image" content="${_img}">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="shortcut icon" type="image/png" href="/favicon.png">
@@ -1392,7 +1393,7 @@ function renderSigunguDetail(sido, sigungu, cat, val) {
     [`${kw} 효과 시점`,`1~2개월은 공백 메우는 시기, 3~4개월 차 성적 향상, 6개월 이상 습관 정착. 최소 한 학기는 꾸준히 지켜봐 주세요. 매일 30분~1시간 자기 학습 병행 시 효과가 극대화됩니다.`]
   ];
     return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(kw + ', ' + sigungu + ' 동네 학습 코칭 전문가 | 안하니', sido+' '+sigungu+' 1:1 맞춤 과외', 'https://anhani.com' + canon)}
+  ${commonHead(kw + ', ' + sigungu + ' 동네 학습 코칭 전문가 | 안하니', sido+' '+sigungu+' 1:1 맞춤 과외', 'https://anhani.com' + canon, heroImg)}
   <style>${commonStyles()}${dcCSS()}</style></head><body>
   ${navHTML('region')}
   <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${sido} &gt; ${cat?`<a href="${bp}">${sigungu}</a> &gt; ${val}과외`:sigungu}</div>
@@ -1542,7 +1543,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
   const otherDongs = all.filter(d => d !== dong).slice(0, 12);
   const dongLinks = otherDongs.map(d => `<a href="/지역별/${e(sido)}/${e(sigungu)}/${e(d)}" class="dc-xc"><span class="dc-xc-dot" style="background:#6366f1"></span><span class="dc-xc-t">${d}</span><span class="dc-xc-a">→</span></a>`).join('');
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(seoT, seoD, 'https://anhani.com' + canonPath)}
+  ${commonHead(seoT, seoD, 'https://anhani.com' + canonPath, heroImg)}
   <style>${commonStyles()}${dcCSS()}.dc-xc.on{border-color:var(--c);background:#f8fafc}</style></head>
   <body>${navHTML('region')}
   <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${bc}</div>
@@ -1959,8 +1960,7 @@ function renderSubjectDetail(subject) {
     </div>`).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(subject + ' 공부법 & 학습 전략 가이드 | 과외안하니', subject + ' 과목 공부법, 핵심 5가지, 효과적인 공부법, 로드맵, 과목별 안내까지 완벽 정리.', 'https://anhani.com/과목별/' + encodeURIComponent(subject))}
-  <meta property="og:image" content="${heroImg}">
+  ${commonHead(subject + ' 공부법 & 학습 전략 가이드 | 과외안하니', subject + ' 과목 공부법, 핵심 5가지, 효과적인 공부법, 로드맵, 과목별 안내까지 완벽 정리.', 'https://anhani.com/과목별/' + encodeURIComponent(subject), heroImg)}
   <style>${commonStyles()}.sd-hero-wrap{position:relative;overflow:hidden;width:calc(100% - 40px);max-width:860px;margin:20px auto 24px;border-radius:14px}.sd-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.sd-hero-overlay{position:absolute;inset:0;background:transparent;z-index:1}.sd-hero{position:relative;z-index:2;padding:72px 24px 60px;text-align:center;color:#fff}.sd-hero-icon{font-size:52px;margin-bottom:14px;filter:drop-shadow(0 2px 12px rgba(0,0,0,.4))}.sd-hero h1{font-size:34px;font-weight:900;margin-bottom:10px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.sd-hero p{font-size:15px;color:rgba(255,255,255,.95);text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.sd-wrap{max-width:860px;margin:0 auto;padding:40px 24px 80px}.sd-study{margin-bottom:44px}.sd-study > h2,.sd-section-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;padding-left:12px;border-left:4px solid ${color}}.sd-sections{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.sd-section{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px}.sd-section h3{font-size:17px;font-weight:700;color:${color};margin-bottom:12px}.sd-section ul{list-style:none;padding:0;margin:0}.sd-section li{font-size:14px;color:#475569;line-height:1.7;margin-bottom:6px}.sd-ess-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:44px}.sd-ess-card{display:flex;gap:16px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:20px 22px;transition:.2s}.sd-ess-card:hover{border-color:${color};box-shadow:0 4px 16px rgba(0,0,0,.05)}.sd-ess-num{flex-shrink:0;width:42px;height:42px;background:rgba(${rgb},.1);color:${color};border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}.sd-ess-body h4{font-size:16px;font-weight:800;color:#0f172a;margin-bottom:5px}.sd-ess-body p{font-size:14px;color:#475569;line-height:1.7}.sd-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:44px}.sd-method-card{background:rgba(${rgb},.06);border-radius:14px;padding:20px 22px;transition:.2s}.sd-method-card:hover{transform:translateY(-3px)}.sd-method-card h4{font-size:16px;font-weight:800;color:${color};margin-bottom:6px}.sd-method-card p{font-size:14px;color:#334155;line-height:1.7}.sd-road-timeline{position:relative;padding-left:24px;margin-bottom:44px}.sd-road-timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:rgba(${rgb},.2)}.sd-road-item{position:relative;margin-bottom:18px}.sd-road-dot{position:absolute;left:-24px;top:6px;width:14px;height:14px;background:${color};border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px ${color}}.sd-road-body{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px}.sd-road-body h4{font-size:15px;font-weight:800;color:${color};margin-bottom:6px}.sd-road-body p{font-size:14px;color:#475569;line-height:1.7}.sd-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:44px}.sd-guide-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 22px;transition:.2s}.sd-guide-card:hover{border-color:${color}}.sd-guide-label{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:10px;background:${color};color:#fff;margin-bottom:10px}.sd-guide-card p{font-size:14px;color:#334155;line-height:1.7}.sd-kw-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;text-align:center}.sd-kw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sd-kw-item{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;transition:.2s;line-height:1.4}.sd-kw-item:hover{border-color:${color};color:${color};transform:translateX(4px)}.sd-kw-arrow{color:#d1d5db;flex-shrink:0;margin-left:8px}.sd-kw-item:hover .sd-kw-arrow{color:${color}}.sd-cta{background:linear-gradient(135deg,${color},${color}dd);border-radius:14px;padding:32px;text-align:center;color:#fff;margin-top:40px}.sd-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.sd-cta p{font-size:14px;opacity:.92;margin-bottom:16px}.sd-cta a{display:inline-block;background:#fff;color:${color};padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}@media (max-width:640px){.sd-hero h1{font-size:26px}.sd-hero-icon{font-size:42px}.sd-kw-grid{grid-template-columns:1fr}.sd-sections{grid-template-columns:1fr}.sd-ess-card{flex-direction:column;gap:10px}}</style></head><body>
   ${navHTML('subject')}
   <div class="sd-hero-wrap">
@@ -2577,8 +2577,7 @@ function renderGradeSubjectPage(school, grade, subject) {
   const rgb = subjectColors[subject] || "99,102,241";
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(gradeLabel + ' ' + subject + ' 과외 추천 가이드 | 과외안하니', gradeLabel + ' ' + subject + ' 과외 정보! 과외비, 학습 전략, 선생님 선택법까지 한 번에 정리했습니다.', canonical)}
-  <meta property="og:image" content="${heroImg}">
+  ${commonHead(gradeLabel + ' ' + subject + ' 과외 추천 가이드 | 과외안하니', gradeLabel + ' ' + subject + ' 과외 정보! 과외비, 학습 전략, 선생님 선택법까지 한 번에 정리했습니다.', canonical, heroImg)}
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}.gs-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.gs-breadcrumb{font-size:13px;color:#888;margin-bottom:20px}.gs-breadcrumb a{color:#6366f1;text-decoration:none}.gs-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}.gs-tab{padding:8px 16px;border-radius:8px;border:1.5px solid #e2e8f0;font-size:13px;font-weight:600;color:#64748b;text-decoration:none;transition:.2s}.gs-tab:hover{border-color:#6366f1;color:#6366f1}.gs-tab.active{background:#6366f1;color:#fff;border-color:#6366f1}.gs-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.gs-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.gs-hero-overlay{position:absolute;inset:0;background:transparent}.gs-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.gs-hero-text h2{font-size:clamp(22px,4vw,36px);font-weight:900;margin-bottom:6px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.gs-hero-text p{font-size:clamp(13px,1.8vw,16px);opacity:.92;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.gs-wrap h1{font-size:28px;font-weight:800;color:#0f172a;margin-bottom:12px;line-height:1.4}.gs-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.gs-article h2{font-size:21px;font-weight:700;color:#0f172a;margin:32px 0 14px;padding-left:12px;border-left:4px solid #6366f1}.gs-article p{font-size:16px;color:#334155;line-height:1.85;margin-bottom:16px;word-break:keep-all}.gs-article ul{margin:0 0 16px 20px}.gs-article li{font-size:15px;color:#475569;line-height:1.7;margin-bottom:8px}.gs-info-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:20px}.gs-info-box h3{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}.gs-info-box p{font-size:14px;color:#64748b;margin-bottom:4px}.gs-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:14px;padding:32px 24px;text-align:center;color:#fff;margin:40px 0}.gs-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.gs-cta p{font-size:14px;opacity:.7;margin-bottom:16px}.gs-cta a{display:inline-block;background:#fff;color:#4f46e5;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}@media (max-width:640px){.gs-wrap h1{font-size:22px}.gs-article h2{font-size:18px}}.gs-keywords{margin-top:48px;padding-top:32px;border-top:2px solid #e2e8f0}.gs-kw-title{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:20px;text-align:center}.gs-kw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gs-kw-item{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:.2s;line-height:1.4}.gs-kw-item:hover{border-color:#6366f1;color:#6366f1;transform:translateX(4px)}.gs-kw-arrow{color:#d1d5db;flex-shrink:0;margin-left:8px}.gs-kw-item:hover .gs-kw-arrow{color:#6366f1}@media (max-width:640px){.gs-kw-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('region')}
@@ -2847,8 +2846,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(title + ' | 과외안하니', gradeLabel + ' ' + subject + ' 학습 전략 - ' + title, canonical)}
-  <meta property="og:image" content="${heroImg}">
+  ${commonHead(title + ' | 과외안하니', gradeLabel + ' ' + subject + ' 학습 전략 - ' + title, canonical, heroImg)}
   <meta name="robots" content="index, follow">
   <style>${commonStyles()}.ka-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.ka-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.ka-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ka-hero-overlay{position:absolute;inset:0;background:transparent}.ka-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.ka-hero-text h2{font-size:clamp(18px,3.5vw,28px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.ka-hero-text p{font-size:clamp(12px,1.6vw,14px);opacity:.88;margin-top:4px;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.ka-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:16px}.ka-wrap h1{font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin-bottom:12px}.ka-meta{font-size:13px;color:#94a3b8;margin-bottom:28px;display:flex;align-items:center;gap:12px}.ka-article h2{font-size:22px;font-weight:800;color:#0f172a;margin:36px 0 14px;line-height:1.4}.ka-article p{font-size:16px;color:#334155;line-height:1.85;margin-bottom:16px;word-break:keep-all}.ka-callout{background:#f0f9ff;border-left:4px solid #3b82f6;border-radius:0 10px 10px 0;padding:18px 20px;margin:20px 0}.ka-callout strong{font-size:14px;color:#1d4ed8;display:block;margin-bottom:6px}.ka-callout p{font-size:14px;color:#475569;margin:0}.ka-related{margin-top:48px;padding-top:28px;border-top:2px solid #e2e8f0}.ka-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px}.ka-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ka-related-item{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;transition:.2s;display:flex;justify-content:space-between;align-items:center}.ka-related-item:hover{border-color:#6366f1;color:#6366f1}.ka-cta{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:32px;text-align:center;color:#fff;margin:40px 0}.ka-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.ka-cta p{font-size:14px;opacity:.7;margin-bottom:16px}.ka-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.ka-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.ka-cta-primary{background:#fff;color:#312e81}.ka-cta-secondary{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}@media (max-width:640px){.ka-wrap h1{font-size:22px}.ka-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('region')}
@@ -3326,7 +3324,7 @@ function renderSchoolSubjectAcademy(center, schoolName, subject) {
   const seoDesc = schoolName + ' ' + subject + ' 내신 대비와 ' + lvl + ' 맞춤 커리큘럼. ' + fullName + '이 제공하는 1:1 학습 코칭 안내.';
   const url = 'https://anhani.com/학교학원/' + encodeURIComponent(c.n) + '/' + encodeURIComponent(schoolName) + '/' + encodeURIComponent(subject);
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(seoTitle, seoDesc, url)}
+  ${commonHead(seoTitle, seoDesc, url, heroImg)}
   ${subjArticleStyle(col,bg,heroImg)}</head>
   <body>${navHTML('region')}
   <div class="sh"><div class="si">
@@ -3430,7 +3428,7 @@ function renderRegionSubjectAcademy(center, region, subject) {
   const seoDesc = region + ' ' + subject + ' 1:1 학원 안내. ' + fullName + '이 제공하는 ' + rtLabel + ' 학생 맞춤 ' + subject + ' 커리큘럼.';
   const url = 'https://anhani.com/지역학원/' + encodeURIComponent(c.n) + '/' + encodeURIComponent(region) + '/' + encodeURIComponent(subject);
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(seoTitle, seoDesc, url)}
+  ${commonHead(seoTitle, seoDesc, url, heroImg)}
   ${subjArticleStyle(col, bg, heroImg)}</head>
   <body>${navHTML('region')}
   <div class="sh"><div class="si">
@@ -3828,8 +3826,7 @@ function renderConversationPage(lang) {
     </div>`).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(d.name + ' 회화 수업 - 과외안하니', d.name + ' 회화 1:1 맞춤 수업. 핵심 포인트, 공부법, 로드맵까지 완벽 가이드.', 'https://anhani.com/conversation/' + lang)}
-  <meta property="og:image" content="${heroImg}">
+  ${commonHead(d.name + ' 회화 수업 - 과외안하니', d.name + ' 회화 1:1 맞춤 수업. 핵심 포인트, 공부법, 로드맵까지 완벽 가이드.', 'https://anhani.com/conversation/' + lang, heroImg)}
   <style>${commonStyles()}.cv-wrap{max-width:900px;margin:0 auto;padding:24px 24px 80px}.cv-hero-wrap{position:relative;border-radius:20px;overflow:hidden;margin-bottom:40px;aspect-ratio:1200/500;background:#0f172a}.cv-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.cv-hero-overlay{position:absolute;inset:0;background:transparent}.cv-hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:32px 24px;text-align:center;color:#fff}.cv-flag{font-size:52px;margin-bottom:12px;filter:drop-shadow(0 2px 12px rgba(0,0,0,.4))}.cv-title{font-size:clamp(26px,4.5vw,38px);font-weight:900;margin-bottom:12px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.cv-title em{font-style:normal;background:rgba(255,255,255,.2);padding:2px 16px;border-radius:10px;backdrop-filter:blur(4px)}.cv-desc{font-size:clamp(13px,1.7vw,15px);color:rgba(255,255,255,.92);line-height:1.7;margin-bottom:20px;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6);max-width:600px}.cv-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.cv-btn{padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:.2s}.cv-btn-primary{background:#fff;color:${d.color}}.cv-btn-primary:hover{transform:translateY(-2px)}.cv-btn-secondary{background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(6px)}.cv-btn-secondary:hover{background:rgba(255,255,255,.28)}.cv-section{margin-bottom:44px}.cv-section h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:18px;padding-left:12px;border-left:4px solid ${d.color}}.cv-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cv-feat{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 14px;text-align:center;font-size:15px;font-weight:600;color:#334155;transition:.2s;word-break:keep-all;display:flex;align-items:center;justify-content:center;min-height:60px}.cv-feat:hover{border-color:${d.color};transform:translateY(-2px)}.cv-ess-grid{display:flex;flex-direction:column;gap:14px}.cv-ess-card{display:flex;gap:18px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px 24px;transition:.2s}.cv-ess-card:hover{border-color:${d.color};box-shadow:0 4px 16px rgba(0,0,0,.05)}.cv-ess-num{flex-shrink:0;width:44px;height:44px;background:${d.bgColor};color:${d.color};border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}.cv-ess-body{flex:1}.cv-ess-body h4{font-size:16px;font-weight:800;color:#0f172a;margin-bottom:6px}.cv-ess-body p{font-size:14px;color:#475569;line-height:1.7}.cv-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.cv-method-card{background:${d.bgColor};border-radius:14px;padding:22px 24px;transition:.2s}.cv-method-card:hover{transform:translateY(-3px)}.cv-method-card h4{font-size:16px;font-weight:800;color:${d.color};margin-bottom:8px}.cv-method-card p{font-size:14px;color:#334155;line-height:1.7}.cv-road-timeline{position:relative;padding-left:24px}.cv-road-timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:${d.bgColor}}.cv-road-item{position:relative;margin-bottom:20px}.cv-road-dot{position:absolute;left:-24px;top:6px;width:14px;height:14px;background:${d.color};border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px ${d.color}}.cv-road-body{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 22px}.cv-road-body h4{font-size:15px;font-weight:800;color:${d.color};margin-bottom:6px}.cv-road-body p{font-size:14px;color:#475569;line-height:1.7}.cv-levels{display:flex;flex-direction:column;gap:10px}.cv-level{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px}.cv-level-num{width:36px;height:36px;background:${d.color};color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}.cv-level-text{font-size:15px;font-weight:600;color:#334155}.cv-lang-tabs{display:flex;gap:10px;margin-bottom:24px;justify-content:center;flex-wrap:wrap}.cv-lang-tab{padding:10px 24px;border-radius:10px;border:1.5px solid #e2e8f0;font-size:15px;font-weight:600;text-decoration:none;color:#475569;transition:.2s;background:#fff}.cv-lang-tab:hover{border-color:${d.color}}.cv-lang-tab.active{background:${d.color};color:#fff;border-color:${d.color}}@media (max-width:640px){.cv-features{grid-template-columns:1fr 1fr}.cv-hero-wrap{aspect-ratio:auto}.cv-hero-content{position:relative;inset:auto;padding:32px 18px}.cv-ess-card{flex-direction:column;gap:10px}}</style></head><body>
   ${navHTML('foreign')}
   <div class="cv-wrap">
@@ -4305,8 +4302,7 @@ function renderGuideArticle(idx) {
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(a.title + ' | 과외안하니', a.kw + ' 완벽 가이드. 실전 노하우와 학습 전략을 한 번에 확인하세요.', 'https://anhani.com/학습가이드/article/' + idx)}
-  <meta property="og:image" content="${heroImg}">
+  ${commonHead(a.title + ' | 과외안하니', a.kw + ' 완벽 가이드. 실전 노하우와 학습 전략을 한 번에 확인하세요.', 'https://anhani.com/학습가이드/article/' + idx, heroImg)}
   <style>${commonStyles()}.ga-wrap{max-width:768px;margin:0 auto;padding:0 20px 80px}.ga-hero-wrap{position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/500;overflow:hidden;background:#0f172a;border-radius:14px}.ga-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ga-hero-ov{position:absolute;inset:0;background:transparent}.ga-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.ga-hero-text h2{font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.3;margin:0}.ga-hero-text p{font-size:clamp(12px,1.6vw,15px);opacity:.88;margin:6px 0 0;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.ga-bc{font-size:13px;color:#94a3b8;margin-bottom:20px;padding-top:20px}.ga-bc a{color:#6366f1;text-decoration:none}.ga-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:12px}.ga-title{font-size:28px;font-weight:900;color:#0f172a;margin-bottom:12px;line-height:1.4}.ga-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.ga-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:28px 0 12px;padding-left:12px;border-left:4px solid #6366f1}.ga-content p{font-size:15px;color:#334155;line-height:1.85;margin-bottom:14px;word-break:keep-all}.ga-tip{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0;font-size:14px;line-height:1.7;color:#78350f}.ga-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:14px;padding:28px 24px;text-align:center;color:#fff;margin:36px 0}.ga-cta h3{font-size:18px;font-weight:800;margin-bottom:8px}.ga-cta p{font-size:13px;opacity:.85;margin-bottom:14px}.ga-cta a{display:inline-block;margin:0 4px;padding:10px 20px;background:#fff;color:#4f46e5;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none}.ga-related{margin-top:36px;padding-top:24px;border-top:2px solid #e2e8f0}.ga-related h3{font-size:17px;font-weight:800;margin-bottom:14px}.ga-rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ga-rel{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;font-weight:600;transition:.2s}.ga-rel:hover{border-color:#6366f1;color:#6366f1}@media (max-width:640px){.ga-rel-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('guide')}
   <div class="ga-hero-wrap">
@@ -5127,7 +5123,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v87-favicon-fix', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v88-og-image-fix', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
