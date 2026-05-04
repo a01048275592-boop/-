@@ -5205,6 +5205,13 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
+    // ===== v93: trailing slash 자동 redirect (URL 정규화) =====
+    // /학교급별/high/세종특별자치시/ → /학교급별/high/세종특별자치시 로 영구 리다이렉트
+    // 라우팅 정규식이 trailing slash를 매칭 못해서 404 나는 문제 해결
+    if (pathname.length > 1 && pathname.endsWith('/')) {
+      return Response.redirect(url.origin + pathname.slice(0, -1) + url.search, 301);
+    }
+
     // ===== v90: 자동 색인 시스템 API =====
     // /api/auto-index : 수동 트리거 (오늘의 50개 즉시 실행)
     // /api/auto-index?retry=failed : 실패 큐만 재시도
@@ -5369,7 +5376,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v92-broken-links-cleanup', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v93-trailing-slash-fix', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
