@@ -674,24 +674,7 @@ function findRegion(location) {
 // --- 모든 URL 목록 생성 (sitemap용) ---
 function getAllUrls() {
   const urls = [];
-  for (const [parent, districts] of Object.entries(REGIONS)) {
-    for (const district of districts) {
-      for (const level of LEVELS) {
-        for (const subject of SUBJECTS) {
-          urls.push({ u: `/${encodeURIComponent(`${district}-${level}-${subject}-과외`)}`, p: '0.8' });
-        }
-      }
-    }
-  }
-  for (const [parent, areas] of Object.entries(EUP_MYEON)) {
-    for (const area of areas) {
-      for (const level of LEVELS) {
-        for (const subject of SUBJECTS) {
-          urls.push({ u: `/${encodeURIComponent(`${area}-${level}-${subject}-과외`)}`, p: '0.7' });
-        }
-      }
-    }
-  }
+  // v92: 깨진 /{지역}-{학년}-{과목}-과외 URL 사이트맵 등록 제거 (라우팅 없어 404 발생)
   urls.push({ u: '/학교급별', p: '0.7' });
   urls.push({ u: '/학년별', p: '0.7' });
   for (const lv of ['middle', 'high']) {
@@ -1333,14 +1316,7 @@ function renderRegionDetail(region) {
 
   const cards = districts.map(d => {
     const dongCount = (DONG_DATA[d]||[]).length + (EUP_MYEON[d]||[]).length;
-    const links = SUBJECTS.map(s =>
-      `<a href="/${encodeURIComponent(`${d}-초등-${s}-과외`)}" class="subj-link">${s}</a>`
-    ).join('');
     return `<div class="cat-card"><div class="cat-card-top"><h3>${d}</h3>${dongCount > 0 ? `<a href="/지역별/${encodeURIComponent(region)}/${encodeURIComponent(d)}" class="dong-link">동/읍/면 ${dongCount}개 →</a>` : ''}</div>
-      <div class="level-tabs">
-        ${LEVELS.map(l => `<span class="level-tab" onclick="this.parentElement.parentElement.querySelectorAll('.subj-link').forEach(a=>{const h=a.href;a.href=h.replace(/초등|중등|고등/,'${l}')})">${l}</span>`).join('')}
-      </div>
-      <div class="chips">${links}</div>
     </div>`;
   }).join('');
 
@@ -2902,7 +2878,7 @@ function generateRSS() {
       for (const subj of subjects.slice(0, 2)) {
         const lvl = levels[Math.floor(Math.random() * levels.length)];
         const title = `${d} ${lvl} ${subj} 과외 추천 - 비용, 선생님 선택 가이드`;
-        const link = `https://anhani.com/${encodeURIComponent(d + '-' + lvl + '-' + subj + '-과외')}`;
+        const link = `https://anhani.com/지역별/${encodeURIComponent(region)}/${encodeURIComponent(d)}`;
         const desc = `${region} ${d} 지역 ${lvl}학생 ${subj} 과외 정보를 찾고 계신가요? 과외비, 좋은 선생님 고르는 법, 실제 후기까지 한 번에 정리했습니다.`;
         items.push(`    <item>
       <title>${title}</title>
@@ -3665,7 +3641,7 @@ function renderSchoolPage(region) {
       ${allRegions.map(r => `<a href="/school/${regionEN[r]||r}" class="sc-tab${r === targetRegion ? ' active' : ''}">${r}</a>`).join('')}
     </div>
     <div class="sc-grid">
-      ${districts.map(d => `<a href="/${encodeURIComponent(d+'-초등-수학-과외')}" class="sc-card"><h3>${d}</h3><p>학교별 과외 정보</p></a>`).join('')}
+      ${districts.map(d => `<a href="/지역별/${encodeURIComponent(targetRegion)}/${encodeURIComponent(d)}" class="sc-card"><h3>${d}</h3><p>학교별 과외 정보</p></a>`).join('')}
     </div>
   </div>
   ${footerHTML()}
@@ -5393,7 +5369,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v91-naver-endpoint-fix', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v92-broken-links-cleanup', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
