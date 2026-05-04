@@ -2,3 +2,11 @@ name = "anhanicom"
 main = "src/index.js"
 compatibility_date = "2026-04-09"
 compatibility_flags = ["nodejs_compat"]
+
+# ===== v90: 자동 색인 시스템 =====
+[[kv_namespaces]]
+binding = "INDEX_STATE"
+id = "c383ae6a53a2433cb1e021cfa37a048f"
+
+[triggers]
+crons = ["0 0 * * *"]
