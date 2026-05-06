@@ -876,12 +876,23 @@ function commonStyles() {
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .mobile-menu { display: block; }
-      .nav-visitor { gap: 3px; padding: 3px 8px; border-radius: 5px; }
-      .nav-visitor-label { font-size: 8px; }
-      .nav-visitor-num { font-size: 12px; }
-      .nav-visitor-unit { font-size: 8px; }
+      .nav-inner { position: relative; padding: 0 16px; height: 60px; }
+      .nav-logo-img { height: 36px; }
+      .nav-logo-text { font-size: 17px; }
+      .nav-logo-sub { font-size: 10px; }
+      .nav-visitor { display: none; }
+      .mobile-menu { display: block; padding: 4px 10px; border-radius: 6px; }
+      .mobile-menu:hover { background: #f1f5f9; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; background: #fff; border-top: 1px solid #e2e8f0; padding: 8px 0; box-shadow: 0 8px 24px rgba(0,0,0,0.08); height: auto; gap: 0; max-height: calc(100vh - 60px); overflow-y: auto; }
+      .nav-links.open { display: flex; }
+      .nav-item { width: 100%; height: auto; flex-direction: column; align-items: stretch; }
+      .nav-item > a { padding: 14px 20px; border-radius: 0; font-size: 15px; font-weight: 600; color: #1e293b; }
+      .nav-item > a .arrow-down { display: none; }
+      .nav-item > a:hover, .nav-item > a.active { background: #eef2ff; }
+      .dropdown { display: block; position: static; border: none; box-shadow: none; padding: 0 0 8px 12px; min-width: 0; border-radius: 0; background: transparent; }
+      .dropdown a { padding: 10px 20px; font-size: 13px; color: #64748b; }
+      .dropdown a:hover { background: #f8fafc; }
+      .nav-cta { margin: 10px 16px 6px; text-align: center; padding: 12px 20px !important; border-radius: 8px !important; font-weight: 700; }
     }
 
     /* 플로팅 CTA 버튼 (모든 페이지 공통) */
@@ -949,7 +960,7 @@ function navHTML(activePage) {
 
         <a href="/체험신청" class="nav-cta">무료 상담</a>
       </div>
-      <button class="mobile-menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">☰</button>
+      <button class="mobile-menu" onclick="this.parentNode.querySelector('.nav-links').classList.toggle('open')">☰</button>
     </div>
   </nav>`;
 }
@@ -5379,7 +5390,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v95-favicon-disallow-strong', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v96-mobile-nav-dropdown', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
