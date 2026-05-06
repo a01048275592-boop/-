@@ -968,7 +968,7 @@ function navHTML(activePage) {
 function footerHTML() {
   return `
   <div class="floating-btns">
-    <a href="tel:010-6850-1420" class="float-btn float-call">📞 전화상담</a>
+    <a href="tel:010-4827-5592" class="float-btn float-call">📞 전화상담</a>
     <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="float-btn float-kakao">💬 카카오톡 상담</a>
     <a href="/체험신청" class="float-btn float-free">⭐ 무료체험 신청</a>
   </div>
@@ -984,8 +984,8 @@ function footerHTML() {
       <nav class="footer-nav" aria-label="사이트맵"><div class="footer-nav-col"><span class="footer-nav-title">전국과외</span><a href="/지역별">지역별 과외</a><a href="/지역별/서울">서울 과외</a><a href="/지역별/경기">경기 과외</a></div><div class="footer-nav-col"><span class="footer-nav-title">과목별</span><a href="/과목별/수학">수학</a><a href="/과목별/영어">영어</a><a href="/과목별/국어">국어</a><a href="/과목별/과학">과학</a></div><div class="footer-nav-col"><span class="footer-nav-title">학원</span><a href="/학원">학원 정보</a><a href="/학교급별">학교별</a></div><div class="footer-nav-col"><span class="footer-nav-title">학습가이드</span><a href="/학습가이드">전체 가이드</a><a href="/과목별/검정고시">검정고시</a></div><div class="footer-nav-col"><span class="footer-nav-title">외국어</span><a href="/외국어/영어">영어회화</a><a href="/외국어/중국어">중국어</a><a href="/외국어/일본어">일본어</a></div></nav>
       <div class="footer-right">
         <div class="footer-phone-label">무료 상담 전화</div>
-        <div class="footer-phone">010-6850-1420</div>
-        <a href="tel:010-6850-1420" class="footer-call-btn">전화 상담</a>
+        <div class="footer-phone">010-4827-5592</div>
+        <a href="tel:010-4827-5592" class="footer-call-btn">전화 상담</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -995,7 +995,7 @@ function footerHTML() {
 }
 
 // --- 홈페이지 ---
-function inquiryBlock(){const G=["초1","초2","초3","초4","초5","초6","중1","중2","중3","고1","고2","고3","검정고시"];const S=["국어","영어","수학","사회","과학","코딩","검정고시","논술","영어회화","중국어","일본어"];const opt=(n,a)=>a.map(v=>`<label><input type="checkbox" name="${n}" value="${v}"> ${v}</label>`).join('');return `<section class="inquiry-section" id="inquiry"><div class="inquiry-inner"><h2 class="inquiry-title">체험 수업<em>신청하기</em></h2><p class="inquiry-desc">궁금하신 점이나 체험 수업 문의, 무엇이든 남겨주세요.<br>내용 확인 후 빠르게 연락드립니다.</p><div class="inquiry-contact"><a href="tel:010-6850-1420" class="inq-phone"><span class="ic">📞</span> 010-6850-1420</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" rel="noopener" class="inq-kakao">💬 카카오 채널 상담</a></div><form id="inquiryForm" class="inquiry-form" novalidate><div class="inq-row"><div class="inq-col"><label>학생 이름 <span class="req">*</span></label><input type="text" name="name" class="inq-input" placeholder="이름을 입력해주세요" required maxlength="30"></div><div class="inq-col"><label>상담받으실 연락처 <span class="req">*</span></label><input type="tel" name="phone" class="inq-input" placeholder="010-0000-0000" required maxlength="20"></div></div><div class="inq-full"><label>학년 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label><div class="inq-dropdown"><button type="button" class="inq-toggle" data-placeholder="학년을 선택해주세요"><span class="inq-label">학년을 선택해주세요</span><span class="inq-arrow">▼</span></button><div class="inq-menu">${opt('grades',G)}</div></div></div><div class="inq-full"><label>희망 과목 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label><div class="inq-dropdown"><button type="button" class="inq-toggle" data-placeholder="과목을 선택해주세요"><span class="inq-label">과목을 선택해주세요</span><span class="inq-arrow">▼</span></button><div class="inq-menu">${opt('subjects',S)}</div></div></div><div class="inq-full"><label>주소 <span class="req">*</span></label><div class="inq-addr-row"><input type="text" name="address" class="inq-input" placeholder="도로명 주소 검색" readonly required><button type="button" class="inq-addr-btn" id="addrBtn">주소 검색</button></div></div><div class="inq-full"><label>상세주소</label><input type="text" name="addressDetail" class="inq-input" placeholder="상세주소를 입력해주세요 (예: 101동 202호)" maxlength="100"></div><div class="inq-full"><label>문의사항 <span class="hint">(선택)</span></label><textarea name="message" class="inq-textarea" placeholder="궁금한 점이나 요청사항을 자유롭게 적어주세요." maxlength="1000"></textarea></div><button type="submit" class="inq-submit">체험 수업 신청하기 →</button><div id="inqFeedback" class="inq-feedback" hidden></div></form></div></section><script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script><script>(function(){var dd=document.querySelectorAll('.inq-dropdown');dd.forEach(function(d){var b=d.querySelector('.inq-toggle'),m=d.querySelector('.inq-menu'),l=d.querySelector('.inq-label'),p=b.getAttribute('data-placeholder');b.addEventListener('click',function(e){e.stopPropagation();dd.forEach(function(o){if(o!==d)o.classList.remove('open');});d.classList.toggle('open');});m.addEventListener('click',function(e){e.stopPropagation();});m.addEventListener('change',function(){var c=m.querySelectorAll('input:checked'),v=Array.prototype.map.call(c,function(i){return i.value;});if(v.length){l.textContent=v.join(', ');b.classList.add('has-value');}else{l.textContent=p;b.classList.remove('has-value');}});});document.addEventListener('click',function(){dd.forEach(function(o){o.classList.remove('open');});});var ab=document.getElementById('addrBtn');if(ab)ab.addEventListener('click',function(){if(typeof daum==='undefined'){alert('주소 검색 스크립트 로드 실패. 페이지를 새로고침해주세요.');return;}new daum.Postcode({oncomplete:function(d){var f=document.getElementById('inquiryForm');f.address.value=d.roadAddress||d.jibunAddress||'';f.addressDetail.focus();}}).open();});var f=document.getElementById('inquiryForm'),fb=document.getElementById('inqFeedback');function sf(t,m){fb.className='inq-feedback '+t;fb.textContent=m;fb.hidden=false;setTimeout(function(){fb.hidden=true;},6000);}f.addEventListener('submit',function(e){e.preventDefault();var sb=f.querySelector('.inq-submit'),g=Array.prototype.map.call(f.querySelectorAll('[name=grades]:checked'),function(i){return i.value;}),s=Array.prototype.map.call(f.querySelectorAll('[name=subjects]:checked'),function(i){return i.value;}),d={name:f.name.value.trim(),phone:f.phone.value.trim(),grades:g,subjects:s,address:f.address.value.trim(),addressDetail:f.addressDetail.value.trim(),message:f.message.value.trim()};if(!d.name)return sf('err','학생 이름을 입력해주세요.');if(!d.phone||!/^[0-9\-\s]{9,20}$/.test(d.phone))return sf('err','올바른 연락처를 입력해주세요.');if(!g.length)return sf('err','학년을 선택해주세요.');if(!s.length)return sf('err','희망 과목을 선택해주세요.');if(!d.address)return sf('err','주소를 입력해주세요.');sb.disabled=true;sb.textContent='전송 중...';fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){return r.json().then(function(j){return{ok:r.ok,data:j};}).catch(function(){return{ok:r.ok,data:{}};});}).then(function(res){if(res.ok&&res.data.success){sf('ok','✅ 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');f.reset();dd.forEach(function(d){var b=d.querySelector('.inq-toggle'),l=d.querySelector('.inq-label');l.textContent=b.getAttribute('data-placeholder');b.classList.remove('has-value');});}else{sf('err',(res.data&&res.data.error)||'전송 실패. 잠시 후 다시 시도해주세요.');}}).catch(function(){sf('err','네트워크 오류. 잠시 후 다시 시도해주세요.');}).then(function(){sb.disabled=false;sb.textContent='체험 수업 신청하기 →';});});})();</script>`;}
+function inquiryBlock(){const G=["초1","초2","초3","초4","초5","초6","중1","중2","중3","고1","고2","고3","검정고시"];const S=["국어","영어","수학","사회","과학","코딩","검정고시","논술","영어회화","중국어","일본어"];const opt=(n,a)=>a.map(v=>`<label><input type="checkbox" name="${n}" value="${v}"> ${v}</label>`).join('');return `<section class="inquiry-section" id="inquiry"><div class="inquiry-inner"><h2 class="inquiry-title">체험 수업<em>신청하기</em></h2><p class="inquiry-desc">궁금하신 점이나 체험 수업 문의, 무엇이든 남겨주세요.<br>내용 확인 후 빠르게 연락드립니다.</p><div class="inquiry-contact"><a href="tel:010-4827-5592" class="inq-phone"><span class="ic">📞</span> 010-4827-5592</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" rel="noopener" class="inq-kakao">💬 카카오 채널 상담</a></div><form id="inquiryForm" class="inquiry-form" novalidate><div class="inq-row"><div class="inq-col"><label>학생 이름 <span class="req">*</span></label><input type="text" name="name" class="inq-input" placeholder="이름을 입력해주세요" required maxlength="30"></div><div class="inq-col"><label>상담받으실 연락처 <span class="req">*</span></label><input type="tel" name="phone" class="inq-input" placeholder="010-0000-0000" required maxlength="20"></div></div><div class="inq-full"><label>학년 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label><div class="inq-dropdown"><button type="button" class="inq-toggle" data-placeholder="학년을 선택해주세요"><span class="inq-label">학년을 선택해주세요</span><span class="inq-arrow">▼</span></button><div class="inq-menu">${opt('grades',G)}</div></div></div><div class="inq-full"><label>희망 과목 <span class="req">*</span> <span class="hint">(중복 선택 가능)</span></label><div class="inq-dropdown"><button type="button" class="inq-toggle" data-placeholder="과목을 선택해주세요"><span class="inq-label">과목을 선택해주세요</span><span class="inq-arrow">▼</span></button><div class="inq-menu">${opt('subjects',S)}</div></div></div><div class="inq-full"><label>주소 <span class="req">*</span></label><div class="inq-addr-row"><input type="text" name="address" class="inq-input" placeholder="도로명 주소 검색" readonly required><button type="button" class="inq-addr-btn" id="addrBtn">주소 검색</button></div></div><div class="inq-full"><label>상세주소</label><input type="text" name="addressDetail" class="inq-input" placeholder="상세주소를 입력해주세요 (예: 101동 202호)" maxlength="100"></div><div class="inq-full"><label>문의사항 <span class="hint">(선택)</span></label><textarea name="message" class="inq-textarea" placeholder="궁금한 점이나 요청사항을 자유롭게 적어주세요." maxlength="1000"></textarea></div><button type="submit" class="inq-submit">체험 수업 신청하기 →</button><div id="inqFeedback" class="inq-feedback" hidden></div></form></div></section><script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script><script>(function(){var dd=document.querySelectorAll('.inq-dropdown');dd.forEach(function(d){var b=d.querySelector('.inq-toggle'),m=d.querySelector('.inq-menu'),l=d.querySelector('.inq-label'),p=b.getAttribute('data-placeholder');b.addEventListener('click',function(e){e.stopPropagation();dd.forEach(function(o){if(o!==d)o.classList.remove('open');});d.classList.toggle('open');});m.addEventListener('click',function(e){e.stopPropagation();});m.addEventListener('change',function(){var c=m.querySelectorAll('input:checked'),v=Array.prototype.map.call(c,function(i){return i.value;});if(v.length){l.textContent=v.join(', ');b.classList.add('has-value');}else{l.textContent=p;b.classList.remove('has-value');}});});document.addEventListener('click',function(){dd.forEach(function(o){o.classList.remove('open');});});var ab=document.getElementById('addrBtn');if(ab)ab.addEventListener('click',function(){if(typeof daum==='undefined'){alert('주소 검색 스크립트 로드 실패. 페이지를 새로고침해주세요.');return;}new daum.Postcode({oncomplete:function(d){var f=document.getElementById('inquiryForm');f.address.value=d.roadAddress||d.jibunAddress||'';f.addressDetail.focus();}}).open();});var f=document.getElementById('inquiryForm'),fb=document.getElementById('inqFeedback');function sf(t,m){fb.className='inq-feedback '+t;fb.textContent=m;fb.hidden=false;setTimeout(function(){fb.hidden=true;},6000);}f.addEventListener('submit',function(e){e.preventDefault();var sb=f.querySelector('.inq-submit'),g=Array.prototype.map.call(f.querySelectorAll('[name=grades]:checked'),function(i){return i.value;}),s=Array.prototype.map.call(f.querySelectorAll('[name=subjects]:checked'),function(i){return i.value;}),d={name:f.name.value.trim(),phone:f.phone.value.trim(),grades:g,subjects:s,address:f.address.value.trim(),addressDetail:f.addressDetail.value.trim(),message:f.message.value.trim()};if(!d.name)return sf('err','학생 이름을 입력해주세요.');if(!d.phone||!/^[0-9\-\s]{9,20}$/.test(d.phone))return sf('err','올바른 연락처를 입력해주세요.');if(!g.length)return sf('err','학년을 선택해주세요.');if(!s.length)return sf('err','희망 과목을 선택해주세요.');if(!d.address)return sf('err','주소를 입력해주세요.');sb.disabled=true;sb.textContent='전송 중...';fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){return r.json().then(function(j){return{ok:r.ok,data:j};}).catch(function(){return{ok:r.ok,data:{}};});}).then(function(res){if(res.ok&&res.data.success){sf('ok','✅ 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');f.reset();dd.forEach(function(d){var b=d.querySelector('.inq-toggle'),l=d.querySelector('.inq-label');l.textContent=b.getAttribute('data-placeholder');b.classList.remove('has-value');});}else{sf('err',(res.data&&res.data.error)||'전송 실패. 잠시 후 다시 시도해주세요.');}}).catch(function(){sf('err','네트워크 오류. 잠시 후 다시 시도해주세요.');}).then(function(){sb.disabled=false;sb.textContent='체험 수업 신청하기 →';});});})();</script>`;}
 function inquiryCSS(){return `/* ===== 체험 수업 신청 섹션 (네이비/인디고 테마) ===== */.inquiry-section{background:linear-gradient(180deg,#0c1425 0%,#1e1b4b 100%);padding:80px 20px}.inquiry-inner{max-width:780px;margin:0 auto}.inquiry-title{text-align:center;font-size:clamp(30px,5vw,42px);font-weight:900;color:#fff;margin-bottom:8px;line-height:1.15}.inquiry-title em{display:block;color:#818cf8;font-style:normal;margin-top:4px}.inquiry-desc{text-align:center;color:#c7d2fe;font-size:14px;line-height:1.8;margin-bottom:32px}.inquiry-contact{display:flex;justify-content:center;gap:12px;margin-bottom:36px;flex-wrap:wrap}.inq-phone,.inq-kakao{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .15s}.inq-phone{background:#0f172a;color:#fff}.inq-phone .ic{color:#818cf8}.inq-kakao{background:#fde047;color:#3b3b3b}.inq-phone:hover,.inq-kakao:hover{transform:translateY(-2px)}.inquiry-form{display:flex;flex-direction:column;gap:18px}.inq-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.inq-col label,.inq-full label{display:block;font-size:13px;font-weight:700;color:#fff;margin-bottom:8px}.inq-col label .req,.inq-full label .req{color:#818cf8}.inq-col label .hint,.inq-full label .hint{color:#a5b4fc;font-size:12px;font-weight:500;margin-left:6px}.inq-input,.inq-textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(165,180,252,.2);border-radius:8px;padding:14px 16px;color:#fff;font-size:14px;font-family:inherit;transition:border-color .15s;box-sizing:border-box}.inq-input::placeholder,.inq-textarea::placeholder{color:#7c83a8}.inq-input:focus,.inq-textarea:focus{outline:none;border-color:#818cf8;box-shadow:0 0 0 3px rgba(129,140,248,.15)}.inq-textarea{resize:vertical;min-height:100px}.inq-dropdown{position:relative}.inq-toggle{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(165,180,252,.2);border-radius:8px;padding:14px 16px;color:#7c83a8;font-size:14px;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;font-family:inherit}.inq-toggle.has-value{color:#fff}.inq-arrow{font-size:11px;color:#a5b4fc;transition:transform .2s;margin-left:8px}.inq-dropdown.open .inq-arrow{transform:rotate(180deg)}.inq-menu{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#1e1b4b;border:1px solid rgba(165,180,252,.25);border-radius:8px;padding:8px;display:none;z-index:10;max-height:280px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.4)}.inq-dropdown.open .inq-menu{display:block}.inq-menu label{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:6px;cursor:pointer;color:#fff;font-size:14px;font-weight:500;margin-bottom:0}.inq-menu label:hover{background:rgba(129,140,248,.12)}.inq-menu input[type=checkbox]{accent-color:#6366f1;width:16px;height:16px}.inq-addr-row{display:grid;grid-template-columns:1fr auto;gap:10px}.inq-addr-btn{padding:0 20px;background:#6366f1;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;transition:background .15s;font-family:inherit}.inq-addr-btn:hover{background:#4f46e5}.inq-submit{width:100%;padding:18px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:800;cursor:pointer;margin-top:12px;transition:all .15s;font-family:inherit;box-shadow:0 4px 14px rgba(99,102,241,.35)}.inq-submit:hover{background:linear-gradient(135deg,#4f46e5,#4338ca);transform:translateY(-2px);box-shadow:0 6px 18px rgba(99,102,241,.45)}.inq-submit:disabled{background:#475569;cursor:not-allowed;transform:none;box-shadow:none}.inq-feedback{text-align:center;margin-top:14px;padding:12px;border-radius:8px;font-size:14px;font-weight:600}.inq-feedback.ok{background:rgba(129,140,248,.15);color:#c7d2fe;border:1px solid rgba(129,140,248,.35)}.inq-feedback.err{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}@media (max-width:640px){.inquiry-section{padding:56px 16px}.inq-row{grid-template-columns:1fr}.inq-addr-row{grid-template-columns:1fr}.inq-addr-btn{padding:14px}}`;}
 function renderInquiryPage(){
   return `<!DOCTYPE html><html lang="ko"><head>
@@ -1399,7 +1399,7 @@ function renderSigunguDetail(sido, sigungu, cat, val) {
     <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}</div>
     <div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s,'과목',sc[s]]),...LVLS.map(l=>[l,'학년',lc[l]])].map(a=>`<a href="${bp}/${a[1]}/${e(a[0])}" class="dc-xc" style="--c:${a[2]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}과외</span></a>`).join('')}</div></div>
     <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -1549,7 +1549,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     <div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div>
     <div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div>
     <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-6850-1420" class="dc-cta-btn dc-cp">010-6850-1420</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
+    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -2857,7 +2857,7 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
       <p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p>
       <div class="ka-cta-btns">
         <a href="/체험신청" class="ka-cta-btn ka-cta-primary">무료 상담 신청</a>
-        <a href="tel:010-6850-1420" class="ka-cta-btn ka-cta-secondary">010-6850-1420</a>
+        <a href="tel:010-4827-5592" class="ka-cta-btn ka-cta-secondary">010-4827-5592</a>
       </div>
     </div>
 
@@ -3143,7 +3143,7 @@ function renderAcademyDetail(center) {
       <p class="ad-hero-addr">${c.a}</p>
       <div class="ad-hero-btns">
         <a href="/체험신청" class="ad-hero-btn ad-btn-primary">${heroSubLabel}</a>
-        <a href="tel:010-6850-1420" class="ad-hero-btn ad-btn-secondary">010-6850-1420</a>
+        <a href="tel:010-4827-5592" class="ad-hero-btn ad-btn-secondary">010-4827-5592</a>
       </div>
     </div>
   </div>
@@ -3230,7 +3230,7 @@ function renderAcademyDetail(center) {
       <h3>${ctaTitle}</h3>
       <p>${ctaTag}</p>
       <div class="ad-cta-btns">
-        <a href="tel:010-6850-1420" class="ad-cta-btn ad-cta-phone">010-6850-1420</a>
+        <a href="tel:010-4827-5592" class="ad-cta-btn ad-cta-phone">010-4827-5592</a>
         <a href="/체험신청" class="ad-cta-btn ad-cta-form">${heroSubLabel}</a>
       </div>
     </div>
@@ -3349,7 +3349,7 @@ function renderSchoolSubjectAcademy(center, schoolName, subject) {
       <h3>${title} 무료 상담</h3>
       <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
       <div class="scb">
-        <a href="tel:010-6850-1420" class="scbt scp">010-6850-1420</a>
+        <a href="tel:010-4827-5592" class="scbt scp">010-4827-5592</a>
         <a href="/체험신청" class="scbt scf">무료 상담 신청</a>
       </div>
     </div>
@@ -3452,7 +3452,7 @@ function renderRegionSubjectAcademy(center, region, subject) {
       <h3>${title} 무료 상담</h3>
       <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
       <div class="scb">
-        <a href="tel:010-6850-1420" class="scbt scp">010-6850-1420</a>
+        <a href="tel:010-4827-5592" class="scbt scp">010-4827-5592</a>
         <a href="/체험신청" class="scbt scf">무료 상담 신청</a>
       </div>
     </div>
@@ -3478,10 +3478,10 @@ function renderContactPage() {
 
   <div class="ct-main">
     <div class="ct-cards-row">
-      <a href="tel:010-6850-1420" class="ct-info-card" style="text-decoration:none;color:inherit;">
+      <a href="tel:010-4827-5592" class="ct-info-card" style="text-decoration:none;color:inherit;">
         <div class="ct-info-icon" style="background:#fee2e2;">📞</div>
         <h3>전화 상담</h3>
-        <div class="ct-info-val">010-6850-1420</div>
+        <div class="ct-info-val">010-4827-5592</div>
       </a>
       <div class="ct-info-card">
         <div class="ct-info-icon" style="background:#dbeafe;">⏱</div>
@@ -3934,7 +3934,7 @@ const CN_SECTIONS = [
   (t)=>({h:"이런 분께 추천합니다",p:`"${t}" 수업은 다음과 같은 분들에게 특히 효과적이에요. 중국어를 처음 시작하지만 빠르게 실력을 쌓고 싶은 분, 학원에서 효과를 못 보고 1:1 맞춤이 필요한 분, 특정 목표(시험/유학/비즈니스)가 명확한 분, 시간이 불규칙해서 유연한 스케줄이 필요한 분께 추천드립니다.`}),
   (t)=>({h:"과외안하니 중국어 수업의 차별점",p:`일반 학원과 달리, 과외안하니는 학생 1명에게 최적화된 수업을 제공합니다. 발음·성조 교정은 반복 연습이 핵심인데, 1:1이기 때문에 즉각적인 피드백이 가능해요. 또한 교재도 학생의 관심사와 목표에 맞춰 선정하며, 진도를 학생 페이스에 맞춥니다.`}),
   (t)=>({h:"수강생 실제 후기",p:`"처음에는 성조가 너무 어려웠는데, 선생님이 하나씩 교정해주시니까 2개월 만에 중국인 친구와 간단한 대화를 할 수 있게 됐어요!" - 수강생 K님. "HSK 4급을 3개월 만에 합격했습니다. 기출 패턴 분석이 정말 정확했어요." - 수강생 P님.`}),
-  (t)=>({h:"무료 체험 수업 안내",p:`아직 결정이 어려우시다면, 먼저 무료 체험 수업을 받아보세요. 25분 체험 수업에서 현재 레벨을 진단하고, 학습 로드맵까지 제안해 드립니다. 부담 없이 경험해 보시고 결정하셔도 됩니다. 카카오톡(kdy5592) 또는 전화(010-6850-1420)로 신청 가능합니다.`}),
+  (t)=>({h:"무료 체험 수업 안내",p:`아직 결정이 어려우시다면, 먼저 무료 체험 수업을 받아보세요. 25분 체험 수업에서 현재 레벨을 진단하고, 학습 로드맵까지 제안해 드립니다. 부담 없이 경험해 보시고 결정하셔도 됩니다. 카카오톡(kdy5592) 또는 전화(010-4827-5592)로 신청 가능합니다.`}),
 ];
 
 function renderChineseArticle(articleIdx) {
@@ -4034,7 +4034,7 @@ const JP_SECTIONS = [
   (t)=>({h:"이런 분께 추천합니다",p:`"${t}" 수업은 다음과 같은 분들에게 특히 효과적이에요. 일본 애니메이션·드라마를 자막 없이 보고 싶은 분, 일본 여행에서 현지인과 대화하고 싶은 분, JLPT·JPT 자격증이 필요한 분, 일본 취업·유학을 준비하는 분, 제2외국어 내신 대비가 필요한 학생분들께 추천합니다.`}),
   (t)=>({h:"과외안하니 일본어 수업의 차별점",p:`일반 학원과 달리, 과외안하니는 학생 한 명에게 최적화된 수업을 제공합니다. 일본어 특유의 경어 체계, 한자 읽기, 청해 훈련까지 1:1이기 때문에 즉각적인 피드백이 가능해요. 교재도 학생의 관심사(애니, 비즈니스, 여행 등)에 맞춰 선정합니다.`}),
   (t)=>({h:"수강생 실제 후기",p:`"히라가나도 몰랐는데, 선생님과 3개월 공부하니 일본 여행에서 주문도 하고 길도 물어볼 수 있게 됐어요!" - 수강생 L님. "JLPT N2를 4개월 만에 합격했습니다. 기출 패턴 분석이 정말 정확했어요." - 수강생 S님.`}),
-  (t)=>({h:"무료 체험 수업 안내",p:`아직 결정이 어려우시다면, 먼저 무료 체험 수업을 받아보세요. 25분 체험에서 현재 레벨을 진단하고, 맞춤 학습 로드맵까지 제안해 드립니다. 카카오톡(kdy5592) 또는 전화(010-6850-1420)로 신청 가능합니다.`}),
+  (t)=>({h:"무료 체험 수업 안내",p:`아직 결정이 어려우시다면, 먼저 무료 체험 수업을 받아보세요. 25분 체험에서 현재 레벨을 진단하고, 맞춤 학습 로드맵까지 제안해 드립니다. 카카오톡(kdy5592) 또는 전화(010-4827-5592)로 신청 가능합니다.`}),
 ];
 
 function renderJapaneseArticle(articleIdx) {
@@ -4134,7 +4134,7 @@ const EN_CV_SECTIONS = [
   (t)=>({h:"이런 분께 추천합니다",p:`"${t}" 수업은 영어로 말하는 게 두려운 분, 학원에서 말할 기회가 부족했던 분, 비즈니스 영어가 급하게 필요한 직장인, 토익스피킹·오픽 점수가 필요한 분, 해외 여행·유학·취업을 준비하는 분께 특히 효과적입니다.`}),
   (t)=>({h:"과외안하니 영어 수업의 차별점",p:`학원은 여러 명이 함께 수업하기 때문에 실제 말하기 시간이 1인당 5분도 안 돼요. 과외안하니의 1:1 수업에서는 50분 내내 영어로 대화합니다. 실수를 즉각 교정받고, 수준에 맞는 표현을 바로 배울 수 있어요.`}),
   (t)=>({h:"수강생 실제 후기",p:`"회사에서 영어 회의가 있을 때마다 식은땀이 났는데, 3개월 수업 후 의견 발표까지 할 수 있게 됐어요!" - 수강생 K님. "토익스피킹 110점에서 160점으로 올랐습니다. 실전 연습이 정말 큰 도움이 됐어요." - 수강생 J님.`}),
-  (t)=>({h:"무료 체험 수업 안내",p:`결정이 어려우시면 먼저 25분 무료 체험 수업을 받아보세요. 현재 레벨을 진단하고 맞춤 학습 로드맵까지 제안해 드립니다. 카카오톡(kdy5592) 또는 전화(010-6850-1420)로 신청하세요.`}),
+  (t)=>({h:"무료 체험 수업 안내",p:`결정이 어려우시면 먼저 25분 무료 체험 수업을 받아보세요. 현재 레벨을 진단하고 맞춤 학습 로드맵까지 제안해 드립니다. 카카오톡(kdy5592) 또는 전화(010-4827-5592)로 신청하세요.`}),
 ];
 
 function renderEnglishArticle(articleIdx) {
@@ -4339,7 +4339,7 @@ function renderServicePage() {
       <p class="sv-hero-desc">수준별 맞춤 수업부터 내신·수능 완벽 대비,<br>올바른 학습습관 형성까지. 과외안하니가 책임집니다.</p>
       <div class="sv-hero-btns">
         <a href="/체험신청" class="sv-hero-btn sv-btn-primary">무료 상담 신청 →</a>
-        <a href="tel:010-6850-1420" class="sv-hero-btn sv-btn-secondary">📞 010-6850-1420</a>
+        <a href="tel:010-4827-5592" class="sv-hero-btn sv-btn-secondary">📞 010-4827-5592</a>
       </div>
       <div class="sv-hero-stats">
         <div class="sv-hero-stat"><div class="sv-hero-stat-num">4,200+</div><div class="sv-hero-stat-label">누적 합격생</div></div>
@@ -4462,10 +4462,10 @@ function renderServicePage() {
       <h2 class="sv-section-title" style="color:#fff">지금 바로 <em>무료 상담</em> 받으세요</h2>
       <p class="sv-section-desc" style="color:#94a3b8">첫 수업 무료 · 선생님 교체 무료 · 부담 없이 시작하세요</p>
       <div class="sv-contact-grid">
-        <a href="tel:010-6850-1420" class="sv-contact-card" style="text-decoration:none">
+        <a href="tel:010-4827-5592" class="sv-contact-card" style="text-decoration:none">
           <div class="sv-contact-icon">📞</div>
           <h4>전화 상담</h4>
-          <div class="sv-contact-val">010-6850-1420</div>
+          <div class="sv-contact-val">010-4827-5592</div>
         </a>
         <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="sv-contact-card" style="text-decoration:none">
           <div class="sv-contact-icon">💬</div>
@@ -5390,7 +5390,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v96-mobile-nav-dropdown', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v97-phone-update', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
