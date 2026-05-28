@@ -836,36 +836,8 @@ function navStyles(){return `.nav-inner { max-width: 1400px; margin: 0 auto; pad
     }@media (max-width: 768px) {
       .floating-btns { right: 12px; bottom: 16px; gap: 8px; }
       .float-btn { padding: 10px 16px; font-size: 13px; }
-    }`;}
-
-function commonStyles() {
-  return `
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: #f8fafc; color: #334155; line-height: 1.7; }
-
-    /* 네비게이션 */
-    .nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
-
-    /* 푸터 */
-    .footer { background: #0f172a; color: #94a3b8; margin-top: 32px; }
-    .footer-notice { background: #1a2332; padding: 14px 24px; font-size: 13px; color: #64748b; text-align: center; border-bottom: 1px solid #1e293b; }
-    .footer-notice-icon { color: #f59e0b; margin-right: 6px; }
-    .footer-main { max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
-    .footer-left { flex-shrink: 0; }
-    .footer-nav { flex: 1; display: flex; flex-wrap: wrap; gap: 28px 36px; padding: 0 24px; }
-    .footer-nav-col { display: flex; flex-direction: column; gap: 8px; min-width: 90px; }
-    .footer-nav-title { font-size: 13px; font-weight: 800; color: #cbd5e1; margin-bottom: 4px; }
-    .footer-nav a { font-size: 13px; color: #64748b; text-decoration: none; transition: color .15s; }
-    .footer-nav a:hover { color: #a5b4fc; }
-    .footer-logo { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px; }
-    .footer-desc { font-size: 14px; color: #64748b; line-height: 1.7; }
-    .footer-right { text-align: right; }
-    .footer-phone-label { font-size: 13px; color: #94a3b8; margin-bottom: 4px; }
-    .footer-phone { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
-    .footer-call-btn { display: inline-block; background: #6366f1; color: #fff; padding: 10px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-    .footer-call-btn:hover { background: #4f46e5; }
-    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px 24px; border-top: 1px solid #1e293b; font-size: 12px; color: #475569; }
+    }
+    .floating-btns { position: fixed; right: 24px; bottom: 32px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
 
     @media (max-width: 768px) {
       .footer-main { flex-direction: column; text-align: left; gap: 24px; }
@@ -877,11 +849,39 @@ function commonStyles() {
       .footer-nav-col a { display: none; }
       .footer-nav-title { font-size: 12px; margin-bottom: 0; white-space: nowrap; }
     }
+    .footer { background: #0f172a; color: #94a3b8; margin-top: 32px; }
+    .footer-notice { background: #1a2332; padding: 14px 24px; font-size: 13px; color: #64748b; text-align: center; border-bottom: 1px solid #1e293b; }
+    .footer-notice-icon { color: #f59e0b; margin-right: 6px; }
+    .footer-main { max-width: 1200px; margin: 0 auto; padding: 36px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+    .footer-left { flex-shrink: 0; }
+    .footer-nav { flex: 1; display: flex; flex-wrap: wrap; gap: 28px 36px; padding: 0 24px; }
+    .footer-nav-col { display: flex; flex-direction: column; gap: 8px; min-width: 90px; }
+    .footer-nav-title { font-size: 13px; font-weight: 800; color: #cbd5e1; margin-bottom: 4px; }
+    .footer-logo { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+    .footer-desc { font-size: 14px; color: #64748b; line-height: 1.7; }
+    .footer-right { text-align: right; }
+    .footer-phone-label { font-size: 13px; color: #94a3b8; margin-bottom: 4px; }
+    .footer-phone { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .footer-call-btn { display: inline-block; background: #6366f1; color: #fff; padding: 10px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px 24px; border-top: 1px solid #1e293b; font-size: 12px; color: #475569; }`;}
+
+function commonStyles() {
+  return `
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: #f8fafc; color: #334155; line-height: 1.7; }
+
+    /* 네비게이션 */
+    .nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+
+    /* 푸터 */
+    .footer-nav a { font-size: 13px; color: #64748b; text-decoration: none; transition: color .15s; }
+    .footer-nav a:hover { color: #a5b4fc; }
+    .footer-call-btn:hover { background: #4f46e5; }
 
     
 
     /* 플로팅 CTA 버튼 (모든 페이지 공통) */
-    .floating-btns { position: fixed; right: 24px; bottom: 32px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
     
   ${navStyles()}`;
 }
@@ -5464,7 +5464,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v102-academy-slider', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v103-footer-fix', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
