@@ -863,7 +863,7 @@ function navStyles(){return `.nav-inner { max-width: 1400px; margin: 0 auto; pad
     .footer-phone-label { font-size: 13px; color: #94a3b8; margin-bottom: 4px; }
     .footer-phone { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
     .footer-call-btn { display: inline-block; background: #6366f1; color: #fff; padding: 10px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px 24px; border-top: 1px solid #1e293b; font-size: 12px; color: #475569; }`;}
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 16px 24px; border-top: 1px solid #1e293b; font-size: 12px; color: #475569; }.footer-nav a { font-size: 13px; color: #64748b; text-decoration: none; transition: color .15s; }.footer-nav a:hover { color: #a5b4fc; }.footer-call-btn:hover { background: #4f46e5; }`;}
 
 function commonStyles() {
   return `
@@ -875,9 +875,9 @@ function commonStyles() {
     .nav { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
 
     /* 푸터 */
-    .footer-nav a { font-size: 13px; color: #64748b; text-decoration: none; transition: color .15s; }
-    .footer-nav a:hover { color: #a5b4fc; }
-    .footer-call-btn:hover { background: #4f46e5; }
+    
+    
+    
 
     
 
@@ -5464,7 +5464,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v103-footer-fix', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v104-footer-color-fix', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
