@@ -21,8 +21,14 @@ function seededRandom(seed) {
   };
 }
 
-const BUILD_DATE_ISO = new Date().toISOString();
-const BUILD_DATE_W3C = BUILD_DATE_ISO.split('T')[0];
+// ⚠️⚠️⚠️ 절대 글로벌 스코프에서 new Date() 쓰지 말 것 ⚠️⚠️⚠️
+// Cloudflare Workers는 보안(Spectre 방지)상 글로벌 스코프의 new Date()를
+// 항상 1970-01-01(epoch 0)로 반환함. 요청 핸들러 내부에서만 실제 시각 반환.
+// sitemap lastmod / article:modified_time / JSON-LD dateModified 등이
+// 1970년으로 나가면 네이버 봇이 "55년 전 죽은 콘텐츠"로 판단해 색인 거부.
+// 반드시 함수로 정의해서 매 요청마다 호출되게 할 것.
+function buildDateISO() { return new Date().toISOString(); }
+function buildDateW3C() { return new Date().toISOString().split('T')[0]; }
 function pick(arr, rng) {
   return arr[Math.floor(rng() * arr.length)];
 }
@@ -582,8 +588,8 @@ function renderPage(location, level, subject, parentRegion, url) {
     "headline": "${title}",
     "description": "${description}",
     "image": "${heroImg}",
-    "datePublished": "${BUILD_DATE_ISO}",
-    "dateModified": "${BUILD_DATE_ISO}",
+    "datePublished": "${buildDateISO()}",
+    "dateModified": "${buildDateISO()}",
     "author": { "@type": "Organization", "name": "안하니" },
     "publisher": { "@type": "Organization", "name": "안하니", "url": "https://anhani.com" },
     "mainEntityOfPage": "${canonical}"
@@ -717,7 +723,7 @@ function generateSitemap() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${baseUrl}/</loc>
-    <lastmod>${BUILD_DATE_W3C}</lastmod>
+    <lastmod>${buildDateW3C()}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -726,7 +732,7 @@ function generateSitemap() {
   for (const item of urls) {
     xml += `  <url>
     <loc>${baseUrl}${item.u}</loc>
-    <lastmod>${BUILD_DATE_W3C}</lastmod>
+    <lastmod>${buildDateW3C()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${item.p}</priority>
   </url>
@@ -770,7 +776,7 @@ function generateSitemapPart(part) {
   for (const item of urls) {
     xml += `  <url>
     <loc>${baseUrl}${item.u}</loc>
-    <lastmod>${BUILD_DATE_W3C}</lastmod>
+    <lastmod>${buildDateW3C()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${item.p}</priority>
   </url>
@@ -804,7 +810,7 @@ function commonHead(title, description, canonical, ogImage) {
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="${title}">
-  <meta property="article:modified_time" content="${BUILD_DATE_ISO}">
+  <meta property="article:modified_time" content="${buildDateISO()}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${title}">
   <meta name="twitter:description" content="${description}">
@@ -5464,7 +5470,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v104-footer-color-fix', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v105-fix-1970-date-bug', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
