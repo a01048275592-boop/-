@@ -1,4 +1,4 @@
-=const LOGO_URI = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAAYFBMVEX///////7+///+/v79/v79/f78/f77/f34+vzn8PfP4O+1zuifvN6CqthqmtFPhMUsdckPZ8kYWq8EWL0AXs0AVL0FS6UDS6YCSaUAS64DR6QBSKMAR6kCR6ABRKIAPpw9JxC1AAANvElEQVR42u1ciXajuBKVkNjEIoxjvAL//5fvVgkcknjSwrFfnHN0Z6YzHWOpbu0SCCECAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCJFSmqGiPye5ThKthLz+RiaA/hs8VJxoJ3mW5ROyiUb88iR0ouhHboqyqm3TNBsAP2xdFcbxiPXrek4SQ/V5UdXN5u0rQKQuTQpDpC/JQSWk+qJuFiKT+umPxa9sZTIh9au5UqQTKbJ36TeNrUo4DcOwQzXXz2yZE9/opZxHirxsrkouTPblmjQvypngpi40SL+O+PCdysnW1EVOgkmVpElMNYAKQZKkLjPlprLOoWwRiVjJl8g8scic9qFYl2huZEtUtSSlFKXMxNUamOUFGED9hWXlV+afqR5FggpEyV/YVLlQv+xHSCfC1OQUjYtM7RHvyKTpxLmMSAG/KD+Ct9xMyvQvURTzumBHqo1wte9XxBepyOvJneUqORTCwQVOUyCKbkWW/r9Er2kmR1ifUCjzMvsq++pGCvlKPNsySomC3KfO4dd3ZJMIscB+ZHPxuaohskrxZBugy6/I+6H+VN6XDXXijNAYkX7MXbEoqycT0DKtnQv/JBPCdygJbIqPFQGlsbKpeGazoUVW37b+ynE0x9EGDqOWVS+1G6OemGF1Cvk3bzZDIvpxH8KZoJLpeyAlEtFV/Xjsb2aNBem/zuQDegHk4gbKKN9zUaIi1Lkml89iQC7K8j8mzpKZAY+Gxk/y8GTfOH3KwgE5wsnvoX+tfG1QXhO/qw/wUPOUXk8mnP9tJv8dv1IJj3qEimCa2QDmfdWA9rY0+ePbTwl9wUM92jDIXxQ+FVXJjC+Llss6btBL8+hsqpIMEbYxfv6Tt03ms6+lFuE0re021Oo9IQJcAJdebTCuvey9LpVqGTQUEhuKCm5YHl3BDKkm9alfCgY4Hpt8hRBU1vV7Yn18KVMq4xTtk0Ap2w7H41j5LlokrS9QzhDUSBM2ecZKIeEMWiCTelwLA1yO+6H1NYFEDKOLBoM4tZjkCXUMToEAqyMf+UGyHo77fedtAqWMdQ4HPflZeTUBimDM4TM0paA90PWeJlAyR3hVZF1aaT+jG3URXPgpFAYYz5fLeRj6ysvl4Dg1qSfSED0vntFDJNTD2TSOvK41fWtbAH/4mUBT9oEJqC3N8mfIL2GAjV8ERzq1Y4mlbZ6LavQzgUsRqJGaMtIT+iAtyQB+O8tomEYUYVdayQTai3XGJqA9+GfIzxb2i4BIJ2SARGmNhVU11itM8Jz8M49us2iFAaK5ILd+QkWKTFA+Z7tuHtw7Aq7BErMJtL8JMqmeYoDC27y4drDp3IZS+euMV/VTs5s+IQR4HVx77ZeRAS5oBVy+pe3cEiZI/AKNZ9GPJ6CkfwjHbADahU7imFrKNGs749mBU6rOpf5ND1IioxRE+5sujaIowQRe95Si6FlhrCbb+nE9HG1VtW1dADV+1nZofcMH7ZaNHh7F6HQb/4VYeTlehsHaI8O24zgO8KHY19KbXDxlJeaqvB+B46XNpT1ut0ebmvZ0Gno/AmvK5br9s4L6uEj4E2gyUYPApUIvMXgTcL5aPYFA5T3slUBEBI6VcgQK729DVeLBq4FIRbW3Yf/DAt7fdunusUEQScSwZwj8kAAXnI2nv63opLHca3K/HuU2gdGTQCSwon/4kj6mJNSk8o4gPjKBYRgLT6Umz4hijizfFuUGgXEFAc4X9TMI+GplJpAuCMCFjLcFOA3pB7tQ5d+hTATsRwK+dWAqOZF8aB7lLncFgeETgRWFjOLtzTveVrVyxToCswvVjkDnS4C7liZ7bCFQwq4mYJcEDueVBPIXIJAsCOzXEMifQEDeQUAvYmB/WWeBzcMtsD4GrPwBgUdbQN9DQIh6dyVwfgECa+uAWFrAn0DM7eiD94buKmQLApcVLoR+evtmk8fWAci0XdtK3E+g3O3sg9cDNCj6EyX/DwTQzO129YN7IZh1t2s8z2J8IlDfQ6B68IKGngEofO+b/5AAPTBX5OLXnsZ8JyDvI/AkREmiVxJQ9xJQ6SPvcauEobX3EwMzgeROAnT8KXazPtiPVMynkzwi/vKpG/UlQOefHutoSpqSQMcx3KkGqdN/HEZyrcTwyQKnfxCItHs+X9A9VmOKgqbNf3ynQEX2uCNstxt3GMnRSGL1nQU+Exj2h29XZO65fIhuCjr+tNluedKj1epnyTOWZuuwm7BtbOVOacBD5b8I7K4W+IaAkz7KiwqiX+dxMCKJors9Xgod1cePIzITOidDlkhuGngmkC4JnPvbt2giekoRmq/sZruYZpoUX46lTO6tylkmTLPZtG0LORjzDGQJ5qBuuNJEgPaF3glcblogip30DY34NguOibbbloG2OsvuXMLkdZ2p6SAVB1VVwz3brSPxxhzo1MkX/SwIfB/Eim5GsvTbt8nttxRoyBmFmZCpzNbZ+lCgx5fRhsG8Ui5OdSI/0Em91pEgXyIzfErXtwl8sQA9G50VFl7/tnnbTtFl8oW++YGJlJ+1WP2IMIQ4bkycpYRsQpoqGlJmpqxpYuKw5dMzH+L5NoHzRwIsfmlJ+Sx8jf6HYkSq9/l4zizJ26NR6apQRlpIm0v95fcYncaUnPDKmjmgS61ysXwK1hWy710o4TMo7vsUTvR0jYwxehp/fc6jHiydTFvj/xj9cqkreD2hAlBV5lomaR7ympw0uCMKZIVYehNQsdCz+Aik1I3pPo7ITVHFqivK+tgVWeLfnypR2LYbDsP4AX2HpGAr8CBla5CAg5q6JQrHptDXgzRTK9Fm/9FKkC4N6iOkbzmGMBYJl+aujLVtdxpoQ/468+XS4UrfNY6WphuH0+F82DO6zv3cH85nDHtuW2JBtkgzzacQWRY6mZd8Q2A/E9B0/AeJEqwrLDEkKYI9krQ2jpjicJlmxNw0++FwuFyG1njev6fne7oDpD3ji/Qfj8A/HY/LMPatZb9VWSadJ+GfajrP8S2BKBVp2V6Q7NnvUlIEneLle8nQWbcnfdFcPOfpdDrjX4jRjf6bCtVI2j78F4gFbNG1dTGJgGwIKxzpRE1yJfAhBsCH77DR2S2LgnhsKfJJ+ZC+7SE86+nMWMx1ZvEJp7FaRWDG6TQN9IkRpiNDVCaBHAmlFJTpbZXSJCqtIOJEYMfN3KUrqRjFdOoH2m9rg69poVHGehL+cJ7kPF858Mxn/j1FxL0EruKfv9ik687D2NH5ZokMklctpEYkpKiCojwelxYYO34Mn47+cZOJeMnoCLVFtB06sjc0ffrCgWfugWHo+/UE5mFuDDqh77vD0JM3kDyUWY4tbUAqlM/LshdytyjpwM+RPY0uz1n57OvsIqTpfsJ1sokAPX26gkC5IPAFy08wMtJEPzoKIoMRiEEaIRTqdiJgQaCi32lRUM6tcyc+wvbQvQ93GhYE+oEYXdUFCzCBdBWBT4IvLHz9rO/Zk7rzyE6dcoBu6bk6pTIIOhMotZYIgQptJgV67MQ/fdDHqWcCw9UESwL0+7UEzl8JnE6fnIoJUKARhYo0q8sWoUzPW4rkaoEUbZlWSY3cVGdkqRLid8vE4CxAsTpZ4ORy5/0E9u8Zbb93tQQ6IsUg5qi8XD+HptycY1uyEZodbJAiZtVMQEVRpAXkxxVopIpmHLr+U17Y7yEzRSuzGPAXmPawfw/j+whwhnA1fThxNnD/P5yJxWwGh27sOQfl9Za9iI7LuSCm/4/q4cIfG9uPp2Wcupw8zTJOJpj+QtpzE9zhQqczpclxQOvg1hgOJb11pO2o9vSUSa8EIBP8iPb1S17Lom4VWCby0/rU1A81XAlxPn5INWgVaJZT+2Elw9NYTEPKcppba4E9GioIf/slEW73gMt/vwRCAVrOkG1aejAkFuWOzzvFqM3kPlD/bEl3PelhbLkvuTGLzk1pqUyvtgCy8wX5nVsFGoh3yWLCcsMsRReASnQlQfrcIxLQrZnGRjHiNqopgaJ9aFsqvVUH7xneYxWhTC9ccU26itN0mocnSV1/nhVVw3OsIXA+nl2jS28GurEejWjvj3tLTTqaOLiggRFAO7eYTmFhnWlcnDVYnMvc0nWT+OczpOc3rbCG4lur3kjFrCuu2OMKAkVPaR0p5fu9yQiWkW5d0zIFCgc49YhaJvN6OgcQ0f0pm8Mq7P2T8uH2LW0J0CTfr9hBgpb+NXWjvs8QZYW5vivon5uZ/LIdU8LM527ypbGjx16rHMIrKsCmhvxlN3az+KR83pRJvN4mEJG1TZF73/eT616LQC9ZcGburxSqSORGu93VHO1eVlPud3V2Vv6a9z2hDfc/FCGjtVthUrOZicLMACXXJZaIHj2G+5/mT0ZbsvJXbvXoJ7/fKiKBqEjNctJ55vkerWnG7jSJ35D4yUu+5Ik8tbBzVqVklLikwOFLvTe1GxniVokXBb1eBZ3O1Fk4BumUfihxctudvPSbzmIlqFy9M0hm+XtulWTy6m+bc5s+7EfdiPI1yw/nL8QvvspmDQWUGzT8qAooaWaWv6uyX38dkv+dEdqb52UJGrXRpU7yHvF3kLARWHRe6tA7eJT4S9DcOs8JldfLfwuo5tQ+UBdMRTn5a2/sZDfiBo4bu1j8SWA5YMrSCK3EX0V8/eOvQieJFgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBr4T/AbzNffJ8XzJOAAAAAElFTkSuQmCC";
+const LOGO_URI = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAAYFBMVEX///////7+///+/v79/v79/f78/f77/f34+vzn8PfP4O+1zuifvN6CqthqmtFPhMUsdckPZ8kYWq8EWL0AXs0AVL0FS6UDS6YCSaUAS64DR6QBSKMAR6kCR6ABRKIAPpw9JxC1AAANvElEQVR42u1ciXajuBKVkNjEIoxjvAL//5fvVgkcknjSwrFfnHN0Z6YzHWOpbu0SCCECAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICCJFSmqGiPye5ThKthLz+RiaA/hs8VJxoJ3mW5ROyiUb88iR0ouhHboqyqm3TNBsAP2xdFcbxiPXrek4SQ/V5UdXN5u0rQKQuTQpDpC/JQSWk+qJuFiKT+umPxa9sZTIh9au5UqQTKbJ36TeNrUo4DcOwQzXXz2yZE9/opZxHirxsrkouTPblmjQvypngpi40SL+O+PCdysnW1EVOgkmVpElMNYAKQZKkLjPlprLOoWwRiVjJl8g8scic9qFYl2huZEtUtSSlFKXMxNUamOUFGED9hWXlV+afqR5FggpEyV/YVLlQv+xHSCfC1OQUjYtM7RHvyKTpxLmMSAG/KD+Ct9xMyvQvURTzumBHqo1wte9XxBepyOvJneUqORTCwQVOUyCKbkWW/r9Er2kmR1ifUCjzMvsq++pGCvlKPNsySomC3KfO4dd3ZJMIscB+ZHPxuaohskrxZBugy6/I+6H+VN6XDXXijNAYkX7MXbEoqycT0DKtnQv/JBPCdygJbIqPFQGlsbKpeGazoUVW37b+ynE0x9EGDqOWVS+1G6OemGF1Cvk3bzZDIvpxH8KZoJLpeyAlEtFV/Xjsb2aNBem/zuQDegHk4gbKKN9zUaIi1Lkml89iQC7K8j8mzpKZAY+Gxk/y8GTfOH3KwgE5wsnvoX+tfG1QXhO/qw/wUPOUXk8mnP9tJv8dv1IJj3qEimCa2QDmfdWA9rY0+ePbTwl9wUM92jDIXxQ+FVXJjC+Llss6btBL8+hsqpIMEbYxfv6Tt03ms6+lFuE0re021Oo9IQJcAJdebTCuvey9LpVqGTQUEhuKCm5YHl3BDKkm9alfCgY4Hpt8hRBU1vV7Yn18KVMq4xTtk0Ap2w7H41j5LlokrS9QzhDUSBM2ecZKIeEMWiCTelwLA1yO+6H1NYFEDKOLBoM4tZjkCXUMToEAqyMf+UGyHo77fedtAqWMdQ4HPflZeTUBimDM4TM0paA90PWeJlAyR3hVZF1aaT+jG3URXPgpFAYYz5fLeRj6ysvl4Dg1qSfSED0vntFDJNTD2TSOvK41fWtbAH/4mUBT9oEJqC3N8mfIL2GAjV8ERzq1Y4mlbZ6LavQzgUsRqJGaMtIT+iAtyQB+O8tomEYUYVdayQTai3XGJqA9+GfIzxb2i4BIJ2SARGmNhVU11itM8Jz8M49us2iFAaK5ILd+QkWKTFA+Z7tuHtw7Aq7BErMJtL8JMqmeYoDC27y4drDp3IZS+euMV/VTs5s+IQR4HVx77ZeRAS5oBVy+pe3cEiZI/AKNZ9GPJ6CkfwjHbADahU7imFrKNGs749mBU6rOpf5ND1IioxRE+5sujaIowQRe95Si6FlhrCbb+nE9HG1VtW1dADV+1nZofcMH7ZaNHh7F6HQb/4VYeTlehsHaI8O24zgO8KHY19KbXDxlJeaqvB+B46XNpT1ut0ebmvZ0Gno/AmvK5br9s4L6uEj4E2gyUYPApUIvMXgTcL5aPYFA5T3slUBEBI6VcgQK729DVeLBq4FIRbW3Yf/DAt7fdunusUEQScSwZwj8kAAXnI2nv63opLHca3K/HuU2gdGTQCSwon/4kj6mJNSk8o4gPjKBYRgLT6Umz4hijizfFuUGgXEFAc4X9TMI+GplJpAuCMCFjLcFOA3pB7tQ5d+hTATsRwK+dWAqOZF8aB7lLncFgeETgRWFjOLtzTveVrVyxToCswvVjkDnS4C7liZ7bCFQwq4mYJcEDueVBPIXIJAsCOzXEMifQEDeQUAvYmB/WWeBzcMtsD4GrPwBgUdbQN9DQIh6dyVwfgECa+uAWFrAn0DM7eiD94buKmQLApcVLoR+evtmk8fWAci0XdtK3E+g3O3sg9cDNCj6EyX/DwTQzO129YN7IZh1t2s8z2J8IlDfQ6B68IKGngEofO+b/5AAPTBX5OLXnsZ8JyDvI/AkREmiVxJQ9xJQ6SPvcauEobX3EwMzgeROAnT8KXazPtiPVMynkzwi/vKpG/UlQOefHutoSpqSQMcx3KkGqdN/HEZyrcTwyQKnfxCItHs+X9A9VmOKgqbNf3ynQEX2uCNstxt3GMnRSGL1nQU+Exj2h29XZO65fIhuCjr+tNluedKj1epnyTOWZuuwm7BtbOVOacBD5b8I7K4W+IaAkz7KiwqiX+dxMCKJors9Xgod1cePIzITOidDlkhuGngmkC4JnPvbt2giekoRmq/sZruYZpoUX46lTO6tylkmTLPZtG0LORjzDGQJ5qBuuNJEgPaF3glcblogip30DY34NguOibbbloG2OsvuXMLkdZ2p6SAVB1VVwz3brSPxxhzo1MkX/SwIfB/Eim5GsvTbt8nttxRoyBmFmZCpzNbZ+lCgx5fRhsG8Ui5OdSI/0Em91pEgXyIzfErXtwl8sQA9G50VFl7/tnnbTtFl8oW++YGJlJ+1WP2IMIQ4bkycpYRsQpoqGlJmpqxpYuKw5dMzH+L5NoHzRwIsfmlJ+Sx8jf6HYkSq9/l4zizJ26NR6apQRlpIm0v95fcYncaUnPDKmjmgS61ysXwK1hWy710o4TMo7vsUTvR0jYwxehp/fc6jHiydTFvj/xj9cqkreD2hAlBV5lomaR7ympw0uCMKZIVYehNQsdCz+Aik1I3pPo7ITVHFqivK+tgVWeLfnypR2LYbDsP4AX2HpGAr8CBla5CAg5q6JQrHptDXgzRTK9Fm/9FKkC4N6iOkbzmGMBYJl+aujLVtdxpoQ/468+XS4UrfNY6WphuH0+F82DO6zv3cH85nDHtuW2JBtkgzzacQWRY6mZd8Q2A/E9B0/AeJEqwrLDEkKYI9krQ2jpjicJlmxNw0++FwuFyG1njev6fne7oDpD3ji/Qfj8A/HY/LMPatZb9VWSadJ+GfajrP8S2BKBVp2V6Q7NnvUlIEneLle8nQWbcnfdFcPOfpdDrjX4jRjf6bCtVI2j78F4gFbNG1dTGJgGwIKxzpRE1yJfAhBsCH77DR2S2LgnhsKfJJ+ZC+7SE86+nMWMx1ZvEJp7FaRWDG6TQN9IkRpiNDVCaBHAmlFJTpbZXSJCqtIOJEYMfN3KUrqRjFdOoH2m9rg69poVHGehL+cJ7kPF858Mxn/j1FxL0EruKfv9ik687D2NH5ZokMklctpEYkpKiCojwelxYYO34Mn47+cZOJeMnoCLVFtB06sjc0ffrCgWfugWHo+/UE5mFuDDqh77vD0JM3kDyUWY4tbUAqlM/LshdytyjpwM+RPY0uz1n57OvsIqTpfsJ1sokAPX26gkC5IPAFy08wMtJEPzoKIoMRiEEaIRTqdiJgQaCi32lRUM6tcyc+wvbQvQ93GhYE+oEYXdUFCzCBdBWBT4IvLHz9rO/Zk7rzyE6dcoBu6bk6pTIIOhMotZYIgQptJgV67MQ/fdDHqWcCw9UESwL0+7UEzl8JnE6fnIoJUKARhYo0q8sWoUzPW4rkaoEUbZlWSY3cVGdkqRLid8vE4CxAsTpZ4ORy5/0E9u8Zbb93tQQ6IsUg5qi8XD+HptycY1uyEZodbJAiZtVMQEVRpAXkxxVopIpmHLr+U17Y7yEzRSuzGPAXmPawfw/j+whwhnA1fThxNnD/P5yJxWwGh27sOQfl9Za9iI7LuSCm/4/q4cIfG9uPp2Wcupw8zTJOJpj+QtpzE9zhQqczpclxQOvg1hgOJb11pO2o9vSUSa8EIBP8iPb1S17Lom4VWCby0/rU1A81XAlxPn5INWgVaJZT+2Elw9NYTEPKcppba4E9GioIf/slEW73gMt/vwRCAVrOkG1aejAkFuWOzzvFqM3kPlD/bEl3PelhbLkvuTGLzk1pqUyvtgCy8wX5nVsFGoh3yWLCcsMsRReASnQlQfrcIxLQrZnGRjHiNqopgaJ9aFsqvVUH7xneYxWhTC9ccU26itN0mocnSV1/nhVVw3OsIXA+nl2jS28GurEejWjvj3tLTTqaOLiggRFAO7eYTmFhnWlcnDVYnMvc0nWT+OczpOc3rbCG4lur3kjFrCuu2OMKAkVPaR0p5fu9yQiWkW5d0zIFCgc49YhaJvN6OgcQ0f0pm8Mq7P2T8uH2LW0J0CTfr9hBgpb+NXWjvs8QZYW5vivon5uZ/LIdU8LM527ypbGjx16rHMIrKsCmhvxlN3az+KR83pRJvN4mEJG1TZF73/eT616LQC9ZcGburxSqSORGu93VHO1eVlPud3V2Vv6a9z2hDfc/FCGjtVthUrOZicLMACXXJZaIHj2G+5/mT0ZbsvJXbvXoJ7/fKiKBqEjNctJ55vkerWnG7jSJ35D4yUu+5Ik8tbBzVqVklLikwOFLvTe1GxniVokXBb1eBZ3O1Fk4BumUfihxctudvPSbzmIlqFy9M0hm+XtulWTy6m+bc5s+7EfdiPI1yw/nL8QvvspmDQWUGzT8qAooaWaWv6uyX38dkv+dEdqb52UJGrXRpU7yHvF3kLARWHRe6tA7eJT4S9DcOs8JldfLfwuo5tQ+UBdMRTn5a2/sZDfiBo4bu1j8SWA5YMrSCK3EX0V8/eOvQieJFgEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBr4T/AbzNffJ8XzJOAAAAAElFTkSuQmCC";
 const FAVICON_URI = LOGO_URI;
 const FOOTER_LOGO_URI = LOGO_URI;
 
@@ -313,13 +313,9 @@ function getEduImage(seed) {
 function renderArticleHero(title, subtitle, seed) {
   const img = getEduImage(seed || title);
   const subHTML = subtitle ? `<p style="font-size:clamp(12px,1.6vw,15px);opacity:.88;margin:6px 0 0;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6);">${subtitle}</p>` : '';
-  return `<div style="position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/500;overflow:hidden;background:#0f172a;border-radius:14px;">
-    <img src="${img}" alt="${title}" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-    <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff;">
-      <h2 style="font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.3;margin:0;">${title}</h2>
+  return `<div style="position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/500;overflow:hidden;background:#0f172a;border-radius:14px;"><img src="${img}" alt="${title}" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/><div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff;"><h2 style="font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.3;margin:0;">${title}</h2>
       ${subHTML}
-    </div>
-  </div>`;
+    </div></div>`;
 }
 
 function generateThumbnail(location, level, subject) {
@@ -331,15 +327,7 @@ function generateThumbnail(location, level, subject) {
   const overlay = overlayColors[subject] || "rgba(37,99,235,0.55)";
   const imgUrl = getEduImage(location + level + subject);
   const altText = `${location} ${level} ${subject} 과외`;
-  return `<div style="position:relative;width:100%;aspect-ratio:1200/630;border-radius:14px;overflow:hidden;background:#0f172a;box-shadow:0 6px 24px rgba(0,0,0,0.12);">
-    <img src="${imgUrl}" alt="${altText}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-    <div style="position:absolute;inset:0;background:transparent;"></div>
-    <div style="position:absolute;bottom:0;left:0;right:0;padding:32px 36px;color:#fff;">
-      <div style="font-size:clamp(28px, 5vw, 56px);font-weight:900;margin-bottom:8px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.15;">${location}</div>
-      <div style="font-size:clamp(18px, 3vw, 32px);font-weight:700;opacity:0.96;text-shadow:0 2px 8px rgba(0,0,0,0.35);">${level} ${subject} 과외</div>
-      <div style="margin-top:12px;font-size:clamp(11px, 1.4vw, 14px);opacity:0.82;letter-spacing:1px;">1:1 맞춤 수업 · 성적 향상 · 전문 코칭</div>
-    </div>
-  </div>`;
+  return `<div style="position:relative;width:100%;aspect-ratio:1200/630;border-radius:14px;overflow:hidden;background:#0f172a;box-shadow:0 6px 24px rgba(0,0,0,0.12);"><img src="${imgUrl}" alt="${altText}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/><div style="position:absolute;inset:0;background:transparent;"></div><div style="position:absolute;bottom:0;left:0;right:0;padding:32px 36px;color:#fff;"><div style="font-size:clamp(28px, 5vw, 56px);font-weight:900;margin-bottom:8px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.15;">${location}</div><div style="font-size:clamp(18px, 3vw, 32px);font-weight:700;opacity:0.96;text-shadow:0 2px 8px rgba(0,0,0,0.35);">${level} ${subject} 과외</div><div style="margin-top:12px;font-size:clamp(11px, 1.4vw, 14px);opacity:0.82;letter-spacing:1px;">1:1 맞춤 수업 · 성적 향상 · 전문 코칭</div></div></div>`;
 }
 
 // --- 콘텐츠 생성 ---
@@ -502,44 +490,18 @@ function generateContent(location, level, subject, parentRegion) {
   const checks = pickN(checkPool, 5, rng);
 
   const bodyHTML = `
-    <article>
-      <p>${opening}</p>
-
-      <h2>${regionDisplay}에서 ${level} ${subject} 과외가 필요한 이유</h2>
-      <p>${why}</p>
-      <p>${levelChar}</p>
-
-      <h2>${subject} 과외 선생님 고르는 핵심 팁</h2>
-      <p>${tip}</p>
-      <p>${extra1}</p>
-
-      <h2>효과적인 ${subject} 과외 학습 방법</h2>
-      <p>${method}</p>
-      <p>${extra3}</p>
-
-      <h2>${regionDisplay} ${level} ${subject} 과외비 안내</h2>
-      <p>${lvl.price}</p>
-      <p>${lvl.duration}</p>
+    <article><p>${opening}</p><h2>${regionDisplay}에서 ${level} ${subject} 과외가 필요한 이유</h2><p>${why}</p><p>${levelChar}</p><h2>${subject} 과외 선생님 고르는 핵심 팁</h2><p>${tip}</p><p>${extra1}</p><h2>효과적인 ${subject} 과외 학습 방법</h2><p>${method}</p><p>${extra3}</p><h2>${regionDisplay} ${level} ${subject} 과외비 안내</h2><p>${lvl.price}</p><p>${lvl.duration}</p>
 
       ${_rsHTML}
 
       ${_regionH2}
       ${_regionMetaHTML}
 
-      <h2>${regionDisplay} ${subject} 과외 선생님 선택 체크리스트</h2>
-      <ul>${checks.map(c => `<li>${c}</li>`).join('')}</ul>
-
-      <h2>실제 ${regionDisplay} ${subject} 과외 후기</h2>
-      <p>${review1}</p>
-      <p>${review2}</p>
+      <h2>${regionDisplay} ${subject} 과외 선생님 선택 체크리스트</h2><ul>${checks.map(c => `<li>${c}</li>`).join('')}</ul><h2>실제 ${regionDisplay} ${subject} 과외 후기</h2><p>${review1}</p><p>${review2}</p>
 
       ${_extraHTML}
 
-      <h2>과외 시작 전 꼭 알아두세요</h2>
-      <p>${extra2}</p>
-
-      <p>${closing}</p>
-    </article>
+      <h2>과외 시작 전 꼭 알아두세요</h2><p>${extra2}</p><p>${closing}</p></article>
   `;
 
   return { title, description, bodyHTML, tags };
@@ -576,12 +538,9 @@ function renderPage(location, level, subject, parentRegion, url) {
   const regionDisplay = parentRegion ? `${parentRegion} ${location}` : location;
   const canonical = `https://anhani.com${url}`;
 
-  return `<!DOCTYPE html>
-<html lang="ko">
-<head>
+  return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(title + ' | 안하니', description, canonical, heroImg)}
-  <meta property="og:type" content="article">
-  <script type="application/ld+json">
+  <meta property="og:type" content="article"><script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -594,43 +553,22 @@ function renderPage(location, level, subject, parentRegion, url) {
     "publisher": { "@type": "Organization", "name": "안하니", "url": "https://anhani.com" },
     "mainEntityOfPage": "${canonical}"
   }
-  </script>
-  <script type="application/ld+json">
+  </script><script type="application/ld+json">
   ${breadcrumbJsonLd}
-  </script>
-  <style>${commonStyles()}.page-container{max-width:768px;margin:0 auto;padding:32px 20px 0}.breadcrumb{font-size:13px;color:#888;margin-bottom:16px}.breadcrumb a{color:#6366f1;text-decoration:none}.breadcrumb a:hover{color:#312e81}.rp-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.rp-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.rp-hero-overlay{position:absolute;inset:0;background:transparent}.rp-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.rp-hero-text h2{font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.rp-hero-text p{font-size:clamp(12px,1.6vw,15px);opacity:.88;margin-top:4px;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.page-container h1{font-size:28px;font-weight:800;color:#111;margin-bottom:12px;line-height:1.4}.meta{font-size:13px;color:#999;margin-bottom:32px}article h2{font-size:22px;font-weight:700;color:#111;margin:36px 0 16px;padding-left:12px;border-left:4px solid #6366f1}article p{font-size:16px;margin-bottom:16px;word-break:keep-all;line-height:1.8;color:#334155}article ul{margin:0 0 16px 20px}article li{font-size:15px;margin-bottom:8px;color:#475569;line-height:1.7}.tags{margin-top:48px;padding-top:24px;border-top:1px solid #e5e7eb}.tags h3{font-size:14px;color:#666;margin-bottom:12px}.tag{display:inline-block;background:#f3f4f6;color:#555;padding:6px 14px;border-radius:20px;font-size:13px;margin:0 6px 8px 0;text-decoration:none}.tag:hover{background:#eef2ff;color:#6366f1}@media (max-width:640px){.page-container h1{font-size:22px}article h2{font-size:18px}}</style>
-</head>
-<body>
+  </script><style>${commonStyles()}.page-container{max-width:768px;margin:0 auto;padding:32px 20px 0}.breadcrumb{font-size:13px;color:#888;margin-bottom:16px}.breadcrumb a{color:#6366f1;text-decoration:none}.breadcrumb a:hover{color:#312e81}.rp-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.rp-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.rp-hero-overlay{position:absolute;inset:0;background:transparent}.rp-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.rp-hero-text h2{font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.rp-hero-text p{font-size:clamp(12px,1.6vw,15px);opacity:.88;margin-top:4px;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.page-container h1{font-size:28px;font-weight:800;color:#111;margin-bottom:12px;line-height:1.4}.meta{font-size:13px;color:#999;margin-bottom:32px}article h2{font-size:22px;font-weight:700;color:#111;margin:36px 0 16px;padding-left:12px;border-left:4px solid #6366f1}article p{font-size:16px;margin-bottom:16px;word-break:keep-all;line-height:1.8;color:#334155}article ul{margin:0 0 16px 20px}article li{font-size:15px;margin-bottom:8px;color:#475569;line-height:1.7}.tags{margin-top:48px;padding-top:24px;border-top:1px solid #e5e7eb}.tags h3{font-size:14px;color:#666;margin-bottom:12px}.tag{display:inline-block;background:#f3f4f6;color:#555;padding:6px 14px;border-radius:20px;font-size:13px;margin:0 6px 8px 0;text-decoration:none}.tag:hover{background:#eef2ff;color:#6366f1}@media (max-width:640px){.page-container h1{font-size:22px}article h2{font-size:18px}}</style></head><body>
   ${navHTML('region')}
 
-  <main class="page-container">
-    <div class="breadcrumb">
-      <a href="/">홈</a> &gt; <a href="/지역별">${parentRegion || location}</a> &gt; ${regionDisplay} ${level} ${subject} 과외
-    </div>
-
-    <div class="rp-hero-wrap">
-      <img src="${heroImg}" alt="${regionDisplay} ${level} ${subject} 과외" loading="eager"/>
-      <div class="rp-hero-overlay"></div>
-      <div class="rp-hero-text">
-        <h2>${regionDisplay}</h2>
-        <p>${level} ${subject} 과외 · 1:1 맞춤 수업</p>
-      </div>
-    </div>
-
-    <h1>${regionDisplay} ${level} ${subject} 과외 추천 가이드</h1>
-    <div class="meta">최종 업데이트: 2026년 4월 | 작성자: 안하니 교육팀</div>
+  <main class="page-container"><div class="breadcrumb"><a href="/">홈</a> &gt; <a href="/지역별">${parentRegion || location}</a> &gt; ${regionDisplay} ${level} ${subject} 과외
+    </div><div class="rp-hero-wrap"><img src="${heroImg}" alt="${regionDisplay} ${level} ${subject} 과외" loading="eager"/><div class="rp-hero-overlay"></div><div class="rp-hero-text"><h2>${regionDisplay}</h2><p>${level} ${subject} 과외 · 1:1 맞춤 수업</p></div></div><h1>${regionDisplay} ${level} ${subject} 과외 추천 가이드</h1><div class="meta">최종 업데이트: 2026년 4월 | 작성자: 안하니 교육팀</div>
 
     ${bodyHTML}
 
-    <div class="tags">
-      <h3>관련 태그</h3>
+    <div class="tags"><h3>관련 태그</h3>
       ${tags.map(t => `<a href="/#" class="tag">#${t}</a>`).join('\n      ')}
-    </div>
-  </main>
+    </div></main>
 
   ${footerHTML()}
-</body>
-</html>`;
+</body></html>`;
 }
 
 // --- URL 파싱 ---
@@ -700,11 +638,13 @@ function getAllUrls() {
         urls.push({ u: `/학교급별/${lv}/${encodeURIComponent(getSidoFromIdx(s[1]))}/${encodeURIComponent(s[2])}`, p: '0.5' });
       }
     }
+    const seenSch = new Set();
     for (const s of getSchools(lv)) {
-      urls.push({ u: `/${encodeURIComponent(s[0])}-과외`, p: '0.5' });
-      for (let i = 0; i < 10; i++) {
-        urls.push({ u: `/${encodeURIComponent(s[0])}-과외/article/${i}`, p: '0.4' });
-      }
+      const du = `/${encodeURIComponent(getSidoShort(getSidoFromIdx(s[1])) + '-' + s[2] + '-' + s[0])}-과외`;
+      if (seenSch.has(du)) continue;
+      seenSch.add(du);
+      urls.push({ u: du, p: '0.5' });
+      for (let i = 0; i < 10; i++) urls.push({ u: `${du}/article/${i}`, p: '0.4' });
     }
   }
   urls.push({ u: '/학습가이드', p: '0.7' });
@@ -719,23 +659,11 @@ function generateSitemap() {
   const urls = getAllUrls();
   const baseUrl = 'https://anhani.com';
 
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${baseUrl}/</loc>
-    <lastmod>${buildDateW3C()}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+  let xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${baseUrl}/</loc><lastmod>${buildDateW3C()}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
 `;
 
   for (const item of urls) {
-    xml += `  <url>
-    <loc>${baseUrl}${item.u}</loc>
-    <lastmod>${buildDateW3C()}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${item.p}</priority>
-  </url>
+    xml += `  <url><loc>${baseUrl}${item.u}</loc><lastmod>${buildDateW3C()}</lastmod><changefreq>weekly</changefreq><priority>${item.p}</priority></url>
 `;
   }
 
@@ -749,13 +677,10 @@ function generateSitemapIndex(totalUrls) {
   const numSitemaps = Math.ceil(totalUrls / URLS_PER_SITEMAP);
   const baseUrl = 'https://anhani.com';
 
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  let xml = `<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
   for (let i = 0; i < numSitemaps; i++) {
-    xml += `  <sitemap>
-    <loc>${baseUrl}/sitemap-${i}.xml</loc>
-  </sitemap>
+    xml += `  <sitemap><loc>${baseUrl}/sitemap-${i}.xml</loc></sitemap>
 `;
   }
   xml += `</sitemapindex>`;
@@ -770,16 +695,10 @@ function generateSitemapPart(part) {
   const urls = allUrls.slice(start, end);
   const baseUrl = 'https://anhani.com';
 
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  let xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
   for (const item of urls) {
-    xml += `  <url>
-    <loc>${baseUrl}${item.u}</loc>
-    <lastmod>${buildDateW3C()}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${item.p}</priority>
-  </url>
+    xml += `  <url><loc>${baseUrl}${item.u}</loc><lastmod>${buildDateW3C()}</lastmod><changefreq>weekly</changefreq><priority>${item.p}</priority></url>
 `;
   }
   xml += `</urlset>`;
@@ -790,35 +709,7 @@ function generateSitemapPart(part) {
 const DEFAULT_OG_IMAGE = "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=630&fit=crop";
 function commonHead(title, description, canonical, ogImage) {
   const _img = ogImage || DEFAULT_OG_IMAGE;
-  return `<meta charset="UTF-8">
-  <meta name="naver-site-verification" content="2d31a5395d70375a6b80e71c055be5e739383013" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="NaverBot" content="All">
-  <meta name="Yeti" content="All">
-  <title>${title}</title>
-  <meta name="description" content="${description}">
-  <meta property="og:title" content="${title}">
-  <meta property="og:description" content="${description}">
-  <meta property="og:url" content="${canonical}">
-  <meta property="og:site_name" content="안하니">
-  <meta property="og:locale" content="ko_KR">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="${_img}">
-  <meta property="og:image:secure_url" content="${_img}">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="${title}">
-  <meta property="article:modified_time" content="${buildDateISO()}">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${title}">
-  <meta name="twitter:description" content="${description}">
-  <meta name="twitter:image" content="${_img}">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="shortcut icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="canonical" href="${canonical}">`;
+  return `<meta charset="UTF-8"><meta name="naver-site-verification" content="2d31a5395d70375a6b80e71c055be5e739383013" /><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="index, follow, max-image-preview:large"><meta name="NaverBot" content="All"><meta name="Yeti" content="All"><title>${title}</title><meta name="description" content="${description}"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:url" content="${canonical}"><meta property="og:site_name" content="안하니"><meta property="og:locale" content="ko_KR"><meta property="og:type" content="website"><meta property="og:image" content="${_img}"><meta property="og:image:secure_url" content="${_img}"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="${title}"><meta property="article:modified_time" content="${buildDateISO()}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${title}"><meta name="twitter:description" content="${description}"><meta name="twitter:image" content="${_img}"><link rel="icon" type="image/png" href="/favicon.png"><link rel="shortcut icon" type="image/png" href="/favicon.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="canonical" href="${canonical}">`;
 }
 
 function navStyles(){return `.nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px}.nav-logo{text-decoration:none;display:flex;align-items:center}.nav-logo-img{height:42px;width:auto}.nav-logo-text{font-size:20px;font-weight:900;color:#1e293b;margin-left:10px;white-space:nowrap;line-height:1.2}.nav-logo-sub{font-size:11px;font-weight:500;color:#64748b;display:block}.nav-visitor{display:flex;align-items:center;gap:6px;margin-left:16px;padding:6px 14px;background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px}.nav-visitor-label{font-size:11px;color:#64748b;font-weight:500}.nav-visitor-num{font-size:16px;font-weight:800;color:#0ea5e9}.nav-visitor-unit{font-size:11px;color:#64748b;font-weight:500}.nav-links{display:flex;gap:0;align-items:center;height:100%}.nav-item{position:relative;height:100%;display:flex;align-items:center}.nav-item>a{color:#475569;text-decoration:none;font-size:15px;font-weight:500;padding:8px 14px;border-radius:8px;transition:all 0.2s;display:flex;align-items:center;gap:4px}.nav-item>a:hover{background:#f1f5f9;color:#6366f1}.nav-item>a.active{color:#6366f1;background:#eef2ff}.nav-item>a .arrow-down{font-size:10px;opacity:0.5}.dropdown{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:8px 0;min-width:180px;box-shadow:0 8px 24px rgba(0,0,0,0.1)}.nav-item:hover .dropdown{display:block}.dropdown a{display:block;padding:8px 20px;color:#475569;text-decoration:none;font-size:14px;transition:all 0.15s}.dropdown a:hover{background:#f1f5f9;color:#6366f1}.dropdown .divider{height:1px;background:#e2e8f0;margin:4px 0}.nav-cta{background:#6366f1;color:#fff !important;border-radius:8px !important;padding:8px 20px !important;margin-left:8px}.nav-cta:hover{background:#4f46e5 !important}.mobile-menu{display:none;background:none;border:none;font-size:24px;cursor:pointer}.float-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:28px;font-size:14px;font-weight:700;text-decoration:none;color:#fff;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:all 0.2s;white-space:nowrap}.float-btn:hover{transform:translateY(-3px);box-shadow:0 6px 24px rgba(0,0,0,0.25)}.float-call{background:#22c55e}.float-kakao{background:#fbbf24;color:#1a1a1a}.float-free{background:#6366f1}@media (max-width:768px){.nav-inner{position:relative;padding:0 16px;height:60px}.nav-logo-img{height:36px}.nav-logo-text{font-size:17px}.nav-logo-sub{font-size:10px}.nav-visitor{display:none}.mobile-menu{display:block;padding:4px 10px;border-radius:6px}.mobile-menu:hover{background:#f1f5f9}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:#fff;border-top:1px solid #e2e8f0;padding:8px 0;box-shadow:0 8px 24px rgba(0,0,0,0.08);height:auto;gap:0;max-height:calc(100vh - 60px);overflow-y:auto}.nav-links.open{display:flex}.nav-item{width:100%;height:auto;flex-direction:column;align-items:stretch}.nav-item>a{padding:14px 20px;border-radius:0;font-size:15px;font-weight:600;color:#1e293b}.nav-item>a .arrow-down{display:none}.nav-item>a:hover,.nav-item>a.active{background:#eef2ff}.dropdown{display:block;position:static;border:none;box-shadow:none;padding:0 0 8px 12px;min-width:0;border-radius:0;background:transparent}.dropdown a{padding:10px 20px;font-size:13px;color:#64748b}.dropdown a:hover{background:#f8fafc}.nav-cta{margin:10px 16px 6px;text-align:center;padding:12px 20px !important;border-radius:8px !important;font-weight:700}}@media (max-width:768px){.floating-btns{right:12px;bottom:16px;gap:8px}.float-btn{padding:10px 16px;font-size:13px}}.floating-btns{position:fixed;right:24px;bottom:32px;z-index:9999;display:flex;flex-direction:column;gap:10px}@media (max-width:768px){.footer-main{flex-direction:column;text-align:left;gap:24px}.footer-right{text-align:left}.footer-phone{font-size:26px}.footer-bottom{text-align:left}.footer-nav{padding:0;gap:0;flex-wrap:nowrap;justify-content:space-between;overflow-x:auto}.footer-nav-col{min-width:0;flex-direction:row;gap:0}.footer-nav-col a{display:none}.footer-nav-title{font-size:12px;margin-bottom:0;white-space:nowrap}}.footer{background:#0f172a;color:#94a3b8;margin-top:32px}.footer-notice{background:#1a2332;padding:14px 24px;font-size:13px;color:#64748b;text-align:center;border-bottom:1px solid #1e293b}.footer-notice-icon{color:#f59e0b;margin-right:6px}.footer-main{max-width:1200px;margin:0 auto;padding:36px 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px}.footer-left{flex-shrink:0}.footer-nav{flex:1;display:flex;flex-wrap:wrap;gap:28px 36px;padding:0 24px}.footer-nav-col{display:flex;flex-direction:column;gap:8px;min-width:90px}.footer-nav-title{font-size:13px;font-weight:800;color:#cbd5e1;margin-bottom:4px}.footer-logo{font-size:22px;font-weight:800;color:#fff;margin-bottom:10px}.footer-desc{font-size:14px;color:#64748b;line-height:1.7}.footer-right{text-align:right}.footer-phone-label{font-size:13px;color:#94a3b8;margin-bottom:4px}.footer-phone{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;letter-spacing:-0.5px}.footer-call-btn{display:inline-block;background:#6366f1;color:#fff;padding:10px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.2s}.footer-bottom{max-width:1200px;margin:0 auto;padding:16px 24px;border-top:1px solid #1e293b;font-size:12px;color:#475569}.footer-nav a{font-size:13px;color:#64748b;text-decoration:none;transition:color .15s}.footer-nav a:hover{color:#a5b4fc}.footer-call-btn:hover{background:#4f46e5}`;}
@@ -828,89 +719,13 @@ function commonStyles() {
 }
 
 function navHTML(activePage) {
-  return `<nav class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo"><img src="${LOGO_URI}" alt="과외안하니" class="nav-logo-img"><span class="nav-logo-text">과외안하니<span class="nav-logo-sub">전국 과외 정보 플랫폼</span></span></a>
-      <div class="nav-visitor"><span class="nav-visitor-label">누적 방문자</span><span class="nav-visitor-num" id="visitorCount">304,953</span><span class="nav-visitor-unit">명</span></div>
-      <div class="nav-links">
-
-        <div class="nav-item">
-          <a href="/지역별" class="${activePage === 'region' ? 'active' : ''}">전국과외 <span class="arrow-down">▼</span></a>
-          <div class="dropdown">
-            <a href="/지역별">지역별 과외</a>
-            <a href="/학년별">학년별 과외</a>
-            <a href="/학교급별">학교별 과외</a>
-          </div>
-        </div>
-
-        <div class="nav-item">
-          <a href="/과목별" class="${activePage === 'subject' ? 'active' : ''}">과목별 <span class="arrow-down">▼</span></a>
-          <div class="dropdown">
-            <a href="/과목별/국어">국어</a>
-            <a href="/과목별/영어">영어</a>
-            <a href="/과목별/수학">수학</a>
-            <a href="/과목별/사회">사회</a>
-            <a href="/과목별/과학">과학</a>
-            <a href="/과목별/코딩">코딩</a>
-            <a href="/과목별/검정고시">검정고시</a>
-          </div>
-        </div>
-
-        <div class="nav-item">
-          <a href="/학원" class="${activePage === 'academy' ? 'active' : ''}">학원 <span class="arrow-down">▼</span></a>
-          <div class="dropdown">
-            <a href="/학원/소개">학원 소개</a>
-            <a href="/학원/전국지점">전국 지점 찾기</a>
-          </div>
-        </div>
-
-        <div class="nav-item">
-          <a href="/학습가이드" class="${activePage === 'guide' ? 'active' : ''}">학습가이드</a>
-        </div>
-
-        <div class="nav-item">
-          <a href="/외국어" class="${activePage === 'foreign' ? 'active' : ''}">외국어 <span class="arrow-down">▼</span></a>
-          <div class="dropdown">
-            <a href="/외국어/영어">영어</a>
-            <a href="/외국어/중국어">중국어</a>
-            <a href="/외국어/일본어">일본어</a>
-          </div>
-        </div>
-
-        <a href="/체험신청" class="nav-cta">무료 상담</a>
-      </div>
-      <button class="mobile-menu" onclick="this.parentNode.querySelector('.nav-links').classList.toggle('open')">☰</button>
-    </div>
-  </nav>`;
+  return `<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo"><img src="${LOGO_URI}" alt="과외안하니" class="nav-logo-img"><span class="nav-logo-text">과외안하니<span class="nav-logo-sub">전국 과외 정보 플랫폼</span></span></a><div class="nav-visitor"><span class="nav-visitor-label">누적 방문자</span><span class="nav-visitor-num" id="visitorCount">304,953</span><span class="nav-visitor-unit">명</span></div><div class="nav-links"><div class="nav-item"><a href="/지역별" class="${activePage === 'region' ? 'active' : ''}">전국과외 <span class="arrow-down">▼</span></a><div class="dropdown"><a href="/지역별">지역별 과외</a><a href="/학년별">학년별 과외</a><a href="/학교급별">학교별 과외</a></div></div><div class="nav-item"><a href="/과목별" class="${activePage === 'subject' ? 'active' : ''}">과목별 <span class="arrow-down">▼</span></a><div class="dropdown"><a href="/과목별/국어">국어</a><a href="/과목별/영어">영어</a><a href="/과목별/수학">수학</a><a href="/과목별/사회">사회</a><a href="/과목별/과학">과학</a><a href="/과목별/코딩">코딩</a><a href="/과목별/검정고시">검정고시</a></div></div><div class="nav-item"><a href="/학원" class="${activePage === 'academy' ? 'active' : ''}">학원 <span class="arrow-down">▼</span></a><div class="dropdown"><a href="/학원/소개">학원 소개</a><a href="/학원/전국지점">전국 지점 찾기</a></div></div><div class="nav-item"><a href="/학습가이드" class="${activePage === 'guide' ? 'active' : ''}">학습가이드</a></div><div class="nav-item"><a href="/외국어" class="${activePage === 'foreign' ? 'active' : ''}">외국어 <span class="arrow-down">▼</span></a><div class="dropdown"><a href="/외국어/영어">영어</a><a href="/외국어/중국어">중국어</a><a href="/외국어/일본어">일본어</a></div></div><a href="/체험신청" class="nav-cta">무료 상담</a></div><button class="mobile-menu" onclick="this.parentNode.querySelector('.nav-links').classList.toggle('open')">☰</button></div></nav>`;
 }
 
 function footerHTML() {
   return `
-  <div class="floating-btns">
-    <a href="tel:010-4827-5592" class="float-btn float-call">📞 전화상담</a>
-    <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="float-btn float-kakao">💬 카카오톡 상담</a>
-    <a href="/체험신청" class="float-btn float-free">⭐ 무료체험 신청</a>
-  </div>
-  <footer class="footer">
-    <div class="footer-notice">
-      <span class="footer-notice-icon">⚠</span> 안내사항 · 본 사이트의 모든 콘텐츠는 정보 제공 목적이며, 학습 효과를 보장하지 않습니다.
-    </div>
-    <div class="footer-main">
-      <div class="footer-left">
-        <div class="footer-logo" style="display:flex;align-items:center;gap:12px;"><img src="${FOOTER_LOGO_URI}" alt="과외안하니" style="height:52px; border-radius:8px;"><span>과외안하니</span></div>
-        <p class="footer-desc">유아부터 성인까지<br>1:1 실시간 맞춤 수업 진행</p>
-      </div>
-      <nav class="footer-nav" aria-label="사이트맵"><div class="footer-nav-col"><span class="footer-nav-title">전국과외</span><a href="/지역별">지역별 과외</a><a href="/지역별/서울">서울 과외</a><a href="/지역별/경기">경기 과외</a></div><div class="footer-nav-col"><span class="footer-nav-title">과목별</span><a href="/과목별/수학">수학</a><a href="/과목별/영어">영어</a><a href="/과목별/국어">국어</a><a href="/과목별/과학">과학</a></div><div class="footer-nav-col"><span class="footer-nav-title">학원</span><a href="/학원">학원 정보</a><a href="/학교급별">학교별</a></div><div class="footer-nav-col"><span class="footer-nav-title">학습가이드</span><a href="/학습가이드">전체 가이드</a><a href="/과목별/검정고시">검정고시</a></div><div class="footer-nav-col"><span class="footer-nav-title">외국어</span><a href="/외국어/영어">영어회화</a><a href="/외국어/중국어">중국어</a><a href="/외국어/일본어">일본어</a></div></nav>
-      <div class="footer-right">
-        <div class="footer-phone-label">무료 상담 전화</div>
-        <div class="footer-phone">010-4827-5592</div>
-        <a href="tel:010-4827-5592" class="footer-call-btn">전화 상담</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 과외안하니. All rights reserved.</p>
-    </div>
-  </footer>`;
+  <div class="floating-btns"><a href="tel:010-4827-5592" class="float-btn float-call">📞 전화상담</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="float-btn float-kakao">💬 카카오톡 상담</a><a href="/체험신청" class="float-btn float-free">⭐ 무료체험 신청</a></div><footer class="footer"><div class="footer-notice"><span class="footer-notice-icon">⚠</span> 안내사항 · 본 사이트의 모든 콘텐츠는 정보 제공 목적이며, 학습 효과를 보장하지 않습니다.
+    </div><div class="footer-main"><div class="footer-left"><div class="footer-logo" style="display:flex;align-items:center;gap:12px;"><img src="${FOOTER_LOGO_URI}" alt="과외안하니" style="height:52px; border-radius:8px;"><span>과외안하니</span></div><p class="footer-desc">유아부터 성인까지<br>1:1 실시간 맞춤 수업 진행</p></div><nav class="footer-nav" aria-label="사이트맵"><div class="footer-nav-col"><span class="footer-nav-title">전국과외</span><a href="/지역별">지역별 과외</a><a href="/지역별/서울">서울 과외</a><a href="/지역별/경기">경기 과외</a></div><div class="footer-nav-col"><span class="footer-nav-title">과목별</span><a href="/과목별/수학">수학</a><a href="/과목별/영어">영어</a><a href="/과목별/국어">국어</a><a href="/과목별/과학">과학</a></div><div class="footer-nav-col"><span class="footer-nav-title">학원</span><a href="/학원">학원 정보</a><a href="/학교급별">학교별</a></div><div class="footer-nav-col"><span class="footer-nav-title">학습가이드</span><a href="/학습가이드">전체 가이드</a><a href="/과목별/검정고시">검정고시</a></div><div class="footer-nav-col"><span class="footer-nav-title">외국어</span><a href="/외국어/영어">영어회화</a><a href="/외국어/중국어">중국어</a><a href="/외국어/일본어">일본어</a></div></nav><div class="footer-right"><div class="footer-phone-label">무료 상담 전화</div><div class="footer-phone">010-4827-5592</div><a href="tel:010-4827-5592" class="footer-call-btn">전화 상담</a></div></div><div class="footer-bottom"><p>&copy; 2026 과외안하니. All rights reserved.</p></div></footer>`;
 }
 
 // --- 홈페이지 ---
@@ -1022,23 +837,15 @@ function renderHomepage() {
   const rvIds=['oSvSalazA9k','5vdAODrj7e8','MLEJs0LCFUU','ZzeWUEl2OHs','pLt0AFEppQ8','2fC5LOnc7Ss','4BfB0nAME7Y','34nLY3zLu5A','3vzq2_NzF_s'];
   const rvNames=['이*연 / 서울대','제갈*은 / 중앙대','장*현 / 한양대','배*준 / 연세대','엄*원 / 건국대','전*빈 / 경희대','인*상 / 포항공대','정*원 / 경희대','이*운 / 이화여대'];
   const rvCards=rvIds.map((y,i)=>`<div class="rv-card" data-yt="${y}" data-name="${rvNames[i]}" onclick="rvOpen(this)"><img src="${A}후기${i+1}.png" alt="${rvNames[i]} 합격 후기"><span class="rv-play"><i class="ti ti-player-play-filled"></i></span></div>`).join("");
-  return `<!DOCTYPE html>
-<html lang="ko">
-<head>
+  return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('안하니 - 전국 과외 정보 플랫폼', '전국 시/군/구/읍/면 초등, 중등, 고등 과외 정보! 국어, 영어, 수학, 사회, 과학, 코딩, 검정고시, 논술 과외를 찾아보세요.', 'https://anhani.com/')}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.34.0/tabler-icons.min.css">
-  <style>${commonStyles()}*{box-sizing:border-box;margin:0;padding:0}.hero{position:relative;padding:5rem 2rem;text-align:center;color:#fff;background-color:#0c1e4d;background-size:cover;background-position:center;min-height:520px;display:flex;flex-direction:column;justify-content:center;align-items:center}.hero>*{position:relative;z-index:1}.tag{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,0.45);color:#fff;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:500;margin-bottom:1.5rem;border:1px solid rgba(255,255,255,0.28);backdrop-filter:blur(10px)}.tag::before{content:"";width:6px;height:6px;background:#fbbf24;border-radius:50%;display:inline-block;box-shadow:0 0 0 3px rgba(251,191,36,0.3)}.headline{font-size:42px;font-weight:700;line-height:1.35;margin:0 0 1.25rem;color:#fff;letter-spacing:-1px;text-shadow:0 2px 16px rgba(0,0,0,0.6),0 0 24px rgba(0,0,0,0.4)}.headline .hi{color:#fbbf24}.lead{font-size:16px;color:#fff;line-height:1.75;margin:0 auto 2rem;max-width:580px;text-shadow:0 1px 12px rgba(0,0,0,0.7),0 0 16px rgba(0,0,0,0.5)}.cta-row{display:inline-flex;align-items:center;gap:18px;margin-bottom:1.5rem;flex-wrap:wrap;justify-content:center}.btn-prim{background:#fff;color:#0c1e4d;border:none;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,0.25)}.btn-link{font-size:15px;color:#fff;text-decoration:none;font-weight:500;text-shadow:0 1px 8px rgba(0,0,0,0.6)}.meta{font-size:13px;color:#fff;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;text-shadow:0 1px 8px rgba(0,0,0,0.6)}.meta span{display:inline-flex;align-items:center;gap:5px}.body{padding:3rem 2rem;background:#fafafa}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:3rem;max-width:1080px;margin-inline:auto}.stat{background:#fff;border:1px solid #ececec;border-radius:14px;padding:1.75rem 1rem;text-align:center;position:relative;overflow:hidden}.stat::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:#0c1e4d}.stat-num{font-size:40px;font-weight:700;color:#1d1d1f;line-height:1.1;display:block;letter-spacing:-1px}.stat-num .u{font-size:18px;color:#666;font-weight:500;margin-left:2px}.stat-lab{font-size:14px;color:#1d1d1f;font-weight:600;margin-top:10px}.stat-sub{font-size:12px;color:#888;margin-top:4px}.verify-head{display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;color:#666;margin-bottom:2rem}.verify-head::before,.verify-head::after{content:"";flex:0 0 48px;height:1px;background:#e5e5e5}.chips{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1080px;margin-inline:auto}.chip{background:#fff;border:1px solid #ececec;border-radius:14px;padding:1.75rem 0.75rem 1.25rem;text-align:center;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s}.chip:hover{border-color:#0c1e4d;transform:translateY(-3px);box-shadow:0 8px 24px rgba(12,30,77,0.08)}.chip-icon{width:64px;height:64px;border-radius:50%;background:#fff;border:1.5px solid #dbeafe;display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 4px 12px rgba(12,30,77,0.06)}.chip-icon i{font-size:30px;color:#0c1e4d}.chip-num{font-size:18px;font-weight:700;color:#0c1e4d;margin-bottom:4px}.chip-lab{font-size:13px;color:#666;line-height:1.4;font-weight:500}.video-section{padding:5rem 2rem;background:#fff;text-align:center}.video-label{display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:#0c1e4d;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:1.25rem}.video-title{font-size:38px;font-weight:700;line-height:1.35;margin:0 0 1rem;color:#0c1e4d;letter-spacing:-1px}.video-title .hi{color:#fbbf24}.video-subtitle{font-size:16px;color:#666;line-height:1.75;margin:0 auto 2.5rem;max-width:600px}.video-wrap{position:relative;max-width:900px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(12,30,77,0.15);background:#000;aspect-ratio:16/9}.video-wrap video{width:100%;height:100%;display:block;object-fit:cover}.unmute-hint{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#fff;padding:8px 16px;border-radius:999px;font-size:13px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;backdrop-filter:blur(8px);z-index:10}.unmute-hint.hidden{opacity:0;pointer-events:none;transition:opacity 0.3s}.video-meta{display:flex;justify-content:center;gap:24px;margin-top:1.5rem;color:#888;font-size:13px}.video-meta span{display:inline-flex;align-items:center;gap:6px}.sys-section{padding:5rem 2rem;background:#fafafa}.sys-head{text-align:center;margin-bottom:3rem}.sys-mini-label{display:inline-block;background:#0c1e4d;color:#fff;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;margin-bottom:1rem;letter-spacing:0.5px}.sys-title{font-size:38px;font-weight:700;line-height:1.35;margin:0 0 1rem;color:#0c1e4d;letter-spacing:-1px}.sys-title .hi{color:#fbbf24}.sys-subtitle{font-size:15px;color:#666;line-height:1.7;margin:0 auto 1.5rem;max-width:560px}.sys-nav{display:inline-flex;gap:6px;background:#fff;padding:6px;border-radius:999px;border:1px solid #ececec;font-size:13px;flex-wrap:wrap;justify-content:center}.sys-nav-item{padding:8px 18px;border-radius:999px;color:#888;font-weight:500;transition:all 0.2s;cursor:pointer}.sys-nav-item.active{background:#0c1e4d;color:#fff}.sys-card{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem;max-width:1080px;margin-left:auto;margin-right:auto}.sys-card.reverse{direction:rtl}.sys-card.reverse>*{direction:ltr}.sys-slider{position:relative;overflow:hidden;border-radius:16px;aspect-ratio:4/3;background:#0c1e4d;box-shadow:0 12px 32px rgba(12,30,77,0.15)}.sys-track-2{display:flex;width:200%;height:100%;animation:slide2 4s infinite ease-in-out}.sys-track-3{display:flex;width:400%;height:100%;animation:slide3 8s infinite ease-in-out}.sys-track-9{display:flex;width:1000%;height:100%;animation:slide9 18s infinite}.sys-track-9 .sys-slide{width:10%}@keyframes slide9{0.000%,8.889%{transform:translateX(0%)}11.111%,20.000%{transform:translateX(-10%)}22.222%,31.111%{transform:translateX(-20%)}33.333%,42.222%{transform:translateX(-30%)}44.444%,53.333%{transform:translateX(-40%)}55.556%,64.444%{transform:translateX(-50%)}66.667%,75.556%{transform:translateX(-60%)}77.778%,86.667%{transform:translateX(-70%)}88.889%,97.778%{transform:translateX(-80%)}100%{transform:translateX(-90%)}}.sys-slide{flex-shrink:0;height:100%}.sys-track-2 .sys-slide{width:50%}.sys-track-3 .sys-slide{width:25%}.sys-slide img{width:100%;height:100%;object-fit:cover;display:block}.sys-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}.sys-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.45)}.sys-dot.active{background:#fff;width:18px;border-radius:3px}@keyframes slide2{0%,45%{transform:translateX(0)}50%,95%{transform:translateX(-50%)}100%{transform:translateX(0)}}@keyframes slide3{0%,22%{transform:translateX(0)}25%,47%{transform:translateX(-25%)}50%,72%{transform:translateX(-50%)}75%,100%{transform:translateX(-75%)}}.sys-content .sys-h{font-size:32px;font-weight:700;color:#0c1e4d;margin:0 0 1rem;letter-spacing:-1px;display:flex;align-items:center;gap:10px}.sys-content .sys-h .sys-h-num{display:inline-block;background:#0c1e4d;color:#fff;font-size:14px;padding:4px 12px;border-radius:6px;font-weight:600;letter-spacing:0}.sys-content .sys-desc{font-size:14px;color:#555;line-height:1.85;margin:0 0 1.5rem}.sys-checks{display:flex;flex-direction:column;gap:10px}.sys-check{display:flex;align-items:flex-start;gap:10px;font-size:14px}.sys-check-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#dbeafe;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}.sys-check-icon i{font-size:14px;color:#0c1e4d}.sys-check-text{color:#1d1d1f;font-weight:500;line-height:1.5}@media(max-width:768px){.headline,.video-title,.sys-title{font-size:28px}.stats{grid-template-columns:repeat(2,1fr)}.chips{grid-template-columns:repeat(2,1fr)}.hero{padding:3rem 1.5rem;min-height:380px}.chip-icon{width:56px;height:56px}.chip-icon i{font-size:26px}.video-section,.sys-section{padding:3rem 1rem}.sys-card{grid-template-columns:1fr;gap:2rem}.sys-card.reverse{direction:ltr}.sys-content .sys-h{font-size:24px}}.rv-section{padding:5rem 0;background:#0c1e4d;overflow:hidden}.rv-head{text-align:center;margin-bottom:2.5rem;padding:0 2rem}.rv-label{display:inline-block;background:rgba(255,255,255,0.12);color:#fff;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;margin-bottom:1rem;letter-spacing:1px;border:1px solid rgba(255,255,255,0.22)}.rv-title{font-size:38px;font-weight:700;line-height:1.35;margin:0 0 1rem;color:#fff;letter-spacing:-1px}.rv-title em{font-style:normal;color:#fbbf24}.rv-sub{font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7;margin:0}.rv-viewport{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}.rv-track{display:flex;gap:18px;width:max-content;animation:rv-marquee 40s linear infinite}.rv-track:hover{animation-play-state:paused}@keyframes rv-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}.rv-card{position:relative;flex:0 0 auto;width:230px;aspect-ratio:340/480;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,0.3);transition:transform .25s}.rv-card:hover{transform:translateY(-6px)}.rv-card img{width:100%;height:100%;object-fit:cover;display:block}.rv-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:transform .2s}.rv-play i{font-size:24px;color:#0c1e4d;margin-left:2px}.rv-card:hover .rv-play{transform:translate(-50%,-50%) scale(1.12)}.rv-modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:9999;padding:1.5rem}.rv-modal.on{display:flex}.rv-modal-inner{position:relative;width:100%;max-width:880px;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5)}.rv-modal-inner iframe{width:100%;height:100%;border:0;display:block}.rv-cap{position:absolute;top:-40px;left:0;color:#fff;font-size:14px;font-weight:600}.rv-close{position:absolute;top:-44px;right:0;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;border:none;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}@media(max-width:768px){.rv-title{font-size:26px}.rv-card{width:170px}.rv-section{padding:3rem 0}}.subj-section{padding:5rem 2rem;background:#f5f7fb}.subj-header{text-align:center;margin-bottom:2.5rem}.subj-label{font-size:13px;font-weight:700;color:#0c1e4d;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}.subj-title{font-size:32px;font-weight:800;color:#0f172a;letter-spacing:-1px;margin:0}.subj-title em{font-style:normal;color:#0c1e4d}.subjects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1120px;margin:0 auto}.subject-card{background:#fff;border:1px solid #eef0f4;border-radius:16px;padding:2.4rem 1rem;text-align:center;text-decoration:none;transition:transform .2s,box-shadow .2s,border-color .2s;display:block}.subject-card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(15,23,42,.1);border-color:var(--accent,#6366f1)}.subject-icon{font-size:40px;display:block;margin-bottom:1rem;line-height:1}.subject-card h3{font-size:18px;font-weight:700;color:#0f172a;margin:0 0 .4rem}.subject-card p{font-size:13px;color:#94a3b8;margin:0}@media(max-width:768px){.subjects-grid{grid-template-columns:repeat(2,1fr)}.subj-title{font-size:24px}.subj-section{padding:3rem 1rem}}.faq-section{padding:5rem 2rem;background:#fafafa}.faq-header{text-align:center;margin-bottom:2.5rem}.faq-label{font-size:13px;font-weight:700;color:#0c1e4d;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}.faq-title{font-size:32px;font-weight:800;color:#0f172a;letter-spacing:-1px;margin:0}.faq-list{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}.faq-item{border:1px solid #e7ebf0;border-radius:12px;background:#fff;overflow:hidden;transition:box-shadow .2s}.faq-item[open]{box-shadow:0 6px 20px rgba(12,30,77,.07);border-color:#cfd8e6}.faq-q{list-style:none;cursor:pointer;padding:1.15rem 1.5rem;font-size:16px;font-weight:700;color:#1d1d1f;display:flex;justify-content:space-between;align-items:center;gap:1rem}.faq-q::-webkit-details-marker{display:none}.faq-chev{transition:transform .25s;color:#94a3b8;flex-shrink:0;font-size:20px}.faq-item[open] .faq-chev{transform:rotate(180deg);color:#0c1e4d}.faq-item[open] .faq-q{color:#0c1e4d}.faq-a{padding:0 1.5rem 1.3rem;color:#666;font-size:14px;line-height:1.8}.faq-a p{margin:0 0 .8rem}.faq-a p:last-child{margin:0}.faq-a b{color:#0c1e4d;font-weight:700}@media(max-width:768px){.faq-section{padding:3rem 1rem}.faq-title{font-size:24px}.faq-q{font-size:15px;padding:1rem 1.1rem}}.hero{overflow:hidden}.hero-bg{position:absolute;inset:0;z-index:0}.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center}.hero-s2{opacity:0;animation:hero-fade 10s infinite}@keyframes hero-fade{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,30,77,.35),rgba(12,30,77,.5))}.vsec-navy{background:#0c1e4d !important}.vsec-navy .video-label{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.22)}.vsec-navy .video-title{color:#fff}.vsec-navy .video-title .hi{color:#fbbf24}.vsec-navy .video-subtitle{color:rgba(255,255,255,.82)}</style>
-</head>
-<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/3.34.0/tabler-icons.min.css"><style>${commonStyles()}*{box-sizing:border-box;margin:0;padding:0}.hero{position:relative;padding:5rem 2rem;text-align:center;color:#fff;background-color:#0c1e4d;background-size:cover;background-position:center;min-height:520px;display:flex;flex-direction:column;justify-content:center;align-items:center}.hero>*{position:relative;z-index:1}.tag{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,0.45);color:#fff;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:500;margin-bottom:1.5rem;border:1px solid rgba(255,255,255,0.28);backdrop-filter:blur(10px)}.tag::before{content:"";width:6px;height:6px;background:#fbbf24;border-radius:50%;display:inline-block;box-shadow:0 0 0 3px rgba(251,191,36,0.3)}.headline{font-size:42px;font-weight:700;line-height:1.35;margin:0 0 1.25rem;color:#fff;letter-spacing:-1px;text-shadow:0 2px 16px rgba(0,0,0,0.6),0 0 24px rgba(0,0,0,0.4)}.headline .hi{color:#fbbf24}.lead{font-size:16px;color:#fff;line-height:1.75;margin:0 auto 2rem;max-width:580px;text-shadow:0 1px 12px rgba(0,0,0,0.7),0 0 16px rgba(0,0,0,0.5)}.cta-row{display:inline-flex;align-items:center;gap:18px;margin-bottom:1.5rem;flex-wrap:wrap;justify-content:center}.btn-prim{background:#fff;color:#0c1e4d;border:none;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 24px rgba(0,0,0,0.25)}.btn-link{font-size:15px;color:#fff;text-decoration:none;font-weight:500;text-shadow:0 1px 8px rgba(0,0,0,0.6)}.meta{font-size:13px;color:#fff;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;text-shadow:0 1px 8px rgba(0,0,0,0.6)}.meta span{display:inline-flex;align-items:center;gap:5px}.body{padding:3rem 2rem;background:#fafafa}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:3rem;max-width:1080px;margin-inline:auto}.stat{background:#fff;border:1px solid #ececec;border-radius:14px;padding:1.75rem 1rem;text-align:center;position:relative;overflow:hidden}.stat::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:#0c1e4d}.stat-num{font-size:40px;font-weight:700;color:#1d1d1f;line-height:1.1;display:block;letter-spacing:-1px}.stat-num .u{font-size:18px;color:#666;font-weight:500;margin-left:2px}.stat-lab{font-size:14px;color:#1d1d1f;font-weight:600;margin-top:10px}.stat-sub{font-size:12px;color:#888;margin-top:4px}.verify-head{display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;color:#666;margin-bottom:2rem}.verify-head::before,.verify-head::after{content:"";flex:0 0 48px;height:1px;background:#e5e5e5}.chips{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1080px;margin-inline:auto}.chip{background:#fff;border:1px solid #ececec;border-radius:14px;padding:1.75rem 0.75rem 1.25rem;text-align:center;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s}.chip:hover{border-color:#0c1e4d;transform:translateY(-3px);box-shadow:0 8px 24px rgba(12,30,77,0.08)}.chip-icon{width:64px;height:64px;border-radius:50%;background:#fff;border:1.5px solid #dbeafe;display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 4px 12px rgba(12,30,77,0.06)}.chip-icon i{font-size:30px;color:#0c1e4d}.chip-num{font-size:18px;font-weight:700;color:#0c1e4d;margin-bottom:4px}.chip-lab{font-size:13px;color:#666;line-height:1.4;font-weight:500}.video-section{padding:5rem 2rem;background:#fff;text-align:center}.video-label{display:inline-flex;align-items:center;gap:6px;background:#eef2ff;color:#0c1e4d;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:1.25rem}.video-title{font-size:38px;font-weight:700;line-height:1.35;margin:0 0 1rem;color:#0c1e4d;letter-spacing:-1px}.video-title .hi{color:#fbbf24}.video-subtitle{font-size:16px;color:#666;line-height:1.75;margin:0 auto 2.5rem;max-width:600px}.video-wrap{position:relative;max-width:900px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(12,30,77,0.15);background:#000;aspect-ratio:16/9}.video-wrap video{width:100%;height:100%;display:block;object-fit:cover}.unmute-hint{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#fff;padding:8px 16px;border-radius:999px;font-size:13px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;backdrop-filter:blur(8px);z-index:10}.unmute-hint.hidden{opacity:0;pointer-events:none;transition:opacity 0.3s}.video-meta{display:flex;justify-content:center;gap:24px;margin-top:1.5rem;color:#888;font-size:13px}.video-meta span{display:inline-flex;align-items:center;gap:6px}.sys-section{padding:5rem 2rem;background:#fafafa}.sys-head{text-align:center;margin-bottom:3rem}.sys-mini-label{display:inline-block;background:#0c1e4d;color:#fff;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;margin-bottom:1rem;letter-spacing:0.5px}.sys-title{font-size:38px;font-weight:700;line-height:1.35;margin:0 0 1rem;color:#0c1e4d;letter-spacing:-1px}.sys-title .hi{color:#fbbf24}.sys-subtitle{font-size:15px;color:#666;line-height:1.7;margin:0 auto 1.5rem;max-width:560px}.sys-nav{display:inline-flex;gap:6px;background:#fff;padding:6px;border-radius:999px;border:1px solid #ececec;font-size:13px;flex-wrap:wrap;justify-content:center}.sys-nav-item{padding:8px 18px;border-radius:999px;color:#888;font-weight:500;transition:all 0.2s;cursor:pointer}.sys-nav-item.active{background:#0c1e4d;color:#fff}.sys-card{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:4rem;max-width:1080px;margin-left:auto;margin-right:auto}.sys-card.reverse{direction:rtl}.sys-card.reverse>*{direction:ltr}.sys-slider{position:relative;overflow:hidden;border-radius:16px;aspect-ratio:4/3;background:#0c1e4d;box-shadow:0 12px 32px rgba(12,30,77,0.15)}.sys-track-2{display:flex;width:200%;height:100%;animation:slide2 4s infinite ease-in-out}.sys-track-3{display:flex;width:400%;height:100%;animation:slide3 8s infinite ease-in-out}.sys-track-9{display:flex;width:1000%;height:100%;animation:slide9 18s infinite}.sys-track-9 .sys-slide{width:10%}@keyframes slide9{0.000%,8.889%{transform:translateX(0%)}11.111%,20.000%{transform:translateX(-10%)}22.222%,31.111%{transform:translateX(-20%)}33.333%,42.222%{transform:translateX(-30%)}44.444%,53.333%{transform:translateX(-40%)}55.556%,64.444%{transform:translateX(-50%)}66.667%,75.556%{transform:translateX(-60%)}77.778%,86.667%{transform:translateX(-70%)}88.889%,97.778%{transform:translateX(-80%)}100%{transform:translateX(-90%)}}.sys-slide{flex-shrink:0;height:100%}.sys-track-2 .sys-slide{width:50%}.sys-track-3 .sys-slide{width:25%}.sys-slide img{width:100%;height:100%;object-fit:cover;display:block}.sys-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}.sys-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.45)}.sys-dot.active{background:#fff;width:18px;border-radius:3px}@keyframes slide2{0%,45%{transform:translateX(0)}50%,95%{transform:translateX(-50%)}100%{transform:translateX(0)}}@keyframes slide3{0%,22%{transform:translateX(0)}25%,47%{transform:translateX(-25%)}50%,72%{transform:translateX(-50%)}75%,100%{transform:translateX(-75%)}}.sys-content .sys-h{font-size:32px;font-weight:700;color:#0c1e4d;margin:0 0 1rem;letter-spacing:-1px;display:flex;align-items:center;gap:10px}.sys-content .sys-h .sys-h-num{display:inline-block;background:#0c1e4d;color:#fff;font-size:14px;padding:4px 12px;border-radius:6px;font-weight:600;letter-spacing:0}.sys-content .sys-desc{font-size:14px;color:#555;line-height:1.85;margin:0 0 1.5rem}.sys-checks{display:flex;flex-direction:column;gap:10px}.sys-check{display:flex;align-items:flex-start;gap:10px;font-size:14px}.sys-check-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#dbeafe;display:inline-flex;align-items:center;justify-content:center;margin-top:1px}.sys-check-icon i{font-size:14px;color:#0c1e4d}.sys-check-text{color:#1d1d1f;font-weight:500;line-height:1.5}@media(max-width:768px){.headline,.video-title,.sys-title{font-size:28px}.stats{grid-template-columns:repeat(2,1fr)}.chips{grid-template-columns:repeat(2,1fr)}.hero{padding:3rem 1.5rem;min-height:380px}.chip-icon{width:56px;height:56px}.chip-icon i{font-size:26px}.video-section,.sys-section{padding:3rem 1rem}.sys-card{grid-template-columns:1fr;gap:2rem}.sys-card.reverse{direction:ltr}.sys-content .sys-h{font-size:24px}}.rv-section{padding:5rem 0;background:#0c1e4d;overflow:hidden}.rv-head{text-align:center;margin-bottom:2.5rem;padding:0 2rem}.rv-label{display:inline-block;background:rgba(255,255,255,0.12);color:#fff;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;margin-bottom:1rem;letter-spacing:1px;border:1px solid rgba(255,255,255,0.22)}.rv-title{font-size:38px;font-weight:700;line-height:1.35;margin:0 0 1rem;color:#fff;letter-spacing:-1px}.rv-title em{font-style:normal;color:#fbbf24}.rv-sub{font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7;margin:0}.rv-viewport{width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}.rv-track{display:flex;gap:18px;width:max-content;animation:rv-marquee 40s linear infinite}.rv-track:hover{animation-play-state:paused}@keyframes rv-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}.rv-card{position:relative;flex:0 0 auto;width:230px;aspect-ratio:340/480;border-radius:14px;overflow:hidden;cursor:pointer;box-shadow:0 10px 28px rgba(0,0,0,0.3);transition:transform .25s}.rv-card:hover{transform:translateY(-6px)}.rv-card img{width:100%;height:100%;object-fit:cover;display:block}.rv-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:transform .2s}.rv-play i{font-size:24px;color:#0c1e4d;margin-left:2px}.rv-card:hover .rv-play{transform:translate(-50%,-50%) scale(1.12)}.rv-modal{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:9999;padding:1.5rem}.rv-modal.on{display:flex}.rv-modal-inner{position:relative;width:100%;max-width:880px;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5)}.rv-modal-inner iframe{width:100%;height:100%;border:0;display:block}.rv-cap{position:absolute;top:-40px;left:0;color:#fff;font-size:14px;font-weight:600}.rv-close{position:absolute;top:-44px;right:0;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);color:#fff;border:none;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}@media(max-width:768px){.rv-title{font-size:26px}.rv-card{width:170px}.rv-section{padding:3rem 0}}.subj-section{padding:5rem 2rem;background:#f5f7fb}.subj-header{text-align:center;margin-bottom:2.5rem}.subj-label{font-size:13px;font-weight:700;color:#0c1e4d;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}.subj-title{font-size:32px;font-weight:800;color:#0f172a;letter-spacing:-1px;margin:0}.subj-title em{font-style:normal;color:#0c1e4d}.subjects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1120px;margin:0 auto}.subject-card{background:#fff;border:1px solid #eef0f4;border-radius:16px;padding:2.4rem 1rem;text-align:center;text-decoration:none;transition:transform .2s,box-shadow .2s,border-color .2s;display:block}.subject-card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(15,23,42,.1);border-color:var(--accent,#6366f1)}.subject-icon{font-size:40px;display:block;margin-bottom:1rem;line-height:1}.subject-card h3{font-size:18px;font-weight:700;color:#0f172a;margin:0 0 .4rem}.subject-card p{font-size:13px;color:#94a3b8;margin:0}@media(max-width:768px){.subjects-grid{grid-template-columns:repeat(2,1fr)}.subj-title{font-size:24px}.subj-section{padding:3rem 1rem}}.faq-section{padding:5rem 2rem;background:#fafafa}.faq-header{text-align:center;margin-bottom:2.5rem}.faq-label{font-size:13px;font-weight:700;color:#0c1e4d;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}.faq-title{font-size:32px;font-weight:800;color:#0f172a;letter-spacing:-1px;margin:0}.faq-list{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}.faq-item{border:1px solid #e7ebf0;border-radius:12px;background:#fff;overflow:hidden;transition:box-shadow .2s}.faq-item[open]{box-shadow:0 6px 20px rgba(12,30,77,.07);border-color:#cfd8e6}.faq-q{list-style:none;cursor:pointer;padding:1.15rem 1.5rem;font-size:16px;font-weight:700;color:#1d1d1f;display:flex;justify-content:space-between;align-items:center;gap:1rem}.faq-q::-webkit-details-marker{display:none}.faq-chev{transition:transform .25s;color:#94a3b8;flex-shrink:0;font-size:20px}.faq-item[open] .faq-chev{transform:rotate(180deg);color:#0c1e4d}.faq-item[open] .faq-q{color:#0c1e4d}.faq-a{padding:0 1.5rem 1.3rem;color:#666;font-size:14px;line-height:1.8}.faq-a p{margin:0 0 .8rem}.faq-a p:last-child{margin:0}.faq-a b{color:#0c1e4d;font-weight:700}@media(max-width:768px){.faq-section{padding:3rem 1rem}.faq-title{font-size:24px}.faq-q{font-size:15px;padding:1rem 1.1rem}}.hero{overflow:hidden}.hero-bg{position:absolute;inset:0;z-index:0}.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center}.hero-s2{opacity:0;animation:hero-fade 10s infinite}@keyframes hero-fade{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,30,77,.35),rgba(12,30,77,.5))}.vsec-navy{background:#0c1e4d !important}.vsec-navy .video-label{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.22)}.vsec-navy .video-title{color:#fff}.vsec-navy .video-title .hi{color:#fbbf24}.vsec-navy .video-subtitle{color:rgba(255,255,255,.82)}</style></head><body>
   ${navHTML('')}
 <!-- Hero --><div class="hero"><div class="hero-bg"><div class="hero-slide hero-s1" style="background-image:url(${A}메인_이미지_1.png)"></div><div class="hero-slide hero-s2" style="background-image:url(${A}메인이미지2.png)"></div></div><span class="tag">이번 달 매칭 3,200건 진행 중</span><h1 class="headline">성적이 오른 아이들에겐<br><span class="hi">한 가지 공통점</span>이 있었습니다.</h1><p class="lead">학원도 인강도 아닌, 교육청에 정식 등록된 검증 교사 중<br>자녀에게 꼭 맞는 단 한 명을 만나는 것.</p><div class="cta-row"><a href="/체험신청" class="btn-prim">무료 상담 신청하기 <i class="ti ti-arrow-right"></i></a><a href="/지역별" class="btn-link">전국 지역 보기 →</a></div><div class="meta"><span><i class="ti ti-check"></i>무료 상담</span><span><i class="ti ti-clock"></i>30초 신청</span><span><i class="ti ti-users"></i>매니저 1:1</span></div></div><!-- Stats + Verify --><div class="body"><div class="stats"><div class="stat"><span class="stat-num">31<span class="u">년</span></span><div class="stat-lab">교육 노하우</div><div class="stat-sub">since 1995</div></div><div class="stat"><span class="stat-num">96.7<span class="u">%</span></span><div class="stat-lab">학습 만족도</div><div class="stat-sub">↑ 2.3 전년 대비</div></div><div class="stat"><span class="stat-num">100<span class="u">만+</span></span><div class="stat-lab">누적 회원</div><div class="stat-sub">월평균 +3만 명</div></div><div class="stat"><span class="stat-num">3,000<span class="u">명</span></span><div class="stat-lab">활동 선생님</div><div class="stat-sub">교육청 100%</div></div></div><div class="verify-head"><i class="ti ti-shield-check" style="color:#0c1e4d"></i>교사 검증 시스템 · 5단계</div><div class="chips"><div class="chip"><div class="chip-icon"><i class="ti ti-id"></i></div><div class="chip-num">100%</div><div class="chip-lab">교육청<br>정식 등록</div></div><div class="chip"><div class="chip-icon"><i class="ti ti-school"></i></div><div class="chip-num">100%</div><div class="chip-lab">학력·전공<br>인증</div></div><div class="chip"><div class="chip-icon"><i class="ti ti-briefcase"></i></div><div class="chip-num">100%</div><div class="chip-lab">전업 전문<br>과외 교사</div></div><div class="chip"><div class="chip-icon"><i class="ti ti-target"></i></div><div class="chip-num">전원</div><div class="chip-lab">인성·진로·입시<br>통합 코칭</div></div><div class="chip"><div class="chip-icon"><i class="ti ti-message-circle"></i></div><div class="chip-num">통과만</div><div class="chip-lab">면접·교수법<br>평가</div></div></div></div><!-- Video --><div class="video-section"><span class="video-label"><i class="ti ti-video"></i>안하니 학습 코칭</span><h2 class="video-title">코칭은 선택이 아닌 <span class="hi">필수</span>입니다.</h2><p class="video-subtitle">학원이 채워주지 못하는 빈틈, 1:1 학습 코칭이 답입니다.<br>실제 학부모·전문가의 이야기를 들어보세요.</p><div class="video-wrap"><video id="vid" autoplay muted loop playsinline controls preload="metadata"><source src="${A}코칭영상.mp4" type="video/mp4"></video><div class="unmute-hint" id="uh" onclick="toggleSound()"><i class="ti ti-volume-off"></i> 터치하면 소리가 나옵니다
 </div></div><div class="video-meta"><span><i class="ti ti-clock"></i>재생시간 2분 43초</span><span><i class="ti ti-eye"></i>2025년 제작</span><span><i class="ti ti-quote"></i>실제 인터뷰</span></div></div><!-- 1:1 집중 관리 시스템 --><div class="sys-section"><div class="sys-head"><span class="sys-mini-label">핵심 시스템</span><h2 class="sys-title"><span class="hi">1:1</span> 집중 관리 시스템</h2><p class="sys-subtitle">수업 · 선생님 · 실전훈련 · 관리 · 수행평가<br>안하니의 5가지 핵심 시스템</p><div class="sys-nav"><span class="sys-nav-item active">수업</span><span class="sys-nav-item active">선생님</span><span class="sys-nav-item active">실전훈련</span><span class="sys-nav-item active">관리</span><span class="sys-nav-item active">수행평가</span></div></div><!-- 01 수업 --><div class="sys-card"><div class="sys-slider"><div class="sys-track-2"><div class="sys-slide"><img src="${A}수업1.jpg" alt="1:1 맞춤 수업"></div><div class="sys-slide"><img src="${A}수업2.jpg" alt="화상 학습 코칭"></div></div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">01</span>수업</h3><p class="sys-desc">내신 성적부터 수능 대비까지, 진학과 적성에 맞춘 1:1 맞춤형 수업을 제공합니다. 학교별·교과서별 출제 경향을 정확히 파악해 자녀에게 꼭 맞는 학습 전략을 설계하고, 부족한 단원·취약 유형부터 차근차근 잡아드립니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">학교별·교과서별 맞춤 진도 수업</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">전국 학군지 단위 분석</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">중·기말고사 기간별 집중 코칭</span></div></div></div></div><!-- 02 선생님 --><div class="sys-card reverse"><div class="sys-slider"><div class="sys-track-2"><div class="sys-slide"><img src="${A}선생님1.png" alt="검증된 선생님들"></div><div class="sys-slide"><img src="${A}선생님2.png" alt="1:1 맞춤 컨설팅"></div></div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">02</span>선생님</h3><p class="sys-desc">학원도 인강도 아닌, 교육청에 정식 등록된 검증 교사만이 자녀를 만납니다. 단순 강의에 그치지 않고 인성·진로·입시까지 통합 코칭하는 전업 전문 교사 3,000명이 활동 중이며, 면접·교수법 평가를 통과한 강사만 등록됩니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">대학생 알바 NO · 전업 전문 교사만</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">교육청 정식 등록 + 학력·전공 인증</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">인성·진로·입시 통합 코칭 가능</span></div></div></div></div><!-- 03 실전훈련 --><div class="sys-card"><div class="sys-slider"><div class="sys-track-3"><div class="sys-slide"><img src="${A}실전훈련1.png" alt="학기별 수행평가 보고서 작성"></div><div class="sys-slide"><img src="${A}실전훈련2.png" alt="수행평가 관리 로드맵"></div><div class="sys-slide"><img src="${A}실전훈련3.png" alt="생성형 AI 활용 노하우"></div><div class="sys-slide"><img src="${A}실전훈련1.png" alt="학기별 수행평가 보고서 작성"></div></div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">03</span>실전훈련</h3><p class="sys-desc">수행평가·내신·수능까지, 매 학기 학생이 직접 마주하는 평가를 미리 준비합니다. 학기별 일정 캘린더와 채점 기준표로 시험 로드맵을 함께 설계하고, 생성형 AI 활용 노하우까지 가르쳐 자기주도 실전력을 키웁니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">학기별 수행평가 보고서 작성 코칭</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">국어·영어·수학 채점 기준표 분석</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">생성형 AI 활용 학습법 (뤼튼·챗GPT)</span></div></div></div></div><!-- 04 수행평가 --><div class="sys-card reverse"><div class="sys-slider"><div class="sys-track-9">${paSlides}</div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">04</span>수행평가</h3><p class="sys-desc">지필(서논술형)부터 수행평가까지 통합으로 관리합니다. 교과목별 출제 유형을 분석해 글쓰기 기초부터 잡고, 구체적인 1:1 피드백과 학기별 누적 관리로 난이도 높은 수행평가도 입시까지 이어지는 실전 역량으로 만들어 드립니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">지필(서논술형)–수행평가 통합 솔루션</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">교과목별 유형 분석 + 구체적 1:1 피드백</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">학기별 누적 관리로 입시까지 연결</span></div></div></div></div><!-- 05 관리 --><div class="sys-card"><div class="sys-slider"><div class="sys-track-2"><div class="sys-slide"><img src="${A}관리1.png" alt="학습코칭 유형 진단 리포트"></div><div class="sys-slide"><img src="${A}관리2.jpg" alt="성적 데이터 추적 관리"></div></div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">05</span>관리</h3><p class="sys-desc">매 수업의 진행 상황과 성적 데이터를 정밀하게 모니터링합니다. 학습코칭 유형 진단으로 자녀의 성향·강약점을 먼저 파악하고, 진도·과제·태도를 주간 단위로 기록·분석해 학부모님께 투명하게 공유합니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">학습코칭 유형 진단 + 성향·강약점 분석</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">진도·과제·태도 주간 단위 기록·관리</span></div><div class="sys-check"><span class="sys-check-icon"><i class="ti ti-check"></i></span><span class="sys-check-text">성적 데이터 추적 + 학부모 정기 리포트</span></div></div></div></div></div><!-- /.sys-section --><!-- 합격 후기 (영상) --><div class="rv-section"><div class="rv-head"><span class="rv-label">REAL STORY</span><h2 class="rv-title"><em>100%</em> 진짜 후기</h2></div><div class="rv-viewport"><div class="rv-track">${rvCards}${rvCards}
-</div></div></div><div class="rv-modal" id="rvModal" onclick="if(event.target===this)rvClose()"><div class="rv-modal-inner"><span class="rv-cap" id="rvCap"></span><button class="rv-close" onclick="rvClose()">&times;</button><div id="rvBody" style="width:100%;height:100%"></div></div></div><!-- /.rv-section --><!-- 과목별 카테고리 --><div class="subj-section"><div class="subj-header"><div class="subj-label">과목별</div><h2 class="subj-title">과목에 맞는 <em>맞춤 과외</em>를 선택하세요</h2></div><div class="subjects-grid">${subjectCards}</div></div><!-- /.subj-section --><!-- 시작 가이드 영상 --><div class="video-section vsec-navy"><span class="video-label"><i class="ti ti-player-play"></i>시작 가이드</span><h2 class="video-title">과외 시작 전에 <span class="hi">꼭 확인!</span></h2><p class="video-subtitle">과외를 시작하기 전, 꼭 알아야 할 핵심만 영상으로 정리했습니다.<br>딱 한 번만 보면 됩니다.</p><div class="video-wrap"><video id="vid2" controls playsinline preload="metadata"><source src="${A}시작가이드.mp4" type="video/mp4"></video></div></div><!-- /.video-section2 --><!-- FAQ --><div class="faq-section"><div class="faq-header"><div class="faq-label">FAQ</div><h2 class="faq-title">자주 묻는 질문</h2></div><div class="faq-list"><details class="faq-item" open><summary class="faq-q">수업 진행 방식은 어떻게 되나요?<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>안하니는 <b>방문 수업</b>과 <b>화상 수업</b> 두 가지 방식으로 진행됩니다. 학생의 상황과 선호에 따라 자유롭게 선택할 수 있으며, 중간에 변경도 가능합니다.</p><p>담당 매니저와 상담 후 <b>30분 체험 수업</b>을 받아보신 후 수업을 결정하실 수 있습니다.</p><p>수업은 1:1 맞춤 커리큘럼으로 구성되며, 매 수업 후 리포트를 발행해 학습 현황과 피드백을 공유합니다.</p></div></details><details class="faq-item"><summary class="faq-q">화상 수업과 방문 수업 중 선택할 수 있나요?<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>네, 학생 상황에 맞게 화상 수업과 방문 수업 모두 가능합니다. 수업 방식은 언제든지 변경할 수 있습니다.</p></div></details><details class="faq-item"><summary class="faq-q">선생님이 맞지 않으면 교체가 가능한가요?<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>체험 수업 후 선생님이 맞지 않는다고 느끼시면 <b>부담 없이 체인지 후 재테스트 요청</b>을 하실 수 있습니다.</p><p>학생과 잘 맞는 선생님을 만날 때까지 최선을 다해 도와드립니다. 편하게 담당 매니저에게 연락 주시면 신속히 안내해 드리겠습니다.</p></div></details><details class="faq-item"><summary class="faq-q">결제 방식과 수업료가 궁금해요.<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>수업료는 선생님과 수업이 결정된 후 <b>첫 수업 전까지</b> 결제해주시면 됩니다.</p><p>결제 방법은 계좌이체, 카드 결제 등 다양한 방식을 지원합니다. 수업 횟수 및 시간에 따라 차이가 있으니, 상담 시 자세한 안내를 받아보실 수 있습니다.</p></div></details><details class="faq-item"><summary class="faq-q">수업료 환불 규정은 어떻게 되나요?<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>수업 중 수업료 환불은 담당 매니저 또는 선생님께 말씀해주시면, <b>잔여 수업 횟수에 비례하여 처리</b>됩니다. 추가로 궁금하신 사항은 전화 또는 카카오톡으로 문의해 주세요.</p></div></details></div></div><!-- /.faq-section -->
-<div class="rv-modal" id="rvModal" onclick="if(event.target===this)rvClose()"><div class="rv-modal-inner"><span class="rv-cap" id="rvCap"></span><button class="rv-close" onclick="rvClose()">&times;</button><div id="rvBody" style="width:100%;height:100%"></div></div></div>
+</div></div></div><div class="rv-modal" id="rvModal" onclick="if(event.target===this)rvClose()"><div class="rv-modal-inner"><span class="rv-cap" id="rvCap"></span><button class="rv-close" onclick="rvClose()">&times;</button><div id="rvBody" style="width:100%;height:100%"></div></div></div><!-- /.rv-section --><!-- 과목별 카테고리 --><div class="subj-section"><div class="subj-header"><div class="subj-label">과목별</div><h2 class="subj-title">과목에 맞는 <em>맞춤 과외</em>를 선택하세요</h2></div><div class="subjects-grid">${subjectCards}</div></div><!-- /.subj-section --><!-- 시작 가이드 영상 --><div class="video-section vsec-navy"><span class="video-label"><i class="ti ti-player-play"></i>시작 가이드</span><h2 class="video-title">과외 시작 전에 <span class="hi">꼭 확인!</span></h2><p class="video-subtitle">과외를 시작하기 전, 꼭 알아야 할 핵심만 영상으로 정리했습니다.<br>딱 한 번만 보면 됩니다.</p><div class="video-wrap"><video id="vid2" controls playsinline preload="metadata"><source src="${A}시작가이드.mp4" type="video/mp4"></video></div></div><!-- /.video-section2 --><!-- FAQ --><div class="faq-section"><div class="faq-header"><div class="faq-label">FAQ</div><h2 class="faq-title">자주 묻는 질문</h2></div><div class="faq-list"><details class="faq-item" open><summary class="faq-q">수업 진행 방식은 어떻게 되나요?<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>안하니는 <b>방문 수업</b>과 <b>화상 수업</b> 두 가지 방식으로 진행됩니다. 학생의 상황과 선호에 따라 자유롭게 선택할 수 있으며, 중간에 변경도 가능합니다.</p><p>담당 매니저와 상담 후 <b>30분 체험 수업</b>을 받아보신 후 수업을 결정하실 수 있습니다.</p><p>수업은 1:1 맞춤 커리큘럼으로 구성되며, 매 수업 후 리포트를 발행해 학습 현황과 피드백을 공유합니다.</p></div></details><details class="faq-item"><summary class="faq-q">화상 수업과 방문 수업 중 선택할 수 있나요?<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>네, 학생 상황에 맞게 화상 수업과 방문 수업 모두 가능합니다. 수업 방식은 언제든지 변경할 수 있습니다.</p></div></details><details class="faq-item"><summary class="faq-q">선생님이 맞지 않으면 교체가 가능한가요?<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>체험 수업 후 선생님이 맞지 않는다고 느끼시면 <b>부담 없이 체인지 후 재테스트 요청</b>을 하실 수 있습니다.</p><p>학생과 잘 맞는 선생님을 만날 때까지 최선을 다해 도와드립니다. 편하게 담당 매니저에게 연락 주시면 신속히 안내해 드리겠습니다.</p></div></details><details class="faq-item"><summary class="faq-q">결제 방식과 수업료가 궁금해요.<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>수업료는 선생님과 수업이 결정된 후 <b>첫 수업 전까지</b> 결제해주시면 됩니다.</p><p>결제 방법은 계좌이체, 카드 결제 등 다양한 방식을 지원합니다. 수업 횟수 및 시간에 따라 차이가 있으니, 상담 시 자세한 안내를 받아보실 수 있습니다.</p></div></details><details class="faq-item"><summary class="faq-q">수업료 환불 규정은 어떻게 되나요?<i class="ti ti-chevron-down faq-chev"></i></summary><div class="faq-a"><p>수업 중 수업료 환불은 담당 매니저 또는 선생님께 말씀해주시면, <b>잔여 수업 횟수에 비례하여 처리</b>됩니다. 추가로 궁금하신 사항은 전화 또는 카카오톡으로 문의해 주세요.</p></div></details></div></div><!-- /.faq-section --><div class="rv-modal" id="rvModal" onclick="if(event.target===this)rvClose()"><div class="rv-modal-inner"><span class="rv-cap" id="rvCap"></span><button class="rv-close" onclick="rvClose()">&times;</button><div id="rvBody" style="width:100%;height:100%"></div></div></div>
   ${footerHTML()}
-  <script>function toggleSound(){var v=document.getElementById("vid"),h=document.getElementById("uh");if(!v)return;v.muted=!v.muted;if(h&&!v.muted)h.classList.add("hidden");}function rvOpen(el){var y=el.getAttribute("data-yt"),n=el.getAttribute("data-name");document.getElementById("rvCap").textContent=n+" 합격 후기";document.getElementById("rvBody").innerHTML='<iframe src="https://www.youtube.com/embed/'+y+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';document.getElementById("rvModal").classList.add("on");}function rvClose(){document.getElementById("rvModal").classList.remove("on");document.getElementById("rvBody").innerHTML="";}document.addEventListener("keydown",function(e){if(e.key==="Escape")rvClose();});</script>
-</body>
-</html>`;
+  <script>function toggleSound(){var v=document.getElementById("vid"),h=document.getElementById("uh");if(!v)return;v.muted=!v.muted;if(h&&!v.muted)h.classList.add("hidden");}function rvOpen(el){var y=el.getAttribute("data-yt"),n=el.getAttribute("data-name");document.getElementById("rvCap").textContent=n+" 합격 후기";document.getElementById("rvBody").innerHTML='<iframe src="https://www.youtube.com/embed/'+y+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';document.getElementById("rvModal").classList.add("on");}function rvClose(){document.getElementById("rvModal").classList.remove("on");document.getElementById("rvBody").innerHTML="";}document.addEventListener("keydown",function(e){if(e.key==="Escape")rvClose();});</script></body></html>`;
 }
 
 // --- 카테고리: 지역별 ---
@@ -1050,13 +857,7 @@ function renderRegionList() {
   ${commonHead('지역별 과외 안내 | 전국 맞춤 과외 - 안하니', '전국 시/군/구 과외 정보를 지역별로 한눈에 확인하세요.', 'https://anhani.com/지역별', getEduImage('지역별 과외'))}
   <style>${commonStyles()}.rg-wrap{max-width:1000px;margin:0 auto;padding:40px 24px 80px}.rg-head{margin-bottom:28px}.rg-label{display:inline-block;background:#312e81;color:#fff;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:14px}.rg-title{font-size:30px;font-weight:900;color:#0f172a;margin-bottom:8px;line-height:1.3}.rg-title em{font-style:normal;color:#6366f1}.rg-subtitle{font-size:14px;color:#64748b}.rg-anchor{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);margin:0 -24px 32px;padding:12px 24px;border-bottom:1px solid #e2e8f0;display:flex;flex-wrap:wrap;gap:6px}.rg-anchor a{padding:6px 12px;border-radius:18px;border:1px solid #e2e8f0;font-size:13px;font-weight:600;color:#475569;text-decoration:none;background:#fff;transition:.15s;white-space:nowrap}.rg-anchor a:hover{border-color:#6366f1;color:#6366f1;background:#eef2ff}.rg-sec{margin-bottom:36px;scroll-margin-top:60px}.rg-sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}.rg-sec-title{font-size:22px;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:10px}.rg-sec-title::before{content:'';width:4px;height:22px;border-radius:2px;background:#6366f1}.rg-sec-count{font-size:13px;color:#94a3b8;font-weight:600}.rg-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}.rg-card{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 10px;text-align:center;text-decoration:none;color:#0f172a;font-size:14px;font-weight:700;transition:.15s}.rg-card:hover{background:#eef2ff;border-color:#6366f1;color:#4338ca;transform:translateY(-1px);box-shadow:0 2px 6px rgba(99,102,241,.12)}@media (max-width:640px){.rg-title{font-size:22px}.rg-sec-title{font-size:18px}.rg-sec-title::before{height:18px}.rg-cards{grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px}.rg-card{padding:10px 6px;font-size:13px}.rg-anchor{gap:4px;padding:10px 24px;margin-bottom:20px}.rg-anchor a{padding:5px 10px;font-size:12px}}</style></head><body>
   ${navHTML('region')}
-  <div class="rg-wrap">
-    <div class="rg-head">
-      <div class="rg-label">지역별 과외</div>
-      <h1 class="rg-title">전국 <em>지역별 과외</em> 안내</h1>
-      <p class="rg-subtitle">전국 17개 시·도 <strong>${totalRegions}개 시·군·구</strong>의 맞춤 과외 정보를 한눈에 확인하세요.</p>
-    </div>
-    <nav class="rg-anchor">
+  <div class="rg-wrap"><div class="rg-head"><div class="rg-label">지역별 과외</div><h1 class="rg-title">전국 <em>지역별 과외</em> 안내</h1><p class="rg-subtitle">전국 17개 시·도 <strong>${totalRegions}개 시·군·구</strong>의 맞춤 과외 정보를 한눈에 확인하세요.</p></div><nav class="rg-anchor">
       ${allRegions.map(r => `<a href="#${r}">${r}</a>`).join('')}
     </nav>
     ${allRegions.map(r => `<section class="rg-sec" id="${r}"><div class="rg-sec-head"><h2 class="rg-sec-title">${r}</h2><span class="rg-sec-count">${REGIONS[r].length}개 시·군·구</span></div><div class="rg-cards">${REGIONS[r].map(d => `<a href="/지역별/${encodeURIComponent(r)}/${encodeURIComponent(d)}" class="rg-card">${d}</a>`).join('')}</div></section>`).join('')}
@@ -1072,17 +873,14 @@ function renderRegionDetail(region) {
 
   const cards = districts.map(d => {
     const dongCount = (DONG_DATA[d]||[]).length + (EUP_MYEON[d]||[]).length;
-    return `<div class="cat-card"><div class="cat-card-top"><h3>${d}</h3>${dongCount > 0 ? `<a href="/지역별/${encodeURIComponent(region)}/${encodeURIComponent(d)}" class="dong-link">동/읍/면 ${dongCount}개 →</a>` : ''}</div>
-    </div>`;
+    return `<div class="cat-card"><div class="cat-card-top"><h3>${d}</h3>${dongCount > 0 ? `<a href="/지역별/${encodeURIComponent(region)}/${encodeURIComponent(d)}" class="dong-link">동/읍/면 ${dongCount}개 →</a>` : ''}</div></div>`;
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(region + ' 과외 - 안하니', region + ' 지역 초등·중등·고등 과외 정보를 확인하세요.', 'https://anhani.com/지역별/' + encodeURIComponent(region), getEduImage(region + ' 과외'))}
   <style>${commonStyles()}.page-hero{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;padding:48px 24px;text-align:center}.page-hero h1{font-size:32px;font-weight:800}.page-hero p{opacity:.8;margin-top:8px}.breadcrumb{max-width:1200px;margin:0 auto;padding:16px 24px;font-size:14px;color:#94a3b8}.breadcrumb a{color:#6366f1;text-decoration:none}.container{max-width:1200px;margin:0 auto;padding:20px 24px 60px}.cat-card{background:#fff;border-radius:12px;padding:24px;margin-bottom:16px;border:1px solid #e2e8f0}.cat-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.cat-card h3{font-size:18px;font-weight:700;color:#0f172a}.dong-link{font-size:13px;color:#6366f1;text-decoration:none;font-weight:600}.dong-link:hover{text-decoration:underline}.chips{display:flex;flex-wrap:wrap;gap:8px}.subj-link{padding:6px 14px;background:#f1f5f9;border-radius:8px;color:#475569;text-decoration:none;font-size:14px;transition:.2s}.subj-link:hover{background:#eef2ff;color:#6366f1}.level-tabs{display:flex;gap:8px;margin-bottom:12px}.level-tab{padding:4px 12px;background:#e2e8f0;border-radius:6px;font-size:13px;cursor:pointer;transition:.2s}.level-tab:hover{background:#6366f1;color:#fff}</style></head><body>
   ${navHTML('region')}
-  <div class="page-hero"><h1>${region} 과외</h1><p>${region} 지역 ${districts.length}개 시/군/구 과외 정보</p></div>
-  <div class="breadcrumb"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; ${region}</div>
-  <div class="container">${cards}</div>
+  <div class="page-hero"><h1>${region} 과외</h1><p>${region} 지역 ${districts.length}개 시/군/구 과외 정보</p></div><div class="breadcrumb"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; ${region}</div><div class="container">${cards}</div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -1140,26 +938,7 @@ function renderSigunguDetail(sido, sigungu, cat, val) {
   ${commonHead(kw + ', ' + sigungu + ' 동네 학습 코칭 전문가 | 안하니', sido+' '+sigungu+' 1:1 맞춤 과외', 'https://anhani.com' + canon, heroImg)}
   <style>${commonStyles()}${dcCSS()}</style></head><body>
   ${navHTML('region')}
-  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${sido} &gt; ${cat?`<a href="${bp}">${sigungu}</a> &gt; ${val}과외`:sigungu}</div>
-  <div class="dc-wrap">
-    <div class="dc-box">
-      <div class="dc-head"><h1>${kw}, ${sido} ${sigungu} 우리 동네 학습 코칭 전문가</h1>
-        <div class="dc-tabs"><span>${sigungu}</span><span>${sido}</span><span>전 지역·전 과목</span><span>과외안하니</span>
-        </div>
-      </div>
-      <div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div>
-      <div class="dc-info">
-        <div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu}</span></div>
-        <div class="dc-info-row"><strong>대상</strong><span>${cat==='학년'?val+'학생':'초중고 전학년'}</span></div>
-        <div class="dc-info-row"><strong>과목</strong><span>${cat==='과목'?val:'국어·수학·영어·과학·사회·논술'}</span></div>
-      </div>
-    </div>
-    <div class="dc-box"><div class="dc-box-t">📍 ${sigungu} ${isCompound?'구':'동'} 선택</div>${renderDongGrid(all, bp, isCompound, sigungu)}</div>
-    <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}</div>
-    <div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s,'과목',sc[s]]),...LVLS.map(l=>[l,'학년',lc[l]])].map(a=>`<a href="${bp}/${a[1]}/${e(a[0])}" class="dc-xc" style="--c:${a[2]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}과외</span></a>`).join('')}</div></div>
-    <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
-  </div>
+  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${sido} &gt; ${cat?`<a href="${bp}">${sigungu}</a> &gt; ${val}과외`:sigungu}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${kw}, ${sido} ${sigungu} 우리 동네 학습 코칭 전문가</h1><div class="dc-tabs"><span>${sigungu}</span><span>${sido}</span><span>전 지역·전 과목</span><span>과외안하니</span></div></div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu}</span></div><div class="dc-info-row"><strong>대상</strong><span>${cat==='학년'?val+'학생':'초중고 전학년'}</span></div><div class="dc-info-row"><strong>과목</strong><span>${cat==='과목'?val:'국어·수학·영어·과학·사회·논술'}</span></div></div></div><div class="dc-box"><div class="dc-box-t">📍 ${sigungu} ${isCompound?'구':'동'} 선택</div>${renderDongGrid(all, bp, isCompound, sigungu)}</div><div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}</div><div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s,'과목',sc[s]]),...LVLS.map(l=>[l,'학년',lc[l]])].map(a=>`<a href="${bp}/${a[1]}/${e(a[0])}" class="dc-xc" style="--c:${a[2]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}과외</span></a>`).join('')}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -1290,28 +1069,10 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
   const dongMoreBtn = otherDongs.length > DONG_INIT ? `<div class="dc-more-wrap"><button type="button" class="dc-more-btn" onclick="this.closest('.dc-box').querySelectorAll('.dc-xc-more').forEach(function(el){el.classList.toggle('dc-xc-show')});this.classList.toggle('dc-more-open');var t=this.querySelector('.dc-more-txt');t.textContent=this.classList.contains('dc-more-open')?'접기':'전체 보기 (+${otherDongs.length - DONG_INIT})'"><span class="dc-more-txt">전체 보기 (+${otherDongs.length - DONG_INIT})</span><span class="dc-more-arrow">▼</span></button></div>` : '';
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(seoT, seoD, 'https://anhani.com' + canonPath, heroImg)}
-  <style>${commonStyles()}${dcCSS()}.dc-xc.on{border-color:var(--c);background:#f8fafc}</style></head>
-  <body>${navHTML('region')}
-  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${bc}</div>
-  <div class="dc-wrap">
-    <div class="dc-box">
-      <div class="dc-head"><h1>${kw}, ${sido} ${sigungu} 우리 동네 학습 코칭 전문가</h1>
-        <div class="dc-tabs"><span>${dong}</span><span>${sido} ${sigungu}</span><span>전 지역·전 과목</span></div>
-      </div>
-      <div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div>
-      <div class="dc-info">
-        <div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu} ${dong}</span></div>
-        <div class="dc-info-row"><strong>대상</strong><span>초·중·고등학생 전학년</span></div>
-        <div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술·검정고시</span></div>
-      </div>
-    </div>
+  <style>${commonStyles()}${dcCSS()}.dc-xc.on{border-color:var(--c);background:#f8fafc}</style></head><body>${navHTML('region')}
+  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${bc}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${kw}, ${sido} ${sigungu} 우리 동네 학습 코칭 전문가</h1><div class="dc-tabs"><span>${dong}</span><span>${sido} ${sigungu}</span><span>전 지역·전 과목</span></div></div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu} ${dong}</span></div><div class="dc-info-row"><strong>대상</strong><span>초·중·고등학생 전학년</span></div><div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술·검정고시</span></div></div></div>
     ${otherDongs.length ? `<div class="dc-box"><div class="dc-box-t">📍 ${sigungu} 동 선택</div><p style="font-size:13px;color:#475569;margin:0 0 14px 12px">다른 동네의 세부 키워드(학년별·과목별·학년+과목별 과외)를 확인하실 수 있습니다.</p><div class="dc-xgrid">${dongCells}</div>${dongMoreBtn}</div>` : ''}
-    <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-review">${review1}</div><div class="dc-review">${review2}</div><div class="dc-check"><h3>✅ ${dong} 과외 선생님 체크리스트</h3><ol>${checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-tip"><h3>💡 ${dong} 학부모 꿀팁</h3><p>${tip}</p></div><p>${closing}</p></div>
-    <div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div>
-    <div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div>
-    <div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div>
-    <div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div>
-  </div>
+    <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-review">${review1}</div><div class="dc-review">${review2}</div><div class="dc-check"><h3>✅ ${dong} 과외 선생님 체크리스트</h3><ol>${checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-tip"><h3>💡 ${dong} 학부모 꿀팁</h3><p>${tip}</p></div><p>${closing}</p></div><div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div><div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -1328,19 +1089,14 @@ function renderSubjectList() {
   };
 
   const cards = SUBJECTS.map(s => {
-    return `<div class="subj-card" style="--accent:${subjectColors[s]}">
-      <div class="subj-header"><span class="subj-icon">${subjectIcons[s]}</span><h3><a href="/과목별/${encodeURIComponent(s)}" style="color:inherit;text-decoration:none">${s} 과외</a></h3></div>
-      <p>${SUBJECT_CONTENT[s].why[0].substring(0, 80)}...</p>
-      <a href="/과목별/${encodeURIComponent(s)}" style="display:inline-block;color:${subjectColors[s]};font-size:14px;font-weight:600;text-decoration:none">${s} 공부법 & 학습 가이드 →</a>
-    </div>`;
+    return `<div class="subj-card" style="--accent:${subjectColors[s]}"><div class="subj-header"><span class="subj-icon">${subjectIcons[s]}</span><h3><a href="/과목별/${encodeURIComponent(s)}" style="color:inherit;text-decoration:none">${s} 과외</a></h3></div><p>${SUBJECT_CONTENT[s].why[0].substring(0, 80)}...</p><a href="/과목별/${encodeURIComponent(s)}" style="display:inline-block;color:${subjectColors[s]};font-size:14px;font-weight:600;text-decoration:none">${s} 공부법 & 학습 가이드 →</a></div>`;
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('과목별 과외 - 안하니', '국어, 영어, 수학, 사회, 과학, 코딩, 검정고시, 논술 과외 정보를 확인하세요.', 'https://anhani.com/과목별', getEduImage('과목별 과외'))}
   <style>${commonStyles()}.page-hero{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;padding:48px 24px;text-align:center}.page-hero h1{font-size:32px;font-weight:800}.page-hero p{opacity:.8;margin-top:8px}.container{max-width:1200px;margin:0 auto;padding:40px 24px}.subj-card{background:#fff;border-radius:16px;padding:28px;margin-bottom:20px;border:1px solid #e2e8f0;border-top:4px solid var(--accent)}.subj-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}.subj-icon{font-size:32px}.subj-card h3{font-size:22px;font-weight:700}.subj-card>p{color:#64748b;font-size:14px;margin-bottom:16px}.chips{display:flex;flex-wrap:wrap;gap:8px}.region-chip{padding:6px 14px;background:#f1f5f9;border-radius:8px;color:#475569;text-decoration:none;font-size:13px;transition:.2s}.region-chip:hover{background:#eef2ff;color:#6366f1}</style></head><body>
   ${navHTML('subject')}
-  <div class="page-hero"><h1>과목별 과외</h1><p>8개 전문 과목별 과외 정보</p></div>
-  <div class="container">${cards}</div>
+  <div class="page-hero"><h1>과목별 과외</h1><p>8개 전문 과목별 과외 정보</p></div><div class="container">${cards}</div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -1665,10 +1421,7 @@ function renderSubjectDetail(subject) {
   const subjGuide = SUBJ_GUIDE_POOL[subject] || SUBJ_GUIDE_POOL["국어"];
 
   const sectionsHTML = guide.sections.map(sec => `
-    <div class="sd-section">
-      <h3>${sec.name}</h3>
-      <ul>${sec.tips.map(t => `<li>• ${t}</li>`).join('')}</ul>
-    </div>
+    <div class="sd-section"><h3>${sec.name}</h3><ul>${sec.tips.map(t => `<li>• ${t}</li>`).join('')}</ul></div>
   `).join('');
 
   const keywordsHTML = guide.keywords.map((kw, idx) =>
@@ -1676,69 +1429,22 @@ function renderSubjectDetail(subject) {
   ).join('');
 
   const essentialsHTML = essentials.map((e,i) => `
-    <div class="sd-ess-card">
-      <div class="sd-ess-num">${String(i+1).padStart(2,'0')}</div>
-      <div class="sd-ess-body">
-        <h4>${e.t}</h4>
-        <p>${e.d}</p>
-      </div>
-    </div>`).join('');
+    <div class="sd-ess-card"><div class="sd-ess-num">${String(i+1).padStart(2,'0')}</div><div class="sd-ess-body"><h4>${e.t}</h4><p>${e.d}</p></div></div>`).join('');
 
   const methodsHTML = methods.map(m => `
-    <div class="sd-method-card">
-      <h4>${m.h}</h4>
-      <p>${m.p}</p>
-    </div>`).join('');
+    <div class="sd-method-card"><h4>${m.h}</h4><p>${m.p}</p></div>`).join('');
 
   const roadmapHTML = roadmap.map(r => `
-    <div class="sd-road-item">
-      <div class="sd-road-dot"></div>
-      <div class="sd-road-body">
-        <h4>${r.t}</h4>
-        <p>${r.p}</p>
-      </div>
-    </div>`).join('');
+    <div class="sd-road-item"><div class="sd-road-dot"></div><div class="sd-road-body"><h4>${r.t}</h4><p>${r.p}</p></div></div>`).join('');
 
   const guideHTML = Object.entries(subjGuide).map(([lv, desc]) => `
-    <div class="sd-guide-card">
-      <div class="sd-guide-label">${lv}</div>
-      <p>${desc}</p>
-    </div>`).join('');
+    <div class="sd-guide-card"><div class="sd-guide-label">${lv}</div><p>${desc}</p></div>`).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(subject + ' 공부법 & 학습 전략 가이드 | 과외안하니', subject + ' 과목 공부법, 핵심 5가지, 효과적인 공부법, 로드맵, 과목별 안내까지 완벽 정리.', 'https://anhani.com/과목별/' + encodeURIComponent(subject), heroImg)}
   <style>${commonStyles()}.sd-hero-wrap{position:relative;overflow:hidden;width:calc(100% - 40px);max-width:860px;margin:20px auto 24px;border-radius:14px}.sd-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.sd-hero-overlay{position:absolute;inset:0;background:transparent;z-index:1}.sd-hero{position:relative;z-index:2;padding:72px 24px 60px;text-align:center;color:#fff}.sd-hero-icon{font-size:52px;margin-bottom:14px;filter:drop-shadow(0 2px 12px rgba(0,0,0,.4))}.sd-hero h1{font-size:34px;font-weight:900;margin-bottom:10px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.sd-hero p{font-size:15px;color:rgba(255,255,255,.95);text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.sd-wrap{max-width:860px;margin:0 auto;padding:40px 24px 80px}.sd-study{margin-bottom:44px}.sd-study>h2,.sd-section-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;padding-left:12px;border-left:4px solid ${color}}.sd-sections{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.sd-section{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px}.sd-section h3{font-size:17px;font-weight:700;color:${color};margin-bottom:12px}.sd-section ul{list-style:none;padding:0;margin:0}.sd-section li{font-size:14px;color:#475569;line-height:1.7;margin-bottom:6px}.sd-ess-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:44px}.sd-ess-card{display:flex;gap:16px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:20px 22px;transition:.2s}.sd-ess-card:hover{border-color:${color};box-shadow:0 4px 16px rgba(0,0,0,.05)}.sd-ess-num{flex-shrink:0;width:42px;height:42px;background:rgba(${rgb},.1);color:${color};border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900}.sd-ess-body h4{font-size:16px;font-weight:800;color:#0f172a;margin-bottom:5px}.sd-ess-body p{font-size:14px;color:#475569;line-height:1.7}.sd-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:44px}.sd-method-card{background:rgba(${rgb},.06);border-radius:14px;padding:20px 22px;transition:.2s}.sd-method-card:hover{transform:translateY(-3px)}.sd-method-card h4{font-size:16px;font-weight:800;color:${color};margin-bottom:6px}.sd-method-card p{font-size:14px;color:#334155;line-height:1.7}.sd-road-timeline{position:relative;padding-left:24px;margin-bottom:44px}.sd-road-timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:rgba(${rgb},.2)}.sd-road-item{position:relative;margin-bottom:18px}.sd-road-dot{position:absolute;left:-24px;top:6px;width:14px;height:14px;background:${color};border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px ${color}}.sd-road-body{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px}.sd-road-body h4{font-size:15px;font-weight:800;color:${color};margin-bottom:6px}.sd-road-body p{font-size:14px;color:#475569;line-height:1.7}.sd-guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:44px}.sd-guide-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 22px;transition:.2s}.sd-guide-card:hover{border-color:${color}}.sd-guide-label{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:10px;background:${color};color:#fff;margin-bottom:10px}.sd-guide-card p{font-size:14px;color:#334155;line-height:1.7}.sd-kw-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;text-align:center}.sd-kw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sd-kw-item{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;transition:.2s;line-height:1.4}.sd-kw-item:hover{border-color:${color};color:${color};transform:translateX(4px)}.sd-kw-arrow{color:#d1d5db;flex-shrink:0;margin-left:8px}.sd-kw-item:hover .sd-kw-arrow{color:${color}}.sd-cta{background:linear-gradient(135deg,${color},${color}dd);border-radius:14px;padding:32px;text-align:center;color:#fff;margin-top:40px}.sd-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.sd-cta p{font-size:14px;opacity:.92;margin-bottom:16px}.sd-cta a{display:inline-block;background:#fff;color:${color};padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}@media (max-width:640px){.sd-hero h1{font-size:26px}.sd-hero-icon{font-size:42px}.sd-kw-grid{grid-template-columns:1fr}.sd-sections{grid-template-columns:1fr}.sd-ess-card{flex-direction:column;gap:10px}}</style></head><body>
   ${navHTML('subject')}
-  <div class="sd-hero-wrap">
-    <img src="${heroImg}" alt="${subject} 공부법" loading="eager" class="sd-hero-img"/>
-    <div class="sd-hero-overlay"></div>
-    <div class="sd-hero">
-      <div class="sd-hero-icon">${icon}</div>
-      <h1>${subject} 공부법 & 학습 전략</h1>
-      <p>${subject} 과목의 영역별 학습법과 키워드별 완벽 가이드</p>
-    </div>
-  </div>
-  <div class="sd-wrap">
-    <div class="sd-study">
-      <h2>${subject} 영역별 공부 전략</h2>
-      <div class="sd-sections">${sectionsHTML}</div>
-    </div>
-    <h2 class="sd-section-title">🎯 ${subject} 핵심 5가지</h2>
-    <div class="sd-ess-grid">${essentialsHTML}</div>
-    <h2 class="sd-section-title">📘 효과적인 ${subject} 공부 방법</h2>
-    <div class="sd-method-grid">${methodsHTML}</div>
-    <h2 class="sd-section-title">🗺️ ${subject} 학습 로드맵</h2>
-    <div class="sd-road-timeline">${roadmapHTML}</div>
-    <h2 class="sd-section-title">🎓 ${subject} 과목별 안내</h2>
-    <div class="sd-guide-grid">${guideHTML}</div>
-    <h2 class="sd-kw-title">${subject} 학습 가이드 목록</h2>
-    <div class="sd-kw-grid">${keywordsHTML}</div>
-    <div class="sd-cta">
-      <h3>${subject} 맞춤 과외 상담</h3>
-      <p>${subject} 전문 선생님을 무료로 매칭해 드립니다</p>
-      <a href="/체험신청">무료 상담 신청 →</a>
-    </div>
-  </div>
+  <div class="sd-hero-wrap"><img src="${heroImg}" alt="${subject} 공부법" loading="eager" class="sd-hero-img"/><div class="sd-hero-overlay"></div><div class="sd-hero"><div class="sd-hero-icon">${icon}</div><h1>${subject} 공부법 & 학습 전략</h1><p>${subject} 과목의 영역별 학습법과 키워드별 완벽 가이드</p></div></div><div class="sd-wrap"><div class="sd-study"><h2>${subject} 영역별 공부 전략</h2><div class="sd-sections">${sectionsHTML}</div></div><h2 class="sd-section-title">🎯 ${subject} 핵심 5가지</h2><div class="sd-ess-grid">${essentialsHTML}</div><h2 class="sd-section-title">📘 효과적인 ${subject} 공부 방법</h2><div class="sd-method-grid">${methodsHTML}</div><h2 class="sd-section-title">🗺️ ${subject} 학습 로드맵</h2><div class="sd-road-timeline">${roadmapHTML}</div><h2 class="sd-section-title">🎓 ${subject} 과목별 안내</h2><div class="sd-guide-grid">${guideHTML}</div><h2 class="sd-kw-title">${subject} 학습 가이드 목록</h2><div class="sd-kw-grid">${keywordsHTML}</div><div class="sd-cta"><h3>${subject} 맞춤 과외 상담</h3><p>${subject} 전문 선생님을 무료로 매칭해 드립니다</p><a href="/체험신청">무료 상담 신청 →</a></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -1921,41 +1627,18 @@ function renderGedKeywordArticle(subject, idx, title) {
   <style>${commonStyles()}.gk-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.gk-badge{display:inline-block;background:#fff7ed;color:#ea580c;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:16px}.gk-wrap h1{font-size:26px;font-weight:900;color:#0f172a;line-height:1.4;margin-bottom:12px}.gk-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.gk-section{margin:32px 0}.gk-section h2{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:14px;padding-left:12px;border-left:4px solid #f97316}.gk-intro{font-size:16px;color:#334155;line-height:1.85;word-break:keep-all;background:#fff7ed;padding:20px;border-radius:10px}.gk-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;margin-bottom:10px}.gk-card-t{font-size:15px;font-weight:800;color:#ea580c;margin-bottom:6px}.gk-card-d{font-size:14px;color:#475569;line-height:1.7;word-break:keep-all}.gk-item{background:#f8fafc;border-left:3px solid #f97316;border-radius:0 8px 8px 0;padding:14px 16px;margin-bottom:8px}.gk-item-h{font-size:14px;font-weight:700;color:#0f172a;margin-bottom:4px}.gk-item-p{font-size:13px;color:#475569;line-height:1.65;word-break:keep-all}.gk-step{display:flex;gap:12px;margin-bottom:12px}.gk-step-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:#f97316;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}.gk-step-body{flex:1;padding-top:4px}.gk-step-t{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:4px}.gk-step-p{font-size:13px;color:#475569;line-height:1.65;word-break:keep-all}.gk-cta{background:linear-gradient(135deg,#7c2d12,#ea580c);border-radius:14px;padding:28px;text-align:center;color:#fff;margin:36px 0 20px}.gk-cta h3{font-size:19px;font-weight:800;margin-bottom:6px}.gk-cta p{font-size:13px;opacity:.85;margin-bottom:14px}.gk-cta a{display:inline-block;background:#fff;color:#9a3412;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.gk-related{margin-top:32px;padding-top:24px;border-top:2px solid #e2e8f0}.gk-related h3{font-size:17px;font-weight:800;margin-bottom:14px}.gk-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.gk-related-item{padding:11px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:12.5px;display:flex;justify-content:space-between}.gk-related-item:hover{border-color:#f97316;color:#ea580c}@media (max-width:640px){.gk-wrap h1{font-size:22px}.gk-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('subject')}
   ${renderArticleHero(title, '검정고시 완벽 가이드', subject + '-ged-' + idx)}
-  <div class="gk-wrap">
-    <div class="gk-badge">📝 검정고시 완벽 가이드</div>
-    <h1>${title}</h1>
-    <div class="gk-meta"><span>✏️ 과외안하니 편집팀</span> · <span>📅 2026년 4월</span></div>
-    <div class="gk-section">
-      <h2>한눈에 보는 정보</h2>
-      <div class="gk-intro">${data.intro}</div>
-    </div>
-    <div class="gk-section">
-      <h2>꼭 알아야 할 핵심 5가지</h2>
+  <div class="gk-wrap"><div class="gk-badge">📝 검정고시 완벽 가이드</div><h1>${title}</h1><div class="gk-meta"><span>✏️ 과외안하니 편집팀</span> · <span>📅 2026년 4월</span></div><div class="gk-section"><h2>한눈에 보는 정보</h2><div class="gk-intro">${data.intro}</div></div><div class="gk-section"><h2>꼭 알아야 할 핵심 5가지</h2>
       ${essentialsHTML}
-    </div>
-    <div class="gk-section">
-      <h2>효과적인 공부 전략</h2>
+    </div><div class="gk-section"><h2>효과적인 공부 전략</h2>
       ${strategyHTML}
-    </div>
-    <div class="gk-section">
-      <h2>합격 로드맵</h2>
+    </div><div class="gk-section"><h2>합격 로드맵</h2>
       ${roadmapHTML}
-    </div>
-    <div class="gk-cta">
-      <h3>검정고시 전문 과외 상담</h3>
-      <p>1:1 맞춤 커리큘럼으로 단기 합격을 실현하세요</p>
-      <a href="/체험신청">무료 상담 신청 →</a>
-    </div>
-    <div class="gk-related">
-      <h3>검정고시 가이드 더보기</h3>
-      <div class="gk-related-grid">
+    </div><div class="gk-cta"><h3>검정고시 전문 과외 상담</h3><p>1:1 맞춤 커리큘럼으로 단기 합격을 실현하세요</p><a href="/체험신청">무료 상담 신청 →</a></div><div class="gk-related"><h3>검정고시 가이드 더보기</h3><div class="gk-related-grid">
         ${guide.keywords.filter((_,i)=>i!==idx).slice(0,8).map((kw,i)=>{
           const ri = i >= idx ? i+1 : i;
           return `<a href="/과목별/${encodeURIComponent(subject)}/article/${ri}" class="gk-related-item"><span>${kw}</span><span>→</span></a>`;
         }).join('')}
-      </div>
-    </div>
-  </div>
+      </div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -1992,32 +1675,14 @@ function renderSubjectArticle(subject, articleIdx) {
   <style>${commonStyles()}.sa-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.sa-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:16px}.sa-wrap h1{font-size:26px;font-weight:900;color:#0f172a;line-height:1.4;margin-bottom:12px}.sa-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.sa-article h2{font-size:21px;font-weight:700;color:#0f172a;margin:32px 0 14px;padding-left:12px;border-left:4px solid #6366f1}.sa-article p{font-size:16px;color:#334155;line-height:1.85;margin-bottom:16px;word-break:keep-all}.sa-callout{background:#f0f9ff;border-left:4px solid #3b82f6;border-radius:0 10px 10px 0;padding:18px 20px;margin:20px 0}.sa-callout strong{font-size:14px;color:#1d4ed8;display:block;margin-bottom:6px}.sa-callout p{font-size:14px;color:#475569;margin:0}.sa-related{margin-top:40px;padding-top:24px;border-top:2px solid #e2e8f0}.sa-related h3{font-size:18px;font-weight:800;margin-bottom:16px}.sa-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.sa-related-item{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;transition:.2s;display:flex;justify-content:space-between}.sa-related-item:hover{border-color:#6366f1;color:#6366f1}.sa-cta{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:32px;text-align:center;color:#fff;margin:40px 0}.sa-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.sa-cta p{font-size:14px;opacity:.7;margin-bottom:16px}.sa-cta a{display:inline-block;background:#fff;color:#312e81;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}@media (max-width:640px){.sa-wrap h1{font-size:22px}.sa-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('subject')}
   ${renderArticleHero(title, subject + ' 학습 가이드', subject + '-subj-' + idx)}
-  <div class="sa-wrap">
-    <div class="sa-badge">${subject} 학습 가이드</div>
-    <h1>${title}</h1>
-    <div class="sa-meta"><span>✏️ 과외안하니 편집팀</span> · <span>📅 2026년 4월</span></div>
-    <div class="sa-article">
-      <p>${opening}</p>
+  <div class="sa-wrap"><div class="sa-badge">${subject} 학습 가이드</div><h1>${title}</h1><div class="sa-meta"><span>✏️ 과외안하니 편집팀</span> · <span>📅 2026년 4월</span></div><div class="sa-article"><p>${opening}</p>
       ${sectionsHTML}
-      <h2>실제 수강 후기</h2>
-      <p>${review}</p>
-      <p>${closing}</p>
-    </div>
-    <div class="sa-cta">
-      <h3>${subject} 전문 과외 상담</h3>
-      <p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p>
-      <a href="/체험신청">무료 상담 신청 →</a>
-    </div>
-    <div class="sa-related">
-      <h3>${subject} 학습 가이드 더보기</h3>
-      <div class="sa-related-grid">
+      <h2>실제 수강 후기</h2><p>${review}</p><p>${closing}</p></div><div class="sa-cta"><h3>${subject} 전문 과외 상담</h3><p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p><a href="/체험신청">무료 상담 신청 →</a></div><div class="sa-related"><h3>${subject} 학습 가이드 더보기</h3><div class="sa-related-grid">
         ${guide.keywords.filter((_,i)=>i!==idx).slice(0,8).map((kw,i)=>{
           const ri = i >= idx ? i+1 : i;
           return `<a href="/과목별/${encodeURIComponent(subject)}/article/${ri}" class="sa-related-item"><span>${kw}</span><span>→</span></a>`;
         }).join('')}
-      </div>
-    </div>
-  </div>
+      </div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -2105,6 +1770,11 @@ function findSchoolByName(name) {
   for (let i = 0; i < SCHOOLS_HIGH.length; i++) if (SCHOOLS_HIGH[i][0] === name) return {level:'high', idx:i, school:SCHOOLS_HIGH[i]};
   return null;
 }
+function findSchoolBySlug(slug) {
+  for (let i = 0; i < SCHOOLS_MID.length; i++) { const s = SCHOOLS_MID[i]; if (getSidoShort(getSidoFromIdx(s[1])) + '-' + s[2] + '-' + s[0] === slug) return {level:'middle', idx:i, school:s}; }
+  for (let i = 0; i < SCHOOLS_HIGH.length; i++) { const s = SCHOOLS_HIGH[i]; if (getSidoShort(getSidoFromIdx(s[1])) + '-' + s[2] + '-' + s[0] === slug) return {level:'high', idx:i, school:s}; }
+  return null;
+}
 function getSchoolsBySidoGugun(level, sidoIdx, gugun) {
   const schools = getSchools(level);
   const result = [];
@@ -2136,33 +1806,14 @@ function renderGradeMain() {
       `<a href="/grade/${g.school}/${i+1}" class="lv-grade-btn" style="--gc:${g.color};--gbg:${g.bg}">${g.short}${i+1}</a>`
     ).join('');
     const thumbImg = getEduImage(g.school + 'main');
-    return `<div class="lv-school-card">
-      <div class="lv-card-thumb">
-        <img src="${thumbImg}" alt="${g.name} 과외" loading="lazy"/>
-        <div class="lv-card-thumb-overlay" style="background:transparent;"></div>
-        <div class="lv-card-thumb-text">
-          <span class="lv-card-thumb-icon">${g.icon}</span>
-          <span class="lv-card-thumb-title">${g.name} 과외</span>
-        </div>
-      </div>
-      <div class="lv-school-card-body" style="border-top:4px solid ${g.color}">
-        <p class="lv-sc-desc">${g.desc}</p>
-        <div class="lv-grade-grid">${grades}</div>
-        <div class="lv-sc-subjects">${getSubjectsForSchool(g.school).map(s=>`<span class="lv-sc-subj">${s}</span>`).join('')}</div>
-      </div>
-    </div>`;
+    return `<div class="lv-school-card"><div class="lv-card-thumb"><img src="${thumbImg}" alt="${g.name} 과외" loading="lazy"/><div class="lv-card-thumb-overlay" style="background:transparent;"></div><div class="lv-card-thumb-text"><span class="lv-card-thumb-icon">${g.icon}</span><span class="lv-card-thumb-title">${g.name} 과외</span></div></div><div class="lv-school-card-body" style="border-top:4px solid ${g.color}"><p class="lv-sc-desc">${g.desc}</p><div class="lv-grade-grid">${grades}</div><div class="lv-sc-subjects">${getSubjectsForSchool(g.school).map(s=>`<span class="lv-sc-subj">${s}</span>`).join('')}</div></div></div>`;
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('학년별 과외 - 초1~고3 맞춤 과외 | 과외안하니', '초등 1학년부터 고등 3학년까지, 학년에 맞는 과목별 과외 정보를 한 곳에서 확인하세요.', 'https://anhani.com/학년별', getEduImage('학년별 과외'))}
   <style>${commonStyles()}.lv-hero-wrap{position:relative;overflow:hidden;width:calc(100% - 40px);max-width:960px;margin:20px auto 24px;border-radius:14px}.lv-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.lv-hero-overlay{position:absolute;inset:0;background:transparent;z-index:1}.lv-hero{position:relative;z-index:2;color:#fff;padding:72px 24px 60px;text-align:center}.lv-hero h1{font-size:36px;font-weight:900;margin-bottom:10px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.lv-hero h1 em{font-style:normal;color:#a5b4fc}.lv-hero p{font-size:16px;color:rgba(255,255,255,.92);text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.lv-wrap{max-width:960px;margin:0 auto;padding:40px 24px 80px}.lv-school-card{background:#fff;border-radius:16px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.04);overflow:hidden}.lv-card-thumb{position:relative;width:100%;aspect-ratio:1200/400;overflow:hidden;background:#0f172a}.lv-card-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.lv-card-thumb-overlay{position:absolute;inset:0}.lv-card-thumb-text{position:absolute;inset:0;display:flex;align-items:center;gap:16px;padding:0 32px;color:#fff}.lv-card-thumb-icon{font-size:44px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}.lv-card-thumb-title{font-size:clamp(22px,4vw,32px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.lv-school-card-body{padding:24px 28px 28px}.lv-sc-desc{font-size:14px;color:#64748b;line-height:1.6;margin-bottom:18px}.lv-grade-grid{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}.lv-grade-btn{padding:12px 24px;border-radius:10px;background:var(--gbg);color:var(--gc);font-size:15px;font-weight:700;text-decoration:none;transition:.2s;border:1.5px solid transparent}.lv-grade-btn:hover{border-color:var(--gc);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06)}.lv-sc-subjects{display:flex;flex-wrap:wrap;gap:6px;padding-top:16px;border-top:1px solid #f1f5f9}.lv-sc-subj{font-size:12px;color:#94a3b8;padding:4px 10px;background:#f8fafc;border-radius:6px}@media (max-width:640px){.lv-hero h1{font-size:26px}.lv-grade-btn{padding:10px 18px;font-size:14px}.lv-card-thumb-text{padding:0 20px;gap:12px}}</style></head><body>
   ${navHTML('region')}
-  <div class="lv-hero-wrap">
-    <img src="${getEduImage('grademain')}" alt="학년별 맞춤 과외" loading="eager" class="lv-hero-img"/>
-    <div class="lv-hero-overlay"></div>
-    <div class="lv-hero"><h1>학년별 <em>맞춤 과외</em></h1><p>초1부터 고3까지, 학년에 딱 맞는 과외를 찾아보세요</p></div>
-  </div>
-  <div class="lv-wrap">${gradeCards}</div>
+  <div class="lv-hero-wrap"><img src="${getEduImage('grademain')}" alt="학년별 맞춤 과외" loading="eager" class="lv-hero-img"/><div class="lv-hero-overlay"></div><div class="lv-hero"><h1>학년별 <em>맞춤 과외</em></h1><p>초1부터 고3까지, 학년에 딱 맞는 과외를 찾아보세요</p></div></div><div class="lv-wrap">${gradeCards}</div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -2202,27 +1853,14 @@ function renderLevelList() {
       return `<a href="/학교급별/${lv.key}/${encodeURIComponent(sd)}" class="lv-sido-btn" style="--gc:${lv.color};--gbg:${lv.bg}">${sdShort} <span class="lv-sido-cnt">${cnt}</span></a>`;
     }).filter(Boolean).join('');
 
-    return `<div class="lv-school-card" style="border-top:4px solid ${lv.color}">
-      <div class="lv-sc-header">
-        <span class="lv-sc-icon">${lv.icon}</span>
-        <div>
-          <h3>${lv.name} 과외 <span class="lv-sc-count">전국 ${lv.count.toLocaleString()}개교</span></h3>
-          <p>${lv.desc}</p>
-        </div>
-      </div>
-      <div class="lv-sido-grid">${popularBtns}</div>
-      <div class="lv-card-actions">
-        <a href="/학교급별/${lv.key}" class="lv-cta-btn" style="background:${lv.color}">전국 ${lv.name} 전체 보기 →</a>
-      </div>
-    </div>`;
+    return `<div class="lv-school-card" style="border-top:4px solid ${lv.color}"><div class="lv-sc-header"><span class="lv-sc-icon">${lv.icon}</span><div><h3>${lv.name} 과외 <span class="lv-sc-count">전국 ${lv.count.toLocaleString()}개교</span></h3><p>${lv.desc}</p></div></div><div class="lv-sido-grid">${popularBtns}</div><div class="lv-card-actions"><a href="/학교급별/${lv.key}" class="lv-cta-btn" style="background:${lv.color}">전국 ${lv.name} 전체 보기 →</a></div></div>`;
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('학교별 과외 - 초·중·고등학교 맞춤 과외 | 과외안하니', '전국 초등·중학교·고등학교별 맞춤 과외 정보. 우리 학교 시험 경향과 내신 특성을 꿰뚫는 과외 선생님을 찾아보세요.', 'https://anhani.com/학교급별', getEduImage('학교별 과외'))}
   <style>${commonStyles()}.lv-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#312e81 100%);color:#fff;padding:56px 24px 48px;text-align:center}.lv-hero h1{font-size:34px;font-weight:900;margin-bottom:10px}.lv-hero h1 em{font-style:normal;color:#818cf8}.lv-hero p{font-size:16px;color:#94a3b8}.lv-wrap{max-width:960px;margin:0 auto;padding:40px 24px 80px}.lv-school-card{background:#fff;border-radius:16px;padding:28px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.04)}.lv-sc-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}.lv-sc-icon{font-size:36px;flex-shrink:0}.lv-sc-header h3{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.lv-sc-count{font-size:13px;font-weight:600;color:#6366f1;background:#eef2ff;padding:3px 10px;border-radius:12px}.lv-sc-header p{font-size:14px;color:#64748b;line-height:1.6}.lv-sido-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:18px}.lv-sido-btn{padding:11px 14px;border-radius:10px;background:var(--gbg);color:var(--gc);font-size:14px;font-weight:700;text-decoration:none;transition:.2s;border:1.5px solid transparent;display:flex;justify-content:space-between;align-items:center}.lv-sido-btn:hover{border-color:var(--gc);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06)}.lv-sido-cnt{font-size:11px;opacity:.7}.lv-card-actions{padding-top:16px;border-top:1px solid #f1f5f9}.lv-cta-btn{display:inline-block;padding:12px 24px;color:#fff;font-size:14px;font-weight:700;border-radius:10px;text-decoration:none;transition:.2s}.lv-cta-btn:hover{transform:translateY(-2px);opacity:.92}@media (max-width:640px){.lv-hero h1{font-size:26px}.lv-sido-btn{padding:9px 12px;font-size:13px}}</style></head><body>
   ${navHTML('region')}
-  <div class="lv-hero"><h1>학교별 <em>맞춤 과외</em></h1><p>전국 초·중·고등학교, 우리 학교에 딱 맞는 과외를 찾아보세요</p></div>
-  <div class="lv-wrap">${elemCard}${levelCards}</div>
+  <div class="lv-hero"><h1>학교별 <em>맞춤 과외</em></h1><p>전국 초·중·고등학교, 우리 학교에 딱 맞는 과외를 찾아보세요</p></div><div class="lv-wrap">${elemCard}${levelCards}</div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -2324,69 +1962,13 @@ function renderGradeSubjectPage(school, grade, subject) {
   ${commonHead(gradeLabel + ' ' + subject + ' 과외 추천 가이드 | 과외안하니', gradeLabel + ' ' + subject + ' 과외 정보! 과외비, 학습 전략, 선생님 선택법까지 한 번에 정리했습니다.', canonical, heroImg)}
   <style>${commonStyles()}.gs-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.gs-breadcrumb{font-size:13px;color:#888;margin-bottom:20px}.gs-breadcrumb a{color:#6366f1;text-decoration:none}.gs-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}.gs-tab{padding:8px 16px;border-radius:8px;border:1.5px solid #e2e8f0;font-size:13px;font-weight:600;color:#64748b;text-decoration:none;transition:.2s}.gs-tab:hover{border-color:#6366f1;color:#6366f1}.gs-tab.active{background:#6366f1;color:#fff;border-color:#6366f1}.gs-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.gs-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.gs-hero-overlay{position:absolute;inset:0;background:transparent}.gs-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.gs-hero-text h2{font-size:clamp(22px,4vw,36px);font-weight:900;margin-bottom:6px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.gs-hero-text p{font-size:clamp(13px,1.8vw,16px);opacity:.92;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.gs-wrap h1{font-size:28px;font-weight:800;color:#0f172a;margin-bottom:12px;line-height:1.4}.gs-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.gs-article h2{font-size:21px;font-weight:700;color:#0f172a;margin:32px 0 14px;padding-left:12px;border-left:4px solid #6366f1}.gs-article p{font-size:16px;color:#334155;line-height:1.85;margin-bottom:16px;word-break:keep-all}.gs-article ul{margin:0 0 16px 20px}.gs-article li{font-size:15px;color:#475569;line-height:1.7;margin-bottom:8px}.gs-info-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:20px}.gs-info-box h3{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}.gs-info-box p{font-size:14px;color:#64748b;margin-bottom:4px}.gs-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:14px;padding:32px 24px;text-align:center;color:#fff;margin:40px 0}.gs-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.gs-cta p{font-size:14px;opacity:.7;margin-bottom:16px}.gs-cta a{display:inline-block;background:#fff;color:#4f46e5;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}@media (max-width:640px){.gs-wrap h1{font-size:22px}.gs-article h2{font-size:18px}}.gs-keywords{margin-top:48px;padding-top:32px;border-top:2px solid #e2e8f0}.gs-kw-title{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:20px;text-align:center}.gs-kw-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.gs-kw-item{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:.2s;line-height:1.4}.gs-kw-item:hover{border-color:#6366f1;color:#6366f1;transform:translateX(4px)}.gs-kw-arrow{color:#d1d5db;flex-shrink:0;margin-left:8px}.gs-kw-item:hover .gs-kw-arrow{color:#6366f1}@media (max-width:640px){.gs-kw-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('region')}
-  <div class="gs-wrap">
-    <div class="gs-breadcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학년별</a> &gt; <a href="/grade/${school}/${gradeNum}">${gradeLabel}</a> &gt; ${subject}</div>
-
-    <div class="gs-tabs">
+  <div class="gs-wrap"><div class="gs-breadcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학년별</a> &gt; <a href="/grade/${school}/${gradeNum}">${gradeLabel}</a> &gt; ${subject}</div><div class="gs-tabs">
       ${getSubjectsForSchool(school).map(s => `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gs-tab${s===subject?' active':''}">${s}</a>`).join('')}
-    </div>
-
-    <div class="gs-hero-wrap">
-      <img src="${heroImg}" alt="${gradeLabel} ${subject} 과외" loading="eager"/>
-      <div class="gs-hero-overlay"></div>
-      <div class="gs-hero-text">
-        <h2>${gradeLabel}</h2>
-        <p>${subject} 과외 · 1:1 맞춤 수업 · 전문 코칭</p>
-      </div>
-    </div>
-
-    <h1>${gradeLabel} ${subject} 과외 추천 가이드</h1>
-    <div class="gs-meta">최종 업데이트: 2026년 4월 | ${gradeLabel} ${subject} 전문</div>
-
-    <div class="gs-article">
-      <h2>${gradeLabel}에서 ${subject} 과외가 필요한 이유</h2>
-      <p>${charText}</p>
-
-      <h2>${gradeLabel} ${subject} 과외 핵심 학습법</h2>
-      <p>${tip1}</p>
-      <p>${extra1}</p>
-
-      <h2>${gradeLabel} ${subject} 과외비 및 수업 안내</h2>
-      <div class="gs-info-box">
-        <h3>💰 과외비 시세</h3>
-        <p>${schoolName} ${subject} 과외: ${gc.priceRange} (선생님 경력에 따라 차이)</p>
-        <h3 style="margin-top:12px">📅 추천 수업 일정</h3>
-        <p>${gc.schedule} 수업이 가장 효과적입니다.</p>
-      </div>
-
-      <h2>좋은 ${subject} 과외 선생님 고르는 체크리스트</h2>
-      <ul>${checks.map(c => `<li>${c}</li>`).join('')}</ul>
-
-      <h2>${gradeLabel} ${subject} 과외 시작 전 알아두세요</h2>
-      <p>${extra2}</p>
-      <p>${extra3}</p>
-
-      <h2>실제 ${subject} 과외 후기</h2>
-      <p>${review}</p>
-
-      <p>${closing}</p>
-    </div>
-
-    <div class="gs-keywords">
-      <h2 class="gs-kw-title">${gradeLabel} ${subject} 학습 가이드 목록</h2>
-      <div class="gs-kw-grid">
+    </div><div class="gs-hero-wrap"><img src="${heroImg}" alt="${gradeLabel} ${subject} 과외" loading="eager"/><div class="gs-hero-overlay"></div><div class="gs-hero-text"><h2>${gradeLabel}</h2><p>${subject} 과외 · 1:1 맞춤 수업 · 전문 코칭</p></div></div><h1>${gradeLabel} ${subject} 과외 추천 가이드</h1><div class="gs-meta">최종 업데이트: 2026년 4월 | ${gradeLabel} ${subject} 전문</div><div class="gs-article"><h2>${gradeLabel}에서 ${subject} 과외가 필요한 이유</h2><p>${charText}</p><h2>${gradeLabel} ${subject} 과외 핵심 학습법</h2><p>${tip1}</p><p>${extra1}</p><h2>${gradeLabel} ${subject} 과외비 및 수업 안내</h2><div class="gs-info-box"><h3>💰 과외비 시세</h3><p>${schoolName} ${subject} 과외: ${gc.priceRange} (선생님 경력에 따라 차이)</p><h3 style="margin-top:12px">📅 추천 수업 일정</h3><p>${gc.schedule} 수업이 가장 효과적입니다.</p></div><h2>좋은 ${subject} 과외 선생님 고르는 체크리스트</h2><ul>${checks.map(c => `<li>${c}</li>`).join('')}</ul><h2>${gradeLabel} ${subject} 과외 시작 전 알아두세요</h2><p>${extra2}</p><p>${extra3}</p><h2>실제 ${subject} 과외 후기</h2><p>${review}</p><p>${closing}</p></div><div class="gs-keywords"><h2 class="gs-kw-title">${gradeLabel} ${subject} 학습 가이드 목록</h2><div class="gs-kw-grid">
         ${generateKeywords(school, gradeNum, subject).map((kw, idx) =>
           `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(subject)}/article/${idx}" class="gs-kw-item"><span>${kw}</span><span class="gs-kw-arrow">→</span></a>`
         ).join('')}
-      </div>
-    </div>
-
-    <div class="gs-cta">
-      <h3>${gradeLabel} ${subject} 맞춤 과외 상담</h3>
-      <p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p>
-      <a href="/체험신청">무료 상담 신청 →</a>
-    </div>
-  </div>
+      </div></div><div class="gs-cta"><h3>${gradeLabel} ${subject} 맞춤 과외 상담</h3><p>우리 아이에게 딱 맞는 선생님을 매칭해 드립니다</p><a href="/체험신청">무료 상담 신청 →</a></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -2592,46 +2174,14 @@ function renderKeywordArticle(school, grade, subject, articleIdx) {
   ${commonHead(title + ' | 과외안하니', gradeLabel + ' ' + subject + ' 학습 전략 - ' + title, canonical, heroImg)}
   <style>${commonStyles()}.ka-wrap{max-width:768px;margin:0 auto;padding:32px 20px 0}.ka-hero-wrap{position:relative;width:100%;aspect-ratio:1200/500;border-radius:14px;overflow:hidden;background:#0f172a;margin-bottom:24px}.ka-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ka-hero-overlay{position:absolute;inset:0;background:transparent}.ka-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.ka-hero-text h2{font-size:clamp(18px,3.5vw,28px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.ka-hero-text p{font-size:clamp(12px,1.6vw,14px);opacity:.88;margin-top:4px;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.ka-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:16px}.ka-wrap h1{font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin-bottom:12px}.ka-meta{font-size:13px;color:#94a3b8;margin-bottom:28px;display:flex;align-items:center;gap:12px}.ka-article h2{font-size:22px;font-weight:800;color:#0f172a;margin:36px 0 14px;line-height:1.4}.ka-article p{font-size:16px;color:#334155;line-height:1.85;margin-bottom:16px;word-break:keep-all}.ka-callout{background:#f0f9ff;border-left:4px solid #3b82f6;border-radius:0 10px 10px 0;padding:18px 20px;margin:20px 0}.ka-callout strong{font-size:14px;color:#1d4ed8;display:block;margin-bottom:6px}.ka-callout p{font-size:14px;color:#475569;margin:0}.ka-related{margin-top:48px;padding-top:28px;border-top:2px solid #e2e8f0}.ka-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px}.ka-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ka-related-item{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;transition:.2s;display:flex;justify-content:space-between;align-items:center}.ka-related-item:hover{border-color:#6366f1;color:#6366f1}.ka-cta{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:32px;text-align:center;color:#fff;margin:40px 0}.ka-cta h3{font-size:20px;font-weight:800;margin-bottom:8px}.ka-cta p{font-size:14px;opacity:.7;margin-bottom:16px}.ka-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.ka-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.ka-cta-primary{background:#fff;color:#312e81}.ka-cta-secondary{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}@media (max-width:640px){.ka-wrap h1{font-size:22px}.ka-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('region')}
-  <div class="ka-wrap">
-    <div class="ka-hero-wrap">
-      <img src="${heroImg}" alt="${title}" loading="eager"/>
-      <div class="ka-hero-overlay"></div>
-      <div class="ka-hero-text">
-        <h2>${title}</h2>
-        <p>${gradeLabel} ${subject} · 1:1 맞춤 과외</p>
-      </div>
-    </div>
-    <div class="ka-badge">${schoolBadge[school]}</div>
-    <h1>${title} | 1:1 맞춤 전략</h1>
-    <div class="ka-meta"><span>✏️ 과외안하니 편집팀</span><span>📅 2026년 4월</span></div>
-
-    <div class="ka-article">
-      <p>${opening}</p>
+  <div class="ka-wrap"><div class="ka-hero-wrap"><img src="${heroImg}" alt="${title}" loading="eager"/><div class="ka-hero-overlay"></div><div class="ka-hero-text"><h2>${title}</h2><p>${gradeLabel} ${subject} · 1:1 맞춤 과외</p></div></div><div class="ka-badge">${schoolBadge[school]}</div><h1>${title} | 1:1 맞춤 전략</h1><div class="ka-meta"><span>✏️ 과외안하니 편집팀</span><span>📅 2026년 4월</span></div><div class="ka-article"><p>${opening}</p>
       ${sectionsHTML}
-      <h2>실제 수강 후기</h2>
-      <p>${review}</p>
-      <p>${closing}</p>
-    </div>
-
-    <div class="ka-cta">
-      <h3>${gradeLabel} ${subject} 무료 상담</h3>
-      <p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p>
-      <div class="ka-cta-btns">
-        <a href="/체험신청" class="ka-cta-btn ka-cta-primary">무료 상담 신청</a>
-        <a href="tel:010-4827-5592" class="ka-cta-btn ka-cta-secondary">010-4827-5592</a>
-      </div>
-    </div>
-
-    <div class="ka-related">
-      <h3>${gradeLabel} ${subject} 학습 가이드 더보기</h3>
-      <div class="ka-related-grid">
+      <h2>실제 수강 후기</h2><p>${review}</p><p>${closing}</p></div><div class="ka-cta"><h3>${gradeLabel} ${subject} 무료 상담</h3><p>1:1 맞춤 커리큘럼으로 확실한 성적 향상</p><div class="ka-cta-btns"><a href="/체험신청" class="ka-cta-btn ka-cta-primary">무료 상담 신청</a><a href="tel:010-4827-5592" class="ka-cta-btn ka-cta-secondary">010-4827-5592</a></div></div><div class="ka-related"><h3>${gradeLabel} ${subject} 학습 가이드 더보기</h3><div class="ka-related-grid">
         ${keywords.filter((_,i)=>i!==idx).slice(0,8).map((kw,i)=>{
           const ri = i >= idx ? i+1 : i;
           return `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(subject)}/article/${ri}" class="ka-related-item"><span>${kw}</span><span>→</span></a>`;
         }).join('')}
-      </div>
-    </div>
-  </div>
+      </div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -2651,27 +2201,14 @@ function generateRSS() {
         const title = `${d} ${lvl} ${subj} 과외 추천 - 비용, 선생님 선택 가이드`;
         const link = `https://anhani.com/지역별/${encodeURIComponent(region)}/${encodeURIComponent(d)}`;
         const desc = `${region} ${d} 지역 ${lvl}학생 ${subj} 과외 정보를 찾고 계신가요? 과외비, 좋은 선생님 고르는 법, 실제 후기까지 한 번에 정리했습니다.`;
-        items.push(`    <item>
-      <title>${title}</title>
-      <link>${link}</link>
-      <description>${desc}</description>
-      <pubDate>${new Date().toUTCString()}</pubDate>
-    </item>`);
+        items.push(`    <item><title>${title}</title><link>${link}</link><description>${desc}</description><pubDate>${new Date().toUTCString()}</pubDate></item>`);
       }
     }
   }
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
-  <channel>
-    <title>과외안하니 - 전국 과외 정보</title>
-    <link>https://anhani.com</link>
-    <description>전국 시/군/구/읍/면 초등·중등·고등 과외 정보를 한 곳에서 확인하세요.</description>
-    <language>ko</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+  return `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>과외안하니 - 전국 과외 정보</title><link>https://anhani.com</link><description>전국 시/군/구/읍/면 초등·중등·고등 과외 정보를 한 곳에서 확인하세요.</description><language>ko</language><lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
 ${items.join('\n')}
-  </channel>
-</rss>`;
+  </channel></rss>`;
 }
 
 // --- robots.txt ---
@@ -2790,21 +2327,9 @@ function renderAcademyList() {
   ${commonHead('전국 학원 지점 찾기 - 과외안하니', '전국 ${CENTERS.length}개 학원 지점 정보를 한눈에! 내 주변 학원을 찾아보세요.', 'https://anhani.com/학원/전국지점', getEduImage('전국 학원'))}
   <style>${commonStyles()}.ac-wrap{max-width:1080px;margin:0 auto;padding:48px 24px 80px}.ac-label{display:inline-block;background:#312e81;color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px}.ac-title{font-size:32px;font-weight:900;color:#0f172a;margin-bottom:8px}.ac-title em{font-style:normal;color:#312e81}.ac-subtitle{font-size:15px;color:#64748b;margin-bottom:12px}.ac-count{font-size:14px;color:#6366f1;font-weight:700;margin-bottom:32px}.ac-search{display:flex;gap:8px;margin-bottom:24px}.ac-search input{flex:1;padding:12px 16px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:15px;outline:none;background:#f8fafc}.ac-search input:focus{border-color:#6366f1;background:#fff}.ac-search button{padding:12px 24px;background:#312e81;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer}.ac-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}.ac-tab{padding:8px 18px;border-radius:20px;border:1.5px solid #d1d5db;background:#fff;font-size:14px;font-weight:600;color:#475569;cursor:pointer;transition:.2s}.ac-tab:hover{border-color:#312e81;color:#312e81}.ac-tab.active{background:#312e81;color:#fff;border-color:#312e81}.ac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}.ac-card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:0;overflow:hidden;transition:all .25s;display:flex;flex-direction:column}.ac-card:hover{border-color:#818cf8;box-shadow:0 8px 28px rgba(99,102,241,.1);transform:translateY(-4px)}.ac-card-top{padding:20px 20px 0}.ac-card-region{display:inline-block;font-size:12px;color:#6366f1;font-weight:600;margin-bottom:8px}.ac-card-name{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:10px;line-height:1.3}.ac-card-addr{display:flex;align-items:flex-start;gap:6px;font-size:13px;color:#64748b;margin-bottom:8px;line-height:1.5}.ac-card-addr .pin{color:#ef4444;flex-shrink:0;font-size:14px;margin-top:1px}.ac-card-loc-link{font-size:12px;color:#f97316;font-weight:600;cursor:pointer;margin-bottom:14px;display:inline-flex;align-items:center;gap:4px}.ac-card-schools{padding:0 20px 16px;flex:1}.ac-sch-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;font-size:13px;line-height:1.4}.ac-sch-badge{flex-shrink:0;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;min-width:32px;text-align:center}.ac-sch-badge.el{background:#dbeafe;color:#1d4ed8}.ac-sch-badge.mid{background:#dcfce7;color:#15803d}.ac-sch-badge.hi{background:#fef3c7;color:#b45309}.ac-sch-names{color:#475569;font-weight:500}.ac-card-bottom{display:flex;border-top:1px solid #f1f5f9}.ac-card-btn{flex:1;padding:14px;text-align:center;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px}.ac-btn-detail{color:#475569;background:#fff;border-right:1px solid #f1f5f9}.ac-btn-detail:hover{background:#f8fafc;color:#312e81}.ac-btn-consult{color:#fff;background:#312e81}.ac-btn-consult:hover{background:#3730a3}.ac-empty{text-align:center;padding:60px 20px;color:#94a3b8;font-size:16px}@media (max-width:640px){.ac-title{font-size:24px}.ac-grid{grid-template-columns:1fr}.ac-tab{padding:6px 14px;font-size:13px}}</style></head><body>
   ${navHTML('academy')}
-  <div class="ac-wrap">
-    <div class="ac-label">학원 찾기</div>
-    <h1 class="ac-title">전국 <em>학원 지점</em> 찾기</h1>
-    <p class="ac-subtitle">내 주변 학원을 검색하고, 과목·위치·담당 학교 정보를 확인하세요.</p>
-    <p class="ac-count">총 ${CENTERS.length}개 지점 운영 중</p>
-    <div class="ac-search">
-      <input type="text" id="acSearch" placeholder="지점명, 주소, 학교명 검색" oninput="filterAcademy()">
-      <button onclick="filterAcademy()">검색</button>
-    </div>
-    <div class="ac-tabs" id="acTabs">
+  <div class="ac-wrap"><div class="ac-label">학원 찾기</div><h1 class="ac-title">전국 <em>학원 지점</em> 찾기</h1><p class="ac-subtitle">내 주변 학원을 검색하고, 과목·위치·담당 학교 정보를 확인하세요.</p><p class="ac-count">총 ${CENTERS.length}개 지점 운영 중</p><div class="ac-search"><input type="text" id="acSearch" placeholder="지점명, 주소, 학교명 검색" oninput="filterAcademy()"><button onclick="filterAcademy()">검색</button></div><div class="ac-tabs" id="acTabs">
       ${regionOrder.map((r, i) => '<div class="ac-tab' + (i === 0 ? ' active' : '') + '" onclick="filterByRegion(\'' + r + '\', this)">' + r + '</div>').join('')}
-    </div>
-    <div class="ac-grid" id="acGrid"></div>
-  </div>
-  <script>
+    </div><div class="ac-grid" id="acGrid"></div></div><script>
     var allCenters = ${JSON.stringify(CENTERS)};
     var currentRegion = '전체';
     function renderCards(list) {
@@ -2976,65 +2501,16 @@ function renderAcademyDetail(center) {
   <style>${commonStyles()}.ad-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#312e81 100%);color:#fff;padding:48px 24px 40px}.ad-hero-inner{max-width:800px;margin:0 auto}.ad-hero-breadcrumb{font-size:13px;color:#94a3b8;margin-bottom:16px}.ad-hero-breadcrumb a{color:#94a3b8;text-decoration:none}.ad-hero-breadcrumb a:hover{color:#fff}.ad-hero h1{font-size:28px;font-weight:900;margin-bottom:8px;line-height:1.3}.ad-hero-addr{font-size:14px;color:#a5b4fc;margin-bottom:20px}.ad-hero-btns{display:flex;gap:12px;flex-wrap:wrap}.ad-hero-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:.2s}.ad-btn-primary{background:#fff;color:#312e81}.ad-btn-secondary{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}.ad-stats{max-width:800px;margin:-24px auto 0;padding:0 24px;position:relative;z-index:10}.ad-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.ad-stat-card{background:#fff;border-radius:14px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.08);border-top:3px solid}.ad-stat-card:nth-child(1){border-color:#6366f1}.ad-stat-card:nth-child(2){border-color:#22c55e}.ad-stat-card:nth-child(3){border-color:#f59e0b}.ad-stat-num{font-size:28px;font-weight:900;color:#0f172a}.ad-stat-label{font-size:12px;color:#94a3b8;margin-top:4px}.ad-main{max-width:800px;margin:0 auto;padding:36px 24px 80px}.ad-section{margin-bottom:40px}.ad-section-title{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}.ad-school-table{width:100%}.ad-school-row{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #f1f5f9;gap:12px}.ad-school-row:last-child{border-bottom:none}.ad-school-level{font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px;min-width:40px;text-align:center;flex-shrink:0}.ad-school-name{font-size:15px;font-weight:700;color:#0f172a;min-width:80px}.ad-school-subjs{display:flex;flex-wrap:wrap;gap:6px}.ad-subj-chip{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px}.ad-intro{font-size:15px;color:#334155;line-height:1.8}.ad-features{display:grid;grid-template-columns:1fr 1fr;gap:14px}.ad-feat{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px}.ad-feat h4{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:6px}.ad-feat p{font-size:13px;color:#64748b;line-height:1.6}.ad-timeline{display:flex;gap:0;justify-content:center;flex-wrap:wrap}.ad-tl-item{flex:1;min-width:100px;text-align:center;padding:16px 8px;position:relative}.ad-tl-item::after{content:'';position:absolute;top:30px;right:0;width:50%;height:2px;background:#e2e8f0}.ad-tl-item::before{content:'';position:absolute;top:30px;left:0;width:50%;height:2px;background:#e2e8f0}.ad-tl-item:first-child::before{display:none}.ad-tl-item:last-child::after{display:none}.ad-tl-badge{display:inline-block;padding:4px 12px;border-radius:6px;font-size:13px;font-weight:800;position:relative;z-index:2;margin-bottom:8px}.ad-tl-title{font-size:12px;font-weight:700;color:#0f172a;margin-bottom:2px}.ad-tl-desc{font-size:11px;color:#94a3b8}.ad-faq{}.ad-faq-item{background:#f8fafc;border-radius:12px;padding:18px 20px;margin-bottom:12px}.ad-faq-q{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}.ad-faq-a{font-size:14px;color:#64748b;line-height:1.7}.ad-location{background:#f8fafc;border-radius:14px;padding:24px}.ad-location h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:10px}.ad-location p{font-size:14px;color:#64748b;line-height:1.6;margin-bottom:6px}.ad-addr{font-size:15px;color:#0f172a;font-weight:600}.ad-addr-detail{font-size:13px;color:#94a3b8}.ad-map-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.ad-map-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;transition:transform .15s,box-shadow .15s}.ad-map-btn:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.1)}.ad-map-kakao{background:#FEE500;color:#191919}.ad-map-nav{background:#6366f1;color:#fff}.ad-map-naver{background:#03C75A;color:#fff}.ad-office-info{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 22px}.ad-office-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed #e2e8f0}.ad-office-row:last-child{border-bottom:none}.ad-office-label{font-size:13px;font-weight:700;color:#64748b;flex-shrink:0}.ad-office-val{font-size:14px;color:#0f172a;font-weight:600;text-align:right;word-break:keep-all}@media (max-width:640px){.ad-office-row{flex-direction:column;align-items:flex-start;gap:4px}.ad-office-val{text-align:left}}.ad-subjs-sidebar{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.ad-subj-tag{padding:6px 14px;border-radius:8px;font-size:13px;font-weight:600}.ad-kw-list{display:flex;flex-direction:column;gap:6px}.ad-kw-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;transition:border-color .15s,box-shadow .15s}.ad-kw-item:hover{border-color:#6366f1;box-shadow:0 2px 8px rgba(99,102,241,.12)}.ad-kw-num{font-size:14px;font-weight:900;color:#ef4444;min-width:22px;flex-shrink:0}.ad-kw-t{font-size:14px;font-weight:700;color:#0f172a}.ad-cta-bar{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:20px;padding:36px 28px;text-align:center;color:#fff}.ad-cta-bar h3{font-size:22px;font-weight:800;margin-bottom:8px}.ad-cta-bar p{font-size:14px;opacity:.7;margin-bottom:20px}.ad-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.ad-cta-btn{padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}.ad-cta-phone{background:#fff;color:#312e81}.ad-cta-form{background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.3)}@media (max-width:640px){.ad-hero h1{font-size:22px}.ad-stats-row{grid-template-columns:repeat(3,1fr);gap:8px}.ad-stat-num{font-size:22px}.ad-features{grid-template-columns:1fr}.ad-timeline{flex-wrap:wrap}.ad-tl-item{min-width:80px}}</style></head><body>
   ${navHTML('academy')}
 
-  <div class="ad-hero">
-    <div class="ad-hero-inner">
-      <div class="ad-hero-breadcrumb"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; ${c.n}</div>
-      <h1>${c.r} ${sigungu} ${(c.s||[]).join(' · ')} 학원 | ${fullName}</h1>
-      <p class="ad-hero-addr">${c.a}</p>
-      <div class="ad-hero-btns">
-        <a href="/체험신청" class="ad-hero-btn ad-btn-primary">${heroSubLabel}</a>
-        <a href="tel:010-4827-5592" class="ad-hero-btn ad-btn-secondary">010-4827-5592</a>
-      </div>
-    </div>
-  </div>
+  <div class="ad-hero"><div class="ad-hero-inner"><div class="ad-hero-breadcrumb"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; ${c.n}</div><h1>${c.r} ${sigungu} ${(c.s||[]).join(' · ')} 학원 | ${fullName}</h1><p class="ad-hero-addr">${c.a}</p><div class="ad-hero-btns"><a href="/체험신청" class="ad-hero-btn ad-btn-primary">${heroSubLabel}</a><a href="tel:010-4827-5592" class="ad-hero-btn ad-btn-secondary">010-4827-5592</a></div></div></div><div class="ad-stats"><div class="ad-stats-row"><div class="ad-stat-card"><div class="ad-stat-num">${years}년+</div><div class="ad-stat-label">${statLabels.y}</div></div><div class="ad-stat-card"><div class="ad-stat-num">${counsels}건+</div><div class="ad-stat-label">${statLabels.c}</div></div><div class="ad-stat-card"><div class="ad-stat-num">${satisfaction}%</div><div class="ad-stat-label">${statLabels.s}</div></div></div></div><div class="ad-main">
+    ${schoolCount > 0 ? `<div class="ad-section"><div class="ad-section-title">${schoolLabel} (${schoolCount}개교)</div><p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">${schoolDesc}</p><div class="ad-school-table">
+        ${allSchools.map(s => `<div class="ad-school-row"><span class="ad-school-level" style="background:${s.level==='초등'?'#dbeafe':s.level==='중등'?'#dcfce7':'#fef3c7'};color:${s.level==='초등'?'#1d4ed8':s.level==='중등'?'#15803d':'#b45309'}">${s.level}</span><span class="ad-school-name">${s.name}</span><div class="ad-school-subjs">${(c.s||[]).map(subj => `<a href="/학교학원/${encodeURIComponent(c.n)}/${encodeURIComponent(s.name)}/${encodeURIComponent(subj)}" class="ad-subj-chip" style="background:${subjBgs[subj]||'#f1f5f9'};color:${subjColors[subj]||'#475569'};text-decoration:none">${subj}학원</a>`).join('')}</div></div>`).join('')}
+      </div></div>` : ''}
 
-  <div class="ad-stats">
-    <div class="ad-stats-row">
-      <div class="ad-stat-card"><div class="ad-stat-num">${years}년+</div><div class="ad-stat-label">${statLabels.y}</div></div>
-      <div class="ad-stat-card"><div class="ad-stat-num">${counsels}건+</div><div class="ad-stat-label">${statLabels.c}</div></div>
-      <div class="ad-stat-card"><div class="ad-stat-num">${satisfaction}%</div><div class="ad-stat-label">${statLabels.s}</div></div>
-    </div>
-  </div>
-
-  <div class="ad-main">
-    ${schoolCount > 0 ? `<div class="ad-section">
-      <div class="ad-section-title">${schoolLabel} (${schoolCount}개교)</div>
-      <p style="font-size:13px;color:#94a3b8;margin-bottom:14px;">${schoolDesc}</p>
-      <div class="ad-school-table">
-        ${allSchools.map(s => `<div class="ad-school-row">
-          <span class="ad-school-level" style="background:${s.level==='초등'?'#dbeafe':s.level==='중등'?'#dcfce7':'#fef3c7'};color:${s.level==='초등'?'#1d4ed8':s.level==='중등'?'#15803d':'#b45309'}">${s.level}</span>
-          <span class="ad-school-name">${s.name}</span>
-          <div class="ad-school-subjs">${(c.s||[]).map(subj => `<a href="/학교학원/${encodeURIComponent(c.n)}/${encodeURIComponent(s.name)}/${encodeURIComponent(subj)}" class="ad-subj-chip" style="background:${subjBgs[subj]||'#f1f5f9'};color:${subjColors[subj]||'#475569'};text-decoration:none">${subj}학원</a>`).join('')}</div>
-        </div>`).join('')}
-      </div>
-    </div>` : ''}
-
-    <div class="ad-section">
-      <div class="ad-section-title">${introTitle}</div>
-      <p class="ad-intro">${intro}</p>
-      <div class="ad-subjs-sidebar">
-        <span style="font-size:14px;font-weight:700;color:#0f172a;margin-right:4px;">${subjLabel}</span>
+    <div class="ad-section"><div class="ad-section-title">${introTitle}</div><p class="ad-intro">${intro}</p><div class="ad-subjs-sidebar"><span style="font-size:14px;font-weight:700;color:#0f172a;margin-right:4px;">${subjLabel}</span>
         ${(c.s||[]).map(subj => `<span class="ad-subj-tag" style="background:${subjBgs[subj]||'#f1f5f9'};color:${subjColors[subj]||'#475569'}">${subj}</span>`).join('')}
-      </div>
-    </div>
-
-    <div class="ad-section">
-      <div class="ad-section-title">${featTitle}</div>
-      <div class="ad-features">
+      </div></div><div class="ad-section"><div class="ad-section-title">${featTitle}</div><div class="ad-features">
         ${features.map(f => `<div class="ad-feat"><h4>${f.t}</h4><p>${f.d}</p></div>`).join('')}
-      </div>
-    </div>
-
-    <div class="ad-section">
-      <div class="ad-section-title">${tlTitle}</div>
-      <div class="ad-timeline">
-        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#dbeafe;color:#1d4ed8;">D-28</div><div class="ad-tl-title">범위 확인</div><div class="ad-tl-desc">교과서 정독<br>계획표 작성</div></div>
-        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#dcfce7;color:#15803d;">D-21</div><div class="ad-tl-title">개념 정리</div><div class="ad-tl-desc">핵심 노트<br>기본 문제</div></div>
-        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#fef3c7;color:#b45309;">D-14</div><div class="ad-tl-title">기출 풀이</div><div class="ad-tl-desc">오답 분석<br>유형 정리</div></div>
-        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#fee2e2;color:#dc2626;">D-7</div><div class="ad-tl-title">예상 문제</div><div class="ad-tl-desc">서술형 연습<br>취약 보완</div></div>
-        <div class="ad-tl-item"><div class="ad-tl-badge" style="background:#f3e8ff;color:#7c3aed;">D-1</div><div class="ad-tl-title">최종 확인</div><div class="ad-tl-desc">오답 재풀이<br>컨디션 관리</div></div>
-      </div>
-    </div>
+      </div></div><div class="ad-section"><div class="ad-section-title">${tlTitle}</div><div class="ad-timeline"><div class="ad-tl-item"><div class="ad-tl-badge" style="background:#dbeafe;color:#1d4ed8;">D-28</div><div class="ad-tl-title">범위 확인</div><div class="ad-tl-desc">교과서 정독<br>계획표 작성</div></div><div class="ad-tl-item"><div class="ad-tl-badge" style="background:#dcfce7;color:#15803d;">D-21</div><div class="ad-tl-title">개념 정리</div><div class="ad-tl-desc">핵심 노트<br>기본 문제</div></div><div class="ad-tl-item"><div class="ad-tl-badge" style="background:#fef3c7;color:#b45309;">D-14</div><div class="ad-tl-title">기출 풀이</div><div class="ad-tl-desc">오답 분석<br>유형 정리</div></div><div class="ad-tl-item"><div class="ad-tl-badge" style="background:#fee2e2;color:#dc2626;">D-7</div><div class="ad-tl-title">예상 문제</div><div class="ad-tl-desc">서술형 연습<br>취약 보완</div></div><div class="ad-tl-item"><div class="ad-tl-badge" style="background:#f3e8ff;color:#7c3aed;">D-1</div><div class="ad-tl-title">최종 확인</div><div class="ad-tl-desc">오답 재풀이<br>컨디션 관리</div></div></div></div>
 
     ${c.l || c.a ? (()=>{
       const addrQ = encodeURIComponent(c.a || '');
@@ -3042,39 +2518,20 @@ function renderAcademyDetail(center) {
       const naverLinkMatch = (c.l||'').match(/https?:\/\/naver\.me\/\w+/);
       const naverLink = naverLinkMatch ? naverLinkMatch[0] : null;
       const locText = (c.l||'').replace(/https?:\/\/\S+/g, '').trim().substring(0, 200);
-      return `<div class="ad-section">
-      <div class="ad-section-title">${locTitle}</div>
-      <div class="ad-location">
-        <h3>📍 ${fullName}</h3>
-        <p class="ad-addr">${c.a}</p>
+      return `<div class="ad-section"><div class="ad-section-title">${locTitle}</div><div class="ad-location"><h3>📍 ${fullName}</h3><p class="ad-addr">${c.a}</p>
         ${locText ? `<p class="ad-addr-detail">${locText}</p>` : ''}
-        <div class="ad-map-btns">
-          <a href="https://map.kakao.com/link/search/${addrQ}" target="_blank" rel="noopener" class="ad-map-btn ad-map-kakao">🗺️ 카카오맵에서 보기</a>
-          <a href="https://map.kakao.com/?eName=${nameQ}%20${addrQ}" target="_blank" rel="noopener" class="ad-map-btn ad-map-nav">🧭 길찾기</a>
+        <div class="ad-map-btns"><a href="https://map.kakao.com/link/search/${addrQ}" target="_blank" rel="noopener" class="ad-map-btn ad-map-kakao">🗺️ 카카오맵에서 보기</a><a href="https://map.kakao.com/?eName=${nameQ}%20${addrQ}" target="_blank" rel="noopener" class="ad-map-btn ad-map-nav">🧭 길찾기</a>
           ${naverLink ? `<a href="${naverLink}" target="_blank" rel="noopener" class="ad-map-btn ad-map-naver">📍 네이버지도</a>` : ''}
-        </div>
-      </div>
-    </div>`})() : ''}
+        </div></div></div>`})() : ''}
     ${(()=>{const o=decodeOfficeName(c.n),r=decodeRegNo(c.n);return (o||r)?`<div class="ad-section"><div class="ad-section-title">학원 등록 정보</div><div class="ad-office-info">${o?`<div class="ad-office-row"><span class="ad-office-label">🏫 학원 명칭</span><span class="ad-office-val">${o}</span></div>`:''}${r?`<div class="ad-office-row"><span class="ad-office-label">📋 교육지원청 등록번호</span><span class="ad-office-val">${r}</span></div>`:''}</div></div>`:''})()}
 
-    <div class="ad-section">
-      <div class="ad-section-title">${faqTitle}</div>
-      <div class="ad-faq">
+    <div class="ad-section"><div class="ad-section-title">${faqTitle}</div><div class="ad-faq">
         ${faqs.map(f => `<div class="ad-faq-item"><div class="ad-faq-q">Q. ${f.q}</div><div class="ad-faq-a">${f.a}</div></div>`).join('')}
-      </div>
-    </div>
+      </div></div>
 
     ${(()=>{const subs=c.s||[];const p=parseAcademyAddr(c.a);const regs=[...new Set([c.r,p.si,p.gu,p.dong].filter(Boolean))];if(!regs.length||!subs.length)return '';const items=[];for(const rg of regs)for(const sj of subs)items.push([rg,sj]);return `<div class="ad-section"><div class="ad-section-title">${c.n} 관련 지역 학원 가이드</div><div class="ad-kw-list">${items.map((it,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="/지역학원/${encodeURIComponent(c.n)}/${encodeURIComponent(it[0])}/${encodeURIComponent(it[1])}" class="ad-kw-item"><span class="ad-kw-num">${n}</span><span class="ad-kw-t">${it[0]} ${it[1]}학원</span></a>`}).join('')}</div></div>`})()}
 
-    <div class="ad-cta-bar">
-      <h3>${ctaTitle}</h3>
-      <p>${ctaTag}</p>
-      <div class="ad-cta-btns">
-        <a href="tel:010-4827-5592" class="ad-cta-btn ad-cta-phone">010-4827-5592</a>
-        <a href="/체험신청" class="ad-cta-btn ad-cta-form">${heroSubLabel}</a>
-      </div>
-    </div>
-  </div>
+    <div class="ad-cta-bar"><h3>${ctaTitle}</h3><p>${ctaTag}</p><div class="ad-cta-btns"><a href="tel:010-4827-5592" class="ad-cta-btn ad-cta-phone">010-4827-5592</a><a href="/체험신청" class="ad-cta-btn ad-cta-form">${heroSubLabel}</a></div></div></div>
 
   ${footerHTML()}
   </body></html>`;
@@ -3150,50 +2607,14 @@ function renderSchoolSubjectAcademy(center, schoolName, subject) {
   const url = 'https://anhani.com/학교학원/' + encodeURIComponent(c.n) + '/' + encodeURIComponent(schoolName) + '/' + encodeURIComponent(subject);
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(seoTitle, seoDesc, url, heroImg)}
-  ${subjArticleStyle(col,bg,heroImg)}</head>
-  <body>${navHTML('region')}
-  <div class="sh"><div class="si">
-    <div class="sbc"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; <a href="/학원/${encodeURIComponent(c.n)}">${c.n}</a> &gt; ${title}</div>
-    <div class="sbd">${lvl} · ${subject}</div>
-    <h1><em>${schoolName}</em> ${subject}학원</h1>
-    <p class="shs">${sigungu} ${fullName}이 ${schoolName} 학생 대상 ${subject} 1:1 맞춤 코칭 가이드</p>
-  </div></div>
-  <div class="sm">
-    <div class="sx">
-      <div class="st">${title}이 필요한 이유</div>
-      <p class="sd">${lvl}학생의 ${subject}는 ${lp}입니다. 특히 ${schoolName} 학생이라면 학교 시험 출제 경향과 서술형 기준까지 고려한 전략이 필요합니다. ${fullName}은 ${schoolName} 맞춤으로 ${core[0]}·${core[1]}·${core[2]} 3가지 핵심 역량을 키웁니다.</p>
-    </div>
-    <div class="sx">
-      <div class="st">${fullName}만의 차별점</div>
-      <div class="dg">${diffs.map(d=>`<div class="dc"><div class="di">${d[0]}</div><div class="dt">${d[1]}</div><div class="dd">${d[2]}</div></div>`).join('')}</div>
-    </div>
-    <div class="sx">
-      <div class="st">${schoolName} ${subject} 학습 전략</div>
-      <p class="sd">${fullName}의 ${subject} 전담 코치가 ${schoolName} 학생에게 적용하는 핵심 전략입니다. ${lvl} 시기 ${subject}는 평상시 꾸준한 누적이 실력 차이를 만듭니다.</p>
-      <div class="sl">${strats.map((s,i)=>`<div class="sli"><strong>전략 ${i+1}.</strong>${s}.</div>`).join('')}</div>
-    </div>
-    <div class="sx">
-      <div class="st">${lvl} ${subject} 맞춤 커리큘럼</div>
-      <p class="sd">첫 수업부터 시험 대비까지 단계별로 진행되며 ${schoolName} 학사일정에 맞춰 조정됩니다.</p>
+  ${subjArticleStyle(col,bg,heroImg)}</head><body>${navHTML('region')}
+  <div class="sh"><div class="si"><div class="sbc"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; <a href="/학원/${encodeURIComponent(c.n)}">${c.n}</a> &gt; ${title}</div><div class="sbd">${lvl} · ${subject}</div><h1><em>${schoolName}</em> ${subject}학원</h1><p class="shs">${sigungu} ${fullName}이 ${schoolName} 학생 대상 ${subject} 1:1 맞춤 코칭 가이드</p></div></div><div class="sm"><div class="sx"><div class="st">${title}이 필요한 이유</div><p class="sd">${lvl}학생의 ${subject}는 ${lp}입니다. 특히 ${schoolName} 학생이라면 학교 시험 출제 경향과 서술형 기준까지 고려한 전략이 필요합니다. ${fullName}은 ${schoolName} 맞춤으로 ${core[0]}·${core[1]}·${core[2]} 3가지 핵심 역량을 키웁니다.</p></div><div class="sx"><div class="st">${fullName}만의 차별점</div><div class="dg">${diffs.map(d=>`<div class="dc"><div class="di">${d[0]}</div><div class="dt">${d[1]}</div><div class="dd">${d[2]}</div></div>`).join('')}</div></div><div class="sx"><div class="st">${schoolName} ${subject} 학습 전략</div><p class="sd">${fullName}의 ${subject} 전담 코치가 ${schoolName} 학생에게 적용하는 핵심 전략입니다. ${lvl} 시기 ${subject}는 평상시 꾸준한 누적이 실력 차이를 만듭니다.</p><div class="sl">${strats.map((s,i)=>`<div class="sli"><strong>전략 ${i+1}.</strong>${s}.</div>`).join('')}</div></div><div class="sx"><div class="st">${lvl} ${subject} 맞춤 커리큘럼</div><p class="sd">첫 수업부터 시험 대비까지 단계별로 진행되며 ${schoolName} 학사일정에 맞춰 조정됩니다.</p>
       ${cu.map(s=>`<div class="cr"><span class="cw">${s[0]}</span><div><div class="cct">${s[1]}</div><div class="ccd">${s[2]}</div></div></div>`).join('')}
-    </div>
-    <div class="sx">
-      <div class="st">이런 학생에게 정말 좋습니다</div>
+    </div><div class="sx"><div class="st">이런 학생에게 정말 좋습니다</div>
       ${fits.map(f=>`<div class="fc"><span class="fe">${f[0]}</span><span class="ft">${f[1]}</span><div class="fd">${f[2]}</div></div>`).join('')}
-    </div>
-    <div class="sx">
-      <div class="st">자주 묻는 질문</div>
+    </div><div class="sx"><div class="st">자주 묻는 질문</div>
       ${faqs.map(f=>`<div class="fa"><div class="fq">${f[0]}</div><div class="fv">${f[1]}</div></div>`).join('')}
-    </div>
-    <div class="sct">
-      <h3>${title} 무료 상담</h3>
-      <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
-      <div class="scb">
-        <a href="tel:010-4827-5592" class="scbt scp">010-4827-5592</a>
-        <a href="/체험신청" class="scbt scf">무료 상담 신청</a>
-      </div>
-    </div>
-  </div>
+    </div><div class="sct"><h3>${title} 무료 상담</h3><p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p><div class="scb"><a href="tel:010-4827-5592" class="scbt scp">010-4827-5592</a><a href="/체험신청" class="scbt scf">무료 상담 신청</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -3254,49 +2675,12 @@ function renderRegionSubjectAcademy(center, region, subject) {
   const url = 'https://anhani.com/지역학원/' + encodeURIComponent(c.n) + '/' + encodeURIComponent(region) + '/' + encodeURIComponent(subject);
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(seoTitle, seoDesc, url, heroImg)}
-  ${subjArticleStyle(col, bg, heroImg)}</head>
-  <body>${navHTML('region')}
-  <div class="sh"><div class="si">
-    <div class="sbc"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; <a href="/학원/${encodeURIComponent(c.n)}">${c.n}</a> &gt; ${title}</div>
-    <div class="sbd">${rtLabel} · ${subject}</div>
-    <h1><em>${region}</em> ${subject}학원</h1>
-    <p class="shs">${fullName}이 ${region} 학생 대상 ${subject} 1:1 맞춤 학원 가이드</p>
-  </div></div>
-  <div class="sm">
-    <div class="sx">
-      <div class="st">${title}을 찾고 있다면</div>
-      <p class="sd">${region} 인근에서 ${subject} 학원을 찾는 학생과 학부모를 위해 ${fullName}이 운영하는 ${subject} 1:1 맞춤 프로그램을 안내드립니다. ${rtLabel} 학생의 학습 특성과 통학 동선을 고려해 설계된 커리큘럼으로 ${subject}의 핵심 영역을 다룹니다.</p>
-    </div>
-    <div class="sx">
-      <div class="st">${title}으로 이곳을 추천하는 이유</div>
-      <div class="dg">${reasons.map(r=>`<div class="dc"><div class="di">${r[0]}</div><div class="dt">${r[1]}</div><div class="dd">${r[2]}</div></div>`).join('')}</div>
-    </div>
-    <div class="sx">
-      <div class="st">${subject} 학습 플랜</div>
-      <p class="sd">${region} 학생 수준에 맞춰 ${subject}의 핵심 역량을 단계별로 채웁니다. 매 수업마다 이전 진도를 복기한 뒤 신규 개념으로 진행해 공백 없는 누적 학습을 유지합니다.</p>
-      <div class="sl">${plan.map((p,i)=>`<div class="sli"><strong>플랜 ${i+1}.</strong>${p}.</div>`).join('')}</div>
-    </div>
-    <div class="sx">
-      <div class="st">${subject} 공부 꼭 기억할 한 가지</div>
-      <div class="cr" style="background:#fff8ed"><span class="cw" style="background:#f59e0b">TIP</span><div class="ccd" style="color:#78350f">${tips}</div></div>
-    </div>
-    <div class="sx">
-      <div class="st">이런 학부모·학생에게 적합합니다</div>
+  ${subjArticleStyle(col, bg, heroImg)}</head><body>${navHTML('region')}
+  <div class="sh"><div class="si"><div class="sbc"><a href="/">홈</a> &gt; <a href="/학원/전국지점">전국 지점</a> &gt; <a href="/학원/${encodeURIComponent(c.n)}">${c.n}</a> &gt; ${title}</div><div class="sbd">${rtLabel} · ${subject}</div><h1><em>${region}</em> ${subject}학원</h1><p class="shs">${fullName}이 ${region} 학생 대상 ${subject} 1:1 맞춤 학원 가이드</p></div></div><div class="sm"><div class="sx"><div class="st">${title}을 찾고 있다면</div><p class="sd">${region} 인근에서 ${subject} 학원을 찾는 학생과 학부모를 위해 ${fullName}이 운영하는 ${subject} 1:1 맞춤 프로그램을 안내드립니다. ${rtLabel} 학생의 학습 특성과 통학 동선을 고려해 설계된 커리큘럼으로 ${subject}의 핵심 영역을 다룹니다.</p></div><div class="sx"><div class="st">${title}으로 이곳을 추천하는 이유</div><div class="dg">${reasons.map(r=>`<div class="dc"><div class="di">${r[0]}</div><div class="dt">${r[1]}</div><div class="dd">${r[2]}</div></div>`).join('')}</div></div><div class="sx"><div class="st">${subject} 학습 플랜</div><p class="sd">${region} 학생 수준에 맞춰 ${subject}의 핵심 역량을 단계별로 채웁니다. 매 수업마다 이전 진도를 복기한 뒤 신규 개념으로 진행해 공백 없는 누적 학습을 유지합니다.</p><div class="sl">${plan.map((p,i)=>`<div class="sli"><strong>플랜 ${i+1}.</strong>${p}.</div>`).join('')}</div></div><div class="sx"><div class="st">${subject} 공부 꼭 기억할 한 가지</div><div class="cr" style="background:#fff8ed"><span class="cw" style="background:#f59e0b">TIP</span><div class="ccd" style="color:#78350f">${tips}</div></div></div><div class="sx"><div class="st">이런 학부모·학생에게 적합합니다</div>
       ${fits.map(f=>`<div class="fc"><span class="fe">${f[0]}</span><span class="ft">${f[1]}</span><div class="fd">${f[2]}</div></div>`).join('')}
-    </div>
-    <div class="sx">
-      <div class="st">자주 묻는 질문</div>
+    </div><div class="sx"><div class="st">자주 묻는 질문</div>
       ${faqs.map(f=>`<div class="fa"><div class="fq">${f[0]}</div><div class="fv">${f[1]}</div></div>`).join('')}
-    </div>
-    <div class="sct">
-      <h3>${title} 무료 상담</h3>
-      <p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p>
-      <div class="scb">
-        <a href="tel:010-4827-5592" class="scbt scp">010-4827-5592</a>
-        <a href="/체험신청" class="scbt scf">무료 상담 신청</a>
-      </div>
-    </div>
-  </div>
+    </div><div class="sct"><h3>${title} 무료 상담</h3><p>${fullName} · 첫 수업 무료 · 1:1 맞춤 진단</p><div class="scb"><a href="tel:010-4827-5592" class="scbt scp">010-4827-5592</a><a href="/체험신청" class="scbt scf">무료 상담 신청</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -3308,111 +2692,7 @@ function renderContactPage() {
   <style>${commonStyles()}.ct-hero{background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#312e81 100%);padding:60px 24px 200px;text-align:center;color:#fff;position:relative;overflow:hidden}.ct-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 70% 30%,rgba(99,102,241,.2) 0%,transparent 50%)}.ct-hero-inner{position:relative;max-width:600px;margin:0 auto}.ct-hero-badge{display:inline-block;background:rgba(99,102,241,.3);backdrop-filter:blur(4px);padding:6px 18px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:20px;border:1px solid rgba(99,102,241,.3)}.ct-hero h1{font-size:36px;font-weight:900;line-height:1.3;margin-bottom:12px}.ct-hero h1 em{font-style:normal;color:#818cf8}.ct-hero p{font-size:16px;color:#94a3b8;line-height:1.7}.ct-main{max-width:1000px;margin:-160px auto 0;padding:0 24px 80px;position:relative}.ct-cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}.ct-info-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 24px rgba(0,0,0,.08);text-align:center;transition:.2s;border:1px solid transparent}.ct-info-card:hover{transform:translateY(-4px);border-color:#6366f1;box-shadow:0 8px 32px rgba(99,102,241,.15)}.ct-info-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px}.ct-info-card h3{font-size:13px;color:#94a3b8;margin-bottom:6px}.ct-info-card .ct-info-val{font-size:24px;font-weight:900;color:#0f172a}.ct-body{display:grid;grid-template-columns:1fr 1.2fr;gap:32px}.ct-left-card{background:#fff;border-radius:20px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.06)}.ct-left-card h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:24px}.ct-timeline{position:relative;padding-left:32px}.ct-timeline::before{content:'';position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,#6366f1,#a5b4fc)}.ct-tl-item{position:relative;margin-bottom:28px}.ct-tl-item:last-child{margin-bottom:0}.ct-tl-dot{position:absolute;left:-32px;top:2px;width:24px;height:24px;background:#6366f1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;box-shadow:0 0 0 4px rgba(99,102,241,.15)}.ct-tl-title{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:4px}.ct-tl-desc{font-size:13px;color:#94a3b8;line-height:1.5}.ct-benefits{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}.ct-benefit{background:#f8fafc;border-radius:12px;padding:16px;display:flex;align-items:center;gap:10px}.ct-benefit-icon{font-size:20px;flex-shrink:0}.ct-benefit-text{font-size:13px;font-weight:600;color:#334155}.ct-form-card{background:#fff;border-radius:20px;padding:36px 32px;box-shadow:0 4px 24px rgba(0,0,0,.06);border-top:4px solid #6366f1}.ct-form-header{text-align:center;margin-bottom:28px}.ct-form-header h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:4px}.ct-form-header p{font-size:13px;color:#94a3b8}.ct-form-tabs{display:flex;margin-bottom:24px;background:#f1f5f9;border-radius:12px;padding:4px}.ct-ftab{flex:1;padding:12px;text-align:center;border-radius:10px;font-size:14px;font-weight:600;color:#64748b;cursor:pointer;border:none;background:none;transition:.2s}.ct-ftab.active{background:#6366f1;color:#fff;box-shadow:0 2px 8px rgba(99,102,241,.3)}.ct-field{margin-bottom:16px}.ct-field label{display:block;font-size:13px;font-weight:700;color:#334155;margin-bottom:6px}.ct-field label .req{color:#ef4444}.ct-field input,.ct-field select,.ct-field textarea{display:block;width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14px;outline:none;background:#fafbfc;transition:.2s;font-family:inherit}.ct-field input:focus,.ct-field select:focus,.ct-field textarea:focus{border-color:#6366f1;background:#fff;box-shadow:0 0 0 3px rgba(99,102,241,.1)}.ct-field textarea{min-height:100px;resize:vertical}.ct-privacy{background:#f8fafc;border-radius:12px;padding:16px;margin-bottom:16px}.ct-privacy h4{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:6px}.ct-privacy p{font-size:11px;color:#94a3b8;line-height:1.6}.ct-check{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:#334155;cursor:pointer}.ct-check .req{color:#ef4444}.ct-submit{display:block;width:100%;padding:16px;background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;border:none;border-radius:14px;font-size:17px;font-weight:800;cursor:pointer;transition:.2s;box-shadow:0 4px 16px rgba(99,102,241,.3)}.ct-submit:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(99,102,241,.4)}.ct-success{display:none;text-align:center;padding:48px 20px}.ct-success-icon{font-size:48px;margin-bottom:16px}.ct-success h3{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:8px}.ct-success p{font-size:14px;color:#64748b;line-height:1.7}.ct-success a{display:inline-block;margin-top:16px;color:#6366f1;font-weight:600;text-decoration:none}@media (max-width:768px){.ct-hero h1{font-size:26px}.ct-cards-row{grid-template-columns:1fr}.ct-body{grid-template-columns:1fr}.ct-benefits{grid-template-columns:1fr}.ct-hero{padding-bottom:140px}.ct-main{margin-top:-100px}}</style></head><body>
   ${navHTML('')}
 
-  <div class="ct-hero">
-    <div class="ct-hero-inner">
-      <div class="ct-hero-badge">✨ 무료 상담 신청</div>
-      <h1>궁금한 점을<br><em>편하게 남겨주세요</em></h1>
-      <p>과외안하니 전문 상담사가<br>빠른 시일 내에 연락드리겠습니다</p>
-    </div>
-  </div>
-
-  <div class="ct-main">
-    <div class="ct-cards-row">
-      <a href="tel:010-4827-5592" class="ct-info-card" style="text-decoration:none;color:inherit;">
-        <div class="ct-info-icon" style="background:#fee2e2;">📞</div>
-        <h3>전화 상담</h3>
-        <div class="ct-info-val">010-4827-5592</div>
-      </a>
-      <div class="ct-info-card">
-        <div class="ct-info-icon" style="background:#dbeafe;">⏱</div>
-        <h3>평균 응답 시간</h3>
-        <div class="ct-info-val">30분 이내</div>
-      </div>
-      <div class="ct-info-card">
-        <div class="ct-info-icon" style="background:#dcfce7;">💬</div>
-        <h3>상담 만족도</h3>
-        <div class="ct-info-val">98.2%</div>
-      </div>
-    </div>
-
-    <div class="ct-body">
-      <div>
-        <div class="ct-left-card">
-          <h2>상담 진행 순서</h2>
-          <div class="ct-timeline">
-            <div class="ct-tl-item">
-              <div class="ct-tl-dot">1</div>
-              <div class="ct-tl-title">온라인 접수</div>
-              <div class="ct-tl-desc">양식 작성 후 제출하시면 즉시 접수됩니다</div>
-            </div>
-            <div class="ct-tl-item">
-              <div class="ct-tl-dot">2</div>
-              <div class="ct-tl-title">담당자 배정</div>
-              <div class="ct-tl-desc">교육컨설턴트가 배정됩니다</div>
-            </div>
-            <div class="ct-tl-item">
-              <div class="ct-tl-dot">3</div>
-              <div class="ct-tl-title">1:1 맞춤 상담</div>
-              <div class="ct-tl-desc">학생 상황에 맞는 학습 방향을 안내드립니다</div>
-            </div>
-            <div class="ct-tl-item">
-              <div class="ct-tl-dot">4</div>
-              <div class="ct-tl-title">교사 배정</div>
-              <div class="ct-tl-desc">적합한 선생님을 매칭하여 수업을 연결해드립니다</div>
-            </div>
-          </div>
-        </div>
-        <div class="ct-benefits">
-          <div class="ct-benefit"><div class="ct-benefit-icon">🎯</div><div class="ct-benefit-text">무료 학습 진단</div></div>
-          <div class="ct-benefit"><div class="ct-benefit-icon">👨‍🏫</div><div class="ct-benefit-text">전문 선생님 매칭</div></div>
-          <div class="ct-benefit"><div class="ct-benefit-icon">📋</div><div class="ct-benefit-text">맞춤 커리큘럼</div></div>
-          <div class="ct-benefit"><div class="ct-benefit-icon">💰</div><div class="ct-benefit-text">합리적 수업료</div></div>
-        </div>
-      </div>
-
-      <div class="ct-form-card" id="ctFormCard">
-        <div class="ct-form-header">
-          <h2>상담 신청서</h2>
-          <p>* 표시 항목은 필수입니다</p>
-        </div>
-        <div class="ct-form-tabs">
-          <button class="ct-ftab" onclick="this.classList.add('active');this.nextElementSibling.classList.remove('active')">학원 상담</button>
-          <button class="ct-ftab active" onclick="this.classList.add('active');this.previousElementSibling.classList.remove('active')">과외 상담</button>
-        </div>
-        <form id="ctForm" onsubmit="return submitContact(event)">
-          <div class="ct-field"><label>이름 <span class="req">*</span></label><input type="text" name="name" placeholder="홍길동" required></div>
-          <div class="ct-field"><label>연락처 <span class="req">*</span></label><input type="tel" name="phone" placeholder="010-0000-0000" required></div>
-          <div class="ct-field"><label>학년 / 나이 <span class="req">*</span></label>
-            <select name="grade" required><option value="">선택해주세요</option>
-            <option>초등 1학년</option><option>초등 2학년</option><option>초등 3학년</option><option>초등 4학년</option><option>초등 5학년</option><option>초등 6학년</option>
-            <option>중학교 1학년</option><option>중학교 2학년</option><option>중학교 3학년</option>
-            <option>고등 1학년</option><option>고등 2학년</option><option>고등 3학년</option><option>성인</option></select>
-          </div>
-          <div class="ct-field"><label>거주 주소</label><input type="text" name="address" placeholder="예: 서울 강남구 대치동"></div>
-          <div class="ct-field"><label>희망 과목</label>
-            <select name="subject"><option value="">선택해주세요</option>
-            <option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option>
-            <option>코딩</option><option>논술</option><option>검정고시</option><option>영어회화</option><option>중국어회화</option><option>일본어회화</option></select>
-          </div>
-          <div class="ct-field"><label>문의 내용</label><textarea name="message" placeholder="현재 성적, 목표 성적, 원하는 수업 방향 등 자유롭게 남겨주세요."></textarea></div>
-          <div class="ct-privacy">
-            <h4>개인정보 수집 및 이용 동의</h4>
-            <p>수집 항목: 이름, 연락처, 학년, 주소 / 수집 목적: 상담 및 교사 매칭 / 보유 기간: 상담 완료 후 1년</p>
-            <label class="ct-check"><input type="checkbox" name="agree" required> 개인정보 수집 및 이용에 동의합니다 <span class="req">*</span></label>
-          </div>
-          <button type="submit" class="ct-submit">문의하기</button>
-        </form>
-        <div class="ct-success" id="ctSuccess">
-          <div class="ct-success-icon">✅</div>
-          <h3>문의가 접수되었습니다!</h3>
-          <p>빠른 시일 내에 연락드리겠습니다.<br>평균 30분 이내 응답해 드립니다.</p>
-          <a href="/">홈으로 돌아가기 →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
+  <div class="ct-hero"><div class="ct-hero-inner"><div class="ct-hero-badge">✨ 무료 상담 신청</div><h1>궁금한 점을<br><em>편하게 남겨주세요</em></h1><p>과외안하니 전문 상담사가<br>빠른 시일 내에 연락드리겠습니다</p></div></div><div class="ct-main"><div class="ct-cards-row"><a href="tel:010-4827-5592" class="ct-info-card" style="text-decoration:none;color:inherit;"><div class="ct-info-icon" style="background:#fee2e2;">📞</div><h3>전화 상담</h3><div class="ct-info-val">010-4827-5592</div></a><div class="ct-info-card"><div class="ct-info-icon" style="background:#dbeafe;">⏱</div><h3>평균 응답 시간</h3><div class="ct-info-val">30분 이내</div></div><div class="ct-info-card"><div class="ct-info-icon" style="background:#dcfce7;">💬</div><h3>상담 만족도</h3><div class="ct-info-val">98.2%</div></div></div><div class="ct-body"><div><div class="ct-left-card"><h2>상담 진행 순서</h2><div class="ct-timeline"><div class="ct-tl-item"><div class="ct-tl-dot">1</div><div class="ct-tl-title">온라인 접수</div><div class="ct-tl-desc">양식 작성 후 제출하시면 즉시 접수됩니다</div></div><div class="ct-tl-item"><div class="ct-tl-dot">2</div><div class="ct-tl-title">담당자 배정</div><div class="ct-tl-desc">교육컨설턴트가 배정됩니다</div></div><div class="ct-tl-item"><div class="ct-tl-dot">3</div><div class="ct-tl-title">1:1 맞춤 상담</div><div class="ct-tl-desc">학생 상황에 맞는 학습 방향을 안내드립니다</div></div><div class="ct-tl-item"><div class="ct-tl-dot">4</div><div class="ct-tl-title">교사 배정</div><div class="ct-tl-desc">적합한 선생님을 매칭하여 수업을 연결해드립니다</div></div></div></div><div class="ct-benefits"><div class="ct-benefit"><div class="ct-benefit-icon">🎯</div><div class="ct-benefit-text">무료 학습 진단</div></div><div class="ct-benefit"><div class="ct-benefit-icon">👨‍🏫</div><div class="ct-benefit-text">전문 선생님 매칭</div></div><div class="ct-benefit"><div class="ct-benefit-icon">📋</div><div class="ct-benefit-text">맞춤 커리큘럼</div></div><div class="ct-benefit"><div class="ct-benefit-icon">💰</div><div class="ct-benefit-text">합리적 수업료</div></div></div></div><div class="ct-form-card" id="ctFormCard"><div class="ct-form-header"><h2>상담 신청서</h2><p>* 표시 항목은 필수입니다</p></div><div class="ct-form-tabs"><button class="ct-ftab" onclick="this.classList.add('active');this.nextElementSibling.classList.remove('active')">학원 상담</button><button class="ct-ftab active" onclick="this.classList.add('active');this.previousElementSibling.classList.remove('active')">과외 상담</button></div><form id="ctForm" onsubmit="return submitContact(event)"><div class="ct-field"><label>이름 <span class="req">*</span></label><input type="text" name="name" placeholder="홍길동" required></div><div class="ct-field"><label>연락처 <span class="req">*</span></label><input type="tel" name="phone" placeholder="010-0000-0000" required></div><div class="ct-field"><label>학년 / 나이 <span class="req">*</span></label><select name="grade" required><option value="">선택해주세요</option><option>초등 1학년</option><option>초등 2학년</option><option>초등 3학년</option><option>초등 4학년</option><option>초등 5학년</option><option>초등 6학년</option><option>중학교 1학년</option><option>중학교 2학년</option><option>중학교 3학년</option><option>고등 1학년</option><option>고등 2학년</option><option>고등 3학년</option><option>성인</option></select></div><div class="ct-field"><label>거주 주소</label><input type="text" name="address" placeholder="예: 서울 강남구 대치동"></div><div class="ct-field"><label>희망 과목</label><select name="subject"><option value="">선택해주세요</option><option>국어</option><option>영어</option><option>수학</option><option>과학</option><option>사회</option><option>코딩</option><option>논술</option><option>검정고시</option><option>영어회화</option><option>중국어회화</option><option>일본어회화</option></select></div><div class="ct-field"><label>문의 내용</label><textarea name="message" placeholder="현재 성적, 목표 성적, 원하는 수업 방향 등 자유롭게 남겨주세요."></textarea></div><div class="ct-privacy"><h4>개인정보 수집 및 이용 동의</h4><p>수집 항목: 이름, 연락처, 학년, 주소 / 수집 목적: 상담 및 교사 매칭 / 보유 기간: 상담 완료 후 1년</p><label class="ct-check"><input type="checkbox" name="agree" required> 개인정보 수집 및 이용에 동의합니다 <span class="req">*</span></label></div><button type="submit" class="ct-submit">문의하기</button></form><div class="ct-success" id="ctSuccess"><div class="ct-success-icon">✅</div><h3>문의가 접수되었습니다!</h3><p>빠른 시일 내에 연락드리겠습니다.<br>평균 30분 이내 응답해 드립니다.</p><a href="/">홈으로 돌아가기 →</a></div></div></div></div><script>
     function submitContact(e) {
       e.preventDefault();
       window.open('/체험신청', '_blank');
@@ -3438,40 +2718,18 @@ function renderGradePage(school, grade) {
 
   const subjectCards = getSubjectsForSchool(school).map(s => {
     const subjIcons = {"국어":"📖","영어":"🌍","수학":"📐","사회":"🏛️","과학":"🔬","코딩":"💻","검정고시":"📝","논술":"✍️"};
-    return `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gd-subj-card">
-      <span class="gd-subj-icon">${subjIcons[s]||'📚'}</span>
-      <h3>${s}</h3>
-      <p>${gradeLabel} ${s} 과외 가이드</p>
-      <span class="gd-subj-arrow">→</span>
-    </a>`;
+    return `<a href="/grade/${school}/${gradeNum}/${encodeURIComponent(s)}" class="gd-subj-card"><span class="gd-subj-icon">${subjIcons[s]||'📚'}</span><h3>${s}</h3><p>${gradeLabel} ${s} 과외 가이드</p><span class="gd-subj-arrow">→</span></a>`;
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(gradeLabel + ' 과외 - 과목별 맞춤 가이드 | 과외안하니', gradeLabel + ' 맞춤 과외 정보. 국어, 영어, 수학 등 8개 과목별 학습 전략과 선생님 매칭.', 'https://anhani.com/grade/' + school + '/' + grade, getEduImage(gradeLabel + ' 과외'))}
   <style>${commonStyles()}.gd-hero-wrap{position:relative;overflow:hidden;width:calc(100% - 40px);max-width:900px;margin:20px auto 24px;border-radius:14px}.gd-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}.gd-hero-overlay{position:absolute;inset:0;background:transparent;z-index:1}.gd-hero{position:relative;z-index:2;color:#fff;padding:72px 24px 60px;text-align:center}.gd-hero h1{font-size:34px;font-weight:900;margin-bottom:10px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.gd-hero h1 em{font-style:normal;color:#fff;background:rgba(255,255,255,.15);padding:2px 14px;border-radius:8px;backdrop-filter:blur(4px)}.gd-hero p{font-size:15px;color:rgba(255,255,255,.92);text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.gd-wrap{max-width:900px;margin:0 auto;padding:32px 24px 80px}.gd-tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap;justify-content:center}.gd-tab{padding:10px 22px;border-radius:10px;border:1.5px solid #e2e8f0;background:#fff;font-size:14px;font-weight:600;color:#475569;text-decoration:none;transition:.2s}.gd-tab:hover{border-color:${accentColor};color:${accentColor}}.gd-tab.active{background:${accentColor};color:#fff;border-color:${accentColor}}.gd-section-title{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;text-align:center}.gd-subj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:40px}.gd-subj-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px 20px;text-decoration:none;color:inherit;transition:.2s;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}.gd-subj-card:hover{border-color:${accentColor};transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.06)}.gd-subj-icon{font-size:32px;margin-bottom:10px}.gd-subj-card h3{font-size:17px;font-weight:700;color:#0f172a;margin-bottom:4px}.gd-subj-card p{font-size:12px;color:#94a3b8}.gd-subj-arrow{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:#d1d5db;font-size:16px}.gd-subj-card:hover .gd-subj-arrow{color:${accentColor}}.gd-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:16px;padding:40px 28px;text-align:center;color:#fff}.gd-cta h3{font-size:22px;font-weight:800;margin-bottom:12px}.gd-cta p{font-size:14px;opacity:.7;margin-bottom:20px}.gd-cta a{display:inline-block;background:#fff;color:#4f46e5;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}</style></head><body>
   ${navHTML('region')}
-  <div class="gd-hero-wrap">
-    <img src="${getEduImage(school + grade)}" alt="${gradeLabel} 과외" loading="eager" class="gd-hero-img"/>
-    <div class="gd-hero-overlay"></div>
-    <div class="gd-hero">
-      <h1><em>${gradeLabel}</em> 과목별 과외</h1>
-      <p>과목을 선택하면 ${gradeLabel}에 맞는 상세 과외 가이드를 확인할 수 있어요</p>
-    </div>
-  </div>
-  <div class="gd-wrap">
-    <div class="gd-tabs">
+  <div class="gd-hero-wrap"><img src="${getEduImage(school + grade)}" alt="${gradeLabel} 과외" loading="eager" class="gd-hero-img"/><div class="gd-hero-overlay"></div><div class="gd-hero"><h1><em>${gradeLabel}</em> 과목별 과외</h1><p>과목을 선택하면 ${gradeLabel}에 맞는 상세 과외 가이드를 확인할 수 있어요</p></div></div><div class="gd-wrap"><div class="gd-tabs">
       ${Array.from({length: maxGrade}, (_, i) =>
         `<a href="/grade/${school}/${i+1}" class="gd-tab${i+1 === gradeNum ? ' active' : ''}">${shortName} ${i+1}학년</a>`
       ).join('')}
-    </div>
-    <h2 class="gd-section-title">${gradeLabel} 과목별 과외 가이드</h2>
-    <div class="gd-subj-grid">${subjectCards}</div>
-    <div class="gd-cta">
-      <h3>${gradeLabel} 맞춤 과외 상담</h3>
-      <p>우리 아이에게 딱 맞는 선생님을 무료로 매칭해 드립니다</p>
-      <a href="/체험신청">무료 상담 신청 →</a>
-    </div>
-  </div>
+    </div><h2 class="gd-section-title">${gradeLabel} 과목별 과외 가이드</h2><div class="gd-subj-grid">${subjectCards}</div><div class="gd-cta"><h3>${gradeLabel} 맞춤 과외 상담</h3><p>우리 아이에게 딱 맞는 선생님을 무료로 매칭해 드립니다</p><a href="/체험신청">무료 상담 신청 →</a></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -3487,17 +2745,11 @@ function renderSchoolPage(region) {
   ${commonHead(targetRegion + ' 학교별 과외 - 과외안하니', targetRegion + ' 지역 학교별 맞춤 과외 정보. 초·중·고 학교에 맞는 선생님 매칭.', 'https://anhani.com/school/' + (regionEN[targetRegion]||'seoul'), getEduImage(targetRegion + ' 학교'))}
   <style>${commonStyles()}.sc-wrap{max-width:1000px;margin:0 auto;padding:48px 24px 80px}.sc-label{display:inline-block;background:#f59e0b;color:#fff;font-size:13px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px}.sc-title{font-size:32px;font-weight:900;color:#0f172a;margin-bottom:10px}.sc-title em{font-style:normal;color:#f59e0b}.sc-subtitle{font-size:15px;color:#64748b;margin-bottom:32px}.sc-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}.sc-tab{padding:8px 16px;border-radius:20px;border:1.5px solid #d1d5db;background:#fff;font-size:14px;font-weight:600;color:#475569;text-decoration:none;transition:.2s}.sc-tab:hover{border-color:#f59e0b;color:#f59e0b}.sc-tab.active{background:#f59e0b;color:#fff;border-color:#f59e0b}.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}.sc-card{background:#fffbeb;border:1px solid #fef3c7;border-radius:12px;padding:20px 16px;text-align:center;text-decoration:none;color:inherit;transition:.2s}.sc-card:hover{border-color:#f59e0b;transform:translateY(-3px);box-shadow:0 4px 16px rgba(245,158,11,.1)}.sc-card h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:4px}.sc-card p{font-size:12px;color:#94a3b8}</style></head><body>
   ${navHTML('region')}
-  <div class="sc-wrap">
-    <div class="sc-label">학교별 과외</div>
-    <h1 class="sc-title"><em>${targetRegion}</em> 학교별 과외</h1>
-    <p class="sc-subtitle">${targetRegion} 지역 학교에 맞는 맞춤 과외 선생님을 찾아보세요.</p>
-    <div class="sc-tabs">
+  <div class="sc-wrap"><div class="sc-label">학교별 과외</div><h1 class="sc-title"><em>${targetRegion}</em> 학교별 과외</h1><p class="sc-subtitle">${targetRegion} 지역 학교에 맞는 맞춤 과외 선생님을 찾아보세요.</p><div class="sc-tabs">
       ${allRegions.map(r => `<a href="/school/${regionEN[r]||r}" class="sc-tab${r === targetRegion ? ' active' : ''}">${r}</a>`).join('')}
-    </div>
-    <div class="sc-grid">
+    </div><div class="sc-grid">
       ${districts.map(d => `<a href="/지역별/${encodeURIComponent(targetRegion)}/${encodeURIComponent(d)}" class="sc-card"><h3>${d}</h3><p>학교별 과외 정보</p></a>`).join('')}
-    </div>
-  </div>
+    </div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -3627,99 +2879,34 @@ function renderConversationPage(lang) {
   const roadmap = LANG_ROADMAP[lang] || LANG_ROADMAP.english;
 
   const essentialsHTML = essentials.map((e,i) => `
-    <div class="cv-ess-card">
-      <div class="cv-ess-num">${String(i+1).padStart(2,'0')}</div>
-      <div class="cv-ess-body">
-        <h4>${e.t}</h4>
-        <p>${e.d}</p>
-      </div>
-    </div>`).join('');
+    <div class="cv-ess-card"><div class="cv-ess-num">${String(i+1).padStart(2,'0')}</div><div class="cv-ess-body"><h4>${e.t}</h4><p>${e.d}</p></div></div>`).join('');
 
   const methodsHTML = methods.map(m => `
-    <div class="cv-method-card">
-      <h4>${m.h}</h4>
-      <p>${m.p}</p>
-    </div>`).join('');
+    <div class="cv-method-card"><h4>${m.h}</h4><p>${m.p}</p></div>`).join('');
 
   const roadmapHTML = roadmap.map((r,i) => `
-    <div class="cv-road-item">
-      <div class="cv-road-dot"></div>
-      <div class="cv-road-body">
-        <h4>${r.t}</h4>
-        <p>${r.p}</p>
-      </div>
-    </div>`).join('');
+    <div class="cv-road-item"><div class="cv-road-dot"></div><div class="cv-road-body"><h4>${r.t}</h4><p>${r.p}</p></div></div>`).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(d.name + ' 회화 수업 - 과외안하니', d.name + ' 회화 1:1 맞춤 수업. 핵심 포인트, 공부법, 로드맵까지 완벽 가이드.', 'https://anhani.com/conversation/' + lang, heroImg)}
   <style>${commonStyles()}.cv-wrap{max-width:900px;margin:0 auto;padding:24px 24px 80px}.cv-hero-wrap{position:relative;border-radius:20px;overflow:hidden;margin-bottom:40px;aspect-ratio:1200/500;background:#0f172a}.cv-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.cv-hero-overlay{position:absolute;inset:0;background:transparent}.cv-hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:32px 24px;text-align:center;color:#fff}.cv-flag{font-size:52px;margin-bottom:12px;filter:drop-shadow(0 2px 12px rgba(0,0,0,.4))}.cv-title{font-size:clamp(26px,4.5vw,38px);font-weight:900;margin-bottom:12px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.cv-title em{font-style:normal;background:rgba(255,255,255,.2);padding:2px 16px;border-radius:10px;backdrop-filter:blur(4px)}.cv-desc{font-size:clamp(13px,1.7vw,15px);color:rgba(255,255,255,.92);line-height:1.7;margin-bottom:20px;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6);max-width:600px}.cv-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.cv-btn{padding:11px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;transition:.2s}.cv-btn-primary{background:#fff;color:${d.color}}.cv-btn-primary:hover{transform:translateY(-2px)}.cv-btn-secondary{background:rgba(255,255,255,.18);color:#fff;border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(6px)}.cv-btn-secondary:hover{background:rgba(255,255,255,.28)}.cv-section{margin-bottom:44px}.cv-section h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:18px;padding-left:12px;border-left:4px solid ${d.color}}.cv-features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cv-feat{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px 14px;text-align:center;font-size:15px;font-weight:600;color:#334155;transition:.2s;word-break:keep-all;display:flex;align-items:center;justify-content:center;min-height:60px}.cv-feat:hover{border-color:${d.color};transform:translateY(-2px)}.cv-ess-grid{display:flex;flex-direction:column;gap:14px}.cv-ess-card{display:flex;gap:18px;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:22px 24px;transition:.2s}.cv-ess-card:hover{border-color:${d.color};box-shadow:0 4px 16px rgba(0,0,0,.05)}.cv-ess-num{flex-shrink:0;width:44px;height:44px;background:${d.bgColor};color:${d.color};border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}.cv-ess-body{flex:1}.cv-ess-body h4{font-size:16px;font-weight:800;color:#0f172a;margin-bottom:6px}.cv-ess-body p{font-size:14px;color:#475569;line-height:1.7}.cv-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.cv-method-card{background:${d.bgColor};border-radius:14px;padding:22px 24px;transition:.2s}.cv-method-card:hover{transform:translateY(-3px)}.cv-method-card h4{font-size:16px;font-weight:800;color:${d.color};margin-bottom:8px}.cv-method-card p{font-size:14px;color:#334155;line-height:1.7}.cv-road-timeline{position:relative;padding-left:24px}.cv-road-timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:${d.bgColor}}.cv-road-item{position:relative;margin-bottom:20px}.cv-road-dot{position:absolute;left:-24px;top:6px;width:14px;height:14px;background:${d.color};border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px ${d.color}}.cv-road-body{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 22px}.cv-road-body h4{font-size:15px;font-weight:800;color:${d.color};margin-bottom:6px}.cv-road-body p{font-size:14px;color:#475569;line-height:1.7}.cv-levels{display:flex;flex-direction:column;gap:10px}.cv-level{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px}.cv-level-num{width:36px;height:36px;background:${d.color};color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}.cv-level-text{font-size:15px;font-weight:600;color:#334155}.cv-lang-tabs{display:flex;gap:10px;margin-bottom:24px;justify-content:center;flex-wrap:wrap}.cv-lang-tab{padding:10px 24px;border-radius:10px;border:1.5px solid #e2e8f0;font-size:15px;font-weight:600;text-decoration:none;color:#475569;transition:.2s;background:#fff}.cv-lang-tab:hover{border-color:${d.color}}.cv-lang-tab.active{background:${d.color};color:#fff;border-color:${d.color}}@media (max-width:640px){.cv-features{grid-template-columns:1fr 1fr}.cv-hero-wrap{aspect-ratio:auto}.cv-hero-content{position:relative;inset:auto;padding:32px 18px}.cv-ess-card{flex-direction:column;gap:10px}}</style></head><body>
   ${navHTML('foreign')}
-  <div class="cv-wrap">
-    <div class="cv-lang-tabs">
-      <a href="/conversation/english" class="cv-lang-tab${lang==='english'?' active':''}">🇺🇸 영어</a>
-      <a href="/conversation/chinese" class="cv-lang-tab${lang==='chinese'?' active':''}">🇨🇳 중국어</a>
-      <a href="/conversation/japanese" class="cv-lang-tab${lang==='japanese'?' active':''}">🇯🇵 일본어</a>
-    </div>
-    <div class="cv-hero-wrap">
-      <img src="${heroImg}" alt="${d.name} 회화 수업" loading="eager" class="cv-hero-img"/>
-      <div class="cv-hero-overlay"></div>
-      <div class="cv-hero-content">
-        <div class="cv-flag">${d.flag}</div>
-        <h1 class="cv-title"><em>${d.name} 회화</em> 수업</h1>
-        <p class="cv-desc">${d.desc}</p>
-        <div class="cv-btns">
-          <a href="/체험신청" class="cv-btn cv-btn-primary">⭐ 무료 체험</a>
-          <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="cv-btn cv-btn-secondary">💬 카톡 상담</a>
-        </div>
-      </div>
-    </div>
-    <div class="cv-section">
-      <h2>수업 프로그램</h2>
-      <div class="cv-features">${d.features.map(f => `<div class="cv-feat">${f}</div>`).join('')}</div>
-    </div>
-    <div class="cv-section">
-      <h2>🎯 ${d.name} 회화 핵심 5가지</h2>
-      <div class="cv-ess-grid">${essentialsHTML}</div>
-    </div>
-    <div class="cv-section">
-      <h2>📘 효과적인 ${d.name} 공부 방법</h2>
-      <div class="cv-method-grid">${methodsHTML}</div>
-    </div>
-    <div class="cv-section">
-      <h2>🗺️ ${d.name} 학습 로드맵</h2>
-      <div class="cv-road-timeline">${roadmapHTML}</div>
-    </div>
-    <div class="cv-section">
-      <h2>레벨별 수업</h2>
-      <div class="cv-levels">${d.levels.map((l, i) => `<div class="cv-level"><div class="cv-level-num">${i+1}</div><div class="cv-level-text">${l}</div></div>`).join('')}</div>
-    </div>
+  <div class="cv-wrap"><div class="cv-lang-tabs"><a href="/conversation/english" class="cv-lang-tab${lang==='english'?' active':''}">🇺🇸 영어</a><a href="/conversation/chinese" class="cv-lang-tab${lang==='chinese'?' active':''}">🇨🇳 중국어</a><a href="/conversation/japanese" class="cv-lang-tab${lang==='japanese'?' active':''}">🇯🇵 일본어</a></div><div class="cv-hero-wrap"><img src="${heroImg}" alt="${d.name} 회화 수업" loading="eager" class="cv-hero-img"/><div class="cv-hero-overlay"></div><div class="cv-hero-content"><div class="cv-flag">${d.flag}</div><h1 class="cv-title"><em>${d.name} 회화</em> 수업</h1><p class="cv-desc">${d.desc}</p><div class="cv-btns"><a href="/체험신청" class="cv-btn cv-btn-primary">⭐ 무료 체험</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="cv-btn cv-btn-secondary">💬 카톡 상담</a></div></div></div><div class="cv-section"><h2>수업 프로그램</h2><div class="cv-features">${d.features.map(f => `<div class="cv-feat">${f}</div>`).join('')}</div></div><div class="cv-section"><h2>🎯 ${d.name} 회화 핵심 5가지</h2><div class="cv-ess-grid">${essentialsHTML}</div></div><div class="cv-section"><h2>📘 효과적인 ${d.name} 공부 방법</h2><div class="cv-method-grid">${methodsHTML}</div></div><div class="cv-section"><h2>🗺️ ${d.name} 학습 로드맵</h2><div class="cv-road-timeline">${roadmapHTML}</div></div><div class="cv-section"><h2>레벨별 수업</h2><div class="cv-levels">${d.levels.map((l, i) => `<div class="cv-level"><div class="cv-level-num">${i+1}</div><div class="cv-level-text">${l}</div></div>`).join('')}</div></div>
     ${lang === 'chinese' ? `
-    <div class="cv-section">
-      <h2 style="border-left-color:${d.color}">CN 중국어 수업 상세 보기</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div class="cv-section"><h2 style="border-left-color:${d.color}">CN 중국어 수업 상세 보기</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         ${CN_KEYWORDS.map((kw,i) => `<a href="/외국어/중국어/article/${i}" style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all 0.2s"
-          onmouseover="this.style.borderColor='#dc2626';this.style.color='#dc2626'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'">
-          <span>${kw.icon}</span><span>${kw.title}</span></a>`).join('')}
-      </div>
-    </div>` : ''}
+          onmouseover="this.style.borderColor='#dc2626';this.style.color='#dc2626'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'"><span>${kw.icon}</span><span>${kw.title}</span></a>`).join('')}
+      </div></div>` : ''}
     ${lang === 'japanese' ? `
-    <div class="cv-section">
-      <h2 style="border-left-color:${d.color}">JP 일본어 수업 상세 보기</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div class="cv-section"><h2 style="border-left-color:${d.color}">JP 일본어 수업 상세 보기</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         ${JP_KEYWORDS.map((kw,i) => `<a href="/외국어/일본어/article/${i}" style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all 0.2s"
-          onmouseover="this.style.borderColor='#c2185b';this.style.color='#c2185b'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'">
-          <span>${kw.icon}</span><span>${kw.title}</span></a>`).join('')}
-      </div>
-    </div>` : ''}
+          onmouseover="this.style.borderColor='#c2185b';this.style.color='#c2185b'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'"><span>${kw.icon}</span><span>${kw.title}</span></a>`).join('')}
+      </div></div>` : ''}
     ${lang === 'english' ? `
-    <div class="cv-section">
-      <h2 style="border-left-color:${d.color}">EN 영어 회화 수업 상세 보기</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div class="cv-section"><h2 style="border-left-color:${d.color}">EN 영어 회화 수업 상세 보기</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         ${EN_CV_KEYWORDS.map((kw,i) => `<a href="/외국어/영어/article/${i}" style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:all 0.2s"
-          onmouseover="this.style.borderColor='#3b82f6';this.style.color='#3b82f6'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'">
-          <span>${kw.icon}</span><span>${kw.title}</span></a>`).join('')}
-      </div>
-    </div>` : ''}
+          onmouseover="this.style.borderColor='#3b82f6';this.style.color='#3b82f6'" onmouseout="this.style.borderColor='#e2e8f0';this.style.color='#334155'"><span>${kw.icon}</span><span>${kw.title}</span></a>`).join('')}
+      </div></div>` : ''}
   </div>
   ${footerHTML()}
   </body></html>`;
@@ -3794,33 +2981,14 @@ function renderChineseArticle(articleIdx) {
   <style>${commonStyles()}.ca-hero{background:linear-gradient(135deg,#450a0a 0%,#991b1b 50%,#dc2626 100%);color:#fff;padding:48px 24px 40px;text-align:center}.ca-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px}.ca-hero h1{font-size:28px;font-weight:900;line-height:1.4;margin-bottom:8px}.ca-hero-meta{font-size:13px;color:rgba(255,255,255,.6)}.ca-wrap{max-width:720px;margin:0 auto;padding:32px 20px 0}.ca-intro{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:28px;position:relative}.ca-intro::before{content:'💡';position:absolute;top:-14px;left:20px;background:#fff;padding:0 8px;font-size:20px}.ca-intro p{font-size:15px;color:#334155;line-height:1.8;margin:0;word-break:keep-all}.ca-sections{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}.ca-sec{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:0;overflow:hidden;transition:.2s}.ca-sec:hover{border-color:#fca5a5;box-shadow:0 4px 16px rgba(220,38,38,.06)}.ca-sec-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fef2f2;border-bottom:1px solid #fecaca}.ca-sec-num{width:32px;height:32px;background:#dc2626;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}.ca-sec-title{font-size:17px;font-weight:700;color:#0f172a}.ca-sec-body{padding:18px 20px}.ca-sec-body p{font-size:15px;color:#475569;line-height:1.8;margin:0;word-break:keep-all}.ca-cta{background:linear-gradient(135deg,#450a0a,#dc2626);border-radius:16px;padding:32px 24px;text-align:center;color:#fff;margin:32px 0}.ca-cta h3{font-size:20px;font-weight:800;margin-bottom:6px}.ca-cta p{font-size:13px;opacity:.7;margin-bottom:16px}.ca-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.ca-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.ca-cta-w{background:#fff;color:#dc2626}.ca-cta-o{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}.ca-related{margin-top:36px;padding-top:28px;border-top:2px solid #f1f5f9}.ca-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #dc2626}.ca-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ca-related-item{padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:.2s;display:flex;align-items:center;gap:10px}.ca-related-item:hover{border-color:#dc2626;color:#dc2626;transform:translateX(4px)}.ca-related-arrow{color:#d1d5db;margin-left:auto;flex-shrink:0}.ca-related-item:hover .ca-related-arrow{color:#dc2626}@media (max-width:640px){.ca-hero h1{font-size:22px}.ca-related-grid{grid-template-columns:1fr}.ca-sec-head{padding:14px 16px}.ca-sec-body{padding:14px 16px}}</style></head><body>
   ${navHTML('foreign')}
   ${renderArticleHero(kw.icon + ' ' + kw.title, '🇨🇳 CN 중국어 1:1 맞춤 수업', '중국어-' + idx)}
-  <div class="ca-wrap">
-    <h1 style="font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin:0 0 20px">${kw.title}</h1>
-    <div class="ca-intro"><p>${intro}</p></div>
-    <div class="ca-sections">
-      ${secs.map((s,i) => `<div class="ca-sec">
-        <div class="ca-sec-head"><div class="ca-sec-num">${i+1}</div><div class="ca-sec-title">${s.h}</div></div>
-        <div class="ca-sec-body"><p>${s.p}</p></div>
-      </div>`).join('')}
-    </div>
-    <div class="ca-cta">
-      <h3>🇨🇳 중국어 무료 체험 수업</h3>
-      <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
-      <div class="ca-cta-btns">
-        <a href="/체험신청" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
-        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
-      </div>
-    </div>
-    <div class="ca-related">
-      <h3>중국어 수업 더보기</h3>
-      <div class="ca-related-grid">
+  <div class="ca-wrap"><h1 style="font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin:0 0 20px">${kw.title}</h1><div class="ca-intro"><p>${intro}</p></div><div class="ca-sections">
+      ${secs.map((s,i) => `<div class="ca-sec"><div class="ca-sec-head"><div class="ca-sec-num">${i+1}</div><div class="ca-sec-title">${s.h}</div></div><div class="ca-sec-body"><p>${s.p}</p></div></div>`).join('')}
+    </div><div class="ca-cta"><h3>🇨🇳 중국어 무료 체험 수업</h3><p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p><div class="ca-cta-btns"><a href="/체험신청" class="ca-cta-btn ca-cta-w">무료 체험 신청</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a></div></div><div class="ca-related"><h3>중국어 수업 더보기</h3><div class="ca-related-grid">
         ${CN_KEYWORDS.filter((_,i)=>i!==idx).slice(0,8).map((k,i)=>{
           const ri = i >= idx ? i+1 : i;
           return `<a href="/외국어/중국어/article/${ri}" class="ca-related-item"><span>${k.icon}</span><span>${k.title}</span><span class="ca-related-arrow">→</span></a>`;
         }).join('')}
-      </div>
-    </div>
-  </div>
+      </div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -3894,33 +3062,14 @@ function renderJapaneseArticle(articleIdx) {
   <style>${commonStyles()}.ca-hero{background:linear-gradient(135deg,#1a1a2e 0%,#4a1942 50%,#c2185b 100%);color:#fff;padding:48px 24px 40px;text-align:center}.ca-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px}.ca-hero h1{font-size:28px;font-weight:900;line-height:1.4;margin-bottom:8px}.ca-hero-meta{font-size:13px;color:rgba(255,255,255,.6)}.ca-wrap{max-width:720px;margin:0 auto;padding:32px 20px 0}.ca-intro{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:28px;position:relative}.ca-intro::before{content:'💡';position:absolute;top:-14px;left:20px;background:#fff;padding:0 8px;font-size:20px}.ca-intro p{font-size:15px;color:#334155;line-height:1.8;margin:0;word-break:keep-all}.ca-sections{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}.ca-sec{background:#fff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;transition:.2s}.ca-sec:hover{border-color:#f9a8d4;box-shadow:0 4px 16px rgba(194,24,91,.06)}.ca-sec-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:#fdf2f8;border-bottom:1px solid #fbcfe8}.ca-sec-num{width:32px;height:32px;background:#c2185b;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}.ca-sec-title{font-size:17px;font-weight:700;color:#0f172a}.ca-sec-body{padding:18px 20px}.ca-sec-body p{font-size:15px;color:#475569;line-height:1.8;margin:0;word-break:keep-all}.ca-cta{background:linear-gradient(135deg,#1a1a2e,#c2185b);border-radius:16px;padding:32px 24px;text-align:center;color:#fff;margin:32px 0}.ca-cta h3{font-size:20px;font-weight:800;margin-bottom:6px}.ca-cta p{font-size:13px;opacity:.7;margin-bottom:16px}.ca-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.ca-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.ca-cta-w{background:#fff;color:#c2185b}.ca-cta-o{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}.ca-related{margin-top:36px;padding-top:28px;border-top:2px solid #f1f5f9}.ca-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #c2185b}.ca-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ca-related-item{padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:.2s;display:flex;align-items:center;gap:10px}.ca-related-item:hover{border-color:#c2185b;color:#c2185b;transform:translateX(4px)}.ca-related-arrow{color:#d1d5db;margin-left:auto;flex-shrink:0}.ca-related-item:hover .ca-related-arrow{color:#c2185b}@media (max-width:640px){.ca-hero h1{font-size:22px}.ca-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('foreign')}
   ${renderArticleHero(kw.icon + ' ' + kw.title, '🇯🇵 JP 일본어 1:1 맞춤 수업', '일본어-' + idx)}
-  <div class="ca-wrap">
-    <h1 style="font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin:0 0 20px">${kw.title}</h1>
-    <div class="ca-intro"><p>${intro}</p></div>
-    <div class="ca-sections">
-      ${secs.map((s,i) => `<div class="ca-sec">
-        <div class="ca-sec-head"><div class="ca-sec-num">${i+1}</div><div class="ca-sec-title">${s.h}</div></div>
-        <div class="ca-sec-body"><p>${s.p}</p></div>
-      </div>`).join('')}
-    </div>
-    <div class="ca-cta">
-      <h3>🇯🇵 일본어 무료 체험 수업</h3>
-      <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
-      <div class="ca-cta-btns">
-        <a href="/체험신청" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
-        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
-      </div>
-    </div>
-    <div class="ca-related">
-      <h3>일본어 수업 더보기</h3>
-      <div class="ca-related-grid">
+  <div class="ca-wrap"><h1 style="font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin:0 0 20px">${kw.title}</h1><div class="ca-intro"><p>${intro}</p></div><div class="ca-sections">
+      ${secs.map((s,i) => `<div class="ca-sec"><div class="ca-sec-head"><div class="ca-sec-num">${i+1}</div><div class="ca-sec-title">${s.h}</div></div><div class="ca-sec-body"><p>${s.p}</p></div></div>`).join('')}
+    </div><div class="ca-cta"><h3>🇯🇵 일본어 무료 체험 수업</h3><p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p><div class="ca-cta-btns"><a href="/체험신청" class="ca-cta-btn ca-cta-w">무료 체험 신청</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a></div></div><div class="ca-related"><h3>일본어 수업 더보기</h3><div class="ca-related-grid">
         ${JP_KEYWORDS.filter((_,i)=>i!==idx).slice(0,8).map((k,i)=>{
           const ri = i >= idx ? i+1 : i;
           return `<a href="/외국어/일본어/article/${ri}" class="ca-related-item"><span>${k.icon}</span><span>${k.title}</span><span class="ca-related-arrow">→</span></a>`;
         }).join('')}
-      </div>
-    </div>
-  </div>
+      </div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -3992,27 +3141,11 @@ function renderEnglishArticle(articleIdx) {
   <style>${commonStyles()}.ca-hero{background:linear-gradient(135deg,#0c2340 0%,#1e3a5f 50%,#3b82f6 100%);color:#fff;padding:48px 24px 40px;text-align:center}.ca-hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;margin-bottom:16px}.ca-hero h1{font-size:28px;font-weight:900;line-height:1.4;margin-bottom:8px}.ca-hero-meta{font-size:13px;color:rgba(255,255,255,.6)}.ca-wrap{max-width:720px;margin:0 auto;padding:32px 20px 0}.ca-intro{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;margin-bottom:28px;position:relative}.ca-intro::before{content:'💡';position:absolute;top:-14px;left:20px;background:#fff;padding:0 8px;font-size:20px}.ca-intro p{font-size:15px;color:#334155;line-height:1.8;margin:0;word-break:keep-all}.ca-sections{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}.ca-sec{background:#fff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;transition:.2s}.ca-sec:hover{border-color:#93c5fd;box-shadow:0 4px 16px rgba(59,130,246,.06)}.ca-sec-head{display:flex;align-items:center;gap:14px;padding:18px 20px;background:#eff6ff;border-bottom:1px solid #bfdbfe}.ca-sec-num{width:32px;height:32px;background:#3b82f6;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}.ca-sec-title{font-size:17px;font-weight:700;color:#0f172a}.ca-sec-body{padding:18px 20px}.ca-sec-body p{font-size:15px;color:#475569;line-height:1.8;margin:0;word-break:keep-all}.ca-cta{background:linear-gradient(135deg,#0c2340,#3b82f6);border-radius:16px;padding:32px 24px;text-align:center;color:#fff;margin:32px 0}.ca-cta h3{font-size:20px;font-weight:800;margin-bottom:6px}.ca-cta p{font-size:13px;opacity:.7;margin-bottom:16px}.ca-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.ca-cta-btn{padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none}.ca-cta-w{background:#fff;color:#3b82f6}.ca-cta-o{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}.ca-related{margin-top:36px;padding-top:28px;border-top:2px solid #f1f5f9}.ca-related h3{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid #3b82f6}.ca-related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ca-related-item{padding:14px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;text-decoration:none;color:#334155;font-size:14px;font-weight:500;transition:.2s;display:flex;align-items:center;gap:10px}.ca-related-item:hover{border-color:#3b82f6;color:#3b82f6;transform:translateX(4px)}.ca-related-arrow{color:#d1d5db;margin-left:auto;flex-shrink:0}.ca-related-item:hover .ca-related-arrow{color:#3b82f6}@media(max-width:640px){.ca-hero h1{font-size:22px}.ca-related-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('foreign')}
   ${renderArticleHero(kw.icon + ' ' + kw.title, '🇺🇸 EN 영어 회화 1:1 맞춤 수업', '영어-' + idx)}
-  <div class="ca-wrap">
-    <h1 style="font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin:0 0 20px">${kw.title}</h1>
-    <div class="ca-intro"><p>${intro}</p></div>
-    <div class="ca-sections">
+  <div class="ca-wrap"><h1 style="font-size:28px;font-weight:900;color:#0f172a;line-height:1.4;margin:0 0 20px">${kw.title}</h1><div class="ca-intro"><p>${intro}</p></div><div class="ca-sections">
       ${secs.map((s,i) => `<div class="ca-sec"><div class="ca-sec-head"><div class="ca-sec-num">${i+1}</div><div class="ca-sec-title">${s.h}</div></div><div class="ca-sec-body"><p>${s.p}</p></div></div>`).join('')}
-    </div>
-    <div class="ca-cta">
-      <h3>🇺🇸 영어 회화 무료 체험 수업</h3>
-      <p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p>
-      <div class="ca-cta-btns">
-        <a href="/체험신청" class="ca-cta-btn ca-cta-w">무료 체험 신청</a>
-        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a>
-      </div>
-    </div>
-    <div class="ca-related">
-      <h3>영어 회화 수업 더보기</h3>
-      <div class="ca-related-grid">
+    </div><div class="ca-cta"><h3>🇺🇸 영어 회화 무료 체험 수업</h3><p>25분 체험으로 레벨 진단 + 맞춤 로드맵 제안</p><div class="ca-cta-btns"><a href="/체험신청" class="ca-cta-btn ca-cta-w">무료 체험 신청</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="ca-cta-btn ca-cta-o">💬 카톡 상담</a></div></div><div class="ca-related"><h3>영어 회화 수업 더보기</h3><div class="ca-related-grid">
         ${EN_CV_KEYWORDS.filter((_,i)=>i!==idx).slice(0,8).map((k,i)=>{const ri=i>=idx?i+1:i;return `<a href="/외국어/영어/article/${ri}" class="ca-related-item"><span>${k.icon}</span><span>${k.title}</span><span class="ca-related-arrow">→</span></a>`;}).join('')}
-      </div>
-    </div>
-  </div>
+      </div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -4083,22 +3216,14 @@ const GUIDE_CLOSINGS = [
 function renderGuideList() {
   const cards = GUIDE_ARTICLES.map((a, i) => {
     const img = getEduImage('guide' + i);
-    return `<a href="/학습가이드/article/${i}" class="gl-card">
-      <div class="gl-card-img"><img src="${img}" alt="${a.kw}" loading="lazy"/><div class="gl-card-overlay"></div><span class="gl-card-cat">${a.cat}</span></div>
-      <div class="gl-card-body"><h3>${a.kw}</h3><p>${a.title.split('|')[1]?.trim() || a.kw}</p></div>
-    </a>`;
+    return `<a href="/학습가이드/article/${i}" class="gl-card"><div class="gl-card-img"><img src="${img}" alt="${a.kw}" loading="lazy"/><div class="gl-card-overlay"></div><span class="gl-card-cat">${a.cat}</span></div><div class="gl-card-body"><h3>${a.kw}</h3><p>${a.title.split('|')[1]?.trim() || a.kw}</p></div></a>`;
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead('학습가이드 - 공부법, 시험 대비, 학습 습관 | 과외안하니', '공부 집중법, 시험 대비 전략, 성적 올리는 습관까지. 학생과 학부모를 위한 교육 정보 가이드.', 'https://anhani.com/학습가이드', getEduImage('학습가이드'))}
   <style>${commonStyles()}.gl-hero-wrap{position:relative;overflow:hidden;width:calc(100% - 40px);max-width:1060px;margin:20px auto 24px;border-radius:14px}.gl-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.gl-hero-ov{position:absolute;inset:0;background:transparent}.gl-hero{position:relative;padding:72px 24px 56px;text-align:center;color:#fff}.gl-hero h1{font-size:36px;font-weight:900;margin-bottom:10px;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}.gl-hero p{font-size:16px;color:rgba(255,255,255,.9)}.gl-wrap{max-width:1060px;margin:0 auto;padding:40px 24px 80px}.gl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}.gl-card{display:block;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;text-decoration:none;color:inherit;transition:all .25s}.gl-card:hover{transform:translateY(-5px);box-shadow:0 12px 32px rgba(0,0,0,.08);border-color:#6366f1}.gl-card-img{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0f172a}.gl-card-img img{width:100%;height:100%;object-fit:cover}.gl-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 60%)}.gl-card-cat{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;padding:4px 10px;background:rgba(255,255,255,.92);color:#4f46e5;border-radius:6px}.gl-card-body{padding:18px 20px}.gl-card-body h3{font-size:17px;font-weight:800;color:#0f172a;margin-bottom:6px}.gl-card-body p{font-size:13px;color:#64748b;line-height:1.5}@media (max-width:640px){.gl-hero h1{font-size:26px}.gl-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('guide')}
-  <div class="gl-hero-wrap">
-    <img src="${getEduImage('guidemain')}" class="gl-hero-img" alt="학습가이드" loading="eager"/>
-    <div class="gl-hero-ov"></div>
-    <div class="gl-hero"><h1>학습가이드</h1><p>공부법, 시험 전략, 학습 습관까지 — 교육 전문 가이드</p></div>
-  </div>
-  <div class="gl-wrap"><div class="gl-grid">${cards}</div></div>
+  <div class="gl-hero-wrap"><img src="${getEduImage('guidemain')}" class="gl-hero-img" alt="학습가이드" loading="eager"/><div class="gl-hero-ov"></div><div class="gl-hero"><h1>학습가이드</h1><p>공부법, 시험 전략, 학습 습관까지 — 교육 전문 가이드</p></div></div><div class="gl-wrap"><div class="gl-grid">${cards}</div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -4127,41 +3252,7 @@ function renderGuideArticle(idx) {
   ${commonHead(a.title + ' | 과외안하니', a.kw + ' 완벽 가이드. 실전 노하우와 학습 전략을 한 번에 확인하세요.', 'https://anhani.com/학습가이드/article/' + idx, heroImg)}
   <style>${commonStyles()}.ga-wrap{max-width:768px;margin:0 auto;padding:0 20px 80px}.ga-hero-wrap{position:relative;width:calc(100% - 40px);max-width:728px;margin:20px auto 24px;aspect-ratio:1200/500;overflow:hidden;background:#0f172a;border-radius:14px}.ga-hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ga-hero-ov{position:absolute;inset:0;background:transparent}.ga-hero-text{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff}.ga-hero-text h2{font-size:clamp(20px,4vw,34px);font-weight:900;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);line-height:1.3;margin:0}.ga-hero-text p{font-size:clamp(12px,1.6vw,15px);opacity:.88;margin:6px 0 0;text-shadow:0 2px 4px rgba(0,0,0,.8),0 0 12px rgba(0,0,0,.6)}.ga-bc{font-size:13px;color:#94a3b8;margin-bottom:20px;padding-top:20px}.ga-bc a{color:#6366f1;text-decoration:none}.ga-badge{display:inline-block;background:#eef2ff;color:#4f46e5;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:12px}.ga-title{font-size:28px;font-weight:900;color:#0f172a;margin-bottom:12px;line-height:1.4}.ga-meta{font-size:13px;color:#94a3b8;margin-bottom:28px}.ga-content h2{font-size:20px;font-weight:800;color:#0f172a;margin:28px 0 12px;padding-left:12px;border-left:4px solid #6366f1}.ga-content p{font-size:15px;color:#334155;line-height:1.85;margin-bottom:14px;word-break:keep-all}.ga-tip{background:#fffbeb;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0;font-size:14px;line-height:1.7;color:#78350f}.ga-cta{background:linear-gradient(135deg,#312e81,#4f46e5);border-radius:14px;padding:28px 24px;text-align:center;color:#fff;margin:36px 0}.ga-cta h3{font-size:18px;font-weight:800;margin-bottom:8px}.ga-cta p{font-size:13px;opacity:.85;margin-bottom:14px}.ga-cta a{display:inline-block;margin:0 4px;padding:10px 20px;background:#fff;color:#4f46e5;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none}.ga-related{margin-top:36px;padding-top:24px;border-top:2px solid #e2e8f0}.ga-related h3{font-size:17px;font-weight:800;margin-bottom:14px}.ga-rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ga-rel{padding:12px 16px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;color:#475569;font-size:13px;font-weight:600;transition:.2s}.ga-rel:hover{border-color:#6366f1;color:#6366f1}@media (max-width:640px){.ga-rel-grid{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('guide')}
-  <div class="ga-hero-wrap">
-    <img src="${heroImg}" alt="${a.kw}" loading="eager"/>
-    <div class="ga-hero-ov"></div>
-    <div class="ga-hero-text">
-      <h2>${a.title.split('|')[0].trim()}</h2>
-      <p>${a.title.split('|')[1]?.trim() || a.kw}</p>
-    </div>
-  </div>
-  <div class="ga-wrap">
-    <div class="ga-bc"><a href="/">홈</a> &gt; <a href="/학습가이드">학습가이드</a> &gt; ${a.kw}</div>
-    <span class="ga-badge">${a.cat}</span>
-    <h1 class="ga-title">${a.title.split('|')[0].trim()}</h1>
-    <div class="ga-meta">✏️ 과외안하니 편집팀 · 📅 2026년 4월</div>
-    <div class="ga-content">
-      <p>${intro}</p>
-      <h2>${sec1.h}</h2><p>${sec1.p}</p>
-      <h2>${sec2.h}</h2><p>${sec2.p}</p>
-      <div class="ga-tip">${tip}</div>
-      <h2>${sec3.h}</h2><p>${sec3.p}</p>
-      <h2>${sec4.h}</h2><p>${sec4.p}</p>
-      <h2>${sec5.h}</h2><p>${sec5.p}</p>
-      <h2>${sec6.h}</h2><p>${sec6.p}</p>
-      <p>${closing}</p>
-    </div>
-    <div class="ga-cta">
-      <h3>1:1 맞춤 과외로 확실하게</h3>
-      <p>전문 선생님과 함께 체계적으로 학습하세요</p>
-      <a href="/체험신청">⭐ 무료 체험</a>
-      <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a>
-    </div>
-    <div class="ga-related">
-      <h3>다른 학습가이드</h3>
-      <div class="ga-rel-grid">${otherLinks}</div>
-    </div>
-  </div>
+  <div class="ga-hero-wrap"><img src="${heroImg}" alt="${a.kw}" loading="eager"/><div class="ga-hero-ov"></div><div class="ga-hero-text"><h2>${a.title.split('|')[0].trim()}</h2><p>${a.title.split('|')[1]?.trim() || a.kw}</p></div></div><div class="ga-wrap"><div class="ga-bc"><a href="/">홈</a> &gt; <a href="/학습가이드">학습가이드</a> &gt; ${a.kw}</div><span class="ga-badge">${a.cat}</span><h1 class="ga-title">${a.title.split('|')[0].trim()}</h1><div class="ga-meta">✏️ 과외안하니 편집팀 · 📅 2026년 4월</div><div class="ga-content"><p>${intro}</p><h2>${sec1.h}</h2><p>${sec1.p}</p><h2>${sec2.h}</h2><p>${sec2.p}</p><div class="ga-tip">${tip}</div><h2>${sec3.h}</h2><p>${sec3.p}</p><h2>${sec4.h}</h2><p>${sec4.p}</p><h2>${sec5.h}</h2><p>${sec5.p}</p><h2>${sec6.h}</h2><p>${sec6.p}</p><p>${closing}</p></div><div class="ga-cta"><h3>1:1 맞춤 과외로 확실하게</h3><p>전문 선생님과 함께 체계적으로 학습하세요</p><a href="/체험신청">⭐ 무료 체험</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a></div><div class="ga-related"><h3>다른 학습가이드</h3><div class="ga-rel-grid">${otherLinks}</div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -4172,154 +3263,7 @@ function renderServicePage() {
   <style>${commonStyles()}.sv-hero{background:linear-gradient(160deg,#0c1425 0%,#162044 40%,#1e1b4b 100%);color:#fff;padding:80px 24px 60px;text-align:center;position:relative;overflow:hidden}.sv-hero::before{content:'';position:absolute;top:-50%;left:-20%;width:140%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(99,102,241,.12) 0%,transparent 50%)}.sv-hero-inner{position:relative;max-width:700px;margin:0 auto}.sv-hero-badge{display:inline-block;background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.3);padding:6px 20px;border-radius:24px;font-size:13px;font-weight:600;color:#a5b4fc;margin-bottom:24px}.sv-hero h1{font-size:42px;font-weight:900;line-height:1.3;margin-bottom:16px;letter-spacing:-1px}.sv-hero h1 em{font-style:normal;color:#818cf8}.sv-hero-desc{font-size:17px;color:#94a3b8;line-height:1.7;margin-bottom:32px}.sv-hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}.sv-hero-btn{padding:14px 32px;border-radius:12px;font-size:16px;font-weight:700;text-decoration:none;transition:.2s}.sv-btn-primary{background:#6366f1;color:#fff}.sv-btn-primary:hover{background:#4f46e5;transform:translateY(-2px)}.sv-btn-secondary{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.2)}.sv-hero-stats{display:flex;gap:40px;justify-content:center}.sv-hero-stat{text-align:center}.sv-hero-stat-num{font-size:28px;font-weight:900;color:#fff}.sv-hero-stat-label{font-size:12px;color:#64748b;margin-top:4px}.sv-section{max-width:960px;margin:0 auto;padding:80px 24px}.sv-section-label{font-size:13px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:12px}.sv-section-title{font-size:30px;font-weight:900;color:#0f172a;text-align:center;line-height:1.4;margin-bottom:12px}.sv-section-title em{font-style:normal;color:#6366f1}.sv-section-desc{font-size:15px;color:#64748b;text-align:center;line-height:1.7;margin-bottom:48px}.sv-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.sv-pillar{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:32px 20px;text-align:center;transition:.2s}.sv-pillar:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,.08);border-color:#6366f1}.sv-pillar-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px}.sv-pillar h3{font-size:17px;font-weight:800;color:#0f172a;margin-bottom:8px}.sv-pillar p{font-size:13px;color:#64748b;line-height:1.6}.sv-process-bg{background:#f8fafc}.sv-process{display:flex;gap:0;justify-content:center;align-items:stretch;position:relative}.sv-step{flex:1;max-width:200px;text-align:center;padding:24px 16px;position:relative}.sv-step-num{width:40px;height:40px;background:#6366f1;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;margin-bottom:14px;position:relative;z-index:2}.sv-step h4{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:6px}.sv-step p{font-size:12px;color:#94a3b8;line-height:1.5}.sv-step::after{content:'';position:absolute;top:44px;left:50%;width:100%;height:2px;background:#e2e8f0;z-index:1}.sv-step:last-child::after{display:none}.sv-diff{display:grid;grid-template-columns:1fr 1fr;gap:16px}.sv-diff-card{background:#fff;border-radius:14px;padding:28px 24px;border:1px solid #e2e8f0}.sv-diff-card h4{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:8px;display:flex;align-items:center;gap:8px}.sv-diff-card p{font-size:14px;color:#64748b;line-height:1.7}.sv-system-bg{background:#0f172a;color:#fff}.sv-system-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.sv-sys-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px 20px;text-align:center}.sv-sys-card:hover{background:rgba(255,255,255,.1)}.sv-sys-icon{font-size:32px;margin-bottom:12px}.sv-sys-card h4{font-size:16px;font-weight:700;margin-bottom:8px}.sv-sys-card p{font-size:13px;color:#94a3b8;line-height:1.6}.sv-price-bg{background:#f0f4ff}.sv-price-table{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.sv-price-card{background:#fff;border-radius:16px;padding:32px 24px;text-align:center;border:1.5px solid #e2e8f0;transition:.2s}.sv-price-card.featured{border-color:#6366f1;box-shadow:0 8px 32px rgba(99,102,241,.15);transform:scale(1.03)}.sv-price-badge{display:inline-block;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;margin-bottom:12px}.sv-price-card h3{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:4px}.sv-price-range{font-size:14px;color:#64748b;margin-bottom:16px}.sv-price-features{list-style:none;padding:0;margin:0 0 20px;text-align:left}.sv-price-features li{font-size:13px;color:#475569;padding:6px 0;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;gap:8px}.sv-price-btn{display:block;padding:12px;border-radius:10px;font-size:14px;font-weight:700;text-decoration:none;text-align:center;transition:.2s}.sv-contact-bg{background:linear-gradient(135deg,#1e1b4b,#312e81);color:#fff}.sv-contact-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}.sv-contact-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:28px 20px;text-align:center}.sv-contact-card:hover{background:rgba(255,255,255,.12)}.sv-contact-icon{font-size:32px;margin-bottom:10px}.sv-contact-card h4{font-size:14px;color:#a5b4fc;margin-bottom:8px}.sv-contact-card .sv-contact-val{font-size:20px;font-weight:800;color:#fff}.sv-contact-card a{color:#fff;text-decoration:none}@media (max-width:768px){.sv-hero h1{font-size:28px}.sv-hero-stats{gap:20px}.sv-hero-stat-num{font-size:22px}.sv-pillars{grid-template-columns:1fr 1fr}.sv-process{flex-direction:column;align-items:center}.sv-step::after{display:none}.sv-diff{grid-template-columns:1fr}.sv-system-grid{grid-template-columns:1fr}.sv-price-table{grid-template-columns:1fr}.sv-price-card.featured{transform:none}.sv-contact-grid{grid-template-columns:1fr}.sv-section-title{font-size:24px}}</style></head><body>
   ${navHTML('')}
 
-  <section class="sv-hero">
-    <div class="sv-hero-inner">
-      <div class="sv-hero-badge">✦ 초·중·고 전과목 1:1 맞춤 과외</div>
-      <h1>아이의 성적을<br><em>확실하게</em> 바꾸는 방법</h1>
-      <p class="sv-hero-desc">수준별 맞춤 수업부터 내신·수능 완벽 대비,<br>올바른 학습습관 형성까지. 과외안하니가 책임집니다.</p>
-      <div class="sv-hero-btns">
-        <a href="/체험신청" class="sv-hero-btn sv-btn-primary">무료 상담 신청 →</a>
-        <a href="tel:010-4827-5592" class="sv-hero-btn sv-btn-secondary">📞 010-4827-5592</a>
-      </div>
-      <div class="sv-hero-stats">
-        <div class="sv-hero-stat"><div class="sv-hero-stat-num">4,200+</div><div class="sv-hero-stat-label">누적 합격생</div></div>
-        <div class="sv-hero-stat"><div class="sv-hero-stat-num">3,000명</div><div class="sv-hero-stat-label">전문 선생님</div></div>
-        <div class="sv-hero-stat"><div class="sv-hero-stat-num">98%</div><div class="sv-hero-stat-label">학생 만족도</div></div>
-        <div class="sv-hero-stat"><div class="sv-hero-stat-num">31년</div><div class="sv-hero-stat-label">교육 노하우</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sv-section">
-    <div class="sv-section-label">CORE VALUES</div>
-    <h2 class="sv-section-title">과외안하니의 <em>4가지 약속</em></h2>
-    <p class="sv-section-desc">모든 수업은 이 네 가지 원칙 위에서 설계됩니다.</p>
-    <div class="sv-pillars">
-      <div class="sv-pillar"><div class="sv-pillar-icon" style="background:#eef2ff">🎯</div><h3>수준별 맞춤 수업</h3><p>학생의 현재 실력을 정밀 진단하고, 약점에 맞춘 개인별 커리큘럼을 설계합니다.</p></div>
-      <div class="sv-pillar"><div class="sv-pillar-icon" style="background:#f0fdf4">📈</div><h3>기초부터 심화까지</h3><p>기초가 부족해도 걱정 마세요. 단계별로 차근차근, 탄탄하게 실력을 쌓아갑니다.</p></div>
-      <div class="sv-pillar"><div class="sv-pillar-icon" style="background:#fef3c7">🏆</div><h3>내신 · 수능 완벽 대비</h3><p>학교별 기출 분석, 수능 유형별 전략까지. 시험에 최적화된 학습을 제공합니다.</p></div>
-      <div class="sv-pillar"><div class="sv-pillar-icon" style="background:#fce7f3">🧠</div><h3>올바른 학습습관</h3><p>단순 주입식이 아닌, 스스로 계획하고 실행하는 자기주도학습 능력을 키웁니다.</p></div>
-    </div>
-  </section>
-
-  <section class="sv-process-bg">
-    <div class="sv-section" style="padding-bottom:60px">
-      <div class="sv-section-label">PROCESS</div>
-      <h2 class="sv-section-title">수업은 이렇게 <em>진행됩니다</em></h2>
-      <p class="sv-section-desc">상담부터 성적 향상까지, 체계적인 5단계 프로세스</p>
-      <div class="sv-process">
-        <div class="sv-step"><div class="sv-step-num">1</div><h4>무료 상담</h4><p>학생 상황 파악<br>목표 설정</p></div>
-        <div class="sv-step"><div class="sv-step-num">2</div><h4>수준 진단</h4><p>AI 기반 진단<br>취약점 분석</p></div>
-        <div class="sv-step"><div class="sv-step-num">3</div><h4>선생님 매칭</h4><p>최적 코치 배정<br>체험 수업</p></div>
-        <div class="sv-step"><div class="sv-step-num">4</div><h4>맞춤 수업</h4><p>개인별 커리큘럼<br>주간 리포트</p></div>
-        <div class="sv-step"><div class="sv-step-num">5</div><h4>성적 향상</h4><p>정기 평가<br>목표 달성</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sv-section">
-    <div class="sv-section-label">DIFFERENCE</div>
-    <h2 class="sv-section-title">과외안하니만의 <em>차별점</em></h2>
-    <p class="sv-section-desc">단순 과외가 아닙니다. 학습 환경 전체를 설계합니다.</p>
-    <div class="sv-diff">
-      <div class="sv-diff-card"><h4>📊 학교 기출 완벽 분석</h4><p>인근 학교 내신 시험의 출제 패턴을 매 학기 분석합니다. 학교별 맞춤 대비로 내신 성적을 확실하게 끌어올립니다.</p></div>
-      <div class="sv-diff-card"><h4>👨‍🏫 3단계 코치 검증</h4><p>학력 검증, 모의 수업 평가, 인성 면접을 통과한 상위 5% 선생님만 배정합니다. 코치 교체도 무료입니다.</p></div>
-      <div class="sv-diff-card"><h4>📱 주간 학습 리포트</h4><p>매 수업 후 학습 내용과 아이의 상태를 카카오톡으로 상세히 전달합니다. 부모님도 함께 성장을 확인하세요.</p></div>
-      <div class="sv-diff-card"><h4>🎁 첫 수업 무료 체험</h4><p>첫 체험 수업은 완전 무료입니다. 부담 없이 수업 방식과 선생님과의 궁합을 확인해 보세요.</p></div>
-      <div class="sv-diff-card"><h4>📝 자기주도학습 코칭</h4><p>수업 시간 외에도 혼자 공부할 수 있는 계획표와 방법을 알려줍니다. 과외 없이도 공부하는 힘을 키워줍니다.</p></div>
-      <div class="sv-diff-card"><h4>🔄 오답 관리 시스템</h4><p>틀린 문제를 자동으로 모아서 반복 학습 자료로 제공합니다. 같은 실수를 두 번 하지 않게 됩니다.</p></div>
-    </div>
-  </section>
-
-  <section class="sv-system-bg">
-    <div class="sv-section">
-      <div class="sv-section-label" style="color:#a5b4fc">SYSTEM</div>
-      <h2 class="sv-section-title" style="color:#fff">과외안하니 <em>학습 관리 시스템</em></h2>
-      <p class="sv-section-desc" style="color:#94a3b8">AI 기술과 전문 코치의 결합으로 최적의 학습 환경을 만듭니다.</p>
-      <div class="sv-system-grid">
-        <div class="sv-sys-card"><div class="sv-sys-icon">🤖</div><h4>AI 학습 진단</h4><p>입학 시 AI 기반 진단검사로 취약 단원을 정밀하게 파악합니다.</p></div>
-        <div class="sv-sys-card"><div class="sv-sys-icon">📋</div><h4>맞춤 커리큘럼</h4><p>진단 결과를 기반으로 학생별 최적의 학습 경로를 설계합니다.</p></div>
-        <div class="sv-sys-card"><div class="sv-sys-icon">📊</div><h4>성과 추적</h4><p>매달 학습 성과를 데이터로 분석하고 계획을 유연하게 수정합니다.</p></div>
-        <div class="sv-sys-card"><div class="sv-sys-icon">💬</div><h4>실시간 질의응답</h4><p>수업 외 시간에도 카카오톡으로 궁금한 점을 바로 해결합니다.</p></div>
-        <div class="sv-sys-card"><div class="sv-sys-icon">📖</div><h4>학습 자료 제공</h4><p>교과서, 기출, 모의고사 등 필요한 모든 학습 자료를 준비합니다.</p></div>
-        <div class="sv-sys-card"><div class="sv-sys-icon">🏅</div><h4>동기부여 프로그램</h4><p>단계별 목표 달성 시 리워드를 통해 학습 의욕을 유지합니다.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sv-price-bg">
-    <div class="sv-section">
-      <div class="sv-section-label">PRICING</div>
-      <h2 class="sv-section-title">과외비 <em>안내</em></h2>
-      <p class="sv-section-desc">학교급별 적정 과외비를 안내드립니다. 정확한 비용은 무료 상담에서 확인하세요.</p>
-      <div class="sv-price-table">
-        <div class="sv-price-card">
-          <div class="sv-price-badge" style="background:#dbeafe;color:#1d4ed8">초등</div>
-          <h3>초등학교 과외</h3>
-          <div class="sv-price-range">시간당 2.5만~4만원</div>
-          <ul class="sv-price-features">
-            <li>✅ 주 2~3회 / 60~90분</li>
-            <li>✅ 학습 습관 형성 중심</li>
-            <li>✅ 재미있는 활동 수업</li>
-            <li>✅ 학부모 주간 리포트</li>
-            <li>✅ 첫 수업 무료 체험</li>
-          </ul>
-          <a href="/체험신청" class="sv-price-btn" style="background:#dbeafe;color:#1d4ed8">무료 상담 신청</a>
-        </div>
-        <div class="sv-price-card featured">
-          <div class="sv-price-badge" style="background:#6366f1;color:#fff">인기</div>
-          <h3>중학교 과외</h3>
-          <div class="sv-price-range">시간당 3만~5만원</div>
-          <ul class="sv-price-features">
-            <li>✅ 주 2~3회 / 90~120분</li>
-            <li>✅ 내신 완벽 대비</li>
-            <li>✅ 학교별 기출 분석</li>
-            <li>✅ 서술형 집중 훈련</li>
-            <li>✅ 시험 전 추가 수업</li>
-          </ul>
-          <a href="/체험신청" class="sv-price-btn" style="background:#6366f1;color:#fff">무료 상담 신청</a>
-        </div>
-        <div class="sv-price-card">
-          <div class="sv-price-badge" style="background:#fef3c7;color:#b45309">고등</div>
-          <h3>고등학교 과외</h3>
-          <div class="sv-price-range">시간당 4만~7만원</div>
-          <ul class="sv-price-features">
-            <li>✅ 주 2~4회 / 120분+</li>
-            <li>✅ 수능 + 내신 동시 대비</li>
-            <li>✅ 킬러 문항 집중 훈련</li>
-            <li>✅ 입시 전략 컨설팅</li>
-            <li>✅ 모의고사 분석 리포트</li>
-          </ul>
-          <a href="/체험신청" class="sv-price-btn" style="background:#fef3c7;color:#b45309">무료 상담 신청</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sv-contact-bg">
-    <div class="sv-section">
-      <div class="sv-section-label" style="color:#a5b4fc">CONTACT</div>
-      <h2 class="sv-section-title" style="color:#fff">지금 바로 <em>무료 상담</em> 받으세요</h2>
-      <p class="sv-section-desc" style="color:#94a3b8">첫 수업 무료 · 선생님 교체 무료 · 부담 없이 시작하세요</p>
-      <div class="sv-contact-grid">
-        <a href="tel:010-4827-5592" class="sv-contact-card" style="text-decoration:none">
-          <div class="sv-contact-icon">📞</div>
-          <h4>전화 상담</h4>
-          <div class="sv-contact-val">010-4827-5592</div>
-        </a>
-        <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="sv-contact-card" style="text-decoration:none">
-          <div class="sv-contact-icon">💬</div>
-          <h4>카카오톡 상담 (ID: kdy5592)</h4>
-          <div class="sv-contact-val">카카오톡 채팅</div>
-        </a>
-        <a href="/체험신청" class="sv-contact-card" style="text-decoration:none">
-          <div class="sv-contact-icon">📝</div>
-          <h4>무료 상담 신청</h4>
-          <div class="sv-contact-val">온라인 신청서</div>
-        </a>
-      </div>
-    </div>
-  </section>
+  <section class="sv-hero"><div class="sv-hero-inner"><div class="sv-hero-badge">✦ 초·중·고 전과목 1:1 맞춤 과외</div><h1>아이의 성적을<br><em>확실하게</em> 바꾸는 방법</h1><p class="sv-hero-desc">수준별 맞춤 수업부터 내신·수능 완벽 대비,<br>올바른 학습습관 형성까지. 과외안하니가 책임집니다.</p><div class="sv-hero-btns"><a href="/체험신청" class="sv-hero-btn sv-btn-primary">무료 상담 신청 →</a><a href="tel:010-4827-5592" class="sv-hero-btn sv-btn-secondary">📞 010-4827-5592</a></div><div class="sv-hero-stats"><div class="sv-hero-stat"><div class="sv-hero-stat-num">4,200+</div><div class="sv-hero-stat-label">누적 합격생</div></div><div class="sv-hero-stat"><div class="sv-hero-stat-num">3,000명</div><div class="sv-hero-stat-label">전문 선생님</div></div><div class="sv-hero-stat"><div class="sv-hero-stat-num">98%</div><div class="sv-hero-stat-label">학생 만족도</div></div><div class="sv-hero-stat"><div class="sv-hero-stat-num">31년</div><div class="sv-hero-stat-label">교육 노하우</div></div></div></div></section><section class="sv-section"><div class="sv-section-label">CORE VALUES</div><h2 class="sv-section-title">과외안하니의 <em>4가지 약속</em></h2><p class="sv-section-desc">모든 수업은 이 네 가지 원칙 위에서 설계됩니다.</p><div class="sv-pillars"><div class="sv-pillar"><div class="sv-pillar-icon" style="background:#eef2ff">🎯</div><h3>수준별 맞춤 수업</h3><p>학생의 현재 실력을 정밀 진단하고, 약점에 맞춘 개인별 커리큘럼을 설계합니다.</p></div><div class="sv-pillar"><div class="sv-pillar-icon" style="background:#f0fdf4">📈</div><h3>기초부터 심화까지</h3><p>기초가 부족해도 걱정 마세요. 단계별로 차근차근, 탄탄하게 실력을 쌓아갑니다.</p></div><div class="sv-pillar"><div class="sv-pillar-icon" style="background:#fef3c7">🏆</div><h3>내신 · 수능 완벽 대비</h3><p>학교별 기출 분석, 수능 유형별 전략까지. 시험에 최적화된 학습을 제공합니다.</p></div><div class="sv-pillar"><div class="sv-pillar-icon" style="background:#fce7f3">🧠</div><h3>올바른 학습습관</h3><p>단순 주입식이 아닌, 스스로 계획하고 실행하는 자기주도학습 능력을 키웁니다.</p></div></div></section><section class="sv-process-bg"><div class="sv-section" style="padding-bottom:60px"><div class="sv-section-label">PROCESS</div><h2 class="sv-section-title">수업은 이렇게 <em>진행됩니다</em></h2><p class="sv-section-desc">상담부터 성적 향상까지, 체계적인 5단계 프로세스</p><div class="sv-process"><div class="sv-step"><div class="sv-step-num">1</div><h4>무료 상담</h4><p>학생 상황 파악<br>목표 설정</p></div><div class="sv-step"><div class="sv-step-num">2</div><h4>수준 진단</h4><p>AI 기반 진단<br>취약점 분석</p></div><div class="sv-step"><div class="sv-step-num">3</div><h4>선생님 매칭</h4><p>최적 코치 배정<br>체험 수업</p></div><div class="sv-step"><div class="sv-step-num">4</div><h4>맞춤 수업</h4><p>개인별 커리큘럼<br>주간 리포트</p></div><div class="sv-step"><div class="sv-step-num">5</div><h4>성적 향상</h4><p>정기 평가<br>목표 달성</p></div></div></div></section><section class="sv-section"><div class="sv-section-label">DIFFERENCE</div><h2 class="sv-section-title">과외안하니만의 <em>차별점</em></h2><p class="sv-section-desc">단순 과외가 아닙니다. 학습 환경 전체를 설계합니다.</p><div class="sv-diff"><div class="sv-diff-card"><h4>📊 학교 기출 완벽 분석</h4><p>인근 학교 내신 시험의 출제 패턴을 매 학기 분석합니다. 학교별 맞춤 대비로 내신 성적을 확실하게 끌어올립니다.</p></div><div class="sv-diff-card"><h4>👨‍🏫 3단계 코치 검증</h4><p>학력 검증, 모의 수업 평가, 인성 면접을 통과한 상위 5% 선생님만 배정합니다. 코치 교체도 무료입니다.</p></div><div class="sv-diff-card"><h4>📱 주간 학습 리포트</h4><p>매 수업 후 학습 내용과 아이의 상태를 카카오톡으로 상세히 전달합니다. 부모님도 함께 성장을 확인하세요.</p></div><div class="sv-diff-card"><h4>🎁 첫 수업 무료 체험</h4><p>첫 체험 수업은 완전 무료입니다. 부담 없이 수업 방식과 선생님과의 궁합을 확인해 보세요.</p></div><div class="sv-diff-card"><h4>📝 자기주도학습 코칭</h4><p>수업 시간 외에도 혼자 공부할 수 있는 계획표와 방법을 알려줍니다. 과외 없이도 공부하는 힘을 키워줍니다.</p></div><div class="sv-diff-card"><h4>🔄 오답 관리 시스템</h4><p>틀린 문제를 자동으로 모아서 반복 학습 자료로 제공합니다. 같은 실수를 두 번 하지 않게 됩니다.</p></div></div></section><section class="sv-system-bg"><div class="sv-section"><div class="sv-section-label" style="color:#a5b4fc">SYSTEM</div><h2 class="sv-section-title" style="color:#fff">과외안하니 <em>학습 관리 시스템</em></h2><p class="sv-section-desc" style="color:#94a3b8">AI 기술과 전문 코치의 결합으로 최적의 학습 환경을 만듭니다.</p><div class="sv-system-grid"><div class="sv-sys-card"><div class="sv-sys-icon">🤖</div><h4>AI 학습 진단</h4><p>입학 시 AI 기반 진단검사로 취약 단원을 정밀하게 파악합니다.</p></div><div class="sv-sys-card"><div class="sv-sys-icon">📋</div><h4>맞춤 커리큘럼</h4><p>진단 결과를 기반으로 학생별 최적의 학습 경로를 설계합니다.</p></div><div class="sv-sys-card"><div class="sv-sys-icon">📊</div><h4>성과 추적</h4><p>매달 학습 성과를 데이터로 분석하고 계획을 유연하게 수정합니다.</p></div><div class="sv-sys-card"><div class="sv-sys-icon">💬</div><h4>실시간 질의응답</h4><p>수업 외 시간에도 카카오톡으로 궁금한 점을 바로 해결합니다.</p></div><div class="sv-sys-card"><div class="sv-sys-icon">📖</div><h4>학습 자료 제공</h4><p>교과서, 기출, 모의고사 등 필요한 모든 학습 자료를 준비합니다.</p></div><div class="sv-sys-card"><div class="sv-sys-icon">🏅</div><h4>동기부여 프로그램</h4><p>단계별 목표 달성 시 리워드를 통해 학습 의욕을 유지합니다.</p></div></div></div></section><section class="sv-price-bg"><div class="sv-section"><div class="sv-section-label">PRICING</div><h2 class="sv-section-title">과외비 <em>안내</em></h2><p class="sv-section-desc">학교급별 적정 과외비를 안내드립니다. 정확한 비용은 무료 상담에서 확인하세요.</p><div class="sv-price-table"><div class="sv-price-card"><div class="sv-price-badge" style="background:#dbeafe;color:#1d4ed8">초등</div><h3>초등학교 과외</h3><div class="sv-price-range">시간당 2.5만~4만원</div><ul class="sv-price-features"><li>✅ 주 2~3회 / 60~90분</li><li>✅ 학습 습관 형성 중심</li><li>✅ 재미있는 활동 수업</li><li>✅ 학부모 주간 리포트</li><li>✅ 첫 수업 무료 체험</li></ul><a href="/체험신청" class="sv-price-btn" style="background:#dbeafe;color:#1d4ed8">무료 상담 신청</a></div><div class="sv-price-card featured"><div class="sv-price-badge" style="background:#6366f1;color:#fff">인기</div><h3>중학교 과외</h3><div class="sv-price-range">시간당 3만~5만원</div><ul class="sv-price-features"><li>✅ 주 2~3회 / 90~120분</li><li>✅ 내신 완벽 대비</li><li>✅ 학교별 기출 분석</li><li>✅ 서술형 집중 훈련</li><li>✅ 시험 전 추가 수업</li></ul><a href="/체험신청" class="sv-price-btn" style="background:#6366f1;color:#fff">무료 상담 신청</a></div><div class="sv-price-card"><div class="sv-price-badge" style="background:#fef3c7;color:#b45309">고등</div><h3>고등학교 과외</h3><div class="sv-price-range">시간당 4만~7만원</div><ul class="sv-price-features"><li>✅ 주 2~4회 / 120분+</li><li>✅ 수능 + 내신 동시 대비</li><li>✅ 킬러 문항 집중 훈련</li><li>✅ 입시 전략 컨설팅</li><li>✅ 모의고사 분석 리포트</li></ul><a href="/체험신청" class="sv-price-btn" style="background:#fef3c7;color:#b45309">무료 상담 신청</a></div></div></div></section><section class="sv-contact-bg"><div class="sv-section"><div class="sv-section-label" style="color:#a5b4fc">CONTACT</div><h2 class="sv-section-title" style="color:#fff">지금 바로 <em>무료 상담</em> 받으세요</h2><p class="sv-section-desc" style="color:#94a3b8">첫 수업 무료 · 선생님 교체 무료 · 부담 없이 시작하세요</p><div class="sv-contact-grid"><a href="tel:010-4827-5592" class="sv-contact-card" style="text-decoration:none"><div class="sv-contact-icon">📞</div><h4>전화 상담</h4><div class="sv-contact-val">010-4827-5592</div></a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="sv-contact-card" style="text-decoration:none"><div class="sv-contact-icon">💬</div><h4>카카오톡 상담 (ID: kdy5592)</h4><div class="sv-contact-val">카카오톡 채팅</div></a><a href="/체험신청" class="sv-contact-card" style="text-decoration:none"><div class="sv-contact-icon">📝</div><h4>무료 상담 신청</h4><div class="sv-contact-val">온라인 신청서</div></a></div></div></section>
 
   ${footerHTML()}
   </body></html>`;
@@ -4331,30 +3275,7 @@ function renderVideoLesson() {
   ${commonHead('화상수업 - 과외안하니', '전국 어디서나 1:1 화상 과외. 실시간 화상 수업으로 집에서도 최고의 수업을 받으세요.', 'https://anhani.com/video-lesson')}
   <style>${commonStyles()}.vl-wrap{max-width:900px;margin:0 auto;padding:48px 24px 80px}.vl-hero{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:20px;padding:48px 32px;text-align:center;color:#fff;margin-bottom:40px}.vl-title{font-size:32px;font-weight:900;margin-bottom:10px}.vl-title em{font-style:normal;color:#818cf8}.vl-desc{font-size:15px;opacity:.8;margin-bottom:24px;line-height:1.7}.vl-btn{display:inline-block;background:#fff;color:#4f46e5;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}.vl-section{margin-bottom:36px}.vl-section h2{font-size:22px;font-weight:800;color:#0f172a;margin-bottom:16px;text-align:center}.vl-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.vl-step{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:28px 20px;text-align:center}.vl-step-num{width:40px;height:40px;background:#6366f1;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;margin:0 auto 12px}.vl-step h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:6px}.vl-step p{font-size:13px;color:#64748b;line-height:1.6}.vl-features{display:grid;grid-template-columns:1fr 1fr;gap:12px}.vl-feat{background:#f8fafc;border-radius:12px;padding:20px;display:flex;align-items:flex-start;gap:12px}.vl-feat-icon{font-size:24px;flex-shrink:0}.vl-feat h4{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:4px}.vl-feat p{font-size:13px;color:#64748b}@media (max-width:640px){.vl-steps{grid-template-columns:1fr}.vl-features{grid-template-columns:1fr}.vl-title{font-size:24px}}</style></head><body>
   ${navHTML('')}
-  <div class="vl-wrap">
-    <div class="vl-hero">
-      <h1 class="vl-title">전국 어디서나<br><em>1:1 화상 과외</em></h1>
-      <p class="vl-desc">거리 제한 없이 전국 최고의 선생님과<br>실시간으로 수업받을 수 있습니다.</p>
-      <a href="/체험신청" class="vl-btn">무료 체험 신청 →</a>
-    </div>
-    <div class="vl-section">
-      <h2>화상수업 진행 과정</h2>
-      <div class="vl-steps">
-        <div class="vl-step"><div class="vl-step-num">1</div><h3>상담 신청</h3><p>과목, 학년, 목표를 알려주세요</p></div>
-        <div class="vl-step"><div class="vl-step-num">2</div><h3>선생님 매칭</h3><p>AI가 최적의 선생님을 추천합니다</p></div>
-        <div class="vl-step"><div class="vl-step-num">3</div><h3>화상 수업 시작</h3><p>PC나 태블릿으로 바로 수업!</p></div>
-      </div>
-    </div>
-    <div class="vl-section">
-      <h2>화상수업의 장점</h2>
-      <div class="vl-features">
-        <div class="vl-feat"><div class="vl-feat-icon">🏠</div><div><h4>집에서 편하게</h4><p>이동 시간 없이 집에서 수업</p></div></div>
-        <div class="vl-feat"><div class="vl-feat-icon">👨‍🏫</div><div><h4>전국 선생님</h4><p>지역 제한 없이 최고의 선생님 매칭</p></div></div>
-        <div class="vl-feat"><div class="vl-feat-icon">📱</div><div><h4>녹화 복습</h4><p>수업 녹화로 언제든 복습 가능</p></div></div>
-        <div class="vl-feat"><div class="vl-feat-icon">💰</div><div><h4>합리적 비용</h4><p>방문 과외 대비 20~30% 저렴</p></div></div>
-      </div>
-    </div>
-  </div>
+  <div class="vl-wrap"><div class="vl-hero"><h1 class="vl-title">전국 어디서나<br><em>1:1 화상 과외</em></h1><p class="vl-desc">거리 제한 없이 전국 최고의 선생님과<br>실시간으로 수업받을 수 있습니다.</p><a href="/체험신청" class="vl-btn">무료 체험 신청 →</a></div><div class="vl-section"><h2>화상수업 진행 과정</h2><div class="vl-steps"><div class="vl-step"><div class="vl-step-num">1</div><h3>상담 신청</h3><p>과목, 학년, 목표를 알려주세요</p></div><div class="vl-step"><div class="vl-step-num">2</div><h3>선생님 매칭</h3><p>AI가 최적의 선생님을 추천합니다</p></div><div class="vl-step"><div class="vl-step-num">3</div><h3>화상 수업 시작</h3><p>PC나 태블릿으로 바로 수업!</p></div></div></div><div class="vl-section"><h2>화상수업의 장점</h2><div class="vl-features"><div class="vl-feat"><div class="vl-feat-icon">🏠</div><div><h4>집에서 편하게</h4><p>이동 시간 없이 집에서 수업</p></div></div><div class="vl-feat"><div class="vl-feat-icon">👨‍🏫</div><div><h4>전국 선생님</h4><p>지역 제한 없이 최고의 선생님 매칭</p></div></div><div class="vl-feat"><div class="vl-feat-icon">📱</div><div><h4>녹화 복습</h4><p>수업 녹화로 언제든 복습 가능</p></div></div><div class="vl-feat"><div class="vl-feat-icon">💰</div><div><h4>합리적 비용</h4><p>방문 과외 대비 20~30% 저렴</p></div></div></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -4365,23 +3286,7 @@ function renderStudyAbroad() {
   ${commonHead('유학 정보 - 과외안하니', '미국, 영국, 캐나다, 호주 등 해외 유학 정보와 준비 가이드.', 'https://anhani.com/유학')}
   <style>${commonStyles()}.ab-wrap{max-width:900px;margin:0 auto;padding:48px 24px 80px}.ab-hero{background:linear-gradient(135deg,#0c4a6e,#0369a1);border-radius:20px;padding:48px 32px;text-align:center;color:#fff;margin-bottom:40px}.ab-title{font-size:32px;font-weight:900;margin-bottom:10px}.ab-title em{font-style:normal;color:#7dd3fc}.ab-desc{font-size:15px;opacity:.8;margin-bottom:24px}.ab-btn{display:inline-block;background:#fff;color:#0369a1;padding:12px 28px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none}.ab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}.ab-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:24px 16px;text-align:center;transition:.2s}.ab-card:hover{border-color:#0369a1;transform:translateY(-3px)}.ab-card-flag{font-size:36px;margin-bottom:8px}.ab-card h3{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:4px}.ab-card p{font-size:13px;color:#64748b}</style></head><body>
   ${navHTML('abroad')}
-  <div class="ab-wrap">
-    <div class="ab-hero">
-      <h1 class="ab-title">꿈을 향한 <em>해외 유학</em></h1>
-      <p class="ab-desc">미국, 영국, 캐나다, 호주 등 해외 유학 준비를 도와드립니다</p>
-      <a href="/체험신청" class="ab-btn">유학 상담 신청 →</a>
-    </div>
-    <div class="ab-grid">
-      <div class="ab-card"><div class="ab-card-flag">🇺🇸</div><h3>미국 유학</h3><p>아이비리그, 주립대</p></div>
-      <div class="ab-card"><div class="ab-card-flag">🇬🇧</div><h3>영국 유학</h3><p>옥스브리지, 러셀그룹</p></div>
-      <div class="ab-card"><div class="ab-card-flag">🇨🇦</div><h3>캐나다 유학</h3><p>토론토, UBC</p></div>
-      <div class="ab-card"><div class="ab-card-flag">🇦🇺</div><h3>호주 유학</h3><p>시드니, 멜버른</p></div>
-      <div class="ab-card"><div class="ab-card-flag">🇯🇵</div><h3>일본 유학</h3><p>도쿄, 오사카</p></div>
-      <div class="ab-card"><div class="ab-card-flag">🇨🇳</div><h3>중국 유학</h3><p>베이징, 상하이</p></div>
-      <div class="ab-card"><div class="ab-card-flag">🇩🇪</div><h3>독일 유학</h3><p>무료 학비, 공학</p></div>
-      <div class="ab-card"><div class="ab-card-flag">🇫🇷</div><h3>프랑스 유학</h3><p>파리, 그랑제콜</p></div>
-    </div>
-  </div>
+  <div class="ab-wrap"><div class="ab-hero"><h1 class="ab-title">꿈을 향한 <em>해외 유학</em></h1><p class="ab-desc">미국, 영국, 캐나다, 호주 등 해외 유학 준비를 도와드립니다</p><a href="/체험신청" class="ab-btn">유학 상담 신청 →</a></div><div class="ab-grid"><div class="ab-card"><div class="ab-card-flag">🇺🇸</div><h3>미국 유학</h3><p>아이비리그, 주립대</p></div><div class="ab-card"><div class="ab-card-flag">🇬🇧</div><h3>영국 유학</h3><p>옥스브리지, 러셀그룹</p></div><div class="ab-card"><div class="ab-card-flag">🇨🇦</div><h3>캐나다 유학</h3><p>토론토, UBC</p></div><div class="ab-card"><div class="ab-card-flag">🇦🇺</div><h3>호주 유학</h3><p>시드니, 멜버른</p></div><div class="ab-card"><div class="ab-card-flag">🇯🇵</div><h3>일본 유학</h3><p>도쿄, 오사카</p></div><div class="ab-card"><div class="ab-card-flag">🇨🇳</div><h3>중국 유학</h3><p>베이징, 상하이</p></div><div class="ab-card"><div class="ab-card-flag">🇩🇪</div><h3>독일 유학</h3><p>무료 학비, 공학</p></div><div class="ab-card"><div class="ab-card-flag">🇫🇷</div><h3>프랑스 유학</h3><p>파리, 그랑제콜</p></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -4397,7 +3302,7 @@ function schoolHash(name) {
   return Math.abs(h | 0);
 }
 
-function schoolThumbSVG(school, level, idx) {
+function schoolThumbSVG(school, level, idx, bigText) {
   const name = school[0];
   const sidoShort = getSidoShort(getSidoFromIdx(school[1]));
   const gugun = school[2];
@@ -4406,15 +3311,7 @@ function schoolThumbSVG(school, level, idx) {
     : ['rgba(220,38,38,0.62)', 'rgba(234,88,12,0.62)', 'rgba(217,119,6,0.62)', 'rgba(219,39,119,0.55)'];
   const overlay = overlays[idx % overlays.length];
   const imgUrl = getEduImage(name + idx);
-  return `<div style="position:relative;width:100%;aspect-ratio:640/360;border-radius:14px;overflow:hidden;background:#0f172a;box-shadow:0 6px 24px rgba(0,0,0,0.12);">
-    <img src="${imgUrl}" alt="${name} 맞춤 과외" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
-    <div style="position:absolute;inset:0;background:transparent;"></div>
-    <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff;">
-      <div style="font-size:clamp(22px, 4.5vw, 38px);font-weight:900;line-height:1.2;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);margin-bottom:8px;">${name}</div>
-      <div style="font-size:clamp(16px, 3vw, 24px);font-weight:700;opacity:0.96;text-shadow:0 2px 8px rgba(0,0,0,0.35);margin-bottom:6px;">맞춤 과외</div>
-      <div style="font-size:clamp(11px, 1.6vw, 14px);opacity:0.82;font-weight:500;">${sidoShort} ${gugun}</div>
-    </div>
-  </div>`;
+  return `<div style="position:relative;width:100%;aspect-ratio:640/360;border-radius:14px;overflow:hidden;background:#0f172a;box-shadow:0 6px 24px rgba(0,0,0,0.12);"><img src="${imgUrl}" alt="${name} 맞춤 과외" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/><div style="position:absolute;inset:0;background:transparent;"></div><div style="position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff;"><div style="font-size:clamp(22px, 4.5vw, 38px);font-weight:900;line-height:1.2;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7);margin-bottom:8px;">${bigText || (sidoShort + ' ' + gugun + ' ' + name)}</div><div style="font-size:clamp(16px, 3vw, 24px);font-weight:700;opacity:0.96;text-shadow:0 2px 8px rgba(0,0,0,0.35);">맞춤 1:1 과외</div></div></div>`;
 }
 
 // --- 초등학교 동적 페이지 (시도/시군구/학교/article) ---
@@ -4422,7 +3319,7 @@ const ELEM_AK=['1학년 과외','수학 과외','영어 과외','국어 과외',
 
 function eCSS(){return `.eb,.db{max-width:1100px;margin:24px auto 0;padding:0 24px;font-size:13px;color:#64748b}.db{max-width:960px;padding:16px 24px 0}.eb a,.db a{color:#0ea5e9;text-decoration:none}.eh{background:linear-gradient(135deg,#0c4a6e,#0ea5e9);color:#fff;padding:48px 24px;text-align:center}.eh h1{font-size:30px;font-weight:900;margin-bottom:10px}.eh p{font-size:15px;color:rgba(255,255,255,.9)}.ew{max-width:1100px;margin:0 auto;padding:32px 24px 80px}.ei{background:#f0f9ff;border-left:4px solid #0ea5e9;padding:18px 22px;border-radius:8px;margin-bottom:28px;line-height:1.7;font-size:14px;color:#475569}.es{font-size:20px;font-weight:800;color:#0f172a;margin:28px 0 14px}.eg{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}.ec,.dac{padding:18px 20px;background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;text-decoration:none;display:block}.en,.dat{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:5px}.em,.dad{font-size:12px;color:#94a3b8}.dh{width:100%;max-width:960px;margin:24px auto 0;padding:0 24px}.dw,.aw{max-width:880px;margin:0 auto;padding:24px 24px 80px}.aw{max-width:800px}.dt{margin-bottom:24px}.dt h1,.atl{font-size:30px;font-weight:900;color:#0f172a;margin-bottom:8px;line-height:1.3}.atl{font-size:28px;margin-bottom:12px}.dt h1 em{font-style:normal;color:#0ea5e9}.dm{display:flex;flex-wrap:wrap;gap:8px}.dmi,.atg{font-size:12px;padding:4px 10px;background:#e0f2fe;color:#0ea5e9;border-radius:12px;font-weight:600}.atg{display:inline-block;font-weight:700;margin-bottom:14px}.dc,.ac{font-size:15px;line-height:1.95;color:#1e293b;word-break:keep-all}.ac{line-height:1.95}.dc p,.ac p{margin-bottom:14px}.ac p{margin-bottom:18px}.dc .lead-p{background:#f0f9ff;border-left:4px solid #0ea5e9;padding:18px 20px;border-radius:0 10px 10px 0;margin-bottom:32px;font-weight:500;font-size:15px}.dsc{margin:36px 0}.dh3{font-size:19px;font-weight:800;color:#0f172a;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #0ea5e9;display:inline-block}.dtp{background:#fffbeb;border-left:4px solid #f59e0b;padding:16px 18px;border-radius:8px;margin-bottom:12px;font-size:14px;line-height:1.7;color:#78350f}.dfq{background:#f8fafc;border-radius:10px;padding:16px 20px;margin-bottom:10px}.dfq-q{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}.dfq-a{font-size:14px;line-height:1.7;color:#475569}.dar{display:grid;gap:10px}.dac{display:flex;align-items:center;gap:14px;padding:14px 18px}.dan{font-size:18px;font-weight:900;color:#0ea5e9;min-width:28px}.dnb,.arg{display:flex;flex-wrap:wrap;gap:8px}.dni,.ari{font-size:13px;padding:7px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;color:#475569;text-decoration:none}.dcta,.acta{margin-top:36px;padding:28px 24px;background:linear-gradient(135deg,#0ea5e9,#312e81);border-radius:14px;text-align:center;color:#fff}.dcta h4,.acta h4{font-size:19px;font-weight:800;margin-bottom:8px}.dcta p,.acta p{font-size:14px;opacity:.9;margin-bottom:16px}.dctb{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.dctn,.acta a{padding:11px 22px;background:#fff;color:#0ea5e9;font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;display:inline-block}.acta a{margin:0 4px;padding:9px 18px;font-size:13px}.amt{font-size:13px;color:#94a3b8;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid #e2e8f0}.arb{margin-top:40px;padding:22px;background:#f8fafc;border-radius:12px}.art{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:12px}.eth{position:relative;width:100%;aspect-ratio:640/360;border-radius:14px;overflow:hidden;background:#0c4a6e;box-shadow:0 6px 24px rgba(0,0,0,.12)}.eth img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.eth-ov{position:absolute;inset:0;background:transparent}.eth-tx{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff;font-size:clamp(22px,4.5vw,38px);font-weight:900;line-height:1.2;text-shadow:0 2px 4px rgba(0,0,0,.85),0 0 16px rgba(0,0,0,.7)}@media(max-width:640px){.eh h1,.dt h1,.atl{font-size:22px}}`;}
 
-function eThumb(name,idx){return `<div class="eth"><img src="${getEduImage(name+idx)}" alt="${name} 과외 추천" loading="lazy"/><div class="eth-ov"></div><div class="eth-tx">${name} 과외 추천</div></div>`;}
+function eThumb(name,idx,txt){return `<div class="eth"><img src="${getEduImage(name+idx)}" alt="${name} 과외 추천" loading="lazy"/><div class="eth-ov"></div><div class="eth-tx">${txt || (name + ' 과외 추천')}</div></div>`;}
 
 function renderElemMain(){
   const eu=encodeURIComponent;
@@ -4475,7 +3372,7 @@ function renderElemSchool(sd,sg,sn){
   const nbCnt=4+(h%3);
   const nb=allSch.filter(x=>x!==sn).slice(0,nbCnt);
   const nbHTML=nb.length?`<div class="dsc"><h3 class="dh3">${sg} 인근 초등학교</h3><div class="dnb">${nb.map(n=>`<a href="/학교급별/elem/${eu(sd)}/${eu(sg)}/${eu(n)}" class="dni">${n}</a>`).join('')}</div></div>`:'';
-  return `<!DOCTYPE html><html lang="ko"><head>${commonHead(`${sn} 과외 추천 - ${rg} 맞춤 1:1 과외 | 과외안하니`,`${sn}(${rg}) 재학생을 위한 학교 맞춤 1:1 과외. 학교별 학습 환경, 단원 평가 대비, 과외 선생님 매칭 정보를 확인하세요.`,`https://anhani.com${SP}`)}<style>${commonStyles()}${eCSS()}</style></head><body>${navHTML('region')}<div class="db"><a href="/">홈</a> > <a href="/학교급별">학교별</a> > <a href="/학교급별/elem">초등학교</a> > <a href="/학교급별/elem/${eu(sd)}">${sd}</a> > <a href="/학교급별/elem/${eu(sd)}/${eu(sg)}">${sg}</a> > ${sn}</div><div class="dh">${eThumb(sn,h)}</div><div class="dw"><div class="dt"><h1>${sn} <em>과외</em></h1><div class="dm"><span class="dmi">${rg}</span><span class="dmi">공립</span><span class="dmi">일반</span></div></div><div class="dc"><p class="lead-p">${intro}</p>${secHTML}<div class="dsc"><h3 class="dh3">${sn} 핵심 학습 팁</h3>${tipHTML}</div><div class="dsc"><h3 class="dh3">자주 묻는 질문</h3>${fqs.map(f=>`<div class="dfq"><div class="dfq-q">Q. ${f.q}</div><div class="dfq-a">A. ${f.a}</div></div>`).join('')}</div><div class="dsc"><h3 class="dh3">${sn} 관련 가이드</h3><div class="dar">${arts}</div></div>${nbHTML}<div class="dcta"><h4>${sn} 맞춤 과외, 무료 상담받으세요</h4><p>학교별 학습 환경을 아는 선생님과 1:1 매칭</p><div class="dctb"><a href="/체험신청" class="dctn">⭐ 무료 체험</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="dctn">💬 카톡 상담</a></div></div></div></div>${footerHTML()}</body></html>`;
+  return `<!DOCTYPE html><html lang="ko"><head>${commonHead(`${sn} 과외 추천 - ${rg} 맞춤 1:1 과외 | 과외안하니`,`${sn}(${rg}) 재학생을 위한 학교 맞춤 1:1 과외. 학교별 학습 환경, 단원 평가 대비, 과외 선생님 매칭 정보를 확인하세요.`,`https://anhani.com${SP}`)}<style>${commonStyles()}${eCSS()}</style></head><body>${navHTML('region')}<div class="db"><a href="/">홈</a> > <a href="/학교급별">학교별</a> > <a href="/학교급별/elem">초등학교</a> > <a href="/학교급별/elem/${eu(sd)}">${sd}</a> > <a href="/학교급별/elem/${eu(sd)}/${eu(sg)}">${sg}</a> > ${sn}</div><div class="dh">${eThumb(sn,h,`${rg} ${sn}`)}</div><div class="dw"><div class="dt"><h1>${sn} <em>과외</em></h1><div class="dm"><span class="dmi">${rg}</span><span class="dmi">공립</span><span class="dmi">일반</span></div></div><div class="dc"><p class="lead-p">${intro}</p>${secHTML}<div class="dsc"><h3 class="dh3">${sn} 핵심 학습 팁</h3>${tipHTML}</div><div class="dsc"><h3 class="dh3">자주 묻는 질문</h3>${fqs.map(f=>`<div class="dfq"><div class="dfq-q">Q. ${f.q}</div><div class="dfq-a">A. ${f.a}</div></div>`).join('')}</div><div class="dsc"><h3 class="dh3">${sn} 관련 가이드</h3><div class="dar">${arts}</div></div>${nbHTML}<div class="dcta"><h4>${sn} 맞춤 과외, 무료 상담받으세요</h4><p>학교별 학습 환경을 아는 선생님과 1:1 매칭</p><div class="dctb"><a href="/체험신청" class="dctn">⭐ 무료 체험</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="dctn">💬 카톡 상담</a></div></div></div></div>${footerHTML()}</body></html>`;
 }
 
 function renderElemArticle(sd,sg,sn,aIdx){
@@ -4483,14 +3380,9 @@ function renderElemArticle(sd,sg,sn,aIdx){
   const i=parseInt(aIdx);
   if(isNaN(i)||i<0||i>9)return null;
   const eu=encodeURIComponent,rg=`${sd} ${sg}`,kws=ELEM_AK[i],kw=`${sn} ${kws}`,h=(schoolHash(sn)+i*7919)|0;
-  const intro=SCHOOL_ART_INTRO[h%SCHOOL_ART_INTRO.length](sn,kws);
-  const pCnt=2+(h%3),L=SCHOOL_ART_BODY.length;
-  const bodies=Array.from({length:pCnt},(_,j)=>SCHOOL_ART_BODY[((h>>>(j*3+3))%L+L)%L](sn,kws));
-  const o=SCHOOL_ART_OUTRO[(h>>>11)%SCHOOL_ART_OUTRO.length](sn,kws);
   const SP=`/학교급별/elem/${eu(sd)}/${eu(sg)}/${eu(sn)}`;
   const ol=ELEM_AK.map((k,j)=>j!==i?`<a href="${SP}/article/${j}" class="ari">${sn} ${k}</a>`:'').filter(Boolean).join('');
-  const bodyHTML=bodies.map(b=>splitP(b)).join('');
-  return `<!DOCTYPE html><html lang="ko"><head>${commonHead(`${kw} - ${rg} 초등학교 가이드 | 과외안하니`,`${sn} 학생을 위한 ${kws} 실전 가이드. 학교 특성에 맞춘 ${kws} 노하우와 효과적인 학습 전략을 확인하세요.`,`https://anhani.com${SP}/article/${i}`)}<style>${commonStyles()}${eCSS()}</style></head><body>${navHTML('region')}<div class="db"><a href="/">홈</a> > <a href="/학교급별/elem">초등학교</a> > <a href="${SP}">${sn}</a> > ${kws}</div><div class="dh">${eThumb(sn,h+i+1)}</div><div class="aw"><span class="atg">${sn} 가이드</span><h1 class="atl">${kw}</h1><div class="amt">${rg} · ${sn} · ${kws}</div><div class="ac"><p class="lead-p">${intro}</p>${bodyHTML}${splitP(o)}</div><div class="arb"><div class="art">${sn} 다른 가이드</div><div class="arg">${ol}<a href="${SP}" class="ari">← ${sn} 과외 메인</a></div></div><div class="acta"><h4>${sn} 맞춤 과외 무료 상담</h4><p>학교별 학습 환경을 아는 선생님과 매칭</p><a href="/체험신청">⭐ 무료 체험</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a></div></div>${footerHTML()}</body></html>`;
+  return `<!DOCTYPE html><html lang="ko"><head>${commonHead(`${kw} - ${rg} 초등학교 가이드 | 과외안하니`,`${sn} 학생을 위한 ${kws} 실전 가이드. 학교 특성에 맞춘 ${kws} 노하우와 효과적인 학습 전략을 확인하세요.`,`https://anhani.com${SP}/article/${i}`)}<style>${commonStyles()}${eCSS()}${richArtCSS('#0ea5e9','#e0f2fe')}</style></head><body>${navHTML('region')}<div class="db"><a href="/">홈</a> > <a href="/학교급별/elem">초등학교</a> > <a href="${SP}">${sn}</a> > ${kws}</div><div class="dh">${eThumb(sn,h+i+1,`${rg} ${kw}`)}</div><div class="aw"><span class="atg">${sn} 가이드</span><h1 class="atl">${kw}</h1><div class="amt">${rg} · ${sn} · ${kws}</div>${richArtBody(sn, kws, h, '초등학교')}<div class="arb"><div class="art">${sn} 다른 가이드</div><div class="arg">${ol}<a href="${SP}" class="ari">← ${sn} 과외 메인</a></div></div><div class="acta"><h4>${sn} 맞춤 과외 무료 상담</h4><p>학교별 학습 환경을 아는 선생님과 매칭</p><a href="/체험신청">⭐ 무료 체험</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a></div></div>${footerHTML()}</body></html>`;
 }
 
 function renderSchoolLevelMain(level) {
@@ -4507,19 +3399,14 @@ function renderSchoolLevelMain(level) {
 
   const sidoCards = sidoOrder.map(({sd, i, cnt}) => {
     const sdShort = getSidoShort(sd);
-    return `<a href="/학교급별/${level}/${encodeURIComponent(sd)}" class="ssd-card">
-      <div class="ssd-name">${sdShort}</div>
-      <div class="ssd-cnt">${cnt.toLocaleString()}<span>개교</span></div>
-    </a>`;
+    return `<a href="/학교급별/${level}/${encodeURIComponent(sd)}" class="ssd-card"><div class="ssd-name">${sdShort}</div><div class="ssd-cnt">${cnt.toLocaleString()}<span>개교</span></div></a>`;
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(`전국 ${lvName} 과외 - 시도별 ${totalCount.toLocaleString()}개교 | 과외안하니`, `전국 ${lvName} ${totalCount.toLocaleString()}개교의 맞춤 과외 정보. 우리 지역 ${lvName}을 선택해 학교별 과외를 확인하세요.`, `https://anhani.com/학교급별/${level}`)}
   <style>${commonStyles()}.sl-hero{background:linear-gradient(135deg,${lvColor} 0%,#1e1b4b 100%);color:#fff;padding:56px 24px 48px;text-align:center}.sl-hero h1{font-size:32px;font-weight:900;margin-bottom:8px}.sl-hero p{font-size:15px;color:rgba(255,255,255,.85)}.sl-bcrumb{max-width:1100px;margin:0 auto;padding:16px 24px;font-size:13px;color:#64748b}.sl-bcrumb a{color:#6366f1;text-decoration:none}.sl-wrap{max-width:1100px;margin:0 auto;padding:12px 24px 80px}.ssd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}.ssd-card{background:${lvBg};border:1.5px solid transparent;border-radius:12px;padding:18px 16px;text-align:center;text-decoration:none;transition:.2s}.ssd-card:hover{border-color:${lvColor};transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.06)}.ssd-name{font-size:16px;font-weight:800;color:${lvColor};margin-bottom:6px}.ssd-cnt{font-size:22px;font-weight:900;color:#0f172a}.ssd-cnt span{font-size:11px;font-weight:600;color:#94a3b8;margin-left:3px}@media (max-width:640px){.sl-hero h1{font-size:24px}.ssd-grid{grid-template-columns:repeat(2,1fr)}}</style></head><body>
   ${navHTML('region')}
-  <div class="sl-hero"><h1>전국 ${lvName} 과외</h1><p>${totalCount.toLocaleString()}개교 · 시도별로 우리 학교를 찾아보세요</p></div>
-  <div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별 과외</a> &gt; ${lvName}</div>
-  <div class="sl-wrap"><div class="ssd-grid">${sidoCards}</div></div>
+  <div class="sl-hero"><h1>전국 ${lvName} 과외</h1><p>${totalCount.toLocaleString()}개교 · 시도별로 우리 학교를 찾아보세요</p></div><div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별 과외</a> &gt; ${lvName}</div><div class="sl-wrap"><div class="ssd-grid">${sidoCards}</div></div>${regionRich(level, '전국')}
   ${footerHTML()}
   </body></html>`;
 }
@@ -4534,20 +3421,38 @@ function renderSchoolBySido(level, sidoIdx) {
   if (guguns.length === 0) return null;
   const totalCount = guguns.reduce((sum, g) => sum + g.count, 0);
 
-  const cards = guguns.map(({gugun, count}) => `<a href="/학교급별/${level}/${encodeURIComponent(sido)}/${encodeURIComponent(gugun)}" class="ssd-card">
-    <div class="ssd-name">${gugun || sdShort}</div>
-    <div class="ssd-cnt">${count}<span>개교</span></div>
-  </a>`).join('');
+  const cards = guguns.map(({gugun, count}) => `<a href="/학교급별/${level}/${encodeURIComponent(sido)}/${encodeURIComponent(gugun)}" class="ssd-card"><div class="ssd-name">${gugun || sdShort}</div><div class="ssd-cnt">${count}<span>개교</span></div></a>`).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(`${sdShort} ${lvName} 과외 - ${totalCount}개교 | 과외안하니`, `${sdShort} 지역 ${lvName} ${totalCount}개교의 맞춤 과외 정보. 시군구별로 우리 학교를 찾아보세요.`, `https://anhani.com/학교급별/${level}/${encodeURIComponent(sido)}`)}
   <style>${commonStyles()}.sl-hero{background:linear-gradient(135deg,${lvColor} 0%,#1e1b4b 100%);color:#fff;padding:48px 24px 40px;text-align:center}.sl-hero h1{font-size:28px;font-weight:900;margin-bottom:8px}.sl-hero p{font-size:14px;color:rgba(255,255,255,.85)}.sl-bcrumb{max-width:1100px;margin:0 auto;padding:16px 24px;font-size:13px;color:#64748b}.sl-bcrumb a{color:#6366f1;text-decoration:none}.sl-wrap{max-width:1100px;margin:0 auto;padding:12px 24px 80px}.ssd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.ssd-card{background:${lvBg};border:1.5px solid transparent;border-radius:12px;padding:16px 14px;text-align:center;text-decoration:none;transition:.2s}.ssd-card:hover{border-color:${lvColor};transform:translateY(-2px)}.ssd-name{font-size:15px;font-weight:800;color:${lvColor};margin-bottom:4px}.ssd-cnt{font-size:19px;font-weight:900;color:#0f172a}.ssd-cnt span{font-size:11px;font-weight:600;color:#94a3b8;margin-left:3px}@media (max-width:640px){.ssd-grid{grid-template-columns:repeat(2,1fr)}}</style></head><body>
   ${navHTML('region')}
-  <div class="sl-hero"><h1>${sdShort} ${lvName}</h1><p>${totalCount}개교 · 시군구별로 학교를 찾아보세요</p></div>
-  <div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; ${sdShort}</div>
-  <div class="sl-wrap"><div class="ssd-grid">${cards}</div></div>
+  <div class="sl-hero"><h1>${sdShort} ${lvName}</h1><p>${totalCount}개교 · 시군구별로 학교를 찾아보세요</p></div><div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; ${sdShort}</div><div class="sl-wrap"><div class="ssd-grid">${cards}</div></div>${regionRich(level, sdShort)}
   ${footerHTML()}
   </body></html>`;
+}
+
+function regionRich(level, label) {
+  const lvName = levelName(level), lvColor = levelColor(level), lvBg = levelBg(level);
+  const feats = [
+    ['🎯','학교별 시험 경향 분석', `${label} 각 학교의 내신 출제 경향과 시험 범위를 분석해, 학교에 꼭 맞는 1:1 과외 전략을 설계합니다.`],
+    ['💻','화상·대면 모두 가능', `${label} 학생은 비대면 화상 과외와 대면 방문 과외 중 원하는 방식으로 수업할 수 있어요. 지역에 상관없이 선생님 매칭이 가능합니다.`],
+    ['📚','과목별 전문 매칭', `약한 과목과 목표 등급에 맞춰, 해당 과목을 전문으로 지도하는 1:1 ${lvName} 선생님을 연결합니다.`],
+    ['✅','검증된 선생님', `교육청 등록·학력·이력·후기가 검증된 전문 선생님만 ${label} 학생에게 소개해 믿고 맡길 수 있습니다.`]
+  ];
+  const steps = [
+    ['학습 진단', `${label} ${lvName} 학생의 현재 실력과 약점을 정확히 진단하는 것부터 시작합니다.`],
+    ['맞춤 커리큘럼 설계', `학교 학사 일정과 출제 경향에 맞춘 1:1 학습 플랜을 설계합니다.`],
+    ['실전 풀이·반복', `핵심 개념을 다진 뒤 중·기말 기출·예상 문제로 실전 감각을 끌어올립니다.`],
+    ['점검·피드백', `주기적 점검으로 진도를 조정하고 약점을 빠르게 보완합니다.`]
+  ];
+  const faqs = [
+    [`${label} ${lvName} 과외는 어떻게 진행되나요?`, `상상코칭은 ${label} ${lvName} 학생에게 화상·대면 1:1 맞춤 과외를 제공합니다. 학교 시험 경향을 분석한 선생님이 학생 수준에 맞춰 지도해요.`],
+    [`${label} 지역이 아니어도 수업할 수 있나요?`, `네, 화상 과외로 전국 어디서나 수업이 가능합니다. 지역에 상관없이 학생에게 맞는 선생님과 매칭됩니다.`],
+    [`과외 비용은 얼마인가요?`, `학년·과목·수업 횟수에 따라 달라집니다. 정확한 비용은 무료 체험 후 견적으로 안내해 드리니 부담 없이 상담받아 보세요.`]
+  ];
+  const tags = ['상상코칭','상상코칭 과외',`${label} 상상코칭`,`${label} ${lvName} 과외`,`상상코칭 ${lvName} 과외`,`${label} 화상 과외`,`${label} 1:1 과외`,`${label} ${lvName} 내신 대비`,`${label} 과외 추천`];
+  return `<style>.rr{max-width:880px;margin:26px auto 0;padding:0 24px}.rr-sec{margin-bottom:34px}.rr-h2{font-size:21px;font-weight:800;color:#0f172a;margin:0 0 14px;padding-bottom:10px;border-bottom:2px solid ${lvColor}}.rr-lead{font-size:15px;line-height:1.85;color:#334155;word-break:keep-all}.rr-lead b{color:${lvColor}}.rr-feat{display:grid;grid-template-columns:1fr 1fr;gap:10px}.rr-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:15px 16px}.rr-card .ic{font-size:20px;margin-bottom:6px}.rr-card h4{font-size:15px;font-weight:800;color:#0f172a;margin:0 0 6px}.rr-card p{font-size:13px;line-height:1.7;color:#64748b;margin:0;word-break:keep-all}.rr-step{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}.rr-step .n{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:${lvColor};color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}.rr-step h4{font-size:15px;font-weight:700;color:#0f172a;margin:2px 0 3px}.rr-step p{font-size:13px;line-height:1.6;color:#64748b;margin:0;word-break:keep-all}.rr-faq{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:8px;overflow:hidden}.rr-faq summary{padding:15px 18px;font-size:15px;font-weight:700;color:#0f172a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}.rr-faq summary::-webkit-details-marker{display:none}.rr-faq summary::after{content:'⌄';font-size:20px;line-height:1;color:#94a3b8;transition:transform .2s;flex-shrink:0}.rr-faq[open] summary{color:${lvColor}}.rr-faq[open] summary::after{transform:rotate(180deg)}.rr-faq-a{padding:0 18px 16px;font-size:14px;line-height:1.7;color:#475569;word-break:keep-all}.rr-tags{display:flex;flex-wrap:wrap;gap:8px}.rr-tags span{background:${lvBg};color:${lvColor};font-size:13px;font-weight:600;padding:6px 12px;border-radius:20px}.rr-cta{background:linear-gradient(135deg,${lvColor},#1e1b4b);border-radius:16px;padding:30px 24px;text-align:center;color:#fff}.rr-cta h4{font-size:19px;font-weight:800;margin:0 0 8px}.rr-cta p{font-size:14px;opacity:.9;margin:0 0 18px}.rr-cta a{display:inline-block;background:#fff;color:${lvColor};font-weight:800;font-size:14px;padding:12px 24px;border-radius:10px;text-decoration:none;margin:4px}.rr-cta a.k{background:#fee500;color:#3c1e1e}@media (max-width:640px){.rr{padding:0 16px}}</style><div class="rr"><div class="rr-sec"><h2 class="rr-h2">${label} ${lvName} 과외 안내</h2><p class="rr-lead"><b>${label} ${lvName} 과외</b>는 상상코칭이 1:1 맞춤으로 책임집니다. 학교별 내신 시험 경향을 분석한 검증된 선생님이 학생의 약점과 목표에 맞춰 지도하며, <b>화상·대면 모두 가능</b>해 지역에 상관없이 바로 수업을 시작할 수 있어요.</p></div><div class="rr-sec"><h2 class="rr-h2">상상코칭 ${lvName} 과외의 특징</h2><div class="rr-feat">${feats.map(f=>`<div class="rr-card"><div class="ic">${f[0]}</div><h4>${f[1]}</h4><p>${f[2]}</p></div>`).join('')}</div></div><div class="rr-sec"><h2 class="rr-h2">수업 진행 방식</h2>${steps.map((s,i)=>`<div class="rr-step"><div class="n">${i+1}</div><div><h4>${s[0]}</h4><p>${s[1]}</p></div></div>`).join('')}</div>${coreSystem()}<div class="rr-sec"><h2 class="rr-h2">자주 묻는 질문</h2>${faqs.map(f=>`<details class="rr-faq"><summary>Q. ${f[0]}</summary><div class="rr-faq-a">${f[1]}</div></details>`).join('')}</div><div class="rr-sec"><h2 class="rr-h2">연관 키워드</h2><div class="rr-tags">${tags.map(t=>`<span>${t}</span>`).join('')}</div></div><div class="rr-cta"><h4>${label} ${lvName} 과외, 상상코칭과 시작하세요</h4><p>무료 체험으로 우리 학교 시험에 맞는 선생님을 만나보세요</p><a href="/체험신청">⭐ 무료 체험 신청</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="k">💬 카톡 상담</a></div></div>`;
 }
 
 function renderSchoolByGugun(level, sidoIdx, gugun) {
@@ -4562,19 +3467,14 @@ function renderSchoolByGugun(level, sidoIdx, gugun) {
 
   const cards = list.map(({idx, school}) => {
     const estab = school[3] === '국' ? '국립' : school[3] === '공' ? '공립' : '사립';
-    return `<a href="/${encodeURIComponent(school[0])}-과외" class="sl-school-card">
-      <div class="sl-school-name">${school[0]}</div>
-      <div class="sl-school-meta">${estab} · ${decST(school[4])}</div>
-    </a>`;
+    return `<a href="/${encodeURIComponent(sdShort + '-' + gugun + '-' + school[0])}-과외" class="sl-school-card"><div class="sl-school-name">${school[0]}</div><div class="sl-school-meta">${estab} · ${decST(school[4])}</div></a>`;
   }).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
   ${commonHead(`${sdShort} ${gugun} ${lvName} 과외 - ${list.length}개교 | 과외안하니`, `${sdShort} ${gugun} ${lvName} ${list.length}개교의 맞춤 과외 정보. 학교 이름을 선택해 학교별 시험 경향과 과외 정보를 확인하세요.`, `https://anhani.com/학교급별/${level}/${encodeURIComponent(sido)}/${encodeURIComponent(gugun)}`)}
   <style>${commonStyles()}.sl-hero{background:linear-gradient(135deg,${lvColor} 0%,#1e1b4b 100%);color:#fff;padding:44px 24px 36px;text-align:center}.sl-hero h1{font-size:26px;font-weight:900;margin-bottom:6px}.sl-hero p{font-size:14px;color:rgba(255,255,255,.85)}.sl-bcrumb{max-width:1100px;margin:0 auto;padding:16px 24px;font-size:13px;color:#64748b}.sl-bcrumb a{color:#6366f1;text-decoration:none}.sl-wrap{max-width:1100px;margin:0 auto;padding:12px 24px 80px}.sl-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}.sl-school-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px 16px;text-decoration:none;transition:.2s}.sl-school-card:hover{border-color:${lvColor};background:${lvBg};transform:translateY(-2px)}.sl-school-name{font-size:15px;font-weight:800;color:#0f172a;margin-bottom:4px}.sl-school-meta{font-size:12px;color:#94a3b8}@media (max-width:640px){.sl-list{grid-template-columns:1fr}}</style></head><body>
   ${navHTML('region')}
-  <div class="sl-hero"><h1>${sdShort} ${gugun} ${lvName}</h1><p>${list.length}개교 · 학교를 선택하세요</p></div>
-  <div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; <a href="/학교급별/${level}/${encodeURIComponent(sido)}">${sdShort}</a> &gt; ${gugun}</div>
-  <div class="sl-wrap"><div class="sl-list">${cards}</div></div>
+  <div class="sl-hero"><h1>${sdShort} ${gugun} ${lvName}</h1><p>${list.length}개교 · 학교를 선택하세요</p></div><div class="sl-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; <a href="/학교급별/${level}/${encodeURIComponent(sido)}">${sdShort}</a> &gt; ${gugun}</div><div class="sl-wrap"><div class="sl-list">${cards}</div></div>${regionRich(level, gugun ? sdShort+' '+gugun : sdShort)}
   ${footerHTML()}
   </body></html>`;
 }
@@ -4612,8 +3512,8 @@ const SCHOOL_BODY_POOL = [
 ];
 
 const SCHOOL_TIPS_POOL = [
-  (sn) => `${sn} 과외 선생님 선택 시 가장 중요한 것은 학교 인근에서 활동한 경험이에요. 같은 학교 학생을 여러 번 지도해 본 선생님이라면 시험 경향을 직관적으로 파악하고 있어, 첫 수업부터 효율적인 학습이 가능합니다.`,
-  (sn) => `${sn} 학생을 위한 과외비는 학년과 과목, 수업 시간에 따라 달라지지만, 평균적으로 시간당 3~6만원 선이에요. 무료 체험 수업을 활용하면 선생님과의 케미를 미리 확인할 수 있어 좋은 선택이 됩니다.`,
+  (sn) => `${sn} 과외 선생님 선택 시 가장 중요한 것은 ${sn} 시험을 직접 분석해 본 경험이에요. 같은 학교 학생을 여러 번 지도해 본 선생님이라면 시험 경향을 직관적으로 파악하고 있어, 첫 수업부터 효율적인 학습이 가능합니다.`,
+  (sn) => `${sn} 학생을 위한 과외비는 학년과 과목, 수업 횟수에 따라 달라져요. 무료 체험 수업을 활용하면 선생님과의 케미를 미리 확인할 수 있어 좋은 선택이 됩니다.`,
   (sn) => `${sn} 시험 2주 전부터는 매일 1시간이라도 시험 범위 복습 시간을 확보하는 것이 좋아요. 과외 선생님이 만들어 준 핵심 요약 노트와 오답 정리를 활용하면 마지막 1~2주에 큰 점수 차이를 만들 수 있습니다.`,
   (sn) => `${sn} 과외 효과를 극대화하려면 수업 외 자기 주도 학습 시간이 필수예요. 보통 과외 1시간 당 2시간의 자기 학습이 권장되며, 선생님이 내준 과제를 성실히 수행하는 것만으로도 성적 상승 속도가 달라집니다.`,
   (sn) => `${sn} 학생의 학습 환경을 점검해 보세요. 책상 위 정리 상태, 휴대폰 사용 시간, 수면 시간 등 사소한 요소들이 학습 효율에 큰 영향을 줍니다. 과외 선생님과 함께 주간 학습 점검을 받으면 학습 외 요인까지 챙길 수 있어요.`,
@@ -4623,33 +3523,33 @@ const SCHOOL_TIPS_POOL = [
 ];
 
 const SCHOOL_FAQ_POOL = [
-  (sn, lv) => ({q:`${sn} 과외는 어떤 선생님이 좋나요?`, a:`${sn} 시험을 직접 분석해 본 경험이 있는 선생님이 가장 좋습니다. 학교 인근 거주 또는 활동 이력이 있는 선생님은 학교 시험 경향을 잘 알고 있어 효율적인 지도가 가능해요.`}),
+  (sn, lv) => ({q:`${sn} 과외는 어떤 선생님이 좋나요?`, a:`${sn} 시험을 직접 분석해 본 경험이 있는 선생님이 가장 좋습니다. 화상·대면 모두 가능해 지역에 상관없이 ${sn} 시험 경향에 밝은 선생님과 매칭될 수 있어요.`}),
   (sn, lv) => ({q:`과외와 학원 중 어느 것이 더 효과적인가요?`, a:`${sn}처럼 학교별 시험 경향이 뚜렷한 경우, 1:1 맞춤 과외가 학원보다 효과적인 경우가 많습니다. 학생별 약점에 집중할 수 있고, 진도 속도도 조절 가능하기 때문이에요.`}),
   (sn, lv) => ({q:`주 몇 회 과외가 적당한가요?`, a:`${sn} 학생 기준 평균 주 2~3회, 회당 90~120분 수업이 가장 효과적이에요. 시험 직전에는 회당 시간을 늘리거나 횟수를 추가하는 집중 케어도 가능합니다.`}),
   (sn, lv) => ({q:`성적이 얼마나 빨리 오를 수 있나요?`, a:`${sn} 과외를 시작하면 보통 한 학기 내신 시험에서 변화를 확인할 수 있어요. 처음 1~2개월은 진단과 기초 다지기, 이후부터 본격적인 성적 상승이 시작되는 패턴이 일반적입니다.`}),
-  (sn, lv) => ({q:`과외 비용은 얼마 정도인가요?`, a:`${sn} 학생 평균 과외비는 시간당 3~6만원 사이예요. 학년이 올라갈수록, 과목 난이도가 높을수록 비용이 다소 증가합니다. 무료 체험 후 정확한 견적을 받아보시는 것을 추천드려요.`}),
+  (sn, lv) => ({q:`과외 비용은 얼마 정도인가요?`, a:`${sn} 과외비는 학년·과목·수업 횟수에 따라 달라집니다. 정확한 비용은 무료 체험 후 견적으로 안내해 드리니 부담 없이 상담받아 보세요.`}),
   (sn, lv) => ({q:`온라인 화상 수업도 가능한가요?`, a:`${sn} 학생을 위한 화상 과외도 운영 중이에요. 대면 수업 효과의 90% 이상을 그대로 유지하면서, 이동 시간 절약과 시간 활용에 큰 장점이 있어 많은 학생이 선택하는 방식입니다.`}),
 ];
 
 const SCHOOL_GUIDE_POOL = [
   (sn, lv, rg) => `${sn} 과외는 ${rg}에서 재학 중인 ${lv} 학생들을 위한 1:1 맞춤 학습 프로그램입니다. 학교별 시험 출제 경향과 진도 차이를 반영해 설계되며, 학생 개인의 현재 수준에 맞춰 커리큘럼이 조정돼요. 첫 수업에서는 학생의 학습 상태를 정밀하게 진단한 뒤, 목표 성적과 남은 기간을 고려해 단계별 학습 계획을 수립합니다. ${sn}의 학사 일정에 맞춘 내신 집중 기간과 평소 기초 다지기 기간을 구분해 운영하기 때문에, 학교 수업과 자연스럽게 맞물려 학습 효율을 극대화할 수 있어요.`,
   (sn, lv, rg) => `${rg} ${sn} 학생을 위한 과외 안내를 드립니다. ${sn} 과외는 단순한 보충 수업이 아니라, 학교 수업·내신 시험·수능(또는 고입)까지 연결되는 통합 학습 솔루션이에요. 수업은 주 2~3회를 기본으로 하며, 과목별로 회당 60~120분 진행됩니다. 수업료는 학년과 과목에 따라 조정되고, 처음에는 무료 체험 수업을 통해 학생과 선생님의 궁합을 확인한 후 정규 수업을 시작하는 안전한 방식으로 운영돼요. 모든 수업은 학생 맞춤형으로 설계됩니다.`,
-  (sn, lv, rg) => `${sn} 재학생을 위한 과외 서비스는 학교별 특성을 완벽히 이해한 전문 선생님과 함께 진행됩니다. 수업 형태는 대면·온라인·하이브리드 3가지 중 선택 가능하며, 학생의 일정과 거주지에 맞춰 유연하게 조정돼요. 과외 시작 전 15분 상담으로 학습 목표, 약점, 선호 학습 방식을 파악하고, 그에 맞는 맞춤 교재와 학습법을 추천해 드립니다. ${rg} 지역 인근 ${lv} 학생들이 꾸준히 성적을 올린 검증된 방식으로 운영되고 있어요.`,
+  (sn, lv, rg) => `${sn} 재학생을 위한 과외 서비스는 학교별 특성을 완벽히 이해한 전문 선생님과 함께 진행됩니다. 수업 형태는 대면·온라인·하이브리드 3가지 중 선택 가능하며, 학생의 일정과 학습 환경에 맞춰 유연하게 조정돼요. 과외 시작 전 15분 상담으로 학습 목표, 약점, 선호 학습 방식을 파악하고, 그에 맞는 맞춤 교재와 학습법을 추천해 드립니다. ${rg} 지역 ${lv} 학생들이 꾸준히 성적을 올린 검증된 방식으로 운영되고 있어요.`,
   (sn, lv, rg) => `${sn} 과외 프로그램은 학교 내신 대비부터 실전 시험 대비까지 포괄하는 종합 학습 시스템입니다. 수업은 과목별 전문 선생님이 1:1로 진행하며, ${sn}의 지난 3년치 기출 문제 분석을 바탕으로 학습 방향을 설정해요. 학생별 약점 단원을 먼저 보완한 뒤 심화 학습으로 넘어가는 단계적 접근으로, 무리한 진도 대신 탄탄한 개념 정립에 집중합니다. ${rg} 지역 학부모님들이 많이 선택하는 검증된 프로그램이에요.`,
   (sn, lv, rg) => `${sn} 과외 서비스의 시작 절차를 안내드립니다. 먼저 무료 상담 신청 후 학생의 현재 학습 상태와 목표를 공유해 주시면, ${rg} 지역에서 활동 중인 선생님 중 가장 적합한 분을 추천해 드려요. 체험 수업을 통해 수업 스타일과 소통 방식을 미리 확인할 수 있고, 만족스러우시면 정규 수업으로 이어집니다. 수업료는 투명하게 공개되며 별도 부대비용이 없어, 처음 시작하는 학부모님도 안심하고 결정하실 수 있습니다.`,
   (sn, lv, rg) => `${sn}을 다니는 자녀를 위한 과외 프로그램 이용 방법을 설명드려요. 상담 → 선생님 매칭 → 무료 체험 → 정규 수업의 4단계로 진행되며, 각 단계에서 학부모님의 피드백을 적극 반영합니다. 수업은 학생의 방과 후 일정에 맞춰 요일과 시간을 선택할 수 있고, 변경도 유연하게 가능해요. ${rg} ${sn} 지역 선생님들은 학교 주변 환경에 익숙해 시험 기간 집중 관리도 가능합니다. 학부모 소통 채널을 통해 실시간으로 수업 상황을 공유받으실 수 있어요.`,
-  (sn, lv, rg) => `${sn} 학생을 위한 학습 파트너 프로그램에 대해 안내드립니다. ${rg}에 거주하는 학생들의 학업 성취를 책임지고 관리하는 종합 교육 서비스로, 단순한 과목 수업을 넘어 학습 태도와 자기주도 능력까지 길러주는 것을 목표로 합니다. 매 수업은 교재 학습 30%, 응용 문제 풀이 40%, 복습과 피드백 30%로 구성되며, 학생이 배운 내용을 즉각 체화할 수 있도록 설계되어 있어요. 효율적인 학습이 가능하도록 최적화된 구조입니다.`,
-  (sn, lv, rg) => `${sn} 과외는 학교 성적 향상을 넘어 학생의 전반적인 학업 경쟁력 강화를 추구합니다. ${rg}에 거주하는 학생이라면 지역 선생님 매칭으로 이동 부담이 없고, 학교 주변 출제 경향에 밝은 분과 수업할 수 있어요. 수업 계약은 월 단위로 자유롭게 갱신되며, 중간에 방향 전환이 필요하다면 언제든 선생님을 변경할 수 있습니다. 학업에 대한 전문적이고 지속적인 지원을 받고 싶은 ${lv} 학생에게 가장 적합한 선택이에요.`,
+  (sn, lv, rg) => `${sn} 학생을 위한 학습 파트너 프로그램에 대해 안내드립니다. ${rg}의 ${lv} 학생들의 학업 성취를 책임지고 관리하는 종합 교육 서비스로, 단순한 과목 수업을 넘어 학습 태도와 자기주도 능력까지 길러주는 것을 목표로 합니다. 매 수업은 교재 학습 30%, 응용 문제 풀이 40%, 복습과 피드백 30%로 구성되며, 학생이 배운 내용을 즉각 체화할 수 있도록 설계되어 있어요. 효율적인 학습이 가능하도록 최적화된 구조입니다.`,
+  (sn, lv, rg) => `${sn} 과외는 학교 성적 향상을 넘어 학생의 전반적인 학업 경쟁력 강화를 추구합니다. 화상·대면 과외를 모두 지원해 지역에 상관없이 ${sn} 시험 경향에 밝은 선생님과 수업할 수 있어요. 수업 계약은 월 단위로 자유롭게 갱신되며, 중간에 방향 전환이 필요하다면 언제든 선생님을 변경할 수 있습니다. 학업에 대한 전문적이고 지속적인 지원을 받고 싶은 ${lv} 학생에게 가장 적합한 선택이에요.`,
 ];
 
 const SCHOOL_FEATURE_POOL = [
   (sn, lv, rg) => `${sn} 과외의 첫 번째 특징은 학교별 내신 데이터 기반 수업입니다. ${sn}의 최근 3년간 중간·기말고사 기출을 분석해 자주 출제되는 단원과 난이도를 파악하고, 이를 학습 우선순위에 반영해요. 두 번째 특징은 학생별 완전 맞춤형 커리큘럼입니다. 같은 학년·같은 학교라도 학생마다 약점이 다르기 때문에, 공통 교재가 아닌 개인별 학습 플랜으로 진행돼요. 세 번째로는 정기적인 학습 성과 리포트 제공입니다. 매월 학부모님께 학생의 진전 사항과 다음 달 목표를 투명하게 공유합니다.`,
-  (sn, lv, rg) => `${sn} 과외 서비스의 핵심 특징을 소개합니다. 먼저 검증된 선생님 풀에서 매칭이 이뤄집니다. ${rg} 지역 또는 ${sn} 인근에서 지도 경력을 가진 선생님 중에서, 학생과의 궁합까지 고려해 최적의 분을 연결해 드려요. 또한 유연한 스케줄 조정이 가능합니다. 학원처럼 고정된 시간이 아니라 학생의 학교 일정과 시험 기간에 맞춰 수업 시간이 유동적으로 조정돼요. 마지막으로 무료 체험 후 결정 시스템으로, 부담 없이 시작하실 수 있습니다.`,
+  (sn, lv, rg) => `${sn} 과외 서비스의 핵심 특징을 소개합니다. 먼저 검증된 선생님 풀에서 매칭이 이뤄집니다. ${sn} 시험을 분석해 본 경험이 있는 검증된 선생님 중에서, 학생과의 궁합까지 고려해 최적의 분을 연결해 드려요. 또한 유연한 스케줄 조정이 가능합니다. 학원처럼 고정된 시간이 아니라 학생의 학교 일정과 시험 기간에 맞춰 수업 시간이 유동적으로 조정돼요. 마지막으로 무료 체험 후 결정 시스템으로, 부담 없이 시작하실 수 있습니다.`,
   (sn, lv, rg) => `${sn} 과외가 다른 과외 서비스와 구별되는 차별점이 있습니다. 첫째, 학교별 내신 전략 노하우를 보유하고 있어요. 단순한 과목 선행이 아닌 ${sn}의 출제 스타일에 최적화된 학습이 가능합니다. 둘째, 학생의 성향에 맞는 선생님 매칭 시스템입니다. 내향적인 학생에게는 차분한 선생님, 경쟁을 좋아하는 학생에게는 자극을 주는 선생님 등 개인 성향까지 고려해요. 셋째, 체계적인 성과 관리로, 학습 목표 설정부터 달성까지 전 과정을 투명하게 추적합니다.`,
   (sn, lv, rg) => `${sn} 학생 전용 과외의 강점은 명확합니다. 우선 전문성입니다. 각 과목 담당 선생님은 해당 과목에서만 최소 3년 이상 지도 경력을 가진 검증된 전문가들이에요. 다음은 효율성입니다. 학원에서는 다른 학생들 때문에 질문 기회가 제한되지만, 1:1 과외에서는 모르는 부분을 즉시 해결할 수 있어 학습 속도가 훨씬 빨라요. 또한 지속적인 피드백이 장점입니다. 매 수업마다 이해도를 체크하고, 약한 부분은 다음 수업에서 보강하는 순환 학습 시스템으로 진행됩니다.`,
   (sn, lv, rg) => `${sn} 맞춤 과외가 특별한 이유는 세심한 관리 시스템에 있습니다. 학습 일지를 통해 매 수업의 진도, 이해도, 숙제 수행 여부를 기록해 장기적 학습 흐름을 추적해요. 또한 학부모 소통 채널로 매주 학생의 학습 상태를 공유하며, 필요할 때 언제든 선생님과 직접 상담할 수 있습니다. ${rg}에서 ${sn}에 다니는 학생들이 겪는 학습 고민은 생각보다 다양한데, 이를 조기에 발견하고 해결할 수 있는 촘촘한 관리가 큰 강점이에요.`,
   (sn, lv, rg) => `${sn} 과외의 기술적 차별점을 설명드립니다. 학습 데이터 기반 진단 시스템을 활용해 학생의 약점을 과학적으로 파악하고, 이를 토대로 최적의 학습 순서를 결정해요. 또한 오답 관리 시스템을 통해 틀린 문제를 자동 분류하고 주기적으로 재도전하게 만들어, 같은 실수를 반복하지 않도록 합니다. ${sn} 기출 데이터베이스와 연동된 맞춤 예상문제도 제공되어, 시험 직전 집중 대비가 효율적으로 이루어져요.`,
-  (sn, lv, rg) => `${sn} 과외만의 장점을 정리해 드립니다. 우선 이동이 편리해 ${rg} 근처 거주 선생님과 수업하면 왕복 시간을 절약할 수 있어요. 둘째 학생 개인 맞춤 교재 제공으로, 시중 교재보다 학생 수준에 최적화된 자료를 사용합니다. 셋째 시험 D-Day 집중 관리로 중간·기말고사 2~3주 전부터는 추가 비용 없이 집중 수업이 가능해요. 넷째, 학습 부진 해결 전문 노하우로, 떨어진 성적을 체계적으로 회복시키는 검증된 방법을 보유하고 있습니다.`,
+  (sn, lv, rg) => `${sn} 과외만의 장점을 정리해 드립니다. 우선 화상 과외로 진행하면 이동 시간 없이 집에서 바로 수업할 수 있어 왕복 시간을 아낄 수 있어요. 둘째 학생 개인 맞춤 교재 제공으로, 시중 교재보다 학생 수준에 최적화된 자료를 사용합니다. 셋째 시험 D-Day 집중 관리로 중간·기말고사 2~3주 전부터는 추가 비용 없이 집중 수업이 가능해요. 넷째, 학습 부진 해결 전문 노하우로, 떨어진 성적을 체계적으로 회복시키는 검증된 방법을 보유하고 있습니다.`,
   (sn, lv, rg) => `${sn} 재학생들이 이 과외를 선택하는 이유는 분명합니다. 가장 큰 이유는 학교 적응도입니다. 선생님들이 ${sn}의 학사 일정, 시험 유형, 숙제 부담까지 잘 알고 있어 학생의 전반적 학교생활에 맞는 조언이 가능해요. 두 번째는 성적 향상 실적입니다. 지난 수년간 ${rg} 지역 학생들의 성적을 꾸준히 끌어올린 실적이 있으며, 첫 학기 내 평균 1~2등급 상승을 경험하는 학생이 많습니다. 세 번째는 학부모 만족도로, 재이용률이 매우 높은 편이에요.`,
 ];
 
@@ -4664,6 +3564,11 @@ const SCHOOL_CURRICULUM_POOL = [
   (sn, lv, rg) => `${sn} 학생을 위한 커리큘럼은 목표 성적에 따라 3가지 트랙으로 나뉩니다. 기초 회복 트랙은 현재 하위권 학생이 중위권으로 진입하도록 돕고, 중위권 상승 트랙은 중위권을 상위권으로 끌어올리는 데 집중해요. 상위권 유지 트랙은 이미 상위권인 학생이 최상위권으로 도약하도록 고난도 심화 문제와 서술형 대비를 강화합니다. ${rg} ${sn} 학생 누구나 자신의 현재 위치에 맞는 최적의 학습 경로를 선택할 수 있어요.`,
 ];
 
+function coreSystem(){
+  const A='https://cdn.jsdelivr.net/gh/a01048275592-boop/anhani-img@main/';
+  const paS=[1,2,3,4,5,6,7,8,9].map(i=>`<div class="sys-slide"><img src="${A}수행평가${i}.png" alt="수행평가 관리 사례 ${i}"></div>`).join('');
+  return `<style>.sys-section{padding:44px 0;background:#f8fafc;border-radius:16px;margin:40px 0}.sys-head{text-align:center;margin-bottom:2.2rem;padding:0 1rem}.sys-mini-label{display:inline-block;background:#0c1e4d;color:#fff;padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;margin-bottom:.9rem;letter-spacing:.5px}.sys-title{font-size:28px;font-weight:800;line-height:1.35;margin:0 0 .8rem;color:#0c1e4d;letter-spacing:-1px}.sys-title .hi{color:#fbbf24}.sys-subtitle{font-size:14px;color:#666;line-height:1.7;margin:0 auto 1.3rem;max-width:520px}.sys-nav{display:inline-flex;gap:6px;background:#fff;padding:6px;border-radius:999px;border:1px solid #ececec;font-size:13px;flex-wrap:wrap;justify-content:center}.sys-nav-item{padding:7px 16px;border-radius:999px;color:#888;font-weight:500}.sys-nav-item.active{background:#0c1e4d;color:#fff}.sys-card{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;align-items:center;margin:0 auto 2.4rem;max-width:880px;padding:0 1.6rem}.sys-card:last-child{margin-bottom:0}.sys-card.reverse{direction:rtl}.sys-card.reverse>*{direction:ltr}.sys-slider{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:4/3;background:#0c1e4d;box-shadow:0 10px 28px rgba(12,30,77,.15)}.sys-track-2{display:flex;width:200%;height:100%;animation:slide2 4s infinite ease-in-out}.sys-track-3{display:flex;width:400%;height:100%;animation:slide3 8s infinite ease-in-out}.sys-track-9{display:flex;width:1000%;height:100%;animation:slide9 18s infinite}.sys-track-9 .sys-slide{width:10%}@keyframes slide9{0%,8.889%{transform:translateX(0)}11.111%,20%{transform:translateX(-10%)}22.222%,31.111%{transform:translateX(-20%)}33.333%,42.222%{transform:translateX(-30%)}44.444%,53.333%{transform:translateX(-40%)}55.556%,64.444%{transform:translateX(-50%)}66.667%,75.556%{transform:translateX(-60%)}77.778%,86.667%{transform:translateX(-70%)}88.889%,97.778%{transform:translateX(-80%)}100%{transform:translateX(-90%)}}.sys-slide{flex-shrink:0;height:100%}.sys-track-2 .sys-slide{width:50%}.sys-track-3 .sys-slide{width:25%}.sys-slide img{width:100%;height:100%;object-fit:cover;display:block}.sys-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}.sys-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45)}.sys-dot.active{background:#fff;width:16px;border-radius:3px}@keyframes slide2{0%,45%{transform:translateX(0)}50%,95%{transform:translateX(-50%)}100%{transform:translateX(0)}}@keyframes slide3{0%,22%{transform:translateX(0)}25%,47%{transform:translateX(-25%)}50%,72%{transform:translateX(-50%)}75%,100%{transform:translateX(-75%)}}.sys-h{font-size:24px;font-weight:800;color:#0c1e4d;margin:0 0 .9rem;letter-spacing:-1px;display:flex;align-items:center;gap:10px}.sys-h-num{background:#0c1e4d;color:#fff;font-size:13px;padding:4px 11px;border-radius:6px;font-weight:600;letter-spacing:0}.sys-desc{font-size:14px;color:#555;line-height:1.85;margin:0 0 1.3rem;word-break:keep-all}.sys-checks{display:flex;flex-direction:column;gap:9px}.sys-check{display:flex;align-items:flex-start;gap:10px;font-size:14px}.sys-check-icon{flex-shrink:0;width:21px;height:21px;border-radius:50%;background:#dbeafe;display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:#0c1e4d;font-weight:800;margin-top:1px}.sys-check-text{color:#1d1d1f;font-weight:500;line-height:1.5}@media(max-width:768px){.sys-card{grid-template-columns:1fr;gap:1.4rem;padding:0 1.2rem}.sys-card.reverse{direction:ltr}.sys-h{font-size:21px}.sys-title{font-size:23px}.sys-section{padding:32px 0}}</style><div class="sys-section"><div class="sys-head"><span class="sys-mini-label">핵심 시스템</span><h2 class="sys-title"><span class="hi">1:1</span> 집중 관리 시스템</h2><p class="sys-subtitle">수업 · 선생님 · 실전훈련 · 관리 · 수행평가<br>과외안하니의 5가지 핵심 시스템</p><div class="sys-nav"><span class="sys-nav-item active">수업</span><span class="sys-nav-item active">선생님</span><span class="sys-nav-item active">실전훈련</span><span class="sys-nav-item active">관리</span><span class="sys-nav-item active">수행평가</span></div></div><div class="sys-card"><div class="sys-slider"><div class="sys-track-2"><div class="sys-slide"><img src="${A}수업1.jpg" alt="1:1 맞춤 수업"></div><div class="sys-slide"><img src="${A}수업2.jpg" alt="화상 학습 코칭"></div></div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">01</span>수업</h3><p class="sys-desc">내신 성적부터 수능 대비까지, 진학과 적성에 맞춘 1:1 맞춤형 수업을 제공합니다. 학교별·교과서별 출제 경향을 정확히 파악해 자녀에게 꼭 맞는 학습 전략을 설계하고, 부족한 단원·취약 유형부터 차근차근 잡아드립니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">학교별·교과서별 맞춤 진도 수업</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">전국 학군지 단위 분석</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">중·기말고사 기간별 집중 코칭</span></div></div></div></div><div class="sys-card reverse"><div class="sys-slider"><div class="sys-track-2"><div class="sys-slide"><img src="${A}선생님1.png" alt="검증된 선생님들"></div><div class="sys-slide"><img src="${A}선생님2.png" alt="1:1 맞춤 컨설팅"></div></div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">02</span>선생님</h3><p class="sys-desc">학원도 인강도 아닌, 교육청에 정식 등록된 검증 교사만이 자녀를 만납니다. 단순 강의에 그치지 않고 인성·진로·입시까지 통합 코칭하는 전업 전문 교사 3,000명이 활동 중이며, 면접·교수법 평가를 통과한 강사만 등록됩니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">대학생 알바 NO · 전업 전문 교사만</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">교육청 정식 등록 + 학력·전공 인증</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">인성·진로·입시 통합 코칭 가능</span></div></div></div></div><div class="sys-card"><div class="sys-slider"><div class="sys-track-3"><div class="sys-slide"><img src="${A}실전훈련1.png" alt="학기별 수행평가 보고서 작성"></div><div class="sys-slide"><img src="${A}실전훈련2.png" alt="수행평가 관리 로드맵"></div><div class="sys-slide"><img src="${A}실전훈련3.png" alt="생성형 AI 활용 노하우"></div><div class="sys-slide"><img src="${A}실전훈련1.png" alt="학기별 수행평가 보고서 작성"></div></div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">03</span>실전훈련</h3><p class="sys-desc">수행평가·내신·수능까지, 매 학기 학생이 직접 마주하는 평가를 미리 준비합니다. 학기별 일정 캘린더와 채점 기준표로 시험 로드맵을 함께 설계하고, 생성형 AI 활용 노하우까지 가르쳐 자기주도 실전력을 키웁니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">학기별 수행평가 보고서 작성 코칭</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">국어·영어·수학 채점 기준표 분석</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">생성형 AI 활용 학습법 (뤼튼·챗GPT)</span></div></div></div></div><div class="sys-card reverse"><div class="sys-slider"><div class="sys-track-9">${paS}</div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">04</span>수행평가</h3><p class="sys-desc">지필(서논술형)부터 수행평가까지 통합으로 관리합니다. 교과목별 출제 유형을 분석해 글쓰기 기초부터 잡고, 구체적인 1:1 피드백과 학기별 누적 관리로 난이도 높은 수행평가도 입시까지 이어지는 실전 역량으로 만들어 드립니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">지필(서논술형)–수행평가 통합 솔루션</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">교과목별 유형 분석 + 구체적 1:1 피드백</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">학기별 누적 관리로 입시까지 연결</span></div></div></div></div><div class="sys-card"><div class="sys-slider"><div class="sys-track-2"><div class="sys-slide"><img src="${A}관리1.png" alt="학습코칭 유형 진단 리포트"></div><div class="sys-slide"><img src="${A}관리2.jpg" alt="성적 데이터 추적 관리"></div></div><div class="sys-dots"><span class="sys-dot active"></span><span class="sys-dot"></span></div></div><div class="sys-content"><h3 class="sys-h"><span class="sys-h-num">05</span>관리</h3><p class="sys-desc">매 수업의 진행 상황과 성적 데이터를 정밀하게 모니터링합니다. 학습코칭 유형 진단으로 자녀의 성향·강약점을 먼저 파악하고, 진도·과제·태도를 주간 단위로 기록·분석해 학부모님께 투명하게 공유합니다.</p><div class="sys-checks"><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">학습코칭 유형 진단 + 성향·강약점 분석</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">진도·과제·태도 주간 단위 기록·관리</span></div><div class="sys-check"><span class="sys-check-icon">✓</span><span class="sys-check-text">성적 데이터 추적 + 학부모 정기 리포트</span></div></div></div></div></div>`;
+}
 function renderSchoolDetail(level, idx) {
   const schools = getSchools(level);
   if (idx < 0 || idx >= schools.length) return null;
@@ -4673,6 +3578,7 @@ function renderSchoolDetail(level, idx) {
   const sdShort = getSidoShort(sido);
   const gugun = school[2];
   const region = `${sdShort} ${gugun}`;
+  const slug = encodeURIComponent(`${sdShort}-${gugun}-${sn}`);
   const estab = school[3] === '국' ? '국립' : school[3] === '공' ? '공립' : '사립';
   const stype = decST(school[4]);
   const lvName = levelName(level);
@@ -4702,71 +3608,35 @@ function renderSchoolDetail(level, idx) {
        `${sn} 국어 과외`, `${sn} 영어 과외`, `${sn} 수학 내신`, `${sn} 사회 과외`, `${sn} 과학 과외`]
     : [`${sn} 수능 대비`, `${sn} 내신 1등급`, `${sn} 수학 과외`, `${sn} 영어 1등급`, `${sn} 모의고사`,
        `${sn} 국어 과외`, `${sn} 영어 과외`, `${sn} 수학 1등급`, `${sn} 사회 과외`, `${sn} 과학 과외`];
-  const articleLinks = articleKeywords.map((kw, i) => `<a href="/${encodeURIComponent(sn)}-과외/article/${i}" class="sd-article-card"><span class="sd-article-num">${String(i+1).padStart(2,'0')}</span><div class="sd-article-text"><div class="sd-article-title">${kw}</div><div class="sd-article-desc">${sn} 학생을 위한 ${kw.replace(sn+' ','')} 정보</div></div></a>`).join('');
+  const articleLinks = articleKeywords.map((kw, i) => `<a href="/${slug}-과외/article/${i}" class="sd-article-card"><span class="sd-article-num">${String(i+1).padStart(2,'0')}</span><div class="sd-article-text"><div class="sd-article-title">${kw}</div><div class="sd-article-desc">${sn} 학생을 위한 ${kw.replace(sn+' ','')} 정보</div></div></a>`).join('');
 
   const nearby = getSchoolsBySidoGugun(level, school[1], gugun)
     .filter(x => x.idx !== idx).slice(0, 6);
   const nearbyHTML = nearby.length > 0
-    ? `<div class="sd-section"><h3 class="sd-h3">${gugun} 인근 ${lvName}</h3><div class="sd-nearby">${nearby.map(({school: ns}) => `<a href="/${encodeURIComponent(ns[0])}-과외" class="sd-nearby-item">${ns[0]}</a>`).join('')}</div></div>`
+    ? `<div class="sd-section"><h3 class="sd-h3">${gugun} 인근 ${lvName}</h3><div class="sd-nearby">${nearby.map(({school: ns}) => `<a href="/${encodeURIComponent(sdShort+'-'+gugun+'-'+ns[0])}-과외" class="sd-nearby-item">${ns[0]}</a>`).join('')}</div></div>`
     : '';
 
+  const featCards = [
+    {i:'🎯', t:'학교 시험 경향 분석', d:`${sn}의 내신 출제 경향과 시험 범위를 분석해, 학교에 꼭 맞는 1:1 맞춤 과외 전략을 설계합니다.`},
+    {i:'💻', t:'화상·대면 모두 가능', d:`${sn} 학생은 비대면 화상 과외와 대면 방문 과외 중 원하는 방식으로 수업할 수 있습니다. 지역에 상관없이 선생님 매칭이 가능해요.`},
+    {i:'📚', t:'과목별 전문 매칭', d:`${sn}에서 약한 과목과 목표 등급에 맞춰, 해당 과목을 전문으로 지도하는 1:1 선생님을 연결합니다.`},
+    {i:'✅', t:'검증된 선생님', d:`교육청 등록·학력·이력·후기가 검증된 전문 선생님만 ${sn} 학생에게 소개해 믿고 맡길 수 있습니다.`},
+  ];
+  const steps = [
+    {t:'학습 진단', d:`${sn} 최근 시험지와 오답을 분석해 현재 위치와 약점을 정확히 파악합니다.`},
+    {t:'맞춤 커리큘럼 설계', d:`${sn} 학사 일정과 출제 경향에 맞춘 1:1 학습 플랜을 설계합니다.`},
+    {t:'실전 풀이·반복', d:`핵심 개념을 다진 뒤 중·기말 기출·예상 문제로 실전 감각을 끌어올립니다.`},
+    {t:'점검·피드백', d:`주기적 점검으로 진도를 조정하고 약점을 빠르게 보완합니다.`},
+  ];
+  const dongs = (typeof DONG_DATA !== 'undefined' && DONG_DATA[gugun]) ? DONG_DATA[gugun] : [];
+  const dongHTML = dongs.length ? `<div class="sd-section"><h3 class="sd-h3">${gugun} 인근 동네 ${lvName} 과외</h3><div class="sd-dong">${dongs.map(d => `<span>${d} ${lvName} 과외</span>`).join('')}</div></div>` : '';
+  const sdTags = [`상상코칭`,`상상코칭 과외`,`${sn} 상상코칭`,`${region} 상상코칭`,`상상코칭 ${lvName} 과외`,`${sn} 과외`,`${region} 과외`,`${sn} 1:1 과외`,`${sn} 내신 과외`,`${region} ${lvName} 과외`,`${sn} 시험 대비`,`${sn} 수학 과외`];
+
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(`${sn} 과외 - ${region} ${lvName} 맞춤 과외 | 과외안하니`, `${sn}(${region}) 재학생을 위한 학교 맞춤 1:1 과외. 학교별 시험 경향, 내신 출제 패턴, 과외 선생님 매칭 정보를 확인하세요.`, `https://anhani.com/${encodeURIComponent(sn)}-과외`)}
-  <style>${commonStyles()}.sd-hero-img{width:100%;max-width:960px;margin:24px auto 0;padding:0 24px}.sd-bcrumb{max-width:960px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.sd-bcrumb a{color:#6366f1;text-decoration:none}.sd-wrap{max-width:880px;margin:0 auto;padding:24px 24px 80px}.sd-title-block{margin-bottom:24px}.sd-title-block h1{font-size:30px;font-weight:900;color:#0f172a;margin-bottom:8px;line-height:1.3}.sd-title-block h1 em{font-style:normal;color:${lvColor}}.sd-meta{display:flex;flex-wrap:wrap;gap:8px}.sd-meta-item{font-size:12px;padding:4px 10px;background:${lvBg};color:${lvColor};border-radius:12px;font-weight:600}.sd-content{font-size:15px;line-height:1.95;color:#1e293b;word-break:keep-all}.sd-content p{margin-bottom:14px}.sd-content .lead-p{background:${lvBg};border-left:4px solid ${lvColor};padding:18px 20px;border-radius:0 10px 10px 0;margin-bottom:32px;font-weight:500}.sd-section{margin:36px 0}.sd-h3{font-size:19px;font-weight:800;color:#0f172a;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid ${lvColor};display:inline-block}.sd-tip-card{background:#fffbeb;border-left:4px solid #f59e0b;padding:16px 18px;border-radius:8px;margin-bottom:12px;font-size:14px;line-height:1.7;color:#78350f}.sd-faq-item{background:#f8fafc;border-radius:10px;padding:16px 20px;margin-bottom:10px}.sd-faq-q{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}.sd-faq-q::before{content:'Q. ';color:${lvColor}}.sd-faq-a{font-size:14px;line-height:1.7;color:#475569}.sd-faq-a::before{content:'A. ';color:#94a3b8;font-weight:700}.sd-articles{display:grid;grid-template-columns:1fr;gap:10px}.sd-article-card{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px 18px;text-decoration:none;transition:.2s}.sd-article-card:hover{border-color:${lvColor};transform:translateX(4px)}.sd-article-num{font-size:18px;font-weight:900;color:${lvColor};min-width:28px}.sd-article-title{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:2px}.sd-article-desc{font-size:12px;color:#94a3b8}.sd-nearby{display:flex;flex-wrap:wrap;gap:8px}.sd-nearby-item{font-size:13px;padding:7px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;color:#475569;text-decoration:none;transition:.2s}.sd-nearby-item:hover{border-color:${lvColor};color:${lvColor};background:${lvBg}}.sd-cta-box{margin:36px 0 0;padding:28px 24px;background:linear-gradient(135deg,${lvColor} 0%,#312e81 100%);border-radius:14px;text-align:center;color:#fff}.sd-cta-box h4{font-size:19px;font-weight:800;margin-bottom:8px}.sd-cta-box p{font-size:14px;opacity:.9;margin-bottom:16px}.sd-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.sd-cta-btn{padding:11px 22px;background:#fff;color:${lvColor};font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:.2s}.sd-cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.15)}@media (max-width:640px){.sd-title-block h1{font-size:22px}}</style></head><body>
+  ${commonHead(`${region} ${sn} 과외 - ${lvName} 맞춤 1:1 과외 | 과외안하니`, `${region} ${sn} 재학생을 위한 학교 맞춤 1:1 과외. 학교별 시험 경향, 내신 출제 패턴, 과외 선생님 매칭 정보를 확인하세요.`, `https://anhani.com/${slug}-과외`)}
+  <style>${commonStyles()}.sd-hero-img{width:100%;max-width:960px;margin:24px auto 0;padding:0 24px}.sd-bcrumb{max-width:960px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.sd-bcrumb a{color:#6366f1;text-decoration:none}.sd-wrap{max-width:880px;margin:0 auto;padding:24px 24px 80px}.sd-title-block{margin-bottom:24px}.sd-title-block h1{font-size:30px;font-weight:900;color:#0f172a;margin-bottom:8px;line-height:1.3}.sd-title-block h1 em{font-style:normal;color:${lvColor}}.sd-meta{display:flex;flex-wrap:wrap;gap:8px}.sd-meta-item{font-size:12px;padding:4px 10px;background:${lvBg};color:${lvColor};border-radius:12px;font-weight:600}.sd-content{font-size:15px;line-height:1.95;color:#1e293b;word-break:keep-all}.sd-content p{margin-bottom:14px}.sd-content .lead-p{background:${lvBg};border-left:4px solid ${lvColor};padding:18px 20px;border-radius:0 10px 10px 0;margin-bottom:32px;font-weight:500}.sd-section{margin:26px 0}.sd-h3{font-size:19px;font-weight:800;color:#0f172a;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid ${lvColor};display:inline-block}.sd-tip-card{background:#fffbeb;border-left:4px solid #f59e0b;padding:16px 18px;border-radius:8px;margin-bottom:12px;font-size:14px;line-height:1.7;color:#78350f}.sd-faq{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:8px;overflow:hidden}.sd-faq summary{padding:15px 18px;font-size:15px;font-weight:700;color:#0f172a;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}.sd-faq summary::-webkit-details-marker{display:none}.sd-faq summary::after{content:'⌄';font-size:20px;line-height:1;color:#94a3b8;transition:transform .2s;flex-shrink:0}.sd-faq[open] summary{color:${lvColor}}.sd-faq[open] summary::after{transform:rotate(180deg)}.sd-faq-a{padding:0 18px 16px;font-size:14px;line-height:1.7;color:#475569;word-break:keep-all}.sd-articles{display:grid;grid-template-columns:1fr;gap:10px}.sd-article-card{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px 18px;text-decoration:none;transition:.2s}.sd-article-card:hover{border-color:${lvColor};transform:translateX(4px)}.sd-article-num{font-size:18px;font-weight:900;color:${lvColor};min-width:28px}.sd-article-title{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:2px}.sd-article-desc{font-size:12px;color:#94a3b8}.sd-nearby{display:flex;flex-wrap:wrap;gap:8px}.sd-nearby-item{font-size:13px;padding:7px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;color:#475569;text-decoration:none;transition:.2s}.sd-nearby-item:hover{border-color:${lvColor};color:${lvColor};background:${lvBg}}.sd-info-box{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:18px 22px;margin-bottom:28px}.sd-info-box ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}.sd-info-box li{font-size:14px;color:#334155;display:flex;gap:8px}.sd-info-box li b{color:#94a3b8;font-weight:600;min-width:40px}.sd-info-box li::before{content:'✓';color:${lvColor};font-weight:800}.sd-feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}.sd-feat-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:15px 16px}.sd-feat-ic{font-size:20px;margin-bottom:6px}.sd-feat-card h4{font-size:15px;font-weight:800;color:#0f172a;margin-bottom:6px}.sd-feat-card p{font-size:13px;line-height:1.7;color:#64748b;margin:0;word-break:keep-all}.sd-step{display:flex;gap:14px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:15px 18px;margin-bottom:7px}.sd-step-n{flex-shrink:0;width:34px;height:34px;border-radius:9px;background:${lvBg};color:${lvColor};font-weight:900;display:flex;align-items:center;justify-content:center}.sd-step h4{font-size:15px;font-weight:800;color:#0f172a;margin-bottom:4px}.sd-step p{font-size:13px;line-height:1.7;color:#64748b;margin:0;word-break:keep-all}.sd-dong{display:flex;flex-wrap:wrap;gap:8px}.sd-dong span{font-size:13px;padding:6px 12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;color:#475569}.sd-tags{display:flex;flex-wrap:wrap;gap:8px}.sd-tags span{font-size:12px;padding:5px 12px;background:${lvBg};color:${lvColor};border-radius:14px;font-weight:600}@media (max-width:640px){.sd-info-box ul{grid-template-columns:1fr}}.sd-cta-box{margin:36px 0 0;padding:28px 24px;background:linear-gradient(135deg,${lvColor} 0%,#312e81 100%);border-radius:14px;text-align:center;color:#fff}.sd-cta-box h4{font-size:19px;font-weight:800;margin-bottom:8px}.sd-cta-box p{font-size:14px;opacity:.9;margin-bottom:16px}.sd-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.sd-cta-btn{padding:11px 22px;background:#fff;color:${lvColor};font-size:14px;font-weight:700;border-radius:8px;text-decoration:none;transition:.2s}.sd-cta-btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.15)}@media (max-width:640px){.sd-title-block h1{font-size:22px}}</style></head><body>
   ${navHTML('region')}
-  <div class="sd-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; <a href="/학교급별/${level}/${encodeURIComponent(sido)}">${sdShort}</a> &gt; <a href="/학교급별/${level}/${encodeURIComponent(sido)}/${encodeURIComponent(gugun)}">${gugun}</a> &gt; ${sn}</div>
-  <div class="sd-hero-img">${schoolThumbSVG(school, level, idx)}</div>
-  <div class="sd-wrap">
-    <div class="sd-title-block">
-      <h1>${sn} <em>과외</em></h1>
-      <div class="sd-meta">
-        <span class="sd-meta-item">${region}</span>
-        <span class="sd-meta-item">${estab}</span>
-        <span class="sd-meta-item">${stype}</span>
-      </div>
-    </div>
-    <div class="sd-content">
-      <p class="lead-p">${intro}</p>
-      <div class="sd-section">
-        <h3 class="sd-h3">${sn} 맞춤 학습 전략</h3>
-        ${splitP(body1)}${splitP(body2)}
-      </div>
-      <div class="sd-section">
-        <h3 class="sd-h3">${sn} 과외 안내</h3>
-        ${splitP(guide1)}${splitP(guide2)}
-      </div>
-      <div class="sd-section">
-        <h3 class="sd-h3">${sn} 과외 특징</h3>
-        ${splitP(feature1)}${splitP(feature2)}
-      </div>
-      <div class="sd-section">
-        <h3 class="sd-h3">${sn} 과외 커리큘럼</h3>
-        ${splitP(curri1)}${splitP(curri2)}
-      </div>
-      <div class="sd-section">
-        <h3 class="sd-h3">${sn} 과외 핵심 팁</h3>
-        <div class="sd-tip-card">💡 ${tip1}</div>
-        <div class="sd-tip-card">💡 ${tip2}</div>
-      </div>
-      <div class="sd-section">
-        <h3 class="sd-h3">자주 묻는 질문</h3>
-        ${faqs.map(f => `<div class="sd-faq-item"><div class="sd-faq-q">${f.q}</div><div class="sd-faq-a">${f.a}</div></div>`).join('')}
-      </div>
-      <div class="sd-section">
-        <h3 class="sd-h3">${sn} 관련 가이드</h3>
-        <div class="sd-articles">${articleLinks}</div>
-      </div>
-      ${nearbyHTML}
-      <div class="sd-cta-box">
-        <h4>${sn} 맞춤 과외, 지금 상담받으세요</h4>
-        <p>학교별 시험 경향을 아는 선생님과 1:1로 매칭해 드립니다</p>
-        <div class="sd-cta-btns">
-          <a href="/체험신청" class="sd-cta-btn">⭐ 무료 체험 신청</a>
-          <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="sd-cta-btn">💬 카톡 상담</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="sd-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별">학교별</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; <a href="/학교급별/${level}/${encodeURIComponent(sido)}">${sdShort}</a> &gt; <a href="/학교급별/${level}/${encodeURIComponent(sido)}/${encodeURIComponent(gugun)}">${gugun}</a> &gt; ${sn}</div><div class="sd-hero-img">${schoolThumbSVG(school, level, idx)}</div><div class="sd-wrap"><div class="sd-title-block"><h1>${region} ${sn} <em>과외</em></h1><div class="sd-meta"><span class="sd-meta-item">${region}</span><span class="sd-meta-item">${estab}</span><span class="sd-meta-item">${stype}</span></div></div><div class="sd-content"><p class="lead-p">${intro}</p><div class="sd-info-box"><ul><li><b>학교</b>${sn}</li><li><b>지역</b>${region}</li><li><b>학교급</b>${lvName}</li><li><b>설립</b>${estab}</li><li><b>유형</b>${stype}</li><li><b>수업</b>1:1 맞춤 과외</li></ul></div><div class="sd-section"><h3 class="sd-h3">${sn} 과외 안내</h3>${splitP(body1)}${splitP(body2)}</div><div class="sd-section"><h3 class="sd-h3">${sn} 과외 선생님 특징</h3>${splitP(feature1)}<div class="sd-feat-grid">${featCards.map(c => `<div class="sd-feat-card"><div class="sd-feat-ic">${c.i}</div><h4>${c.t}</h4><p>${c.d}</p></div>`).join('')}</div></div><div class="sd-section"><h3 class="sd-h3">${sn} 수업 진행 방식</h3>${steps.map((s, i) => `<div class="sd-step"><div class="sd-step-n">${i+1}</div><div><h4>${s.t}</h4><p>${s.d}</p></div></div>`).join('')}</div><div class="sd-section"><h3 class="sd-h3">${sn} 맞춤 학습 전략</h3>${splitP(guide1)}${splitP(guide2)}</div><div class="sd-section"><h3 class="sd-h3">${sn} 과외 커리큘럼</h3>${splitP(curri1)}${splitP(curri2)}</div>${coreSystem(lvColor, lvBg)}<div class="sd-section"><h3 class="sd-h3">${sn} 과외 핵심 팁</h3><div class="sd-tip-card">💡 ${tip1}</div><div class="sd-tip-card">💡 ${tip2}</div></div>${dongHTML}<div class="sd-section"><h3 class="sd-h3">${sn} 과목별 과외 가이드</h3><div class="sd-articles">${articleLinks}</div></div>${nearbyHTML}<div class="sd-section"><h3 class="sd-h3">${sn} 자주 묻는 질문</h3>${faqs.map(f => `<details class="sd-faq"><summary>Q. ${f.q}</summary><div class="sd-faq-a">${f.a}</div></details>`).join('')}</div><div class="sd-section"><h3 class="sd-h3">연관 키워드</h3><div class="sd-tags">${sdTags.map(t => `<span>${t}</span>`).join('')}</div></div><div class="sd-cta-box"><h4>${sn} 맞춤 과외, 상상코칭과 시작하세요</h4><p>상상코칭이 ${sn} 시험 경향을 아는 선생님을 1:1로 매칭해 드립니다</p><div class="sd-cta-btns"><a href="/체험신청" class="sd-cta-btn">⭐ 무료 체험 신청</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank" class="sd-cta-btn">💬 카톡 상담</a></div></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -4788,6 +3658,35 @@ const SCHOOL_ART_OUTRO = [
   (sn, kw) => `좋은 ${kw} 결정이 ${sn} 학생의 학습 인생을 바꿀 수 있습니다. 무료 체험 수업으로 선생님과의 케미를 먼저 확인하고, 만족스러우면 정규 수업으로 이어가는 방식이 안전해요.`,
 ];
 
+const SCHOOL_ART_ROADMAP = [
+  (sn, kw) => ({t:`1단계 — 현재 위치 진단부터`, b:`${sn}에서 ${kw}을 시작하기 전, 지금 내 위치를 정확히 아는 것이 먼저입니다. 최근 시험지와 오답을 펼쳐 어떤 단원·유형에서 점수가 새는지 짚어보면, 막연한 공부 대신 분명한 목표를 세울 수 있어요.`}),
+  (sn, kw) => ({t:`2단계 — 주 단위 학습 루틴 만들기`, b:`${kw}은 몰아서 하기보다 매주 일정 분량을 반복하는 편이 효과적입니다. ${sn}의 학사 일정에 맞춰 주중·주말 학습량을 나누고, 한 주가 끝날 때 스스로 점검하는 습관을 들이면 흐름이 끊기지 않아요.`}),
+  (sn, kw) => ({t:`3단계 — 시험 4주 전, 실전 모드 전환`, b:`${sn} 시험 4주 전부터는 ${kw}의 방향을 '이해'에서 '실전'으로 바꿉니다. 기출·예상 문제를 시간을 재며 풀고, 틀린 문제는 반드시 다시 풀어 약점을 메우는 과정이 등급을 가르는 핵심이에요.`}),
+  (sn, kw) => ({t:`꾸준함이 만드는 진짜 변화`, b:`${sn} 학생들의 사례를 보면 3~6개월 이상 ${kw}을 꾸준히 이어간 경우 의미 있는 성적 변화가 나타납니다. 첫 1~2개월 변화가 작더라도 멈추지 않는 것이 가장 큰 무기예요.`}),
+  (sn, kw) => ({t:`기록으로 관리하는 ${kw}`, b:`공부한 내용과 틀린 문제를 기록해 두면 ${kw}의 진행 상황이 한눈에 보입니다. ${sn} 학생이라면 과목별 노트나 간단한 학습 일지를 만들어 매주 채워가는 것을 추천해요.`}),
+];
+const SCHOOL_ART_PITFALL = [
+  (sn, kw) => ({t:`단기 성과에만 집착하기`, b:`${kw}에서 흔한 실수는 한두 번의 시험 결과에 일희일비하는 것입니다. ${sn} 학생이라면 한 학기 단위로 흐름을 보며 꾸준히 쌓아가는 관점이 필요해요.`}),
+  (sn, kw) => ({t:`오답을 그냥 넘기기`, b:`틀린 문제를 채점만 하고 넘기면 ${kw} 효과가 절반으로 줄어듭니다. 왜 틀렸는지 유형별로 분류하고 다시 풀어보는 과정이 ${sn} 내신·모의고사 점수를 가르는 지점이에요.`}),
+  (sn, kw) => ({t:`모르는 걸 혼자 끌어안기`, b:`막힌 부분을 방치하면 다음 단원까지 무너집니다. ${sn} ${kw}에서는 질문하는 습관이 중요해요. 그날 안에 묻고 해결하는 학생이 결국 앞서갑니다.`}),
+  (sn, kw) => ({t:`학습 환경 방치하기`, b:`조용한 공간, 정돈된 책상, 충분한 수면 같은 기본기가 무너지면 아무리 좋은 ${kw}도 효과가 떨어집니다. ${sn} 학생이라면 공부 환경 점검부터 시작해 보세요.`}),
+];
+
+function richArtCSS(c, bg){return `.sa-lead{font-size:18px;line-height:1.85;color:#1e293b;background:${bg};border-left:4px solid ${c};padding:20px 22px;border-radius:0 12px 12px 0;margin-bottom:34px;font-weight:500;word-break:keep-all}.sa-sec{margin:36px 0}.sa-sec>p{font-size:17px;line-height:1.95;color:#334155;margin-bottom:20px;word-break:keep-all}.sa-h3{font-size:20px;font-weight:800;color:#0f172a;margin-bottom:16px;padding-left:12px;border-left:4px solid ${c};line-height:1.4}.sa-callout{background:${bg};border-left:4px solid ${c};border-radius:0 10px 10px 0;padding:18px 20px;margin-top:8px;font-size:15px;line-height:1.8;color:#1e293b;word-break:keep-all}.sa-callout b{display:block;font-weight:800;color:${c};margin-bottom:6px}.sa-theme{border-radius:16px;padding:26px 22px;margin:34px 0}.sa-theme.green{background:#f0fdf4;border:1px solid #bbf7d0}.sa-theme.purple{background:#faf5ff;border:1px solid #e9d5ff}.sa-theme-h3{font-size:19px;font-weight:800;margin-bottom:18px;line-height:1.4}.sa-theme.green .sa-theme-h3{color:#15803d}.sa-theme.purple .sa-theme-h3{color:#7e22ce}.sa-subcard{background:#fff;border-radius:12px;padding:18px 20px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}.sa-subcard:last-child{margin-bottom:0}.sa-subcard-t{font-size:16px;font-weight:800;color:#0f172a;margin-bottom:8px}.sa-subcard p{font-size:15px;line-height:1.85;color:#475569;margin:0;word-break:keep-all}.sa-faq-item{background:#f8fafc;border-radius:10px;padding:16px 20px;margin-bottom:10px}.sa-faq-q{font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px}.sa-faq-q::before{content:'Q. ';color:${c}}.sa-faq-a{font-size:14px;line-height:1.75;color:#475569}.sa-faq-a::before{content:'A. ';color:#94a3b8;font-weight:700}.sa-outro{margin-top:34px;font-size:16px;line-height:1.9;color:#475569;background:#f8fafc;border-radius:12px;padding:22px 24px;word-break:keep-all}.sa-outro::before{content:'✍️ 정리';display:block;font-size:13px;font-weight:800;color:${c};margin-bottom:8px}`;}
+function richArtBody(sn, kw, h, lvName){
+  const intro = SCHOOL_ART_INTRO[h % SCHOOL_ART_INTRO.length](sn, kw);
+  const body1 = SCHOOL_ART_BODY[h % SCHOOL_ART_BODY.length](sn, kw);
+  const body2 = SCHOOL_ART_BODY[(h + 1) % SCHOOL_ART_BODY.length](sn, kw);
+  const body3 = SCHOOL_ART_BODY[(h + 2) % SCHOOL_ART_BODY.length](sn, kw);
+  const outro = SCHOOL_ART_OUTRO[h % SCHOOL_ART_OUTRO.length](sn, kw);
+  const tipPick = SCHOOL_TIPS_POOL[(h >>> 3) % SCHOOL_TIPS_POOL.length](sn);
+  const RL = SCHOOL_ART_ROADMAP.length, PL = SCHOOL_ART_PITFALL.length, AFL = SCHOOL_FAQ_POOL.length;
+  const road = [h % RL, (h + 2) % RL, (h + 4) % RL].map(i => SCHOOL_ART_ROADMAP[i](sn, kw));
+  const pit = [h % PL, (h + 1) % PL].map(i => SCHOOL_ART_PITFALL[i](sn, kw));
+  const afaqs = [SCHOOL_FAQ_POOL[(h >>> 5) % AFL](sn, lvName), SCHOOL_FAQ_POOL[((h >>> 5) + 2) % AFL](sn, lvName)];
+  return `<p class="sa-lead">${intro}</p><div class="sa-sec"><h3 class="sa-h3">📌 ${sn} ${kw}, 왜 중요할까</h3><p>${body1}</p><p>${body2}</p><div class="sa-callout"><b>💡 ${sn} ${kw} 핵심 포인트</b>${tipPick}</div></div><div class="sa-theme green"><h3 class="sa-theme-h3">📗 ${sn} ${kw} 실전 로드맵</h3>${road.map(r => `<div class="sa-subcard"><div class="sa-subcard-t">${r.t}</div><p>${r.b}</p></div>`).join('')}</div><div class="sa-sec"><h3 class="sa-h3">📍 놓치기 쉬운 부분</h3><p>${body3}</p></div><div class="sa-theme purple"><h3 class="sa-theme-h3">📘 ${kw}, 이런 실수는 피하세요</h3>${pit.map(r => `<div class="sa-subcard"><div class="sa-subcard-t">${r.t}</div><p>${r.b}</p></div>`).join('')}</div><div class="sa-sec"><h3 class="sa-h3">❓ ${sn} ${kw} 자주 묻는 질문</h3>${afaqs.map(f => `<div class="sa-faq-item"><div class="sa-faq-q">${f.q}</div><div class="sa-faq-a">${f.a}</div></div>`).join('')}</div><div class="sa-outro">${outro}</div>`;
+}
+
 function renderSchoolArticleNew(level, idx, articleIdx) {
   const schools = getSchools(level);
   if (idx < 0 || idx >= schools.length) return null;
@@ -4798,6 +3697,7 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
   const sido = getSidoFromIdx(school[1]);
   const sdShort = getSidoShort(sido);
   const gugun = school[2];
+  const slug = encodeURIComponent(`${sdShort}-${gugun}-${sn}`);
   const lvName = levelName(level);
   const lvColor = levelColor(level);
   const lvBg = levelBg(level);
@@ -4811,42 +3711,16 @@ function renderSchoolArticleNew(level, idx, articleIdx) {
   const kwShort = kw.replace(sn + ' ', '');
 
   const h = schoolHash(sn) + aIdx * 7;
-  const intro = SCHOOL_ART_INTRO[h % SCHOOL_ART_INTRO.length](sn, kwShort);
-  const body1 = SCHOOL_ART_BODY[h % SCHOOL_ART_BODY.length](sn, kwShort);
-  const body2 = SCHOOL_ART_BODY[(h + 1) % SCHOOL_ART_BODY.length](sn, kwShort);
-  const body3 = SCHOOL_ART_BODY[(h + 2) % SCHOOL_ART_BODY.length](sn, kwShort);
-  const outro = SCHOOL_ART_OUTRO[h % SCHOOL_ART_OUTRO.length](sn, kwShort);
 
-  const otherLinks = articleKeywords.map((k, i) => i !== aIdx ? `<a href="/${encodeURIComponent(sn)}-과외/article/${i}" class="sa-rel-item">${k}</a>` : '').filter(Boolean).join('');
+  const otherLinks = articleKeywords.map((k, i) => i !== aIdx ? `<a href="/${slug}-과외/article/${i}" class="sa-rel-item">${k}</a>` : '').filter(Boolean).join('');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(`${kw} - ${sdShort} ${gugun} ${lvName} 가이드 | 과외안하니`, `${sn} 학생을 위한 ${kwShort} 실전 가이드. 학교 특성에 맞춘 ${kwShort} 노하우와 효과적인 학습 전략을 확인하세요.`, `https://anhani.com/${encodeURIComponent(sn)}-과외/article/${aIdx}`)}
-  <style>${commonStyles()}.sa-hero-img{max-width:880px;margin:24px auto 0;padding:0 24px}.sa-bcrumb{max-width:880px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.sa-bcrumb a{color:#6366f1;text-decoration:none}.sa-wrap{max-width:800px;margin:0 auto;padding:24px 24px 80px}.sa-tag{display:inline-block;padding:4px 12px;background:${lvBg};color:${lvColor};font-size:12px;font-weight:700;border-radius:12px;margin-bottom:14px}.sa-title{font-size:28px;font-weight:900;color:#0f172a;margin-bottom:12px;line-height:1.3}.sa-meta{font-size:13px;color:#94a3b8;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid #e2e8f0}.sa-content{font-size:15px;line-height:1.9;color:#334155}.sa-content p{margin-bottom:20px}.sa-rel-box{margin-top:40px;padding:22px;background:#f8fafc;border-radius:12px}.sa-rel-title{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:12px}.sa-rel-grid{display:flex;flex-wrap:wrap;gap:8px}.sa-rel-item{font-size:13px;padding:7px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;color:#475569;text-decoration:none;transition:.2s}.sa-rel-item:hover{border-color:${lvColor};color:${lvColor}}.sa-cta{margin-top:28px;padding:24px;background:linear-gradient(135deg,${lvColor} 0%,#312e81 100%);border-radius:12px;text-align:center;color:#fff}.sa-cta h4{font-size:17px;font-weight:800;margin-bottom:6px}.sa-cta p{font-size:13px;opacity:.9;margin-bottom:14px}.sa-cta a{display:inline-block;margin:0 4px;padding:9px 18px;background:#fff;color:${lvColor};font-size:13px;font-weight:700;border-radius:7px;text-decoration:none}@media (max-width:640px){.sa-title{font-size:22px}}</style></head><body>
+  ${commonHead(`${sdShort} ${gugun} ${kw} - ${lvName} 가이드 | 과외안하니`, `${sdShort} ${gugun} ${sn} 학생을 위한 ${kwShort} 실전 가이드. 학교 특성에 맞춘 ${kwShort} 노하우와 효과적인 학습 전략을 확인하세요.`, `https://anhani.com/${slug}-과외/article/${aIdx}`)}
+  <style>${commonStyles()}.sa-hero-img{max-width:880px;margin:24px auto 0;padding:0 24px}.sa-bcrumb{max-width:880px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.sa-bcrumb a{color:#6366f1;text-decoration:none}.sa-wrap{max-width:760px;margin:0 auto;padding:24px 24px 80px}.sa-tag{display:inline-block;padding:4px 12px;background:${lvBg};color:${lvColor};font-size:12px;font-weight:700;border-radius:12px;margin-bottom:14px}.sa-title{font-size:28px;font-weight:900;color:#0f172a;margin-bottom:12px;line-height:1.3}.sa-meta{font-size:13px;color:#94a3b8;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid #e2e8f0}${richArtCSS(lvColor, lvBg)}.sa-rel-box{margin-top:40px;padding:22px;background:#f8fafc;border-radius:12px}.sa-rel-title{font-size:14px;font-weight:800;color:#0f172a;margin-bottom:12px}.sa-rel-grid{display:flex;flex-wrap:wrap;gap:8px}.sa-rel-item{font-size:13px;padding:7px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;color:#475569;text-decoration:none;transition:.2s}.sa-rel-item:hover{border-color:${lvColor};color:${lvColor}}.sa-cta{margin-top:28px;padding:24px;background:linear-gradient(135deg,${lvColor} 0%,#312e81 100%);border-radius:12px;text-align:center;color:#fff}.sa-cta h4{font-size:17px;font-weight:800;margin-bottom:6px}.sa-cta p{font-size:13px;opacity:.9;margin-bottom:14px}.sa-cta a{display:inline-block;margin:0 4px;padding:9px 18px;background:#fff;color:${lvColor};font-size:13px;font-weight:700;border-radius:7px;text-decoration:none}@media (max-width:640px){.sa-title{font-size:22px}}</style></head><body>
   ${navHTML('region')}
-  <div class="sa-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; <a href="/${encodeURIComponent(sn)}-과외">${sn}</a> &gt; ${kwShort}</div>
-  <div class="sa-hero-img">${schoolThumbSVG(school, level, idx + aIdx + 1)}</div>
-  <div class="sa-wrap">
-    <span class="sa-tag">${sn} 가이드</span>
-    <h1 class="sa-title">${kw}</h1>
-    <div class="sa-meta">${sdShort} ${gugun} · ${sn} · ${kwShort}</div>
-    <div class="sa-content">
-      <p>${intro}</p>
-      <p>${body1}</p>
-      <p>${body2}</p>
-      <p>${body3}</p>
-      <p>${outro}</p>
-    </div>
-    <div class="sa-rel-box">
-      <div class="sa-rel-title">${sn} 다른 가이드</div>
-      <div class="sa-rel-grid">${otherLinks}<a href="/${encodeURIComponent(sn)}-과외" class="sa-rel-item">← ${sn} 과외 메인</a></div>
-    </div>
-    <div class="sa-cta">
-      <h4>${sn} 맞춤 과외 무료 상담</h4>
-      <p>학교별 시험 경향을 아는 선생님과 매칭해 드립니다</p>
-      <a href="/체험신청">⭐ 무료 체험</a>
-      <a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a>
-    </div>
-  </div>
+  <div class="sa-bcrumb"><a href="/">홈</a> &gt; <a href="/학교급별/${level}">${lvName}</a> &gt; <a href="/${slug}-과외">${sdShort} ${gugun} ${sn}</a> &gt; ${kwShort}</div><div class="sa-hero-img">${schoolThumbSVG(school, level, idx + aIdx + 1, `${sdShort} ${gugun} ${kw}`)}</div><div class="sa-wrap"><span class="sa-tag">${sn} 가이드</span><h1 class="sa-title">${sdShort} ${gugun} ${kw}</h1><div class="sa-meta">${sdShort} ${gugun} · ${sn} · ${kwShort}</div>
+    ${richArtBody(sn, kwShort, h, lvName)}
+    <div class="sa-rel-box"><div class="sa-rel-title">${sn} 다른 가이드</div><div class="sa-rel-grid">${otherLinks}<a href="/${slug}-과외" class="sa-rel-item">← ${sdShort} ${gugun} ${sn} 과외 메인</a></div></div><div class="sa-cta"><h4>${sn} 맞춤 과외 무료 상담</h4><p>학교별 시험 경향을 아는 선생님과 매칭해 드립니다</p><a href="/체험신청">⭐ 무료 체험</a><a href="http://pf.kakao.com/_SbyVX/chat" target="_blank">💬 카톡 상담</a></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -5174,23 +4048,7 @@ export default {
         const emailTitle = isAcademy ? '🏫 학원 상담 신청 접수' : '🎓 체험 수업 신청 접수';
         const subjectPrefix = isAcademy ? '[anhani.com] 학원 상담 신청 - ' : '[anhani.com] 체험 수업 신청 - ';
 
-        const htmlBody = `<div style="font-family:-apple-system,'Noto Sans KR',sans-serif;max-width:640px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;">
-          <div style="background:linear-gradient(135deg,#312e81,#6366f1);padding:28px 24px;color:#fff;">
-            <h2 style="margin:0;font-size:22px;">${emailTitle}</h2>
-            <p style="margin:6px 0 0;opacity:0.9;font-size:13px;">anhani.com${isAcademy ? ' · 와와학습코칭센터' : ''}</p>
-          </div>
-          <div style="padding:24px;">
-            <table style="width:100%;border-collapse:collapse;font-size:14px;">
-              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;width:110px;border-bottom:1px solid #e2e8f0;">학생 이름</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(name)}</td></tr>
-              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">연락처</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;"><a href="tel:${esc(phone)}" style="color:#0369a1;text-decoration:none;">${esc(phone)}</a></td></tr>
-              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">학년</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(grades.join(', '))}</td></tr>
-              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">희망 과목</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(subjects.join(', '))}</td></tr>
-              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">주소</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(address)}${addressDetail ? ' ' + esc(addressDetail) : ''}</td></tr>
-              <tr><td style="padding:12px;background:#f1f5f9;font-weight:700;vertical-align:top;">문의사항</td><td style="padding:12px;white-space:pre-wrap;line-height:1.6;">${esc(message) || '(없음)'}</td></tr>
-            </table>
-            <p style="color:#64748b;font-size:12px;margin:20px 0 0;text-align:right;">📅 접수 시각: ${nowKST}</p>
-          </div>
-        </div>`;
+        const htmlBody = `<div style="font-family:-apple-system,'Noto Sans KR',sans-serif;max-width:640px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;"><div style="background:linear-gradient(135deg,#312e81,#6366f1);padding:28px 24px;color:#fff;"><h2 style="margin:0;font-size:22px;">${emailTitle}</h2><p style="margin:6px 0 0;opacity:0.9;font-size:13px;">anhani.com${isAcademy ? ' · 와와학습코칭센터' : ''}</p></div><div style="padding:24px;"><table style="width:100%;border-collapse:collapse;font-size:14px;"><tr><td style="padding:12px;background:#f1f5f9;font-weight:700;width:110px;border-bottom:1px solid #e2e8f0;">학생 이름</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(name)}</td></tr><tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">연락처</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;"><a href="tel:${esc(phone)}" style="color:#0369a1;text-decoration:none;">${esc(phone)}</a></td></tr><tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">학년</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(grades.join(', '))}</td></tr><tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">희망 과목</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(subjects.join(', '))}</td></tr><tr><td style="padding:12px;background:#f1f5f9;font-weight:700;border-bottom:1px solid #e2e8f0;">주소</td><td style="padding:12px;border-bottom:1px solid #e2e8f0;">${esc(address)}${addressDetail ? ' ' + esc(addressDetail) : ''}</td></tr><tr><td style="padding:12px;background:#f1f5f9;font-weight:700;vertical-align:top;">문의사항</td><td style="padding:12px;white-space:pre-wrap;line-height:1.6;">${esc(message) || '(없음)'}</td></tr></table><p style="color:#64748b;font-size:12px;margin:20px 0 0;text-align:right;">📅 접수 시각: ${nowKST}</p></div></div>`;
 
         const resendRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
@@ -5248,15 +4106,7 @@ export default {
       const total = allUrls.length;
 
       if (offset >= total) {
-        return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>IndexNow 완료</title><style>body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px}.box{background:#fff;border-radius:16px;padding:48px;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center;max-width:480px}h1{color:#16a34a;font-size:32px;margin-bottom:16px}p{color:#64748b;font-size:16px;line-height:1.7;margin-bottom:8px}.stat{font-size:48px;font-weight:900;color:#16a34a;margin:24px 0}a{display:inline-block;margin-top:24px;padding:12px 28px;background:#6366f1;color:#fff;text-decoration:none;border-radius:8px;font-weight:700}</style></head><body>
-          <div class="box">
-            <h1>🎉 IndexNow 제출 완료!</h1>
-            <div class="stat">${total.toLocaleString()}</div>
-            <p>모든 URL이 네이버 IndexNow에 성공적으로 제출되었습니다.</p>
-            <p>네이버 검색에 반영되기까지 보통 1~7일 정도 걸립니다.</p>
-            <a href="/">홈으로</a>
-          </div>
-        </body></html>`, { headers: {'Content-Type':'text/html;charset=utf-8'} });
+        return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>IndexNow 완료</title><style>body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px}.box{background:#fff;border-radius:16px;padding:48px;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center;max-width:480px}h1{color:#16a34a;font-size:32px;margin-bottom:16px}p{color:#64748b;font-size:16px;line-height:1.7;margin-bottom:8px}.stat{font-size:48px;font-weight:900;color:#16a34a;margin:24px 0}a{display:inline-block;margin-top:24px;padding:12px 28px;background:#6366f1;color:#fff;text-decoration:none;border-radius:8px;font-weight:700}</style></head><body><div class="box"><h1>🎉 IndexNow 제출 완료!</h1><div class="stat">${total.toLocaleString()}</div><p>모든 URL이 네이버 IndexNow에 성공적으로 제출되었습니다.</p><p>네이버 검색에 반영되기까지 보통 1~7일 정도 걸립니다.</p><a href="/">홈으로</a></div></body></html>`, { headers: {'Content-Type':'text/html;charset=utf-8'} });
       }
 
       const chunk = allUrls.slice(offset, offset + chunkSize)
@@ -5284,20 +4134,8 @@ export default {
       const percent = Math.round((completed / total) * 100);
       const statusOk = (naverStatus === 200 || naverStatus === 202);
 
-      return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8">
-        <title>IndexNow 진행 중... ${percent}%</title>
-        <meta http-equiv="refresh" content="3;url=/indexnow-auto?offset=${nextOffset}">
-        <style>body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px}.box{background:#fff;border-radius:16px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center;max-width:520px;width:100%}h1{color:#0f172a;font-size:24px;margin-bottom:24px}.progress{background:#e2e8f0;border-radius:999px;height:14px;overflow:hidden;margin:20px 0}.bar{background:linear-gradient(90deg,#6366f1,#8b5cf6);height:100%;border-radius:999px;transition:width .3s}.stat{font-size:32px;font-weight:900;color:#6366f1;margin:8px 0}.meta{color:#64748b;font-size:14px;margin:6px 0}.ok{color:#16a34a;font-weight:700}.err{color:#dc2626;font-weight:700}.spin{display:inline-block;width:18px;height:18px;border:3px solid #e2e8f0;border-top-color:#6366f1;border-radius:50%;animation:s .8s linear infinite;vertical-align:middle;margin-right:6px}@keyframes s{to{transform:rotate(360deg)}}</style></head><body>
-          <div class="box">
-            <h1><span class="spin"></span> IndexNow 자동 제출 중...</h1>
-            <div class="stat">${percent}%</div>
-            <div class="progress"><div class="bar" style="width:${percent}%"></div></div>
-            <p class="meta">${completed.toLocaleString()} / ${total.toLocaleString()} URL 처리</p>
-            <p class="meta">현재 청크: ${chunk.length.toLocaleString()}개 제출 →
-              ${statusOk ? `<span class="ok">✓ 네이버 응답 ${naverStatus}</span>` : `<span class="err">⚠ 응답 ${naverStatus} ${errMsg}</span>`}</p>
-            <p class="meta" style="margin-top:20px;color:#94a3b8;font-size:12px;">3초 후 다음 청크 자동 진행 (이 창을 닫지 마세요)</p>
-          </div>
-        </body></html>`, { headers: {'Content-Type':'text/html;charset=utf-8'} });
+      return new Response(`<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>IndexNow 진행 중... ${percent}%</title><meta http-equiv="refresh" content="3;url=/indexnow-auto?offset=${nextOffset}"><style>body{font-family:'Noto Sans KR',sans-serif;background:#f8fafc;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px}.box{background:#fff;border-radius:16px;padding:40px;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center;max-width:520px;width:100%}h1{color:#0f172a;font-size:24px;margin-bottom:24px}.progress{background:#e2e8f0;border-radius:999px;height:14px;overflow:hidden;margin:20px 0}.bar{background:linear-gradient(90deg,#6366f1,#8b5cf6);height:100%;border-radius:999px;transition:width .3s}.stat{font-size:32px;font-weight:900;color:#6366f1;margin:8px 0}.meta{color:#64748b;font-size:14px;margin:6px 0}.ok{color:#16a34a;font-weight:700}.err{color:#dc2626;font-weight:700}.spin{display:inline-block;width:18px;height:18px;border:3px solid #e2e8f0;border-top-color:#6366f1;border-radius:50%;animation:s .8s linear infinite;vertical-align:middle;margin-right:6px}@keyframes s{to{transform:rotate(360deg)}}</style></head><body><div class="box"><h1><span class="spin"></span> IndexNow 자동 제출 중...</h1><div class="stat">${percent}%</div><div class="progress"><div class="bar" style="width:${percent}%"></div></div><p class="meta">${completed.toLocaleString()} / ${total.toLocaleString()} URL 처리</p><p class="meta">현재 청크: ${chunk.length.toLocaleString()}개 제출 →
+              ${statusOk ? `<span class="ok">✓ 네이버 응답 ${naverStatus}</span>` : `<span class="err">⚠ 응답 ${naverStatus} ${errMsg}</span>`}</p><p class="meta" style="margin-top:20px;color:#94a3b8;font-size:12px;">3초 후 다음 청크 자동 진행 (이 창을 닫지 마세요)</p></div></body></html>`, { headers: {'Content-Type':'text/html;charset=utf-8'} });
     }
 
     if (INDEXNOW_KEY !== 'PUT_YOUR_INDEXNOW_KEY_HERE' &&
@@ -5575,23 +4413,27 @@ export default {
 
     const schArtMatch = decodedPathL.match(/^\/(.+)-과외\/article\/(\d+)$/);
     if (schArtMatch) {
-      const found = findSchoolByName(schArtMatch[1]);
+      const found = findSchoolBySlug(schArtMatch[1]);
       if (found) {
         const html = renderSchoolArticleNew(found.level, found.idx, schArtMatch[2]);
         if (html) return new Response(html, {
           headers: {'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}
         });
       }
+      const byNameA = findSchoolByName(schArtMatch[1]);
+      if (byNameA) { const s = byNameA.school; return Response.redirect(url.origin + '/' + encodeURIComponent(getSidoShort(getSidoFromIdx(s[1])) + '-' + s[2] + '-' + s[0]) + '-과외/article/' + schArtMatch[2], 301); }
     }
 
     const schDetailMatch = decodedPathL.match(/^\/(.+)-과외$/);
     if (schDetailMatch) {
-      const found = findSchoolByName(schDetailMatch[1]);
+      const found = findSchoolBySlug(schDetailMatch[1]);
       if (found) {
         return new Response(renderSchoolDetail(found.level, found.idx), {
           headers: {'Content-Type':'text/html;charset=utf-8','Cache-Control':'public,max-age=86400'}
         });
       }
+      const byNameD = findSchoolByName(schDetailMatch[1]);
+      if (byNameD) { const s = byNameD.school; return Response.redirect(url.origin + '/' + encodeURIComponent(getSidoShort(getSidoFromIdx(s[1])) + '-' + s[2] + '-' + s[0]) + '-과외', 301); }
     }
 
     const decodedPath = decodeURIComponent(pathname);
