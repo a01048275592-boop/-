@@ -4110,7 +4110,7 @@ export default {
       }
 
       const chunk = allUrls.slice(offset, offset + chunkSize)
-        .map(u => `https://${SITE_HOST}${u}`);
+        .map(o => `https://${SITE_HOST}${o.u}`);
       let naverStatus = 0;
       let errMsg = '';
       try {
@@ -4158,7 +4158,7 @@ export default {
       const chunkSize = 10000;
       const allUrls = getAllUrls();
       const chunk = allUrls.slice(offset, offset + chunkSize)
-        .map(u => `https://${SITE_HOST}${u}`);
+        .map(o => `https://${SITE_HOST}${o.u}`);
 
       if (chunk.length === 0) {
         return new Response(JSON.stringify({
