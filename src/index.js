@@ -618,6 +618,15 @@ function findRegion(location) {
 // --- 모든 URL 목록 생성 (sitemap용) ---
 function getAllUrls() {
   const urls = [];
+  // --- 코어/섹션 고유 페이지 (홈·카테고리 인덱스·과목별 상세·학원·서비스) : 유사도 영향 없는 고유 페이지만 ---
+  urls.push({ u: '/', p: '1.0' });
+  urls.push({ u: '/지역별', p: '0.8' });
+  urls.push({ u: '/과목별', p: '0.8' });
+  for (const sj of ['국어', '영어', '수학', '사회', '과학', '코딩', '검정고시', '논술']) urls.push({ u: '/과목별/' + sj, p: '0.7' });
+  urls.push({ u: '/학원', p: '0.6' });
+  urls.push({ u: '/학원/소개', p: '0.5' });
+  urls.push({ u: '/학원/전국지점', p: '0.5' });
+  urls.push({ u: '/서비스', p: '0.5' });
   // v92: 깨진 /{지역}-{학년}-{과목}-과외 URL 사이트맵 등록 제거 (라우팅 없어 404 발생)
   urls.push({ u: '/학교급별', p: '0.7' });
   urls.push({ u: '/학년별', p: '0.7' });
