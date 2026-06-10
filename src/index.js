@@ -34,8 +34,12 @@ function pick(arr, rng) {
 }
 
 function pickN(arr, n, rng) {
-  const shuffled = [...arr].sort(() => rng() - 0.5);
-  return shuffled.slice(0, n);
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a.slice(0, n);
 }
 
 // --- 지역 데이터 ---
@@ -876,30 +880,211 @@ function renderRegionList() {
 }
 
 // --- 카테고리: 특정 지역 ---
+// 시도(광역) 페이지 변형팩 — 17개 시도 간 유사도를 낮추고 글 형식(요약·본문·FAQ)을 부여
+function sidoVarPack(o, rng) {
+  const { region, kw, locEx } = o;
+  const seoT = pickN([
+    `${kw}, ${region} 전 지역 1:1 맞춤 학습 가이드`,
+    `${region} 과외 어디서 시작할까 | 시군구별 정리 가이드`,
+    `${kw} 추천 - ${region} 방문·화상 1:1 수업 안내`,
+    `${region} 과외, 우리 동네 맞춤 선생님 찾기`,
+    `${kw} 선생님·학습법·후기 한눈에 보기`,
+  ], 1, rng)[0];
+  const h1Title = pickN([
+    `${kw}, ${region} 전 지역 맞춤 학습 코칭 가이드`,
+    `${region} 과외 — 시군구별 1:1 맞춤 수업 정리`,
+    `${kw}, ${region} 학부모를 위한 과외 안내`,
+    `${region}에서 과외 시작하기 — ${kw} 종합 가이드`,
+  ], 1, rng)[0];
+  const sL1 = pickN([
+    `📍 ${kw} — ${region} 전 시군구에서 방문·화상 1:1 맞춤 수업을 운영합니다.`,
+    `📍 ${region} 어디서든 아이 수준 진단부터 시작하는 1:1 과외예요.`,
+    `📍 ${locEx} 등 ${region} 전역에서 검증 선생님과 1:1로 시작할 수 있어요.`,
+    `📍 학원이 많은 ${region}에서도 묻히기 쉬운 아이를 1:1로 챙깁니다.`,
+  ], 1, rng)[0];
+  const sL2 = pickN([
+    `🎓 시군구별 학교 시험 경향을 아는 교육청 등록 검증 선생님을 매칭합니다.`,
+    `🎓 체험 수업으로 궁합을 먼저 확인하고, 맞지 않으면 부담 없이 교체해요.`,
+    `🎓 학력·경력보다 아이와의 궁합을 먼저 보고 선생님을 추천합니다.`,
+    `🎓 아래 시군구를 고르면 우리 동네 맞춤 정보로 바로 연결됩니다.`,
+  ], 1, rng)[0];
+  const sL3 = pickN([
+    `📈 효과는 1~2개월 공백 메우기 → 3~4개월 향상 → 6개월 습관 정착 순이에요.`,
+    `📈 비용은 고정가 비교보다 무료 상담으로 정확히 안내받는 걸 권해요.`,
+    `📈 단가보다 궁합이 먼저 — 무료 체험 후 결정하면 실패가 적어요.`,
+    `📈 방문·화상을 상황에 맞춰 병행할 수 있어 꾸준함을 지키기 좋아요.`,
+  ], 1, rng)[0];
+  const summary = [sL1, sL2, sL3];
+  const introPool = [
+    `${region}에서 ${kw}를 알아보고 계신가요? ${region}은 시군구마다 교육 환경과 통학 학교가 달라서, 같은 ${region} 안에서도 아이에게 맞는 과외 방식이 제각각이에요. 1:1 과외는 아이 페이스에 맞춘 진도 조절과 즉각적인 질문 해결이 강점이라, 학원에서 놓치기 쉬운 빈틈을 정확히 메워줍니다.`,
+    `과외에서 가장 중요한 건 선생님 스펙이 아니라 '아이와의 궁합'이에요. ${region}처럼 선택지가 많은 지역일수록 오히려 기준 잡기가 어려운데, 학력·경력만 보기보다 첫 상담에서 아이를 제대로 진단하고 통학 학교 출제 경향을 아는지부터 확인하는 게 ${kw} 실패를 줄이는 길입니다.`,
+    `${region} ${kw}는 방문 과외와 화상 과외를 모두 운영합니다. 집중 관리가 필요하면 방문, 이동 시간을 아끼거나 거리 제약을 없애고 싶으면 화상이 잘 맞아요. ${region}은 지역이 넓은 만큼, 두 방식을 상황에 맞춰 병행하면 좋은 선생님을 거리와 상관없이 만날 수 있습니다.`,
+    `${region}은 ${locEx} 등 여러 시군구로 이루어져 있고, 시군구마다 학습 분위기와 시험 난이도가 조금씩 달라요. 그래서 ${kw}를 고를 때도 '${region}에 맞는'이 아니라 '우리 아이 학교에 맞는' 수업이 핵심입니다. 아래에서 시군구를 고르면 동네 단위 맞춤 정보로 이어집니다.`,
+    `아이 성적이 걱정되지만 어디서부터 손대야 할지 막막하셨다면, ${region} ${kw}의 시작은 늘 정확한 진단이에요. 첫 체험 수업에서 아이가 어디서 막히는지, 무엇을 안다고 착각하는지를 짚어야 남은 시간을 효율적으로 쓸 수 있습니다. 그 진단 위에 학교 맞춤 커리큘럼을 얹는 구조예요.`,
+    `학원이 답일 때도 있지만, 모든 아이에게 그런 건 아니에요. 질문을 어려워하거나 특정 단원에서 자꾸 막히는 아이라면 진도에 끌려가는 학원보다 1:1이 효율적입니다. ${region} 전역에서 ${kw}는 아이 성향을 먼저 파악한 뒤, 학원·과외 병행까지 포함해 가장 맞는 방식을 함께 설계합니다.`,
+    `${region}처럼 넓은 지역에서는 '좋은 선생님이 우리 동네까지 와줄까'가 늘 고민이에요. 그래서 ${kw}는 거주지 기준 가까운 방문 선생님과, 거리 제약이 없는 화상 선생님을 함께 제안합니다. 두 방식을 체험으로 비교해보고 아이에게 맞는 쪽을 고르면 선택 실패가 크게 줄어요.`,
+    `같은 ${region} 안에서도 학년에 따라 전략이 완전히 달라요. 초등은 습관과 흥미, 중등은 내신과 서술형, 고등은 모의·수능과 멘탈 관리가 중심이죠. ${kw}는 학년별로 목표를 다르게 잡고, 아이가 지금 어느 단계에 있는지부터 진단해 커리큘럼을 설계합니다.`,
+  ];
+  const intro = pickN(introPool, 3, rng);
+  const secPool = [
+    [`${region} 과외 선생님, 이렇게 고르세요`, `첫째, 아이가 다니는 학교의 시험 유형과 출제 경향을 파악하는지. 둘째, 첫 수업에서 진단을 제대로 하는지. 셋째, 주간 리포트나 정기 소통이 있는지. 이 세 가지가 ${region}에서 검증 선생님을 가리는 핵심 기준입니다.`],
+    [`${kw} 비용은 어떻게 잡을까`, `과외비는 학년·과목·횟수·선생님 경력에 따라 폭이 큽니다. 고정 단가를 검색하기보다 무료 상담으로 아이 상태를 진단한 뒤 필요한 만큼만 설계하는 편이 합리적이에요. 비용보다 체험 후 아이 반응으로 판단하는 게 실패가 적습니다.`],
+    [`방문 과외 vs 화상 과외`, `${region}은 지역이 넓어 두 방식의 장점이 분명해요. 방문은 집중 관리와 밀착 지도가, 화상은 거리 제약 없이 좋은 선생님을 만나고 복습이 쉬운 게 강점입니다. 처음엔 방문으로 시작했다가 일정에 따라 화상으로 바꾸거나 병행할 수 있습니다.`],
+    [`성적은 언제부터 오를까`, `1~2개월은 공백을 메우는 시기, 3~4개월 차에 성적 향상, 6개월 이상이면 학습 습관이 정착됩니다. ${kw}도 최소 한 학기는 꾸준히 지켜봐 주세요. 매일 30분~1시간 자기 학습을 병행하면 효과가 훨씬 커집니다.`],
+    [`시군구·학교별 내신 대비`, `${locEx} 등 ${region} 시군구마다, 또 학교마다 서술형 비중과 난이도가 달라요. 그래서 학교 기출 기반 대비가 핵심입니다. 학생이 다니는 학교에 맞춰 출제 경향을 분석해 1:1로 수업하므로 위치와 무관하게 내신을 챙길 수 있어요.`],
+    [`숙제·복습 관리가 성패를 가른다`, `수업 시간보다 중요한 건 수업과 수업 사이예요. ${region} 1:1 과외는 그날 배운 분량을 다음 시간에 점검하는 사이클을 돌려 복습이 쌓이게 만듭니다. 이 누적이 결국 점수로 바뀝니다.`],
+    [`아이 성향별 맞춤 코칭`, `같은 과목이라도 꼼꼼한 아이, 실수가 잦은 아이, 자신감이 부족한 아이는 접근이 달라야 해요. 검증 선생님은 첫 진단에서 성향을 파악해, 채점보다 사고 과정을 다듬는 방식으로 코칭합니다.`],
+    [`시험 기간 집중 관리`, `평소엔 주 2회로 기초를 다지다가 시험 3~4주 전부터 횟수와 범위를 조정해 학교 기출 중심으로 전환합니다. 학교별 출제 패턴에 맞춰 예상 문제와 약점 단원을 반복하는 게 ${kw}의 시험 대비 핵심이에요.`],
+    [`기초가 약한 아이를 위한 접근`, `진도를 따라가기 버거운 아이일수록 1:1이 답이에요. 평균 속도에 끌려가지 않고 막힌 지점까지 되짚어 다시 쌓을 수 있으니까요. ${region} 과외에서는 '아는 척'하던 구간을 찾아 기초부터 다시 채웁니다.`],
+    [`${region} 시군구별 학습 분위기`, `${locEx} 등 ${region}의 시군구는 학원 밀집도와 학습 분위기가 제각각이에요. 어떤 동네는 선행이 빠르고, 어떤 동네는 내신 경쟁이 치열하죠. ${kw}는 동네 분위기에 휩쓸리기보다 우리 아이 페이스를 기준으로 계획을 세우도록 돕습니다.`],
+    [`목표 설정과 점검 주기`, `막연히 '성적 올리기'가 아니라 이번 학기 목표 점수와 약점 단원을 구체적으로 정하는 데서 시작합니다. ${region} 1:1 과외는 4주 단위로 달성 정도를 점검하고, 필요하면 방향을 조정해 매 수업이 목표와 연결되게 관리합니다.`],
+    [`방학·단기 집중 수업`, `방학은 약점을 몰아 보완하거나 다음 학기를 선행하기 좋은 시기예요. ${kw}는 정규 외에 방학 단기 집중, 시험 직전 파이널처럼 기간을 정한 수업도 운영합니다. 목표와 기간을 알려주시면 거기에 맞춘 단기 플랜을 짜드려요.`],
+    [`교재와 학습 자료`, `학교 교과서·부교재를 기본으로 하되, 아이 약점에 맞춘 보조 자료를 선생님이 직접 구성합니다. ${region} 과외는 시중 교재를 그대로 따라가기보다 틀린 유형을 모아 다시 푸는 맞춤 자료 중심으로 진행해 같은 실수를 반복하지 않게 합니다.`],
+    [`체험 수업을 200% 활용하는 법`, `${kw}의 첫 30분 체험은 맛보기가 아니라 진단의 시간이에요. 아이가 어떤 질문에서 막히는지, 설명을 어떻게 받아들이는지를 보면 궁합이 드러납니다. 체험 뒤 '계속하고 싶다'는 아이 반응이 가장 정확한 신호예요.`],
+    [`학부모 소통과 학습 리포트`, `${region} 1:1 과외는 맡기고 끝나는 구조가 아니라 함께 관리하는 방식이에요. 수업 후 진행 상황·약점·다음 목표를 리포트로 공유하고, 집에서 어떻게 도와야 할지도 함께 안내해 학습 효과를 끌어올립니다.`],
+    [`상위권 아이의 디테일 채우기`, `이미 잘하는 아이도 1:1이 필요할 때가 있어요. 실수 유형을 줄이고 서술형 감점 포인트를 잡고 고난도 접근법을 다듬는 단계죠. ${kw}는 상위권일수록 '마지막 5점'을 채우는 정밀 코칭으로 진행합니다.`],
+    [`온라인 화상 수업의 강점`, `${region}처럼 지역이 넓을 때 화상 과외는 강력한 대안이에요. 판서 공유와 화면 녹화로 복습이 쉽고, 거리 제약 없이 좋은 선생님을 만날 수 있습니다. 집중도가 걱정이면 방문과 병행하면 됩니다.`],
+    [`첫 달엔 무엇을 기대해야 할까`, `시작하자마자 점수가 뛰는 경우는 드물어요. 첫 달은 공백을 찾아 메우고 학습 리듬을 잡는 시기입니다. ${kw}도 이 시기를 지나 3~4개월 차에 변화가 나타나니, 한 학기를 기준으로 지켜봐 주세요.`],
+    [`과목별 약점 진단부터`, `${region} 과외의 첫 단계는 '어디가 약한지'를 정확히 가려내는 일이에요. 단원별 미니 테스트와 풀이 관찰로 단순 실수인지 개념 공백인지 구분합니다. 진단 위에 커리큘럼을 얹어야 같은 시간을 써도 효율이 달라집니다.`],
+    [`서술형 강화 추세에 대응하기`, `${region} 학교들도 서술형 비중이 꾸준히 늘고 있어요. 답을 아는 것과 답을 '쓰는' 것은 다른 능력이라, 평소 근거를 문장으로 정리하는 훈련이 필요합니다. ${kw}는 채점 기준에 맞춰 답안을 써보고 첨삭받는 방식으로 대비합니다.`],
+    [`수행평가까지 챙겨야 내신이 산다`, `내신에서 수행평가 비중이 작지 않은데 번거로워 미루다 손해 보기 쉬워요. ${region} 1:1 과외는 학교별 수행평가 일정과 채점 포인트를 미리 파악해 발표·보고서·실험 정리까지 함께 준비하도록 돕습니다.`],
+    [`자기주도 학습 습관 만들기`, `과외의 최종 목표는 '선생님 없이도 공부하는 아이'예요. ${kw}는 떠먹여 주기보다 계획표 짜기·스스로 점검하기·질문 만들기 습관을 함께 들입니다. 과외를 졸업해도 흔들리지 않는 힘을 길러주는 게 핵심이에요.`],
+    [`오답 관리가 점수를 만든다`, `틀린 문제를 모으기만 하면 의미가 없어요. 왜 틀렸는지, 다음에 같은 함정을 어떻게 피할지를 적는 게 핵심입니다. ${region} 과외에서는 오답을 유형별로 분류해 2주 뒤 다시 풀게 하며 진짜 약점이 사라졌는지 확인합니다.`],
+    [`슬럼프·동기 저하 넘기기`, `성적은 늘 우상향하지 않아요. 정체기에 마음이 꺾이면 그동안의 노력도 흔들립니다. ${kw} 선생님은 점수만 보지 않고 작은 성취를 짚어주며 다시 리듬을 잡도록 돕는 멘토 역할도 합니다.`],
+    [`선행과 심화, 무엇이 먼저일까`, `무조건 빠른 선행이 답은 아니에요. 현재 학년 개념이 약한데 진도만 빼면 구멍이 커집니다. ${region} 1:1 과외는 아이 상태를 보고 선행이 맞는지 지금 학년 심화가 먼저인지를 판단해 방향을 잡아드립니다.`],
+    [`방학 학습 전략`, `방학은 약점을 몰아 보완하거나 다음 학기를 선행하기 좋은 시기예요. ${kw}는 정규 외에 방학 단기 집중, 시험 직전 파이널처럼 기간을 정한 수업도 운영합니다. ${region} 일정에 맞춰 단기 플랜을 짜드려요.`],
+    [`화상 수업, 집중도 걱정 없게`, `화상이 산만할까 걱정되신다면 카메라로 손과 노트가 보이게 세팅하고 판서를 공유하면 집중도가 올라가요. ${region}처럼 넓은 지역에선 화상으로 거리 제약 없이 좋은 선생님을 만날 수 있다는 게 큰 장점입니다.`],
+    [`상담에서 꼭 확인할 것`, `좋은 시작은 좋은 질문에서 나와요. '우리 아이 학교 기출을 본 적 있는지', '첫 수업에서 진단을 하는지', '리포트로 소통하는지'를 물어보세요. ${kw} 상담에서 이 세 가지만 확인해도 선택 실패가 크게 줄어듭니다.`],
+    [`과외와 자습의 균형`, `과외만으로 성적이 완성되진 않아요. 수업에서 배운 걸 스스로 다시 풀어보는 자습이 더해져야 실력이 됩니다. ${region} 1:1 과외는 수업 분량과 자습 분량의 균형을 함께 설계해, 매일 30분~1시간 자기 학습이 자리잡도록 돕습니다.`],
+    [`${region} 입시·내신 흐름 읽기`, `${region}은 지역마다 진학 목표와 경쟁 강도가 달라요. 어떤 곳은 특목·자사고 준비가, 어떤 곳은 일반고 내신이 중심이죠. ${kw}는 아이의 진학 방향에 맞춰 지금 무엇에 시간을 더 써야 할지 우선순위를 잡아드립니다.`],
+    [`저학년·고학년 접근이 다릅니다`, `초등은 흥미와 습관, 중등은 내신과 서술형, 고등은 모의·수능과 멘탈이 중심이에요. ${region} 1:1 과외는 학년별로 목표 자체를 다르게 잡고, 아이가 지금 어느 단계에 있는지 진단한 뒤 거기에 맞는 수업을 설계합니다.`],
+    [`수업 외 질문·피드백 지원`, `좋은 과외는 수업 시간에만 끝나지 않아요. 막히는 문제를 사진으로 보내 질문하거나, 다음 수업 전 짧은 피드백을 받는 식의 지원이 학습 연속성을 만듭니다. ${kw} 선생님과 소통 방식을 처음에 정해두면 효과가 커집니다.`],
+    [`성적표·진단 결과 함께 분석`, `시험이 끝나면 점수만 보지 말고 '어디서 왜 틀렸는지'를 함께 봐야 다음이 보여요. ${region} 과외는 성적표와 진단 결과를 단원·유형별로 분석해, 가장 점수 효율이 높은 약점부터 공략하는 계획을 세웁니다.`],
+    [`꾸준함을 만드는 학습 관리`, `의욕은 오르내리기 마련이라, 결국 꾸준함을 받쳐주는 관리가 중요해요. ${region} 1:1 과외는 분량을 무리하게 늘리기보다 매주 지킬 수 있는 루틴을 잡고, 작은 성취를 자주 확인하게 해 학습이 끊기지 않도록 돕습니다.`],
+    [`첫 상담에서 준비하면 좋은 것`, `상담 전에 최근 성적표, 사용 중인 교재, 아이가 어려워하는 부분을 메모해두면 진단이 빨라져요. ${kw} 상담에서는 이 정보를 토대로 현재 위치를 짚고, 목표까지의 경로를 구체적으로 그려드립니다.`],
+    [`방문·화상, 우리 가정엔 무엇이`, `맞벌이거나 이동이 많은 가정은 화상이, 밀착 관리가 필요한 저학년은 방문이 잘 맞는 편이에요. ${region}은 두 방식을 모두 운영하니, 가정 상황과 아이 집중도를 보고 체험으로 비교한 뒤 정하면 실패가 적습니다.`],
+  ];
+  const sections = pickN(secPool, 7 + Math.floor(rng() * 3), rng);
+  const faqPool = [
+    [`${kw}는 어떻게 시작하나요?`, `무료 상담으로 아이의 현재 수준과 목표를 진단한 뒤, 맞는 선생님을 매칭해 30분 체험 수업을 받아보는 순서예요. 체험 후 결정하시면 됩니다.`],
+    [`${region} 어디서든 과외가 가능한가요?`, `${locEx} 등 ${region} 전 시군구에서 방문 과외와 화상 과외가 가능합니다. 방문은 거주지 기준 가까운 선생님으로, 화상은 거리 제약 없이 매칭해 드려요.`],
+    [`다른 지역 학교를 다녀도 내신 대비가 되나요?`, `네, 학생이 다니는 학교에 맞춰 수업하므로 학교 위치와 무관하게 내신 대비가 가능합니다. 해당 학교 시험 출제 경향을 분석해 수업합니다.`],
+    [`화상과 방문 중 선택할 수 있나요?`, `네, 학생 상황에 맞게 둘 다 가능하고 도중에 변경·병행도 됩니다. 두 방식 모두 체험해보고 결정하실 수 있어요.`],
+    [`선생님이 맞지 않으면 교체되나요?`, `체험 후 맞지 않다고 느끼시면 부담 없이 교체·재매칭을 요청하실 수 있습니다. 아이와 잘 맞는 선생님을 만날 때까지 도와드려요.`],
+    [`${kw} 수업료는 보통 얼마인가요?`, `학년·과목·횟수·경력에 따라 달라집니다. 정확한 금액은 아이 상태를 진단하고 가능한 스케줄을 조율하는 상담 후에 안내해 드려요.`],
+    [`수업 후 학습 보고서를 받을 수 있나요?`, `1:1 수업 후 학습 보고서와 다음 목표를 정리한 자료를 학부모님께 별도로 안내해 드립니다.`],
+    [`학원과 1:1 병행이 효과적인가요?`, `학습 부담과 학교 시험 패턴에 따라 다릅니다. 보통 부족한 과목만 1:1로 보완하는 병행이 효율을 높입니다.`],
+    [`효과는 언제부터 보이나요?`, `보통 1~2개월은 공백을 메우는 시기, 3~4개월 차에 향상, 6개월 이상이면 습관이 정착됩니다. 한 학기는 지켜봐 주세요.`],
+    [`주 몇 회가 적당한가요?`, `보통 주 2회 60~90분이 표준이에요. 시험기엔 늘리고 평소엔 자기 학습을 병행하며, 아이가 집중 가능한 시간에 맞춰 조율합니다.`],
+    [`기초가 약한데 따라갈 수 있을까요?`, `오히려 1:1이 기초부터 다시 잡기에 가장 좋아요. 진도에 끌려가지 않고 아이 속도에 맞춰 부족한 부분을 메울 수 있습니다.`],
+    [`대학생 과외와 전문 과외, 차이가 큰가요?`, `대학생은 비용이 낮지만 입시·내신 노하우는 전문 강사가 더 깊어요. 전문 강사는 교육청에 정식으로 신고된 선생님으로서 경력의 깊이가 다릅니다.`],
+    [`초등도 1:1 과외가 필요할까요?`, `초등은 점수보다 흥미와 학습 습관을 잡는 시기예요. 1:1이면 아이 속도에 맞춰 부담 없이 기초와 자신감을 키울 수 있습니다.`],
+    [`상담은 어떻게 신청하나요?`, `전화(010-4827-5592)나 카카오톡 채널로 문의하시면 ${region} 상황에 맞는 선생님을 안내하고 체험까지 연결해 드립니다.`],
+    [`방학 동안 단기로만 받을 수 있나요?`, `네, 방학 집중반이나 시험 직전 파이널처럼 기간을 정한 단기 수업도 가능합니다. 목표와 기간을 알려주시면 ${region} 일정에 맞춘 단기 커리큘럼을 짜드려요.`],
+    [`교재는 따로 사야 하나요?`, `학교 교과서·부교재를 기본으로 쓰고, 필요한 보조 자료는 선생님이 직접 구성합니다. 비싼 교재를 강매하는 일은 없으니 안심하셔도 됩니다.`],
+    [`형제가 함께 받으면 일정 조율이 되나요?`, `네, 한 가정에서 형제가 함께 받거나 한 아이가 여러 과목을 받을 때는 일정과 선생님 구성을 묶어 효율적으로 설계해 드립니다.`],
+    [`숙제나 과제도 관리해 주나요?`, `네, 수업에서 정한 분량을 다음 수업에 점검하는 방식으로 관리합니다. 복습이 누적되어야 실력이 되기 때문에 과제 점검을 중요하게 봅니다.`],
+  ];
+  const faqs = pickN(faqPool, 4 + Math.floor(rng() * 2), rng);
+  const faqHTML = `<div class="dc-faq"><h2 class="dc-faq-h">자주 묻는 질문</h2>${faqs.map((f,i)=>`<details class="dc-faq-i"${i===0?' open':''}><summary>${f[0]}<span class="dc-faq-ar">⌄</span></summary><div class="dc-faq-a">${f[1]}</div></details>`).join('')}</div>`;
+  const reviewPool = [
+    `"${region} 안에서 이사를 해도 같은 선생님께 화상으로 계속 받을 수 있어 좋았어요. 아이 학교가 바뀌어도 그 학교 기출로 맞춰주십니다." — ${region} 중2 학부모`,
+    `"학원이며 인강이며 이것저것 알아보다 결국 1:1 과외로 정했는데, 확실히 다르더라고요. 체험에서 아이 약점을 정확히 짚어주셔서 바로 신뢰가 갔고, 두 달 만에 등급이 올랐습니다." — ${region} 고1 학부모`,
+    `"맞벌이라 ${region} 외곽이라도 좋은 선생님 만나기 어려웠는데, 화상 과외로 거리 문제를 해결했어요. 녹화 복습이 특히 만족스럽습니다." — ${region} 초6 학부모`,
+    `"학원만 보내다 1:1로 바꾸니 아이가 질문을 하기 시작했어요. ${region} 학교 시험에 맞춘 수업이라 내신 대비가 확실히 효율적입니다." — ${region} 중3 학부모`,
+    `"기초가 약한 아이라 걱정했는데 속도를 맞춰 되짚어 주시니 자신감부터 생기더라고요. 점수는 한 학기 지나며 따라왔습니다." — ${region} 중1 학부모`,
+  ];
+  const [review1, review2] = pickN(reviewPool, 2, rng);
+  const checksPool = [
+    `아이가 다니는 학교의 시험 유형을 파악하고 있는지`,
+    `첫 수업에서 진단으로 현재 수준을 확인하는지`,
+    `주간 리포트나 정기 소통으로 진행 상황을 공유하는지`,
+    `아이 성향에 맞춘 커리큘럼을 직접 설계하는지`,
+    `체험 수업 후 부담 없이 교체·재매칭이 가능한지`,
+    `방문·화상 중 우리 상황에 맞는 방식을 제안하는지`,
+    `교육청에 정식 등록된 검증 선생님인지`,
+    `시험 기간에 횟수·범위를 조정해 집중 관리하는지`,
+    `숙제·복습 분량을 다음 수업에 점검하는지`,
+    `목표 점수와 약점 단원을 구체적으로 함께 정하는지`,
+    `${region} 학교별 기출과 출제 경향을 분석해 수업하는지`,
+    `오답을 유형별로 정리하고 다시 풀게 하는지`,
+    `서술형·수행평가 대비를 함께 챙기는지`,
+    `방학·시험기에 맞춰 학습 강도를 조정하는지`,
+    `선행과 심화 중 아이에게 맞는 방향을 제안하는지`,
+    `자기주도 학습 습관까지 길러주려 하는지`,
+    `상담·체험을 부담 없이 받아볼 수 있는지`,
+    `수업료를 상담 후 명확히 안내하는지`,
+  ];
+  const checks = pickN(checksPool, 5, rng);
+  const tip = pickN([
+    `${region}처럼 넓은 지역은 '집 근처 방문'만 고집하지 말고, 화상까지 후보에 넣으면 선택지가 훨씬 넓어져요. 거리보다 궁합이 먼저입니다.`,
+    `상담할 때 '우리 아이 학교 기출을 본 적 있는지' 물어보세요. ${region} 안에서도 학교마다 시험이 달라 이게 내신 대비의 핵심이에요.`,
+    `과외비는 고정가로 검색하기보다, 무료 상담에서 아이 상태를 진단받은 뒤 필요한 횟수만 잡는 게 결과적으로 더 합리적입니다.`,
+    `첫 달은 점수가 아니라 '빠진 구간이 메워지는지'를 보세요. ${region} 과외도 성적 변화는 보통 3~4개월 차에 나타납니다.`,
+    `아래 시군구 목록에서 우리 동네를 먼저 고르면, 그 지역 학교 기준으로 더 구체적인 상담을 받을 수 있어요.`,
+  ], 1, rng)[0];
+  const closing = pickN([
+    `${region}에서 ${kw}를 고민 중이시라면, 우선 우리 동네 시군구를 고른 뒤 무료 상담으로 아이 상태부터 들어보세요. 단가보다 체험에서의 아이 반응이 가장 정확한 기준입니다.`,
+    `결국 ${kw}의 성패는 '아이에게 맞는 선생님을 만나느냐'에 달려 있어요. ${region} 전 시군구에서 검증 선생님과의 체험으로 부담 없이 시작해 보세요.`,
+    `좋은 과외 한 분이 아이의 1년 학습 방향을 바꿉니다. ${region}은 방문·화상 모두 열려 있으니 가정 상황에 맞는 방식으로 첫걸음을 떼어 보세요.`,
+    `${kw}는 거창한 계획이 아니라 정확한 진단에서 출발합니다. 지금 무료 상담을 신청하시면 ${region} 우리 동네에 맞는 선생님과 학습 방향을 함께 잡아드릴게요.`,
+  ], 1, rng)[0];
+  return { seoT, h1Title, summary, intro, sections, faqHTML, review1, review2, checks, tip, closing };
+}
+
 function renderRegionDetail(region) {
   const districts = REGIONS[region];
   if (!districts) return null;
+  const e = encodeURIComponent;
+  const kw = `${region} 과외`;
+  let _sd = hashCode('SIDO|' + region);
+  _sd = ((_sd ^ (_sd>>>15)) * 2246822519) >>> 0;
+  _sd = ((_sd ^ (_sd>>>13)) * 3266489917) >>> 0;
+  _sd = (_sd ^ (_sd>>>16)) >>> 0;
+  const rng = seededRandom(_sd);
+  const locEx = pickN(districts, Math.min(8, districts.length), rng).join(', ');
+  const sv = sidoVarPack({ region, kw, locEx }, rng);
+  const _leadPool = [
+    `${region}은 ${districts.length}개 시군구로 이루어져 있고, ${locEx} 등 각 지역마다 통학 학교와 학습 분위기가 조금씩 달라요. 그래서 ${kw}도 시군구·학교 단위로 맞추는 게 핵심이고, 아래에서 우리 동네를 고르면 더 구체적인 정보로 이어집니다.`,
+    `${kw}를 찾을 때 ${region} 전체를 한 번에 보기보다, ${locEx}처럼 아이가 생활하는 시군구부터 좁혀 보는 게 빨라요. ${region} ${districts.length}개 시군구 각각에서 방문·화상 1:1 수업을 운영하니, 아래 목록에서 동네를 선택해 시작하시면 됩니다.`,
+    `${region}에는 ${locEx}를 비롯한 ${districts.length}개 시군구가 있어요. 시군구마다 학교 시험 경향이 다르기 때문에 ${kw}는 거주 지역과 다니는 학교에 맞춰 따로 설계합니다. 우리 동네를 아래에서 고르면 맞춤 안내를 받을 수 있어요.`,
+  ];
+  const lead = pickN(_leadPool, 1, rng)[0];
+  const canon = '/지역별/' + e(region);
+  const heroImg = getEduImage(kw);
+  const _upOff = 2 + (Math.abs(hashCode(canon)) % 26);
+  const _up = new Date(Date.now() - _upOff*86400000);
+  const _upDisp = `${_up.getFullYear()}.${String(_up.getMonth()+1).padStart(2,'0')}.${String(_up.getDate()).padStart(2,'0')}`;
+  const _upISO = _up.toISOString();
+  const tags = [kw, `${region} 초등과외`, `${region} 중등과외`, `${region} 고등과외`, `${region} 1:1 과외`, `${region} 방문과외`, `${region} 화상과외`];
 
-  const cards = districts.map(d => {
-    const dongCount = (DONG_DATA[d]||[]).length + (EUP_MYEON[d]||[]).length;
-    return `<div class="cat-card"><div class="cat-card-top"><h3>${d}</h3>${dongCount > 0 ? `<a href="/지역별/${encodeURIComponent(region)}/${encodeURIComponent(d)}" class="dong-link">동/읍/면 ${dongCount}개 →</a>` : ''}</div></div>`;
-  }).join('');
+  const sgGrid = renderDongGrid(districts, '/지역별/' + e(region), false, '');
 
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(region + ' 과외 - 안하니', region + ' 지역 초등·중등·고등 과외 정보를 확인하세요.', 'https://anhani.com/지역별/' + encodeURIComponent(region), getEduImage(region + ' 과외'))}
-  <style>${commonStyles()}.page-hero{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;padding:48px 24px;text-align:center}.page-hero h1{font-size:32px;font-weight:800}.page-hero p{opacity:.8;margin-top:8px}.breadcrumb{max-width:1200px;margin:0 auto;padding:16px 24px;font-size:14px;color:#94a3b8}.breadcrumb a{color:#6366f1;text-decoration:none}.container{max-width:1200px;margin:0 auto;padding:20px 24px 60px}.cat-card{background:#fff;border-radius:12px;padding:24px;margin-bottom:16px;border:1px solid #e2e8f0}.cat-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.cat-card h3{font-size:18px;font-weight:700;color:#0f172a}.dong-link{font-size:13px;color:#6366f1;text-decoration:none;font-weight:600}.dong-link:hover{text-decoration:underline}.chips{display:flex;flex-wrap:wrap;gap:8px}.subj-link{padding:6px 14px;background:#f1f5f9;border-radius:8px;color:#475569;text-decoration:none;font-size:14px;transition:.2s}.subj-link:hover{background:#eef2ff;color:#6366f1}.level-tabs{display:flex;gap:8px;margin-bottom:12px}.level-tab{padding:4px 12px;background:#e2e8f0;border-radius:6px;font-size:13px;cursor:pointer;transition:.2s}.level-tab:hover{background:#6366f1;color:#fff}</style></head><body>
+  ${commonHead(sv.seoT, `${region} 지역 초등·중등·고등 1:1 맞춤 과외 정보`, 'https://anhani.com' + canon, heroImg).replace(/(article:modified_time" content=")[^"]*"/, '$1'+_upISO+'"')}
+  <style>${commonStyles()}${dcCSS()}</style></head><body>
   ${navHTML('region')}
-  <div class="page-hero"><h1>${region} 과외</h1><p>${region} 지역 ${districts.length}개 시/군/구 과외 정보</p></div><div class="breadcrumb"><a href="/">홈</a> &gt; <a href="/지역별">지역별</a> &gt; ${region}</div><div class="container">${cards}</div>
+  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${region}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${sv.h1Title}</h1><div class="dc-meta"><span class="dc-mb">${region}</span><span class="dc-mb">시/도</span><span class="dc-mb">전 학년·전 과목</span><span class="dc-mb dc-mb-up">🗓 업데이트: ${_upDisp}</span></div></div><div class="dc-sum"><div class="dc-sum-t">📋 ${kw} 3줄 요약</div>${sv.summary.map(x=>`<div class="dc-sum-l">${x}</div>`).join('')}</div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${region} 전 시군구 (${districts.length}개)</span></div><div class="dc-info-row"><strong>대상</strong><span>초중고 전학년</span></div><div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술</span></div></div></div><div class="dc-box"><div class="dc-box-t">📍 ${region} 시/군/구 선택</div><div style="margin-top:12px">${sgGrid}</div></div><div class="dc-body"><p>${lead}</p>${sv.intro.map(p=>`<p>${p}</p>`).join('')}${sv.sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-check"><h3>✅ ${region} 과외 선생님 체크리스트</h3><ol>${sv.checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-bxh">💬 ${kw} 실제 후기</div><div class="dc-rv-wrap"><div class="dc-review">${sv.review1}</div><div class="dc-review">${sv.review2}</div></div><div class="dc-tip"><h3>💡 ${region} 학부모 꿀팁</h3><p>${sv.tip}</p></div><p>${sv.closing}</p></div><div class="dc-box">${stepsBox(kw, region)}</div>${sv.faqHTML}<div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
 
 // --- 시/군/구 상세 (동/읍/면 목록) ---
-function dcCSS(){return `.dc-bc{max-width:860px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.dc-bc a{color:#6366f1;text-decoration:none}.dc-wrap{max-width:860px;margin:0 auto;padding:20px 24px 60px}.dc-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:16px;padding:24px;margin-bottom:24px}.dc-box-t{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:900;color:#0f172a;margin-bottom:6px;padding-left:12px;border-left:4px solid #6366f1}.dc-head h1{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:10px}.dc-tabs{display:flex;gap:14px;font-size:13px;color:#64748b;margin-bottom:16px}.dc-tabs span:first-child{color:#4338ca;font-weight:700}.dc-hero{position:relative;width:100%;aspect-ratio:16/9;max-height:340px;background:#0f172a;border-radius:14px;overflow:hidden;margin-bottom:16px}.dc-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.dc-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.55),rgba(15,23,42,.15) 50%,transparent 80%)}.dc-hero-badge{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);background:rgba(255,255,255,.95);color:#1e1b4b;padding:10px 22px;border-radius:24px;font-size:16px;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.2);white-space:nowrap}.dc-info{background:#fff;border-radius:10px;padding:14px 18px}.dc-info-row{display:flex;gap:12px;padding:6px 0;font-size:13px}.dc-info-row strong{min-width:54px;color:#475569;font-weight:700}.dc-info-row span{color:#0f172a}.dc-xgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dc-xc{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;color:#0f172a;transition:.15s;--c:#6366f1}.dc-xc:hover{border-color:var(--c);background:#f8fafc}.dc-xc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}.dc-xc-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dc-xc-a{color:#94a3b8;font-size:14px}.dc-tagbox{display:flex;flex-wrap:wrap;gap:6px}.dc-tag{font-size:12px;padding:5px 12px;background:#fff;border:1px solid #e2e8f0;color:#475569;border-radius:14px}.dc-cta{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;text-align:center;padding:28px 24px;border-radius:14px;margin-top:24px}.dc-cta h3{font-size:19px;font-weight:900;margin-bottom:6px}.dc-cta p{font-size:13px;color:#c7d2fe;margin-bottom:14px}.dc-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.dc-cta-btn{padding:11px 22px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}.dc-cp{background:#fff;color:#312e81}.dc-cf{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}@media(max-width:640px){.dc-xgrid{grid-template-columns:1fr}.dc-head h1{font-size:18px}.dc-hero{aspect-ratio:4/3;max-height:none}.dc-hero-badge{font-size:14px;padding:8px 18px;bottom:14px}}.dc-body p{font-size:15px;color:#334155;line-height:1.9;margin-bottom:14px}.dc-body h2{font-size:18px;font-weight:900;color:#0f172a;margin:24px 0 10px;display:flex;align-items:center;gap:10px}.dc-body h2::before{content:'';width:4px;height:20px;background:#6366f1;border-radius:2px}.dc-check{background:#eef2ff;border-radius:10px;padding:16px 20px;margin:18px 0}.dc-check h3{font-size:14px;font-weight:800;color:#3730a3;margin-bottom:8px}.dc-check ol{padding-left:18px;margin:0}.dc-check li{font-size:14px;color:#4338ca;line-height:1.8}.dc-review{background:#f8fafc;border-left:3px solid #6366f1;border-radius:0 8px 8px 0;padding:12px 16px;margin:10px 0;font-size:14px;color:#475569;line-height:1.7;font-style:italic}.dc-tip{background:#fffbeb;border-radius:10px;padding:14px 18px;margin:18px 0}.dc-tip h3{font-size:14px;font-weight:800;color:#92400e;margin-bottom:4px}.dc-tip p{font-size:13px;color:#78350f;line-height:1.8;margin:0}.dc-xc-more{display:none}.dc-xc-more.dc-xc-show{display:flex}.dc-more-wrap{display:flex;justify-content:center;margin-top:12px}.dc-more-btn{background:#fff;border:1px solid #c7d2fe;border-radius:20px;padding:7px 22px;font-size:13px;color:#4f46e5;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit;transition:.15s}.dc-more-btn:hover{background:#eef2ff;border-color:#a5b4fc}.dc-more-arrow{transition:transform .2s;font-size:10px}.dc-more-open .dc-more-arrow{transform:rotate(180deg)}`;}
+function dcCSS(){return `.dc-bc{max-width:860px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.dc-bc a{color:#6366f1;text-decoration:none}.dc-wrap{max-width:860px;margin:0 auto;padding:20px 24px 60px}.dc-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:16px;padding:24px;margin-bottom:24px}.dc-box-t{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:900;color:#0f172a;margin-bottom:6px;padding-left:12px;border-left:4px solid #6366f1}.dc-head h1{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:10px}.dc-tabs{display:flex;gap:14px;font-size:13px;color:#64748b;margin-bottom:16px}.dc-tabs span:first-child{color:#4338ca;font-weight:700}.dc-hero{position:relative;width:100%;aspect-ratio:16/9;max-height:340px;background:#0f172a;border-radius:14px;overflow:hidden;margin-bottom:16px}.dc-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.dc-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.55),rgba(15,23,42,.15) 50%,transparent 80%)}.dc-hero-badge{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);background:rgba(255,255,255,.95);color:#1e1b4b;padding:10px 22px;border-radius:24px;font-size:16px;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.2);white-space:nowrap}.dc-info{background:#fff;border-radius:10px;padding:14px 18px}.dc-info-row{display:flex;gap:12px;padding:6px 0;font-size:13px}.dc-info-row strong{min-width:54px;color:#475569;font-weight:700}.dc-info-row span{color:#0f172a}.dc-xgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dc-xc{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;color:#0f172a;transition:.15s;--c:#6366f1}.dc-xc:hover{border-color:var(--c);background:#f8fafc}.dc-xc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}.dc-xc-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dc-xc-a{color:#94a3b8;font-size:14px}.dc-tagbox{display:flex;flex-wrap:wrap;gap:6px}.dc-tag{font-size:12px;padding:5px 12px;background:#fff;border:1px solid #e2e8f0;color:#475569;border-radius:14px}.dc-cta{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;text-align:center;padding:28px 24px;border-radius:14px;margin-top:24px}.dc-cta h3{font-size:19px;font-weight:900;margin-bottom:6px}.dc-cta p{font-size:13px;color:#c7d2fe;margin-bottom:14px}.dc-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.dc-cta-btn{padding:11px 22px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}.dc-cp{background:#fff;color:#312e81}.dc-cf{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}@media(max-width:640px){.dc-xgrid{grid-template-columns:1fr}.dc-head h1{font-size:18px}.dc-hero{aspect-ratio:4/3;max-height:none}.dc-hero-badge{font-size:14px;padding:8px 18px;bottom:14px}}.dc-body p{font-size:15px;color:#334155;line-height:1.9;margin-bottom:14px}.dc-body h2{font-size:18px;font-weight:900;color:#0f172a;margin:24px 0 10px;display:flex;align-items:center;gap:10px}.dc-body h2::before{content:'';width:4px;height:20px;background:#6366f1;border-radius:2px}.dc-check{background:#eef2ff;border-radius:10px;padding:16px 20px;margin:18px 0}.dc-check h3{font-size:14px;font-weight:800;color:#3730a3;margin-bottom:8px}.dc-check ol{padding-left:18px;margin:0}.dc-check li{font-size:14px;color:#4338ca;line-height:1.8}.dc-review{background:#f8fafc;border-left:3px solid #6366f1;border-radius:0 8px 8px 0;padding:12px 16px;margin:10px 0;font-size:14px;color:#475569;line-height:1.7;font-style:italic}.dc-tip{background:#fffbeb;border-radius:10px;padding:14px 18px;margin:18px 0}.dc-tip h3{font-size:14px;font-weight:800;color:#92400e;margin-bottom:4px}.dc-tip p{font-size:13px;color:#78350f;line-height:1.8;margin:0}.dc-xc-more{display:none}.dc-xc-more.dc-xc-show{display:flex}.dc-more-wrap{display:flex;justify-content:center;margin-top:12px}.dc-more-btn{background:#fff;border:1px solid #c7d2fe;border-radius:20px;padding:7px 22px;font-size:13px;color:#4f46e5;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit;transition:.15s}.dc-more-btn:hover{background:#eef2ff;border-color:#a5b4fc}.dc-more-arrow{transition:transform .2s;font-size:10px}.dc-more-open .dc-more-arrow{transform:rotate(180deg)}.dc-faq{margin-top:24px}.dc-faq-h{font-size:18px;font-weight:900;color:#0f172a;margin-bottom:12px;padding-left:12px;border-left:4px solid #6366f1}.dc-faq-i{background:#fff;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:8px;overflow:hidden}.dc-faq-i[open]{border-color:#c7d2fe;box-shadow:0 4px 14px rgba(99,102,241,.08)}.dc-faq-i summary{list-style:none;cursor:pointer;padding:14px 18px;font-size:15px;font-weight:700;color:#1d1d1f;display:flex;justify-content:space-between;align-items:center;gap:10px}.dc-faq-i summary::-webkit-details-marker{display:none}.dc-faq-ar{transition:transform .25s;color:#94a3b8;flex-shrink:0;font-size:18px}.dc-faq-i[open] .dc-faq-ar{transform:rotate(180deg);color:#6366f1}.dc-faq-i[open] summary{color:#4338ca}.dc-faq-a{padding:0 18px 16px;font-size:14px;color:#475569;line-height:1.85}.dc-meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:6px}.dc-mb{font-size:12px;color:#475569;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:4px 11px;font-weight:600}.dc-mb-up{color:#15803d;border-color:#bbf7d0;background:#f0fdf4}.dc-sum{background:linear-gradient(135deg,#1e3a8a,#312e81);border-radius:14px;padding:18px 20px;margin:16px 0}.dc-sum-t{font-size:13px;font-weight:800;color:#c7d2fe;margin-bottom:10px}.dc-sum-l{font-size:14px;color:#fff;line-height:1.7;margin:7px 0}.dc-bxh{font-size:16px;font-weight:900;color:#0f172a;margin:26px 0 10px;display:flex;align-items:center;gap:8px;padding-left:12px;border-left:4px solid #6366f1}.dc-steps{display:grid;gap:10px;margin:8px 0 18px}.dc-step{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:14px 16px}.dc-step-n{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#6366f1);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}.dc-step-b{flex:1;min-width:0}.dc-step-t{font-size:14px;font-weight:800;color:#1e1b4b;margin-bottom:3px}.dc-step-d{font-size:13px;color:#475569;line-height:1.65}.dc-rv-wrap{display:grid;gap:10px;margin:8px 0 18px}`;}
+
+function stepsBox(kw, locWord) {
+  const steps = [
+    ['📞', '무료 상담 신청', `${kw} 관련해 아이의 현재 상태와 목표를 편하게 이야기 나눕니다.`],
+    ['🔍', '검증 선생님 매칭', `${locWord} 통학권과 아이 성향에 맞는 교육청 등록 선생님 후보를 안내해요.`],
+    ['✏️', '30분 체험 수업', `직접 수업을 받아보며 선생님과의 궁합을 확인합니다.`],
+    ['🚀', '수업 시작 / 재매칭', `만족하시면 진행, 맞지 않으면 부담 없이 다른 선생님으로 다시 연결해 드려요.`],
+  ];
+  return `<div class="dc-bxh">🧭 ${kw} 이용 절차</div><div class="dc-steps">${steps.map((s,i)=>`<div class="dc-step"><div class="dc-step-n">${i+1}</div><div class="dc-step-b"><div class="dc-step-t">${s[0]} ${s[1]}</div><div class="dc-step-d">${s[2]}</div></div></div>`).join('')}</div>`;
+}
 
 function renderDongGrid(items, bp, isCompound, sigungu) {
   const e = encodeURIComponent;
-  const INIT = 6;
+  const INIT = 4;
   const cells = items.map((d, i) =>
     `<a href="${bp}/${e(d)}" class="dc-xc${i >= INIT ? ' dc-xc-more' : ''}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${isCompound ? d.replace(sigungu + ' ', '') : d}</span></a>`
   ).join('');
@@ -907,6 +1092,159 @@ function renderDongGrid(items, bp, isCompound, sigungu) {
     ? `<div class="dc-more-wrap"><button type="button" class="dc-more-btn" onclick="this.closest('.dc-box').querySelectorAll('.dc-xc-more').forEach(function(el){el.classList.toggle('dc-xc-show')});this.classList.toggle('dc-more-open');var t=this.querySelector('.dc-more-txt');t.textContent=this.classList.contains('dc-more-open')?'접기':'전체 보기 (+${items.length - INIT})'"><span class="dc-more-txt">전체 보기 (+${items.length - INIT})</span><span class="dc-more-arrow">▼</span></button></div>`
     : '';
   return `<div class="dc-xgrid">${cells}</div>${more}`;
+}
+
+// 시군구 페이지 변형팩 — 시드로 풀 선택해 시군구 간 유사도를 낮춤
+function sgVarPack(o, rng) {
+  const { sido, sigungu, kw, locEx, focus } = o; // focus: '전 과목' | '수학' | '중등' 등
+  const seoT = pickN([
+    `${kw}, ${sigungu} 우리 동네 학습 코칭 가이드 | ${sido}`,
+    `${kw} 추천 - ${sido} ${sigungu} 1:1 맞춤 수업 가이드`,
+    `${sigungu} 과외 어떻게 고를까 | ${focus} 학부모 가이드`,
+    `${kw} 선생님·학습법·후기 한눈에 | ${sido} ${sigungu}`,
+    `${sido} ${sigungu} 과외, 동네별 맞춤 학습 코칭`,
+  ], 1, rng)[0];
+  const h1Title = pickN([
+    `${kw}, ${sido} ${sigungu} 우리 동네 학습 코칭 전문가`,
+    `${sido} ${sigungu} 과외 — 동네 맞춤 1:1 학습 가이드`,
+    `${kw}, ${sigungu} 학부모를 위한 과외 정리`,
+    `${sigungu}에서 과외 시작하기 — ${kw} 가이드`,
+  ], 1, rng)[0];
+  const sL1 = pickN([
+    `📍 ${sido} ${sigungu} ${kw} — 1:1 맞춤 수업으로 아이 약점을 정확히 메웁니다.`,
+    `📍 ${sigungu} ${kw}, 방문·화상 모두 가능한 1:1 맞춤 수업이에요.`,
+    `📍 ${sigungu} 전 동네에서 아이 수준 진단부터 시작하는 1:1 과외입니다.`,
+    `📍 ${sigungu} ${focus} 수업을 아이 페이스에 맞춰 1:1로 설계합니다.`,
+    `📍 ${locEx} 등 ${sigungu} 어디서든 검증 선생님과 1:1로 시작할 수 있어요.`,
+    `📍 학원에 묻히기 쉬운 아이도 ${sigungu} 1:1 과외로 빈틈을 채웁니다.`,
+  ], 1, rng)[0];
+  const sL2 = pickN([
+    `🎓 ${sigungu} 인근 학교 시험 경향을 아는 교육청 등록 검증 선생님을 매칭합니다.`,
+    `🎓 체험 수업으로 궁합을 확인하고, 맞지 않으면 부담 없이 교체할 수 있어요.`,
+    `🎓 ${locEx} 등 ${sigungu} 전 지역에서 검증 선생님을 연결해드립니다.`,
+    `🎓 학력·경력보다 '아이와의 궁합'을 먼저 보고 선생님을 추천합니다.`,
+    `🎓 첫 상담에서 아이를 진단한 뒤 그 결과로 커리큘럼을 짭니다.`,
+    `🎓 ${sigungu} 통학권 학교별 기출을 분석해 내신에 맞춰 수업해요.`,
+  ], 1, rng)[0];
+  const sL3 = pickN([
+    `📈 효과는 1~2개월 공백 메우기 → 3~4개월 성적 향상 → 6개월 습관 정착 순으로 나타나요.`,
+    `📈 단가보다 궁합이 먼저 — 무료 체험 후 결정하면 실패가 적어요.`,
+    `📈 비용은 고정가 비교보다 무료 상담으로 정확히 안내받는 걸 권해요.`,
+    `📈 주간 리포트로 진행 상황을 공유하니 맡기고 끝이 아니라 함께 관리해요.`,
+    `📈 방문과 화상을 상황에 맞춰 병행·전환할 수 있어 꾸준함을 지키기 좋아요.`,
+    `📈 한 학기는 지켜봐 주세요 — 자기 학습 30분~1시간을 더하면 효과가 커집니다.`,
+  ], 1, rng)[0];
+  const summary = [sL1, sL2, sL3];
+  const introPool = [
+    `${sido} ${sigungu}에서 ${kw}를 알아보고 계신가요? ${sigungu}는 ${sido} 안에서도 교육 관심이 높은 지역이라 학원 선택지는 많지만, 오히려 아이 개별 특성이 묻히기 쉬운 환경이에요. 1:1 과외는 아이 페이스에 맞춘 진도 조절과 즉각적인 질문 해결이 강점입니다. ${sigungu} 인근 학교의 시험 경향을 아는 검증 선생님이 아이 수준에 맞춰 부족한 부분을 집중 보완해드려요.`,
+    `과외에서 가장 중요한 건 선생님 스펙이 아니라 '아이와의 궁합'이에요. 같은 선생님이라도 아이 성향에 따라 결과가 갈립니다. ${sigungu}에서 과외를 고민 중이라면 학력·경력만 보기보다, 첫 상담에서 아이를 정확히 진단하고 ${sigungu} 인근 학교 출제 경향을 아는지부터 확인하세요.`,
+    `${sigungu} 과외를 시작하기 전 꼭 점검할 포인트가 있어요. 먼저 아이의 현재 수준을 솔직히 진단하는 게 우선입니다. 체험 수업에서 선생님이 직접 진단해야 제대로 된 커리큘럼이 나와요. 또 과외는 맡기고 끝이 아니라, 주간 리포트를 확인하고 정기적으로 소통할 때 효과가 극대화됩니다.`,
+    `${sido} ${sigungu}는 ${locEx} 등 여러 동네가 있고, 동네마다 통학권 학교와 학습 분위기가 조금씩 달라요. 그래서 같은 ${sigungu}라도 아이가 다니는 학교에 맞춘 내신 대비가 중요합니다. ${kw}는 학교 출제 경향을 반영해 1:1로 진행되니 위치와 무관하게 내신을 챙길 수 있어요.`,
+    `${sigungu}에서 ${kw}, 방문 과외와 화상 과외를 모두 운영합니다. 집중 관리가 필요하면 방문, 이동 시간을 아끼고 싶으면 화상이 잘 맞아요. 도중에 바꾸거나 병행하는 것도 가능하니, 가정 상황과 아이 집중도에 맞춰 고르시면 됩니다.`,
+    `${sigungu}에서 ${focus} 과외를 고민할 때 부모님들이 가장 많이 묻는 건 '학원이 나을까, 1:1이 나을까'예요. 정답은 아이 성향에 있습니다. 스스로 질문을 잘 못 하거나 특정 단원에서 자꾸 막히는 아이라면, 진도에 끌려가는 학원보다 ${kw}처럼 속도를 맞춰주는 1:1이 훨씬 효율적입니다.`,
+    `좋은 과외의 시작은 거창한 계획이 아니라 정확한 진단이에요. ${sigungu}에서 ${kw}를 시작하실 때도, 첫 체험 수업에서 아이의 현재 위치를 객관적으로 짚는 것부터 합니다. 어디서 막히는지, 무엇을 알고 있다고 착각하는지를 먼저 찾아야 남은 시간을 헛되이 쓰지 않거든요.`,
+    `${sido} ${sigungu}는 동네마다 분위기도 통학 학교도 제각각이라, '${sigungu}에 맞는 과외'라는 말은 사실 '우리 아이 학교에 맞는 과외'라는 뜻에 가까워요. ${locEx}처럼 같은 구 안에서도 시험 난이도와 서술형 비중이 달라지기 때문에, ${kw}는 학교 단위로 기출을 분석해 1:1로 맞춥니다.`,
+    `과외를 한 번이라도 알아보신 분이라면 '비용이 천차만별'이라는 걸 느끼셨을 거예요. ${sigungu} ${kw}도 학년·과목·횟수·선생님 경력에 따라 폭이 큽니다. 그래서 고정가를 검색하기보다, 무료 상담으로 아이 상태를 진단한 뒤 필요한 만큼만 설계하는 편이 결과적으로 더 합리적입니다.`,
+  ];
+  const intro = pickN(introPool, 3, rng);
+  const secPool = [
+    [`${sigungu} 과외 선생님 선택 기준`, `첫째, ${sigungu} 인근 학교 시험 유형과 출제 경향을 파악하는지. 둘째, 첫 수업에 진단을 제대로 하는지. 셋째, 주간 리포트나 월 1회 이상 정기 소통이 있는지. 이 세 가지가 선택의 핵심 기준입니다.`],
+    [`${kw} 비용은 어떻게 잡나요`, `${sigungu} 과외비는 학년·과목·횟수·선생님 경력에 따라 달라집니다. 고정 단가를 비교하기보다 무료 상담으로 아이 상태를 진단한 뒤 정확한 금액을 안내받는 걸 권해요. 비용보다 체험 수업 후 아이 반응으로 판단하는 게 실패가 적습니다.`],
+    [`${kw} 성적 향상 전략`, `시험 4주 전 범위 개념, 3주 전 기출, 2주 전 약점 보완, 1주 전 예상 문제, 직전 핵심 요약 순이 표준 루틴이에요. ${sigungu} 학생 맞춤 커리큘럼으로 방문·화상 모두 진행 가능합니다.`],
+    [`${kw} 효과는 언제부터?`, `1~2개월은 공백을 메우는 시기, 3~4개월 차에 성적 향상, 6개월 이상이면 습관이 정착됩니다. 최소 한 학기는 꾸준히 지켜봐 주세요. 매일 30분~1시간 자기 학습을 병행하면 효과가 극대화됩니다.`],
+    [`${sigungu} 동네별 내신, 이렇게 대비해요`, `${locEx} 등 ${sigungu} 안에서도 학교마다 출제 스타일이 달라요. 서술형 비중, 난이도, 자주 나오는 유형이 제각각이라 학교 기출 기반 대비가 핵심입니다. 학생이 다니는 학교에 맞춰 3년치 출제 경향을 분석해 수업합니다.`],
+    [`${sigungu}에서 과외 vs 학원`, `${sigungu}는 학원도 많지만 모든 아이에게 학원이 답은 아니에요. 질문이 어려운 성격, 특정 단원에서 막히는 경우, 진도를 따라가기 버거운 상황이라면 1:1 과외가 효과적입니다. 아이 성향 파악이 먼저예요.`],
+    [`방문 과외·화상 과외 둘 다 가능`, `${sigungu}에서는 선생님이 직접 찾아가는 방문 과외와 위치에 상관없는 화상 과외를 모두 운영해요. 처음엔 방문으로 시작했다가 일정에 따라 화상으로 바꾸거나 병행할 수 있습니다.`],
+    [`체험 수업, 이렇게 활용하세요`, `${kw}의 첫 30분 체험은 단순 맛보기가 아니라 진단의 시간이에요. 아이가 어떤 질문에 막히는지, 설명을 어떻게 받아들이는지를 보면 궁합이 보입니다. 체험 후 '계속하고 싶다'는 아이 반응이 가장 정확한 신호예요.`],
+    [`숙제·복습 관리가 성패를 가릅니다`, `수업 시간보다 중요한 게 수업과 수업 사이예요. ${sigungu} 1:1 과외에서는 그날 배운 분량을 다음 시간에 점검하는 사이클을 돌려, 복습이 쌓이게 만듭니다. 이 누적이 결국 점수로 바뀌어요.`],
+    [`학부모 소통과 학습 리포트`, `${kw}는 맡기고 끝나는 게 아니라 함께 관리하는 구조예요. 수업 후 진행 상황과 약점, 다음 목표를 리포트로 공유하고, 필요하면 학습 방향을 조정합니다. 집에서 어떻게 도와야 할지도 함께 안내해드려요.`],
+    [`아이 성향별 맞춤 코칭`, `같은 ${focus}이라도 꼼꼼한 아이, 빨리 푸는 대신 실수가 잦은 아이, 자신감이 부족한 아이는 접근이 달라야 해요. ${sigungu} 검증 선생님은 첫 진단에서 성향을 파악해, 채점보다 사고 과정을 다듬는 방식으로 코칭합니다.`],
+    [`시험 기간 집중 관리`, `평소엔 주 2회로 기초를 다지다가, 시험 3~4주 전부터는 횟수와 범위를 조정해 학교 기출 중심으로 전환합니다. ${sigungu} 학교별 출제 패턴에 맞춰 예상 문제와 약점 단원을 반복하는 게 ${kw}의 시험 대비 핵심이에요.`],
+    [`기초가 약한 아이를 위한 접근`, `진도를 따라가기 버거운 아이일수록 1:1이 답이에요. 학원처럼 평균 속도에 끌려가지 않고, 막힌 지점까지 되짚어 다시 쌓을 수 있으니까요. ${sigungu} 과외에서는 '아는 척'하던 구간을 찾아내 기초부터 다시 채웁니다.`],
+    [`상위권 아이의 디테일 채우기`, `이미 잘하는 아이도 1:1이 필요할 때가 있어요. 실수 유형을 줄이고, 서술형 감점 포인트를 잡고, 고난도 문항 접근법을 다듬는 단계죠. ${kw}는 상위권일수록 '마지막 5점'을 채우는 정밀 코칭으로 진행합니다.`],
+    [`온라인 화상 수업의 강점`, `${sigungu}에서 멀거나 이동이 어려운 경우, 화상 과외가 좋은 대안이에요. 판서 공유와 화면 녹화로 복습이 쉽고, 좋은 선생님을 거리 제약 없이 만날 수 있습니다. 집중도가 걱정이면 방문과 병행하면 됩니다.`],
+    [`형제·다과목 함께 진행하기`, `한 가정에서 형제가 함께, 또는 한 아이가 여러 과목을 받을 때는 일정과 커리큘럼을 묶어 효율적으로 설계해요. ${sigungu} 상담 시 가정 상황을 알려주시면 스케줄과 선생님 구성을 최적화해 안내해드립니다.`],
+    [`첫 달, 무엇을 기대해야 할까`, `시작하자마자 점수가 뛰는 경우는 드물어요. 첫 달은 공백을 찾아 메우고 학습 리듬을 잡는 시기입니다. ${kw}도 이 시기를 거쳐 3~4개월 차에 성적 변화가 나타나니, 조급해하지 말고 한 학기를 기준으로 봐주세요.`],
+    [`${locEx} 동네별 통학권 이야기`, `${sigungu} 안에서도 ${locEx} 같은 동네는 통학하는 학교가 갈리고, 학교마다 시험 난이도와 진도 속도가 다릅니다. 그래서 같은 ${kw}라도 아이가 다니는 학교 기준으로 커리큘럼을 다시 짜는 게 맞아요. 동네와 학교 정보를 먼저 알려주시면 거기에 맞춰 설계합니다.`],
+    [`수업 시간·횟수는 이렇게 정해요`, `보통 주 2회 60~90분이 기본이지만, 아이 체력과 집중 가능한 시간에 맞춰 조율합니다. 저학년은 짧고 자주, 고학년·시험기는 길고 집중적으로 가는 식이에요. ${sigungu} 상담에서 아이 일과를 보고 무리 없는 일정을 함께 잡아드립니다.`],
+    [`교재와 학습 자료는 어떻게 하나요`, `학교 교과서와 부교재를 기본으로 하되, 아이 약점에 맞춘 보조 자료를 선생님이 직접 구성해요. ${kw}는 시중 교재를 그대로 따라가기보다, 틀린 유형을 모아 다시 푸는 맞춤 자료 중심으로 진행해 같은 실수를 반복하지 않게 합니다.`],
+    [`목표 설정과 점검 주기`, `막연히 '성적 올리기'가 아니라, 이번 학기 목표 점수와 약점 단원을 구체적으로 정하는 데서 출발합니다. ${sigungu} 1:1 과외에서는 4주 단위로 목표 달성 정도를 점검하고, 필요하면 방향을 조정해 매 수업이 목표와 연결되도록 관리합니다.`],
+    [`방학 특강·단기 집중도 가능해요`, `방학은 약점을 몰아서 보완하거나 다음 학기를 선행하기 좋은 시기예요. ${kw}는 정규 과외 외에 방학 단기 집중, 시험 직전 파이널처럼 기간을 정한 수업도 운영합니다. 목표와 기간을 알려주시면 거기에 맞춘 단기 플랜을 짜드려요.`],
+    [`과목별 약점, 이렇게 찾아냅니다`, `${focus} 수업의 첫 단계는 '어디가 약한지'를 정확히 가려내는 거예요. 단원별 미니 테스트와 풀이 과정 관찰로, 단순 실수인지 개념 공백인지 구분합니다. ${sigungu} 1:1 과외는 이 진단 위에 커리큘럼을 얹기 때문에 같은 시간을 써도 효율이 다릅니다.`],
+    [`서술형·논술형 비중 커지는 추세`, `최근 ${sigungu} 인근 학교들도 서술형 비중이 꾸준히 늘고 있어요. 답을 아는 것과 답을 '쓰는' 것은 다른 능력이라, 평소에 근거를 문장으로 정리하는 훈련이 필요합니다. ${kw}에서는 채점 기준에 맞춰 서술형 답안을 직접 써보고 첨삭받는 방식으로 대비해요.`],
+    [`수행평가, 놓치면 등급이 흔들려요`, `내신에서 수행평가 비중이 작지 않은데, 챙기기 번거로워 미루다 손해 보는 경우가 많아요. ${sigungu} 1:1 과외는 학교별 수행평가 일정과 채점 포인트를 미리 파악해, 발표·보고서·실험 정리까지 함께 준비하도록 도와줍니다.`],
+    [`자기주도 학습 습관 만들기`, `과외의 최종 목표는 '선생님 없이도 공부하는 아이'예요. ${kw}는 떠먹여 주기보다, 계획표 짜기·스스로 점검하기·질문 만들기 같은 습관을 함께 들입니다. ${sigungu}에서 과외를 졸업해도 흔들리지 않는 힘을 길러주는 게 핵심이에요.`],
+    [`오답노트, 제대로 쓰면 무기가 됩니다`, `틀린 문제를 모으기만 하면 의미가 없어요. 왜 틀렸는지, 다음에 같은 함정을 어떻게 피할지를 한 줄로 적는 게 핵심입니다. ${sigungu} 과외에서는 오답을 유형별로 분류해 2주 뒤 다시 풀게 하며, 진짜 약점이 사라졌는지 확인합니다.`],
+    [`슬럼프·동기 저하, 어떻게 넘길까`, `성적은 늘 우상향하지 않아요. 정체기에 마음이 꺾이면 그동안의 노력도 흔들립니다. ${kw} 선생님은 점수만 보지 않고, 작은 성취를 짚어주며 다시 리듬을 잡도록 돕는 멘토 역할도 합니다. ${sigungu} 학부모님들이 1:1을 택하는 이유 중 하나예요.`],
+    [`선행과 심화, 우리 아이엔 무엇이`, `무조건 빠른 선행이 답은 아니에요. 현재 학년 개념이 탄탄하지 않은데 진도만 빼면 오히려 구멍이 커집니다. ${sigungu} 1:1 과외는 아이 상태를 보고 선행이 맞는지, 지금 학년 심화가 먼저인지를 판단해 ${focus} 방향을 잡아드립니다.`],
+    [`모의고사·진단평가 200% 활용`, `시험은 끝이 아니라 다음 계획의 출발점이에요. ${kw}에서는 모의고사·진단평가 결과를 단원·유형별로 쪼개 분석하고, 가장 점수 효율이 높은 약점부터 공략합니다. ${sigungu} 학생별로 '다음 시험까지 무엇을 할지'를 구체적으로 정해요.`],
+    [`방문 과외 첫 수업, 이렇게 준비하세요`, `방문 수업 첫 시간엔 조용한 공간과 그동안의 시험지·교재만 준비하면 충분해요. 선생님이 아이 수준을 진단하고 학습 환경을 함께 점검합니다. ${sigungu} 방문 과외는 아이가 가장 집중하기 좋은 자리와 시간대를 찾는 것부터 시작합니다.`],
+    [`화상 과외, 집중도 걱정 없게`, `화상 수업이 산만할까 걱정되신다면, 카메라로 손과 노트가 보이게 세팅하고 판서를 공유하면 집중도가 크게 올라가요. ${kw}의 화상 수업은 녹화로 복습이 쉽고, ${sigungu} 어디서든 거리 제약 없이 좋은 선생님을 만날 수 있습니다.`],
+    [`학기 중·방학 학습 배분`, `학기 중에는 내신과 진도를 따라가는 데 집중하고, 방학에는 약점 보완과 선행에 무게를 둡니다. ${sigungu} 1:1 과외는 이 리듬에 맞춰 ${focus} 수업 강도와 범위를 계절마다 조정해, 1년 전체가 하나의 계획으로 이어지게 합니다.`],
+  ];
+  const sections = pickN(secPool, 7 + Math.floor(rng() * 3), rng);
+  const faqPool = [
+    [`${kw}는 어떻게 시작하나요?`, `무료 상담으로 아이의 현재 수준과 목표를 진단한 뒤, 맞는 선생님을 매칭해 30분 체험 수업을 받아보는 순서예요. 체험 후 결정하시면 됩니다.`],
+    [`${sigungu} 어디서든 과외가 가능한가요?`, `${locEx} 등 ${sigungu} 전 지역에서 방문 과외와 화상 과외가 가능합니다. 방문 수업은 거주지 기준으로 가까운 선생님과 아이 성향에 맞는 선생님으로 무료 체험 수업이 가능합니다.`],
+    [`다른 지역 학교를 다니는데 내신 대비가 되나요?`, `네, 학생이 다니는 학교에 맞춰 수업하기 때문에 학교 위치와 무관하게 내신 대비가 가능합니다. 해당 학교 시험 출제 경향을 분석해 수업합니다.`],
+    [`화상 수업과 방문 수업 중 선택할 수 있나요?`, `네, 학생 상황에 맞게 화상·방문 모두 가능하고 도중에 변경도 됩니다. ${sigungu}에서는 두 방식 모두 체험해보고 결정할 수 있어요.`],
+    [`선생님이 맞지 않으면 교체가 가능한가요?`, `체험 수업 후 맞지 않다고 느끼시면 부담 없이 교체 후 재매칭을 요청하실 수 있습니다. 아이와 잘 맞는 선생님을 만날 때까지 도와드려요.`],
+    [`${kw} 수업료는 보통 얼마인가요?`, `수업 횟수에 따라 조정 가능하며, 정확한 수업료 안내는 학생이 가능한 스케줄을 조율하는 상담 후 확인하실 수 있습니다.`],
+    [`수업 후 학습 보고서는 어떻게 받나요?`, `1:1 수업 후 학습 보고서와, 학생 상황에 맞춘 학습 계획 자료를 학부모님께 별도로 안내해 드립니다.`],
+    [`학원과 1:1 병행은 효과적인가요?`, `학생의 학습 부담과 통학 학교 시험 패턴에 따라 다릅니다. 일반적으로 부족한 과목만 1:1로 보완하는 학원+과외 병행이 학습 효율을 높입니다.`],
+    [`학교 시험 직전 1주는 어떻게 학습하나요?`, `인근 학교의 시험 패턴 분석 + 학교 부교재 변형 훈련 + 학교 채점 기준 사전 파악, 이 3가지가 핵심입니다. 학교 기출 위주로 마무리합니다.`],
+    [`효과는 언제부터 보이나요?`, `보통 1~2개월은 공백을 메우는 시기예요. 3~4개월 차에 성적 향상이, 6개월 이상이면 학습 습관이 정착됩니다. 한 학기는 지켜봐 주세요.`],
+    [`주 몇 회가 적당한가요?`, `보통 주 2회 60~90분이 표준이에요. 시험 기간엔 횟수를 늘리고 평소엔 자기 학습을 병행하는 식으로 조절하면 효과적입니다. 아이가 집중 가능한 시간만큼 최대 효율을 낼 수 있도록 상담하며 조율합니다.`],
+    [`결제 방식과 수업료 환불은요?`, `수업료는 선생님이 결정된 후 첫 수업 전까지 결제하시면 되고, 계좌이체·카드 모두 가능합니다. 환불은 잔여 수업 횟수에 비례해 처리됩니다.`],
+    [`기초가 약한데 따라갈 수 있을까요?`, `오히려 1:1 과외가 기초부터 다시 잡기에 가장 좋아요. 학원처럼 진도에 끌려가지 않고 아이 속도에 맞춰 부족한 부분을 메울 수 있습니다.`],
+    [`대학생 과외와 전문 과외, 차이가 큰가요?`, `대학생은 비용이 낮지만, 입시·내신 노하우는 전문 과외 강사가 더 깊어요. 전문 강사는 교육청에 정식으로 신고된 선생님으로서 경력과 전문성의 깊이에서 차이가 큽니다.`],
+    [`초등도 1:1 과외가 필요할까요?`, `초등은 점수보다 흥미와 학습 습관을 잡는 시기예요. 1:1이면 아이 속도에 맞춰 부담 없이 기초와 자신감을 함께 키울 수 있습니다.`],
+    [`상담은 어떻게 신청하나요?`, `전화(010-4827-5592)나 카카오톡 채널로 문의하시면, ${sigungu} 상황에 맞는 선생님을 안내하고 체험 수업까지 연결해 드립니다.`],
+    [`숙제나 과제도 관리해 주나요?`, `네, 수업에서 정한 분량을 다음 수업에 점검하는 방식으로 관리합니다. 복습이 누적되어야 실력이 되기 때문에 과제 점검을 중요하게 봅니다.`],
+    [`어떤 선생님이 배정되나요?`, `정식으로 교육청 등록된 검증 교사 중, 학생 성향과 가능한 스케줄에 맞는 선생님으로 매칭됩니다. 프로필 확인 후 체험까지 진행돼요.`],
+    [`방학 동안 단기로만 받을 수 있나요?`, `네, 방학 집중반이나 시험 직전 파이널처럼 기간을 정한 단기 수업도 가능합니다. 목표와 기간을 알려주시면 ${sigungu} 일정에 맞춘 단기 커리큘럼을 짜드려요.`],
+    [`교재는 따로 사야 하나요?`, `학교 교과서·부교재를 기본으로 쓰고, 필요한 보조 자료는 선생님이 직접 구성합니다. 별도로 비싼 교재를 강매하는 일은 없으니 안심하셔도 됩니다.`],
+    [`형제가 함께 받으면 일정 조율이 되나요?`, `네, 한 가정에서 형제가 함께 받거나 한 아이가 여러 과목을 받을 때는 일정과 선생님 구성을 묶어 효율적으로 설계해 드립니다. 상담에서 가정 상황을 알려주세요.`],
+    [`상담만 받아보고 결정해도 되나요?`, `물론이에요. 상담과 30분 체험은 부담 없이 받아보실 수 있고, 그 뒤에 진행 여부를 정하시면 됩니다. ${sigungu}에서 우선 아이 상태부터 들어보는 분들이 많아요.`],
+  ];
+  const faqs = pickN(faqPool, 4 + Math.floor(rng() * 2), rng);
+  const faqHTML = `<div class="dc-faq"><h2 class="dc-faq-h">자주 묻는 질문</h2>${faqs.map((f,i)=>`<details class="dc-faq-i"${i===0?' open':''}><summary>${f[0]}<span class="dc-faq-ar">⌄</span></summary><div class="dc-faq-a">${f[1]}</div></details>`).join('')}</div>`;
+  const reviewPool = [
+    `"${sigungu}에서 중2 아이 과외 시작한 지 5개월 됐어요. 선생님이 우리 학교 시험 유형을 정확히 아시고, 아이가 질문하기 편한 분이라 내신이 한 등급 올랐습니다." — ${sigungu} 중2 학부모`,
+    `"처음엔 반신반의했는데 30분 체험 후에 아이가 먼저 계속하고 싶다고 했어요. 매주 리포트로 상태를 알려주시니 학부모로서도 안심됩니다." — ${sigungu} 초5 학부모`,
+    `"학원을 다녀도 안 오르던 점수가, ${sigungu} 1:1 과외로 약점 단원만 집중하니 두 달 만에 눈에 띄게 달라졌어요. 진작 시작할걸 그랬습니다." — ${sigungu} 고1 학부모`,
+    `"맞벌이라 화상 과외로 시작했는데 판서 공유랑 녹화 복습이 생각보다 훨씬 편하더라고요. 아이가 스스로 복습하는 습관까지 생겼어요." — ${sigungu} 중3 학부모`,
+    `"기초가 너무 약해서 걱정했는데, 아이 속도에 맞춰 되짚어 가며 채워주셔서 자신감부터 달라졌어요. 점수는 그다음에 따라왔습니다." — ${sigungu} 중1 학부모`,
+    `"체험 때 선생님이 아이 성향을 정확히 짚어주셔서 신뢰가 갔어요. ${sigungu} 학교 기출 위주로 봐주시니 시험 대비가 확실히 효율적입니다." — ${sigungu} 고2 학부모`,
+  ];
+  const [review1, review2] = pickN(reviewPool, 2, rng);
+  const checksPool = [
+    `${sigungu} 인근 학교 시험 유형을 파악하고 있는지`,
+    `첫 수업에서 진단 테스트로 현재 수준을 확인하는지`,
+    `주간 리포트나 정기 소통으로 진행 상황을 공유하는지`,
+    `아이 성향에 맞춘 커리큘럼을 직접 설계하는지`,
+    `체험 수업 후 부담 없이 교체·재매칭이 가능한지`,
+    `숙제·복습 분량을 다음 수업에 점검하는지`,
+    `방문·화상 중 우리 상황에 맞는 방식을 제안하는지`,
+    `교육청에 정식 등록된 검증 선생님인지`,
+    `시험 기간에 횟수·범위를 조정해 집중 관리하는지`,
+    `목표 점수와 약점 단원을 구체적으로 함께 정하는지`,
+  ];
+  const checks = pickN(checksPool, 5, rng);
+  const tip = pickN([
+    `${sigungu}에서 선생님을 고를 때는 첫 상담에서 '우리 아이 학교 시험을 본 적 있는지' 꼭 물어보세요. 학교별 출제 경향을 아는 선생님이 내신 대비의 절반을 차지합니다.`,
+    `체험 수업이 끝나면 아이에게 '계속하고 싶어?'라고 직접 물어보세요. 부모 눈이 아니라 아이의 반응이 궁합을 가장 정확히 알려줍니다.`,
+    `과외비는 고정가로 검색하기보다, 무료 상담에서 아이 상태를 진단받은 뒤 필요한 횟수만 잡는 게 결과적으로 더 합리적이에요.`,
+    `처음 한 달은 점수가 아니라 '빠진 구간이 메워지는지'를 보세요. ${sigungu} 1:1 과외도 성적 변화는 보통 3~4개월 차에 나타납니다.`,
+    `방문과 화상을 굳이 하나로 정하지 마세요. 평소엔 화상으로 가볍게, 시험기엔 방문으로 집중하는 식의 병행도 ${sigungu}에서 충분히 가능합니다.`,
+  ], 1, rng)[0];
+  const closing = pickN([
+    `${sigungu}에서 ${kw}를 고민 중이시라면, 우선 무료 상담으로 아이 상태부터 들어보세요. 단가 비교보다 체험 수업에서 아이가 보이는 반응이 가장 정확한 기준이 됩니다.`,
+    `결국 ${kw}의 성패는 '아이에게 맞는 선생님을 만나느냐'에 달려 있어요. ${sigungu} 검증 선생님과의 체험으로 부담 없이 시작해 보시길 권합니다.`,
+    `좋은 과외 한 분이 아이의 1년 학습 방향을 바꿉니다. ${sigungu}에서 방문·화상 모두 열려 있으니, 가정 상황에 맞는 방식으로 첫걸음을 떼어 보세요.`,
+    `${sigungu} ${kw}는 거창한 계획이 아니라 정확한 진단에서 출발합니다. 지금 무료 상담을 신청하시면 아이에게 맞는 선생님과 학습 방향을 함께 잡아드릴게요.`,
+  ], 1, rng)[0];
+  return { seoT, h1Title, summary, intro, sections, faqHTML, review1, review2, checks, tip, closing };
 }
 
 function renderSigunguDetail(sido, sigungu, cat, val) {
@@ -934,20 +1272,25 @@ function renderSigunguDetail(sido, sigungu, cat, val) {
   const tags = cat
     ? [kw,`${sigungu} 과외`,`${sido} ${val}과외`,`${val} 1:1 과외`]
     : [kw,`${sigungu} 초등과외`,`${sigungu} 중등과외`,`${sigungu} 고등과외`,`${sigungu} 수학과외`,`${sigungu} 1:1 과외`];
-  const intro = cat
-    ? [`${kw}는 ${sido} ${sigungu} ${val} 학생을 위한 1:1 맞춤 수업입니다. ${sigungu}는 ${sido} 안에서도 교육에 대한 관심이 특히 높은 지역으로, 학원 선택지는 많지만 오히려 아이 개별 특성이 묻히기 쉬운 환경이에요. 학원은 정해진 커리큘럼과 진도가 있어 빠르게 따라가기 힘든 아이나 특정 단원에서 막힌 아이에게는 공백이 계속 쌓이게 됩니다. 1:1 과외는 아이 페이스에 맞춰 ${val} 학습을 체계적으로 관리할 수 있는 가장 효율적인 방법이에요. ${sigungu} 지역 학교의 시험 출제 경향과 내신 특성을 파악한 검증 선생님이 아이 수준에 맞춰 진도를 조절하고, 부족한 부분을 집중 보완합니다. 특히 ${val}은 꾸준한 누적이 효과를 만드는 영역이라 단기 집중보다 매일 조금씩 쌓아가는 루틴이 중요합니다.`,`과외에서 가장 중요한 건 선생님의 스펙이 아니라 '아이와의 궁합'이에요. 같은 선생님이라도 어떤 아이에게는 최고의 결과를 만들고, 어떤 아이에게는 맞지 않을 수 있습니다. 학력이나 경력만 보고 매칭하면 실패할 확률이 높아요. 아이 성격, 학습 스타일, 현재 수준, 선호하는 수업 방식을 모두 종합해서 맞는 선생님을 찾아야 합니다. 과외안하니는 ${sigungu} 지역 검증된 선생님 풀에서 아이에게 가장 맞는 분을 매칭하고, 무료 체험 → 만족 시 진행 → 안 맞으면 교체 프로세스로 완벽한 궁합을 찾아드려요. 체험 수업만으로도 많은 학부모님들이 '이 선생님이다' 하고 확신하시는 경우가 많습니다.`,`${sigungu} ${val} 과외를 시작하기 전에 꼭 점검해야 할 포인트가 몇 가지 있어요. 먼저 아이의 현재 수준을 솔직하게 진단하는 게 우선입니다. 학교 성적만으로는 부족한 부분이 정확히 어디인지 알기 어렵기 때문에, 체험 수업에서 선생님이 직접 진단 테스트를 진행해야 제대로 된 커리큘럼이 설계됩니다. 또 하나 중요한 건 학부모의 역할이에요. 과외는 선생님께 모두 맡기는 게 아니라 주간 리포트를 꼼꼼히 확인하고, 아이의 학습 상태에 대해 정기적으로 소통하는 것이 효과를 극대화합니다. ${sigungu} 인근 학교별 내신 유형, 서술형 비중, 수행평가 특성까지 세심하게 관리해주는 선생님을 만나면 한 학기 안에 눈에 띄는 변화를 느낄 수 있어요. ${sigungu} ${val} 과외를 고민하신다면 지금이 시작하기 가장 좋은 시점입니다. 무료 체험 수업부터 편하게 신청해 보세요.`]
-    : [`${kw}는 ${sido} ${sigungu}에서 학생 개별 상황에 맞춘 1:1 맞춤 수업입니다. ${sigungu}는 ${sido} 안에서도 교육에 대한 관심이 특히 높은 지역이에요. 그만큼 학원 선택지가 다양하지만, 오히려 아이 개별 특성이 묻히기 쉬운 환경이기도 합니다. 학원은 정해진 커리큘럼과 진도를 따라가야 하기 때문에 이해가 느린 부분이 있어도 그냥 넘어가는 경우가 많고, 특정 단원에서 막힌 아이는 계속 공백이 쌓이게 돼요. 1:1 과외는 아이 페이스에 맞춘 진도 조절, 즉각적인 질문 해결, 성향·약점 맞춤 커리큘럼 설계라는 세 가지 강점을 가집니다. ${sigungu} 인근 학교의 시험 출제 경향과 내신 특성을 파악한 검증 선생님이 아이 수준에 맞춰 학습 방향을 잡아드리고, 학원에서 놓치기 쉬운 '왜 이 문제를 틀렸는지'까지 함께 분석해 드려요.`,`과외에서 가장 중요한 건 선생님의 스펙이 아니라 '아이와의 궁합'입니다. 같은 선생님이라도 어떤 아이에게는 최고의 성과를 만들고, 어떤 아이에게는 맞지 않을 수 있어요. 학력이나 경력만 보고 매칭하면 시작하고 몇 달 지나서 '이 선생님이 우리 아이랑 안 맞는 것 같다'는 고민을 하게 되는 경우가 많습니다. 아이 성격, 학습 스타일, 현재 수준, 선호하는 수업 방식을 모두 종합해서 맞는 선생님을 찾는 게 핵심이에요. 과외안하니는 아이 성향·학습 스타일·현재 수준을 꼼꼼히 파악한 뒤 ${sigungu} 지역 검증된 선생님과 매칭하고, 무료 체험 → 만족 시 진행 → 안 맞으면 교체하는 프로세스로 완벽한 궁합을 찾아드립니다.`,`${sigungu} 과외를 시작하기 전에 꼭 점검해야 할 포인트가 몇 가지 있어요. 먼저 아이가 초등·중등·고등 중 어느 시기인지에 따라 접근 방식이 완전히 달라집니다. 초등은 학습 습관과 기초 다지기가 핵심, 중등은 내신과 서술형 대비 그리고 고등 준비, 고등은 내신·모의고사·수능의 3축을 전략적으로 관리해야 합니다. 과목별로도 수학·과학은 개념-연산-응용 3단계, 영어는 어휘 누적과 독해, 국어·논술은 지문 분석과 쓰기 훈련이 중심이에요. 또 하나 중요한 건 학부모의 역할입니다. 과외는 선생님께 모두 맡기는 게 아니라 주간 리포트를 꼼꼼히 확인하고, 아이의 학습 상태에 대해 정기적으로 소통하는 것이 효과를 극대화해요. 초·중·고 전 학년, 전 과목 대응 가능하며 아래 동네별·과목별·학년별 세부 키워드에서 원하는 정보를 바로 확인하실 수 있습니다.`];
-  const sections = [
-    [`${sigungu} 과외 선생님 선택 기준`,`첫째, ${sigungu} 인근 학교 시험 유형과 출제 경향을 파악하는지. 둘째, 첫 수업에 진단을 제대로 하는지. 셋째, 주간 리포트나 월 1회 이상 정기 소통이 있는지. 이 세 가지가 선택의 핵심 기준입니다.`],
-    [`${kw} 비용 기준`,`${sigungu} 과외비는 초등 시간당 2만5천~4만원, 중등 3만~5만원, 고등 4만~7만원이 표준. 수능 전문은 8만~10만원대. 주 2회 90분 기준 월 초등 20~30만원, 중등 25~40만원, 고등 35~60만원 선입니다.`],
-    [`${kw} 성적 향상 전략`,`${sigungu} 학생 맞춤 커리큘럼이 효과적이에요. 시험 4주 전 범위 개념, 3주 전 기출, 2주 전 약점 보완, 1주 전 예상 문제, 직전 핵심 요약 순이 표준 루틴. 방문·화상 모두 가능합니다.`],
-    [`${kw} 효과 시점`,`1~2개월은 공백 메우는 시기, 3~4개월 차 성적 향상, 6개월 이상 습관 정착. 최소 한 학기는 꾸준히 지켜봐 주세요. 매일 30분~1시간 자기 학습 병행 시 효과가 극대화됩니다.`]
-  ];
+  let _sgseed = hashCode(sido+sigungu+(cat||'')+(val||''));
+  _sgseed = ((_sgseed ^ (_sgseed>>>15)) * 2246822519) >>> 0;
+  _sgseed = ((_sgseed ^ (_sgseed>>>13)) * 3266489917) >>> 0;
+  _sgseed = (_sgseed ^ (_sgseed>>>16)) >>> 0;
+  const _sgrng = seededRandom(_sgseed);
+  const _locEx = pickN(all, Math.min(6, all.length), _sgrng).join(', ');
+  const _focus = cat ? (cat==='과목' ? val : val+' 학생') : '전 과목';
+  const _sgv = sgVarPack({ sido, sigungu, kw, locEx: _locEx, focus: _focus }, _sgrng);
+  const intro = _sgv.intro;
+  const sections = _sgv.sections;
+  const _sgUpOff = 2 + (Math.abs(hashCode(canon)) % 26);
+  const _sgUp = new Date(Date.now() - _sgUpOff*86400000);
+  const _sgUpDisp = `${_sgUp.getFullYear()}.${String(_sgUp.getMonth()+1).padStart(2,'0')}.${String(_sgUp.getDate()).padStart(2,'0')}`;
+  const _sgUpISO = _sgUp.toISOString();
     return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(kw + ', ' + sigungu + ' 동네 학습 코칭 전문가 | 안하니', sido+' '+sigungu+' 1:1 맞춤 과외', 'https://anhani.com' + canon, heroImg)}
+  ${commonHead(_sgv.seoT, sido+' '+sigungu+' 1:1 맞춤 과외', 'https://anhani.com' + canon, heroImg).replace(/(article:modified_time" content=")[^"]*"/, '$1'+_sgUpISO+'"')}
   <style>${commonStyles()}${dcCSS()}</style></head><body>
   ${navHTML('region')}
-  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${sido} &gt; ${cat?`<a href="${bp}">${sigungu}</a> &gt; ${val}과외`:sigungu}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${kw}, ${sido} ${sigungu} 우리 동네 학습 코칭 전문가</h1><div class="dc-tabs"><span>${sigungu}</span><span>${sido}</span><span>전 지역·전 과목</span><span>과외안하니</span></div></div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu}</span></div><div class="dc-info-row"><strong>대상</strong><span>${cat==='학년'?val+'학생':'초중고 전학년'}</span></div><div class="dc-info-row"><strong>과목</strong><span>${cat==='과목'?val:'국어·수학·영어·과학·사회·논술'}</span></div></div></div><div class="dc-box"><div class="dc-box-t">📍 ${sigungu} ${isCompound?'구':'동'} 선택</div>${renderDongGrid(all, bp, isCompound, sigungu)}</div><div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}</div><div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s,'과목',sc[s]]),...LVLS.map(l=>[l,'학년',lc[l]])].map(a=>`<a href="${bp}/${a[1]}/${e(a[0])}" class="dc-xc" style="--c:${a[2]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}과외</span></a>`).join('')}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
+  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${sido} &gt; ${cat?`<a href="${bp}">${sigungu}</a> &gt; ${val}과외`:sigungu}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${_sgv.h1Title}</h1><div class="dc-meta"><span class="dc-mb">${sigungu}</span><span class="dc-mb">${sido}</span><span class="dc-mb">${cat==='학년'?val+'학생':cat==='과목'?val:'전 학년·전 과목'}</span><span class="dc-mb dc-mb-up">🗓 업데이트: ${_sgUpDisp}</span></div></div><div class="dc-sum"><div class="dc-sum-t">📋 ${kw} 3줄 요약</div>${_sgv.summary.map(x=>`<div class="dc-sum-l">${x}</div>`).join('')}</div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu}</span></div><div class="dc-info-row"><strong>대상</strong><span>${cat==='학년'?val+'학생':'초중고 전학년'}</span></div><div class="dc-info-row"><strong>과목</strong><span>${cat==='과목'?val:'국어·수학·영어·과학·사회·논술'}</span></div></div></div><div class="dc-box"><div class="dc-box-t">📍 ${sigungu} ${isCompound?'구':'동'} 선택</div>${renderDongGrid(all, bp, isCompound, sigungu)}</div><div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-check"><h3>✅ ${sigungu} 과외 선생님 체크리스트</h3><ol>${_sgv.checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-bxh">💬 ${kw} 실제 후기</div><div class="dc-rv-wrap"><div class="dc-review">${_sgv.review1}</div><div class="dc-review">${_sgv.review2}</div></div><div class="dc-tip"><h3>💡 ${sigungu} 학부모 꿀팁</h3><p>${_sgv.tip}</p></div><p>${_sgv.closing}</p></div><div class="dc-box">${stepsBox(kw, sigungu)}</div>${_sgv.faqHTML}<div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s,'과목',sc[s]]),...LVLS.map(l=>[l,'학년',lc[l]])].map(a=>`<a href="${bp}/${a[1]}/${e(a[0])}" class="dc-xc" style="--c:${a[2]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}과외</span></a>`).join('')}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -955,6 +1298,118 @@ function renderSigunguDetail(sido, sigungu, cat, val) {
 // --- 동·과목/학년/학년+과목 공용 렌더 헬퍼 ---
 const SC = {'국어':['읽기·쓰기','#ef4444','매일 지문 1개 정독, 주제어·접속사 표시, 서술형 3문장 요약'],'영어':['어휘·문법·독해','#3b82f6','단어 15개 누적, 문장 5형식 분석, 받아쓰기 섀도잉'],'수학':['개념·연산·응용','#22c55e','오답 2주 재풀이, 풀이 말로 설명, 실수 유형 분류'],'사회':['개념·자료 해석','#f59e0b','단원별 마인드맵, 자료 유형별 해석, 시사 연결 노트'],'과학':['개념·실험·계산','#a855f7','개념 그림노트, 실험 조건-결과 정리, 서술형 원리→결론'],'논술':['논리·표현력','#6366f1','OREO 구조 훈련, 매주 1편 작성, 첨삭 반영 퇴고'],'검정고시':['핵심 개념·기출','#f97316','과목별 핵심 10개, 기출 10회 반복, 오답 노트']};
 const LC = {'초등':['학습 습관·기초','흥미를 잃지 않는 게 최우선','60~90분 주 2~3회','2만5천~4만원','주 2회 월 20~30만원'],'중등':['내신·서술형·고등 준비','학교 시험 유형 분석이 핵심','90분 주 2회','3만~5만원','주 2회 월 25~40만원'],'고등':['내신·모의·수능','장단기 플랜과 멘탈 관리가 승부','120분 주 2회','4만~7만원','전문은 8만~10만원대']};
+// 지역 동단위(main/lvl/lsubj) 공용 변형팩 — 시드로 풀에서 선택해 인접 페이지 간 유사도를 낮춤
+function regionVarPack(o, rng) {
+  const { sido, sigungu, dong, kw, dongEx, label } = o;
+  const seoT = pickN([
+    `${kw}, 자녀 맞춤 학습 로드맵 설계 가이드 | ${sigungu}`,
+    `${kw} 추천 - ${sigungu} ${dong} 1:1 맞춤 수업 가이드`,
+    `${dong} 과외 어떻게 시작할까 | ${sigungu} ${label} 학부모 가이드`,
+    `${kw} 선생님·학습법·후기 한눈에 정리 | ${sigungu}`,
+    `${sido} ${sigungu} ${dong} 과외, 우리 동네 학습 코칭 가이드`,
+  ], 1, rng)[0];
+  const h1Title = pickN([
+    `${sido} ${dong} 과외, 자녀 맞춤 학습 로드맵 설계 서비스`,
+    `${kw} — ${sigungu} 1:1 맞춤 수업 가이드`,
+    `${sido} ${sigungu} ${dong} 과외, 우리 동네 학습 코칭`,
+    `${dong}에서 ${kw}, 후회 없이 고르는 기준`,
+    `${kw} 시작 가이드 — ${sigungu} ${dong} 학부모를 위한 정리`,
+  ], 1, rng)[0];
+  const sL1 = pickN([
+    `📍 ${sido} ${sigungu} ${kw} — 1:1 맞춤 수업으로 아이 약점을 정확히 메웁니다.`,
+    `📍 ${dong}에서 ${kw}, 방문·화상 모두 가능한 1:1 맞춤 수업이에요.`,
+    `📍 ${sigungu} ${dong} ${kw} — 아이 수준 진단부터 시작하는 1:1 과외입니다.`,
+    `📍 ${kw}, ${dong} 통학권 학교 내신까지 잡는 맞춤 수업이에요.`,
+  ], 1, rng)[0];
+  const sL2 = pickN([
+    `🎓 ${dong} 인근 학교 시험 경향을 아는 교육청 등록 검증 선생님을 매칭합니다.`,
+    `🎓 체험 수업으로 궁합을 확인하고, 맞지 않으면 부담 없이 교체할 수 있어요.`,
+    `🎓 ${dongEx} 등 ${sigungu} 전 지역에서 검증 선생님을 연결해드립니다.`,
+    `🎓 학교 기출 기반으로 내신을 대비하고 주간 리포트로 소통합니다.`,
+  ], 1, rng)[0];
+  const sL3 = pickN([
+    `📈 효과는 1~2개월 공백 메우기 → 3~4개월 성적 향상 → 6개월 습관 정착 순으로 나타나요.`,
+    `📈 단가보다 궁합이 먼저 — 무료 체험 후 결정하면 실패가 적어요.`,
+    `📈 주 2회 60~90분을 기본으로 아이 집중 가능 시간에 맞춰 조율합니다.`,
+    `📈 비용은 고정가 비교보다 무료 상담으로 정확히 안내받는 걸 권해요.`,
+  ], 1, rng)[0];
+  const summary = [sL1, sL2, sL3];
+  const introPool = [
+    `${sido} ${sigungu} ${dong}에서 ${kw}를 알아보고 계신가요? ${dong}은 ${sigungu}에서도 교육 관심이 높은 동네라 과외 수요가 꾸준해요. 학원 선택지가 많은 만큼 아이 개별 특성이 묻히기 쉬운데, 1:1 과외는 아이 페이스에 맞춘 관리가 강점입니다. ${dong} 학부모님들과 상담하며 쌓은 경험을 정리했어요.`,
+    `과외에서 가장 중요한 건 선생님 스펙이 아니라 '아이와의 궁합'이에요. 같은 선생님이라도 아이 성향에 따라 효과가 갈립니다. ${dong}에서 ${kw}를 고민 중이라면, 첫 상담에서 인근 학교 출제 경향을 아는지부터 확인해보세요.`,
+    `${kw}는 단기 집중보다 매일 조금씩 쌓는 습관에서 결과가 갈려요. ${dong}에서는 아이 수준에 맞춰 학습 루틴을 잡고, 무리한 선행보다 현재 과정의 완성도를 높이는 데 집중합니다.`,
+    `${sigungu} ${dong}에서 과외 선생님을 찾는다면, 스펙보다 '우리 아이를 얼마나 정확히 진단하는지'를 보세요. 어디에서 막혔는지 첫 수업에 짚어주는 선생님이 결국 성적을 올립니다. ${dong} 검증된 선생님 풀에서 바로 연결해드려요.`,
+    `${dong}에서 ${kw}를 제대로 시작하려면 학교 시험 유형부터 알아야 해요. ${sigungu} 인근 학교마다 출제 스타일이 달라서, 그걸 아는 선생님과 모르는 선생님의 결과 차이가 큽니다. 오늘은 시작 전 꼭 알아둘 것들을 정리했어요.`,
+    `${dong} 학부모님이 가장 많이 물으시는 건 "단가보다 궁합"이에요. 무료 체험 수업으로 아이 진단을 받아본 뒤 결정하면 실패가 적습니다. ${kw}, 방문·화상 모두 가능하니 가정 상황에 맞게 고르시면 돼요.`,
+    `${sido} ${sigungu} ${dong}에서 ${kw}를 찾고 계신다면 제대로 찾아오셨어요. 믿을 수 있는 선생님 고르는 법과 아이 맞춤 수업 방식을 ${dong} 기준으로 정리했습니다.`,
+  ];
+  const intro = pickN(introPool, 2, rng);
+  const genPool = [
+    [`${dong}에서 과외 vs 학원, 어떤 게 맞을까`, `${dong}은 학원도 많은 동네지만 모든 아이에게 학원이 답은 아니에요. 질문이 어려운 성격, 특정 단원에서 막히는 경우, 진도를 따라가기 버거운 상황이라면 1:1 과외가 효과적입니다. 반대로 경쟁 속에서 동기가 올라오는 아이는 학원도 좋아요. 결국 아이 성향 파악이 먼저입니다.`],
+    [`${dong} 과외 선생님, 이렇게 고르세요`, `첫째, ${dong} 인근 학교 시험 유형을 아는지. 내신은 학교별 특성이 절반이에요. 둘째, 첫 수업에서 아이 수준을 제대로 진단하는지. 셋째, 학부모와 주간 리포트로 소통하는지. 이 3가지를 체험 수업에서 꼭 확인하세요.`],
+    [`${kw} 비용은 어떻게 잡나요`, `${dong} 과외비는 학년·과목·수업 횟수·선생님 경력에 따라 달라집니다. 고정 단가를 비교하기보다, 무료 상담으로 아이 상태를 진단한 뒤 정확한 금액을 안내받는 걸 권해요. 비용보다 체험 수업 후 아이 반응으로 판단하는 게 실패가 적습니다.`],
+    [`방문 과외·화상 과외 둘 다 가능해요`, `${dong}에서는 선생님이 직접 찾아가는 방문 과외와, 위치에 상관없이 받을 수 있는 화상 과외를 모두 운영합니다. 처음엔 방문으로 시작했다가 일정에 따라 화상으로 바꾸거나 병행하는 것도 가능해요. 아이 집중도와 가정 상황에 맞춰 고르시면 됩니다.`],
+    [`${dong} 인근 학교 내신, 이렇게 대비합니다`, `${dongEx} 등 ${sigungu} 인근 학교마다 시험 출제 스타일이 달라요. 같은 단원도 서술형 비중, 난이도, 자주 나오는 유형이 제각각이라 학교 기출 기반 대비가 핵심입니다. 학생이 다니는 학교에 맞춰 3년치 출제 경향을 분석해 수업합니다.`],
+    [`효과는 언제부터? ${dong} 학부모 후기 기준`, `1~2개월은 그동안의 공백을 메우는 시기라 조급해하지 않으셔도 돼요. 3~4개월 차부터 성적 변화가 보이고, 6개월 이상 이어가면 스스로 공부하는 습관이 자리잡습니다. ${dong} 학부모님들도 최소 한 학기는 지켜봐 주시길 권합니다.`],
+    [`${dong} 첫 수업, 무엇부터 하나요`, `첫 수업은 진도를 빼기보다 진단이 우선이에요. 아이가 어디까지 이해하고 어디서 막히는지 확인하고, 통학 학교와 목표를 함께 점검합니다. ${dong}에서는 이 진단 결과를 토대로 4주 단위 학습 계획을 세워 학부모님께 공유해드려요.`],
+    [`자기주도 습관, 과외로 잡을 수 있어요`, `과외의 진짜 목표는 '선생님 없이도 공부하는 아이'예요. ${dong} 수업은 매번 다음 수업까지의 자기 학습 분량을 정하고, 다음 시간에 점검하는 식으로 습관을 만듭니다. 떠먹여 주는 수업이 아니라 스스로 굴러가게 돕는 코칭이 핵심입니다.`],
+    [`사춘기·슬럼프, ${dong}에서는 이렇게`, `학년이 올라가며 동기가 떨어지는 시기는 누구에게나 옵니다. ${dong} 선생님들은 무리하게 양을 늘리기보다, 작은 성공을 자주 경험하게 해 자신감을 회복시키는 방식을 씁니다. 라포가 형성된 1:1 관계라 마음을 여는 데도 유리해요.`],
+    [`서술형·수행평가까지 챙깁니다`, `${dong} 인근 학교들도 서술형과 수행평가 비중이 커지는 추세예요. 답을 아는 것과 쓰는 것은 다른 능력이라, 평소 근거를 문장으로 정리하는 훈련이 필요합니다. ${kw}는 학교별 채점 기준에 맞춰 답안을 써보고 첨삭받으며, 발표·보고서 같은 수행평가까지 함께 준비합니다.`],
+    [`오답노트, 제대로 쓰면 점수가 됩니다`, `틀린 문제를 모으기만 하면 의미가 없어요. 왜 틀렸는지, 다음에 같은 함정을 어떻게 피할지를 적는 게 핵심입니다. ${dong} 과외는 오답을 유형별로 분류해 2주 뒤 다시 풀게 하며, 진짜 약점이 사라졌는지 확인하는 방식으로 관리합니다.`],
+    [`선행과 심화, ${dong} 아이에겐 무엇이`, `무조건 빠른 선행이 답은 아니에요. 현재 학년 개념이 약한데 진도만 빼면 구멍이 커집니다. ${dong} 1:1 과외는 아이 상태를 보고 선행이 맞는지, 지금 학년 심화가 먼저인지를 판단해 방향을 잡습니다. 욕심보다 토대가 먼저예요.`],
+    [`시험 4주 전부터의 ${dong} 루틴`, `시험이 다가오면 평소 루틴을 시험 모드로 바꿉니다. 4주 전 범위 개념 정리, 3주 전 학교 기출, 2주 전 약점 보완, 1주 전 예상 문제, 직전 핵심 요약 순이 표준이에요. ${dong} 인근 학교 출제 패턴에 맞춰 이 일정을 아이별로 조정합니다.`],
+    [`화상 과외, 집중도 걱정 없이`, `${dong}에서 이동이 어렵거나 더 넓은 선생님 풀을 원하면 화상이 좋은 선택이에요. 카메라로 손과 노트가 보이게 세팅하고 판서를 공유하면 집중도가 올라가고, 녹화로 복습도 쉽습니다. 방문과 병행하거나 도중에 전환하는 것도 가능합니다.`],
+    [`학부모 소통과 학습 리포트`, `${kw}는 맡기고 끝나는 게 아니라 함께 관리하는 구조예요. 수업 후 진행 상황과 약점, 다음 목표를 리포트로 공유하고, 집에서 어떻게 도와야 할지도 안내합니다. ${dong} 학부모님이 1:1을 택하는 이유 중 하나입니다.`],
+  ];
+  const genSections = pickN(genPool, 6 + Math.floor(rng() * 2), rng);
+  const reviewPool = [
+    `"${dong}에서 과외 시작 3개월째예요. 선생님이 기초부터 천천히 잡아주셔서 공부에 자신감이 생겼어요." - ${sigungu} ${dong} 학부모`,
+    `"${dong} 과외 매주 리포트를 받아요. 아이 상태를 정확히 알 수 있고 페이스를 맞춰주시니 거부감이 없어요." - ${sigungu} ${dong} 학부모`,
+    `"처음엔 반신반의했는데 체험 수업 후 아이가 먼저 계속하고 싶다고 했어요. ${dong} 인근 학교 시험 유형을 정확히 아세요." - ${sigungu} ${dong} 학부모`,
+    `"방문 수업으로 시작했다가 일정 때문에 화상으로 바꿨는데 적응이 빨랐어요. ${dong}에서 두 방식 다 받아볼 수 있어 좋았습니다." - ${sigungu} ${dong} 학부모`,
+    `"내신 대비가 막막했는데 ${dong} 과외 덕분에 방향을 잡았어요. 우리 학교 기출까지 챙겨주십니다." - ${sigungu} ${dong} 학생`,
+    `"교체 한 번 거쳐 잘 맞는 선생님을 만났어요. 부담 없이 재매칭해주셔서 ${dong}에서 마음 편히 진행 중입니다." - ${sigungu} ${dong} 학부모`,
+  ];
+  const rv = pickN(reviewPool, 2, rng);
+  const checkPool = [`${dong} 인근 학교 시험 유형 파악`, `첫 수업에 진단 테스트 진행`, `주간 리포트로 학부모와 소통`, `아이 성향 맞춤 커리큘럼 설계`, `체험 수업 후 교체 가능`, `방문·화상 수업 모두 가능`, `교육청 등록 검증 선생님`, `학교 기출 기반 내신 대비`, `숙제·복습 점검 관리`];
+  const checks = pickN(checkPool, 5, rng);
+  const tip = pickN([
+    `${dong} 학부모들이 가장 만족하는 조합은 '과외로 방향 잡고 남는 시간은 자기 학습'이에요. 수업 외 시간에 얼마나 스스로 복습하느냐가 결과를 가릅니다.`,
+    `${dong}에서 과외를 고를 땐 체험 수업을 꼭 활용하세요. 30분 진단만 받아봐도 아이와 선생님의 궁합이 보입니다.`,
+    `${dong} 인근 학교 기출을 아는 선생님 한 분이 1년 학습 방향을 바꿉니다. 첫 상담에서 학교명을 말하고 반응을 보세요.`,
+    `${dong} 과외는 주 2회로 시작해도 충분해요. 중요한 건 횟수보다 복습 루틴이고, 선생님이 자기 학습 가이드까지 잡아주는 분을 고르세요.`,
+  ], 1, rng)[0];
+  const closing = pickN([
+    `${sido} ${sigungu} ${dong}에서 ${kw}를 고민하신다면 지금이 가장 빠른 길이에요. 공백은 학년이 올라갈수록 복구가 어렵습니다. 과외안하니가 ${dong} 검증 선생님을 무료로 매칭해드려요.`,
+    `${dong}에서 ${kw}, 더 늦기 전에 무료 상담부터 받아보세요. 아이 상태 진단과 선생님 매칭까지 부담 없이 도와드립니다.`,
+    `과외안하니는 ${dong} 통학권 학교와 아이 성향을 고려해 검증 선생님을 매칭합니다. ${kw}, 방문·화상 모두 상담 후 안내해드릴게요.`,
+    `${sido} ${sigungu} ${dong}, ${kw}는 타이밍이 중요해요. 지금 무료 체험으로 시작해보세요. 과외안하니가 끝까지 함께합니다.`,
+  ], 1, rng)[0];
+  const faqPool = [
+    [`${kw}는 어떻게 시작하나요?`, `무료 상담으로 아이의 현재 수준과 목표를 진단한 뒤, 맞는 선생님을 매칭해 30분 체험 수업을 받아보는 순서예요. 체험 후 결정하시면 됩니다.`],
+    [`${sigungu} 어디서든 과외가 가능한가요?`, `${dongEx} 등 ${sigungu} 전 지역에서 방문 과외와 화상 과외가 가능합니다. 방문 수업은 거주지 기준으로 가까운 선생님과 아이 성향에 맞는 선생님으로 무료 체험 수업이 가능합니다.`],
+    [`다른 지역 학교를 다니는데 내신 대비가 되나요?`, `네, 학생이 다니는 학교에 맞춰 수업하기 때문에 학교 위치와 무관하게 내신 대비가 가능합니다. 해당 학교 시험 출제 경향을 분석해 수업합니다.`],
+    [`화상 수업과 방문 수업 중 선택할 수 있나요?`, `네, 학생 상황에 맞게 화상·방문 모두 가능하고 도중에 변경도 됩니다. ${dong}에서는 두 방식 모두 체험해보고 결정할 수 있어요.`],
+    [`선생님이 맞지 않으면 교체가 가능한가요?`, `체험 수업 후 맞지 않다고 느끼시면 부담 없이 교체 후 재매칭을 요청하실 수 있습니다. 아이와 잘 맞는 선생님을 만날 때까지 도와드려요.`],
+    [`${kw} 수업료는 보통 얼마인가요?`, `수업 횟수에 따라 조정 가능하며, 정확한 수업료 안내는 학생이 가능한 스케줄을 조율하는 상담 후 확인하실 수 있습니다.`],
+    [`수업 후 학습 보고서는 어떻게 받나요?`, `1:1 수업 후 학습 보고서와, 학생 거주 동(${dong})에 맞춘 학습 계획 자료를 학부모님께 별도로 안내해 드립니다.`],
+    [`학원과 1:1 병행은 효과적인가요?`, `학생의 학습 부담과 통학 학교 시험 패턴에 따라 다릅니다. 일반적으로 부족한 과목만 1:1로 보완하는 학원+과외 병행이 학습 효율을 높입니다.`],
+    [`학교 시험 직전 1주는 어떻게 학습하나요?`, `인근 학교의 시험 패턴 분석 + 학교 부교재 변형 훈련 + 학교 채점 기준 사전 파악, 이 3가지가 핵심입니다. 학교 기출 위주로 마무리합니다.`],
+    [`효과는 언제부터 보이나요?`, `보통 1~2개월은 공백을 메우는 시기예요. 3~4개월 차에 성적 향상이, 6개월 이상이면 학습 습관이 정착됩니다. 한 학기는 지켜봐 주세요.`],
+    [`주 몇 회가 적당한가요?`, `보통 주 2회 60~90분이 표준이에요. 시험 기간엔 횟수를 늘리고 평소엔 자기 학습을 병행하는 식으로 조절하면 효과적입니다. 아이가 집중 가능한 시간만큼 최대 효율을 낼 수 있도록 상담하며 조율합니다.`],
+    [`결제 방식과 수업료 환불은요?`, `수업료는 선생님이 결정된 후 첫 수업 전까지 결제하시면 되고, 계좌이체·카드 모두 가능합니다. 환불은 잔여 수업 횟수에 비례해 처리됩니다.`],
+    [`기초가 약한데 따라갈 수 있을까요?`, `오히려 1:1 과외가 기초부터 다시 잡기에 가장 좋아요. 학원처럼 진도에 끌려가지 않고 아이 속도에 맞춰 부족한 부분을 메울 수 있습니다.`],
+    [`대학생 과외와 전문 과외, 차이가 큰가요?`, `대학생은 비용이 낮지만, 입시·내신 노하우는 전문 과외 강사가 더 깊어요. 전문 강사는 교육청에 정식으로 신고된 선생님으로서 경력과 전문성의 깊이에서 차이가 큽니다.`],
+    [`초등도 1:1 과외가 필요할까요?`, `초등은 점수보다 흥미와 학습 습관을 잡는 시기예요. 1:1이면 아이 속도에 맞춰 부담 없이 기초와 자신감을 함께 키울 수 있습니다.`],
+    [`상담은 어떻게 신청하나요?`, `전화(010-4827-5592)나 카카오톡 채널로 문의하시면, ${dong} 상황에 맞는 선생님을 안내하고 체험 수업까지 연결해 드립니다.`],
+    [`숙제나 과제도 관리해 주나요?`, `네, 수업에서 정한 분량을 다음 수업에 점검하는 방식으로 관리합니다. 복습이 누적되어야 실력이 되기 때문에 과제 점검을 중요하게 봅니다.`],
+    [`어떤 선생님이 배정되나요?`, `정식으로 교육청 등록된 검증 교사 중, 학생 성향과 가능한 스케줄에 맞는 선생님으로 매칭됩니다. 프로필 확인 후 체험까지 진행돼요.`],
+  ];
+  const faqs = pickN(faqPool, 5, rng);
+  const faqHTML = `<div class="dc-faq"><h2 class="dc-faq-h">자주 묻는 질문</h2>${faqs.map((f,i)=>`<details class="dc-faq-i"${i===0?' open':''}><summary>${f[0]}<span class="dc-faq-ar">⌄</span></summary><div class="dc-faq-a">${f[1]}</div></details>`).join('')}</div>`;
+  return { seoT, h1Title, summary, intro, genSections, review1: rv[0], review2: rv[1], checks, tip, closing, faqHTML };
+}
+
 function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
   const all = [...getDongs(sido, sigungu), ...(EUP_MYEON[sigungu]||[])];
   if (!all.includes(dong)) return null;
@@ -962,33 +1417,173 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
   const LVLS = ['초등','중등','고등'];
   const e = encodeURIComponent;
   const bp = `/지역별/${e(sido)}/${e(sigungu)}/${e(dong)}`;
-  const rng = seededRandom(hashCode(sido+sigungu+dong+type+(arg1||'')+(arg2||'')));
-  let kw, heroEm, seoT, seoD, canonPath, bc, tags, sections, review1, review2, checks, tip, closing, intro, color;
+  let _seed = hashCode(sido+sigungu+dong+type+(arg1||'')+(arg2||''));
+  _seed = ((_seed ^ (_seed >>> 15)) * 2246822519) >>> 0;
+  _seed = ((_seed ^ (_seed >>> 13)) * 3266489917) >>> 0;
+  _seed = (_seed ^ (_seed >>> 16)) >>> 0;
+  const rng = seededRandom(_seed);
+  let kw, heroEm, seoT, seoD, canonPath, bc, tags, sections, review1, review2, checks, tip, closing, intro, color; let faqHTML=''; let summary=[], h1Title='';
   if (type === 'subj') {
     const subj = arg1; if (!SUBS.includes(subj)) return null;
     const [core, col, routine] = SC[subj];
     kw = `${dong} ${subj}과외`; heroEm = `${dong} <em>${subj}과외</em>`; color = col;
-    seoT = `${kw} 추천 - ${sigungu} ${dong} ${subj} 1:1 과외 가이드`;
-    seoD = `${sido} ${sigungu} ${dong} ${subj}과외 가이드. 비용·선생님·학습법까지 ${dong} 후기와 함께 정리.`;
+    const _es = _eun(subj);
+    const _r0 = routine.split(',')[0].trim();
+    const _sm = pickRegionSchools(dong, '중등', `${sido} ${sigungu}`, 3, rng);
+    const _sh = pickRegionSchools(dong, '고등', `${sido} ${sigungu}`, 3, rng);
+    const _sch = ((_sm && _sm.picked) || []).concat((_sh && _sh.picked) || []);
+    const sNm = _sch.length ? pickN(_sch, Math.min(3, _sch.length), rng).join('·') : '';
+    const hasSchool = !!sNm;
+    seoT = pickN([
+      `${kw}, 자녀 학습 로드맵 설계 가이드 | ${sigungu}`,
+      `${kw} 추천 - ${sigungu} ${dong} ${subj} 1:1 과외 가이드`,
+      `${dong}에서 ${subj}과외, 후회 없이 고르는 기준 | ${sigungu}`,
+      `${kw} 선생님·비용·학습법 한눈에 정리 | ${sigungu}`,
+      `${dong} ${subj} 과외 어디서 시작할까 | ${sigungu} 학부모 가이드`,
+    ], 1, rng)[0];
+    seoD = `${sido} ${sigungu} ${dong} ${subj}과외 가이드. ${core} 중심 1:1 수업, ${hasSchool ? sNm + ' 등 ' : ''}인근 학교 내신까지 후기와 함께 정리.`;
     canonPath = `${bp}/과목/${e(subj)}`;
     bc = `${sido} &gt; ${sigungu} &gt; ${dong} &gt; ${subj}과외`;
     tags = [kw,`${sigungu} ${subj}과외`,`${sido} ${subj}과외`,`${dong} 과외 추천`,`${dong} 초등 ${subj}`,`${dong} 중등 ${subj}`,`${dong} 고등 ${subj}`,`${subj} 1:1 과외`,`${subj}과외 비용`,`${dong} 과외 후기`];
-    intro = [`${sido} ${sigungu} ${dong}에서 ${subj}과외를 알아보고 계신가요? ${dong}에서도 ${subj}은 학년이 올라갈수록 격차가 벌어지는 과목이에요. ${core}이 핵심인데 학원 단체 수업으로는 개별 공백 잡기가 어렵습니다. 특히 ${dong} 인근 학교들의 ${subj} 출제 난이도와 경향이 매년 조금씩 달라지고 있어 맞춤형 대비가 더욱 중요해졌어요. ${dong} 지역 학부모님들과 직접 상담하면서 쌓인 경험을 바탕으로 정리해드릴게요.`,`${subj}은 누적이 실력을 만드는 과목이에요. 단기간에 점수가 오르길 기대하기 어렵고, 기초가 흔들리면 학년이 올라갈수록 따라가기 점점 힘들어집니다. 그렇기에 '우리 아이에게 맞는 선생님' 찾기가 정말 중요한데 쉽지 않은 일이에요. 첫 상담에서 지문 한 줄 반응, ${dong} 인근 학교 출제 경향을 아는지부터 확인하시면 좋습니다.`];
-    sections = [
-      [`${kw}의 핵심 - ${core}`,`${subj}에서 가장 중요한 건 ${core}예요. 개념이 머릿속에서 서로 연결되는 구조를 만드는 게 관건입니다. ${dong} ${subj}과외는 첫 수업 정확한 진단 후 부족한 영역부터 단계별로 채워가요. ${core}이 탄탄하면 시험 범위가 바뀌어도 흔들리지 않는 실력이 됩니다.`],
-      [`${dong} ${subj} 선생님 고를 때 3가지`,`첫째 ${dong} 인근 학교 ${subj} 시험 유형 파악 여부, 둘째 학생이 질문할 편한 분위기, 셋째 주간 리포트 피드백 제공. 이 세 가지만 체크해도 실패 확률이 크게 줄어요.`],
-      [`${subj}과외 비용 (${dong} 기준)`,`${dong} ${subj}과외비는 초등 시간당 2만5천~4만원, 중등 3만~5만원, 고등 4만~7만원 선이에요. 대학생은 2만원대, 전문 강사는 8만~10만원까지. 비용보다 체험 수업 후 결정하세요. ${sigungu}에서는 온라인 선택지도 넓어졌습니다.`],
-      [`${dong} ${subj} 학습 루틴`,`${routine}. 이 루틴을 꾸준히 지키면 한 학기 만에 변화가 나타나요. ${subj}은 장기 누적이 효과적이고, 매일 30분 복습이 주 1회 3시간보다 효과적입니다.`],
-      [`${sigungu} ${dong} 내신 대비와 효과 시점`,`시험 4주 전 모드 전환: 1주차 범위 개념, 2주차 기출 분석, 3주차 약점 집중, 4주차 실전+오답. ${dong} 학교별 스타일 달라 3년치 기출 분석 선생님이 빠른 길입니다. 효과는 첫 1~2개월 공백 메우기, 3~4개월 성적 향상, 6개월 이상 학습 습관 정착 순으로 나타나요. 최소 한 학기는 지켜보세요.`],
+    const introPool = [
+      `${sido} ${sigungu} ${dong}에서 ${subj}과외를 알아보고 계신가요? ${dong}에서도 ${_es} 학년이 올라갈수록 격차가 벌어지는 과목이에요. ${core}이 핵심인데 학원 단체 수업으로는 개별 공백을 잡기가 어렵습니다. ${dong} 학부모님들과 직접 상담하며 쌓인 경험을 정리해드릴게요.`,
+      `${subj}은 누적이 실력을 만드는 과목이에요. 기초가 흔들리면 학년이 올라갈수록 따라가기 점점 힘들어집니다. 그래서 '우리 아이에게 맞는 선생님' 찾기가 중요한데, 첫 상담에서 ${hasSchool ? sNm + ' 같은 ' : ''}${dong} 인근 학교 출제 경향을 아는지부터 확인하시면 좋아요.`,
+      `${dong}은 ${sigungu}에서도 교육열이 높은 동네라 ${subj} 과외 수요가 꾸준해요. 학원 선택지가 많은 만큼 아이 개별 특성이 묻히기 쉬운데, 1:1 과외는 ${_r0}처럼 아이 페이스에 맞춘 관리가 가능한 게 강점입니다.`,
+      `${subj}과외를 고민하는 ${dong} 학부모님께 가장 먼저 드리는 말씀은 "단가보다 궁합"이에요. 같은 선생님이라도 아이 성향에 따라 효과가 갈립니다. 체험 수업으로 ${core} 진단을 받아본 뒤 결정하는 걸 권해요.`,
+      `${dong}에서 ${subj}을 제대로 잡으려면 학교 시험 유형부터 알아야 해요. ${hasSchool ? `${sNm} 등 인근 학교는 ` : '인근 학교마다 '}출제 스타일이 달라서, 그걸 아는 선생님과 모르는 선생님의 결과 차이가 큽니다.`,
+      `${subj} 성적은 단기 집중보다 매일 조금씩 쌓는 습관에서 갈려요. ${dong} ${subj}과외는 ${routine}을 기본 틀로 잡고 아이 수준에 맞게 조정합니다. 오늘은 시작 전 꼭 알아야 할 것들을 정리했어요.`,
+      `${sigungu} ${dong}에서 ${subj}과외 선생님을 찾는다면, 스펙보다 '우리 아이를 얼마나 정확히 진단하는지'를 보세요. ${core}의 어느 단계에서 막혔는지 첫 수업에 짚어주는 선생님이 결국 성적을 올립니다.`,
     ];
-    review1 = `"${dong}에서 중2 ${subj}과외 4개월, 내신 70→90점대로 올랐어요! 우리 학교 ${subj} 시험 유형을 정확히 아시더라고요." - ${sigungu} ${dong} 중2 학부모`;
-    review2 = `"고1 ${subj} 막막했는데 ${dong} 과외 선생님 덕분에 ${core}부터 다시 잡았어요. 모의고사도 오르고 공부 방법을 알게 됐습니다." - ${sigungu} ${dong} 고1 학생`;
-    checks = [`${dong} 인근 학교 ${subj} 기출 분석 경험`,`체험 수업에서 ${core} 진단 진행`,`주간 학습 리포트 제공`,`${subj} 서술형 첨삭 가능`,`교재를 학생 수준에 맞게 선정`];
-    tip = `${dong} 학부모 추천은 '과외+자기주도학습' 조합이에요. 과외로 방향 잡고 남는 시간엔 스스로 실행. ${subj}처럼 누적 중요한 과목에 효과적입니다.`;
-    closing = `${sido} ${sigungu} ${dong}에서 ${subj}과외를 고민하신다면 지금이 시작할 때예요. 과외안하니가 ${dong} 검증된 ${subj} 선생님을 무료 매칭해드립니다.`;
+    intro = pickN(introPool, 2, rng);
+    h1Title = pickN([
+      `${sido} ${dong} ${subj}과외, 자녀 맞춤 학습 로드맵 설계 서비스`,
+      `${dong} ${subj}과외 — ${sigungu} 1:1 맞춤 수업 가이드`,
+      `${sido} ${sigungu} ${dong} ${subj}과외, 우리 동네 학습 코칭`,
+      `${dong}에서 찾는 ${subj}과외, ${sigungu} 검증 선생님 매칭`,
+      `${dong} ${subj}과외 시작 가이드 — ${sigungu} 학부모 필독`,
+    ], 1, rng)[0];
+    summary = [
+      pickN([
+        `📍 ${kw}의 핵심은 ${core} — 첫 수업 진단으로 아이 약점을 정확히 메웁니다.`,
+        `📍 ${dong} ${subj}과외는 ${core} 중심 1:1 수업으로 학원 단체수업의 공백을 잡아드려요.`,
+        `📍 ${kw}는 ${core} 진단 → 맞춤 커리큘럼 → 학교 내신 대비 순으로 설계됩니다.`,
+        `📍 ${dong}에서 ${subj}은 ${core}에서 실력이 갈려요. 1:1로 그 지점부터 다시 잡습니다.`,
+        `📍 학원에 끌려가지 않고, ${dong} 아이 속도에 맞춰 ${core}를 단계별로 채웁니다.`,
+        `📍 ${kw}는 '진도'가 아니라 '이해'가 기준 — ${core}가 잡힐 때까지 함께 갑니다.`,
+      ], 1, rng)[0],
+      pickN([
+        `🎓 ${dong} 인근 학교 시험 경향을 아는 교육청 등록 검증 선생님을 매칭합니다.`,
+        `🎓 대학생 알바가 아닌, ${subj} 입시·내신 노하우를 갖춘 전문 선생님이 수업합니다.`,
+        `🎓 방문·화상 모두 가능하고, 30분 체험 후 아이와 맞는 선생님을 고를 수 있어요.`,
+        `🎓 프로필 확인 → 30분 체험 → 결정. 맞지 않으면 부담 없이 교체할 수 있어요.`,
+        `🎓 ${dong} 통학권 학교 기출을 분석한 선생님이 내신 대비를 책임집니다.`,
+        `🎓 매 수업 후 학습 리포트로 진도·약점·태도를 학부모님과 공유합니다.`,
+      ], 1, rng)[0],
+      pickN([
+        `📈 효과는 1~2개월 공백 메우기 → 3~4개월 성적 향상 → 6개월 습관 정착 순이에요.`,
+        `💰 비용보다 체험 후 아이 반응으로 결정한 ${dong} 학부모의 만족도가 가장 높았습니다.`,
+        `🗓 주 2회 ${subj} 루틴 + 자기주도 학습 병행으로 한 학기 만에 변화를 만듭니다.`,
+        `✅ 시험 4주 전 집중 대비부터 장기 관리까지, ${dong} 일정에 맞춰 조율합니다.`,
+        `📝 오답을 ${core} 단계로 분류해 2주 뒤 재점검 — 같은 실수를 반복하지 않게 해요.`,
+        `🤝 무료 상담으로 ${dong} ${subj} 상황 진단부터 시작하세요. 부담 없이 체험까지.`,
+      ], 1, rng)[0],
+    ];
+    const sectionPool = [
+      [pickN([`왜 ${core}부터 잡아야 할까`,`${subj}, ${core}이 먼저인 이유`,`${dong} ${subj}의 출발점 - ${core}`],1,rng)[0],
+        `상위권으로 갈수록 ${subj}은 ${core}의 깊이에서 갈려요. 단순 암기로 버틴 아이는 고학년에서 한계를 만납니다. ${dong} ${subj}과외는 첫 수업에서 ${core} 수준을 정확히 진단한 뒤 부족한 단계부터 채워가요. 토대가 탄탄하면 시험 범위가 바뀌어도 흔들리지 않습니다.`],
+      [pickN([`${dong} ${subj} 선생님 체크 포인트`,`${dong}에서 선생님 고를 때 보는 것`,`${subj} 선생님, 이 3가지만 확인하세요`],1,rng)[0],
+        `경력 2년 이상, 첫 수업 진단 실시, 학부모와 정기 소통 — 이 세 조건을 갖춘 선생님이라면 ${subj} 성적 관리를 믿고 맡길 수 있어요. 여기에 ${hasSchool ? `${sNm} 등 ` : ''}${dong} 인근 학교 시험 유형을 아는지까지 체험 때 직접 물어보세요.`],
+      [pickN([`${dong} 수업 방식 선택`,`방문이냐 화상이냐`,`${dong} ${subj} 수업, 어떻게 받을까`],1,rng)[0],
+        `방문 수업은 집중 환경과 즉각적 교감이, 화상 수업은 시간 효율과 선생님 선택 폭이 장점이에요. ${subj} 특성과 아이 성향에 맞춰 고르면 됩니다. 안하니는 두 방식 모두 가능하고 중간 변경도 됩니다.`],
+      [pickN([`과외비, 얼마가 적정할까`,`${dong} ${subj}과외 비용 기준`,`${subj}과외 단가, 이렇게 보세요`],1,rng)[0],
+        `${dong} ${subj}과외비는 학년·과목·횟수·선생님 경력에 따라 달라져, 고정 단가로 잘라 말하기 어려워요. 정확한 금액은 아이 상태를 진단하는 무료 상담 후 안내해 드립니다. 가격이 높다고 무조건 좋은 것도 아니에요. ${dong} 학부모 후기를 보면 '체험 후 아이가 먼저 계속하고 싶다고 한' 선생님이 결국 만족도가 높았습니다. 단가 비교는 그다음입니다.`],
+      [pickN([`${dong} ${subj} 학습 루틴`,`집에서 이어가는 ${subj} 루틴`],1,rng)[0],
+        `${routine}. 이 루틴을 꾸준히 지키면 한 학기 만에 변화가 나타나요. ${subj}은 매일 30분 복습이 주 1회 몰아치기보다 효과적입니다. ${dong} 선생님들은 수업 외 시간 가이드까지 함께 잡아줘요.`],
+      [pickN([`${sigungu} ${dong} 내신 대비`,`우리 학교 시험에 맞춘 ${subj} 대비`],1,rng)[0],
+        hasSchool
+          ? `${sNm} 등 ${dong} 인근 학교는 ${subj} 출제 경향이 제각각이에요. 학교별 3년치 기출을 분석한 선생님이 빠른 길입니다. 시험 4주 전부터 범위→유형→실전 순으로 전환하면 점수가 안정적으로 오릅니다.`
+          : `${dong} 인근 학교는 ${subj} 출제 스타일이 학교마다 달라요. 우리 학교 3년치 기출을 분석한 선생님이 내신에선 절반을 먹고 들어갑니다. 시험 4주 전부터 범위→유형→실전 순 전환이 핵심이에요.`],
+      [pickN([`효과는 언제부터 보일까`,`${subj}과외, 성과가 나오는 시점`],1,rng)[0],
+        `${subj}과외 효과는 첫 1~2개월 공백 메우기 → 3~4개월 성적 향상 → 6개월 이상 학습 습관 정착 순으로 나타나요. 한 달 만에 점수가 안 오른다고 선생님을 자주 바꾸면 오히려 아이만 혼란스러워집니다. 최소 한 학기는 지켜보세요.`],
+      [pickN([`${dong}에서 과외 vs 학원`,`${subj}, 과외가 맞는 아이`],1,rng)[0],
+        `${dong}엔 학원이 많지만 질문이 어려운 성격, 특정 단원에서 막힌 아이, 진도 따라가기 힘든 상황이라면 1:1 ${subj}과외가 효과적이에요. 반대로 경쟁 심리로 동기가 생기는 아이는 학원도 괜찮습니다. 아이 성향 파악이 먼저예요.`],
+      [pickN([`${kw} 시작 전 확인할 것`,`계약 전 짚어둘 5가지`],1,rng)[0],
+        `첫째 수업 횟수·1회 시간 문서화, 둘째 결제·환불 규정, 셋째 시험 기간 추가 수업 가능 여부, 넷째 교재비 포함 여부, 다섯째 수업 취소 통보 시간. 먼저 물어두면 갈등 없이 오래 진행됩니다.`],
+      [pickN([`학년별 ${subj} 전략 (${dong})`,`초·중·고 ${subj}, 시기별로 다르게`],1,rng)[0],
+        `초등은 ${subj} 흥미와 기초 습관, 중등은 내신 서술형과 ${core} 정착, 고등은 모의고사·입시 전략이 핵심이에요. ${dong} ${subj}과외는 학년에 따라 목표와 진도를 완전히 다르게 설계합니다. 같은 ${subj}이라도 시기를 놓치면 회복에 두 배의 시간이 들어요.`],
+      [pickN([`${subj} 오답, 이렇게 관리해요`,`${dong} ${subj} 오답 노트 활용법`],1,rng)[0],
+        `${subj}은 틀린 문제에서 실력이 자라요. ${dong} 선생님들은 오답을 ${core} 단계별로 분류해 2주 뒤 재출제하는 방식으로 약점을 추적합니다. 단순히 답을 고치는 게 아니라 '왜 틀렸는지'를 말로 설명하게 해 같은 실수를 반복하지 않게 해요.`],
+      [pickN([`${dong} 통학권 학교와 ${subj}`,`우리 학교에 맞춘 ${subj} 수업`],1,rng)[0],
+        hasSchool
+          ? `${sNm} 등 ${dong} 통학권 학교들은 ${subj} 시험 범위와 서술형 비중이 서로 달라요. 다니는 학교 기준으로 진도와 대비 전략을 맞추기 때문에, 학원 공통 커리큘럼보다 내신에서 유리합니다. 학교가 정해지면 그 학교 기출부터 분석해요.`
+          : `${dong} 통학권 학교들은 ${subj} 시험 범위와 서술형 비중이 서로 달라요. 다니는 학교 기준으로 진도와 대비 전략을 맞추기 때문에, 학원 공통 커리큘럼보다 내신에서 유리합니다. 학교가 정해지면 그 학교 기출부터 분석해요.`],
+      [pickN([`첫 한 달 ${subj}과외 로드맵`,`${dong} ${subj}과외, 처음 4주`],1,rng)[0],
+        `1주차 ${core} 진단과 목표 설정, 2주차 약점 단원 집중, 3주차 학교 진도 맞추기, 4주차 첫 점검과 학부모 리포트. ${dong} ${subj}과외는 이 4주 로드맵으로 시작해 아이가 수업 흐름에 빠르게 적응하도록 돕습니다.`],
+      [pickN([`${subj} 수행평가·서술형 대비`,`${dong} ${subj} 서술형, 미리 잡기`],1,rng)[0],
+        `요즘 ${subj}은 지필뿐 아니라 수행평가·서술형 비중이 커졌어요. ${dong} 과외에서는 채점 기준표를 미리 분석해 글쓰기·풀이 과정 서술을 단계적으로 훈련합니다. 답은 맞아도 과정 점수에서 깎이는 일을 줄이는 게 목표예요.`],
+    ];
+    sections = pickN(sectionPool, 7 + Math.floor(rng() * 2), rng);
+    const _rv = pickN([
+      `"${dong}에서 중2 ${subj}과외 4개월, 내신 70→90점대로 올랐어요! 우리 학교 ${subj} 시험 유형을 정확히 아시더라고요." - ${sigungu} ${dong} 중2 학부모`,
+      `"고1 ${subj} 막막했는데 ${dong} 과외 선생님 덕분에 ${core}부터 다시 잡았어요. 모의고사도 오르고 공부 방법을 알게 됐습니다." - ${sigungu} ${dong} 고1 학생`,
+      `"${dong} 화상 ${subj}과외라 통학 시간이 없어 좋아요. 매주 리포트로 아이 상태를 알 수 있어 믿음이 갑니다." - ${sigungu} ${dong} 중3 학부모`,
+      `"학원에선 질문을 못 했는데 ${dong} 1:1 ${subj}과외로 바꾼 뒤 모르는 걸 바로 해결해서 자신감이 붙었어요." - ${sigungu} ${dong} 중1 학부모`,
+      `"${subj} 기초가 약했던 초5 아이가 ${dong} 과외 3개월 만에 ${core} 자신감이 생겼어요. 속도를 맞춰주신 게 컸습니다." - ${sigungu} ${dong} 초5 학부모`,
+      `"고2 ${subj} 내신을 ${dong} 선생님이 우리 학교 기출로 잡아주셔서 등급이 올랐어요. 채점 기준까지 짚어주십니다." - ${sigungu} ${dong} 고2 학부모`,
+    ], 2, rng);
+    review1 = _rv[0]; review2 = _rv[1];
+    checks = pickN([
+      `${dong} 인근 학교 ${subj} 기출 분석 경험`,
+      `체험 수업에서 ${core} 진단 진행`,
+      `주간 학습 리포트 제공`,
+      `${subj} 서술형·수행평가 첨삭 가능`,
+      `교재를 학생 수준에 맞게 선정`,
+      `교육청 등록 검증 교사`,
+      `방문·화상 수업 모두 가능`,
+      `시험 기간 추가 수업 조율 가능`,
+      `학부모와 월 1회 이상 정기 소통`,
+    ], 5, rng);
+    tip = pickN([
+      `${dong} 학부모 추천은 '과외+자기주도학습' 조합이에요. 과외로 방향 잡고 남는 시간엔 스스로 실행. ${subj}처럼 누적이 중요한 과목에 효과적입니다.`,
+      `${subj}은 수업보다 '수업 사이 복습'이 실력을 만들어요. ${dong} 선생님이 잡아주는 주간 과제를 빠짐없이 하는 아이가 결국 앞서갑니다.`,
+      `시험 4주 전엔 새 개념보다 ${dong} 인근 학교 기출 반복이 점수에 직결돼요. 이 시기엔 과외 횟수를 잠깐 늘리는 것도 방법입니다.`,
+      `${dong}에서 ${subj}과외를 고를 땐 '첫 체험에서 우리 아이 약점을 정확히 짚는지'를 보세요. 그게 1년 학습 방향을 좌우합니다.`,
+    ], 1, rng)[0];
+    closing = pickN([
+      `${sido} ${sigungu} ${dong}에서 ${subj}과외를 고민하신다면 지금이 시작할 때예요. 과외안하니가 ${dong} 검증된 ${subj} 선생님을 무료 매칭해드립니다.`,
+      `${dong} ${subj}과외, 망설일수록 공백만 커져요. 무료 체험으로 ${dong} 검증 선생님과 ${core}부터 점검해보세요.`,
+      `${dong}에서 ${subj} 성적을 바꾸고 싶다면 검증된 1:1 선생님이 답이에요. 지금 상담하면 우리 아이에게 맞는 선생님을 빠르게 연결해드립니다.`,
+      `과외안하니는 ${sigungu} ${dong}의 ${subj} 학습 환경을 잘 아는 선생님을 무료로 매칭해드려요. 체험부터 부담 없이 시작하세요.`,
+    ], 1, rng)[0];
+    const dongEx = pickN(all, Math.min(6, all.length), rng).join(', ');
+    const faqPool = [
+      [`${kw}는 어떻게 시작하나요?`, `무료 상담으로 아이의 ${subj} 수준과 목표를 진단한 뒤, 맞는 선생님을 매칭해 30분 체험 수업을 받아보는 순서예요. 체험 후 결정하시면 됩니다.`],
+      [`${sigungu} 어디서든 ${subj}과외가 가능한가요?`, `${dongEx} 등 ${sigungu} 전 지역에서 방문 과외와 화상 과외가 가능합니다. 방문 수업은 거주지 기준으로 가까운 선생님과 아이 성향에 맞는 선생님으로 무료 체험 수업이 가능합니다.`],
+      [`다른 지역 학교를 다니는데 내신 대비가 되나요?`, `네, 학생이 다니는 학교에 맞춰 수업하기 때문에 학교 위치와 무관하게 내신 대비가 가능합니다. 해당 학교 ${subj} 시험 출제 경향을 분석해 수업합니다.`],
+      [`중학생인데 고등학교 대비도 할 수 있나요?`, `중학교 과정을 탄탄히 다지면서 고등 진학 후 필요한 학습 습관과 기초 실력을 함께 키웁니다. 무리한 선행보다 현재 ${subj} 과정의 완성도를 높이는 것이 우선입니다.`],
+      [`화상 수업과 방문 수업 중 선택할 수 있나요?`, `네, 학생 상황에 맞게 화상·방문 모두 가능하고 도중에 변경도 됩니다. ${dong}에서는 두 방식 모두 체험해보고 결정할 수 있어요.`],
+      [`선생님이 맞지 않으면 교체가 가능한가요?`, `체험 수업 후 맞지 않다고 느끼시면 부담 없이 교체 후 재매칭을 요청하실 수 있습니다. 아이와 잘 맞는 ${subj} 선생님을 만날 때까지 도와드려요.`],
+      [`${kw} 수업료는 보통 얼마인가요?`, `수업 횟수에 따라 조정 가능하며, 정확한 수업료 안내는 학생이 가능한 스케줄을 조율하는 상담 후 확인하실 수 있습니다.`],
+      [`수업 후 학습 보고서는 어떻게 받나요?`, `1:1 수업 후 학습 보고서와, 학생 거주 동(${dong})에 맞춘 학습 계획 자료를 학부모님께 별도로 안내해 드립니다.`],
+      [`학원과 1:1 병행은 효과적인가요?`, `학생의 학습 부담과 통학 학교 시험 패턴에 따라 다릅니다. 일반적으로 부족한 ${subj}만 1:1로 보완하는 학원+과외 병행이 학습 효율을 높입니다.`],
+      [`학교 시험 직전 1주는 어떻게 학습하나요?`, `인근 학교의 시험 패턴 분석 + 학교 부교재 변형 훈련 + 학교 채점 기준 사전 파악, 이 3가지가 핵심입니다. ${subj}도 학교 기출 위주로 마무리합니다.`],
+      [`효과는 언제부터 보이나요?`, `보통 1~2개월은 공백을 메우는 시기예요. 3~4개월 차에 성적 향상이, 6개월 이상이면 학습 습관이 정착됩니다. 한 학기는 지켜봐 주세요.`],
+      [`주 몇 회가 적당한가요?`, `${_es} 누적이 중요해서 보통 주 2회 60~90분이 표준이에요. 시험 기간엔 횟수를 늘리고 평소엔 자기 학습을 병행하는 식으로 조절하면 효과적입니다. 가장 중요한 건 아이가 집중 가능한 시간만큼 최대 효율을 낼 수 있도록 상담하며 조율하는 것입니다.`],
+      [`결제 방식과 수업료 환불은요?`, `수업료는 선생님이 결정된 후 첫 수업 전까지 결제하시면 되고, 계좌이체·카드 모두 가능합니다. 환불은 잔여 수업 횟수에 비례해 처리됩니다.`],
+      [`${core} 쪽이 약한데 따라갈 수 있을까요?`, `오히려 1:1 과외가 ${core}부터 다시 잡기에 가장 좋아요. 학원처럼 진도에 끌려가지 않고 아이 속도에 맞춰 ${subj} 기초를 메울 수 있습니다.`],
+      [`대학생 과외와 전문 과외, 차이가 큰가요?`, `대학생은 비용이 낮지만, 입시·내신 노하우는 전문 과외 강사가 더 깊어요. 전문 강사는 교육청에 정식으로 신고된 선생님으로서 경력과 전문성의 깊이에서 차이가 큽니다.`],
+      [`학습 시간은 어떻게 배분하나요?`, `인근 학원·과외 매칭 + 통학 학교 시험 패턴 + 거주 동의 학습 부담, 이 3가지 균형으로 ${subj} 주간 학습량을 정합니다.`],
+      [`초등 ${subj}도 1:1 과외가 필요할까요?`, `초등은 점수보다 ${subj} 흥미와 학습 습관을 잡는 시기예요. 1:1이면 아이 속도에 맞춰 부담 없이 기초와 자신감을 함께 키울 수 있습니다.`],
+      [`상담은 어떻게 신청하나요?`, `전화(010-4827-5592)나 카카오톡 채널로 문의하시면, ${dong} ${subj} 상황에 맞는 선생님을 안내하고 체험 수업까지 연결해 드립니다.`],
+      [`숙제나 과제도 관리해 주나요?`, `네, 수업에서 정한 분량을 다음 수업에 점검하는 방식으로 관리합니다. ${_es} 복습이 누적되어야 실력이 되기 때문에 과제 점검을 중요하게 봅니다.`],
+      [`단기간(시험 대비)만 받을 수도 있나요?`, `네, 시험 4주 전 집중 대비처럼 단기 수업도 가능합니다. 다만 ${_es} 누적 과목이라 가능하면 꾸준히 이어가시는 걸 권합니다.`],
+      [`어떤 선생님이 배정되나요?`, `정식으로 교육청 등록된 검증 교사 중, 학생 성향과 가능한 스케줄에 맞는 선생님으로 매칭됩니다. 프로필 확인 후 체험까지 진행돼요.`],
+    ];
+    const faqs = pickN(faqPool, 5, rng);
+    faqHTML = `<div class="dc-faq"><h2 class="dc-faq-h">자주 묻는 질문</h2>${faqs.map((f,i)=>`<details class="dc-faq-i"${i===0?' open':''}><summary>${f[0]}<span class="dc-faq-ar">⌄</span></summary><div class="dc-faq-a">${f[1]}</div></details>`).join('')}</div>`;
   } else if (type === 'lvl') {
     const lvl = arg1; if (!LVLS.includes(lvl)) return null;
-    const [lcore, lf, lt, lp1, lp2] = LC[lvl];
+    const [lcore, lf, lt] = LC[lvl];
     kw = `${dong} ${lvl}과외`; heroEm = `${dong} <em>${lvl}과외</em>`; color = lvl==='초등'?'#22c55e':lvl==='중등'?'#3b82f6':'#ef4444';
     seoT = `${kw} 추천 - ${sigungu} ${dong} ${lvl}학생 1:1 과외 가이드`;
     seoD = `${sido} ${sigungu} ${dong} ${lvl}과외 가이드. ${lcore} 관리와 학습 루틴을 후기와 함께 정리.`;
@@ -1000,7 +1595,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
       [`${lvl} 시기의 핵심 - ${lcore}`,`${lvl} 시기에 꼭 잡아야 할 건 ${lcore}이에요. 이 시기 잘못된 습관이 잡히면 회복이 어렵습니다. ${dong} ${lvl}과외는 첫 수업 정밀 진단 후 부족한 부분을 우선순위별로 채워요. ${lf}입니다. 선생님의 태도와 접근 방식이 특히 중요합니다.`],
       [`${dong} ${lvl}과외 수업 루틴`,`${dong} ${lvl}과외는 ${lt} 진행이 보통이에요. 수업 후 당일 복습 시간을 선생님이 가이드합니다. ${lvl}은 '배우는 만큼 복습하는 시간'이 중요해요. 선생님은 자기 학습 습관까지 함께 잡아주는 역할입니다.`],
       [`${dong} ${lvl} 선생님 3대 체크`,`첫째, ${lvl} 지도 경력 2년 이상인지. 둘째, 아이와의 궁합. ${lvl}은 감정 기복이 커 라포 형성이 학습 효과를 좌우해요. 셋째, 학부모와 주간 리포트로 정기 소통하는지. 이 세 가지를 체험 수업에서 확인하세요.`],
-      [`${lvl}과외 비용 (${dong} 기준)`,`${dong} ${lvl}과외비는 시간당 ${lp1}, ${lp2} 선이에요. 비용보다 체험 후 아이 반응으로 판단하세요. 검증된 선생님 한 분이 1년 학습 방향을 바꿉니다.`],
+      [`${lvl}과외 비용 (${dong} 기준)`,`${dong} ${lvl}과외비는 횟수·과목·선생님 경력에 따라 달라서 고정가로 안내하지 않아요. 정확한 금액은 아이 상태를 진단하는 무료 상담 후 안내해 드립니다. 비용보다 체험 후 아이 반응으로 판단하세요. 검증된 선생님 한 분이 1년 학습 방향을 바꿉니다.`],
       [`${lvl} 과외 vs 학원과 효과 극대화`,`${dong}엔 학원도 많지만 ${lvl}에게는 1:1 과외가 강점이에요. ${lvl==='초등'?'페이스 조절 가능':lvl==='중등'?'개별 커리큘럼 효율적':'개인 플랜 단기 성과 유리'}합니다. 체험 후 결정하세요. 과외만으로는 부족하니 매일 30분~1시간 자기 학습, 규칙적 수면, 스마트폰 관리가 병행되어야 합니다. 선생님과 주 1회 이상 소통한 분들이 효과를 크게 봤어요.`],
     ];
     review1 = `"${dong}에서 ${lvl==='초등'?'초4':lvl==='중등'?'중1':'고1'} 아이 과외 시작 3개월째예요. 선생님이 ${lcore}부터 천천히 잡아주셔서 공부에 자신감이 생겼어요. ${lvl} 시기는 타이밍이 정말 중요한 것 같습니다." - ${sigungu} ${dong} ${lvl} 학부모`;
@@ -1008,6 +1603,11 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     checks = [`${lvl} 지도 경력 2년 이상`,`체험 수업 진행 가능`,`주간 리포트로 학부모와 소통`,`${dong} 인근 학교 특성 파악`,`아이와 궁합 체험 후 결정`];
     tip = `${dong} ${lvl} 학부모 추천은 '과외+자기주도학습' 조합이에요. 과외로 방향 잡고 남는 시간엔 스스로 실행. ${lcore}이 중요한 이 시기 루틴이 이후까지 영향이 커요.`;
     closing = `${sido} ${sigungu} ${dong}에서 ${lvl} 과외를 찾으신다면 지금이 타이밍이에요. ${lvl}은 한 달이 중요합니다. 과외안하니가 ${dong} 검증된 ${lvl} 선생님을 무료 매칭해드려요.`;
+    { const dongEx = pickN(all, Math.min(6, all.length), rng).join(', ');
+      const _vp = regionVarPack({ sido, sigungu, dong, kw, dongEx, label: `${lvl}` }, rng);
+      seoT = _vp.seoT; h1Title = _vp.h1Title; summary = _vp.summary; intro = _vp.intro;
+      sections = pickN(pickN(sections, Math.min(2, sections.length), rng).concat(_vp.genSections), Math.min(2, sections.length) + _vp.genSections.length, rng);
+      review1 = _vp.review1; review2 = _vp.review2; checks = _vp.checks; tip = _vp.tip; closing = _vp.closing; faqHTML = _vp.faqHTML; }
   } else if (type === 'main') {
     kw = `${dong} 과외`; heroEm = `${dong} <em>과외 추천</em>`; color = '#6366f1';
     seoT = `${dong} 과외 추천 - ${sigungu} ${dong} 1:1 맞춤 과외 가이드`;
@@ -1019,7 +1619,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     sections = [
       [`${dong} 과외, 왜 1:1인가`,`${dong}에 학원도 많지만 1:1 과외의 강점은 분명해요. 아이 페이스에 맞춰 진도 조절, 질문 즉시 해결로 공백 누적 없음, 성향·약점 맞춤 커리큘럼 설계. 자기주도 습관이 덜 잡힌 아이, 특정 과목에서 막힌 아이에게 효과가 큽니다.`],
       [`${dong} 선생님 선택 3대 기준`,`첫째, ${dong} 인근 학교 시험 유형과 출제 경향을 파악하는지. 내신 대비는 학교별 특성이 절반이에요. 둘째, 첫 수업에서 진단을 제대로 하는지. 셋째, 학부모와의 소통 주기—주간 리포트나 월 1회 이상 정기 소통이 필수입니다.`],
-      [`${dong} 과외비 기준 (초·중·고)`,`${dong} 과외비는 초등 시간당 2만5천~4만원, 중등 3만~5만원, 고등 4만~7만원이 표준. 수능 대비 전문은 8만~10만원대. 주 2회 90분 기준 월 초등 20~30만원, 중등 25~40만원, 고등 35~60만원 선. 비용보다 체험 수업 후 아이 반응으로 결정하세요.`],
+      [`${dong} 과외비, 어떻게 잡을까`,`${dong} 과외비는 학년·과목·횟수·선생님 경력에 따라 폭이 큽니다. 고정 단가를 비교하기보다 무료 상담으로 아이 상태를 진단한 뒤 필요한 만큼만 설계하는 편이 합리적이에요. 주 2회 90분처럼 기본 틀은 잡되, 정확한 금액은 상담 후 안내해 드립니다. 비용보다 체험 수업 후 아이 반응으로 결정하세요.`],
       [`${dong} 과외 효과 시점`,`1~2개월은 공백을 메우는 시기로 조급해하지 마세요. 3~4개월 차에 본격 성적 향상, 6개월 이상 꾸준히 하면 학습 습관이 정착됩니다. 시험 4주 전은 범위→기출→약점→실전 순으로 전환하는 게 표준. ${dong} 학부모 후기로는 최소 한 학기는 지켜봐 주시길 권합니다.`]
     ];
     review1 = `"${dong}에서 중2 아이 과외 시작한 지 5개월 됐어요. 선생님이 우리 동네 학교 시험 유형을 정확히 아시고, 아이가 질문하기 편한 분이세요. 내신이 한 등급 올랐습니다." - ${sigungu} ${dong} 중2 학부모`;
@@ -1027,6 +1627,11 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     checks = [`${dong} 인근 학교 시험 유형 파악`,`첫 수업에 진단 테스트 진행`,`주간 리포트로 학부모와 소통`,`아이 성향 맞춤 커리큘럼 설계`,`체험 수업 후 교체 가능 여부`];
     tip = `${dong} 학부모들이 가장 만족하는 조합은 '과외로 방향 잡고, 남는 시간은 자기 학습'이에요. 과외는 주 2회로 충분하고, 중요한 건 수업 외 시간에 얼마나 스스로 복습하느냐입니다. 선생님이 자기 학습 가이드까지 함께 잡아주는 분을 고르세요.`;
     closing = `${sido} ${sigungu} ${dong}에서 과외를 고민하신다면 지금 시작이 가장 빠른 길이에요. 공백은 학년이 올라갈수록 복구가 어렵습니다. 과외안하니가 ${dong} 검증된 선생님을 무료로 매칭해드려요.`;
+    { const dongEx = pickN(all, Math.min(6, all.length), rng).join(', ');
+      const _vp = regionVarPack({ sido, sigungu, dong, kw, dongEx, label: `전 과목` }, rng);
+      seoT = _vp.seoT; h1Title = _vp.h1Title; summary = _vp.summary; intro = _vp.intro;
+      sections = pickN(pickN(sections, Math.min(2, sections.length), rng).concat(_vp.genSections), Math.min(2, sections.length) + _vp.genSections.length, rng);
+      review1 = _vp.review1; review2 = _vp.review2; checks = _vp.checks; tip = _vp.tip; closing = _vp.closing; faqHTML = _vp.faqHTML; }
   } else {
     const lvl = arg1, subj = arg2;
     if (!LVLS.includes(lvl) || !SUBS.includes(subj)) return null;
@@ -1042,7 +1647,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     sections = [
       [`${lvl} ${subj}의 핵심 - ${core}`,`${lvl} 시기 ${subj}에서 중요한 건 ${core}이에요. 기초가 안 잡히면 학년 올라갈수록 따라가기 힘듭니다. ${dong} ${lvl} ${subj}과외는 첫 수업 정밀 진단 후 ${core} 수준을 파악해 부족한 부분부터 집중 보완해요.`],
       [`${dong} ${lvl} ${subj} 체크포인트`,`첫째, ${dong} 인근 ${lvl==='초등'?'초등학교':lvl==='중등'?'중학교':'고등학교'} ${subj} 평가 패턴을 파악했는지. 둘째, ${core} 진단이 첫 수업에 있는지. 셋째, ${lvl} 특성(${lvl==='초등'?'집중력·흥미':lvl==='중등'?'사춘기 기복':'입시 멘탈'})을 이해하는지. 체험 수업에서 확인하세요.`],
-      [`${lvl} ${subj}과외 비용 (${dong})`,`${dong} ${lvl} ${subj}과외는 ${lvl==='초등'?'시간당 2만5천~4만원, 주2회 월20~30만원':lvl==='중등'?'시간당 3만~5만원, 주2회 월25~40만원':'시간당 4만~7만원, 수능 대비 전문은 8만~10만원대'} 선입니다. ${subj==='수학'||subj==='과학'?'계산·개념 이해가 중요해 주2회 이상':subj==='영어'?'어휘 누적이 중요해 주2~3회':subj==='국어'||subj==='논술'?'독해·쓰기 훈련에 시간이 필요':'시험 일정 역산 집중 커리큘럼'} 권장합니다.`],
+      [`${lvl} ${subj}과외 비용 (${dong})`,`${dong} ${lvl} ${subj}과외비는 횟수·선생님 경력에 따라 달라져, 정확한 금액은 무료 상담 후 안내해 드립니다. 수업 횟수는 ${subj==='수학'||subj==='과학'?'계산·개념 이해가 중요해 주2회 이상':subj==='영어'?'어휘 누적이 중요해 주2~3회':subj==='국어'||subj==='논술'?'독해·쓰기 훈련에 시간이 필요해 주2회 이상':'시험 일정을 역산한 집중 커리큘럼'}을 권장해요. 비용보다 체험 후 아이 반응으로 판단하는 게 실패가 적습니다.`],
       [`${lvl} ${subj} 학습 루틴`,`${routine}을 ${lt} 스케줄로 돌려요. ${lvl==='초등'?'초등은 짧고 자주, 무리 없이':lvl==='중등'?'중등은 내신 주기에 맞춰 강약 조절':'고등은 모의고사 피드백 즉시 반영'}이 핵심이에요. ${dong} 선생님들은 학생별로 맞춤 조정합니다.`],
       [`${sigungu} ${dong} 내신 전략과 효과 시점`,`${lvl} ${subj}은 학교 평가 유형이 가장 중요해요. ${dong} 인근 학교 3년치 기출 분석 선생님이 빠른 길. ${lvl==='초등'?'수행평가·단원평가':lvl==='중등'?'중간·기말 서술형':'내신·모의·수능'} 각 유형별 접근이 다릅니다. 4주 전 범위→유형→실전 순 전환. 효과는 1~2개월 공백 메우기 → 3~4개월 성적 향상 → 6개월 이상 습관 정착 순이에요. 한 학기는 꾸준히 지켜보세요.`],
     ];
@@ -1051,12 +1656,32 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
     checks = [`${lvl} ${subj} 지도 경력 2년 이상`,`${core} 진단 첫 수업 진행`,`${dong} 인근 학교 기출 분석 경험`,`${subj} 서술형/수행평가 대응`,`주간 리포트 제공`];
     tip = `${dong} ${lvl} ${subj} 검증된 방법은 '과외에서 ${core} 잡고, 매일 30분 자기 학습으로 체화'예요. ${lvl} ${subj}은 누적이 중요해 이 루틴이 가장 효과적입니다.`;
     closing = `${sido} ${sigungu} ${dong}에서 ${lvl} ${subj}과외를 고민하신다면 지금 시작이 가장 빨라요. 공백은 학년이 올라갈수록 복구가 어렵습니다. 과외안하니가 ${dong} 검증된 ${lvl} ${subj} 선생님을 무료 매칭해드립니다.`;
+    { const dongEx = pickN(all, Math.min(6, all.length), rng).join(', ');
+      const _vp = regionVarPack({ sido, sigungu, dong, kw, dongEx, label: `${lvl} ${subj}` }, rng);
+      seoT = _vp.seoT; h1Title = _vp.h1Title; summary = _vp.summary; intro = _vp.intro;
+      sections = pickN(pickN(sections, Math.min(2, sections.length), rng).concat(_vp.genSections), Math.min(2, sections.length) + _vp.genSections.length, rng);
+      review1 = _vp.review1; review2 = _vp.review2; checks = _vp.checks; tip = _vp.tip; closing = _vp.closing; faqHTML = _vp.faqHTML; }
   }
-  // 공통 추가 섹션 (모든 타입에 부록으로 추가)
-  sections.push(
+  // 공통 추가 섹션 (4개 풀에서 시드로 2개 선택 — 페이지마다 다르게)
+  const _appPool = [
     [`${dong}에서 과외 vs 학원 선택`,`${dong}은 학원이 많은 지역이지만 모든 아이에게 학원이 답은 아닙니다. 질문이 어려운 성격, 특정 단원에서 막히는 경우, 진도 따라가기 힘든 상황이라면 1:1 과외가 효과적이에요. 반대로 경쟁 심리로 동기가 생기거나 자기주도 습관이 잡힌 아이는 학원도 괜찮습니다. 아이 성향 파악이 핵심이에요.`],
-    [`${kw} 시작 전 확인할 5가지`,`첫째 수업 횟수·1회 시간 문서화, 둘째 결제 방식과 환불 규정 명확화, 셋째 시험 기간 추가 수업 가능 여부, 넷째 교재비 포함 여부, 다섯째 수업 취소·변경 통보 시간. ${dong} 검증된 선생님들은 이런 부분을 투명하게 안내하지만, 학부모가 먼저 물어두면 갈등 없이 오래 진행됩니다.`]
-  );
+    [`${kw} 시작 전 확인할 5가지`,`첫째 수업 횟수·1회 시간 문서화, 둘째 결제 방식과 환불 규정 명확화, 셋째 시험 기간 추가 수업 가능 여부, 넷째 교재비 포함 여부, 다섯째 수업 취소·변경 통보 시간. ${dong} 검증된 선생님들은 이런 부분을 투명하게 안내하지만, 학부모가 먼저 물어두면 갈등 없이 오래 진행됩니다.`],
+    [`${dong} 학부모가 자주 하는 실수`,`첫째, 단가만 보고 선생님을 고르는 것. 둘째, 한두 달 만에 효과를 기대하고 조급해하는 것. 셋째, 수업만 맡기고 자기 학습 시간을 안 챙기는 것. ${dong}에서 오래 성과를 낸 가정은 공통적으로 '체험으로 궁합 확인 → 한 학기 꾸준히 → 복습 루틴 병행'을 지켰어요.`],
+    [`${dong} 방문·화상, 우리 집엔 뭐가 맞을까`,`집중력이 흐트러지기 쉬운 저학년이나 직접 관리가 필요한 경우엔 방문 과외가, 이동 시간을 아끼고 일정이 유동적인 경우엔 화상 과외가 잘 맞아요. ${dong}에서는 두 방식을 병행하거나 도중에 바꾸는 것도 가능하니, 체험 때 둘 다 경험해보고 정하셔도 됩니다.`],
+  ];
+  Array.prototype.push.apply(sections, pickN(_appPool, 1 + Math.floor(rng() * 2), rng));
+
+  // 업데이트 날짜: 페이지별 시드로 2~27일 전 (항상 한 달 미만, 페이지마다 다름)
+  const _upOff = 2 + (Math.abs(hashCode(canonPath)) % 26);
+  const _upDate = new Date(Date.now() - _upOff * 86400000);
+  const _upDisp = `${_upDate.getFullYear()}.${String(_upDate.getMonth() + 1).padStart(2, '0')}.${String(_upDate.getDate()).padStart(2, '0')}`;
+  const _upISO = _upDate.toISOString();
+  if (!h1Title) h1Title = `${sido} ${sigungu} ${kw}, 우리 동네 맞춤 과외 가이드`;
+  if (!summary.length) summary = [
+    `📍 ${sido} ${sigungu} ${kw} — 1:1 맞춤 수업으로 아이 약점을 정확히 메웁니다.`,
+    `🎓 ${dong} 인근 학교 시험 경향을 아는 교육청 등록 검증 선생님을 매칭합니다.`,
+    `📈 효과는 1~2개월 공백 메우기 → 3~4개월 성적 향상 → 6개월 습관 정착 순으로 나타나요.`,
+  ];
   const heroImg = getEduImage(kw);
   // 관련 키워드용 페어 (타입별로 다른 카테고리 카드 추가)
   const relSubj = type === 'subj' ? arg1 : (type === 'lsubj' ? arg2 : null);
@@ -1076,12 +1701,13 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
   const DONG_INIT = 6;
   const dongCells = otherDongs.map((d, i) => `<a href="/지역별/${e(sido)}/${e(sigungu)}/${e(d)}" class="dc-xc${i >= DONG_INIT ? ' dc-xc-more' : ''}"><span class="dc-xc-dot" style="background:#6366f1"></span><span class="dc-xc-t">${d}</span><span class="dc-xc-a">→</span></a>`).join('');
   const dongMoreBtn = otherDongs.length > DONG_INIT ? `<div class="dc-more-wrap"><button type="button" class="dc-more-btn" onclick="this.closest('.dc-box').querySelectorAll('.dc-xc-more').forEach(function(el){el.classList.toggle('dc-xc-show')});this.classList.toggle('dc-more-open');var t=this.querySelector('.dc-more-txt');t.textContent=this.classList.contains('dc-more-open')?'접기':'전체 보기 (+${otherDongs.length - DONG_INIT})'"><span class="dc-more-txt">전체 보기 (+${otherDongs.length - DONG_INIT})</span><span class="dc-more-arrow">▼</span></button></div>` : '';
+  const _head = commonHead(seoT, seoD, 'https://anhani.com' + canonPath, heroImg).replace(/(article:modified_time" content=")[^"]*"/, '$1'+_upISO+'"');
   return `<!DOCTYPE html><html lang="ko"><head>
-  ${commonHead(seoT, seoD, 'https://anhani.com' + canonPath, heroImg)}
+  ${_head}
   <style>${commonStyles()}${dcCSS()}.dc-xc.on{border-color:var(--c);background:#f8fafc}</style></head><body>${navHTML('region')}
-  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${bc}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${kw}, ${sido} ${sigungu} 우리 동네 학습 코칭 전문가</h1><div class="dc-tabs"><span>${dong}</span><span>${sido} ${sigungu}</span><span>전 지역·전 과목</span></div></div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu} ${dong}</span></div><div class="dc-info-row"><strong>대상</strong><span>초·중·고등학생 전학년</span></div><div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술·검정고시</span></div></div></div>
+  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${bc}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${h1Title}</h1><div class="dc-meta"><span class="dc-mb">${dong}</span><span class="dc-mb">${sido} ${sigungu}</span><span class="dc-mb">전 학년·전 과목</span><span class="dc-mb dc-mb-up">🗓 업데이트: ${_upDisp}</span></div></div><div class="dc-sum"><div class="dc-sum-t">📋 ${kw} 3줄 요약</div>${summary.map(x=>`<div class="dc-sum-l">${x}</div>`).join('')}</div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu} ${dong}</span></div><div class="dc-info-row"><strong>대상</strong><span>초·중·고등학생 전학년</span></div><div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술·검정고시</span></div></div></div>
     ${otherDongs.length ? `<div class="dc-box"><div class="dc-box-t">📍 ${sigungu} 동 선택</div><p style="font-size:13px;color:#475569;margin:0 0 14px 12px">다른 동네의 세부 키워드(학년별·과목별·학년+과목별 과외)를 확인하실 수 있습니다.</p><div class="dc-xgrid">${dongCells}</div>${dongMoreBtn}</div>` : ''}
-    <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-review">${review1}</div><div class="dc-review">${review2}</div><div class="dc-check"><h3>✅ ${dong} 과외 선생님 체크리스트</h3><ol>${checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-tip"><h3>💡 ${dong} 학부모 꿀팁</h3><p>${tip}</p></div><p>${closing}</p></div><div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div><div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
+    <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-check"><h3>✅ ${dong} 과외 선생님 체크리스트</h3><ol>${checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-bxh">💬 ${kw} 실제 후기</div><div class="dc-rv-wrap"><div class="dc-review">${review1}</div><div class="dc-review">${review2}</div></div><div class="dc-tip"><h3>💡 ${dong} 학부모 꿀팁</h3><p>${tip}</p></div><p>${closing}</p></div><div class="dc-box">${stepsBox(kw, dong)}</div>${faqHTML}<div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div><div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -4102,7 +4728,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v106-main-redesign', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v108-region-rich-content', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
