@@ -21,6 +21,18 @@ function seededRandom(seed) {
   };
 }
 
+// 지역 페이지 전용 고품질 PRNG (mulberry32) — 인접 시드 decorrelation이 좋아
+// tail 유사도(우연히 같은 섹션 다수 선택)를 줄여줌.
+function seededRandomR(seed) {
+  let s = seed >>> 0;
+  return function() {
+    s = (s + 0x6D2B79F5) | 0;
+    let t = Math.imul(s ^ (s >>> 15), 1 | s);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 // ⚠️⚠️⚠️ 절대 글로벌 스코프에서 new Date() 쓰지 말 것 ⚠️⚠️⚠️
 // Cloudflare Workers는 보안(Spectre 방지)상 글로벌 스코프의 new Date()를
 // 항상 1970-01-01(epoch 0)로 반환함. 요청 핸들러 내부에서만 실제 시각 반환.
@@ -311,7 +323,8 @@ function strHash(s) {
   return Math.abs(h);
 }
 function getEduImage(seed) {
-  return EDU_IMAGE_POOL[strHash(String(seed)) % EDU_IMAGE_POOL.length];
+  const u = EDU_IMAGE_POOL[strHash(String(seed)) % EDU_IMAGE_POOL.length];
+  return u.includes('h=630') ? u : u.replace('w=1200', 'w=1200&h=630');
 }
 
 function renderArticleHero(title, subtitle, seed) {
@@ -918,9 +931,9 @@ function sidoVarPack(o, rng) {
   const introPool = [
     `${region}에서 ${kw}를 알아보고 계신가요? ${region}은 시군구마다 교육 환경과 통학 학교가 달라서, 같은 ${region} 안에서도 아이에게 맞는 과외 방식이 제각각이에요. 1:1 과외는 아이 페이스에 맞춘 진도 조절과 즉각적인 질문 해결이 강점이라, 학원에서 놓치기 쉬운 빈틈을 정확히 메워줍니다.`,
     `과외에서 가장 중요한 건 선생님 스펙이 아니라 '아이와의 궁합'이에요. ${region}처럼 선택지가 많은 지역일수록 오히려 기준 잡기가 어려운데, 학력·경력만 보기보다 첫 상담에서 아이를 제대로 진단하고 통학 학교 출제 경향을 아는지부터 확인하는 게 ${kw} 실패를 줄이는 길입니다.`,
-    `${region} ${kw}는 방문 과외와 화상 과외를 모두 운영합니다. 집중 관리가 필요하면 방문, 이동 시간을 아끼거나 거리 제약을 없애고 싶으면 화상이 잘 맞아요. ${region}은 지역이 넓은 만큼, 두 방식을 상황에 맞춰 병행하면 좋은 선생님을 거리와 상관없이 만날 수 있습니다.`,
+    `${kw}는 방문 과외와 화상 과외를 모두 운영합니다. 집중 관리가 필요하면 방문, 이동 시간을 아끼거나 거리 제약을 없애고 싶으면 화상이 잘 맞아요. ${region}은 지역이 넓은 만큼, 두 방식을 상황에 맞춰 병행하면 좋은 선생님을 거리와 상관없이 만날 수 있습니다.`,
     `${region}은 ${locEx} 등 여러 시군구로 이루어져 있고, 시군구마다 학습 분위기와 시험 난이도가 조금씩 달라요. 그래서 ${kw}를 고를 때도 '${region}에 맞는'이 아니라 '우리 아이 학교에 맞는' 수업이 핵심입니다. 아래에서 시군구를 고르면 동네 단위 맞춤 정보로 이어집니다.`,
-    `아이 성적이 걱정되지만 어디서부터 손대야 할지 막막하셨다면, ${region} ${kw}의 시작은 늘 정확한 진단이에요. 첫 체험 수업에서 아이가 어디서 막히는지, 무엇을 안다고 착각하는지를 짚어야 남은 시간을 효율적으로 쓸 수 있습니다. 그 진단 위에 학교 맞춤 커리큘럼을 얹는 구조예요.`,
+    `아이 성적이 걱정되지만 어디서부터 손대야 할지 막막하셨다면, ${kw}의 시작은 늘 정확한 진단이에요. 첫 체험 수업에서 아이가 어디서 막히는지, 무엇을 안다고 착각하는지를 짚어야 남은 시간을 효율적으로 쓸 수 있습니다. 그 진단 위에 학교 맞춤 커리큘럼을 얹는 구조예요.`,
     `학원이 답일 때도 있지만, 모든 아이에게 그런 건 아니에요. 질문을 어려워하거나 특정 단원에서 자꾸 막히는 아이라면 진도에 끌려가는 학원보다 1:1이 효율적입니다. ${region} 전역에서 ${kw}는 아이 성향을 먼저 파악한 뒤, 학원·과외 병행까지 포함해 가장 맞는 방식을 함께 설계합니다.`,
     `${region}처럼 넓은 지역에서는 '좋은 선생님이 우리 동네까지 와줄까'가 늘 고민이에요. 그래서 ${kw}는 거주지 기준 가까운 방문 선생님과, 거리 제약이 없는 화상 선생님을 함께 제안합니다. 두 방식을 체험으로 비교해보고 아이에게 맞는 쪽을 고르면 선택 실패가 크게 줄어요.`,
     `같은 ${region} 안에서도 학년에 따라 전략이 완전히 달라요. 초등은 습관과 흥미, 중등은 내신과 서술형, 고등은 모의·수능과 멘탈 관리가 중심이죠. ${kw}는 학년별로 목표를 다르게 잡고, 아이가 지금 어느 단계에 있는지부터 진단해 커리큘럼을 설계합니다.`,
@@ -993,6 +1006,14 @@ function sidoVarPack(o, rng) {
     `"맞벌이라 ${region} 외곽이라도 좋은 선생님 만나기 어려웠는데, 화상 과외로 거리 문제를 해결했어요. 녹화 복습이 특히 만족스럽습니다." — ${region} 초6 학부모`,
     `"학원만 보내다 1:1로 바꾸니 아이가 질문을 하기 시작했어요. ${region} 학교 시험에 맞춘 수업이라 내신 대비가 확실히 효율적입니다." — ${region} 중3 학부모`,
     `"기초가 약한 아이라 걱정했는데 속도를 맞춰 되짚어 주시니 자신감부터 생기더라고요. 점수는 한 학기 지나며 따라왔습니다." — ${region} 중1 학부모`,
+    `"${region} 안에서 학교를 옮겼는데도 화상으로 같은 선생님께 계속 받을 수 있어 좋았어요. 새 학교 기출로 바로 맞춰주십니다." - ${region} 중3 학부모`,
+    `"학원 대형 강의가 안 맞던 아이인데, 1:1로 바꾸니 질문이 늘고 ${region} 학교 시험 점수가 확실히 올랐어요." - ${region} 고1 학부모`,
+    `"플래너 짜는 습관부터 잡아주셔서 아이가 스스로 공부하기 시작했어요. ${region}에서 진작 시작할걸 그랬습니다." - ${region} 중1 학부모`,
+    `"독해가 약해 전 과목이 흔들렸는데 정독 훈련 덕에 이해 속도가 달라졌어요. ${region} 과외 만족합니다." - ${region} 초6 학부모`,
+    `"시험 불안이 심했는데 모의 환경 연습으로 실전에서 실력대로 봤어요. ${region} 선생님께 감사드려요." - ${region} 고2 학부모`,
+    `"인강만 듣다 막혔는데 ${kw} 1:1로 약점만 짚어주시니 효율이 완전히 달라졌습니다." - ${region} 중2 학부모`,
+    `"기초가 약한 아이라 걱정했는데 속도를 맞춰 되짚어 주시니 자신감부터 생겼어요." - ${region} 중1 학부모`,
+    `"맞벌이라 시간 맞추기 어려웠는데 화상·방문을 병행하니 꾸준함이 유지됐어요. ${region}이라도 거리 걱정이 없었습니다." - ${region} 초5 학부모`,
   ];
   const [review1, review2] = pickN(reviewPool, 2, rng);
   const checksPool = [
@@ -1022,12 +1043,28 @@ function sidoVarPack(o, rng) {
     `과외비는 고정가로 검색하기보다, 무료 상담에서 아이 상태를 진단받은 뒤 필요한 횟수만 잡는 게 결과적으로 더 합리적입니다.`,
     `첫 달은 점수가 아니라 '빠진 구간이 메워지는지'를 보세요. ${region} 과외도 성적 변화는 보통 3~4개월 차에 나타납니다.`,
     `아래 시군구 목록에서 우리 동네를 먼저 고르면, 그 지역 학교 기준으로 더 구체적인 상담을 받을 수 있어요.`,
+    `${region}처럼 넓은 지역은 시군구마다 학원가 분위기가 달라요. 옆 동네 기준에 휩쓸리지 말고 우리 아이 학교 기준으로 ${kw} 계획을 세우세요.`,
+    `상담 전 최근 성적표와 쓰던 교재를 챙겨두면 진단이 빨라져요. ${region} 첫 수업의 질이 전체 방향을 좌우합니다.`,
+    `시험지를 모아두면 오답 유형이 보여요. ${kw}에서 지난 시험만 분석해도 다음 전략의 절반이 정해집니다.`,
+    `첫 달은 점수보다 '책상에 앉는 시간'이 늘었는지를 보세요. 습관이 잡혀야 ${region} 어디서든 성적이 따라옵니다.`,
+    `숙제는 '양'보다 '틀린 유형 다시 풀기'로. ${kw} 상담 때 이 방식을 요청하면 효율이 달라집니다.`,
+    `아이가 설명을 못 하면 아직 이해가 덜 된 거예요. 거꾸로 설명시키는 시간을 넣어달라고 하면 메타인지가 자랍니다.`,
+    `방학엔 약점 한두 개만 집중하세요. 여러 과목을 늘리기보다 확실히 끝내는 경험이 다음 학기 자신감이 됩니다.`,
+    `집에서는 다그치기보다 꾸준함을 칭찬해 주세요. ${region} 학부모님의 작은 인정이 ${kw} 효과를 키웁니다.`,
   ], 1, rng)[0];
   const closing = pickN([
     `${region}에서 ${kw}를 고민 중이시라면, 우선 우리 동네 시군구를 고른 뒤 무료 상담으로 아이 상태부터 들어보세요. 단가보다 체험에서의 아이 반응이 가장 정확한 기준입니다.`,
     `결국 ${kw}의 성패는 '아이에게 맞는 선생님을 만나느냐'에 달려 있어요. ${region} 전 시군구에서 검증 선생님과의 체험으로 부담 없이 시작해 보세요.`,
     `좋은 과외 한 분이 아이의 1년 학습 방향을 바꿉니다. ${region}은 방문·화상 모두 열려 있으니 가정 상황에 맞는 방식으로 첫걸음을 떼어 보세요.`,
     `${kw}는 거창한 계획이 아니라 정확한 진단에서 출발합니다. 지금 무료 상담을 신청하시면 ${region} 우리 동네에 맞는 선생님과 학습 방향을 함께 잡아드릴게요.`,
+    `${region}에서 ${kw}, 핵심은 우리 아이에게 맞는 선생님이에요. 시군구를 고르고 무료 상담으로 아이 상태부터 들어보세요.`,
+    `방향이 맞으면 성적은 반드시 변합니다. ${kw}로 지금 첫걸음을 떼면 한 학기 뒤가 달라져요.`,
+    `고민만 하다 시간을 놓치기엔 아까워요. ${region}에서 30분 체험으로 아이에게 맞는지 먼저 확인해 보세요.`,
+    `좋은 습관 하나가 점수 여러 개를 만듭니다. ${kw}로 학습 습관부터 잡으면 효과는 다음 학년까지 이어져요.`,
+    `아이마다 막히는 지점이 달라요. ${kw}는 그 지점을 찾아 채우는 것부터 시작하니 상담으로 현재 상태를 들어보세요.`,
+    `학원이 안 맞았다고 공부가 안 맞는 건 아니에요. ${region}에서 1:1로 방식을 바꾸면 같은 아이도 다른 결과를 냅니다.`,
+    `${kw}의 목표는 선생님 없이도 공부하는 아이예요. ${region}에서 그 습관까지 길러드릴 테니 편하게 상담부터 신청하세요.`,
+    `지금 ${kw} 상담을 신청하시면 아이 진단부터 맞춤 학습 방향까지 한 번에 안내해 드립니다.`,
   ], 1, rng)[0];
   return { seoT, h1Title, summary, intro, sections, faqHTML, review1, review2, checks, tip, closing };
 }
@@ -1041,7 +1078,7 @@ function renderRegionDetail(region) {
   _sd = ((_sd ^ (_sd>>>15)) * 2246822519) >>> 0;
   _sd = ((_sd ^ (_sd>>>13)) * 3266489917) >>> 0;
   _sd = (_sd ^ (_sd>>>16)) >>> 0;
-  const rng = seededRandom(_sd);
+  const rng = seededRandomR(_sd);
   const locEx = pickN(districts, Math.min(8, districts.length), rng).join(', ');
   const sv = sidoVarPack({ region, kw, locEx }, rng);
   const _leadPool = [
@@ -1064,13 +1101,98 @@ function renderRegionDetail(region) {
   ${commonHead(sv.seoT, `${region} 지역 초등·중등·고등 1:1 맞춤 과외 정보`, 'https://anhani.com' + canon, heroImg).replace(/(article:modified_time" content=")[^"]*"/, '$1'+_upISO+'"')}
   <style>${commonStyles()}${dcCSS()}</style></head><body>
   ${navHTML('region')}
-  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${region}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${sv.h1Title}</h1><div class="dc-meta"><span class="dc-mb">${region}</span><span class="dc-mb">시/도</span><span class="dc-mb">전 학년·전 과목</span><span class="dc-mb dc-mb-up">🗓 업데이트: ${_upDisp}</span></div></div><div class="dc-sum"><div class="dc-sum-t">📋 ${kw} 3줄 요약</div>${sv.summary.map(x=>`<div class="dc-sum-l">${x}</div>`).join('')}</div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${region} 전 시군구 (${districts.length}개)</span></div><div class="dc-info-row"><strong>대상</strong><span>초중고 전학년</span></div><div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술</span></div></div></div><div class="dc-box"><div class="dc-box-t">📍 ${region} 시/군/구 선택</div><div style="margin-top:12px">${sgGrid}</div></div><div class="dc-body"><p>${lead}</p>${sv.intro.map(p=>`<p>${p}</p>`).join('')}${sv.sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-check"><h3>✅ ${region} 과외 선생님 체크리스트</h3><ol>${sv.checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-bxh">💬 ${kw} 실제 후기</div><div class="dc-rv-wrap"><div class="dc-review">${sv.review1}</div><div class="dc-review">${sv.review2}</div></div><div class="dc-tip"><h3>💡 ${region} 학부모 꿀팁</h3><p>${sv.tip}</p></div><p>${sv.closing}</p></div><div class="dc-box">${stepsBox(kw, region)}</div>${sv.faqHTML}<div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
+  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${region}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${sv.h1Title}</h1><div class="dc-meta"><span class="dc-mb">${region}</span><span class="dc-mb">시/도</span><span class="dc-mb">전 학년·전 과목</span><span class="dc-mb dc-mb-up">🗓 업데이트: ${_upDisp}</span></div></div><div class="dc-sum"><div class="dc-sum-t">📋 ${kw} 3줄 요약</div>${sv.summary.map(x=>`<div class="dc-sum-l">${x}</div>`).join('')}</div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${region} 전 시군구 (${districts.length}개)</span></div><div class="dc-info-row"><strong>대상</strong><span>초중고 전학년</span></div><div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술</span></div></div></div><div class="dc-box"><div class="dc-box-t">📍 ${region} 시/군/구 선택</div><div style="margin-top:12px">${sgGrid}</div></div><div class="dc-body">${thinKw(synSwap(`<p>${lead}</p>${sv.intro.map(p=>`<p>${p}</p>`).join('')}${sv.sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-check"><h3>✅ ${region} 과외 선생님 체크리스트</h3><ol>${sv.checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-bxh">💬 ${kw} 실제 후기</div><div class="dc-rv-wrap"><div class="dc-review">${sv.review1}</div><div class="dc-review">${sv.review2}</div></div><div class="dc-tip"><h3>💡 ${region} 학부모 꿀팁</h3><p>${sv.tip}</p></div><p>${sv.closing}</p>`, seededRandomR(hashCode(canon+'SYN'))), [kw], ['과외','1:1 과외','맞춤 과외'], seededRandomR(hashCode(canon+'KW')), 4)}</div><div class="dc-box">${stepsBox(kw, region)}</div>${sv.faqHTML}<div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
 
 // --- 시/군/구 상세 (동/읍/면 목록) ---
-function dcCSS(){return `.dc-bc{max-width:860px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.dc-bc a{color:#6366f1;text-decoration:none}.dc-wrap{max-width:860px;margin:0 auto;padding:20px 24px 60px}.dc-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:16px;padding:24px;margin-bottom:24px}.dc-box-t{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:900;color:#0f172a;margin-bottom:6px;padding-left:12px;border-left:4px solid #6366f1}.dc-head h1{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:10px}.dc-tabs{display:flex;gap:14px;font-size:13px;color:#64748b;margin-bottom:16px}.dc-tabs span:first-child{color:#4338ca;font-weight:700}.dc-hero{position:relative;width:100%;aspect-ratio:16/9;max-height:340px;background:#0f172a;border-radius:14px;overflow:hidden;margin-bottom:16px}.dc-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.dc-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.55),rgba(15,23,42,.15) 50%,transparent 80%)}.dc-hero-badge{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);background:rgba(255,255,255,.95);color:#1e1b4b;padding:10px 22px;border-radius:24px;font-size:16px;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.2);white-space:nowrap}.dc-info{background:#fff;border-radius:10px;padding:14px 18px}.dc-info-row{display:flex;gap:12px;padding:6px 0;font-size:13px}.dc-info-row strong{min-width:54px;color:#475569;font-weight:700}.dc-info-row span{color:#0f172a}.dc-xgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dc-xc{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;color:#0f172a;transition:.15s;--c:#6366f1}.dc-xc:hover{border-color:var(--c);background:#f8fafc}.dc-xc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}.dc-xc-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dc-xc-a{color:#94a3b8;font-size:14px}.dc-tagbox{display:flex;flex-wrap:wrap;gap:6px}.dc-tag{font-size:12px;padding:5px 12px;background:#fff;border:1px solid #e2e8f0;color:#475569;border-radius:14px}.dc-cta{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;text-align:center;padding:28px 24px;border-radius:14px;margin-top:24px}.dc-cta h3{font-size:19px;font-weight:900;margin-bottom:6px}.dc-cta p{font-size:13px;color:#c7d2fe;margin-bottom:14px}.dc-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.dc-cta-btn{padding:11px 22px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}.dc-cp{background:#fff;color:#312e81}.dc-cf{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}@media(max-width:640px){.dc-xgrid{grid-template-columns:1fr}.dc-head h1{font-size:18px}.dc-hero{aspect-ratio:4/3;max-height:none}.dc-hero-badge{font-size:14px;padding:8px 18px;bottom:14px}}.dc-body p{font-size:15px;color:#334155;line-height:1.9;margin-bottom:14px}.dc-body h2{font-size:18px;font-weight:900;color:#0f172a;margin:24px 0 10px;display:flex;align-items:center;gap:10px}.dc-body h2::before{content:'';width:4px;height:20px;background:#6366f1;border-radius:2px}.dc-check{background:#eef2ff;border-radius:10px;padding:16px 20px;margin:18px 0}.dc-check h3{font-size:14px;font-weight:800;color:#3730a3;margin-bottom:8px}.dc-check ol{padding-left:18px;margin:0}.dc-check li{font-size:14px;color:#4338ca;line-height:1.8}.dc-review{background:#f8fafc;border-left:3px solid #6366f1;border-radius:0 8px 8px 0;padding:12px 16px;margin:10px 0;font-size:14px;color:#475569;line-height:1.7;font-style:italic}.dc-tip{background:#fffbeb;border-radius:10px;padding:14px 18px;margin:18px 0}.dc-tip h3{font-size:14px;font-weight:800;color:#92400e;margin-bottom:4px}.dc-tip p{font-size:13px;color:#78350f;line-height:1.8;margin:0}.dc-xc-more{display:none}.dc-xc-more.dc-xc-show{display:flex}.dc-more-wrap{display:flex;justify-content:center;margin-top:12px}.dc-more-btn{background:#fff;border:1px solid #c7d2fe;border-radius:20px;padding:7px 22px;font-size:13px;color:#4f46e5;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit;transition:.15s}.dc-more-btn:hover{background:#eef2ff;border-color:#a5b4fc}.dc-more-arrow{transition:transform .2s;font-size:10px}.dc-more-open .dc-more-arrow{transform:rotate(180deg)}.dc-faq{margin-top:24px}.dc-faq-h{font-size:18px;font-weight:900;color:#0f172a;margin-bottom:12px;padding-left:12px;border-left:4px solid #6366f1}.dc-faq-i{background:#fff;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:8px;overflow:hidden}.dc-faq-i[open]{border-color:#c7d2fe;box-shadow:0 4px 14px rgba(99,102,241,.08)}.dc-faq-i summary{list-style:none;cursor:pointer;padding:14px 18px;font-size:15px;font-weight:700;color:#1d1d1f;display:flex;justify-content:space-between;align-items:center;gap:10px}.dc-faq-i summary::-webkit-details-marker{display:none}.dc-faq-ar{transition:transform .25s;color:#94a3b8;flex-shrink:0;font-size:18px}.dc-faq-i[open] .dc-faq-ar{transform:rotate(180deg);color:#6366f1}.dc-faq-i[open] summary{color:#4338ca}.dc-faq-a{padding:0 18px 16px;font-size:14px;color:#475569;line-height:1.85}.dc-meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:6px}.dc-mb{font-size:12px;color:#475569;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:4px 11px;font-weight:600}.dc-mb-up{color:#15803d;border-color:#bbf7d0;background:#f0fdf4}.dc-sum{background:linear-gradient(135deg,#1e3a8a,#312e81);border-radius:14px;padding:18px 20px;margin:16px 0}.dc-sum-t{font-size:13px;font-weight:800;color:#c7d2fe;margin-bottom:10px}.dc-sum-l{font-size:14px;color:#fff;line-height:1.7;margin:7px 0}.dc-bxh{font-size:16px;font-weight:900;color:#0f172a;margin:26px 0 10px;display:flex;align-items:center;gap:8px;padding-left:12px;border-left:4px solid #6366f1}.dc-steps{display:grid;gap:10px;margin:8px 0 18px}.dc-step{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:14px 16px}.dc-step-n{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#6366f1);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}.dc-step-b{flex:1;min-width:0}.dc-step-t{font-size:14px;font-weight:800;color:#1e1b4b;margin-bottom:3px}.dc-step-d{font-size:13px;color:#475569;line-height:1.65}.dc-rv-wrap{display:grid;gap:10px;margin:8px 0 18px}`;}
+function dcCSS(){return `.dc-bc{max-width:860px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#64748b}.dc-bc a{color:#6366f1;text-decoration:none}.dc-wrap{max-width:860px;margin:0 auto;padding:20px 24px 60px}.dc-box{background:#eef2ff;border:1px solid #c7d2fe;border-radius:16px;padding:24px;margin-bottom:24px}.dc-box-t{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:900;color:#0f172a;margin-bottom:6px;padding-left:12px;border-left:4px solid #6366f1}.dc-head h1{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:10px}.dc-tabs{display:flex;gap:14px;font-size:13px;color:#64748b;margin-bottom:16px}.dc-tabs span:first-child{color:#4338ca;font-weight:700}.dc-hero{position:relative;width:100%;aspect-ratio:16/9;max-height:340px;background:#0f172a;border-radius:14px;overflow:hidden;margin-bottom:16px}.dc-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.dc-hero-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.55),rgba(15,23,42,.15) 50%,transparent 80%)}.dc-hero-badge{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);background:rgba(255,255,255,.95);color:#1e1b4b;padding:10px 22px;border-radius:24px;font-size:16px;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.2);white-space:nowrap}.dc-info{background:#fff;border-radius:10px;padding:14px 18px}.dc-info-row{display:flex;gap:12px;padding:6px 0;font-size:13px}.dc-info-row strong{min-width:54px;color:#475569;font-weight:700}.dc-info-row span{color:#0f172a}.dc-xgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dc-xc{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;color:#0f172a;transition:.15s;--c:#6366f1}.dc-xc:hover{border-color:var(--c);background:#f8fafc}.dc-xc-dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex-shrink:0}.dc-xc-t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dc-xc-a{color:#94a3b8;font-size:14px}.dc-tagbox{display:flex;flex-wrap:wrap;gap:6px}.dc-tag{font-size:12px;padding:5px 12px;background:#fff;border:1px solid #e2e8f0;color:#475569;border-radius:14px}.dc-cta{background:linear-gradient(135deg,#312e81,#4f46e5);color:#fff;text-align:center;padding:28px 24px;border-radius:14px;margin-top:24px}.dc-cta h3{font-size:19px;font-weight:900;margin-bottom:6px}.dc-cta p{font-size:13px;color:#c7d2fe;margin-bottom:14px}.dc-cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.dc-cta-btn{padding:11px 22px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}.dc-cp{background:#fff;color:#312e81}.dc-cf{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}@media(max-width:640px){.dc-xgrid{grid-template-columns:1fr}.dc-head h1{font-size:18px}.dc-hero{aspect-ratio:4/3;max-height:none}.dc-hero-badge{font-size:14px;padding:8px 18px;bottom:14px}}.dc-body p{font-size:15px;color:#334155;line-height:1.9;margin-bottom:14px}.dc-body h2{font-size:18px;font-weight:900;color:#0f172a;margin:24px 0 10px;display:flex;align-items:center;gap:10px}.dc-body h2::before{content:'';width:4px;height:20px;background:#6366f1;border-radius:2px}.dc-check{background:#eef2ff;border-radius:10px;padding:16px 20px;margin:18px 0}.dc-check h3{font-size:14px;font-weight:800;color:#3730a3;margin-bottom:8px}.dc-check ol{padding-left:18px;margin:0}.dc-check li{font-size:14px;color:#4338ca;line-height:1.8}.dc-review{background:#f8fafc;border-left:3px solid #6366f1;border-radius:0 8px 8px 0;padding:12px 16px;margin:10px 0;font-size:14px;color:#475569;line-height:1.7;font-style:italic}.dc-tip{background:#fffbeb;border-radius:10px;padding:14px 18px;margin:18px 0}.dc-tip h3{font-size:14px;font-weight:800;color:#92400e;margin-bottom:4px}.dc-tip p{font-size:13px;color:#78350f;line-height:1.8;margin:0}.dc-xc-more{display:none}.dc-xc-more.dc-xc-show{display:flex}.dc-more-wrap{display:flex;justify-content:center;margin-top:12px}.dc-more-btn{background:#fff;border:1px solid #c7d2fe;border-radius:20px;padding:7px 22px;font-size:13px;color:#4f46e5;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:inherit;transition:.15s}.dc-more-btn:hover{background:#eef2ff;border-color:#a5b4fc}.dc-more-arrow{transition:transform .2s;font-size:10px}.dc-more-open .dc-more-arrow{transform:rotate(180deg)}.dc-faq{margin-top:24px}.dc-faq-h{font-size:18px;font-weight:900;color:#0f172a;margin-bottom:12px;padding-left:12px;border-left:4px solid #6366f1}.dc-faq-i{background:#fff;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:8px;overflow:hidden}.dc-faq-i[open]{border-color:#c7d2fe;box-shadow:0 4px 14px rgba(99,102,241,.08)}.dc-faq-i summary{list-style:none;cursor:pointer;padding:14px 18px;font-size:15px;font-weight:700;color:#1d1d1f;display:flex;justify-content:space-between;align-items:center;gap:10px}.dc-faq-i summary::-webkit-details-marker{display:none}.dc-faq-ar{transition:transform .25s;color:#94a3b8;flex-shrink:0;font-size:18px}.dc-faq-i[open] .dc-faq-ar{transform:rotate(180deg);color:#6366f1}.dc-faq-i[open] summary{color:#4338ca}.dc-faq-a{padding:0 18px 16px;font-size:14px;color:#475569;line-height:1.85}.dc-meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-top:6px}.dc-mb{font-size:12px;color:#475569;background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:4px 11px;font-weight:600}.dc-mb-up{color:#15803d;border-color:#bbf7d0;background:#f0fdf4}.dc-sum{background:linear-gradient(135deg,#1e3a8a,#312e81);border-radius:14px;padding:18px 20px;margin:16px 0}.dc-sum-t{font-size:13px;font-weight:800;color:#c7d2fe;margin-bottom:10px}.dc-sum-l{font-size:14px;color:#fff;line-height:1.7;margin:7px 0}.dc-bxh{font-size:16px;font-weight:900;color:#0f172a;margin:26px 0 10px;display:flex;align-items:center;gap:8px;padding-left:12px;border-left:4px solid #6366f1}.dc-steps{display:grid;gap:10px;margin:8px 0 18px}.dc-step{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:14px 16px}.dc-step-n{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#6366f1);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}.dc-step-b{flex:1;min-width:0}.dc-step-t{font-size:14px;font-weight:800;color:#1e1b4b;margin-bottom:3px}.dc-step-d{font-size:13px;color:#475569;line-height:1.65}.dc-rv-wrap{display:grid;gap:10px;margin:8px 0 18px}.dc-mgmt{margin:0}.dc-mgmt-h{text-align:center;margin-bottom:20px}.dc-mgmt-tag{display:inline-block;background:#dbeafe;color:#1e40af;font-size:11px;font-weight:800;padding:4px 12px;border-radius:14px;letter-spacing:.5px}.dc-mgmt-h h3{font-size:23px;font-weight:900;color:#1e3a8a;margin:10px 0 4px}.dc-mgmt-h p{font-size:13px;color:#64748b}.dc-mgmt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.dc-mgmt-c{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px 18px}.dc-mgmt-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}.dc-mgmt-n{background:#1e3a8a;color:#fff;font-size:12px;font-weight:800;padding:3px 9px;border-radius:6px}.dc-mgmt-ic{font-size:20px}.dc-mgmt-t{font-size:16px;font-weight:900;color:#0f172a;margin-bottom:4px}.dc-mgmt-d{font-size:13px;color:#475569;line-height:1.6;margin-bottom:10px}.dc-mgmt-c ul{list-style:none;padding:0;margin:0}.dc-mgmt-c li{font-size:12.5px;color:#334155;line-height:1.75;padding-left:18px;position:relative}.dc-mgmt-c li::before{content:'✓';position:absolute;left:0;color:#2563eb;font-weight:800}@media(max-width:640px){.dc-mgmt-grid{grid-template-columns:1fr}}`;}
+
+function localSchoolLine(rng, kw, scope, schoolLoc, parent, fallbackPlaces) {
+  const got = [];
+  for (const lv of ['중등','고등','초등']) {
+    const r = pickRegionSchools(schoolLoc, lv, parent, 2, rng);
+    if (r && r.picked && r.picked.length) got.push(...r.picked);
+  }
+  const uniq = [...new Set(got)];
+  if (uniq.length < 2) {
+    if (fallbackPlaces && fallbackPlaces.length >= 2) {
+      const ps = pickN(fallbackPlaces, Math.min(4, fallbackPlaces.length), rng).join(', ');
+      const t = pickN([
+        `${scope}은 ${ps} 등 여러 지역으로 이루어져 있어요. ${kw}는 동네마다 다른 통학 학교와 학습 환경을 반영해 1:1로 맞추기 때문에, 사는 곳과 다니는 학교에 따라 전략을 다르게 잡습니다.`,
+        `${ps} 같은 ${scope} 곳곳에서 ${kw} 수업이 이뤄집니다. 같은 과목도 학교마다 시험이 다르기 때문에, 아이가 다니는 학교 기준으로 출제 경향을 분석해 대비해요.`,
+        `${kw}를 시작하면 먼저 ${ps} 등 ${scope} 내 통학권과 학교를 기준으로 학습 방향을 잡습니다. 지역이 넓어도 우리 동네에 맞춘 수업이 핵심이에요.`,
+        `${scope} 학생들은 ${ps} 등 각기 다른 동네에서 와요. ${kw}는 방문·화상을 모두 운영해 거리와 상관없이 아이에게 맞는 선생님을 연결합니다.`,
+      ], 1, rng)[0];
+      return `<p>${t}</p>`;
+    }
+    return '';
+  }
+  const names = pickN(uniq, Math.min(4, uniq.length), rng).join(', ');
+  const tmpl = pickN([
+    `${scope} 인근에는 ${names} 등이 있어요. ${kw}는 학생이 다니는 학교의 시험 출제 경향을 분석해 1:1로 맞추기 때문에, 같은 단원도 학교별 난이도와 서술형 비중에 맞춰 다르게 대비합니다.`,
+    `${names} 같은 ${scope} 학교의 내신 패턴은 학교마다 제각각이에요. ${kw} 커리큘럼은 아이가 다니는 학교의 3년치 기출을 기준으로 설계하기 때문에 위치와 무관하게 내신을 챙길 수 있습니다.`,
+    `${scope} 학생들이 다니는 ${names} 등 학교의 기출과 채점 기준을 반영해 ${kw} 수업을 진행해요. 학교 시험에 직접 연결되는 문제 위주로 다루니 점수로 이어지는 속도가 빠릅니다.`,
+    `${kw}를 시작하면 먼저 ${scope}의 ${names} 등 통학 학교를 기준으로 출제 유형을 정리합니다. 학교가 다르면 같은 과목도 전략이 달라지기 때문에, 우리 아이 학교에 맞춘 대비가 핵심이에요.`,
+  ], 1, rng)[0];
+  return `<p>${tmpl}</p>`;
+}
+
+function synSwap(text, rng) {
+  // 조사가 깨지지 않는 안전한 동의어 짝만. 페이지 시드로 결정적 선택.
+  const groups = [
+    ['아이', '자녀'],            // 둘 다 모음 종결 → 조사 동일
+    ['내신', '학교 시험'],        // 둘 다 자음 종결
+    ['약점', '부족한 부분'],      // 둘 다 자음 종결
+    ['꾸준히', '지속적으로'],     // 부사
+    ['빠르게', '신속하게'],       // 부사
+    ['하지만', '다만'],           // 접속
+    ['특히', '무엇보다'],         // 부사
+    ['방법', '방식'],             // 둘 다 자음 종결
+    ['중요한', '핵심적인'],       // 명사 수식
+    ['보통', '대개'],             // 부사
+    ['결국', '결과적으로'],       // 부사
+    ['많이', '상당히'],           // 부사
+    ['꼭', '반드시'],             // 부사
+    ['시작', '출발'],             // 둘 다 자음 종결
+    ['효과적', '효율적'],         // 형용사
+    ['확실히', '분명히'],         // 부사
+    ['도움', '보탬'],             // 둘 다 자음 종결
+    ['금방', '금세'],             // 부사
+    ['천천히', '차근차근'],       // 부사
+  ];
+  let out = text;
+  for (const g of groups) {
+    const choice = g[Math.floor(rng() * g.length)];
+    for (const w of g) if (w !== choice) out = out.split(w).join(choice);
+  }
+  return out;
+}
+
+function thinKw(html, targets, alts, rng, keep) {
+  keep = keep || 4;
+  const uniq = [...new Set(targets)].filter(Boolean).sort((a, b) => b.length - a.length);
+  if (!uniq.length) return html;
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(uniq.map(esc).join('|'), 'g');
+  let count = 0;
+  return html.replace(re, m => {
+    count++;
+    return count <= keep ? m : alts[Math.floor(rng() * alts.length)];
+  });
+}
+
+function mgmtBox() {
+  const cards = [
+    ['📘', '수업', '학교별 교과서·기출 기반 1:1 맞춤 수업', ['아이 수준에 맞춘 진도·난이도 조정', '주간 학습 리포트로 진행 공유', '중간·기말 시험기간 집중 관리']],
+    ['👩‍🏫', '선생님', '대학생 알바 아닌 교육청 정식 등록 검증 강사', ['전공·경력 검증된 전문 선생님', '자격 확인 후 매칭', '체험 후 부담 없이 교체 가능']],
+    ['🎯', '실전훈련', '학교 기출과 출제 경향 기반 실전 대비', ['학교별 기출 분석·유형 훈련', '서술형·수행평가 대비', '오답·취약점 반복 보완']],
+    ['📝', '수행평가', '내신을 좌우하는 수행평가까지 관리', ['발표·보고서·실험 정리 지원', '학기별 수행평가 일정 체크', '감점 없는 서술 표현 훈련']],
+    ['📊', '관리', '학습관리부터 자기주도 습관까지', ['주간 플래너·숙제 점검', '성적·진도·약점 데이터 관리', '스스로 공부하는 습관 형성']],
+  ];
+  return `<div class="dc-mgmt"><div class="dc-mgmt-h"><span class="dc-mgmt-tag">핵심 시스템</span><h3>1:1 집중 관리 시스템</h3><p>수업 · 선생님 · 실전훈련 · 수행평가 · 관리</p></div><div class="dc-mgmt-grid">${cards.map((c, i) => `<div class="dc-mgmt-c"><div class="dc-mgmt-top"><span class="dc-mgmt-n">0${i + 1}</span><span class="dc-mgmt-ic">${c[0]}</span></div><div class="dc-mgmt-t">${c[1]}</div><div class="dc-mgmt-d">${c[2]}</div><ul>${c[3].map(b => `<li>${b}</li>`).join('')}</ul></div>`).join('')}</div></div>`;
+}
 
 function stepsBox(kw, locWord) {
   const steps = [
@@ -1111,8 +1233,8 @@ function sgVarPack(o, rng) {
     `${sigungu}에서 과외 시작하기 — ${kw} 가이드`,
   ], 1, rng)[0];
   const sL1 = pickN([
-    `📍 ${sido} ${sigungu} ${kw} — 1:1 맞춤 수업으로 아이 약점을 정확히 메웁니다.`,
-    `📍 ${sigungu} ${kw}, 방문·화상 모두 가능한 1:1 맞춤 수업이에요.`,
+    `📍 ${sido} ${kw} — 1:1 맞춤 수업으로 아이 약점을 정확히 메웁니다.`,
+    `📍 ${kw}, 방문·화상 모두 가능한 1:1 맞춤 수업이에요.`,
     `📍 ${sigungu} 전 동네에서 아이 수준 진단부터 시작하는 1:1 과외입니다.`,
     `📍 ${sigungu} ${focus} 수업을 아이 페이스에 맞춰 1:1로 설계합니다.`,
     `📍 ${locEx} 등 ${sigungu} 어디서든 검증 선생님과 1:1로 시작할 수 있어요.`,
@@ -1144,7 +1266,12 @@ function sgVarPack(o, rng) {
     `${sigungu}에서 ${focus} 과외를 고민할 때 부모님들이 가장 많이 묻는 건 '학원이 나을까, 1:1이 나을까'예요. 정답은 아이 성향에 있습니다. 스스로 질문을 잘 못 하거나 특정 단원에서 자꾸 막히는 아이라면, 진도에 끌려가는 학원보다 ${kw}처럼 속도를 맞춰주는 1:1이 훨씬 효율적입니다.`,
     `좋은 과외의 시작은 거창한 계획이 아니라 정확한 진단이에요. ${sigungu}에서 ${kw}를 시작하실 때도, 첫 체험 수업에서 아이의 현재 위치를 객관적으로 짚는 것부터 합니다. 어디서 막히는지, 무엇을 알고 있다고 착각하는지를 먼저 찾아야 남은 시간을 헛되이 쓰지 않거든요.`,
     `${sido} ${sigungu}는 동네마다 분위기도 통학 학교도 제각각이라, '${sigungu}에 맞는 과외'라는 말은 사실 '우리 아이 학교에 맞는 과외'라는 뜻에 가까워요. ${locEx}처럼 같은 구 안에서도 시험 난이도와 서술형 비중이 달라지기 때문에, ${kw}는 학교 단위로 기출을 분석해 1:1로 맞춥니다.`,
-    `과외를 한 번이라도 알아보신 분이라면 '비용이 천차만별'이라는 걸 느끼셨을 거예요. ${sigungu} ${kw}도 학년·과목·횟수·선생님 경력에 따라 폭이 큽니다. 그래서 고정가를 검색하기보다, 무료 상담으로 아이 상태를 진단한 뒤 필요한 만큼만 설계하는 편이 결과적으로 더 합리적입니다.`,
+    `과외를 한 번이라도 알아보신 분이라면 '비용이 천차만별'이라는 걸 느끼셨을 거예요. ${kw}도 학년·과목·횟수·선생님 경력에 따라 폭이 큽니다. 그래서 고정가를 검색하기보다, 무료 상담으로 아이 상태를 진단한 뒤 필요한 만큼만 설계하는 편이 결과적으로 더 합리적입니다.`,
+    `${sigungu}에서 ${kw}를 알아보는 학부모님이 부쩍 늘었어요. 학원 선택지는 많아도 아이 개별 약점까지 챙기긴 어렵다 보니 1:1로 방향을 잡으려는 분이 많아진 거죠. 이 글에서 ${sigungu} 기준 선생님 고르는 법부터 학습 전략까지 정리해 드릴게요.`,
+    `성적이 정체될 때 가장 먼저 볼 건 '어디서 막히는가'예요. ${kw}는 점수보다 막힌 지점을 찾는 진단에서 출발합니다. 무엇을 아는 척하는지, 어떤 개념이 비었는지를 짚어야 남은 시간을 헛되이 쓰지 않거든요.`,
+    `좋은 과외는 '많이'가 아니라 '맞게' 시키는 거예요. ${sigungu}에서 ${kw}를 시작할 때도 아이 성향과 통학 학교를 먼저 파악한 뒤 거기에 맞춘 계획을 세웁니다. 같은 학년이라도 전략이 다른 이유예요.`,
+    `학원을 다녀도 안 오르는 데는 이유가 있어요. 진도에 끌려가느라 막힌 지점을 지나치기 때문이죠. ${kw}는 아이 속도에 맞춰 막힌 곳까지 되짚어 채우기 때문에, 같은 아이도 다른 결과를 냅니다.`,
+    `${kw}는 방문과 화상을 모두 운영해요. 밀착 관리가 필요하면 방문, 거리·시간을 아끼려면 화상이 잘 맞습니다. 두 방식을 체험으로 비교하고 가정 상황에 맞춰 고르면 실패가 적어요.`,
   ];
   const intro = pickN(introPool, 3, rng);
   const secPool = [
@@ -1181,6 +1308,22 @@ function sgVarPack(o, rng) {
     [`방문 과외 첫 수업, 이렇게 준비하세요`, `방문 수업 첫 시간엔 조용한 공간과 그동안의 시험지·교재만 준비하면 충분해요. 선생님이 아이 수준을 진단하고 학습 환경을 함께 점검합니다. ${sigungu} 방문 과외는 아이가 가장 집중하기 좋은 자리와 시간대를 찾는 것부터 시작합니다.`],
     [`화상 과외, 집중도 걱정 없게`, `화상 수업이 산만할까 걱정되신다면, 카메라로 손과 노트가 보이게 세팅하고 판서를 공유하면 집중도가 크게 올라가요. ${kw}의 화상 수업은 녹화로 복습이 쉽고, ${sigungu} 어디서든 거리 제약 없이 좋은 선생님을 만날 수 있습니다.`],
     [`학기 중·방학 학습 배분`, `학기 중에는 내신과 진도를 따라가는 데 집중하고, 방학에는 약점 보완과 선행에 무게를 둡니다. ${sigungu} 1:1 과외는 이 리듬에 맞춰 ${focus} 수업 강도와 범위를 계절마다 조정해, 1년 전체가 하나의 계획으로 이어지게 합니다.`],
+    [`${sigungu} 주간 학습 플래너 관리`, `계획 없이 공부하면 시간만 흘러요. ${kw}는 요일별 과목·분량을 짠 플래너를 함께 만들고 실제 지킨 양을 점검합니다. ${sigungu} 학생이 스스로 일정을 통제하는 감각을 갖도록 돕는 게 ${focus} 수업의 목표예요.`],
+    [`집중되는 공부 환경부터`, `같은 시간 앉아 있어도 집중도에 따라 결과가 갈려요. 책상 정리, 휴대폰 분리, 25분 집중·5분 휴식 같은 규칙이 큰 차이를 만듭니다. ${kw} 첫 수업에서 아이의 공부 환경부터 함께 점검합니다.`],
+    [`노트 정리·필기 습관`, `필기는 받아쓰기가 아니라 '내 말로 다시 쓰기'예요. 핵심어와 예시를 구조화하면 복습 효율이 올라갑니다. ${sigungu} 과외는 ${focus}에 맞는 노트법을 잡아 시험 직전 빠르게 훑을 요약을 만들게 합니다.`],
+    [`말로 설명하는 학습(메타인지)`, `진짜 아는 것은 설명할 수 있는 거예요. ${kw}는 배운 내용을 학생이 거꾸로 설명하게 해, 어디까지 이해했는지 스스로 가늠하게 만듭니다. ${sigungu} 학생의 헛공부를 줄이는 핵심 방법이에요.`],
+    [`독해력·어휘력 다지기`, `모든 과목의 바탕은 언어예요. 지문을 이해하는 어휘·독해가 약하면 ${focus}도 발목이 잡힙니다. ${sigungu} 1:1 과외는 수준에 맞춰 어휘와 배경지식을 누적해 읽고 이해하는 속도부터 끌어올립니다.`],
+    [`시험 4주 전 루틴 만들기`, `시험이 다가오면 평소 루틴을 시험 모드로 바꿉니다. 4주 전 개념 정리, 3주 전 기출, 2주 전 약점 보완, 1주 전 예상 문제 순이 표준이에요. ${sigungu} 인근 학교 일정에 맞춰 이 일정을 아이별로 조정합니다.`],
+    [`인강·문제집과 1:1 병행`, `인강과 문제집은 좋은 도구지만 혼자선 약점을 놓치기 쉬워요. ${kw}는 쓰던 자료를 버리지 않고 거기에 맞춰 부족한 부분만 보완합니다. ${sigungu} 학생이 익숙한 흐름을 유지하면서 빈틈을 메우게 해요.`],
+    [`진로와 연결한 학습 동기`, `왜 공부하는지가 보이면 태도가 달라져요. 관심 분야와 진로를 학습에 연결하면 동기가 살아납니다. ${kw}는 성적 관리를 넘어 아이가 스스로 목표를 갖고 공부하도록 방향까지 잡아줍니다.`],
+    [`${sigungu} 과외 선생님은 이런 분`, `${kw}는 교육청 정식 등록·전공 검증을 거친 선생님과 연결해요. 대학생 단기 알바가 아니라 ${focus} 노하우가 쌓인 분이라, 첫 체험에서 궁합을 본 뒤 진행하고 안 맞으면 교체할 수 있습니다.`],
+    [`${sigungu} 수업 진행 방식`, `진단 → 맞춤 커리큘럼 설계 → 주간 수업·점검 → 시험기 집중의 흐름으로 돌아가요. ${sigungu} 학생마다 단계 속도를 조정해, 막연한 진도가 아니라 설계된 순서로 빈틈을 채웁니다.`],
+    [`첨삭·피드백 중심 수업`, `풀고 끝내면 실력으로 안 남아요. ${kw}는 학생 풀이를 한 줄씩 첨삭하고 막힌 지점을 바로 피드백합니다. 틀린 이유를 아는 순간 ${focus} 실수가 줄어듭니다.`],
+    [`성적·약점을 데이터로 관리`, `감으로 가르치지 않아요. ${sigungu} 과외는 단원별 정답률·실수 유형을 기록해 약점을 숫자로 보여줍니다. 다음 시험 전략이 데이터 위에서 정해져요.`],
+    [`개념 강의와 실전 문제 결합`, `개념만 알면 막히고 문제만 풀면 응용이 안 돼요. ${kw}는 개념 정리와 실전 문제를 한 수업에 묶어, ${sigungu} 학생이 개념의 쓰임을 바로 체감하게 합니다.`],
+    [`정서·동기까지 챙기는 1:1`, `성적은 멘탈과 함께 움직여요. ${sigungu} 선생님은 작은 성취를 자주 만들어 자신감을 회복시키고, 슬럼프도 라포를 바탕으로 함께 넘깁니다.`],
+    [`방문·화상 하이브리드 운영`, `${sigungu}에서는 방문과 화상을 모두 운영해요. 평소엔 방문, 시험기엔 화상으로 횟수를 늘리는 식의 병행도 가능합니다. 집중도와 일정에 맞춰 고르면 됩니다.`],
+    [`첫 수업은 무료 진단으로`, `시작 전 아이 상태부터 정확히 봐야 해요. ${sigungu} 과외는 첫 체험에서 수준·약점·성향을 진단하고, 맞는지 확인한 뒤 결정하게 합니다. 비용보다 반응으로 판단하는 게 실패가 적어요.`],
   ];
   const sections = pickN(secPool, 7 + Math.floor(rng() * 3), rng);
   const faqPool = [
@@ -1206,6 +1349,14 @@ function sgVarPack(o, rng) {
     [`교재는 따로 사야 하나요?`, `학교 교과서·부교재를 기본으로 쓰고, 필요한 보조 자료는 선생님이 직접 구성합니다. 별도로 비싼 교재를 강매하는 일은 없으니 안심하셔도 됩니다.`],
     [`형제가 함께 받으면 일정 조율이 되나요?`, `네, 한 가정에서 형제가 함께 받거나 한 아이가 여러 과목을 받을 때는 일정과 선생님 구성을 묶어 효율적으로 설계해 드립니다. 상담에서 가정 상황을 알려주세요.`],
     [`상담만 받아보고 결정해도 되나요?`, `물론이에요. 상담과 30분 체험은 부담 없이 받아보실 수 있고, 그 뒤에 진행 여부를 정하시면 됩니다. ${sigungu}에서 우선 아이 상태부터 들어보는 분들이 많아요.`],
+    [`${sigungu} 어디서 수업하나요?`, `방문은 ${sigungu} 내 자택이나 가까운 공간에서, 화상은 위치 제약 없이 진행합니다. 체험 후 편한 쪽으로 정하시면 돼요.`],
+    [`플래너·숙제 관리도 해주나요?`, `네, 주간 플래너를 함께 짜고 숙제는 다음 수업에 점검하는 사이클로 관리합니다. 복습 누적이 실력으로 이어집니다.`],
+    [`교재는 새로 사야 하나요?`, `쓰던 교재·인강이 있으면 그대로 활용하고 부족한 부분만 보조 자료로 채웁니다. 비싼 교재 강매는 없어요.`],
+    [`사춘기라 말을 안 들어요`, `동기·멘탈 관리도 ${kw}의 중요한 부분이에요. ${sigungu} 선생님이 작은 성취를 자주 경험하게 해 태도부터 바꿔 갑니다.`],
+    [`온라인 화상도 집중이 될까요?`, `손과 노트가 보이게 세팅하고 판서를 공유하면 집중도가 올라가고 녹화 복습도 쉽습니다. 걱정되면 방문과 병행하셔도 됩니다.`],
+    [`형제가 같이 받을 수 있나요?`, `네, 일정과 선생님 구성을 묶어 효율적으로 설계해 드립니다. 자세한 건 상담에서 안내해요.`],
+    [`선생님이 안 맞으면요?`, `부담 없이 다른 선생님으로 재매칭해 드립니다. 궁합이 맞아야 ${sigungu}에서 수업 효과가 나니까요.`],
+    [`단기간만 받아도 되나요?`, `시험 대비 같은 단기 집중도 가능합니다. ${sigungu} 학교 일정에 맞춰 기간과 횟수를 조정해 드려요.`],
   ];
   const faqs = pickN(faqPool, 4 + Math.floor(rng() * 2), rng);
   const faqHTML = `<div class="dc-faq"><h2 class="dc-faq-h">자주 묻는 질문</h2>${faqs.map((f,i)=>`<details class="dc-faq-i"${i===0?' open':''}><summary>${f[0]}<span class="dc-faq-ar">⌄</span></summary><div class="dc-faq-a">${f[1]}</div></details>`).join('')}</div>`;
@@ -1216,6 +1367,20 @@ function sgVarPack(o, rng) {
     `"맞벌이라 화상 과외로 시작했는데 판서 공유랑 녹화 복습이 생각보다 훨씬 편하더라고요. 아이가 스스로 복습하는 습관까지 생겼어요." — ${sigungu} 중3 학부모`,
     `"기초가 너무 약해서 걱정했는데, 아이 속도에 맞춰 되짚어 가며 채워주셔서 자신감부터 달라졌어요. 점수는 그다음에 따라왔습니다." — ${sigungu} 중1 학부모`,
     `"체험 때 선생님이 아이 성향을 정확히 짚어주셔서 신뢰가 갔어요. ${sigungu} 학교 기출 위주로 봐주시니 시험 대비가 확실히 효율적입니다." — ${sigungu} 고2 학부모`,
+    `"${sigungu}에서 자기주도가 약한 아이였는데 플래너 습관부터 잡아주시니 혼자 공부하기 시작했어요." - ${sigungu} 중1 학부모`,
+    `"개념은 아는데 문제만 틀리던 아이가, 풀이를 말로 설명하게 시키니 응용 정답률이 확 올랐어요." - ${sigungu} 중3 학부모`,
+    `"시험 불안이 심했는데 모의 연습으로 실전에서 실력대로 봤습니다. ${sigungu} 선생님 감사해요." - ${sigungu} 고2 학부모`,
+    `"독해가 약했는데 ${sigungu}에서 정독 훈련 꾸준히 하니 이해 속도가 달라졌어요." - ${sigungu} 초6 학부모`,
+    `"인강만 듣다 막혔는데 ${kw} 1:1로 약점만 짚어주시니 효율이 완전히 달라졌어요." - ${sigungu} 고1 학부모`,
+    `"노트 정리법을 잡아주신 뒤 시험 직전 복습이 빨라졌대요. ${sigungu} 과외 시작하길 잘했어요." - ${sigungu} 중2 학부모`,
+    `"기초가 약한 아이라 걱정했는데 속도를 맞춰 되짚어 주시니 자신감부터 생겼어요." - ${sigungu} 중1 학부모`,
+    `"맞벌이라 화상으로 시작했는데 녹화 복습이 특히 좋았어요. ${sigungu} 어디서든 거리 걱정이 없었습니다." - ${sigungu} 초5 학부모`,
+    `"${sigungu}에서 플래너 습관부터 잡아주시니 아이가 혼자 공부하기 시작했어요. 성적도 자연히 따라왔습니다." — ${sigungu} 중1 학부모`,
+    `"개념은 아는데 문제만 틀리던 아이가, 풀이를 말로 설명하게 시키니 응용 정답률이 확 올랐어요." — ${sigungu} 중3 학부모`,
+    `"독해가 약했는데 ${sigungu}에서 정독 훈련을 꾸준히 하니 이해 속도가 달라졌어요." — ${sigungu} 초6 학부모`,
+    `"인강만 듣다 막혔는데 ${kw} 1:1로 약점만 짚어주시니 효율이 완전히 달라졌어요." — ${sigungu} 고1 학부모`,
+    `"시험만 보면 긴장하던 아이인데 모의 연습으로 실전에서 실력대로 봤어요." — ${sigungu} 고2 학부모`,
+    `"노트 정리법을 잡아주신 뒤 시험 직전 복습이 빨라졌대요. ${sigungu} 과외 시작하길 잘했어요." — ${sigungu} 중2 학부모`,
   ];
   const [review1, review2] = pickN(reviewPool, 2, rng);
   const checksPool = [
@@ -1229,6 +1394,7 @@ function sgVarPack(o, rng) {
     `교육청에 정식 등록된 검증 선생님인지`,
     `시험 기간에 횟수·범위를 조정해 집중 관리하는지`,
     `목표 점수와 약점 단원을 구체적으로 함께 정하는지`,
+    `반복 실수 유형을 따로 관리하는지`, `메타인지(설명하기) 훈련을 시키는지`, `주간 학습 플래너를 함께 짜는지`, `독해력·어휘력 기초를 챙기는지`, `쓰던 인강·교재와 병행해 설계하는지`, `단기·장기 목표를 나눠 세우는지`, `진로와 연결해 학습 동기를 잡는지`, `시험 전 멘탈·시간 배분을 연습시키는지`
   ];
   const checks = pickN(checksPool, 5, rng);
   const tip = pickN([
@@ -1237,12 +1403,28 @@ function sgVarPack(o, rng) {
     `과외비는 고정가로 검색하기보다, 무료 상담에서 아이 상태를 진단받은 뒤 필요한 횟수만 잡는 게 결과적으로 더 합리적이에요.`,
     `처음 한 달은 점수가 아니라 '빠진 구간이 메워지는지'를 보세요. ${sigungu} 1:1 과외도 성적 변화는 보통 3~4개월 차에 나타납니다.`,
     `방문과 화상을 굳이 하나로 정하지 마세요. 평소엔 화상으로 가볍게, 시험기엔 방문으로 집중하는 식의 병행도 ${sigungu}에서 충분히 가능합니다.`,
+    `${sigungu}에서 선생님을 고를 때 첫 상담에서 '우리 아이 학교 시험을 본 적 있는지' 꼭 물어보세요. 학교별 출제 경향을 아는 게 내신의 절반이에요.`,
+    `상담 전 최근 성적표와 쓰던 교재를 챙기면 ${sigungu} 진단이 빨라져요. 첫 수업의 질이 전체 방향을 좌우합니다.`,
+    `시험지를 모아두세요. ${kw}에서 지난 시험 오답 유형만 분석해도 다음 전략의 절반이 정해집니다.`,
+    `첫 2주는 점수보다 책상에 앉는 시간이 늘었는지를 보세요. 습관이 잡혀야 ${sigungu}에서도 성적이 따라옵니다.`,
+    `숙제는 '양'보다 '틀린 유형 다시 풀기'로. ${kw} 상담 때 요청하면 효율이 달라집니다.`,
+    `아이가 설명을 못 하면 이해가 덜 된 거예요. ${sigungu} 수업에서 거꾸로 설명시키는 시간을 넣어달라고 해보세요.`,
+    `방학엔 약점 한두 개만 집중하세요. 확실히 끝내는 경험이 다음 학기 자신감이 됩니다.`,
+    `집에서는 다그치기보다 꾸준함을 칭찬해 주세요. ${sigungu} 학부모님의 작은 인정이 ${kw} 효과를 키웁니다.`,
   ], 1, rng)[0];
   const closing = pickN([
     `${sigungu}에서 ${kw}를 고민 중이시라면, 우선 무료 상담으로 아이 상태부터 들어보세요. 단가 비교보다 체험 수업에서 아이가 보이는 반응이 가장 정확한 기준이 됩니다.`,
     `결국 ${kw}의 성패는 '아이에게 맞는 선생님을 만나느냐'에 달려 있어요. ${sigungu} 검증 선생님과의 체험으로 부담 없이 시작해 보시길 권합니다.`,
     `좋은 과외 한 분이 아이의 1년 학습 방향을 바꿉니다. ${sigungu}에서 방문·화상 모두 열려 있으니, 가정 상황에 맞는 방식으로 첫걸음을 떼어 보세요.`,
-    `${sigungu} ${kw}는 거창한 계획이 아니라 정확한 진단에서 출발합니다. 지금 무료 상담을 신청하시면 아이에게 맞는 선생님과 학습 방향을 함께 잡아드릴게요.`,
+    `${kw}는 거창한 계획이 아니라 정확한 진단에서 출발합니다. 지금 무료 상담을 신청하시면 아이에게 맞는 선생님과 학습 방향을 함께 잡아드릴게요.`,
+    `${sigungu}에서 ${kw}, 핵심은 우리 아이에게 맞는 선생님이에요. 무료 상담과 체험으로 부담 없이 아이 반응부터 확인해 보세요.`,
+    `방향이 맞으면 성적은 반드시 변합니다. ${kw}로 지금 첫걸음을 떼면 한 학기 뒤가 달라져요.`,
+    `고민만 하다 놓치기엔 시간이 아까워요. ${sigungu}에서 30분 체험으로 아이에게 맞는지 먼저 확인해 보세요.`,
+    `좋은 습관 하나가 점수 여러 개를 만듭니다. ${sigungu} 1:1로 학습 습관부터 잡으면 효과는 다음 학년까지 이어져요.`,
+    `아이마다 막히는 지점이 달라요. ${kw}는 그 지점을 찾아 채우는 것부터 시작하니 상담으로 현재 상태를 들어보세요.`,
+    `학원이 안 맞았다고 공부가 안 맞는 건 아니에요. ${sigungu}에서 1:1로 바꾸면 같은 아이도 다른 결과를 냅니다.`,
+    `${kw}의 목표는 선생님 없이도 공부하는 아이예요. ${sigungu}에서 그 습관까지 길러드릴게요.`,
+    `지금 ${kw} 상담을 신청하시면 아이 진단부터 맞춤 학습 방향까지 한 번에 안내해 드립니다.`,
   ], 1, rng)[0];
   return { seoT, h1Title, summary, intro, sections, faqHTML, review1, review2, checks, tip, closing };
 }
@@ -1276,7 +1458,7 @@ function renderSigunguDetail(sido, sigungu, cat, val) {
   _sgseed = ((_sgseed ^ (_sgseed>>>15)) * 2246822519) >>> 0;
   _sgseed = ((_sgseed ^ (_sgseed>>>13)) * 3266489917) >>> 0;
   _sgseed = (_sgseed ^ (_sgseed>>>16)) >>> 0;
-  const _sgrng = seededRandom(_sgseed);
+  const _sgrng = seededRandomR(_sgseed);
   const _locEx = pickN(all, Math.min(6, all.length), _sgrng).join(', ');
   const _focus = cat ? (cat==='과목' ? val : val+' 학생') : '전 과목';
   const _sgv = sgVarPack({ sido, sigungu, kw, locEx: _locEx, focus: _focus }, _sgrng);
@@ -1290,7 +1472,7 @@ function renderSigunguDetail(sido, sigungu, cat, val) {
   ${commonHead(_sgv.seoT, sido+' '+sigungu+' 1:1 맞춤 과외', 'https://anhani.com' + canon, heroImg).replace(/(article:modified_time" content=")[^"]*"/, '$1'+_sgUpISO+'"')}
   <style>${commonStyles()}${dcCSS()}</style></head><body>
   ${navHTML('region')}
-  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${sido} &gt; ${cat?`<a href="${bp}">${sigungu}</a> &gt; ${val}과외`:sigungu}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${_sgv.h1Title}</h1><div class="dc-meta"><span class="dc-mb">${sigungu}</span><span class="dc-mb">${sido}</span><span class="dc-mb">${cat==='학년'?val+'학생':cat==='과목'?val:'전 학년·전 과목'}</span><span class="dc-mb dc-mb-up">🗓 업데이트: ${_sgUpDisp}</span></div></div><div class="dc-sum"><div class="dc-sum-t">📋 ${kw} 3줄 요약</div>${_sgv.summary.map(x=>`<div class="dc-sum-l">${x}</div>`).join('')}</div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu}</span></div><div class="dc-info-row"><strong>대상</strong><span>${cat==='학년'?val+'학생':'초중고 전학년'}</span></div><div class="dc-info-row"><strong>과목</strong><span>${cat==='과목'?val:'국어·수학·영어·과학·사회·논술'}</span></div></div></div><div class="dc-box"><div class="dc-box-t">📍 ${sigungu} ${isCompound?'구':'동'} 선택</div>${renderDongGrid(all, bp, isCompound, sigungu)}</div><div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-check"><h3>✅ ${sigungu} 과외 선생님 체크리스트</h3><ol>${_sgv.checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-bxh">💬 ${kw} 실제 후기</div><div class="dc-rv-wrap"><div class="dc-review">${_sgv.review1}</div><div class="dc-review">${_sgv.review2}</div></div><div class="dc-tip"><h3>💡 ${sigungu} 학부모 꿀팁</h3><p>${_sgv.tip}</p></div><p>${_sgv.closing}</p></div><div class="dc-box">${stepsBox(kw, sigungu)}</div>${_sgv.faqHTML}<div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s,'과목',sc[s]]),...LVLS.map(l=>[l,'학년',lc[l]])].map(a=>`<a href="${bp}/${a[1]}/${e(a[0])}" class="dc-xc" style="--c:${a[2]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}과외</span></a>`).join('')}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
+  <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${sido} &gt; ${cat?`<a href="${bp}">${sigungu}</a> &gt; ${val}과외`:sigungu}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${_sgv.h1Title}</h1><div class="dc-meta"><span class="dc-mb">${sigungu}</span><span class="dc-mb">${sido}</span><span class="dc-mb">${cat==='학년'?val+'학생':cat==='과목'?val:'전 학년·전 과목'}</span><span class="dc-mb dc-mb-up">🗓 업데이트: ${_sgUpDisp}</span></div></div><div class="dc-sum"><div class="dc-sum-t">📋 ${kw} 3줄 요약</div>${_sgv.summary.map(x=>`<div class="dc-sum-l">${x}</div>`).join('')}</div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu}</span></div><div class="dc-info-row"><strong>대상</strong><span>${cat==='학년'?val+'학생':'초중고 전학년'}</span></div><div class="dc-info-row"><strong>과목</strong><span>${cat==='과목'?val:'국어·수학·영어·과학·사회·논술'}</span></div></div></div><div class="dc-box"><div class="dc-box-t">📍 ${sigungu} ${isCompound?'구':'동'} 선택</div>${renderDongGrid(all, bp, isCompound, sigungu)}</div><div class="dc-body">${thinKw(synSwap(`${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}${localSchoolLine(_sgrng, kw, sigungu, sigungu, sido, getDongs(sido, sigungu))}<div class="dc-check"><h3>✅ ${sigungu} 과외 선생님 체크리스트</h3><ol>${_sgv.checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-bxh">💬 ${kw} 실제 후기</div><div class="dc-rv-wrap"><div class="dc-review">${_sgv.review1}</div><div class="dc-review">${_sgv.review2}</div></div><div class="dc-tip"><h3>💡 ${sigungu} 학부모 꿀팁</h3><p>${_sgv.tip}</p></div><p>${_sgv.closing}</p>`, seededRandomR(hashCode(canon+'SYN'))), [kw, sigungu+' 과외'], ['과외','1:1 과외','맞춤 과외'], seededRandomR(hashCode(canon+'KW')), 4)}</div><div class="dc-box">${stepsBox(kw, sigungu)}</div>${_sgv.faqHTML}<div class="dc-box"><div class="dc-box-t">${sigungu} 과목·학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${[...SUBS.map(s=>[s,'과목',sc[s]]),...LVLS.map(l=>[l,'학년',lc[l]])].map(a=>`<a href="${bp}/${a[1]}/${e(a[0])}" class="dc-xc" style="--c:${a[2]}"><span class="dc-xc-dot"></span><span class="dc-xc-t">${sigungu} ${a[0]}과외</span></a>`).join('')}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -1318,7 +1500,7 @@ function regionVarPack(o, rng) {
   const sL1 = pickN([
     `📍 ${sido} ${sigungu} ${kw} — 1:1 맞춤 수업으로 아이 약점을 정확히 메웁니다.`,
     `📍 ${dong}에서 ${kw}, 방문·화상 모두 가능한 1:1 맞춤 수업이에요.`,
-    `📍 ${sigungu} ${dong} ${kw} — 아이 수준 진단부터 시작하는 1:1 과외입니다.`,
+    `📍 ${sigungu} ${kw} — 아이 수준 진단부터 시작하는 1:1 과외입니다.`,
     `📍 ${kw}, ${dong} 통학권 학교 내신까지 잡는 맞춤 수업이에요.`,
   ], 1, rng)[0];
   const sL2 = pickN([
@@ -1342,6 +1524,11 @@ function regionVarPack(o, rng) {
     `${dong}에서 ${kw}를 제대로 시작하려면 학교 시험 유형부터 알아야 해요. ${sigungu} 인근 학교마다 출제 스타일이 달라서, 그걸 아는 선생님과 모르는 선생님의 결과 차이가 큽니다. 오늘은 시작 전 꼭 알아둘 것들을 정리했어요.`,
     `${dong} 학부모님이 가장 많이 물으시는 건 "단가보다 궁합"이에요. 무료 체험 수업으로 아이 진단을 받아본 뒤 결정하면 실패가 적습니다. ${kw}, 방문·화상 모두 가능하니 가정 상황에 맞게 고르시면 돼요.`,
     `${sido} ${sigungu} ${dong}에서 ${kw}를 찾고 계신다면 제대로 찾아오셨어요. 믿을 수 있는 선생님 고르는 법과 아이 맞춤 수업 방식을 ${dong} 기준으로 정리했습니다.`,
+    `${dong}에서 ${kw}를 알아보는 학부모님이 부쩍 늘었어요. 학원 선택지는 많아도 아이 개별 약점까지 챙기긴 어렵다 보니, 1:1로 방향을 잡으려는 분이 많아진 거죠. 이 글에서는 ${dong} 기준으로 선생님 고르는 법부터 학습 전략까지 차근차근 정리해 드릴게요.`,
+    `아이 성적이 정체될 때 가장 먼저 봐야 할 건 '어디서 막히는가'예요. ${kw}는 점수보다 막힌 지점을 찾는 진단에서 출발합니다. 무엇을 아는 척하고 있는지, 어떤 개념이 비어 있는지를 짚어야 남은 시간을 헛되이 쓰지 않거든요.`,
+    `${kw}는 방문과 화상을 모두 운영해요. 밀착 관리가 필요하면 방문, 거리·시간을 아끼고 싶으면 화상이 잘 맞습니다. 두 방식을 체험으로 비교해보고 아이 집중도와 가정 상황에 맞춰 고르면 실패가 적어요.`,
+    `좋은 과외는 '많이 시키는' 게 아니라 '맞게 시키는' 거예요. ${dong}에서 ${kw}를 시작할 때도, 아이 성향과 통학 학교를 먼저 파악한 뒤 거기에 맞춘 계획을 세웁니다. 같은 학년이라도 전략이 다른 이유가 여기에 있어요.`,
+    `학원을 다녀도 안 오르는 데는 이유가 있어요. 진도에 끌려가느라 막힌 지점을 그냥 지나치기 때문이죠. ${kw}는 아이 속도에 맞춰 막힌 곳까지 되짚어 채우기 때문에, 같은 아이도 다른 결과를 낼 수 있습니다.`,
   ];
   const intro = pickN(introPool, 2, rng);
   const genPool = [
@@ -1360,6 +1547,33 @@ function regionVarPack(o, rng) {
     [`시험 4주 전부터의 ${dong} 루틴`, `시험이 다가오면 평소 루틴을 시험 모드로 바꿉니다. 4주 전 범위 개념 정리, 3주 전 학교 기출, 2주 전 약점 보완, 1주 전 예상 문제, 직전 핵심 요약 순이 표준이에요. ${dong} 인근 학교 출제 패턴에 맞춰 이 일정을 아이별로 조정합니다.`],
     [`화상 과외, 집중도 걱정 없이`, `${dong}에서 이동이 어렵거나 더 넓은 선생님 풀을 원하면 화상이 좋은 선택이에요. 카메라로 손과 노트가 보이게 세팅하고 판서를 공유하면 집중도가 올라가고, 녹화로 복습도 쉽습니다. 방문과 병행하거나 도중에 전환하는 것도 가능합니다.`],
     [`학부모 소통과 학습 리포트`, `${kw}는 맡기고 끝나는 게 아니라 함께 관리하는 구조예요. 수업 후 진행 상황과 약점, 다음 목표를 리포트로 공유하고, 집에서 어떻게 도와야 할지도 안내합니다. ${dong} 학부모님이 1:1을 택하는 이유 중 하나입니다.`],
+    [`${dong} 주간 학습 플래너 관리`, `계획 없이 공부하면 시간만 흐르기 쉬워요. ${kw}는 매주 요일별로 과목·분량을 배치한 플래너를 함께 짜고, 실제 지킨 양을 다음 수업에 점검합니다. ${dong} 학생이 스스로 일정을 통제하는 감각을 갖게 하는 게 목표예요.`],
+    [`집중되는 공부 환경 만들기`, `같은 시간을 앉아 있어도 집중도에 따라 결과가 갈려요. 책상 정리, 휴대폰 분리, 25분 집중·5분 휴식 같은 작은 규칙이 큰 차이를 만듭니다. ${kw} 첫 수업에서 아이의 공부 환경부터 함께 점검합니다.`],
+    [`노트 정리·필기 습관`, `필기는 받아쓰기가 아니라 '내 말로 다시 쓰기'예요. 핵심어와 예시를 구조화해 적어두면 복습 효율이 크게 올라갑니다. ${dong} 과외에서는 과목별로 맞는 노트 정리법을 잡아, 시험 직전 빠르게 훑을 수 있는 자기만의 요약을 만들게 합니다.`],
+    [`개념과 문제풀이를 잇는 법`, `개념은 아는데 문제만 나오면 막히는 아이가 많아요. 개념을 문제 상황에 어떻게 적용하는지를 단계별로 연결해줘야 합니다. ${kw}는 ${dong} 학생이 '왜 이 풀이가 나오는지'를 스스로 설명하게 해, 응용 문제에도 흔들리지 않게 훈련합니다.`],
+    [`반복되는 실수 줄이기`, `시험에서 아는 문제를 틀리는 건 실력 손실이에요. 부호 실수, 조건 놓침, 시간 배분 같은 실수 유형을 모아 패턴을 찾습니다. ${dong} 1:1 과외는 실수 노트를 따로 관리해 같은 곳에서 두 번 틀리지 않도록 돕습니다.`],
+    [`어휘력과 배경지식 쌓기`, `모든 과목의 바탕은 결국 언어예요. 지문과 문제를 이해하는 어휘력이 약하면 수학·과학도 발목이 잡힙니다. ${kw}는 ${dong} 학생 수준에 맞춰 핵심 어휘와 배경지식을 꾸준히 누적해, 읽고 이해하는 속도 자체를 끌어올립니다.`],
+    [`독해력은 이렇게 키워요`, `긴 지문 앞에서 포기하는 아이일수록 독해 훈련이 먼저예요. 문단별 핵심 잡기, 질문 의도 파악, 근거 문장 표시 같은 기술을 반복합니다. ${dong} 과외에서는 ${kw}를 통해 한 편씩 정독·요약하며 독해 근육을 만들어 갑니다.`],
+    [`말로 설명하는 학습(메타인지)`, `진짜 아는 것은 남에게 설명할 수 있는 것이에요. ${kw} 수업에서는 배운 내용을 학생이 거꾸로 선생님에게 설명하게 합니다. ${dong} 학생이 자기가 어디까지 아는지를 스스로 가늠하는 메타인지를 길러, 헛공부를 줄입니다.`],
+    [`수학적 사고력 훈련`, `공식 암기로 버틴 아이는 고학년에서 한계를 만나요. 조건을 분해하고 풀이 전략을 세우는 사고 과정을 함께 훈련해야 합니다. ${kw}는 정답보다 풀이 설계를 중시해, 처음 보는 문제에도 접근하는 힘을 키웁니다.`],
+    [`과학 개념·실험 정리법`, `과학은 개념·실험·계산이 한 흐름으로 연결돼요. 그림으로 개념을 정리하고 실험은 조건과 결과를 표로 묶는 방식이 효과적입니다. ${dong} 과외에서는 ${kw}를 통해 서술형도 원리에서 결론까지 논리적으로 쓰도록 지도합니다.`],
+    [`시험 불안·멘탈 관리`, `실력이 있어도 긴장으로 무너지는 경우가 적지 않아요. 시험 전 루틴, 시간 배분 연습, 모의 환경 훈련으로 불안을 줄입니다. ${dong} 선생님은 ${kw} 과정에서 점수만이 아니라 아이의 컨디션과 자신감까지 함께 살핍니다.`],
+    [`가정에서의 부모 역할`, `과외 효과는 가정의 작은 습관과 맞물릴 때 커져요. 다그치기보다 꾸준함을 칭찬하고, 공부 환경을 지켜주는 역할이 중요합니다. ${kw}는 ${dong} 학부모님께 집에서 무엇을 도와야 할지 구체적으로 안내해 드립니다.`],
+    [`인강·문제집과 1:1 병행`, `인강과 문제집은 좋은 도구지만 혼자선 약점을 놓치기 쉬워요. 1:1은 그 빈틈을 메우고 방향을 잡아주는 역할을 합니다. ${kw}는 이미 쓰는 자료를 버리지 않고, 거기에 맞춰 부족한 부분만 보완하도록 설계합니다.`],
+    [`단기·장기 목표 나누기`, `'성적 올리기'라는 막연한 목표는 동력이 약해요. 이번 시험 같은 단기 목표와 학기·학년 단위 장기 목표를 나눠 세웁니다. ${kw}는 ${dong} 학생이 작은 목표를 자주 달성하며 자신감을 쌓도록 단계를 설계합니다.`],
+    [`진로와 연결한 학습 동기`, `왜 공부하는지가 보이면 태도가 달라져요. 관심 분야와 진로를 학습과 연결해 주면 동기가 살아납니다. ${kw}는 단순 성적 관리가 아니라, 아이가 스스로 목표를 갖고 공부하도록 방향까지 함께 잡아줍니다.`],
+    [`${dong} 과외 선생님은 이런 분`, `${kw}는 대학생 단기 알바가 아니라 교육청에 정식 등록된 검증 선생님과 연결해요. 전공·경력을 확인하고, 첫 체험에서 ${dong} 학생과의 궁합을 본 뒤 진행합니다. 안 맞으면 부담 없이 교체할 수 있어요.`],
+    [`${dong} 수업은 이렇게 진행돼요`, `첫 진단으로 현재 실력과 목표를 파악하고 → 맞춤 커리큘럼을 설계한 뒤 → 매주 수업·점검 → 시험 전 집중 관리 순으로 돌아가요. ${dong} 학생마다 단계 속도를 조정해, 막연한 진도가 아니라 설계된 흐름으로 갑니다.`],
+    [`첨삭과 피드백 중심 수업`, `풀고 끝내는 수업은 실력으로 잘 안 남아요. ${dong} 과외는 학생이 푼 풀이 과정을 일일이 첨삭하고, 어디서 왜 막혔는지 바로 피드백합니다. 틀린 이유를 아는 순간 같은 실수가 줄어들어요.`],
+    [`정서·동기까지 챙기는 1:1`, `성적은 멘탈과 함께 움직여요. ${dong} 선생님은 작은 성취를 자주 만들어 자신감을 회복시키고, 슬럼프나 사춘기 기복도 라포를 바탕으로 함께 넘어갑니다. 점수만 보는 수업과는 결이 달라요.`],
+    [`학부모와 정기적으로 소통해요`, `${kw}는 맡기고 끝이 아니라 함께 관리하는 구조예요. 진도·약점·다음 목표를 정기적으로 공유하고, ${dong} 가정에서 무엇을 도우면 좋을지도 안내합니다. 방향이 투명하면 아이도 흔들리지 않아요.`],
+    [`방문과 화상을 자유롭게`, `${dong}에서는 선생님이 찾아가는 방문과 위치 무관한 화상을 모두 운영해요. 처음엔 방문으로 잡고 시험기엔 화상으로 횟수를 늘리는 식의 하이브리드도 가능합니다. 아이 집중도와 가정 일정에 맞춰 고르면 됩니다.`],
+    [`성적·약점을 데이터로 관리`, `감으로 가르치지 않아요. ${dong} 과외는 단원별 정답률과 실수 유형을 기록해, 어디가 약한지 데이터로 보여줍니다. 다음 시험 전략이 숫자 위에서 정해지니 시간을 헛되이 안 써요.`],
+    [`개념 강의와 실전 문제를 함께`, `개념만 알면 시험에서 막히고, 문제만 풀면 응용이 안 돼요. ${kw}는 개념 정리와 실전 문제 풀이를 한 수업 안에서 연결해, ${dong} 학생이 '이 개념이 이렇게 나온다'를 체감하게 합니다.`],
+    [`첫 수업은 무료 진단으로`, `시작 전에 아이 상태부터 정확히 봐야 해요. ${dong} 과외는 첫 체험에서 수준·약점·학습 성향을 진단하고, 맞는지 확인한 뒤 결정하게 합니다. 비용보다 체험 반응으로 판단하는 게 실패가 적어요.`],
+    [`막히면 바로 묻는 1:1 밀착`, `학원에선 모르는 걸 질문하기 어렵죠. ${dong} 1:1은 막히는 즉시 묻고 그 자리에서 해결해요. 모르는 채로 진도가 넘어가지 않으니, 같은 시간을 써도 남는 게 다릅니다.`],
+    [`교재·자료는 아이에 맞춰`, `정해진 교재를 강매하지 않아요. 쓰던 인강·문제집이 있으면 살리고, ${dong} 학생 수준에 맞는 자료를 선생님이 직접 골라 보강합니다. 익숙한 흐름을 유지하면서 빈틈만 메우는 방식이에요.`],
+    [`목표까지의 학습 로드맵`, `이번 시험만 보고 가면 길을 잃어요. ${kw}는 학기·학년 목표에서 거꾸로, ${dong} 학생이 언제 무엇을 해야 하는지 로드맵을 그려줍니다. 큰 그림이 있으면 매주 공부가 가벼워져요.`],
   ];
   const genSections = pickN(genPool, 6 + Math.floor(rng() * 2), rng);
   const reviewPool = [
@@ -1369,21 +1583,43 @@ function regionVarPack(o, rng) {
     `"방문 수업으로 시작했다가 일정 때문에 화상으로 바꿨는데 적응이 빨랐어요. ${dong}에서 두 방식 다 받아볼 수 있어 좋았습니다." - ${sigungu} ${dong} 학부모`,
     `"내신 대비가 막막했는데 ${dong} 과외 덕분에 방향을 잡았어요. 우리 학교 기출까지 챙겨주십니다." - ${sigungu} ${dong} 학생`,
     `"교체 한 번 거쳐 잘 맞는 선생님을 만났어요. 부담 없이 재매칭해주셔서 ${dong}에서 마음 편히 진행 중입니다." - ${sigungu} ${dong} 학부모`,
+    `"${dong}에서 자기주도가 약한 아이였는데, 플래너 짜는 습관부터 잡아주시니 6개월 만에 혼자 공부하는 모습이 보여요. 성적도 자연히 따라왔습니다." - ${sigungu} ${dong} 중1 학부모`,
+    `"개념은 아는데 문제만 틀리던 아이였어요. ${dong} 과외에서 풀이를 말로 설명하게 시키니 응용 문제 정답률이 확 올랐습니다." - ${sigungu} ${dong} 중3 학부모`,
+    `"시험만 보면 긴장하던 아이인데, 모의 환경으로 연습시켜 주셔서 실전에서 실력대로 봤어요. ${dong} 선생님께 감사합니다." - ${sigungu} ${dong} 고2 학부모`,
+    `"독해가 약해 전 과목이 흔들렸는데, ${dong}에서 지문 정독 훈련을 꾸준히 하니 이해 속도가 달라졌어요." - ${sigungu} ${dong} 초6 학부모`,
+    `"인강만 듣다 막혔는데 ${dong} 1:1로 약점만 짚어주시니 효율이 완전히 달라졌어요. 쓰던 교재 그대로 봐주셔서 부담도 없었고요." - ${sigungu} ${dong} 고1 학부모`,
+    `"노트 정리법을 잡아주신 뒤로 시험 직전 복습이 훨씬 빨라졌대요. ${dong} 과외 시작하길 잘했다는 생각이 듭니다." - ${sigungu} ${dong} 중2 학부모`,
   ];
   const rv = pickN(reviewPool, 2, rng);
-  const checkPool = [`${dong} 인근 학교 시험 유형 파악`, `첫 수업에 진단 테스트 진행`, `주간 리포트로 학부모와 소통`, `아이 성향 맞춤 커리큘럼 설계`, `체험 수업 후 교체 가능`, `방문·화상 수업 모두 가능`, `교육청 등록 검증 선생님`, `학교 기출 기반 내신 대비`, `숙제·복습 점검 관리`];
+  const checkPool = [`${dong} 인근 학교 시험 유형 파악`, `첫 수업에 진단 테스트 진행`, `주간 리포트로 학부모와 소통`, `아이 성향 맞춤 커리큘럼 설계`, `체험 수업 후 교체 가능`, `방문·화상 수업 모두 가능`, `교육청 등록 검증 선생님`, `학교 기출 기반 내신 대비`, `숙제·복습 점검 관리`, `반복 실수 유형을 따로 관리하는지`, `메타인지(설명하기) 훈련을 시키는지`, `주간 학습 플래너를 함께 짜는지`, `독해력·어휘력 기초를 챙기는지`, `시험 전 멘탈·시간 배분을 연습시키는지`, `쓰던 인강·교재와 병행해 설계하는지`, `단기·장기 목표를 나눠 세우는지`, `서술형·수행평가까지 대비하는지`, `오답을 2주 뒤 다시 풀게 하는지`, `진로와 연결해 학습 동기를 잡는지`, `상담·체험을 부담 없이 받을 수 있는지`];
   const checks = pickN(checkPool, 5, rng);
   const tip = pickN([
     `${dong} 학부모들이 가장 만족하는 조합은 '과외로 방향 잡고 남는 시간은 자기 학습'이에요. 수업 외 시간에 얼마나 스스로 복습하느냐가 결과를 가릅니다.`,
     `${dong}에서 과외를 고를 땐 체험 수업을 꼭 활용하세요. 30분 진단만 받아봐도 아이와 선생님의 궁합이 보입니다.`,
     `${dong} 인근 학교 기출을 아는 선생님 한 분이 1년 학습 방향을 바꿉니다. 첫 상담에서 학교명을 말하고 반응을 보세요.`,
     `${dong} 과외는 주 2회로 시작해도 충분해요. 중요한 건 횟수보다 복습 루틴이고, 선생님이 자기 학습 가이드까지 잡아주는 분을 고르세요.`,
+    `${dong}에서 과외를 시작하면 첫 2주는 점수보다 '아이가 책상에 앉는 시간'이 늘었는지를 보세요. 습관이 잡혀야 성적은 그 뒤에 따라옵니다.`,
+    `같은 ${kw}라도 아이가 '왜 이걸 배우는지' 납득하면 태도가 달라져요. 선생님께 아이 관심사를 미리 공유하면 수업 몰입도가 올라갑니다.`,
+    `시험지를 버리지 말고 모아두세요. ${dong} 과외에서 지난 시험의 오답 유형만 분석해도 다음 시험 전략이 절반은 정해집니다.`,
+    `숙제를 '양'으로 내기보다 '틀린 유형 다시 풀기'로 바꾸면 효율이 달라져요. ${kw} 상담 때 이 방식을 요청해 보세요.`,
+    `아이가 설명을 잘 못 한다면 아직 이해가 덜 된 거예요. ${dong} 수업에서 거꾸로 설명시키는 시간을 넣어달라고 하면 메타인지가 자랍니다.`,
+    `집에서는 다그치기보다 꾸준함을 칭찬해 주세요. ${dong} 학부모님의 작은 인정이 ${kw}의 효과를 몇 배로 키웁니다.`,
+    `방학에는 약점 한두 개만 골라 집중하세요. ${kw}로 욕심내 여러 과목을 늘리기보다, 확실히 끝내는 경험이 다음 학기 자신감이 됩니다.`,
+    `상담 전에 최근 성적표와 쓰던 교재를 챙겨두면 ${dong} 진단이 빨라져요. 첫 수업의 질이 곧 전체 방향을 좌우합니다.`,
   ], 1, rng)[0];
   const closing = pickN([
     `${sido} ${sigungu} ${dong}에서 ${kw}를 고민하신다면 지금이 가장 빠른 길이에요. 공백은 학년이 올라갈수록 복구가 어렵습니다. 과외안하니가 ${dong} 검증 선생님을 무료로 매칭해드려요.`,
     `${dong}에서 ${kw}, 더 늦기 전에 무료 상담부터 받아보세요. 아이 상태 진단과 선생님 매칭까지 부담 없이 도와드립니다.`,
     `과외안하니는 ${dong} 통학권 학교와 아이 성향을 고려해 검증 선생님을 매칭합니다. ${kw}, 방문·화상 모두 상담 후 안내해드릴게요.`,
     `${sido} ${sigungu} ${dong}, ${kw}는 타이밍이 중요해요. 지금 무료 체험으로 시작해보세요. 과외안하니가 끝까지 함께합니다.`,
+    `${dong}에서 ${kw}, 결국 핵심은 '우리 아이에게 맞는 선생님'이에요. 무료 상담과 체험으로 부담 없이 시작해 아이 반응부터 확인해 보세요.`,
+    `성적은 한 번에 뛰지 않지만, 방향이 맞으면 반드시 변합니다. ${kw}로 지금 첫걸음을 떼면 한 학기 뒤가 달라져요.`,
+    `${kw}를 고민만 하다 놓치기엔 시간이 아까워요. ${dong}에서 30분 체험으로 아이에게 맞는지 먼저 확인해 보시길 권합니다.`,
+    `좋은 습관 하나가 점수 여러 개를 만듭니다. ${dong} 1:1 과외로 학습 습관부터 잡아주면 그 효과는 다음 학년까지 이어져요.`,
+    `아이마다 막히는 지점이 다릅니다. ${kw}는 그 지점을 정확히 찾아 채우는 것부터 시작하니, 우선 상담으로 현재 상태를 들어보세요.`,
+    `학원이 맞지 않았다고 공부가 안 맞는 건 아니에요. ${dong}에서 1:1로 방식을 바꾸면 같은 아이도 다른 결과를 냅니다.`,
+    `${kw}의 목표는 '선생님 없이도 공부하는 아이'예요. ${dong}에서 그 습관까지 함께 길러드릴 테니 편하게 상담부터 신청해 보세요.`,
+    `지금 ${kw} 상담을 신청하시면, 아이 상태 진단부터 맞춤 학습 방향까지 한 번에 안내해 드립니다.`,
   ], 1, rng)[0];
   const faqPool = [
     [`${kw}는 어떻게 시작하나요?`, `무료 상담으로 아이의 현재 수준과 목표를 진단한 뒤, 맞는 선생님을 매칭해 30분 체험 수업을 받아보는 순서예요. 체험 후 결정하시면 됩니다.`],
@@ -1404,6 +1640,14 @@ function regionVarPack(o, rng) {
     [`상담은 어떻게 신청하나요?`, `전화(010-4827-5592)나 카카오톡 채널로 문의하시면, ${dong} 상황에 맞는 선생님을 안내하고 체험 수업까지 연결해 드립니다.`],
     [`숙제나 과제도 관리해 주나요?`, `네, 수업에서 정한 분량을 다음 수업에 점검하는 방식으로 관리합니다. 복습이 누적되어야 실력이 되기 때문에 과제 점검을 중요하게 봅니다.`],
     [`어떤 선생님이 배정되나요?`, `정식으로 교육청 등록된 검증 교사 중, 학생 성향과 가능한 스케줄에 맞는 선생님으로 매칭됩니다. 프로필 확인 후 체험까지 진행돼요.`],
+    [`${dong} 어디서 수업하나요?`, `방문은 ${dong} 내 자택이나 가까운 공간에서, 화상은 위치 제약 없이 진행합니다. 두 방식 모두 체험 후 편한 쪽으로 정하시면 됩니다.`],
+    [`교재는 새로 사야 하나요?`, `쓰던 교재·인강이 있으면 그대로 활용하고, 부족한 부분만 보조 자료로 채웁니다. 비싼 교재를 강매하는 일은 없어요.`],
+    [`플래너나 숙제 관리도 해주나요?`, `네, 주간 플래너를 함께 짜고 숙제는 다음 수업에 점검하는 사이클로 관리합니다. 복습 누적이 ${dong} 학생의 실력으로 이어집니다.`],
+    [`시험 기간엔 횟수를 늘릴 수 있나요?`, `네, 시험 3~4주 전부터 횟수·범위를 조정해 집중 관리합니다. ${dong} 인근 학교 일정에 맞춰 유연하게 조율해요.`],
+    [`형제가 같이 받으면 일정 조율이 되나요?`, `네, 일정과 선생님 구성을 묶어 효율적으로 설계해 드립니다. 구체적인 안내는 가정 상황을 들어본 상담 후 도와드려요.`],
+    [`아이가 사춘기라 말을 안 들어요`, `동기와 멘탈 관리도 ${kw}의 중요한 부분이에요. ${dong} 선생님이 작은 성취를 자주 경험하게 해 태도부터 바꿔 갑니다.`],
+    [`온라인 화상도 집중이 될까요?`, `손과 노트가 보이게 세팅하고 판서를 공유하면 집중도가 올라가고 녹화 복습도 쉽습니다. 걱정되면 방문과 병행하셔도 됩니다.`],
+    [`상담만 받아봐도 되나요?`, `물론이에요. 상담과 30분 체험은 부담 없이 받아보고 결정하시면 됩니다. ${dong}에서 우선 아이 상태부터 들어보는 분이 많아요.`],
   ];
   const faqs = pickN(faqPool, 5, rng);
   const faqHTML = `<div class="dc-faq"><h2 class="dc-faq-h">자주 묻는 질문</h2>${faqs.map((f,i)=>`<details class="dc-faq-i"${i===0?' open':''}><summary>${f[0]}<span class="dc-faq-ar">⌄</span></summary><div class="dc-faq-a">${f[1]}</div></details>`).join('')}</div>`;
@@ -1421,7 +1665,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
   _seed = ((_seed ^ (_seed >>> 15)) * 2246822519) >>> 0;
   _seed = ((_seed ^ (_seed >>> 13)) * 3266489917) >>> 0;
   _seed = (_seed ^ (_seed >>> 16)) >>> 0;
-  const rng = seededRandom(_seed);
+  const rng = seededRandomR(_seed);
   let kw, heroEm, seoT, seoD, canonPath, bc, tags, sections, review1, review2, checks, tip, closing, intro, color; let faqHTML=''; let summary=[], h1Title='';
   if (type === 'subj') {
     const subj = arg1; if (!SUBS.includes(subj)) return null;
@@ -1521,6 +1765,90 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
         `1주차 ${core} 진단과 목표 설정, 2주차 약점 단원 집중, 3주차 학교 진도 맞추기, 4주차 첫 점검과 학부모 리포트. ${dong} ${subj}과외는 이 4주 로드맵으로 시작해 아이가 수업 흐름에 빠르게 적응하도록 돕습니다.`],
       [pickN([`${subj} 수행평가·서술형 대비`,`${dong} ${subj} 서술형, 미리 잡기`],1,rng)[0],
         `요즘 ${subj}은 지필뿐 아니라 수행평가·서술형 비중이 커졌어요. ${dong} 과외에서는 채점 기준표를 미리 분석해 글쓰기·풀이 과정 서술을 단계적으로 훈련합니다. 답은 맞아도 과정 점수에서 깎이는 일을 줄이는 게 목표예요.`],
+      [pickN([`${subj} 어휘·핵심 용어부터`,`${dong} ${subj} 기초 용어 잡기`],1,rng)[0],
+        `${subj}은 핵심 용어를 모르면 지문도 문제도 막혀요. ${kw}는 ${core} 관련 필수 용어를 먼저 정리하고 예문으로 익히게 해, 문제를 읽는 속도 자체를 끌어올립니다.`],
+      [pickN([`개념을 문제에 적용하는 ${subj}`,`${subj}, 개념과 문제 사이 잇기`],1,rng)[0],
+        `개념은 아는데 문제만 나오면 멈추는 아이가 많아요. ${dong} ${subj}과외는 개념이 문제에서 어떻게 변형되는지를 단계별로 보여주고, 학생이 직접 풀이 근거를 말하게 해 응용력을 키웁니다.`],
+      [pickN([`${subj} 실수 유형 분석`,`${dong} ${subj} 반복 실수 줄이기`],1,rng)[0],
+        `아는 문제를 틀리는 건 가장 아까운 실점이에요. ${subj}에서 자주 나오는 조건 놓침·계산 실수·표현 실수를 유형별로 모아, ${dong} 과외에서 같은 함정에 두 번 빠지지 않게 훈련합니다.`],
+      [pickN([`${subj} 노트·정리법`,`시험 직전 빠른 ${subj} 복습`],1,rng)[0],
+        `${subj}은 정리해 두지 않으면 시험 직전에 흩어져요. ${kw}는 ${core}을 한눈에 보는 요약 노트를 만들게 해, 시험 전 짧은 시간에 핵심만 빠르게 훑도록 돕습니다.`],
+      [pickN([`${subj} 자기주도 루틴`,`혼자서도 되는 ${subj} 공부법`],1,rng)[0],
+        `과외의 목표는 결국 혼자 공부하는 힘이에요. ${dong} ${subj}과외는 매주 자기 학습 분량을 정하고 다음 시간에 점검하는 사이클로, 학생이 스스로 ${subj}을 끌고 가도록 습관을 만듭니다.`],
+      [pickN([`${subj} 시험 시간 배분`,`${subj} 실전 운영 전략`],1,rng)[0],
+        `실력이 있어도 시간 배분에서 무너지면 점수가 안 나와요. ${dong} 과외에서는 ${subj} 모의 환경으로 문항별 시간을 연습시켜, 실전에서 아는 만큼 다 풀어내도록 훈련합니다.`],
+      [pickN([`인강·문제집과 ${subj} 병행`,`쓰던 ${subj} 자료 그대로`],1,rng)[0],
+        `이미 보던 인강·문제집이 있다면 버릴 필요 없어요. ${kw}는 그 자료를 기준으로 약점만 1:1로 보완해, 학생이 익숙한 흐름을 유지하면서 빈틈을 메우게 합니다.`],
+      [pickN([`${subj} 멘탈·자신감 관리`,`${subj} 슬럼프 넘기기`],1,rng)[0],
+        `한 과목이 무너지면 자신감 전체가 흔들려요. ${dong} ${subj} 선생님은 작은 성취를 자주 만들어 ${subj}에 대한 두려움부터 줄이고, 점수는 그 뒤에 자연히 따라오게 합니다.`],
+      [pickN([`${subj} 단기·장기 목표`,`${dong} ${subj} 목표 설계`],1,rng)[0],
+        `막연히 '잘하기'가 아니라 이번 시험 목표와 학기 목표를 나눠 세워요. ${kw}는 ${subj}에서 가장 점수 효율이 높은 단원부터 공략하는 단계별 계획을 함께 만듭니다.`],
+      [pickN([`방학 ${subj} 집중 전략`,`${dong} ${subj} 방학 플랜`],1,rng)[0],
+        `방학은 ${subj} 약점을 몰아서 잡기 좋은 시기예요. ${dong} 과외는 방학 동안 ${core} 같은 핵심을 집중 보완하거나 다음 학기를 선행해, 학기 중 부담을 줄이는 단기 플랜을 운영합니다.`],
+      [pickN([`상위권을 위한 ${subj} 디테일`,`${subj} 마지막 한 끗`],1,rng)[0],
+        `이미 잘하는 아이도 ${subj}에서 채울 디테일이 있어요. ${kw}는 고난도 문항 접근법과 서술형 감점 포인트를 다듬어, 상위권의 '마지막 5점'을 메우는 정밀 코칭을 합니다.`],
+      [pickN([`기초가 약한 아이의 ${subj}`,`${dong} ${subj} 기초부터`],1,rng)[0],
+        `${subj}이 약한 아이일수록 1:1이 답이에요. ${dong} 과외는 진도에 끌려가지 않고 막힌 지점까지 되짚어 ${core}부터 다시 쌓아, 기초와 자신감을 함께 채웁니다.`],
+      [pickN([`설명으로 확인하는 ${subj}`,`${subj} 메타인지 학습`],1,rng)[0],
+        `진짜 아는 것은 설명할 수 있는 거예요. ${dong} ${subj}과외는 배운 내용을 학생이 거꾸로 설명하게 해, 어디까지 이해했는지 스스로 가늠하게 만들어 헛공부를 줄입니다.`],
+      [pickN([`진로와 연결한 ${subj} 동기`,`왜 ${subj}을 공부할까`],1,rng)[0],
+        `왜 배우는지가 보이면 ${subj} 태도가 달라져요. ${kw}는 아이의 관심·진로와 ${subj}을 연결해, 시켜서가 아니라 스스로 공부하려는 동기를 만들어 줍니다.`],
+      [pickN([`${subj} 학교 기출 3년치 분석`,`${dong} ${subj} 출제 경향 완벽 분석`],1,rng)[0],
+        `${dong} 인근 학교의 ${subj} 시험은 학교마다 출제 포인트가 달라요. ${kw}는 최근 3년치 기출을 단원·유형별로 분석해 시험에 실제로 나오는 부분을 집중 대비합니다. 막연한 진도가 아니라 '나올 문제'에 시간을 씁니다.`],
+      [pickN([`${subj} 취약 단원 집중 보완`,`${dong} ${subj} 약한 단원만 골라`],1,rng)[0],
+        `잘하는 단원에 시간을 더 쓰는 건 비효율이에요. ${kw}는 진단으로 ${core} 중 취약 단원을 정확히 찾아 거기에 수업을 집중합니다. 학원 진도에서 놓친 ${subj} 구멍을 1:1로 메우는 방식이에요.`],
+      [pickN([`${subj} 개념·유형·오답 3단계`,`${dong} ${subj} 단계별 진행`],1,rng)[0],
+        `${subj} 수업은 ① 개념·원리 정리 → ② 유형별 문제 풀이 → ③ 오답·취약점 보완의 단계로 돌아가요. 기초가 튼튼해야 응용이 풀리고, 틀린 문제를 다시 잡아야 같은 실수가 사라집니다. ${dong} 학생 수준에 맞춰 단계 속도를 조정합니다.`],
+      [pickN([`${subj} 정식 검증 선생님 매칭`,`${dong} ${subj} 검증된 선생님`],1,rng)[0],
+        `${subj}은 가르치는 사람의 노하우가 결과를 좌우해요. ${kw}는 교육청에 정식 등록된, 경력·전공이 검증된 선생님만 매칭합니다. 체험 수업에서 ${dong} 학생과의 궁합을 확인한 뒤 진행하니 부담이 없어요.`],
+      [pickN([`${subj} 주간 리포트 관리`,`${dong} ${subj} 학습 보고서`],1,rng)[0],
+        `매 수업 후 ${subj} 진도와 약점, 다음 목표를 리포트로 학부모님께 공유해요. ${dong} 가정에서 무엇을 도와야 할지도 함께 안내합니다. 진행이 투명해야 아이도 부모도 방향을 잃지 않아요.`],
+      [pickN([`${subj} 첫 진단 수업`,`${dong} ${subj} 정밀 진단부터`],1,rng)[0],
+        `첫 수업은 ${subj} 실력을 객관적으로 파악하는 진단으로 시작해요. 단원별 미니 테스트와 풀이 과정 관찰로 ${core}의 어디가 비었는지 가려냅니다. ${kw}는 이 진단 위에 맞춤 커리큘럼을 설계합니다.`],
+      [pickN([`${subj} 응용·심화로 확장`,`${dong} ${subj} 한 단계 위로`],1,rng)[0],
+        `기본기가 잡히면 ${subj}은 응용·심화로 넘어가야 점수가 올라요. ${kw}는 고난도 문항의 접근법과 풀이 전략을 단계적으로 훈련해, ${dong} 학생이 처음 보는 문제에도 흔들리지 않게 만듭니다.`],
+      [pickN([`${subj} 개념·원리 정리법`,`${dong} ${subj} 개념부터 탄탄히`],1,rng)[0],
+        `${subj}은 공식 암기로 버티면 고학년에서 한계를 만나요. ${kw}는 ${core}의 원리를 '왜 그런지'까지 이해시키고, 학생이 스스로 설명하게 합니다. ${dong}에서 개념이 잡힌 아이는 응용에서 차이가 납니다.`],
+      [pickN([`${subj} 시험 직전 파이널`,`${dong} ${subj} 시험기 집중`],1,rng)[0],
+        `시험 3~4주 전부터는 ${subj} 수업을 시험 모드로 전환해요. 범위 개념 정리 → 학교 기출 → 약점 보완 → 예상 문제 순으로, ${dong} 인근 학교 일정에 맞춰 횟수와 범위를 조정합니다.`],
+      [pickN([`${subj}, 학원과 1:1의 차이`,`${dong} ${subj} 왜 1:1인가`],1,rng)[0],
+        `학원 ${subj} 수업은 여럿을 함께 가르쳐 개인 약점까지 챙기기 어려워요. 모르는 걸 질문하기도 쉽지 않죠. ${kw}는 ${dong} 학생 수준에 맞춰 막힌 부분을 그 자리에서 짚고 넘어가, 같은 시간을 써도 효율이 다릅니다.`],
+      [pickN([`${subj} 예습·복습 루틴`,`${dong} ${subj} 자기 학습 습관`],1,rng)[0],
+        `수업만으로 ${subj} 실력이 완성되진 않아요. ${kw}는 수업에서 배운 ${core}를 스스로 다시 풀어보는 복습 루틴을 함께 잡아, ${dong} 학생이 매일 조금씩 쌓는 습관을 갖도록 돕습니다.`],
+      [pickN([`${subj} 목표 점수 역산 설계`,`${dong} ${subj} 목표부터 거꾸로`],1,rng)[0],
+        `'잘하기'라는 막연한 목표는 동력이 약해요. ${kw}는 ${dong} 학생의 목표 점수에서 거꾸로, 지금 무엇을 언제까지 해야 하는지 ${subj} 학습 계획을 단계로 쪼개 설계합니다.`],
+      [pickN([`${subj} 실수·감점 줄이기`,`${dong} ${subj} 아는 문제 다 맞기`],1,rng)[0],
+        `아는 ${subj} 문제를 틀리는 건 가장 아까운 실점이에요. ${kw}는 계산 실수·조건 놓침·서술형 감점 같은 유형을 따로 모아 관리해, ${dong} 학생이 시험에서 아는 만큼 다 받아내도록 훈련합니다.`],
+      [pickN([`${subj} 어휘·기초 용어 잡기`,`${dong} ${subj} 기초 용어부터`],1,rng)[0],
+        `${subj}은 핵심 용어와 기초 개념을 모르면 지문도 문제도 막혀요. ${kw}는 ${core} 관련 필수 개념을 먼저 정리하고 예제로 익히게 해, ${dong} 학생이 문제를 읽는 속도부터 끌어올립니다.`],
+      [pickN([`${subj} 선생님은 이런 분`,`${dong} ${subj} 검증 선생님`],1,rng)[0],
+        `${kw}는 교육청 정식 등록·전공 검증을 거친 ${subj} 선생님과 연결해요. 대학생 단기 알바가 아니라 입시·내신 노하우가 쌓인 분이라, ${dong} 학생 수준을 정확히 진단하고 막힌 곳부터 잡아줍니다.`],
+      [pickN([`${subj} 수업 4단계 진행`,`${dong} ${subj} 진행 방식`],1,rng)[0],
+        `${subj} 수업은 진단 → 개념·원리 정리 → 유형별 문제 풀이 → 오답·취약점 보완의 흐름으로 돌아가요. ${dong} 학생마다 ${core} 수준에 맞춰 단계 속도를 조정해, 설계된 순서로 빈틈 없이 채웁니다.`],
+      [pickN([`${subj} 풀이 첨삭·피드백`,`${dong} ${subj} 과정 첨삭`],1,rng)[0],
+        `${subj}은 답보다 과정이에요. ${kw}는 학생이 푼 풀이를 한 줄씩 첨삭하고, 어디서 논리가 끊겼는지 바로 짚어줍니다. ${dong}에서 첨삭이 쌓이면 서술형 감점이 눈에 띄게 줄어요.`],
+      [pickN([`${subj} 난이도 단계 설계`,`${dong} ${subj} 수준별 설계`],1,rng)[0],
+        `한 번에 어려운 문제로 가면 무너져요. ${kw}는 ${core} 기본부터 응용·심화까지 난이도를 계단식으로 올려, ${dong} 학생이 매 단계 성공을 경험하며 자신감을 쌓게 합니다.`],
+      [pickN([`${subj} 개념강의+실전문제`,`${dong} ${subj} 개념·문제 결합`],1,rng)[0],
+        `개념만 알면 시험에서 막히고 문제만 풀면 응용이 안 돼요. ${kw}는 ${core} 개념 강의와 실전 문제를 한 수업에 묶어, ${dong} 학생이 '이 개념이 이렇게 나온다'를 바로 체감하게 합니다.`],
+      [pickN([`${subj} 약점 데이터 추적`,`${dong} ${subj} 정답률 관리`],1,rng)[0],
+        `감으로 가르치지 않아요. ${kw}는 ${subj} 단원별 정답률과 실수 유형을 기록해 약점을 숫자로 보여줍니다. ${dong} 학생의 다음 시험 전략이 데이터 위에서 정해져요.`],
+      [pickN([`${subj} 무료 진단 체험`,`${dong} ${subj} 첫 진단`],1,rng)[0],
+        `시작 전 ${subj} 실력을 객관적으로 봐야 해요. 첫 체험에서 ${core} 어느 단계가 비었는지 미니 테스트로 가려내고, 맞는지 확인한 뒤 결정합니다. ${dong} 학부모님 부담이 없어요.`],
+      [pickN([`${subj} 실시간 질의응답`,`${dong} ${subj} 밀착 질문`],1,rng)[0],
+        `학원에선 ${subj} 모르는 걸 묻기 어렵죠. 1:1은 막히는 즉시 묻고 그 자리에서 해결해요. ${dong} 학생이 모르는 채로 넘어가지 않으니 같은 시간에 남는 게 다릅니다.`],
+      [pickN([`${subj} 학부모 리포트`,`${dong} ${subj} 진행 공유`],1,rng)[0],
+        `매 수업 후 ${subj} 진도·약점·다음 목표를 리포트로 공유해요. ${dong} 가정에서 무엇을 도우면 좋을지도 안내합니다. 진행이 투명해야 아이도 부모도 방향을 안 잃어요.`],
+      [pickN([`${subj} 시험기 집중 케어`,`${dong} ${subj} 시험 대비`],1,rng)[0],
+        `시험 3~4주 전부터 ${subj} 수업을 시험 모드로 바꿔요. ${dong} 인근 학교 기출과 일정에 맞춰 범위·횟수를 조정하고, 예상 문제까지 풀어 실전 감각을 끌어올립니다.`],
+      [pickN([`${subj} 기초~심화 로드맵`,`${dong} ${subj} 단계 로드맵`],1,rng)[0],
+        `이번 시험만 보면 길을 잃어요. ${kw}는 ${core} 기초부터 심화까지 학기·학년 목표에서 거꾸로 로드맵을 그려, ${dong} 학생이 언제 무엇을 할지 큰 그림을 갖게 합니다.`],
+      [pickN([`${subj} 맞춤 자료 구성`,`${dong} ${subj} 교재 설계`],1,rng)[0],
+        `정해진 교재를 강매하지 않아요. 쓰던 인강·문제집을 살리고 ${dong} 학생 수준에 맞는 ${subj} 자료를 선생님이 직접 골라 보강합니다. 익숙한 흐름은 두고 빈틈만 채워요.`],
+      [pickN([`${subj} 자신감·멘탈 케어`,`${dong} ${subj} 정서 관리`],1,rng)[0],
+        `한 과목이 무너지면 자신감 전체가 흔들려요. ${dong} ${subj} 선생님은 작은 성취를 자주 만들어 ${subj} 두려움부터 줄이고, 점수는 그 뒤에 자연히 따라오게 합니다.`],
+      [pickN([`${subj} 학습 습관 코칭`,`${dong} ${subj} 자기주도`],1,rng)[0],
+        `${subj}은 수업만으로 완성되지 않아요. ${kw}는 배운 ${core}를 스스로 다시 풀어보는 복습 루틴을 잡아, ${dong} 학생이 선생님 없이도 굴러가는 습관을 갖게 돕습니다.`],
     ];
     sections = pickN(sectionPool, 7 + Math.floor(rng() * 2), rng);
     const _rv = pickN([
@@ -1707,7 +2035,7 @@ function renderDongCategoryPage(sido, sigungu, dong, type, arg1, arg2) {
   <style>${commonStyles()}${dcCSS()}.dc-xc.on{border-color:var(--c);background:#f8fafc}</style></head><body>${navHTML('region')}
   <div class="dc-bc"><a href="/">홈</a> &gt; <a href="/지역별">지역별 과외</a> &gt; ${bc}</div><div class="dc-wrap"><div class="dc-box"><div class="dc-head"><h1>${h1Title}</h1><div class="dc-meta"><span class="dc-mb">${dong}</span><span class="dc-mb">${sido} ${sigungu}</span><span class="dc-mb">전 학년·전 과목</span><span class="dc-mb dc-mb-up">🗓 업데이트: ${_upDisp}</span></div></div><div class="dc-sum"><div class="dc-sum-t">📋 ${kw} 3줄 요약</div>${summary.map(x=>`<div class="dc-sum-l">${x}</div>`).join('')}</div><div class="dc-hero"><img src="${heroImg}" alt="${kw}" loading="lazy"><div class="dc-hero-grad"></div><div class="dc-hero-badge">📍 ${kw}</div></div><div class="dc-info"><div class="dc-info-row"><strong>지역</strong><span>${sido} ${sigungu} ${dong}</span></div><div class="dc-info-row"><strong>대상</strong><span>초·중·고등학생 전학년</span></div><div class="dc-info-row"><strong>과목</strong><span>국어·수학·영어·과학·사회·논술·검정고시</span></div></div></div>
     ${otherDongs.length ? `<div class="dc-box"><div class="dc-box-t">📍 ${sigungu} 동 선택</div><p style="font-size:13px;color:#475569;margin:0 0 14px 12px">다른 동네의 세부 키워드(학년별·과목별·학년+과목별 과외)를 확인하실 수 있습니다.</p><div class="dc-xgrid">${dongCells}</div>${dongMoreBtn}</div>` : ''}
-    <div class="dc-body">${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}<div class="dc-check"><h3>✅ ${dong} 과외 선생님 체크리스트</h3><ol>${checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-bxh">💬 ${kw} 실제 후기</div><div class="dc-rv-wrap"><div class="dc-review">${review1}</div><div class="dc-review">${review2}</div></div><div class="dc-tip"><h3>💡 ${dong} 학부모 꿀팁</h3><p>${tip}</p></div><p>${closing}</p></div><div class="dc-box">${stepsBox(kw, dong)}</div>${faqHTML}<div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div><div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
+    <div class="dc-body">${thinKw(synSwap(`${intro.map(p=>`<p>${p}</p>`).join('')}${sections.map(s=>`<h2>${s[0]}</h2><p>${s[1]}</p>`).join('')}${localSchoolLine(rng, kw, dong, dong, `${sido} ${sigungu}`, getDongs(sido, sigungu).filter(x=>x!==dong))}<div class="dc-check"><h3>✅ ${dong} 과외 선생님 체크리스트</h3><ol>${checks.map(c=>`<li>${c}</li>`).join('')}</ol></div><div class="dc-bxh">💬 ${kw} 실제 후기</div><div class="dc-rv-wrap"><div class="dc-review">${review1}</div><div class="dc-review">${review2}</div></div><div class="dc-tip"><h3>💡 ${dong} 학부모 꿀팁</h3><p>${tip}</p></div><p>${closing}</p>`, seededRandomR(hashCode(canonPath+'SYN'))), [kw, dong+' 과외'], ['과외','1:1 과외','맞춤 과외'], seededRandomR(hashCode(canonPath+'KW')), 4)}</div><div class="dc-box">${stepsBox(kw, dong)}</div>${faqHTML}<div class="dc-box"><div class="dc-box-t">${dong} 과목별 과외</div><div class="dc-xgrid" style="margin-top:12px">${subjCards}</div></div><div class="dc-box"><div class="dc-box-t">${dong} 학년별 과외</div><div class="dc-xgrid" style="margin-top:12px">${lvlCards}</div></div><div class="dc-box"><div class="dc-box-t">🔖 연관 키워드</div><div class="dc-tagbox" style="margin-top:12px">${tags.map(t=>`<span class="dc-tag">#${t}</span>`).join('')}</div></div><div class="dc-cta"><h3>무료 상담 신청</h3><p>${kw} 검증 선생님 매칭</p><div class="dc-cta-btns"><a href="tel:010-4827-5592" class="dc-cta-btn dc-cp">010-4827-5592</a><a href="/체험신청" class="dc-cta-btn dc-cf">상담 신청 →</a></div></div></div>
   ${footerHTML()}
   </body></html>`;
 }
@@ -4728,7 +5056,7 @@ export default {
     }
 
     if (pathname === '/version') {
-      return new Response('v108-region-rich-content', { headers: { 'Content-Type': 'text/plain' } });
+      return new Response('v109-region-lowsim', { headers: { 'Content-Type': 'text/plain' } });
     }
 
     if (pathname === '/indexnow-auto') {
